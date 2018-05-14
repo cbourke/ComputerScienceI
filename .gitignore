@@ -1,0 +1,31 @@
+# latex temporary files
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.blg
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.loa
+*.lof
+*.log
+*.lol
+*.out
+*.synctex.gz
+*.toc
+
+#
+*~
+
+# minted subdirectory
+_minted-*
+figures/_minted*
+
+#
+.DS_Store

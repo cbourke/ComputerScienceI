@@ -1,0 +1,98 @@
+\documentclass[12pt]{scrartcl}
+
+\input{preamble}
+
+\makeatletter
+\title{Hack 2.0}\let\Title\@title
+\subtitle{Computer Science I\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\section*{Introduction}
+
+Hack session activities are small weekly programming assignments intended
+to get you started on full programming assignments.  Collaboration is allowed
+and, in fact, \emph{highly encouraged}.  You may start on the activity before
+your hack session, but during the hack session you must either be actively 
+working on this activity or \emph{helping others} work on the activity.
+You are graded using the same rubric as assignments so documentation, style, 
+design and correctness are all important.  This activity is \textbf{due 
+at 23:59:59 on the Friday} in the week in which it is assigned according 
+to the CSE system clock.
+
+%TODO: rubric 
+% instructions
+% documentation
+% style
+% design including input validation
+% correctness
+
+\section*{Problem Statement}
+
+Consider two locations, an origin and a destination, on the globe 
+identified by their latitude and longitude.  The distance between
+these two locations can be computed using the Spherical Law of 
+Cosines.  In particular, the distance $d$ is
+ $$d = \arccos{(\sin(\varphi_1) \sin(\varphi_2) + \cos(\varphi_1) \cos(\varphi_2) \cos(\Delta) )} \cdot R$$
+where
+\begin{itemize}
+  \item $\varphi_1$ is the latitude of location $A$, $\varphi_2$ is the latitude of location $B$
+  \item $\Delta$ is the difference between location $B$'s longitude and location $A$'s longitude
+  \item $R$ is the (average) radius of the earth, 6,371 kilometers
+\end{itemize}
+
+Write a program that reads in the latitude and longitude of two locations
+as command line arguments and then computes the distance between them using
+the above formula.  Note that latitude inputs will be in degrees and in the
+range $[-90, 90]$ and longitude will be in degrees in the range $[-180, 180]$.
+Negative values correspond to the western and southern hemispheres.  
+
+Note that the formula above assumes that latitude and longitude are 
+measured in radians $r$, $-\pi \leq r \leq \pi$.  You can convert from
+degrees $deg$ to radians $r$ using the formula
+  $$r = \frac{deg}{180} \cdot \pi$$  
+
+Your program output should look something like the following.  
+
+\begin{minted}{text}
+Location Distance
+========================
+Origin:      (41.948300, -87.655600)
+Destination: (40.820600, -96.705600)
+Air distance is 764.990931 kms
+\end{minted}
+
+
+\section*{Instructions}
+
+\begin{itemize}
+  \item You are encouraged to collaborate any number of students 
+  before, during, and after your scheduled hack session.  
+  \item Design at least 3 test cases \emph{before} you begin
+  designing or implementing your program.  Test cases are 
+  input-output pairs that are known to be correct using means
+  other than your program.
+  \item Include the name(s) of everyone who worked together on
+  this activity in your source file's header.
+  \item Name your program \mintinline{text}{airDistance.c}, and
+  turn it in via webhandin, making sure that it runs and executes
+  correctly in the webgrader.  Each individual student will need
+  to hand in their own copy and will receive their own individual
+  grade.
+\end{itemize}
+  
+
+
+\end{document}

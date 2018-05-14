@@ -1,0 +1,176 @@
+\documentclass[12pt]{scrartcl}
+
+
+\usepackage{epsfig,amssymb}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{multirow}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  bookmarks=true,
+  pdfpagemode=none,
+  pdftitle={BYOD: Bring Your Own Device},
+  pdflang={en},
+  pdfauthor={Christopher M. Bourke},
+  pdfcreator={$ $Id: cv-us.tex,v 1.28 2009/01/01 00:00:00 cbourke Exp $ $},
+  pdfsubject={PhD Thesis},
+  pdfkeywords={}
+}
+
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} %
+\usepackage{subfigure}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+\usepackage[newfloat=true]{minted}
+
+\setminted{mathescape,
+           linenos,
+           autogobble,
+           frame=none,
+           framesep=2mm,
+           framerule=0.4pt,
+           %label=foo,
+           xleftmargin=2em,
+           xrightmargin=0em,
+           %startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+           numbersep=10pt, %gap between line numbers and start of line
+           style=default} %syntax highlighting style, default is "default"
+
+\setmintedinline{bgcolor={mintedBackground}}
+%doesn't work with the above workaround:
+\setminted{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+%NOTE: you can embed algorithms in solutions, but they cannot be floating objects; use [H] to make them non-floats
+
+\usepackage{lastpage}
+
+%\usepackage{titling}
+\usepackage{fancyhdr}
+\renewcommand*{\titlepagestyle}{fancy}
+\pagestyle{fancy}
+%\renewcommand*{\titlepagestyle}{fancy}
+%\fancyhf{}
+%\rhead{Computer Science I}
+%\lhead{Guides and tutorials}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lfoot{\Title\ -- Computer Science I}
+\cfoot{~}
+\rfoot{\thepage\ / \pageref*{LastPage}}
+
+\makeatletter
+\title{BYOD: Bring Your Own Device}\let\Title\@title
+\subtitle{Developing C on Your Own Machine \\
+Computer Science I\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\section*{Introduction}
+
+Using the lab computers will always be an option.  However, you may want to
+untether yourself from the lab and develop on your own machine, either desktop
+or laptop.  There are many options for doing this, the following are only
+a few suggestions.
+
+Both of these suggestions have you make a connection to your ``Z-drive'' 
+on the CSE server.  This is a remote file system where you can store all
+of your files, but interact with them as if they were on your computer.
+It is similar to plugging in a memory stick: it will appear as yet another
+drive on your computer that you can drag-drop files from/to and open/save
+files on.  These suggestions still have you compiling and running from the
+command line though.  This saves you from having to install your own C 
+compiler/development stack.  If you do want to do this, see the 
+Alternatives section below.
+
+\subsection*{Windows}
+
+\begin{enumerate} 
+  \item Connect to your Z: drive using the following FAQ: \\
+  \url{https://cse.unl.edu/faq-section/windows#node-290}\\
+  This only works on campus; off campus you'd need to setup a VPN.
+  \item Install Atom IO \url{https://atom.io/}, a free code/text 
+  editor.  Use this editor to edit files on your Z drive once connected.
+  \item Download and install Putty, a ``Secure Shell Client'': \\
+  \url{http://www.putty.org/}\\
+  Once you've written your program(s), login to the CSE server
+  using Putty and compile and run your programs on the CSE server.
+\end{enumerate}
+
+\subsection*{Mac}
+
+\begin{enumerate}
+  \item Connect to your Z: drive using the following FAQ: \\
+  \url{https://cse.unl.edu/faq-section/macintosh#node-295}\\
+  This only works on campus; off campus you'd need to setup a VPN.
+  \item Install Atom IO \url{https://atom.io/}, a free code/text 
+  editor.  Use this editor to edit files on your Z drive once connected.
+  \item Use Terminal (Apps $\rightarrow$ Utilities $\rightarrow$ Terminal) to
+  login to the CSE server and compile and run on the CSE server.  To login, type
+  \mintinline{text}{ssh login@cse.unl.edu} where \mintinline{text}{login} 
+  is replaced with your CSE login.
+\end{enumerate}
+  
+\section*{Alternatives}
+
+The following are some alternatives if you want to explore further.
+All of them are cross-platform solutions.
+\begin{itemize} 
+  \item Eclipse for C/C++ is a full Integrated Development Environment (IDE):
+  \url{https://www.eclipse.org/downloads/eclipse-packages/}
+  \item Code::Blocks is another IDE for for C/C++: \url{http://www.codeblocks.org/}
+  \item Sublime Text is an excellent code editor but is commercial: \url{https://www.sublimetext.com/}
+  \item If you are off campus and need to transfer files between your 
+  own machine and the CSE server, you can use an SFTP (Secure File Transfer
+  Protocol) client.  We recommend FileZilla: \url{https://filezilla-project.org/}
+  (download the \emph{client}, not the server).  For the host, use 
+  \mintinline{text}{sftp://cse.unl.edu} and use your cse login and password.
+\end{itemize}
+
+
+  
+
+
+\end{document}
