@@ -1,0 +1,74 @@
+{\setmintedinline{bgcolor={}}
+
+
+\begin{tikzpicture}[scale=0.4,transform shape]
+
+% Define block styles
+\tikzstyle{box} = [rectangle,
+                   draw,
+                   fill=white,
+                   text width=3.0cm,
+                   %text height=0.9cm,
+                   text centered,
+                   inner sep=5pt,
+                   node distance=1.25cm]
+
+\tikzstyle{struct} = [rectangle,
+                   draw,
+                   fill=white,
+                   text width=2.5cm,
+                   minimum height=2.0cm,
+                   text centered,
+                   inner sep=5pt,
+                   node distance=1.25cm]
+
+\tikzstyle{line} = [draw, -latex']; %
+
+%\draw[green] (-1, 0) rectangle (19, -1);
+    \node [] (init) at (0,0) {\mintinline{c}{Student **roster}};
+
+    \node [box, right of=init,node distance=5cm] (p0) {\mintinline{c}{roster[0]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=p0] (d0) {?};
+    %\draw[line] (p0) -- (d0);
+    \node [box, below of=p0] (p1) {\mintinline{c}{roster[1]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=p1] (d1) {?};
+    %\draw[line] (p1) -- (d1);
+    \node [box, below of=p1] (p2) {\mintinline{c}{roster[2]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=p2] (d2) {?};
+    %\draw[line] (p2) -- (d2);
+    \node [below of=p2,node distance=1.5cm] (pd) {$\vdots$};
+    \node [box, below of=pd,node distance=1.5cm] (pn) {\mintinline{c}{roster[n-1]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=pn] (dn) {?};
+    %\draw[line] (pn) -- (dn);
+    \path [line] (init) -- (p0);
+    
+
+    \node[struct] (a) at (11, 2) {\mintinline{c}{Student} \\(40 bytes)};
+    %\draw[line] (p0.east) -- (a.west);
+    
+    \draw[line] (node cs:name=p0,angle=0)
+      .. controls +(east:1cm) and +(-2,0) .. (a.155);
+
+    \node[struct] (b) at (12, -1) {\mintinline{c}{Student} \\(40 bytes)};
+    \draw[line] (node cs:name=p1,angle=0)
+      .. controls +(east:3cm) and +(-1,0) .. (b.155);
+
+    \node[struct] (c) at (10, -4) {\mintinline{c}{Student} \\(40 bytes)};
+    \draw[line] (node cs:name=p2,angle=0)
+      .. controls +(east:1cm) and +(-2,0) .. (c.155);
+
+
+    \node[struct] (d) at (13, -7) {\mintinline{c}{Student} \\(40 bytes)};
+    \draw[line] (node cs:name=pn,angle=0)
+      .. controls +(east:4cm) and +(-2,0) .. (d.155);
+
+\end{tikzpicture}
+%
+%\caption[Array of Structure Pointers]{An array of structure pointers.  Each record is a pointer that refers to a structure which may be stored non-contiguously in completely different memory locations.}
+%\label{figure:arrayOfStructurePointers}
+%\end{figure}
+}

@@ -1,0 +1,353 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Template
+%  Beamer Presentation by Chris Bourke
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{beamer}
+%\documentclass[handout]{beamer}
+
+\geometry{papersize={16cm,9cm}}
+
+% For handout version:
+%\usetheme[hideothersubsections,slidenumbers]{UNLTheme}
+\usetheme[hideothersubsections]{UNLTheme}
+\usepackage{amssymb}
+\input{StandardCommands}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\SetKwComment{Comment}{//}{}
+\DontPrintSemicolon
+\SetKwSty{textsc} %
+%\SetAlFnt{\scriptsize} %
+\SetKwInOut{Input}{Input} %
+\SetKwInOut{Output}{Output} %
+%\setalcapskip{1em} % changed to
+\SetAlCapSkip{1em}
+\setlength{\algomargin}{2em} %
+%\Setvlineskip{0em} % changed to:
+\SetVlineSkip{0em}
+
+\usepackage{tikz}
+\usetikzlibrary{fadings}
+\usetikzlibrary{shapes.geometric,shapes.symbols}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+\usetikzlibrary{arrows.meta,calc,shapes.multipart,chains,arrows}
+%\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+%%\usetikzlibrary{backgrounds}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzset{temporal/.code args={<#1>#2#3#4}{%
+  \temporal<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}{\pgfkeysalso{#4}} % \pgfkeysalso doesn't change the path
+}}
+
+
+\tikzset{
+    fading speed/.code={
+        \pgfmathtruncatemacro\tikz@startshading{50-(100-#1)*0.25}
+        \pgfmathtruncatemacro\tikz@endshading{50+(100-#1)*0.25}
+        \pgfdeclareverticalshading[%
+            tikz@axis@top,tikz@axis@middle,tikz@axis@bottom%
+        ]{axis#1}{100bp}{%
+            color(0bp)=(tikz@axis@bottom);
+            color(\tikz@startshading)=(tikz@axis@bottom);
+            color(50bp)=(tikz@axis@middle);
+            color(\tikz@endshading)=(tikz@axis@top);
+            color(100bp)=(tikz@axis@top)
+        }
+        \tikzset{shading=axis#1}
+    }
+}
+
+\usepackage{multirow}
+\usepackage{multicol}
+
+\definecolor{steelblue}{rgb}{0.2745,0.5098,0.7059}
+\definecolor{limegreen}{RGB}{50,205,50}
+\hypersetup{
+    colorlinks = true,
+    urlcolor = {steelblue},
+    linkbordercolor = {white}
+}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+%\usepackage{newfloat}
+\usepackage{minted}
+\setminted{mathescape,
+               linenos,
+               autogobble,
+               frame=none,
+               fontsize=\small,
+               framesep=2mm,
+               framerule=0.4pt,
+               %label=foo,
+               xleftmargin=2em,
+               xrightmargin=0em,
+               startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+               numbersep=10pt, %gap between line numbers and start of line
+               style=default, %syntax highlighting style, default is "default"
+               			    %gallery: http://help.farbox.com/pygments.html
+			    	    %list available: pygmentize -L styles
+               bgcolor=mintedBackground} %prevents breaking across pages
+               
+\setmintedinline{bgcolor={mintedInlineBackground}}
+\setminted[text]{bgcolor={},linenos=false,autogobble,xleftmargin=1em}
+
+\tikzstyle{decision} = [diamond, draw, fill=yellow!20, 
+    text width=6em, text badly centered, node distance=5cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, node distance=5cm, minimum height=4em]
+\tikzstyle{action} = [rectangle, draw, fill=green!20, 
+    text width=5em, text centered, rounded corners, node distance=5cm, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\title[~]{Computer Science I}
+\subtitle{Debugging}
+\author[~]{Dr.\ Chris Bourke\\ \email{cbourke@cse.unl.edu}} %
+\date{~}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+\setbeamercolor{section in toc}{fg=black}
+%\setbeamertemplate{subsection in toc}{~} %\inserttocsubsection\\}
+
+\begin{frame}
+  \frametitle{Outline}
+%{\footnotesize
+%\begin{NoHyper}
+%  \tableofcontents[hideallsubsections]
+%\end{NoHyper}
+%}
+
+\setbeamercolor{enumerate item}{bg=white,fg=black}
+\setbeamercolor{item}{bg=white,fg=black}
+\setbeamercolor{item projected}{bg=white,fg=black}
+\setbeamercolor{enumerate subitem}{fg=red!80!black}
+\setbeamertemplate{enumerate items}[default]
+\begin{enumerate}
+  \item Introduction 
+  \item Demonstration
+\end{enumerate}
+
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part I: Introduction}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Debugging}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item A \emph{bug} is an error or flaw in a program or system that
+  produces incorrect or unexpected results.
+  \item Process of \emph{debugging} involves \emph{identifying} and
+  \emph{resolving} bugs so that the program/system performs as expected
+  \item General techniques \& strategies
+  \item Demonstration of a \emph{debugger}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Types of Errors}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Syntax Errors
+  \item Runtime Errors
+  \item Logic Errors
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Poor Man's Debugging}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Up to now: \emph{poor man's debuggin}
+  \item Using print statements to determine value(s) of variables at different parts of a program
+  \item Completely insufficient in practice
+  \item Lots of manual time and effort
+  %you have to write and remove a lot of code
+  \item Does not create reproducible tests/artifacts
+  \item Extremely fragile and error prone
+  %standard output is not deterministic; problems can   
+  \item Ad-hoc testing can serve a purpose but is similarly insufficient
+  \item Even worse: blind coding, aimlessly changing things with not thought
+% worst form: stabs in the dark, aimlessly changing things with no thought; "trying anything"
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Debugging \& Testing}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item A bug indicates not only an error in your program but also
+  \item that your \emph{tests are insufficient}
+  \item Unit tests \& good code coverage should \emph{prevent} bugs 
+  \item Debugging involves not only correcting the issue but also
+  \item correcting the test suite by adding tests to cover the identified bug
+\end{itemize}
+
+\onslide<6->{
+\begin{quote}
+Learning and practicing proper testing is a result of accepting that you will not write perfect code.
+\end{quote}
+}
+\onslide<7->{
+\begin{quote}
+Learning and practicing proper debugging is a result of accepting that you will not write perfect tests.
+\end{quote}
+}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Debugging Strategies}
+  \framesubtitle{}
+
+General Debugging Strategies
+\begin{itemize}[<+->] 
+  \item Understand the bug: 
+  \begin{itemize}
+    \item \emph{How} is the program failing?  
+    \item \emph{What} inputs or conditions are causing the error
+    \item Is it a bug in our code or an error in our \emph{understanding}
+    %documentation is wrong or our expectations of the library we're using are wrong
+  \end{itemize}
+  \item Reproduce the bug:
+  \begin{itemize}
+    \item Forces us to formally identify \emph{correct behavior}
+    \item Design a (reusable) test case that highlights the bug
+    \item Gives us something to work with
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Debugging Strategies}
+  \framesubtitle{}
+
+\begin{itemize}[<+->] 
+    \item Isolate the bug
+  \begin{itemize}
+    \item Rule out other issues: configuration, out-of-synch code, etc.
+    \item Reexamine assumptions \& understanding 
+    \item Narrow the failure point down to a testable unit (module/function/line)
+  \end{itemize}
+  \item Investigate
+  \begin{itemize}
+    \item Use your knowledge of the code to formulate a hypothesis about what is wrong
+    \item Test your hypothesis
+    \item Use a debugging tool to walk through your code
+  \end{itemize}
+  \item Fix it, test it (and regression test it), document it
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part II: Demonstration}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Debuggers}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item A \emph{debugger} is a program that simulates/runs 
+  another program and allows you to:
+  \begin{itemize}
+    \item Pause and continue its execution
+    \item Set ``break points'' or conditions where the execution pauses so you can look at its state
+    \item View and ``watch'' variable values
+    \item Step through the program line-by-line (or instruction by instruction)
+  \end{itemize}
+  \item GNU Debugger (gdb)
+  %GUI's available, but we'll go with command line 
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{GDB: Getting Started}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Compile for debugging:\\
+  \mintinline{text}{gcc -Wall -g program.c}
+  \item Preserves identifiers and symbols
+  \item Start GDB:\\
+  \mintinline{text}{gdb a.out}
+  \item Optionally start with CLAs: \\
+  \mintinline{text}{gdb --args a.out arg1 arg2}
+  \item Can also set in GDB
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Useful GDB Commands}
+    \framesubtitle{}
+
+\begin{itemize}
+  \item Refresh the display: \mintinline{text}{refresh} (or control-L)
+  \item Run your program: \mintinline{text}{run}
+  \item See your code: \mintinline{text}{layout next}
+  \item Set a break point: \mintinline{text}{break POINT}, can be a line number, function name, etc.
+  \item Step: \mintinline{text}{next} (\mintinline{text}{n} for short)
+  \item Continue (to next break point): \mintinline{text}{continue}
+  \item Print a variable's value: \mintinline{text}{print VARIABLE}
+  \item Print an array: \mintinline{text}{print *arr@len}
+  \item Watch a variable for changes: \mintinline{text}{watch VARIABLE}
+\end{itemize}  
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Demonstration}
+    \framesubtitle{}
+
+Demonstration    
+    
+\end{frame}
+
+\end{document} 

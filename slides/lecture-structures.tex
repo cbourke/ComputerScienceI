@@ -1,0 +1,426 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Template
+%  Beamer Presentation by Chris Bourke
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{beamer}
+%\documentclass[handout]{beamer}
+
+\geometry{papersize={16cm,9cm}}
+
+% For handout version:
+%\usetheme[hideothersubsections,slidenumbers]{UNLTheme}
+\usetheme[hideothersubsections]{UNLTheme}
+\usepackage{amssymb}
+\input{StandardCommands}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\SetKwComment{Comment}{//}{}
+\DontPrintSemicolon
+\SetKwSty{textsc} %
+%\SetAlFnt{\scriptsize} %
+\SetKwInOut{Input}{Input} %
+\SetKwInOut{Output}{Output} %
+%\setalcapskip{1em} % changed to
+\SetAlCapSkip{1em}
+\setlength{\algomargin}{2em} %
+%\Setvlineskip{0em} % changed to:
+\SetVlineSkip{0em}
+
+\usepackage{tikz}
+\usetikzlibrary{fadings}
+\usetikzlibrary{shapes.geometric,shapes.symbols}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+\usetikzlibrary{arrows.meta,calc,shapes.multipart,chains,arrows}
+%\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+%%\usetikzlibrary{backgrounds}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzset{temporal/.code args={<#1>#2#3#4}{%
+  \temporal<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}{\pgfkeysalso{#4}} % \pgfkeysalso doesn't change the path
+}}
+
+
+\tikzset{
+    fading speed/.code={
+        \pgfmathtruncatemacro\tikz@startshading{50-(100-#1)*0.25}
+        \pgfmathtruncatemacro\tikz@endshading{50+(100-#1)*0.25}
+        \pgfdeclareverticalshading[%
+            tikz@axis@top,tikz@axis@middle,tikz@axis@bottom%
+        ]{axis#1}{100bp}{%
+            color(0bp)=(tikz@axis@bottom);
+            color(\tikz@startshading)=(tikz@axis@bottom);
+            color(50bp)=(tikz@axis@middle);
+            color(\tikz@endshading)=(tikz@axis@top);
+            color(100bp)=(tikz@axis@top)
+        }
+        \tikzset{shading=axis#1}
+    }
+}
+
+\usepackage{multirow}
+\usepackage{multicol}
+
+\definecolor{steelblue}{rgb}{0.2745,0.5098,0.7059}
+\definecolor{limegreen}{RGB}{50,205,50}
+\hypersetup{
+    colorlinks = true,
+    urlcolor = {steelblue},
+    linkbordercolor = {white}
+}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+%\usepackage{newfloat}
+\usepackage{minted}
+\setminted{mathescape,
+               linenos,
+               autogobble,
+               frame=none,
+               fontsize=\small,
+               framesep=2mm,
+               framerule=0.4pt,
+               %label=foo,
+               xleftmargin=2em,
+               xrightmargin=0em,
+               startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+               numbersep=10pt, %gap between line numbers and start of line
+               style=default, %syntax highlighting style, default is "default"
+               			    %gallery: http://help.farbox.com/pygments.html
+			    	    %list available: pygmentize -L styles
+               bgcolor=mintedBackground} %prevents breaking across pages
+               
+\setmintedinline{bgcolor={mintedInlineBackground}}
+\setminted[text]{bgcolor={},linenos=false,autogobble,xleftmargin=1em}
+
+\tikzstyle{decision} = [diamond, draw, fill=yellow!20, 
+    text width=6em, text badly centered, node distance=5cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, node distance=5cm, minimum height=4em]
+\tikzstyle{action} = [rectangle, draw, fill=green!20, 
+    text width=5em, text centered, rounded corners, node distance=5cm, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\title[~]{Computer Science I}
+\subtitle{Encapsulation}
+\author[~]{Dr.\ Chris Bourke\\ \email{cbourke@cse.unl.edu}} %
+\date{~}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+\setbeamercolor{section in toc}{fg=black}
+%\setbeamertemplate{subsection in toc}{~} %\inserttocsubsection\\}
+
+\begin{frame}
+  \frametitle{Outline}
+%{\footnotesize
+%\begin{NoHyper}
+%  \tableofcontents[hideallsubsections]
+%\end{NoHyper}
+%}
+
+\setbeamercolor{enumerate item}{bg=white,fg=black}
+\setbeamercolor{item}{bg=white,fg=black}
+\setbeamercolor{item projected}{bg=white,fg=black}
+\setbeamercolor{enumerate subitem}{fg=red!80!black}
+\setbeamertemplate{enumerate items}[default]
+\begin{enumerate}
+  \item Introduction
+  %defining structures
+  \item Using Structures
+  %dot operator, arrow operator
+  %factory function
+  \item Structures with Functions \& Arrays
+  %to string function
+  %arrays of functions: several options
+
+  %\item Exercises ?
+\end{enumerate}
+
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part I: Introduction}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Structures}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Built-in primitive types (\mintinline{c}{int}, 
+  \mintinline{c}{double}, \mintinline{c}{char}) are limiting
+  \item Not everything is \emph{simply} a number or character
+  \item Real-world entities are made up of multiple aspects (data)
+  \item Examples: Person, Team, Bank Account, etc.
+  \item In code we can define \emph{objects} that \emph{encapsulate}
+  multiple pieces of data
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Encapsulation}
+  \framesubtitle{}
+
+\begin{definition}
+\emph{Encapsulation} is a mechanism by which multiple 
+pieces of data can be grouped together.  
+\end{definition}
+
+\onslide<2->{More generally, encapsulation includes:}
+
+\begin{itemize}%[<+->]
+  \item<3-> Grouping of data
+  \item<4-> Protection of data
+  \item<5-> Grouping of methods that act on an object's data
+\end{itemize}
+
+\onslide<6->{C only provides \emph{weak} encapsulation (only grouping of data).}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Structures}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item C provides encapsulation through \emph{structures}
+  \item You can define structures that group data called \emph{members}
+  or \emph{fields}
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Review}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Syntax: 
+  \begin{itemize}
+    \item \mintinline{c}{typedef struct}
+    \item Opening/closing curly brackets
+    \item Fields: type, name, semicolon
+    \item Ends with name and semicolon
+  \end{itemize}
+  \item Structures may contain other structures; called \emph{composition}
+  \item Order of declaration matters
+  \item Structures are declared in header files
+  \item Modern convention: \mintinline{c}{UpperCamelCasing} 
+  for structure names, \mintinline{c}{lowerCamelCasing} for fields
+\end{itemize}
+
+\end{frame}
+
+\section{Using Structures}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part II: Using Structures}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Using Structures}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Once declared, structures can be used like normal variables
+  \item Declaration: \\
+  \mintinline{c}{Student s;}
+  \item To access members, you can use the \emph{dot operator}
+  \item \mintinline{c}{s.nuid = 1234;}
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Using Structures}
+  \framesubtitle{}
+
+\begin{minted}{c}
+Student s;
+s.nuid = 12345678;
+s.firstName = (char *) malloc(sizeof(char) * 10);
+strcpy(s.firstName, "Katherine");
+s.lastName = (char *) malloc(sizeof(char) * 8);
+strcpy(s.lastName, "Johnson");
+s.gpa = 3.9;
+s.dateOfBirth.year = 1918;
+s.dateOfBirth.month = 9;
+s.dateOfBirth.day = 26;
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Factory Functions}
+  \framesubtitle{}
+
+
+\begin{itemize}[<+->]
+  \item Creating instances of structures is a common task
+  \item Best to create a function to facilitate the details
+  \item Sometimes called \emph{factory} functions (or \emph{constructors} in Object-Oriented Programming languages)
+  \item Dynamically construct an instance using \mintinline{c}{malloc()}
+  \item When using pointers to structures, you can use the \emph{arrow operator}:\\
+  \mintinline{c}{s->nuid}
+  \item Demonstration
+  %do it normally, then create a second one with alternative b-day
+  %maybe one that takes a structure by ref and fills it?
+\end{itemize}
+  
+\end{frame}
+
+\section{Functions \& Arrays}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part III: Structures with Functions \& Arrays}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\subsection{Functions}
+
+\begin{frame}[fragile]
+  \frametitle{Passing Structures to Functions}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Already covered how to return (pointers) to dynamically allocated structures \emph{from} functions
+  \item Straightforward to pass structures \emph{to} functions
+  \item Generally want to always want to pass-by-reference
+  \item Passing by value results in a (potentially) large memory copy
+  \item Entire structure is copied to the call stack
+  \item Pass by reference: only a pointer is copied
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Demo}
+  \framesubtitle{}
+
+\begin{minted}{c}
+void printStudent(const Student *s) {
+
+  char *str = studentToString(s);
+  printf("%s\n", str);
+  //clean up after yourself:
+  free(str);
+  //printf("%s, %s (%08d), %.2f\n", s->lastName, s->firstName, s->nuid, s->gpa);
+  return;
+}
+
+char * studentToString(const Student *s) {
+  char buffer[1000];
+  sprintf(buffer, "%s, %s (%08d), %.2f", s->lastName, s->firstName, s->nuid, s->gpa);
+  char *result = (char *) malloc( (strlen(buffer)+1) * sizeof(char));
+  strcpy(result, buffer);
+  return result;
+}
+\end{minted}
+
+\end{frame}
+
+\subsection{Arrays}
+
+\begin{frame}[fragile]
+  \frametitle{Arrays of Structures}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Multiple structures can be stored in arrays
+  \item Several ways to achieve this:
+  \begin{itemize}
+    \item Array of contiguous structures
+    %include here a printRoster function to demonstrate
+    \item Array of pointers to dynamic structures
+    \item Array of pointers to contiguous structures
+  \end{itemize}
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Arrays of Structures}
+  \framesubtitle{}
+
+\mintinline{c}{Student *roster = (Student *) malloc(sizeof(Student) * n);}
+
+\begin{center}
+\vskip-1.25cm
+\include{figures/figureArrayOfStructures}
+\end{center}  
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Arrays of Structure Pointers}
+  \framesubtitle{}
+
+\begin{minted}{c}
+Student **roster = (Student **) malloc(sizeof(Student*) * n);
+...
+roster[i] = (Student *) malloc(sizeof(Student));
+\end{minted}
+\begin{center}
+\vskip-1.5cm
+\include{figures/figureArrayOfStructurePointers}
+\end{center}  
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Hybrid Solution}
+  \framesubtitle{}
+
+\begin{minted}[fontsize=\scriptsize]{c}
+Student **roster = (Student **) malloc(sizeof(Student*) * n);
+Student *rosterData = (Student *) malloc(sizeof(Student) * n);
+...
+roster[i] = &rosterData[i];
+\end{minted}
+
+\vskip-1.0cm
+\include{figures/figureArrayOfStructuresHybrid}
+  
+\end{frame}
+
+
+\end{document} 

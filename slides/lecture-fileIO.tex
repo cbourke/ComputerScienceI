@@ -1,0 +1,530 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Template
+%  Beamer Presentation by Chris Bourke
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{beamer}
+%\documentclass[handout]{beamer}
+
+\geometry{papersize={16cm,9cm}}
+
+% For handout version:
+%\usetheme[hideothersubsections,slidenumbers]{UNLTheme}
+\usetheme[hideothersubsections]{UNLTheme}
+\usepackage{amssymb}
+\input{StandardCommands}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\SetKwComment{Comment}{//}{}
+\DontPrintSemicolon
+\SetKwSty{textsc} %
+%\SetAlFnt{\scriptsize} %
+\SetKwInOut{Input}{Input} %
+\SetKwInOut{Output}{Output} %
+%\setalcapskip{1em} % changed to
+\SetAlCapSkip{1em}
+\setlength{\algomargin}{2em} %
+%\Setvlineskip{0em} % changed to:
+\SetVlineSkip{0em}
+
+\usepackage{tikz}
+\usetikzlibrary{fadings}
+\usetikzlibrary{shapes.geometric,shapes.symbols}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+\usetikzlibrary{arrows.meta,calc,shapes.multipart,chains,arrows}
+%\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+%%\usetikzlibrary{backgrounds}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzset{temporal/.code args={<#1>#2#3#4}{%
+  \temporal<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}{\pgfkeysalso{#4}} % \pgfkeysalso doesn't change the path
+}}
+
+
+\tikzset{
+    fading speed/.code={
+        \pgfmathtruncatemacro\tikz@startshading{50-(100-#1)*0.25}
+        \pgfmathtruncatemacro\tikz@endshading{50+(100-#1)*0.25}
+        \pgfdeclareverticalshading[%
+            tikz@axis@top,tikz@axis@middle,tikz@axis@bottom%
+        ]{axis#1}{100bp}{%
+            color(0bp)=(tikz@axis@bottom);
+            color(\tikz@startshading)=(tikz@axis@bottom);
+            color(50bp)=(tikz@axis@middle);
+            color(\tikz@endshading)=(tikz@axis@top);
+            color(100bp)=(tikz@axis@top)
+        }
+        \tikzset{shading=axis#1}
+    }
+}
+
+\usepackage{multirow}
+\usepackage{multicol}
+
+\definecolor{steelblue}{rgb}{0.2745,0.5098,0.7059}
+\definecolor{limegreen}{RGB}{50,205,50}
+\hypersetup{
+    colorlinks = true,
+    urlcolor = {steelblue},
+    linkbordercolor = {white}
+}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+%\usepackage{newfloat}
+\usepackage{minted}
+\setminted{mathescape,
+               linenos,
+               autogobble,
+               frame=none,
+               fontsize=\small,
+               framesep=2mm,
+               framerule=0.4pt,
+               %label=foo,
+               xleftmargin=2em,
+               xrightmargin=0em,
+               startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+               numbersep=10pt, %gap between line numbers and start of line
+               style=default, %syntax highlighting style, default is "default"
+               			    %gallery: http://help.farbox.com/pygments.html
+			    	    %list available: pygmentize -L styles
+               bgcolor=mintedBackground} %prevents breaking across pages
+               
+\setmintedinline{bgcolor={mintedInlineBackground}}
+\setminted[text]{bgcolor={},linenos=false,autogobble,xleftmargin=1em}
+
+\tikzstyle{decision} = [diamond, draw, fill=yellow!20, 
+    text width=6em, text badly centered, node distance=5cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, node distance=5cm, minimum height=4em]
+\tikzstyle{action} = [rectangle, draw, fill=green!20, 
+    text width=5em, text centered, rounded corners, node distance=5cm, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\title[~]{Computer Science I}
+\subtitle{File Input/Output}
+\author[~]{Dr.\ Chris Bourke\\ \email{cbourke@cse.unl.edu}} %
+\date{~}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+\setbeamercolor{section in toc}{fg=black}
+%\setbeamertemplate{subsection in toc}{~} %\inserttocsubsection\\}
+
+\begin{frame}
+  \frametitle{Outline}
+%{\footnotesize
+%\begin{NoHyper}
+%  \tableofcontents[hideallsubsections]
+%\end{NoHyper}
+%}
+
+\setbeamercolor{enumerate item}{bg=white,fg=black}
+\setbeamercolor{item}{bg=white,fg=black}
+\setbeamercolor{item projected}{bg=white,fg=black}
+\setbeamercolor{enumerate subitem}{fg=red!80!black}
+\setbeamertemplate{enumerate items}[default]
+\begin{enumerate}
+  \item Introduction \& File Output
+  \item File Input
+  \item Binary Files
+  \item Exercises
+\end{enumerate}
+
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part I: Introduction \& File Output}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Overview}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item A \emph{file} is a unit of stored memory, usually on disk
+  \item The following are also files:
+  \begin{itemize}
+    \item Directories
+    \item Buffers (standard input/output)
+    \item Programs, stored and running
+    \item Network sockets
+  \end{itemize}
+  \item Files may be plaintext (ASCII) or binary
+  \item Or: plaintext data not intended for human consumption
+  \item CSV, XML, JSON, base-64 encoding
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Overview}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+
+  \item You read from a file (input) or write to a file (output)
+  \item Three basic steps for file I/O:
+  \begin{itemize}
+    \item Open the file
+    \item Process the file
+    \item Close the file
+  \end{itemize}
+\end{itemize}
+%buffered vs non-buffered?
+
+\end{frame}
+
+\subsection{Opening Files}
+
+\begin{frame}[fragile]
+  \frametitle{Opening Files}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Files are supported in C using a \emph{file pointer}
+  \item \mintinline{c}{FILE *} points to a location in a file
+  \item The \mintinline{c}{fopen()} function opens a file and returns a file pointer
+  \item Initially: points to the start of the file
+  \item As you read through the file, the pointer is updated
+  \item Returns \mintinline{c}{NULL} if unsuccessful
+  \item Also called a \emph{handle}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Opening Files}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item \mintinline{c}{FILE * fopen(const char *filename, const char *mode);} 
+  \item First argument: path and name of the file to open
+  \item Second argument: \emph{mode} to open it up in
+  \item File input: \mintinline{c}{"r"} for \emph{reading}
+  \item File output: \mintinline{c}{"w"} for \emph{writing}
+  \item Demonstration  
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Demonstration}
+  \framesubtitle{}
+
+\begin{minted}{c}
+//open a file data.txt in the current directory for reading:
+FILE *f = fopen("data.txt", "r");
+
+//open a file data.txt for writing:
+FILE *f = fopen("data.txt", "w");
+
+//you can also use relative paths
+FILE *f = fopen("../../data.txt", "r");
+
+//absolute path:
+FILE *f = fopen("/etc/shadow", "r");
+
+//error checking: 
+if(f == NULL) {
+  printf("Unable to open file!\n");
+}
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Pitfalls}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Your program must have proper permissions to read/write a file
+  \item Opening a file for writing will create it if it does not already exist
+  \item Opening an existing file for writing will \emph{clobber} it
+  \item Failure to \emph{close} a file \emph{may} lead to data corruption
+  \item Closing a file:\\
+  \mintinline{c}{fclose(f);}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Paths}
+
+\begin{frame}[fragile]
+  \frametitle{Paths}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Current Working Directory: \mintinline{text}{.}
+  \item File System Root: \mintinline{text}{/}
+  \item One directory ``up'' the hierarchy \mintinline{text}{..}
+  %\item Directory Delimiter: \mintinline{text}{/}
+\end{itemize}
+
+\end{frame}
+
+\subsection{File Output}
+
+\begin{frame}[fragile]
+  \frametitle{File Output}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Many ways to output to a file
+  \item Easiest and most simple: \mintinline{c}{fprintf()}
+  \item Same functionality as \mintinline{c}{printf()} and \mintinline{c}{sprintf()}
+  \item Takes a \mintinline{c}{FILE*} as its first argument and prints to it
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File Output}
+  \framesubtitle{}
+
+\begin{minted}{c}
+int a = 42;
+
+FILE *f = fopen("data.txt", "w");
+
+fprintf(f, "Hello World!\n");
+fprintf(f, "a = %d\n");
+fprintf(f, "pi is %.4f\n", M_PI);
+
+fclose(f);
+\end{minted}
+
+\end{frame}
+
+
+\section{File Input}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part II: File Input}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File Input}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item There are many (dangerous) ways of reading from a file
+  \item Best to limit the amount of data read so it is predictable
+  \item Avoid ``buffer overflows'' (strings where we store the data)
+  \item Focus on two useful functions:
+  \item \mintinline{c}{fgetc()} gets a single character from a file
+  \item \mintinline{c}{fgets()} gets (up to) an entire line from a file 
+\end{itemize}  
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{fgetc}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item \mintinline{c}{int fgetc(FILE *f);}
+  \item Reads a single \mintinline{c}{char} from the file \mintinline{c}{f}
+  \item Returns the ASCII value of the character
+  \item Automatically advances the file pointer to the next character
+  \item Returns a special flag, \mintinline{c}{EOF} when it gets to the end-of-file
+  \item Demonstration
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{fgetc}
+  \framesubtitle{}
+
+\begin{minted}{c}
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+
+int main(int argc, char **argv) {
+
+  FILE *f = fopen("./data/students.csv", "r");
+  char c = fgetc(f);
+  while(c != EOF) {
+    printf("c = %c\n", c);
+    c = fgetc(f);
+  }
+  fclose(f);
+
+  return 0;
+}
+\end{minted}
+  
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{fgets}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item \mintinline{c}{char * fgets(char *str, int size, FILE *f);}
+  \item Reads at most \mintinline{c}{size-1} characters from \mintinline{c}{f}
+  \item Places the result into \mintinline{c}{str} (a ``buffer'')
+  \item Automatically null-terminates the string
+  \item Stops early if the end-of-line character \mintinline{text}{\n} is encountered
+  \item \emph{Retains} the end-of-line character in \mintinline{c}{str}
+  \item Returns \mintinline{c}{NULL} when it reaches the end of file
+  \item Alternatively (for both): \mintinline{c}{int feof(FILE *f);}
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{fgets}
+  \framesubtitle{}
+
+\begin{minted}[fontsize=\tiny]{c}
+#include<stdlib.h>
+#include<stdio.h>
+#include<string.h>
+
+int main(int argc, char **argv) {
+
+  FILE *f = fopen("./data/students.csv", "r");
+
+  char buffer[100];
+  char *line = fgets(buffer, 100, f);
+  while(line != NULL) {
+    //chomp out the endline character:
+    int n = strlen(buffer);
+    if(buffer[n-1] == '\n') {
+      buffer[n-1] = '\0';
+    }
+    printf("line = %s\n", line);
+    line = fgets(buffer, 100, f);
+  }
+  fclose(f);
+  return 0;
+}
+\end{minted}
+  
+\end{frame}
+
+
+\section{Binary Files}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part III: Binary Files}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Binary Files}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Most data formats are \emph{binary}: raw bits and bytes
+  \item May have specific format and magic number identifiers
+  \item GIF format: \url{https://en.wikipedia.org/wiki/GIF}
+  \item Often more efficient: less space, easier to read/write
+  \item C: \mintinline{c}{fread} (reading) and \mintinline{c}{fwrite} (writing) binary data
+  \item Reads/writes multiple pieces of data at once
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Binary Files}
+  \framesubtitle{}
+  
+\begin{itemize}[<+->]
+    \item \mintinline{c}{size_t fread(void *ptr, size_t size, size_t n, FILE *f);}
+    \item \mintinline{c}{size_t fwrite(const void *ptr, size_t size, size_t n, FILE *f);}
+    \item Both take the same arguments
+    \begin{itemize}
+      \item \mintinline{c}{ptr} -- pointer to the data to be read/written
+      \item \mintinline{c}{size} -- number of bytes for each item (use \mintinline{c}{sizeof})
+      \item \mintinline{c}{n} -- number of items to be read/written
+      \item \mintinline{c}{f} -- file pointer
+    \end{itemize}
+    \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\section{Exercises}
+
+\begin{frame}
+  \frametitle{}
+  \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part IV: Exercises}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File I/O}
+  \framesubtitle{Exercise}
+
+Write a program to process a CSV file with student information including
+last name, first name, NUID, and GPA to prepare a Dean's list.  Output to
+a separate file all student names whose GPA is greater than 3.5, but only include
+their first name and last name (one to a line).
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{File I/O}
+  \framesubtitle{Exercise}
+
+\begin{itemize}[<+->]
+  \item Passwords are stored using cryptographic hash functions
+  \item   {\footnotesize
+$hash(\textrm{password}) \rightarrow \texttt{0x5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8}$}
+  \item Common for users to use dictionary words as passwords
+  \item They can easily be broken using a \emph{dictionary attack}
+  \item Exercise: dictionary attack a SHA-256 hashed password:
+  {\footnotesize
+  \texttt{0xaa97302150fce811425cd84537028a5afbe37e3f1362ad45a51d467e17afdc9c}
+  }
+\end{itemize}
+  
+\end{frame}
+
+
+\end{document} 

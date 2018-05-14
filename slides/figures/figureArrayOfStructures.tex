@@ -1,0 +1,72 @@
+%\documentclass[12pt]{scrbook}
+%
+%\usepackage{tikz}
+%\usepackage{minted}
+%\usetikzlibrary{decorations.pathreplacing,arrows}
+%
+%\usepackage{fullpage}
+%\usepackage{subfigure}
+%\begin{document}
+%
+%
+%Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+%
+%xTODO: set vertical alignment of cells
+%xTODO: curve the lines
+%xTODO: lines should go to the top of the box
+
+{\setmintedinline{bgcolor={}}
+
+
+\begin{tikzpicture}[scale=0.5,transform shape]
+
+% Define block styles
+\tikzstyle{box} = [rectangle,
+                   draw,
+                   fill=white,
+                   text width=3.0cm,
+                   text height=0.9cm,
+                   text centered,
+                   inner sep=5pt,
+                   node distance=1.85cm]
+
+\tikzstyle{line} = [draw, -latex']; %
+
+%\draw[white] (-1, 0) rectangle (19, -1);
+    \node [] (init) at (0,0) {\mintinline{c}{Student *roster}};
+
+    \node [box, right of=init,node distance=5cm] (p0) {\mintinline{c}{roster[0]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=p0] (d0) {?};
+    %\draw[line] (p0) -- (d0);
+    \node [box, below of=p0] (p1) {\mintinline{c}{roster[1]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=p1] (d1) {?};
+    %\draw[line] (p1) -- (d1);
+    \node [box, below of=p1] (p2) {\mintinline{c}{roster[2]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=p2] (d2) {?};
+    %\draw[line] (p2) -- (d2);
+    \node [below of=p2,node distance=2.0cm] (pd) {$\vdots$};
+    \node [box, below of=pd,node distance=2.0cm] (pn) {\mintinline{c}{roster[n-1]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=pn] (dn) {?};
+    %\draw[line] (pn) -- (dn);
+    \path [line] (init) -- (p0);
+    
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75, -0.8) -- (6.75, 0+0.9) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75, -0.8-1.9) -- (6.75, 0+0.9-1.9) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75, -0.8-1.9-1.9) -- (6.75, 0+0.9-1.9-1.9) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75, -0.8-1.9-1.9-4) -- (6.75, 0+0.9-1.9-1.9-4) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+
+
+\end{tikzpicture}
+
+%\caption[Contiguous Structure Array]{An array of structures.  Each record is stored in a contiguous manner one after the other.}
+%\label{figure:arrayOfStructures}
+%\end{figure}
+}
+
+%\end{document}
+

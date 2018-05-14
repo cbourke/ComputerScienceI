@@ -1,0 +1,861 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Template
+%  Beamer Presentation by Chris Bourke
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{beamer}
+%\documentclass[handout]{beamer}
+
+\geometry{papersize={16cm,9cm}}
+
+% For handout version:
+%\usetheme[hideothersubsections,slidenumbers]{UNLTheme}
+\usetheme[hideothersubsections]{UNLTheme}
+\usepackage{amssymb}
+\input{StandardCommands}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\SetKwComment{Comment}{//}{}
+\DontPrintSemicolon
+\SetKwSty{textsc} %
+%\SetAlFnt{\scriptsize} %
+\SetKwInOut{Input}{Input} %
+\SetKwInOut{Output}{Output} %
+%\setalcapskip{1em} % changed to
+\SetAlCapSkip{1em}
+\setlength{\algomargin}{2em} %
+%\Setvlineskip{0em} % changed to:
+\SetVlineSkip{0em}
+
+\usepackage{tikz}
+\usetikzlibrary{fadings}
+\usetikzlibrary{shapes.geometric,shapes.symbols}
+\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+\usetikzlibrary{arrows.meta,calc,shapes.multipart,chains,arrows}
+%\usetikzlibrary{calc,shapes.multipart,chains,arrows}
+%%\usetikzlibrary{backgrounds}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} % \pgfkeysalso doesn't change the path
+}}
+\tikzset{temporal/.code args={<#1>#2#3#4}{%
+  \temporal<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}{\pgfkeysalso{#4}} % \pgfkeysalso doesn't change the path
+}}
+
+
+\tikzset{
+    fading speed/.code={
+        \pgfmathtruncatemacro\tikz@startshading{50-(100-#1)*0.25}
+        \pgfmathtruncatemacro\tikz@endshading{50+(100-#1)*0.25}
+        \pgfdeclareverticalshading[%
+            tikz@axis@top,tikz@axis@middle,tikz@axis@bottom%
+        ]{axis#1}{100bp}{%
+            color(0bp)=(tikz@axis@bottom);
+            color(\tikz@startshading)=(tikz@axis@bottom);
+            color(50bp)=(tikz@axis@middle);
+            color(\tikz@endshading)=(tikz@axis@top);
+            color(100bp)=(tikz@axis@top)
+        }
+        \tikzset{shading=axis#1}
+    }
+}
+
+\usepackage{multirow}
+\usepackage{multicol}
+
+\definecolor{steelblue}{rgb}{0.2745,0.5098,0.7059}
+\definecolor{limegreen}{RGB}{50,205,50}
+\hypersetup{
+    colorlinks = true,
+    urlcolor = {steelblue},
+    linkbordercolor = {white}
+}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+%\usepackage{newfloat}
+\usepackage{minted}
+\setminted{mathescape,
+               linenos,
+               autogobble,
+               frame=none,
+               fontsize=\small,
+               framesep=2mm,
+               framerule=0.4pt,
+               %label=foo,
+               xleftmargin=2em,
+               xrightmargin=0em,
+               startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+               numbersep=10pt, %gap between line numbers and start of line
+               style=default, %syntax highlighting style, default is "default"
+               			    %gallery: http://help.farbox.com/pygments.html
+			    	    %list available: pygmentize -L styles
+               bgcolor=mintedBackground} %prevents breaking across pages
+               
+\setmintedinline{bgcolor={mintedInlineBackground}}
+\setminted[text]{bgcolor={},linenos=false,autogobble,xleftmargin=1em}
+
+\tikzstyle{decision} = [diamond, draw, fill=yellow!20, 
+    text width=6em, text badly centered, node distance=5cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, node distance=5cm, minimum height=4em]
+\tikzstyle{action} = [rectangle, draw, fill=green!20, 
+    text width=5em, text centered, rounded corners, node distance=5cm, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\title[~]{Computer Science I}
+\subtitle{Strings}
+\author[~]{Dr.\ Chris Bourke\\ \email{cbourke@cse.unl.edu}} %
+\date{~}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+\setbeamercolor{section in toc}{fg=black}
+%\setbeamertemplate{subsection in toc}{~} %\inserttocsubsection\\}
+
+\begin{frame}
+  \frametitle{Outline}
+%{\footnotesize
+%\begin{NoHyper}
+%  \tableofcontents[hideallsubsections]
+%\end{NoHyper}
+%}
+
+\setbeamercolor{enumerate item}{bg=white,fg=black}
+\setbeamercolor{item}{bg=white,fg=black}
+\setbeamercolor{item projected}{bg=white,fg=black}
+\setbeamercolor{enumerate subitem}{fg=red!80!black}
+\setbeamertemplate{enumerate items}[default]
+\begin{enumerate}
+  \item Introduction 
+  \item Manipulating Strings
+  \item String Processing
+  \item Data Processing
+  \item Exercises
+\end{enumerate}
+
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part I: Introduction}\\
+    {\Large ~}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Strings}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item A \emph{string} is a sequence of \emph{characters}
+  \item ASCII, but more generally may be Unicode
+  \item ASCII, CJK characters, emojis, etc.
+  \item As of June 2017, Unicode 10.0: 136,755 characters
+  \item Support for 1,112,064 characters
+  \item We'll stick with ASCII
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Strings}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Languages represent strings differently  
+  \item In C: a string is an array of \mintinline{c}{char} elements
+  \item \alert{Huge caveat}: all strings in C must end (terminate) with
+  a null character, \mintinline{text}{\0}
+  \item Failure to ensure that all strings are \emph{null-terminated}
+  will result in undefined behavior; seg faults, bus errors, etc.
+  \item ASCII value of 0, but it is \emph{NOT}:
+  \begin{itemize}
+    \item \mintinline{text}{'\0'} $\neq$ \mintinline{text}{'0'}
+    \item \mintinline{text}{'\0'} $\neq$ \mintinline{text}{'\n'}
+    \item \mintinline{text}{'\0'} $\neq$ \mintinline{text}{NULL}
+    \item it is the \emph{null terminating character}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Strings in C}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item So far: single characters, \mintinline{c}{char}
+  \item Character literals denoted with single quotes: \mintinline{c}{'A'}
+  \item String literals denoted with double quotes: \mintinline{c}{"Hello World"}
+  \item String variables: 
+  \begin{itemize}
+    \item Static strings: \mintinline{c}{char s[100];}
+    \item Static string and initialization: \mintinline{c}{char s[] = "Hello";}
+    \item Dynamic strings: \mintinline{c}{char *s;}
+    \item Constant Strings: \mintinline{c}{char *s = "Hello";} \onslide<8>{\alert{Don't do this}}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\subsection{Declaration}
+
+\begin{frame}[fragile]
+    \frametitle{Static Strings}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Static string: \mintinline{c}{char s[100];}
+  \item Creates a string that can hold \emph{up to 99} characters
+  \item Room is needed for the null terminating character
+  \item It may hold \emph{shorter} strings, but it may not exceed 99 characters
+  \item At declaration, \emph{contents are undefined}
+  \item May or may not contain the null terminating character
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Static Strings With Initialization}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Static string + initialization: \\
+    \mintinline{c}{char s[] = "Hello";}
+  \item Creates a character array of size 6
+  \item Automatically includes the null-terminating character for you
+  \item Contents can be changed, strings in C are \emph{mutable}
+  \item Static strings are allocated on the stack
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Dynamic Strings}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Dynamic string:\\
+    \mintinline{c}{char *s = (char *) malloc(sizeof(char) * 100);}    
+  \item Creates a character array of size 100
+  \item May only hold a string that can hold \emph{up to 99} characters
+  \item Room is needed for the null terminating character
+  \item \emph{Contents are undefined}; may or may not contain the null terminating character
+  \item Allocated on the heap
+  \item Most of your strings will be of this type
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Constant Strings}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Constant string declaration: \\
+    \mintinline{c}{char *s = "Hello";}   
+  \item Dynamic, allocated on the heap, but
+  \item Creates a \emph{read-only, immutable} string
+  \item Actually uses \mintinline{c}{const char *s = "Hello";} 
+  \item But the compiler generally doesn't catch it!
+  \item Avoid unless you \emph{really want} a dynamically allocated, immutable string for some reason
+\end{itemize}
+  
+\end{frame}
+
+\subsection{Manipulating Characters}
+
+\begin{frame}[fragile]
+    \frametitle{Manipulating Strings by Character}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Strings are simply character arrays
+  \item Each individual element can be \emph{indexed} and 
+  \item a value can be assigned to it.
+  \item Demonstration
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Manipulating Strings by Character}
+    \framesubtitle{}
+
+\begin{minted}[fontsize=\tiny]{c}
+char message[] = "hello World!"; //size is 13
+
+message[0] = 'H';
+//bad:
+message[0] = "H";
+printf("message = %s\n", message);
+
+//cut the string short:
+message[5] = '\0';
+printf("message = %s\n", message);
+
+//restore it: the rest of the contents were unchanged
+message[5] = ' ';
+printf("message = %s\n", message);
+
+message[11] = '?';
+printf("message = %s\n", message);
+
+//bad:
+message[12] = '!';
+printf("message = %s\n", message);
+
+//really bad:
+message = "Goodbye World!";
+\end{minted}
+  
+\end{frame}
+
+\section{String Manipulation}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part II: String Manipulation}\\
+    {\Large ~}
+    
+    %Copy, length, concatenation; 
+    % byte-deliminted versions
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Copying Strings}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item You cannot \emph{assign} a string after it has been declared
+  \item[~]
+\begin{minted}{c}
+char s1[] = "hello";
+char *s2 = (char *) malloc(sizeof(char) * 6);
+\end{minted}
+  \item Compiler error: \\
+  \mintinline{c}{s1 = "Hello";}
+  \item Memory leak: \\
+  \mintinline{c}{s2 = "World";}
+  \item A string is a character array which is a \emph{memory address}
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Copying Strings}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item You must \emph{copy} the contents of one string into another
+  \item String library: \mintinline{c}{string.h} provides a 
+  copy function and many others
+  \item \mintinline{c}{char * strcpy(char * dest, const char * src);}
+  \item Copies the contents of the \emph{source} string into the \emph{destination} string
+  \item Assumes \mintinline{c}{src} is properly null-terminated
+  \item It is \emph{your} responsibility to ensure that \mintinline{c}{dest}
+  is large enough to hold the contents
+  \item Demonstration
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Copying Strings}
+    \framesubtitle{}
+
+\begin{minted}{c}
+char *name = (char *) malloc(sizeof(char) * 10);
+
+strcpy(name, "Chris");
+strcpy(name, "Bourke");
+//invalid:
+strcpy(name, "Chris Bourke");
+\end{minted}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Length}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Essential to know how many characters are stored in a string
+  \item \mintinline{c}{size_t strlen(const char *s);}
+  \item Result does \emph{not} include the null terminating character!
+  \item Demonstration
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Length}
+    \framesubtitle{}
+
+\begin{minted}{c}
+char message[] = "Hello World!";
+int n = strlen(message);
+printf("n = %d\n", n);
+message[5] = '\0';
+n = strlen(message);
+printf("n = %d\n", n);
+
+char * stringCopy(const char *s) {
+  char *copy = (char *) malloc(sizeof(char) * (strlen(s) + 1));
+  strcpy(copy, s);
+  return copy;
+}
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Concatenation}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Copying overwrites a string's contents
+  \item Alternative: append or \emph{concatenation} the contents of one string onto the end of another
+  \item \mintinline{c}{char *strcat(char *dest, const char *src);}
+  \item Assumes both are null-terminated
+  \item Assumes \mintinline{c}{dest} is large enough to hold both
+  \item Demonstration
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Concatenation}
+    \framesubtitle{}
+
+\begin{minted}{c}
+char *firstName = (char *) malloc((5+1) * sizeof(char));
+char *lastName = (char *) malloc((6+1) * sizeof(char));
+char *str = (char *) malloc(101) * sizeof(char));
+
+strcpy(firstName, "Chris");
+strcpy(lastName, "Bourke");
+
+strcpy(str, lastName);
+strcat(str, ", ");
+strcat(str, firstName);
+//str contains "Bourke, Chris"
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Byte-Limited Versions}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item String library provides \emph{byte-limited} versions of
+  both copy and concatenation functions
+  \item \mintinline{c}{char *strncat(char *dest, const char *src, size_t n);}
+  \item \mintinline{c}{char *strncpy(char *dest, const char *src, size_t n);}
+  \item Only copies \emph{at most} first \mintinline{c}{n} bytes/characters
+  \item Stops early if it sees \mintinline{text}{\0}
+  \item Includes \mintinline{text}{\0} \emph{only if} it is within the first
+  \mintinline{c}{n} bytes!
+  \item Demonstration
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Byte-Limited Versions}
+    \framesubtitle{}
+
+\begin{minted}{c}
+char fullName[] = "Christopher";
+char *nickName[] = (char *) malloc(6 * sizeof(char));
+
+strncpy(nickName, fullName, 5);
+//don't forget:
+firstName[5] = '\0';
+\end{minted}
+
+\end{frame}
+
+\section{String Processing}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part III: String Processing}\\
+    {\Large ~}
+    
+    %Others:
+    % ctype
+    % string formatting
+    % string comparisons
+    % substring using &str[i]
+    % arrays of strings
+    \end{center}
+
+\end{frame}
+
+\subsection{Iterations}
+
+\begin{frame}[fragile]
+  \frametitle{Iterating Over Strings}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Common to iterate over a string character-by-character
+  \item Straightforward solution: for-loop using \mintinline{c}{strlen()}
+  \item Generally better ways
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Iterating Over Strings}
+  \framesubtitle{}
+
+\begin{minted}[fontsize=\tiny]{c}
+//straightforward code:
+for(int i=0; i<strlen(s); i++) { 
+  printf("%c\n", s[i]);
+}
+
+//strlen works like:
+int i = 0;
+while(s[i] != '\0') {
+  i++;
+}
+//the value of i equals strlen(s)
+
+//optimized:
+int n = strlen(s);
+for(int i=0; i<n; i++) { 
+  printf("%c\n", s[i]);
+}
+
+//even better:
+for(int i=0; s[i] != '\0'; i++) {
+  printf("%c\n", s[i]);
+}
+\end{minted}
+
+\end{frame}
+
+\subsection{ctype library}
+
+\begin{frame}[fragile]
+  \frametitle{ctype library}
+  \framesubtitle{}
+  
+\begin{itemize}[<+->]
+  \item May want to process or manipulate individual characters
+  \item The \mintinline{c}{ctype.h} library provides many useful character functions
+  \item Functions use ASCII \mintinline{c}{int} values
+  \item Automatically type casted 
+\end{itemize}
+
+    
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{ctype library}
+  \framesubtitle{}
+  
+\begin{itemize}[<+->]  \item \mintinline{c}{int isdigit(int c)} -- returns true if \mintinline{c}{c} is a digit character, \mintinline{c}{0} thru \mintinline{c}{9}
+  \item \mintinline{c}{int islower(int c)} -- returns true if \mintinline{c}{c} is a lowercase letter character, \mintinline{c}{a} thru \mintinline{c}{z}
+  \item \mintinline{c}{int isupper(int c)} -- returns true if \mintinline{c}{c} is an uppercase letter character, \mintinline{c}{A} thru \mintinline{c}{Z}
+  \item \mintinline{c}{int isspace(int c)} -- returns true if \mintinline{c}{c} is a whitespace character: space, tab, newline, etc.
+  \item \mintinline{c}{int tolower(int c)}, \mintinline{c}{int toupper(int c)} -- return the ASCII text value of the lowercase/uppercase version of \mintinline{c}{c}
+  \item Demonstration: write a code snippet to count the number of spaces and the total number of whitespace characters.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{ctype library}
+  \framesubtitle{}
+
+\begin{minted}{c}
+char str[] = "Hello how \n\t are you today? \n\n";
+int numSpaces = 0;
+int numWhiteSpaces = 0;
+
+for(int i=0; s[i] != '\0'; i++) {
+  if(isspace(s[i])) {
+    numWhiteSpaces++;
+  }
+  if(s[i] == ' ') {
+    numSpaces++;
+  }
+}
+printf("number of spaces: %d\n", numSpaces);
+printf("total whitespace: %d\n", numWhiteSpaces);
+\end{minted}
+    
+\end{frame}
+
+\subsection{String Comparisons}
+
+\begin{frame}[fragile]
+  \frametitle{String Comparisons}
+  \framesubtitle{}
+  
+\begin{itemize}[<+->]
+  \item Often need to compare \emph{entire strings} for equality
+  \item You \emph{cannot} use the equality operator!
+  \item \mintinline{c}{s1 == s2} compares memory addresses!
+  \item Need to use:\\
+    \mintinline{c}{int strcmp(const char *str1, const char *str2)} 
+  \item Returns:
+  \begin{itemize}
+    \item $< 0$ if \mintinline{c}{str1} comes before \mintinline{c}{str2}
+    \item $0$ if contents are equal
+    \item $> 0$ if \mintinline{c}{str1} comes after \mintinline{c}{str2}
+  \end{itemize}
+  \item Order is determined by ASCII text values
+  \item Demonstration
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{String Comparisons}
+  \framesubtitle{}
+
+\begin{minted}{c}
+int result;
+
+result = strcmp("apple", "apple"); //0
+result = strcmp("apple", "apples"); //negative
+result = strcmp("apples", "apple"); //positive
+result = strcmp("Apple", "apple"); //negative
+result = strcmp("apples", "oranges"); //negative
+
+result = strcmp("100", "99"); //negative!
+
+result = strncmp("apple", "apples", 5); //zero
+
+result = strcasecmp("ApPlE", "apple"); //zero
+\end{minted}
+
+\end{frame}
+
+\subsection{Substrings}
+
+
+\begin{frame}[fragile]
+  \frametitle{Substrings}
+  \framesubtitle{}
+  
+\begin{itemize}[<+->]
+  \item It is possible to reference a \emph{substring} of a string
+  \item Reference a part of the string starting at a particular index
+  \item Demonstration
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Substrings}
+  \framesubtitle{}
+  
+\begin{minted}{c}
+char name[] = "Margaret Hamilton";
+char *lastName = &name[9];
+printf("Greetings, Ms. %s\n");
+\end{minted}
+    
+\end{frame}
+
+\subsection{Formatting Strings}
+
+
+\begin{frame}[fragile]
+  \frametitle{Formatting Strings}
+  \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Already familiar with \mintinline{c}{%s} placeholder to print a string
+  to the standard output
+  \item \mintinline{c}{atoi} and \mintinline{c}{atof} convert strings to numbers
+  \item Possible to convert numbers to strings
+  \item ``Print'' to a string instead of the standard output
+  \item \mintinline{c}{sprintf()}: print to a string
+  \item Demonstration
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Formatting Strings}
+  \framesubtitle{}
+  
+\begin{minted}{c}
+char s[100]; //buffer that is "big enough"
+char state[] = "Nebraska";
+int numCounties = 93;
+double population = 1.92;
+sprintf(s, "%s has %d counties and a population of %.2f million.\n", state,numCounties, population);
+\end{minted}
+    
+\end{frame}
+
+\subsection{Arrays of Strings}
+
+\begin{frame}[fragile]
+  \frametitle{Arrays of Strings}
+  \framesubtitle{}
+  
+\begin{itemize}[<+->]
+  \item Arrays of strings are simply 2-D arrays of \mintinline{c}{char} elements
+  \item Each ``row'' is a string that must be null-terminated
+  \item Each row/string need not be the same size
+  \item Easy extension of 2-D arrays: \mintinline{c}{char **arrayOfStrings}
+  \item Demonstration
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Arrays of Strings}
+  \framesubtitle{}
+  
+\begin{minted}{c}
+char **names = (char **) malloc(sizeof(char*) * 5);
+names[0] = stringCopy("Margaret Hamilton");
+names[1] = stringCopy("Grace Hopper");
+names[2] = stringCopy("Alan Turing");
+names[3] = stringCopy("Ada Lovelace");
+names[4] = stringCopy("Dennis Ritchie");
+for(int i=0; i<5; i++) {
+  printf("Famous Computer Scientist: %s\n", names[i]);
+}
+\end{minted}
+    
+\end{frame}
+
+\section{Data Processing}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part IV: Data Processing}\\
+    {\Large ~}
+    
+    %Tokenization
+    \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Tokenization}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Strings may contain formatted data: CSV, TSV
+  \item \emph{Tokenization} is the process of splitting a string along some 
+  \emph{delimiter} and processing each \emph{token} separately
+  \item Example: \mintinline{c}{"Hedy,Lamarr,UNL,Avery Hall,Lincoln,NE"}
+  \item Tokens: \\
+  \mintinline{c}{"Hedy"} \mintinline{c}{"Lamarr"} \mintinline{c}{"UNL"}
+  \mintinline{c}{"Avery"} \mintinline{c}{"Hall"} \mintinline{c}{"Lincoln"}
+  \mintinline{c}{"NE"}
+  \item Generally ignore the delimiter
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Tokenization}
+    \framesubtitle{}
+    
+\begin{itemize}[<+->]
+  \item \mintinline{c}{char * strtok(char *str, const char *delim);} 
+  \item Tokenizes \mintinline{c}{str} along instances of \mintinline{c}{delim}
+  \item Usage:
+  \begin{itemize}
+    \item First time you call it: pass the string to be tokenized
+    \item Subsequent calls: pass \mintinline{c}{NULL} to continue with the same string
+    \item Returns a pointer to the next token 
+    \item It \emph{modifies your string!}
+  \end{itemize}
+  \item Demonstration
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{String Tokenization}
+    \framesubtitle{}
+    
+\begin{minted}{c}
+  char str[] = "Hedy,Lamarr,UNL,Avery Hall,Lincoln,NE";
+  char *token = NULL;
+  token = strtok(str, ",");
+  while(token != NULL) {
+    printf("token = %s\n", token);
+    token = strtok(NULL, ",");
+  }
+\end{minted}
+
+\end{frame}
+
+\section{Exercises}
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+    \begin{center}
+    {\Huge Part V: Exercises}\\
+    {\Large ~}
+    
+    \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{}
+    \framesubtitle{}
+    
+\begin{itemize}
+  %\item Write a string function to create a deep copy of a string
+  \item Write a string function to change a string's characters to uppercase letters
+  \item Write a string function that returns a new copy of a string with all characters converted to uppercase
+  %\item remove char
+  \item Write a string function to ``double space'' a paragraph %: every endline character instance should be doubled.
+  \item Write a ``split''-style function: it takes a string and a delimiter 
+  and returns an array of strings of the tokens.  Ensure no memory leaks!
+\end{itemize}
+
+\end{frame}
+
+\end{document} 

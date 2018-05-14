@@ -1,0 +1,126 @@
+%\documentclass[12pt]{scrbook}
+%
+%\usepackage{tikz}
+%\usepackage{minted}
+%\usetikzlibrary{decorations.pathreplacing,arrows}
+%
+%\usepackage{fullpage}
+%\usepackage{subfigure}
+%\begin{document}
+%
+%
+%Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+%
+%xTODO: set vertical alignment of cells
+%xTODO: curve the lines
+%xTODO: lines should go to the top of the box
+
+{\setmintedinline{bgcolor={}}
+
+
+\begin{tikzpicture}[scale=0.45,transform shape]
+
+% Define block styles
+\tikzstyle{box} = [rectangle,
+                   draw,
+                   fill=white,
+                   text width=3.0cm,
+                   text height=0.9cm,
+                   text centered,
+                   inner sep=5pt,
+                   node distance=1.85cm]
+
+\tikzstyle{pbox} = [rectangle,
+                   draw,
+                   fill=white,
+                   text width=3.0cm,
+                   text height=0.3cm,
+                   text centered,
+                   inner sep=5pt,
+                   node distance=1.25cm]
+
+\tikzstyle{line} = [draw, -latex']; %
+
+    \node [] (init) at (0,-1) {\mintinline{c}{Student **roster}};
+
+    \node [pbox,right of=init,node distance=5cm] (p0) {\mintinline{c}{roster[0]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=p0] (d0) {?};
+    %\draw[line] (p0) -- (d0);
+    \node [pbox, below of=p0] (p1) {\mintinline{c}{roster[1]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=p1] (d1) {?};
+    %\draw[line] (p1) -- (d1);
+    \node [pbox, below of=p1] (p2) {\mintinline{c}{roster[2]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=p2] (d2) {?};
+    %\draw[line] (p2) -- (d2);
+    \node [below of=p2,node distance=1.25cm] (pd) {$\vdots$};
+    \node [pbox, below of=pd,node distance=1.5cm] (pn) {\mintinline{c}{roster[n-1]} \\
+    (\mintinline{c}{Student*})};
+    %\node[node distance = 3cm,right of=pn] (dn) {?};
+    %\draw[line] (pn) -- (dn);
+    \path [line] (init) -- (p0);
+    
+
+    \node [] (init) at (13,2) {\mintinline{c}{Student *rosterData}};
+
+    \node [box, below of=init,node distance=2cm] (d0) {\mintinline{c}{roster[0]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=p0] (d0) {?};
+    %\draw[line] (p0) -- (d0);
+    \node [box, below of=d0] (d1) {\mintinline{c}{roster[1]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=p1] (d1) {?};
+    %\draw[line] (p1) -- (d1);
+    \node [box, below of=d1] (d2) {\mintinline{c}{roster[2]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=p2] (d2) {?};
+    %\draw[line] (p2) -- (d2);
+    \node [below of=d2,node distance=2.0cm] (pdd) {$\vdots$};
+    \node [box, below of=pdd,node distance=2.0cm] (dn) {\mintinline{c}{roster[n-1]} \\
+    (\mintinline{c}{Student})};
+    %\node[node distance = 3cm,right of=pn] (dn) {?};
+    %\draw[line] (pn) -- (dn);
+    \path [line] (init) -- (d0);
+    
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75+8, -0.8) -- (6.75+8, 0+0.9) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75+8, -0.8-1.9) -- (6.75+8, 0+0.9-1.9) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75+8, -0.8-1.9-1.9) -- (6.75+8, 0+0.9-1.9-1.9) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+
+    \draw [decorate,decoration={brace,amplitude=6pt,mirror},xshift=4pt,yshift=0pt] (6.75+8, -0.8-1.9-1.9-4) -- (6.75+8, 0+0.9-1.9-1.9-4) node [align=left,black,midway,xshift=1.25cm]  {40 bytes};
+
+    \draw [decorate,decoration={brace,amplitude=6pt},xshift=4pt,yshift=0pt] 
+      (6.75-3.75, -0.8-1.9-1.9-2.5+.25) -- (6.75-3.75, 0+0.9-1.9-1.9-2.5-.25) node [align=left,black,midway,xshift=-1.1cm]  {8 bytes};
+
+%\draw[->] (p0.east) -- (d0.west);
+%\draw[->] (p1.east) -- (d1.west);
+%\draw[->] (p2.east) -- (d2.west);
+%\draw[->] (pn.east) -- (dn.west);
+
+\draw[line] (node cs:name=p0,angle=0)
+      .. controls +(east:1cm) and +(-2,0) .. (d0.160);
+
+\draw[line] (node cs:name=p1,angle=0)
+      .. controls +(east:1cm) and +(-2,0) .. (d1.160);
+
+\draw[line] (node cs:name=p2,angle=0)
+      .. controls +(east:1cm) and +(-2,0) .. (d2.160);
+
+\draw[line] (node cs:name=pn,angle=0)
+      .. controls +(east:1cm) and +(-2,0) .. (dn.160);
+
+\end{tikzpicture}
+
+%\caption[Hybrid Array of Structures]{Hybrid Array of Structures.  The \mintinline{c}{rosterData} is an array of contiguous structures.  The \mintinline{c}{roster} 
+%array is an array of pointers that refer to each record.  Accessing elements in
+%\mintinline{c}{rosterData} is done indirectly through a pointer in \mintinline{c}{roster}}
+%\label{figure:arrayOfStructuresHybrid}
+%\end{figure}
+}
+
+
+
+
+%\end{document}
+
