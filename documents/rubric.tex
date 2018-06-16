@@ -1,0 +1,158 @@
+\documentclass[12pt]{scrartcl}
+
+\usepackage[printwatermark,disablegeometry]{xwatermark}
+
+\usepackage{epsfig,amssymb}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{multirow}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  pdfpagemode=none,
+  pdftitle={TITLE},
+  pdfauthor={Christopher M. Bourke},
+  pdfcreator={$ $Id: cv-us.tex,v 1.28 2009/01/01 00:00:00 cbourke Exp $ $},
+  pdfsubject={PhD Thesis},
+  pdfkeywords={}
+}
+
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} %
+\usepackage{subfigure}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+\usepackage[newfloat=true]{minted}
+
+\setminted{mathescape,
+           linenos,
+           autogobble,
+           frame=none,
+           framesep=2mm,
+           framerule=0.4pt,
+           %label=foo,
+           xleftmargin=2em,
+           xrightmargin=0em,
+           %startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+           numbersep=10pt, %gap between line numbers and start of line
+           style=default} %syntax highlighting style, default is "default"
+
+\setmintedinline{bgcolor={mintedBackground}}
+%doesn't work with the above workaround:
+\setminted{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+%NOTE: you can embed algorithms in solutions, but they cannot be floating objects; use [H] to make them non-floats
+
+\usepackage{lastpage}
+
+%\usepackage{titling}
+\usepackage{fancyhdr}
+\renewcommand*{\titlepagestyle}{fancy}
+\pagestyle{fancy}
+%\renewcommand*{\titlepagestyle}{fancy}
+%\fancyhf{}
+%\rhead{Computer Science I}
+%\lhead{Guides and tutorials}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\lhead{~}
+\chead{~}
+\rhead{~}
+\lfoot{\Title\ -- Code Rubric}
+\cfoot{~}
+\rfoot{\thepage\ / \pageref*{LastPage}}
+
+\makeatletter
+\title{Computer Science I}\let\Title\@title
+\subtitle{Code Rubric\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{Fall 2018}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\newwatermark[allpages=true,scale=5,textmark=Draft]{},
+
+\hrule
+
+This is a draft of items/elements that will be included in rubrics for
+assignments and hacks.
+
+\subsection*{Following Instructions}
+\begin{itemize}
+  \item All required soft-copy files handed in via webhandin
+  \item Correct file name(s) and organization
+  \item Programs successfully compile and execute using the webgrader
+\end{itemize}
+
+\subsection*{Style}
+\begin{itemize}
+  \item Appropriate variable and function/method identifiers
+  \item Style and naming conventions are consistent
+  \item Good use of whitespace; proper indentation
+  \item Clean, readable code
+  \item Code is well-organized
+\end{itemize}
+
+\subsection*{Documentation}
+\begin{itemize}
+  \item Well written comments that clearly explain the purpose of each non-trivial piece of code
+  \item Comments explain the ``what'' and ``why''
+  \item Comments are not overly verbose or overly terse
+  \item Code itself is ``self-documenting''; it explains the ``how''
+\end{itemize}
+
+\subsection*{Program Design}
+\begin{itemize}
+  \item Code is well-organized and efficient
+  \item Code is modular; substantial pieces of it could be reused; few redundancies
+  \item Code is easily understood and maintainable
+  \item It is clear that sufficient testing has been performed
+  \item Corner cases and bad input have been anticipated and handled appropriately
+\end{itemize}
+
+\subsection*{Program Correctness}
+\begin{itemize}
+  \item Source code compiles, executes as expected
+  \item Program runs as specified: correctly reads any input; correctly formatted output
+  \item Test cases successfully execute
+\end{itemize}
+
+\end{document}
