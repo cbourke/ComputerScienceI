@@ -1,0 +1,115 @@
+\documentclass[12pt]{scrartcl}
+
+\input{preamble}
+
+\makeatletter
+\title{Hack 9.0}\let\Title\@title
+\subtitle{Strings \& String Processing\\
+Computer Science I\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\section*{Introduction}
+
+Hack session activities are small weekly programming assignments intended
+to get you started on full programming assignments.  Collaboration is allowed
+and, in fact, \emph{highly encouraged}.  You may start on the activity before
+your hack session, but during the hack session you must either be actively 
+working on this activity or \emph{helping others} work on the activity.
+You are graded using the same rubric as assignments so documentation, style, 
+design and correctness are all important.  This activity is \textbf{due 
+at 23:59:59 on the Friday} in the week in which it is assigned according 
+to the CSE system clock.
+
+\section*{Problem Statement}
+
+\subsection*{Exercises}
+
+To get more practice working with strings, you will write several 
+functions that involve operations on strings.  In particular, implement
+the following functions with the described behavior.  You \emph{must}
+use the given signatures.
+
+\begin{enumerate}
+
+  \item Write a function that replaces instances of a given character 
+  with a different character in a string.\\
+  \mintinline{c}{void replaceChar(char *s, char oldChar, char newChar);}\\
+  Which will replace any instance of the character stored in 
+  \mintinline{c}{oldChar} with the character stored in \mintinline{c}{newChar} 
+  in the string \mintinline{c}{s}.  
+
+  \item Write a function that takes a string and creates a new copy of it
+  but with instances of a given character replaced with a different character.\\
+  \mintinline{c}{char * replaceCharCopy(const char *s, char oldChar, char newChar);}\\
+
+  \item Write a function that takes a string and removes all instances 
+  of a certain character from it.\\
+  \mintinline{c}{void removeChar(char *s, char c);}\\
+  When removing characters, all subsequent characters should be 
+  shifted down.  Take care that you handle the null terminating character 
+  properly.
+
+  \item Write a function that takes a string and creates a new copy of
+  it but with all instances of a specified character removed from it.\\
+  \mintinline{c}{char * removeCharCopy(const char *s, char c);}\\
+  Take care that the new copy does not waste memory.
+
+  \item Write a function that takes a string and splits it up to an 
+  \emph{array} of strings.  The split will be length-based: the function 
+  will also take an integer $n$ and will split the given string up into 
+  strings of length $n$.  It is possible that the last string will not 
+  be of length $n$.  You will not need to communicate how large the 
+  resulting array is as the calling function knows the string length 
+  and $n$.\\
+  \mintinline{c}{char **lengthSplit(const char *s, int n);}
+  For example, if we pass 
+  
+  \mintinline{c}{"Hello World, how are you?"} with $n = 3$ then it 
+  should return an array of size 9 containing the strings \mintinline{c}{"Hel"}, \mintinline{c}{"lo "}, \mintinline{c}{"Wor"}, 
+\mintinline{c}{"ld,"}, \mintinline{c}{" ho"}, \mintinline{c}{"w a"}, \mintinline{c}{"re "}, \mintinline{c}{"you"}, \mintinline{c}{"?"}
+
+\end{enumerate}
+
+\section*{Instructions}
+
+\begin{itemize}
+
+  \item Place all your function prototypes into a file 
+  named \mintinline{text}{string_utils.h} and and their definitions in a
+  file named \mintinline{text}{string_utils.c}.  
+  
+  \item In addition, create a main test driver program called
+  \mintinline{text}{stringTester.c} that demonstrates at least 3 cases 
+  per function to verify their output.  Hand in your tester.
+  
+  \item You are encouraged to collaborate any number of students 
+  before, during, and after your scheduled hack session.  
+
+  \item You may (in fact are encouraged) to define any additional
+  ``helper'' functions that may help you.
+  
+  \item Include the name(s) of everyone who worked together on
+  this activity in your source file's header.
+
+  \item Turn in all of your files via webhandin, making sure that 
+  it runs and executes correctly in the webgrader.  Each individual 
+  student will need to hand in their own copy and will receive 
+  their own individual grade.
+
+\end{itemize}  
+
+
+\end{document}
