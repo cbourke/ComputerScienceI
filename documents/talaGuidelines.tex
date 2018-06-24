@@ -1,0 +1,211 @@
+\documentclass[12pt]{scrartcl}
+
+\usepackage[printwatermark,disablegeometry]{xwatermark}
+
+\usepackage{epsfig,amssymb}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{multirow}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  bookmarks=true,
+  pdfpagemode=none,
+  pdftitle={BYOD: Bring Your Own Device},
+  pdflang={en},
+  pdfauthor={Christopher M. Bourke},
+  pdfcreator={$ $Id: cv-us.tex,v 1.28 2009/01/01 00:00:00 cbourke Exp $ $},
+  pdfsubject={PhD Thesis},
+  pdfkeywords={}
+}
+
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} %
+\usepackage{subfigure}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+\usepackage[newfloat=true]{minted}
+
+\setminted{mathescape,
+           linenos,
+           autogobble,
+           frame=none,
+           framesep=2mm,
+           framerule=0.4pt,
+           %label=foo,
+           xleftmargin=2em,
+           xrightmargin=0em,
+           %startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+           numbersep=10pt, %gap between line numbers and start of line
+           style=default} %syntax highlighting style, default is "default"
+
+\setmintedinline{bgcolor={mintedBackground}}
+%doesn't work with the above workaround:
+\setminted{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+%NOTE: you can embed algorithms in solutions, but they cannot be floating objects; use [H] to make them non-floats
+
+\usepackage{lastpage}
+
+%\usepackage{titling}
+\usepackage{fancyhdr}
+\renewcommand*{\titlepagestyle}{fancy}
+\pagestyle{fancy}
+%\renewcommand*{\titlepagestyle}{fancy}
+%\fancyhf{}
+%\rhead{Computer Science I}
+%\lhead{Guides and tutorials}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lfoot{GTA/LA Guidelines -- Computer Science I}
+\cfoot{~}
+\rfoot{\thepage\ / \pageref*{LastPage}}
+
+\makeatletter
+\title{Guidelines for Graduate Teaching Assistants \& Learning Assistants}\let\Title\@title
+\subtitle{Computer Science I\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\newwatermark[allpages=true,scale=5,textmark=Draft]{},
+
+\hrule
+
+\section*{Overview}
+
+The instructor sets policies in the syllabus which all students 
+are expected to read, understand and adhere to. Every Graduate 
+Teaching Assistant (GTA) and Learning Assistant (LA) is expected 
+to read, understand and also follow these policies.  Often, 
+students will attempt to violate these policies or ask for special 
+consideration.  Do not speculate or otherwise discuss possible 
+exceptions to these policies.  Direct them to the instructor 
+and follow up with the instructor if necessary.
+
+\begin{itemize}
+  \item Be prepared.  Be aware of the course content and expectations.
+  You are responsible for knowing the material so that you can effectively
+  explain and demonstrate it to students.  Be able to complete the assignments, 
+  labs, etc.\ yourself.  If you have doubts or concerns engage first with
+  other GTA/LAs and then ask the instructor for clarification.
+  \item Manage your time.  You have made a commitment to this course and
+  will be expected to fulfill it.  Work and plan ahead.  Be aware of 
+  upcoming due dates in this course as well as your own courses, research, 
+  personal obligations, etc.  Plan ahead and make appropriate accommodations 
+  if you know there will be an excess of work during a period of time.
+\end{itemize}
+
+\section*{Communication}
+
+\begin{itemize}
+  \item Piazza is our primary means of communication, use it and encourage 
+students to use it.  
+  \item If you receive email from students, answer it, 
+but redirect them in the future to Piazza.  If the question/answer
+would be of benefit to the class as a whole, post the question/answer
+to Piazza and inform the student they can find the answer there.
+  \item For communications among instructor(s), GTAs and LAs, use Piazza but
+make it a private message, viewable only to TAs/instructors.
+  \item If a question has been asked/answered before, link to the original
+  post as your answer.
+  \item Be professional in all your communications, be courteous and
+  helpful.  
+  \item Be prompt in answering communications.  No question or email should go 
+  unanswered for more than 24 business hours.\footnote{Within 24 hours but only
+  on business days, i.e.\ excluding weekends and holidays}
+\end{itemize}
+
+\section*{Grading}
+
+\subsection*{Timeline}
+
+\begin{itemize}
+  \item Assignments and weekly Hacks are due on Fridays at midnight.  
+    Grading assignments should be sent out prior to the due date/time.
+  \item Learning Assistants are required to have completed their assigned
+    grading by 5PM the following Tuesday (or within 48 business hours of
+    the due date).  Upon completion Learning
+    Assistants should notify their GTA supervisor and be available via
+    email for any issues that need to be resolved.
+  \item Graduate Teaching Assistants should have everything reviewed and
+    any issues resolved by 5PM the following Thursday at which time 
+    grades will be released to students.
+  \item If Learning Assistants face any impediments or issues to completing
+    their grading on time, they should discuss this with their GTA supervisor
+    who will be responsible for helping to resolve the issue by either 
+    temporarily helping with grading or shifting grading assignments.  
+    If a GTA cannot resolve the issue, they should consult with the 
+    instructor.
+\end{itemize}
+
+\subsection*{Directives}
+
+\begin{itemize}
+  \item All grading is done through the online webgrader system.  
+  \item Time is limited and it should not be wasted trying to troubleshoot 
+    code that won't compile or run.  Take, at most, 5 minutes to look over
+    the code.  If the issue can be fixed within that time frame, back up the
+    original, fix it, note the differences (via code comments) and grade 
+    accordingly.  If you cannot resolve the issue within 5 minutes, assign
+    the student a zero and move on.  This will require you to login to the
+    command line and edit the files directly.  Note that the original copy
+    stored in the webhandin system will remain.
+  \item Grade in accordance to the rubric through Canvas.  If the rubric 
+    does not address something or there is a \emph{reasonable} uncertainty, 
+    discuss it with your GTA supervisor.
+  \item Grade in a consistent manner, both between individual assignments and
+    with other graders.  There should not be a significant variation in
+    points deducted or awarded for similar mistakes or work.  Consistency 
+    and grading quality will be checked by your GTA supervisor.
+  \item When you deduct points, give clear and reasonably detailed reasons
+    and justifications for doing so.  Good feedback is essential for the
+    students' learning experience.  Put in efforts to provide constructive
+    feedback and positive feedback for good work.
+  \item The online rubric in Canvas should indicate your name to the student, 
+    but just in case, clearly indicated it in the comments.  Add comments to
+    make any notes on changes or other administrative items (corrections, 
+    regrades, etc.)
+\end{itemize}
+
+
+
+\end{document}
