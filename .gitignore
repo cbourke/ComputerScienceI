@@ -16,8 +16,11 @@
 *.lof
 *.log
 *.lol
+*.nav
 *.out
+*.snm
 *.synctex.gz
+*.vrb
 *.toc
 *.xwm
 #
