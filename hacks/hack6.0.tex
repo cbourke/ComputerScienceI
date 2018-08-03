@@ -68,7 +68,7 @@ y & = \frac{(1-b'-k)}{(1-k)} \\
 \end{align*}
 Your function should have the following signature:
 
-\mintinline{c}{int rgbToCMYK(int r, int g, int b, double *c, double *m, double *y double *k)}
+\mintinline{c}{int rgbToCMYK(int r, int g, int b, double *c, double *m, double *y, double *k)}
 
 Identify any and all error conditions and use the return value to indicate
 an error code (0 for no error, non-zero value(s) for error conditions).
@@ -81,7 +81,7 @@ b & = 255 \cdot (1 - y) \cdot (1-k) \\
 \end{align*}
 Your function should have the following signature:
 
-\mintinline{c}{int cmykToRGB(double c, double m, double y double k, int *r, int *g, int *b)}
+\mintinline{c}{int cmykToRGB(double c, double m, double y, double k, int *r, int *g, int *b)}
 
 Identify any and all error conditions and use the return value to indicate
 an error code (0 for no error, non-zero value(s) for error conditions).
@@ -99,7 +99,7 @@ colors:
 The luminosity technique uses a weighted average to account for a human 
 perceptual preference toward green, setting all three values to:
   $$0.21 r + 0.72 g + 0.07 b$$
-In all three cases, the integral values should be \emph{rounded} rather 
+In all three cases, the integer values should be \emph{rounded} rather 
 than truncated.
 
 Your function should have the following signature:

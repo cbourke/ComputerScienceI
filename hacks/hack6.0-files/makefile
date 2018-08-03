@@ -5,14 +5,14 @@
 #
 
 CC = gcc
-FLAGS = -Wall
+FLAGS = -Wall -std=c99
 INCLUDES = -l cmocka -lm
 
 utilsTester: colorUtils.o utilsTester.c
-	$(CC) $(FLAGS) $(INCLUDES) colorUtils.o utilsTester.c -o utilsTester
+	$(CC) $(FLAGS) colorUtils.o utilsTester.c -o utilsTester $(INCLUDES)
 
 colorUtils.o: colorUtils.c colorUtils.h
-	$(CC) $(FLAGS) $(INCLUDES) -c colorUtils.c -o colorUtils.o
+	$(CC) $(FLAGS) -c colorUtils.c -o colorUtils.o $(INCLUDES)
 
 clean:
 	rm -f *~ *.o

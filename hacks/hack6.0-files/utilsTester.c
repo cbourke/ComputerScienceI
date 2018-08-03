@@ -10,7 +10,7 @@
 
 /**
  * For CMYK applications, accuracy only needs to be to within
- * 0.01, but other application smay require finer accuracy.
+ * 0.01, but other applications may require finer accuracy.
  */
 const double EPSILON = 0.01;
 
@@ -82,7 +82,6 @@ static void testRgbToCmyk001(void **state) {
 static void testRgbToCmykValues(void **state) {
   //cast the generic state to a double array
   double *values = *((double **)state);
-  //printf("%f, %f\n", values[0], values[1]);
   double c, m, y, k;
   rgbToCMYK( (int) values[0], (int) values[1], (int) values[2], &c, &m, &y, &k);
   assert_true(
