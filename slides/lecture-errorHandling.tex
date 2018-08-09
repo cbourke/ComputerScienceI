@@ -622,51 +622,157 @@ DayOfWeek someday = 99999;
     \frametitle{Software Testing}
     \framesubtitle{}
 
+Many different types of \emph{software testing}
+
 \begin{itemize}[<+->]
-  \item Overview of types of testing/levels of testing
+  \item Functional vs.\ non-functional testing %non-functional testing: testing non-functional aspects of a system, how a system works rather than its specific functionality.  For example: are the libraries used licensed for how we use them?
+  \item Acceptance testing
+  \item Performance and load testing
+  \item Integration testing
+  \item Regression testing
+  \item Unit testing
+%  \item Various purposes and issues are addressed by each
+%  \item Each type can be applied to various levels of a system
 \end{itemize}
 
 \end{frame}
-
 
 \begin{frame}
     \frametitle{Unit Testing}
     \framesubtitle{}
 
 \begin{itemize}[<+->]
-  \item Ad-hoc Testing
-  \item Test cases
-  \item Unit testing
-  \item Testing suite
+  \item Unit testing involves testing a \emph{unit} of code
+  %a unit is generally the smallest testable piece of code
+  \item Units:
+  \begin{itemize}
+    \item A module, submodule, or library
+    \item A \emph{class} or a single header/source file
+    \item An individual function
+  \end{itemize}
+  \item A unit test can involve several \emph{test cases} comprising a 
+  \emph{test suite}
+  \item A test case is an input-output pair that is \emph{known} 
+  to be correct that we can test the unit (function) against
+  \item If the function produces the same (or sufficiently similar)
+  output, it \emph{passes} the test, otherwise it \emph{fails} the
+  test
+\end{itemize}  
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Illustration}
+    \framesubtitle{}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=.75,transform shape]
+
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+
+\node[below right] (testcase) at (-1.25,6) {Unit Test};
+\draw (-1.25,6) rectangle (10, 0);
+
+\node[below right] (testcase) at (0,5) {Test Case};
+\draw (0,5) rectangle (4, 3);
+\node (tcInput) at (2,4) {(input, output)};
+
+\node[draw,rounded corners,minimum width=2cm, minimum height=1cm] (unit) at (2, 1.5) {Unit};
+\node[left of=unit,xshift=-1.5cm] (input) {input};
+\node[right of=unit,xshift=1.5cm] (output) {output};
+
+\node[decision] (equal) at (8, 2.5) {Equal?};
+
+\node[] (pass) at (11, 4) {Pass};
+\node[] (fail) at (11, 1) {Fail};
+
+\draw[->] (input) -- (unit);
+\draw[->] (unit) -- (output);
+
+
+\draw[->] (tcInput.210) |- ++(0,-1) -| (input.north);
+\draw[->] (tcInput.330) |-  (equal.west);
+\draw[->] (output.east) -| ++(.5,0) |-  (equal.west);
+
+\draw[->] (equal.north) |- node[pos=.5,above] {yes} (pass.west);
+\draw[->] (equal.south) |- node[pos=.5,below] {no} (fail.west);
+
+\end{tikzpicture}
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Importance of Testing}
+    \framesubtitle{}
+
+\begin{itemize}[<+->]
+  \item Testing provides some \emph{assurance of quality}
+  \item Provide a reasonably high confidence that our software is \emph{correct}
+  \item Correct: it conforms to our specifications or expectations
+  \item Never a guarantee: testing only gives assurances for 
+    what we test, not for what we do not (or cannot) test 
+  \item Still possible to have false positives and false 
+    negatives if our tests are wrong
+  \item Prevents/reduces costly bugs that manifest themselves ``in production''
+  \item Informs good design
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}
-    \frametitle{Informal Unit Testing}
+    \frametitle{Goals of Testing}
     \framesubtitle{}
 
 \begin{itemize}[<+->]
-  \item Design and code input/output pairs
-  \item Test for edge cases
-  \item Describe failures
-  \item Summarize results
-  \item Re-runnable and reproducible results
-  \item Regression tests
+  \item Should strive for good or high \emph{code coverage}
+  \item Test as many types of input(s) as we can
+  \item Edge cases: testing ``extreme'' inputs or input 
+    values at the edge of extreme
+  \item Corner cases: outside normal operating procedures 
+    %(does our error checking work?)
+  \item Try to break our code; be \emph{adversarial}
+  %\item Fuzzing: providing invalid or random data to test recovery/error handling
+  \item Don't just test what you expect should work
 \end{itemize}
 
 \end{frame}
-
 
 \begin{frame}
-    \frametitle{Unit Testing Frameworks}
+    \frametitle{Costs of Testing}
     \framesubtitle{}
 
-\begin{itemize}[<+->]
-  \item cmocka?
+\begin{itemize}[<+->]  
+  \item Testing code is often larger than the code it tests
+  \item May require just as much or more time and effort as the code itself
+  \item Example: SQLite is small (128.9 kLOC) but has 91,772 kLOC of testing code and scripts (711 times larger)
+  %https://www.sqlite.org/testing.html
+  \item Example: International Space Station has 1.8 mLOC vs 3.3 + 11 mLOC for simulation and testing
+  \item Worth it: reduces \emph{technical debt}
+  \item Testing is an \emph{investment}
+  %\item Continuous Integration (CI)
+  %\item Test Driven Development (TDD)
+\end{itemize}  
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demonstration}
+    \framesubtitle{}
+
+%  HW1 updates need to be done: dev is on CSE:/CS1/KaprekarProject
+%  Video: CSE:/CS1/cmockaDev (distance examples)
+
+\begin{itemize}
+  \item Ad-hoc Testing %testing via command line, as you develop
+  \item Designing a suite of automated tests
+  \item Unit testing with a formal testing framework: cmocka
 \end{itemize}
 
 \end{frame}
+
 
 
 \end{document} 
