@@ -98,8 +98,8 @@ int cmpByLongitude(const void* a, const void* b);
 
 /**
  * A comparator function that orders the two Airport structures by
- * their relative distance from Lincoln Municiple Airport (0R2, 40.846176 /
- * -96.75471)
+ * their relative distance from Lincoln Municipal Airport
+ * (0R2, 40.846176, -96.75471)
  * in ascending order according (closest to Lincoln would come first)
  */
 int cmpByLincolnDistance(const void* a, const void* b);

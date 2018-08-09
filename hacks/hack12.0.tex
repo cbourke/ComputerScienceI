@@ -67,7 +67,9 @@ solution:
 \mintinline{c}{long choose(int n, int k);}
 
 which takes $n$ and $k$ and computes ${n\choose k}$ using Pascal's Rule.
-Note that the return type is a \mintinline{c}{long} which is a 64-bit
+Note that the return type is a \mintinline{c}{long}\footnote{For those
+using Windows, you may need to instead use a \mintinline{c}{long long}
+data type to get a 64-bit integer.} which is a 64-bit
 integer allowing you to compute values up to 
   $$2^{63}-1 = 9,223,372,036,854,775,807$$
 (a little over 9 quintillion).  Write a \mintinline{c}{main} function
