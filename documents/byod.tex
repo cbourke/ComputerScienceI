@@ -94,10 +94,10 @@
 \subtitle{Developing C on Your Own Machine \\
 Computer Science I\\
 {\small
-\vskip1cm
+\vskip.5cm
 Department of Computer Science \& Engineering \\
 University of Nebraska--Lincoln}
-\vskip-1cm}
+\vskip-2cm}
 %\author{Dr.\ Chris Bourke}
 \date{~}
 \makeatother
@@ -138,6 +138,16 @@ don't know what you're doing.
   This only works on campus; off campus you'd need to setup a VPN.
   \item Install Atom IO \url{https://atom.io/}, a free code/text 
   editor.  Use this editor to edit files on your Z drive once connected.
+  
+  \textbf{Note}: once installed, you should change the default line ending
+  for atom.io.  To do this:
+  \begin{enumerate}
+    \item Click \mintinline{text}{File} $\rightarrow$ \mintinline{text}{Settings}
+    \item Click \mintinline{text}{Packages}
+    \item ``Search'' for \mintinline{text}{line-ending-selector}
+    \item Under Settings, select \mintinline{text}{LF} instead of \mintinline{text}{CRLF}
+  \end{enumerate}
+  
   \item Download and install Putty, a ``Secure Shell Client'': \\
   \url{http://www.putty.org/}\\
   Once you've written your program(s), login to the CSE server
