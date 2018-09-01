@@ -1,6 +1,10 @@
 \documentclass[12pt]{scrartcl}
 
 \input{preamble}
+%remove headers
+\rhead{~}
+\lhead{~}
+
 
 \makeatletter
 \title{Hack 1.0}\let\Title\@title
@@ -32,71 +36,240 @@ design and correctness are all important.  This activity is \textbf{due
 at 23:59:59 on the Friday} in the week in which it is assigned according 
 to the CSE system clock.
 
-%TODO: rubric 
-% instructions
-% documentation
-% style
-% design including input validation
-% correctness
-
 \section*{Problem Statement}
 
-This activity will help you get started using git, a distributed 
-version control system.  In particular, you'll be using GitHub, 
-\url{https://github.com/} as your git system.  Before you begin, 
-you will need to create an account on GitHub and read the course 
-tutorial on getting started with git: 
+An essential tool when developing software is a \emph{version control system}
+(VCS).  As you develop software you will make changes, add features, fix bugs, etc.
+and it is necessary to keep track of your changes and to ensure that your 
+code and other artifacts are backed up and protected by being stored on a 
+reliable server (or multiple servers) instead of just one machine.  
 
-\url{http://cse.unl.edu/~cbourke/gitTutorial.pdf}.  
+A \emph{version control system} allows you to ``check-in'' or 
+\emph{commit} changes to a code project.  It keeps track of all changes 
+and allows you to ``branch'' a code base into a separate copy so that 
+you can develop features or enhancements in isolation of the
+main code base (often called the ``trunk'' in keeping with the tree 
+metaphor).  Once a branch is completed (and well-tested and 
+reviewed), it can then be \emph{merged} back into the main trunk 
+and it becomes part of the project.
 
-Alternatively, there are several resources provided below.  We
-recommend that you install and use the GitHub Desktop Client for
-this course: \url{https://desktop.github.com/}.
+These systems are not only used for organizational and backup 
+purposes, but are absolutely essential when developing software 
+as part of a team.  Each team member can have their own working 
+copy of the project code without interfering with other developer's 
+copies or the main trunk.  Only when separate branches have to 
+be merged into the trunk do conflicting changes have to be addressed.  
+Such a system allows multiple developers to work on a 
+very large and complex project in an organized manner.
 
-To get started using Git/GitHub, you will create a basic 
-repository from scratch, push it to GitHub and then collaborate 
-with at least one other partner to share changes.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{./hack1.0-files/repositorydiagram}
+\caption{Trunk, branches, and merging visualization of the Drupal project}
+\end{figure}
+
+There are several widely used revision control systems including 
+CVS (Concurrent Versions System), SVN (Apache Subversion), and 
+Git.  SVN is a \emph{centralized} system: there is a single server that 
+acts as the main code repository.  Individual developers can check out 
+copies and branch copies (which are also stored in the main repository).  
+
+Git is a \emph{distributed} VCS meaning that multiple servers/computers 
+act as full repositories.  Each copy on each developer's machine 
+\emph{also} contains a complete revision history.  This makes git a 
+decentralized system.  Code commits are committed to a local repository.  
+Merging a branch into another requires a push/pull request.  
+Decentralizing the system means that anyone's 
+machine can act as a code repository and can lead to wider collaboration 
+and independence since different parties are no longer dependent on 
+one master repository.
+
+Git has become the de facto VCS system in software development.  We have
+provided several external resources below, but this Hack will walk you
+through the basics of getting started.  You will setup a project with 
+git using GitHub (\url{https://github.com}) as your remote server.  You
+will then collaborate with someone else to commit changes.
+
+\section{Installation}
+
+All of the instructions in this Hack will involve using GitHub's 
+Desktop Client.  The screenshots were from the Mac version of this
+program so it may look slightly different on other systems.  There 
+are other alternatives and if you wish to use them you are welcome 
+to do so.
+
+\begin{enumerate}
+  \item Go to \url{https://github.com/} and sign up/register with
+  an account if you have not already done so.
+  \item Download and the client here: \url{https://desktop.github.com/}.
+\end{enumerate}
+
+\section{Creating a Repository}
+
+To focus on the git process, you will create and work with a simple
+``Hello World''-style program but instead of printing ``Hello World'', 
+it will print your name. 
+
+\begin{enumerate}
+  \item Create a new folder (call it \mintinline{text}{hello}) somewhere 
+  on your computer and within it, 
+  create a \mintinline{text}{hello.c} source file with code in it that
+  prints your name.
   
-To keep things simple, your project will be a simple ``Hello World'' 
-style program but instead of printing ``Hello World'', it will 
-print your name and major. Once you have created this simple project, 
-push it to GitHub.  Then have your partner clone it and add their own 
-name to the program (so that it prints both of your names).  Then
-add them as a collaborator so they can push their changes to your
-repository.  Alternatively, you can have them make a pull request 
-and pull their changes to your repository.  You will both need to 
-repeat this exercise so that you both have repositories in your 
-GitHub profile.
+  \item Open your GitHub Desktop Client (you may need to sign in with your
+  new GitHub credentials).
+  
+  \item Drag and drop your \mintinline{text}{hello} folder to the GitHub Desktop
+  Client.  It will look something like the following.
+  \begin{center}
+  \includegraphics[scale=0.50]{./hack1.0-files/drag.png}
+  \end{center}
+  Click \mintinline{text}{create a repository} and it should look something
+  like the following.
+  \begin{center}
+  \includegraphics[scale=0.35]{./hack1.0-files/setup.png}
+  \end{center}
+  Provide a simple description and click \mintinline{text}{Create Repository}
+
+  \item If everything is successful, it should look something like the following.
+  \begin{center}
+  \includegraphics[scale=0.125]{./hack1.0-files/postCreation.png}
+  \end{center}
+  The GitHub client will have made an initial commit of the existing
+  files for you.
+
+  \item Push/publish your repository to GitHub.com by clicking 
+  \mintinline{text}{Publish repository} at the top right.  It 
+  should look look something like the following.  
+  \begin{center}
+  \includegraphics[scale=0.35]{./hack1.0-files/publish.png}
+  \end{center}
+  Be sure that \mintinline{text}{Keep this code private} is 
+  \emph{not selected} and click \mintinline{text}{Publish Repository}
+  
+  \item If successful, your repository should now be on GitHub.
+  Point your web browser to \url{https://github.com/login/hello}
+  where \mintinline{text}{login} is replaced with your GitHub user
+  name.  You can browse your repository, view its history, etc.
+  
+\end{enumerate}
+
+\section{Making Changes}
+
+You'll often make changes to you code that you should \emph{commit} to
+your repository.  Though you may make changes and save them to a file, 
+the changes are not saved to the repository's history.  Committing is 
+the action that does this.  Committing only changes your \emph{local}
+repository, the changes will still need to be \emph{pushed} to GitHub.
+In this activity you'll make changes, commit them and then push them
+to GitHub.
+
+\begin{enumerate}
+  \item Open the \mintinline{text}{hello.c} file and add a line that
+  prints your major.  Be sure to save the file.
+
+  \item The GitHub Client should ``see'' these changes.  It should look
+  something like the following. 
+  \begin{center}
+  \includegraphics[scale=0.125]{./hack1.0-files/change.png}
+  \end{center}
+
+  \item Commit your changes by filling out the summary (required) and description.
+  This is your chance to \emph{document} why you made changes to your code.
+  Then click \mintinline{text}{Commit to master}.  Your changes have now
+  been committed to your repository.  
+  \begin{center}
+  \includegraphics[scale=0.125]{./hack1.0-files/commit.png}
+  \end{center}
+  
+  \item Push your changes to GitHub by clicking \mintinline{text}{Push origin}
+  at the top right.  You can verify that your changes have been published
+  to GitHub by refreshing your web browser.
+  \begin{center}
+  \includegraphics[scale=0.125]{./hack1.0-files/pushChange.png}
+  \end{center}
+
+\end{enumerate}
+
+\section{Collaborating With a Team}
+
+In this exercise, you'll need to team up with at least one other person.
+You'll make them a collaborator on your project so they can make changes
+and commit/push them to \emph{your} repository on GitHub.  Alternatively
+you can have them make a pull request, but these instructions do not cover 
+that; refer to one of the resources below for how how to make push/pull
+requests.
+
+\begin{enumerate}
+  \item On GitHub.com, click \mintinline{text}{Settings} in your project.
+  \item In the left menu, click \mintinline{text}{Collaborators}
+  \item Type in your partner's GitHub user name and click \mintinline{text}{Add collaborator}
+\end{enumerate}
+
+\subsection{What your collaborator needs to do}
+
+Together with your partner, walk through the following steps.  These
+steps should be done on \emph{their} computer.
+
+\begin{enumerate}
+  \item Once you've sent an invite to collaborate, they need to accept it.
+  \item Have them navigate their web browser to your GitHub 
+  repository and click \mintinline{text}{Clone or download} and select
+  \mintinline{text}{Open in Desktop}.  This will launch their GitHub
+  Desktop Client and check out \emph{your} code.
+  \item Have them add 2 lines of code to print their name and their major.
+  \item In the GitHub Client, follow the same procedure to commit and push
+  their changes to your repository using the same procedure as above.
+  \item Verify their changes by refreshing your repository.  You can click
+  on the \mintinline{text}{hello.c} and if you both did everything correctly, 
+  you'll see multiple commits by multiple people:
+  \begin{center}
+  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo02.png}
+  \end{center}
+  If you click on \mintinline{text}{History} you can see the changes for
+  each commit: 
+  \begin{center}
+  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo03.png}
+  \end{center}
+
+\end{enumerate}
 
 You are \emph{highly encouraged} to start using git/GitHub (or 
 something similar) for all of your future assignments 
 but be sure to commit code to a \emph{private} repository 
 so that you do not violate the department's academic integrity 
-policy.  For this exercise, however, keep your repositories 
-public so that we can grade you (you are
-being graded on the process, not the code itself). 
+policy.  
 
-\section*{Instructions}
+\subsection{Finishing Up}
 
-\begin{itemize}
-  \item You are encouraged to collaborate any number of students 
-  before, during, and after your scheduled hack session.    
-  \item Put your GitHub URL into a plain text file named 
-  \mintinline{text}{readme.md}.  Include the name(s) of everyone 
-  who worked together on this activity as well.  Turn this file
+\begin{enumerate}
+  \item Put \emph{your} GitHub URL into a plain text file named 
+  \mintinline{text}{readme.md}.  Turn this file
   in using webhandin.  Each individual student will need
   to hand in their own copy and will receive their own individual
   grade.
+  \item Verify what you handed in by running the webgrader which will
+  display the contents of your file.
+\end{enumerate}
+
+
+\section*{Additional Instructions}
+
+\begin{itemize}
+  \item You are encouraged to collaborate with any number of students 
+  before, during, and after your scheduled hack session.    
+  \item Each student is responsible for \emph{their} repository, so 
+  if/when you team up with a partner, you'll need to go through this
+  Hack at least twice: once as the primary repository owner and once as
+  a collaborator.
 \end{itemize}
   
 \section*{Additional Resources}
 
 \begin{itemize} 
-  \item GitHub Desktop Client: \url{https://desktop.github.com/} 
   \item Video tutorial on Github Desktop: \url{https://www.youtube.com/watch?v=kFix7UDJ7LA}
   \item Interactive git tutorial: \url{https://try.github.io/levels/1/challenges/1}
   \item Pro Git, free online book: \url{https://git-scm.com/book/en/v2}
-  \item Documentation on GIthub Desktop: \url{https://help.github.com/desktop/guides/getting-started-with-github-desktop/}
 \end{itemize}
 
 
