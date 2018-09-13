@@ -49,11 +49,14 @@ functionality.
   \item \mintinline{c}{double degreesToRadians(double degree);} - Write a 
   	function to convert degrees to radians using the formula 
 		$$\frac{d\cdot \pi}{180}$$
+\newpage
   \item Write a function to compute the air distance between two locations 
     identified by their latitude/longitude.  
 \begin{minted}{c}
-double getAirDistance(double latA, double longA, 
-                   double latB, double longB);
+double getAirDistance(double originLatitude, 
+                      double originLongitude, 
+                      double destinationLatitude, 
+                      double destinationLongitude);
 \end{minted}  
 The air distance between two latitude/longitude points can be calculated 
 using the Spherical Law of Cosines:
