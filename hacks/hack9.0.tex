@@ -109,7 +109,8 @@ GDB installed on your own computer.
   
   \mintinline{text}{refresh}
   
-  and the screen will refresh itself.  
+  and the screen will refresh itself.  As a short-cut you can use control-L
+  to refresh.
   
   \item Examine some of the variable values to investigation what the
   issue is.  To print a variable value, use:
@@ -228,14 +229,14 @@ GDB installed on your own computer.
 \subsection*{The Main Show}
 
 Now that you have some familiarity with GDB, you'll use your new debugging
-skills to debug a full program.  We have provided a source files and a 
+skills to debug a full program.  We have provided source files and a 
 makefile that builds a tic-tac-toe game project.  The game allows a player
 to select several different modes including a 2-player game, a 1-player 
 versus the computer (which makes random moves) and a 1-player versus 
 a ``smart'' computer.
 
-Similar to the previous part, we have introduced several bugs (X to be exact).
-Run the program and use GDB to talk through section(s) of the code you believe
+Similar to the previous part, we have introduced several bugs (6 to be exact).
+Run the program and use GDB to walk through section(s) of the code you believe
 to contain bugs and fix them all until the program runs without any problems.
 
 Some tips/hints:
@@ -270,7 +271,21 @@ Some tips/hints:
   to hand in their own copy and will receive their own individual
   grade.
 \end{itemize}
-  
+
+% Pay no attention to the man behind the curtain
+%\section*{Bug List}
+%
+%\begin{enumerate}
+%  
+%  \item gameUtils.c line 55 should be \mintinline{c}{i<2} otherwise an extraneous line is printed
+%  \item gameUtils.c line 115 should be \mintinline{c}{board[i][j] == NONE}:
+%    Otherwise, it will immediately end the game because it is not a "playing" status.
+%  \item ticTacToeDriver.c line 29 should be \mintinline{c}{userMove(board, O);} (Oh, not zero): causes 2nd player's input is ignored and gets stuck in a loop unless that player selects an already chosen option, at which it goes back to player 1.
+%  \item playerUtils.c line 19: should be \mintinline{c}{board[(input-1)/3][(input-1)%3] = player;} otherwise only choices 1-3 work, choices 4-9 are ignored
+%  \item gameUtils.c line 85: should be \mintinline{c}{(board[0][0] == board[0][1] && board[0][1] == board[0][2] && board[0][0] == X)}; the indices being off only checks the upper left for a win condition instead of the entire row.
+%  \item gameUtils.c line 23 should be \mintinline{c}{return copy;}; causes segfaults when free is called.
+%
+%\end{enumerate}
 
 
 \end{document}
