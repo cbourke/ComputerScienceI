@@ -190,6 +190,11 @@ GDB installed on your own computer.
 
   \mintinline{text}{break 58}
   
+  Note that you can set a breakpoint at a particular line in any 
+  file using the syntax:
+
+  \mintinline{text}{break fileName.c:42}
+  
   \item Now, you can either step through the execution of the loop 
   and/or set a watchpoint on the \mintinline{c}{sum} variable or you 
   can skip ahead to the end of the loop by using \mintinline{text}{continue}
