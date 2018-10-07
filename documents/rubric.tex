@@ -108,12 +108,14 @@ University of Nebraska--Lincoln}
 
 \maketitle
 
-%\newwatermark[allpages=true,scale=5,textmark=Draft]{},
+\newwatermark[allpages=true,scale=5,textmark=Draft\\Draft\\Draft\\Draft,color=gray!15,]{},
 
 \hrule
 
 This is a draft of items/elements that will be included in rubrics for
 assignments and hacks.
+
+\section*{General Guidelines}
 
 \subsection*{Following Instructions}
 \begin{itemize}
@@ -154,5 +156,80 @@ assignments and hacks.
   \item Program runs as specified: correctly reads any input; correctly formatted output
   \item Test cases successfully execute
 \end{itemize}
+
+\newpage
+
+\section*{Hack Guidelines}
+
+Each hack is worth 25 points distributed as follows.
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|r|}
+\hline
+Category & Points \\
+\hline
+Style & 2.5 \\
+\hline
+Documentation & 2.5 \\
+\hline
+Design & 5.0 \\
+\hline
+Correctness & 15.0 \\
+\hline
+\end{tabular}
+\end{table}
+Specific point deductions guidelines follow.  For each category, once all 
+points are lost, no more points should be deducted for that category (the
+minimum grade per category is zero).  However, all errors should be noted 
+in the rubric comments.
+
+\subsection*{Style}
+
+\begin{itemize}
+  \item Proper use of whitespace
+  \begin{itemize}
+    \item Some (at least 2-3 instances or lines) of inconsistent whitespace style: -0.5
+    \item Frequent misuse of inconsistent use of whitespace: -1 
+    \item Extremely poor use of whitespace leading to unreadable code -2
+  \end{itemize}
+  \item Variable naming
+  \begin{itemize}
+    \item Inconsistent naming convention(s) of variables, functions, etc.: -1
+    \item Non-descriptive, cryptic, or inappropriate variable naming: -1
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Documentation}
+
+\begin{itemize}
+  \item Missing ``header'' comment with author/date/etc. in all user-authored files
+  \item Overly verbose or unnecessary comments: -1
+  \item Some function(s) lack proper documentation: -1
+\end{itemize}
+
+\subsection*{Design}
+
+\begin{itemize}
+  \item Compiler issues warnings that have not been taken care of -1 to -5 depending on severity
+  \item Dead or extraneous code has not been removed, large sections of code are commented out but not deleted -1 to -5 depending on the severity
+  \item Sufficiently reasonable error handling has been omitted regardless of how the webgrader runs -1 to -3 depending on severity
+\end{itemize}
+
+\subsection*{Correctness}
+
+Generally, points are awarded proportionally according to the number of test cases.
+Points are lost for each test case such that:
+
+\begin{itemize}
+  \item The reported output (numbers) differ significantly from the expected output
+  \item Formatting details need not match exactly, but must report \emph{at least} as much information as the expected output (but \emph{may} give more or may give alternative formatting).
+  \item Output must be well-formatted and readable.
+  \item Proportional credit given in the case of automated test suites
+  \item If no substantial code is present but (some) test cases pass, credit should still not be awarded.
+\end{itemize}
+
+\newpage
+
+\section*{Assignment Guidelines}
 
 \end{document}
