@@ -186,7 +186,7 @@ in the rubric comments.
 \subsection*{Style}
 
 \begin{itemize}
-  \item Proper use of whitespace
+  \item Proper use of whitespace including consistent spacing, indentation for all nested blocks, readability, etc.
   \begin{itemize}
     \item Some (at least 2-3 instances or lines) of inconsistent whitespace style: -0.5
     \item Frequent misuse of inconsistent use of whitespace: -1 
@@ -203,8 +203,8 @@ in the rubric comments.
 
 \begin{itemize}
   \item Missing ``header'' comment with author/date/etc. in all user-authored files
-  \item Overly verbose or unnecessary comments: -1
-  \item Some function(s) lack proper documentation: -1
+  \item Overly verbose or unnecessary comments, intermediate/development (i.e.\ \mintinline{text}{TODO}s) comments not removed from final version: -1
+  \item Some function(s) lack proper documentation or include incorrect or inconsistent documentation style: -1
 \end{itemize}
 
 \subsection*{Design}
@@ -213,6 +213,10 @@ in the rubric comments.
   \item Compiler issues warnings that have not been taken care of -1 to -5 depending on severity
   \item Dead or extraneous code has not been removed, large sections of code are commented out but not deleted -1 to -5 depending on the severity
   \item Sufficiently reasonable error handling has been omitted regardless of how the webgrader runs -1 to -3 depending on severity
+  \item User defined functions should not have bad behavior (such as ``debug'' or ``error'' print statements, exit conditions, etc.)
+  \item Code contains redundancies such as extraneous variables, unused variables, copy-pasted/repeated code (instead of functions or loops as appropriate)
+  \item Use of incorrect patterns, variable types, etc.
+  \item Program contains obvious memory leaks or misuse of data types (static arrays when dynamic arrays are more appropriate) regardless of how the webgrader works
 \end{itemize}
 
 \subsection*{Correctness}
@@ -221,6 +225,8 @@ Generally, points are awarded proportionally according to the number of test cas
 Points are lost for each test case such that:
 
 \begin{itemize}
+  \item All tests must run completely without segfaults or other issues, program
+  output should match expected output.
   \item The reported output (numbers) differ significantly from the expected output
   \item Formatting details need not match exactly, but must report \emph{at least} as much information as the expected output (but \emph{may} give more or may give alternative formatting).
   \item Output must be well-formatted and readable.

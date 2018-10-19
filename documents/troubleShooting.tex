@@ -181,7 +181,23 @@ that you should try before throwing in the towel.
     \item Hack 9.0: \url{https://github.com/cbourke/CSCE155-Hack9.0}
   \end{itemize}
   
-
+  \item ``Perf'' Test.  Performance testing may be necessary if you have 
+  code that compiles, runs, and may even work, but seems to be inefficient.
+  You can use a \emph{profiler} to monitor the execution of a program
+  and determine which function(s) or sections of code take the most time
+  or resources.  GNU's Gprof performance analysis tool can be used to
+  profile a program.  First, compile using the \mintinline{text}{-pg} flag:
+  
+  \mintinline{text}{gcc -pg foo.c}
+  
+  to preserve identifiers and make it so that gprof can profile the 
+  program.  Then run the program normally.  After it has concluded 
+  executing, it will have created a \mintinline{text}{gmon.out} file
+  which contains a gprof report.  To view it you can use the following:
+  
+  \mintinline{text}{gprof a.out}
+  
+  
 \end{enumerate}
 
 
