@@ -20,7 +20,9 @@ Airport* createAirport(const char* gpsId,
 
 /**
  * This function initializes an existing allocated
- * Airport structure with the given attributes.
+ * Airport structure with the given attributes. This
+ * function should make *deep* copies of each of the
+ * relevant fields.
  */
 void initAirport(Airport* airport,
                  const char* gpsId,
@@ -47,7 +49,12 @@ double getAirDistance(const Airport* origin, const Airport* destination);
 /**
  * Computes the estimated travel time (in hours) for a flight
  * that involves the given stops using the average flight speed
- * (kilometers per hour) and average layover time (in hours)
+ * (kilometers per hour).  Thus there are size - 1 "legs" of the
+ * trip.
+ *
+ * The first stop is the origin and the last stop is the destination.
+ * Each stop in between is a layover each incurring a wait time
+ * of aveLayoverTimeHrs
  */
 double getEstimatedTravelTime(const Airport* stops,
                               int size,
