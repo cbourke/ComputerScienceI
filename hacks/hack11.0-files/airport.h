@@ -48,7 +48,8 @@ double getAirDistance(const Airport* origin, const Airport* destination);
 
 /**
  * Computes the estimated travel time (in hours) for a flight
- * that involves the given stops using the average flight speed
+ * that involves the given stops (an array of Airport structures
+ * of the given size) using the average flight speed
  * (kilometers per hour).  Thus there are size - 1 "legs" of the
  * trip.
  *
