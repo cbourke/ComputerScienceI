@@ -1,6 +1,6 @@
 # Computer Science I
-**Department of Computer Science & Engineering**  
-**University of Nebraska-Lincoln**
+**[Department of Computer Science & Engineering](https://cse.unl.edu)**  
+**[University of Nebraska-Lincoln](https://unl.edu)**
 
 This repository hosts documents, files, and other artifacts
 related to Computer Science I (offered as CSCE 155E, CSCE 155H).
@@ -10,6 +10,10 @@ related to Computer Science I (offered as CSCE 155E, CSCE 155H).
 Though available through Canvas, all lecture and tutorial videos are hosted on my YouTube Channel:
 
 https://www.youtube.com/playlist?list=PL4IH6CVPpTZVkiEnCEOdGbYsFEdtKc5Bx
+
+## Textbook
+
+We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf) which covers C, Java, and even [PHP](http://phpsadness.com/); complete source is hosted here: https://bitbucket.org/chrisbourke/computersciencei 
 
 ## Labs
 
