@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
 
+//TODO: add TA logins to this array to exclude
+// them from consideration
 $taLogins = array("cbourke", "login1", "login2");
 
 function filterTAs($line) {
@@ -17,7 +19,17 @@ function filterTAs($line) {
   return true;
 }
 
-$f = file_get_contents($argv[1]);
+if($argc < 2) {
+  $fileName = "./mail.list";
+} else {
+  $fileName = $argv[1];
+}
+
+if(!file_exists($fileName)) {
+  fprintf(STDERR, "Unable to open file %s\n", $fileName);
+  exit(1);
+}
+$f = file_get_contents($fileName);
 $names = preg_split("/((\r?\n)|(\r\n?))/", $f);
 $students = array_filter($names, "filterTAs");
 shuffle($students);

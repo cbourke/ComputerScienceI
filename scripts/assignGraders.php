@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 
 class Person {
@@ -31,6 +32,7 @@ class Person {
 class Course {
 
   private $students = array();
+  //non-grading instructors
   private $tas = array();
   private $graders = array();
 
@@ -54,13 +56,9 @@ class Course {
         $login = trim($tokens[0]);
         $p = new Person($login, trim($name));
         if( in_array($login, $taLogins) ) {
-          //TA, not a student
-          //grader?
-          if( in_array($login, $graders) ) {
-            $this->graders[] = $p;
-          } else {
-            $this->tas[] = $p;
-          }
+          $this->tas[] = $p;
+        } else if( in_array($login, $graders) ) {
+          $this->graders[] = $p;
         } else {
           //student
           $this->students[] = $p;
@@ -70,17 +68,17 @@ class Course {
   }
 
   public function __toString() {
-    $result = "TAs/Instructors\n";
+    $result = "TAs/Instructors (".count($this->tas).")\n";
     $result .= "=================\n";
     foreach($this->tas as $t) {
       $result .= "$t\n";
     }
-    $result .= "\nGraders\n";
+    $result .= "\nGraders (".count($this->graders).")\n";
     $result .= "-----------------\n";
     foreach($this->graders as $g) {
       $result .= "$g\n";
     }
-    $result .= "\n\nRoster\n";
+    $result .= "\n\nRoster (".count($this->students).")\n";
     $result .= "=================\n";
     foreach($this->students as $s) {
       $result .= "$s\n";
@@ -127,8 +125,10 @@ class Course {
   public function assignGradingToString() {
     $assignment = $this->assignGrading();
     $min = floor( count($this->students) / count($this->graders) );
-    $max = ceil( count($this->students) / count($this->graders) );
-    $result = "Assigned Grading:";
+    $max = ceil( count($this->students) / count($this->graders) );    
+    $result = "Assigned Grading:\n";
+    $result .= sprintf("Number of graders:  %3d\n", count($assignment));
+    $result .= sprintf("Number of students: %3d\n", count($this->students));
     $result .= sprintf("Each grader will grade %d - %d students\n", $min, $max);
     foreach($assignment as $grader => $graded) {
       $result .= sprintf("%s (%d assigned)\n", $grader, count($graded));
@@ -142,10 +142,20 @@ class Course {
 
 }
 
-$tas = array("cbourke", "hjhi", "nhoque", "yxia");
-$graders = array("hjhi", "nhoque", "yxia");
-//what format is best?
-$c = new Course($tas, $graders);
+//TODO: update these logins to exclude them from grading assignments
+$instructors = array("cbourke", "inst2");
+$gtas        = array("gta1", "gta2");
+$courseLeaders = array("cl1", "cl2");
+$graders = array("grader1login", "grader2login");
+
+$nonGraders = array_merge($instructors, $gtas, $courseLeaders);
+
+if($argc == 1) {
+  $c = new Course($nonGraders, $graders);
+} else {
+  $c = new Course($nonGraders, $graders, $argv[1]);
+}
+print $c;
 $assignment = $c->assignGradingToString();
 print $assignment;
 
