@@ -150,15 +150,17 @@ that you should try before throwing in the towel.
     
     Using gcc: \\
     \mintinline{text}{scan-build gcc foo.c}
+    
     Using clang: \\
     \mintinline{text}{scan-build clang foo.c}
+
     Using make: \\
     \mintinline{text}{scan-build make}
 
   \end{itemize}
   
   \item Use a dynamic analyzer.  Valgrind is a dynamic analysis tool 
-  that can monitor a program an analyze the resources it uses and
+  that can monitor a program and analyze the resources it uses and
   operations it performs.  Dynamic analysis is different in that it
   performs its analysis by running the program instead of just looking
   at the source code.  To use it, you first need to use the 
