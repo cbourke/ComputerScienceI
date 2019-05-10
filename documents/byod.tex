@@ -167,7 +167,30 @@ don't know what you're doing.
   \mintinline{text}{ssh login@cse.unl.edu} where \mintinline{text}{login} 
   is replaced with your CSE login.
 \end{enumerate}
-  
+
+\section*{Getting Started}
+
+\begin{enumerate}
+  \item In atom, create a new file named \mintinline{text}{hello.c} and be sure to 
+save it on your Z: drive after you've connected.  You can also create directories
+on your Z: drive to better organize your code.  
+  \item Edit the new file to have the following contents.
+\begin{minted}{c}
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+
+  printf("Hello World!\n");
+  return 0;
+}
+\end{minted}
+  \item Using putty (windows) or terminal (mac), compile your file using:\\
+  \mintinline{text}{gcc hello.c}
+  \item Run your program:\\
+  \mintinline{text}{./a.out}
+\end{enumerate}
+
 \section*{Alternatives}
 
 The following are some alternatives if you want to explore further.
