@@ -41,8 +41,8 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ### Fall 2019
 
-- Course Link: To Come
-- Lectures: To Come
+- Course Link: https://canvas.unl.edu/courses/66815
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZWAvbYmuCa0098eJ8ut2HkV
 
 ## License
 
