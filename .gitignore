@@ -1,3 +1,11 @@
+# python files
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+#pickle
+*.pkl
+
 # latex temporary files
 *.acn
 *.acr
