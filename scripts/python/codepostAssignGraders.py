@@ -1,4 +1,9 @@
 import sys
+import os
+from os import walk
+import codepost
+from config import config
+from course import course
 
 # this script interfaces with codepost and brings everything
 # together:
@@ -26,12 +31,6 @@ if(len(sys.argv) != 3):
 # TODO: consider moving this to config.py
 assignmentDir = "../handin/"+sys.argv[1]+"/"
 assignmentId = int(sys.argv[2])
-
-import os
-from os import walk
-import codepost
-from config import config
-from course import course
 
 codepost.configure_api_key(config.codePostApiKey)
 
