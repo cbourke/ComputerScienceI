@@ -35,16 +35,22 @@ class Course:
                 p.cseEmail = p.cseLogin + "@cse.unl.edu"
                 
         #3. filter into the appropriate group
-        #   This is done manually as the "role" is not available from canvas using the canvas API
+        #   This is done manually as the "role" is not available from canvas 
+        #   using the canvas API and we want more fine-grained control anyway
+        #   - If there is no cse login, they are ignored
+        #   - Otherwise, they are either a student XOR instructor/grader
+        #     - instructors can be graders
         for p in self.roster:
-            if p.nuid in instructorNuids:
-                self.instructors[p.nuid] = p
-            elif p.nuid in graderNuids:
-                self.graders[p.nuid] = p
-            elif p.cseLogin is None:
+            if p.cseLogin is None:
                 self.orphans[p.nuid] = p
             else:
-                self.students[p.nuid] = p
+                if p.nuid in instructorNuids or p.nuid in graderNuids:
+                    if p.nuid in instructorNuids: 
+                        self.instructors[p.nuid] = p
+                    if p.nuid in graderNuids: 
+                        self.graders[p.nuid] = p
+                else:
+                    self.students[p.nuid] = p
 
     def __str__(self):
         r = "Instructors (%d): \n"%(len(self.instructors))
