@@ -122,8 +122,5 @@ def updateRoster():
       graders=graderCSEEmails,
       courseAdmins=instructorCSEEmails)
 
-initAssignments()
+#initAssignments()
 updateRoster()
-
-#test:
-#addRubric(729, hackRubricCategories, hackRubricCategoriesComments)
