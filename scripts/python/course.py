@@ -91,12 +91,10 @@ class Course:
 
 course = Course(instructorNuids=config.instructorNuids, 
            graderNuids=config.graderNuids)
-#print(c)
 
-# 4. make assignment - example only, should be done in interface script
-#gradingAssignment = c.getAssignment()
-#s = c.assignmentToString(gradingAssignment)
-#print(s)
+def printCourse():
+    print(course)
 
+if __name__ == "__main__":
+    printCourse()
 
-# 5. interface with codepost, upload files
