@@ -8,8 +8,8 @@ codepost.configure_api_key(config.codePostApiKey)
 course = codepost.course.retrieve(id=config.codePostCourseId)
 
 print("Retrieved course: ")
-print("Id = " + str(course.id))
-print("Name = " + course.name)
+print("Id     = " + str(course.id))
+print("Name   = " + course.name)
 print("Period = " + course.period)
 
 print("Assignments (" + str(len(course.assignments)) + "): ")
