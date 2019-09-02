@@ -5,6 +5,8 @@ __pycache__/
 *$py.class
 #pickle
 *.pkl
+# local dev files
+scripts/python/dev.py
 
 # latex temporary files
 *.acn
