@@ -4,11 +4,53 @@ from course import course
 
 codepost.configure_api_key(config.codePostApiKey)
 
-initAssignments = False
 numHacks = 14
 pointsPerHack = 25
+#points per category must be integers
+hackRubricCategories = [('Style', 2), ('Documentation', 2), ('Design', 5), ('Correctness', 16)]
+assignRubricCategories = [('Style', 4), ('Documentation', 4), ('Design', 10), ('Correctness', 32)]
+hackRubricCategoriesComments = {
+  'Style': [
+            ('Significant improper or inconsistent use of whitespace', 1),
+            ('Significant improper identifier naming or inconsistent naming conventions', 1)
+            ],
+  'Documentation': [
+            ('Missing header documentation', 1),
+            ('Substantial blocks (functions, complex code) are not properly documented', 1),
+            ('Overly verbose or useless comments', 1)
+            ],
+  'Design': [
+            ('Compiler warnings have not been addressed', 1),
+            ('Dead or extraneous code remains', 1),
+            ('Insufficient error handling regardless of webgrader behavior', 1),
+            ('Extraneous or unnecessary output (debuggin or error statements)', 1),
+            ('Redundant code', 1),
+            ('Improper or incorrect patterns, variable types, etc.', 1),
+            ('Contains obvious memory leaks or misuse of data types', 1)            
+            ],
+  'Correctness': [
+            ('Output is not reasonably readable', 1),
+            ('Output does not report as much information as expected', 1)
+            ],
+}
+
+
 numAssignments = 5
 pointsPerAssignment = 50
+
+def addRubric(assignmentId, categories, categoryComments):
+    for i,(name,points) in enumerate(categories):
+        my_rubric_category = codepost.rubric_category.create(
+          assignment=assignmentId,
+          name=name,
+          pointLimit=points,
+          sortKey=i)
+        for j,(text,pointDelta) in enumerate(categoryComments[name]):
+            my_rubric_comment = codepost.rubric_comment.create(
+              text=text,
+              pointDelta=pointDelta,
+              category=my_rubric_category.id,
+              sortKey=j)
 
 def initHacks():
   for i in range(1, numHacks+1):
@@ -17,6 +59,7 @@ def initHacks():
       name=name,
       points=pointsPerHack,
       course=config.codePostCourseId)
+    addRubric(h.id, hackRubricCategories, hackRubricCategoriesComments)
     print("%s created with ID = %d"%(name,h.id))
 
 def initAssign():  
@@ -26,20 +69,23 @@ def initAssign():
       name=name,
       points=pointsPerAssignment,
       course=config.codePostCourseId)
+    addRubric(h.id, assignRubricCategories, hackRubricCategoriesComments)
     print("%s created with ID = %d"%(name,h.id))
 
-if initAssignments:
+def initAssignments():
   initHacks()
   initAssign()
   h = codepost.assignment.create(
     name="Midterm",
     points=100,
     course=config.codePostCourseId)
+  addRubric(h.id, hackRubricCategories, hackRubricCategoriesComments)
   print("%s created with ID = %d"%(h.name,h.id))
   h = codepost.assignment.create(
     name="Final",
     points=150,
     course=config.codePostCourseId)
+  addRubric(h.id, hackRubricCategories, hackRubricCategoriesComments)
   print("%s created with ID = %d"%(h.name,h.id))
   
 # graders and students are only valid if they have cse logins
@@ -47,23 +93,37 @@ if initAssignments:
 # students may have opted out of sharing this and it would not
 # be available from the API.  
 
-graderCSEEmails = []
-studentCSEEmails = []
+def updateRoster():
+    graderCSEEmails = []
+    studentCSEEmails = []
+    instructorCSEEmails = []
 
-for nuid,grader in course.graders.items():
-    if grader.cseEmail:
-        graderCSEEmails.append(grader.cseEmail)
-    else:
-        print("WARNING, grader %s has no cse login/email"%grader)
+    for nuid,instructor in course.instructors.items():
+        if instructor.cseEmail:
+            instructorCSEEmails.append(instructor.cseEmail)
+        else:
+            print("WARNING, instructor %s has no cse login/email"%instructor)
 
-for nuid,student in course.students.items():
-    if student.cseEmail:
-        studentCSEEmails.append(student.cseEmail)
-    else:
-        print("WARNING, student %s has no cse login/email"%student)
+    for nuid,grader in course.graders.items():
+        if grader.cseEmail:
+            graderCSEEmails.append(grader.cseEmail)
+        else:
+            print("WARNING, grader %s has no cse login/email"%grader)
 
-codepost.roster.update(
-  id=config.codePostCourseId,
-  students=studentCSEEmails,
-  graders=graderCSEEmails)
+    for nuid,student in course.students.items():
+        if student.cseEmail:
+            studentCSEEmails.append(student.cseEmail)
+        else:
+            print("WARNING, student %s has no cse login/email"%student)
 
+    codepost.roster.update(
+      id=config.codePostCourseId,
+      students=studentCSEEmails,
+      graders=graderCSEEmails,
+      courseAdmins=instructorCSEEmails)
+
+initAssignments()
+updateRoster()
+
+#test:
+#addRubric(729, hackRubricCategories, hackRubricCategoriesComments)
