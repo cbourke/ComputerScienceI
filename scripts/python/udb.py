@@ -52,9 +52,10 @@ def mapNuidsToCseLogins(nuidToCseLogin, pickleFileName = None):
       missingLogins.append(nuid)
     
   # if missing logins, try to get them from the DB:
-  if missingLogins :
+  if missingLogins:
     try:
       print("loading missing logins from db...")
+      print(missingLogins)
       nuidParam = "'" + '\', \''.join(missingLogins) + "'"
       query = 'SELECT login,nuid FROM view_login_nuid where nuid in ('+nuidParam+')'
 
