@@ -8,7 +8,7 @@ An overview of basics including variables, input and output in C.
 
 * Source file is a *plain text* file containing computer code in a high-level language
 * Source file have to be compiled into an *executable program*
-$$source \rightarrow assembly \rightarrow machine\,\, code$$
+  * *source → assembly → machine code*
 
 ### Demonstration
 
@@ -85,10 +85,10 @@ int main(int argc, char **argv) {
 * The *scope* of a variable is the section of code (code block) in which it exists or is valid
 * There are a few built-in variable types:
   * `int` - an integer that can represent values whole values in the range
-  $$-2147483648 \leq x \leq  2147483647$$
+  -2147483648 ≤ x ≤ 2147483647
   * `double` - a floating point number giving you about 16-17 *decimals* of accuracy
   * Essentially scientific notation but in binary  
-    $$3.14 \times 10^{24}$$
+    3.14 * 10<sup>24</sup>
   * `char` - a single character value
   * ASCII text value: ASCII 
 
