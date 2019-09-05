@@ -119,7 +119,8 @@ def updateRoster():
     codepost.roster.update(
       id=config.codePostCourseId,
       students=studentCSEEmails,
-      graders=graderCSEEmails,
+      graders=[],
+      superGraders=graderCSEEmails,
       courseAdmins=instructorCSEEmails)
 
 #initAssignments()
