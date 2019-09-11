@@ -23,7 +23,7 @@ hackRubricCategoriesComments = {
             ('Compiler warnings have not been addressed', 1),
             ('Dead or extraneous code remains', 1),
             ('Insufficient error handling regardless of webgrader behavior', 1),
-            ('Extraneous or unnecessary output (debuggin or error statements)', 1),
+            ('Extraneous or unnecessary output (debugging or error statements)', 1),
             ('Redundant code', 1),
             ('Improper or incorrect patterns, variable types, etc.', 1),
             ('Contains obvious memory leaks or misuse of data types', 1)            
@@ -58,7 +58,8 @@ def initHacks():
     h = codepost.assignment.create(
       name=name,
       points=pointsPerHack,
-      course=config.codePostCourseId)
+      course=config.codePostCourseId,
+      sortKey=(i+100))
     addRubric(h.id, hackRubricCategories, hackRubricCategoriesComments)
     print("%s created with ID = %d"%(name,h.id))
 
@@ -68,7 +69,8 @@ def initAssign():
     h = codepost.assignment.create(
       name=name,
       points=pointsPerAssignment,
-      course=config.codePostCourseId)
+      course=config.codePostCourseId,
+      sortKey=i)
     addRubric(h.id, assignRubricCategories, hackRubricCategoriesComments)
     print("%s created with ID = %d"%(name,h.id))
 
