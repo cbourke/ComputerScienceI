@@ -105,21 +105,23 @@ University of Nebraska--Lincoln}
 
 \maketitle
 
-\newwatermark[allpages=true,scale=5,textmark=Draft\\Draft\\Draft\\Draft,color=gray!15,]{}
+%\newwatermark[allpages=true,scale=5,textmark=Draft\\Draft\\Draft\\Draft,color=gray!15,]{}
 
 \hrule
 
-This is a draft of items/elements that will be included in rubrics for
-assignments and hacks.
+These are the rubric guidelines for the course.  In general, code
+is assessed based on 4 general categories: Style, Documentation, 
+Design, and Correctness.  In addition, for your submission to be
+considered, you need to ensure that:
 
-\section*{General Guidelines}
-
-\subsection*{Following Instructions}
 \begin{itemize}
-  \item All required soft-copy files handed in via webhandin
-  \item Correct file name(s) and organization
+  \item All required soft-copy files are handed in via webhandin
+  \item You use correct file name(s) and organization
   \item Programs successfully compile and execute using the webgrader
 \end{itemize}
+
+The four categories include but are not limited to
+the following items.
 
 \subsection*{Style}
 \begin{itemize}
@@ -129,8 +131,6 @@ assignments and hacks.
   \item Clean, readable code
   \item Code is well-organized
 \end{itemize}
-
-\newpage
 
 \subsection*{Documentation}
 \begin{itemize}
@@ -156,8 +156,6 @@ assignments and hacks.
   \item Test cases successfully execute
 \end{itemize}
 
-\newpage
-
 \section*{Hack Guidelines}
 
 Each hack is worth 25 points distributed as follows.
@@ -167,74 +165,61 @@ Each hack is worth 25 points distributed as follows.
 \hline
 Category & Points \\
 \hline
-Style & 2.5 \\
+Style & 2.0 \\
 \hline
-Documentation & 2.5 \\
+Documentation & 2.0 \\
 \hline
-Design & 5.0 \\
+Design & 4.0 \\
 \hline
-Correctness & 15.0 \\
+Correctness & 16.0 \\
 \hline
 \end{tabular}
 \end{table}
-Specific point deductions guidelines follow.  For each category, once all 
-points are lost, no more points should be deducted for that category (the
-minimum grade per category is zero).  However, all errors should be noted 
-in the rubric comments.
+
+Specific point deductions guidelines follow.  Each of these 
+items will result in a point deduction.
 
 \subsection*{Style}
 
 \begin{itemize}
-  \item Proper use of whitespace including consistent spacing, indentation for all nested blocks, readability, etc.
-  \begin{itemize}
-    \item Some (at least 2-3 instances or lines) of inconsistent whitespace style: -0.5
-    \item Frequent misuse of inconsistent use of whitespace: -1 
-    \item Extremely poor use of whitespace leading to unreadable code -2
-  \end{itemize}
-  \item Variable naming
-  \begin{itemize}
-    \item Inconsistent naming convention(s) of variables, functions, etc.: -1
-    \item Non-descriptive, cryptic, or inappropriate variable naming: -1
-  \end{itemize}
+  \item Significant improper or inconsistent use of whitespace
+  \item Significant improper identifier naming or inconsistent naming conventions
 \end{itemize}
 
 \subsection*{Documentation}
 
 \begin{itemize}
-  \item Missing ``header'' comment with author/date/etc. in all user-authored files
-  \item Overly verbose or unnecessary comments, intermediate/development (i.e.\ \mintinline{text}{TODO}s) comments not removed from final version: -1
-  \item Some function(s) lack proper documentation or include incorrect or inconsistent documentation style: -1
+  \item Missing header documentation
+  \item Substantial blocks (functions, complex code) are not properly documented
+  \item Overly verbose or useless comments
 \end{itemize}
-
+ 
 \subsection*{Design}
 
 \begin{itemize}
-  \item Compiler issues warnings that have not been taken care of -1 to -5 depending on severity
-  \item Dead or extraneous code has not been removed, large sections of code are commented out but not deleted -1 to -5 depending on the severity
-  \item Sufficiently reasonable error handling has been omitted regardless of how the webgrader runs -1 to -3 depending on severity
-  \item User defined functions should not have bad behavior (such as ``debug'' or ``error'' print statements, exit conditions, etc.)
-  \item Code contains redundancies such as extraneous variables, unused variables, copy-pasted/repeated code (instead of functions or loops as appropriate)
-  \item Use of incorrect patterns, variable types, etc.
-  \item Program contains obvious memory leaks or misuse of data types (static arrays when dynamic arrays are more appropriate) regardless of how the webgrader works
+  \item Compiler warnings have not been addressed
+  \item Dead or extraneous code remains
+  \item Insufficient error handling regardless of webgrader behavior
+  \item Extraneous or unnecessary output (debugging or error statements)
+  \item Redundant code
+  \item Improper or incorrect patterns, variable types, etc.
+  \item Contains obvious memory leaks or misuse of data types          
 \end{itemize}
 
 \subsection*{Correctness}
 
-Generally, points are awarded proportionally according to the number of test cases.
-Points are lost for each test case such that:
-
 \begin{itemize}
-  \item All tests must run completely without segfaults or other issues, program
-  output should match expected output.
-  \item The reported output (numbers) differ significantly from the expected output
-  \item Formatting details need not match exactly, but must report \emph{at least} as much information as the expected output (but \emph{may} give more or may give alternative formatting).
-  \item Output must be well-formatted and readable.
-  \item Proportional credit given in the case of automated test suites
-  \item If no substantial code is present but (some) test cases pass, credit should still not be awarded.
+  \item Output is not reasonably readable
+  \item Output does not report as much information as expected
 \end{itemize}
 
-\newpage
-
+In addition, the remaining points for correctness are awarded 
+proportionally for how many test case(s) pass.
+  
 \section*{Assignment Guidelines}
+
+In general, the same deductions will be made on assignments.  
+Assignment points are awarded proportionally to the number of 
+parts of the assignment.
 
 \end{document}
