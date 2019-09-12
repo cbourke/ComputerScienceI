@@ -251,14 +251,53 @@ and gives the user a description of the sound level.
 
 
 ```c
-//(partial)
+#include <stdlib.h>
+#include <stdio.h>
 
-  int decibel = 90;
+int main(int argc, char **argv) {
 
-  if(0 <= decibel && decibel <= 60) {
+  int decibel;
+
+  printf("Enter a decibel: ");
+  scanf("%d", &decibel);
+
+  if(decibel < 0) {
+    printf("decibels cannot be negative\n");
+  } else if(decibel <= 60) {
     printf("it is quiet\n");
-  } 
-  if(61 <= decibel && decibel <= 70) {
-    printf("it is convo\n");
+  } else if(decibel <= 70) {
+    printf("it is conversational\n");
+  } else if(decibel <= 110) {
+    printf("it is loud\n");
+  } else if(decibel <= 194) {
+    printf("it is dangerous\n");
+  } else {
+    printf("ERROR decibel exceeds the limit\n");
   }
+
+  return 0;
+}
 ```
+
+### Short Circuiting
+
+* Consider the following logical statement: `a && b`
+  * Suppose that `a` evaluates to false, does it matter what the value of `b` is?
+  * NO, the first being false, makes the entire expression false
+  * Consequently: C (and the vast majority of programming languages) will *not* evaluate `b`, its evaluation is "skipped" or "short-circuited"
+  * It was originally done to save on CPU cycles/time/efficiency
+  * It is still used in languages because it is *familiar*
+  * It has become a common programming *idiom*
+* Consider the following logical statement: `a || b` 
+  * Suppose that `a` evaluates to true, does it matter what the value of `b` is?
+  * If the first is true, then the entire expression is true regardless of the value of `b`
+
+## Linters
+
+* Code may be syntactically correct (it will compile) but still may have errors
+* Lint are piece of code that may look suspicious and may lead to errors but are not syntax errors.  
+* Linters are *static analysis* tools that look for such *potential* errors in your code and report them (usually as warnings)
+* Static analysis: a program that analyzes the *source code* of another program pre-compilation
+* `gcc` can be used as a rudimentary linter using the flag `-Wall`
+* Its best practice to always compile with this flag, *take care of all your compiler warnings!*
+
