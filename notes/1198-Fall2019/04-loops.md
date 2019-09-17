@@ -85,6 +85,155 @@ while(i < 10); {
 }
 ```
 
+* To stop a program from the command line type control-C
+
+* Consider the following code:
+
+```c
+int i = 0;
+while(i < 10) {
+  printf("%d\n", i);
+}
+```
+
+* This leads to an infinite loop, so be careful
+
+* Consider the following code:
+
+```c
+int i = 0;
+while(i < 10)
+  printf("%d\n", i);
+  i++;
+```
+
+* The above does not have curly brackets: so only the `printf` statement is *bound* to the while loop
+* It is best practice to *always* include the curly brackets even if you don't need to.
+
+* Consider the following code:
+* On December 31st, 2008 every zune froze for 24 hours
+* This was a classic off-by-one error
+
+```c
+//zune bug
+while (days > 365) 
+{
+  if (IsLeapYear(year)) 
+	{
+		if (days > 366) 
+		{
+			days -= 366;
+			year += 1; 
+	  }
+  }
+  else
+  {
+    days -= 365;
+    year += 1; 
+  }
+}
+```
+
+## Other Issues
+
+### Nested Loops
+
+* Often you may need to have more than one iteration
+* You may need to have a loop within a loop
+
+```c
+for(int i=0; i<10; i++) {
+	for(int j=0; j<10; j++) {
+  	printf("i = %d, j = %d\n", i, j);	
+	}
+}
+```
+
+### For loops vs while loops
+
+* Fact: any for loop can be rewritten as a while loop and vice versa
+* In general you use a for loop when you know how many (even a variable number of) iterations you are going to execute
+* In general you use a while loop when you don't know (up front) how many iterations you'll execute
+* Example: write a loop to compute how many digits are in a given number
+
+```c
+int x = 0;
+
+int numberOfDigits = 0;
+if(x == 0) {
+	printf("number of digits is one\n");
+} else {
+	while(x != 0) {
+		x /= 10;
+		numberOfDigits++;
+	}
+
+	printf("digits = %d\n", numberOfDigits);
+}
+```
+
+* A for loop's iteration is *always* done at the end of the loop iteration
+* You cannot scope (declare) an index variable that is limited to a while loop
+
+
+1. Do the following
+	* A list of even integers 0 to n, one to a line
+	* The same list, but delimited by commas
+	* A list of integers divisible by 3 between 10 and 100 (print a total as well)
+	* Prints all positive powers of two, 1, 2, 4, 8, …, up to 2^30
+	* Prints all even integers 2 thru 200 on 10 different lines (10 numbers per line)
+2. Write a program to project the total earnings in a savings account with a fixed APR, initial balance, and monthly deposit over a specified number of years.
+3. FizzBuzz
+4. Babylonian method
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+
+  int n = 20;
+  //A list of even integers 0 to n, one to a line
+  for(int i=0; i<=n; i+=2) {
+    printf("%d\n", i);
+  }
+
+  //The same list, but delimited by commas	
+  int i = 0;
+  for(i=0; i<=n-2; i+=2) {
+    printf("%d, ", i);    
+  }
+  printf("%d\n", i);
+
+  //* A list of integers divisible by 3 between 10 and 100 (print a total as well)
+  int total;
+	for(int i=12; i<=99; i+=3) {
+    printf("%d, ", i);
+    total += i;
+  }
+  printf("total = %d\n", total);
+  
+  //* Prints all positive powers of two, 1, 2, 4, 8, …, up to 2^30
+  int x = 1;
+	for(int i=0; i<=30; i++) {
+    printf("x = %d\n", x);
+    //multiply x by 2:
+    x *= 2;
+  }
+
+  // Prints all even integers 2 thru 200 on 10 different lines (10 numbers per line)
+  for(i=2; i<=200; i+=2) {
+    printf("%d, ", i);
+    if(i % 20 == 0) {
+      printf("\n");
+    }
+  }
+
+
+  return 0;
+}
+```
+
 
 
 
