@@ -182,9 +182,6 @@ if(x == 0) {
 	* A list of integers divisible by 3 between 10 and 100 (print a total as well)
 	* Prints all positive powers of two, 1, 2, 4, 8, …, up to 2^30
 	* Prints all even integers 2 thru 200 on 10 different lines (10 numbers per line)
-2. Write a program to project the total earnings in a savings account with a fixed APR, initial balance, and monthly deposit over a specified number of years.
-3. FizzBuzz
-4. Babylonian method
 
 ```c
 #include <stdio.h>
@@ -231,6 +228,43 @@ int main(void) {
 
 
   return 0;
+}
+```
+
+2. Write a FizzBuzz solution
+
+```c
+for(int i=1; i<=100; i++) {
+
+    if(i % 15 == 0) {
+      printf("FizzBuzz\n");
+    } else if(i % 3 == 0) {
+      printf("Fizz\n");
+    } else if(i % 5 == 0) {
+      printf("Buzz\n");
+    } else {
+      printf("%d\n", i);
+    }
+
+  }
+```
+
+3. Write a program to project the total earnings in a savings account with a fixed APR, initial balance, and monthly deposit over a specified number of years.
+
+```c
+
+double currentBalance = 1000.00;
+double apr = 0.05;
+double monthlyInterestRate = (apr / 12);
+double monthlyDeposit = 100.00;
+int numYears = 10;
+int months = numYears * 12;
+
+for(int i=1; i<=months; i++) {
+	double monthlyInterest = round(currentBalance * monthlyInterestRate * 100.0) / 100.0;
+	double oldBalance = currentBalance;
+	currentBalance += (monthlyInterest + monthlyDeposit);
+	printf("%d $%.2f $%.2f $%.2f\n", i, oldBalance, monthlyInterest, currentBalance);
 }
 ```
 
