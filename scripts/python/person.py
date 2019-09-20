@@ -6,6 +6,7 @@ class Person:
     canvasLogin = None
     canvasEmail = None      
     cseLogin = None
+    #TODO: deprecate/remove cseEmail
     cseEmail = None
     
     def __init__(self, nuid,
@@ -22,7 +23,7 @@ class Person:
         self.cseLogin    = cseLogin
         self.cseEmail    = None
     def __str__(self):
-        return "%-30s (%s) %-15s"%(self.name,self.nuid,self.cseLogin)
+        return "%-40s (%s) %-15s %s"%(self.name,self.nuid,self.cseLogin,self.canvasEmail)
     def __hash__(self):
         return hash(self.nuid)
         
