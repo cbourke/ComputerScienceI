@@ -36,8 +36,16 @@ for page in pages:
             canvasEmail = None
             if 'login_id' in u:
                 canvasLogin = u['login_id']
+            else:
+                print("ERROR: no login_id for user")
+                print(u)
+                sys.exit(1)
             if 'email' in u:
-                canvasEmail = u['email']                
+                canvasEmail = u['email']
+            else:
+                print("ERROR: no email for user")
+                print(u)
+                sys.exit(1)
             p = Person(
               nuid        = u['sis_user_id'],
               canvasId    = u['id'],
