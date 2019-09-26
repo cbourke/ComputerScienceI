@@ -121,5 +121,126 @@ void foo();
 * Each time a function is called, a new *stack frame* is created and placed on top of the program stack
 * Each time a function returns (to the calling function) the top most stack frame is popped
 
+* By default, variable values are *passed by value* to functions in C
+* When a function a function is called, *copies* of the variables' values are passed to the function, NOT the variables themselves
+* Any changes to the parameter variables inside the function are not "seen" or "realized" in the calling function
+* Suppose I *really* want a function to make changes to the original variables (swap them, manipulate them, etc.)
+* You need to create a function that passes variables *by reference*
+* To do this, we first need the concept of *pointers* in C
+
+## Pointers in C
+
+* Every piece of data in a program or a computer is stored in *memory*
+* Memory has both an *address* and *contents*
+* You can access contents by using a regular old variable `int a = 42;`
+* You can access the *address* of a memory location using a *pointer* variable
+* To declare a pointer variable you use the star operator: `*`
+
+```c
+//regular old variable declaration:
+int a = 42;
+//this declares a pointer variable that can point
+// to a memory location that contains an int
+int *pointerToA;
+```
+
+* At this point, `pointerToA` does not necessarily point to anything, it could:
+  * point to an invalid memory location
+  * point to a memory location that doesn't belong to you
+* It is best practice to initialize a pointer to a valid memory location or, failing that, to `NULL` 
+* Example:
+
+```c
+int *pointerToA = NULL;
+
+if(pointerToA == NULL) {
+  printf("invalid pointer!\n");
+}
+```
+
+* How do you make a pointer point to a valid memory location
+* A variable's name is its "content"
+* To get a variable's memory location use the referencing operator: `&`
+* Example:
+
+```c
+//this makes pointerToA "point" to the variable a
+pointerToA = &a;
+```
+
+* If you have a regular variable, to get its memory address you use the referencing operator: `&`
+* If you have a pointer variable, to access its contents (change it in to a regular old variable): use the dereferencing operator: `*`
+* Revisit: swapping demo
+* You can have a pointer variable point to any other type of variable:
+
+```c
+int a = 42;
+double b = 3.5;
+int *ptrToA = &a;
+double *ptrToB = &b;
+```
+
+### Pitfalls
+
+* You cannot arbitrarily assign values to a pointer:
+```c
+int a = 42;
+//unitialized, could point to garbage, or anything
+int *ptrToA;
+//points to an invalid memory location or a memory location
+// that does not belong to us:
+ptrToA = 1234;
+//the following is also wrong:
+ptrToA = a;
+```
+
+* all of the above will likely (hopefully) result in a segmentation fault
+* Even if it doesn't result in a seg fault, you might be corrupting your own memory!
+
+### Summary
+
+* Recall that `scanf("%lf", &b);` used an ampersand: why?
+* Scanf is passing a variable by reference
+* Functions that take pointer variables can make changes to the original variable if needed
+* Referencing operator: regular variable into a pointer variable (`&`)
+* Dereferencing operator: pointer variable into a regular variable (`*`)
+* Pointers allow you to free up the return value: instead of returning a result, you can set the values of a pointer or multiple pointers!
+* You can write functions that "return" multiple values
+
+```c
+double firstRoot(int a, int b, int c) {
+
+  return (-b + sqrt(b*b - 4*a*c)) / (2*a);
+}
+
+double secondRoot(int a, int b, int c) {
+
+  return (-b - sqrt(b*b - 4*a*c)) / (2*a);
+}
+
+void computeRoots(int a, int b, int c, double *root1, double *root2) {
+  *root1 = (-b + sqrt(b*b - 4*a*c)) / (2*a);
+  *root2 = (-b - sqrt(b*b - 4*a*c)) / (2*a);
+  return;
+}
+
+int main() {
+  int a = 0;
+  int b = 1;
+  int c = 30;
+  double root1, root2;
+  //root1 = firstRoot(a, b, c);                                                         
+  //root2 = secondRoot(a, b, c);                                                        
+  computeRoots(a, b, c, &root1, NULL);
+  printf("roots: %f, %f\n", root1, root2);
+
+  return 0;
+}
+```
+
+
+
+
+
 
 
