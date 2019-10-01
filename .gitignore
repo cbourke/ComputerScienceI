@@ -1,3 +1,8 @@
+# C files
+*.o
+*.so
+a.out
+
 # python files
 # Byte-compiled / optimized / DLL files
 __pycache__/
