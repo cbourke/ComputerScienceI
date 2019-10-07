@@ -57,9 +57,9 @@ for grader,students in gradingAssignment.items():
           for fileName in filenames:
               print("pushing " + path+fileName)
               contents = open(path+fileName).read()
-              #if the file is empty, add a space to accommodate codepost's API
+              #if the file is empty, add content to accommodate codepost's API
               if not contents:
-                  contents = " "
+                  contents = "EMPTY FILE"
               (_,extension) = os.path.splitext(fileName)
               extension = extension[1:] #chomp period: .c -> c
               codepost.file.create(
