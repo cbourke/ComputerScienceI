@@ -158,7 +158,177 @@ free(numbers);
 * attempts to access the contents of freed memory are *undefined behavior*
 * attempts to free already freed memory ("double freeing") are also undefined behavior
 * freeing memory that does not belong to you is undefined behavior
+
+## (Mini) Review
+
+* Arrays are collections of elements that can be accessed using *zero-indexing*
+* Static arrays are allocated on the stack and are thus limited
+* In general, prefer *dynamic arrays* allocated on the heap
+* To create dynamic arrays: use `malloc`
+* Memory management: memory must be `free` after you are done with it
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+  
+  int n = 5;
+  
+  int a[5];
+  int *b = (int *) malloc(n * sizeof(int));
+  
+  for(int i=0; i<n; i++) {
+    a[i] = (i+1) * 10;
+    b[i] = (i+1) * 10;
+  }
+  free(b);  
+  b = (int *) malloc(n * sizeof(int));
+
+  for(int i=0; i<n; i++) {
+    b[i] = (i+1) * 100;
+  }
+  
+
+  return 0;
+}
+```
+
+## Using arrays with functions
+
+* Remember: when passing an array to a function, you need to do your own *bookeeping*: you also need to pass in the *size* of the array using a separate variable
+* To pass an array to a function, you pass a *pointer* (and the size of the array)
+* Because an array's identifier (name) is already a pointer, when you pass an array, you only pass the name of the array
+* Since arrays are passed by reference, no ampersand is needed when calling this function
+* Technically speaking, the square brackets automatically dereference and do some "pointer arithmetic": each element is $n$ bytes (`int` this would be 4 for a `double` would be 8, etc).  The compiler is doing our pointer arithmetic for us
+  * The first element is at index `0` equivalently `arr + 0 * 4`
+  * The second element is at index `1` equivalently, `arr + 1 * 4`
+  * The third element is at index `2` equivalently, `arr + 2 * 4`
+* Problem: since the array is passed by reference, we can make changes to it!
+* To prevent a function from modifying the contents of an array you can use the keyword `const`
+* Example: write a function that takes an array and sums its elements
+
+```c
+/**
+ * This function takes an integer array of size
+ * n and returns the sum of its elements.
+ */
+int sum(const int *arr, int n) {
+  int total = 0;
+  for(int i=0; i<n; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+```
+
+* `const` gives a "promise" that no changes will be made to the elements in the array
+* In general, be conservative: if you are *not* going to be making changes, design your functions to use `const`
+* Observation: when we pass in an array (`primes`) we are passing a *pointer* (a reference, a memory location); inside the function, using the square brackets *dereferences* automatically for us
+
+## Return arrays from functions
+
+* You can write functions that return arrays
+* To return an array, you simply return a pointer
+* In general you *cannot* (and certainly *should not* return a static array)
+* Example: Design a function that creates an array of a particular size and fills it with ones, returning the resulting array
+
+```c
+int * getOnesArray(int n) {
+  int *arr = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    arr[i] = 1;
+  }
+  return arr;
+}
+```
+
+### Shallow vs Deep Copies
+
+* Example: write a function to create a copy of an array
+* A *shallow* copy of an array only makes a pointer point to the same array:
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+  
+  int n = 5;
+  int *a = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    a[i] = (i+1) * 10;
+  }
+  
+  int *b = a;
+  b[0] = 42;
+  printf("%d\n", a[0]);
+
+  return 0;
+}
+```
+
+* A *deep* copy is a brand new (separate) memory location containing the same elements
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+/**
+ * This function takes an integer array of size
+ * n and returns a new *deep copy* of it.
+ */
+int * copyOf(const int *arr, int n) {
+
+  int *copy = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    copy[i] = arr[i];
+  }
+  return copy;
+  
+}
+
+int main() {
+  
+  int n = 5;
+  int *a = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    a[i] = (i+1) * 10;
+  }
+  
+
+  int *b = copyOf(a, n);
+  b[0] = 42;
+  printf("%d\n", a[0]);
+
+  // if you are *interested*, RTM:
+  //alternatively:
+  b = (int *) malloc(n * sizeof(int));
+  memcpy(b, a, n * sizeof(int));
+
+  return 0;
+}
+```
+
+## Multidimensional arrays
+
+* You can have arrays with more than one "dimension"
+* 1-D arrays: regular old arrays
+* 2-D arrays: rows and columns (tables or matrices)
+* 3-D arrays: rows, columns and aisles or "lanes"
+* 4+-D arrays: 
+* in general, limit consideration to at most 2 dimensions
+* If you find you are "needing" more dimensions, you might instead want a *structure*
+
+* In C, a pointer `int *arr` points to a one-dimensional array
+* To point to a 2-D array, you need to use `int **arr`
+* In fact, an `int **arr` is a pointer to an *array of pointers*
 * 
+
+
+
+
+
 
 
   
