@@ -317,14 +317,36 @@ int main() {
 * 2-D arrays: rows and columns (tables or matrices)
 * 3-D arrays: rows, columns and aisles or "lanes"
 * 4+-D arrays: 
-* in general, limit consideration to at most 2 dimensions
+* In general, limit consideration to at most 2 dimensions
 * If you find you are "needing" more dimensions, you might instead want a *structure*
-
 * In C, a pointer `int *arr` points to a one-dimensional array
 * To point to a 2-D array, you need to use `int **arr`
 * In fact, an `int **arr` is a pointer to an *array of pointers*
-* 
 
+```c
+int n = 3, m = 4;//3 rows, 4 columns
+int **matrix = NULL;
+matrix = (int **) malloc(n * sizeof(int *));
+for(int i=0; i<n; i++) {
+  //setup the i-th "row":
+  matrix[i] = (int *) malloc(m * sizeof(int));
+}
+
+matrix[0][0] = 42;
+matrix[2][3] = 101;
+```
+
+* Once you are done with a 2-D array, how do you clean up?
+* To do this, you need to free up each row first, THEN the array of pointers
+
+```c
+for(int i=0; i<n; i++) {
+  free(matrix[i]);
+}
+free(matrix);
+```
+
+* What about arrays of `char`s?
 
 
 
