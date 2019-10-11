@@ -5,7 +5,7 @@
 #
 
 CC = gcc
-FLAGS = -Wall -std=c99
+FLAGS = -Wall -std=gnu99
 INCLUDES = -l cmocka -lm
 
 utilsTester: colorUtils.o utilsTester.c
