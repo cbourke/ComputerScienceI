@@ -1,3 +1,4 @@
+
 # CSCE 155E - Computer Science I
 ## Strings
 ### Fall 2019
@@ -166,3 +167,136 @@ int main(void) {
   return 0;
 }
 ```
+
+### String Processing
+
+* The `string.h` library provides many other useful functions
+* Example: `strcat` (String concatenation)
+* Concatenation: appending one string to the end of another string
+
+```c
+char fullName[100];
+//strcpy(fullName, "Bourke, Christopher");
+strcpy(fullName, "Bourke");
+printf("%s\n", fullName);
+//append or concatenate ", ":
+strcat(fullName, ", ");
+strcat(fullName, "Christopher");
+printf("%s\n", fullName);
+```
+
+* `strcat` concatenates the second argument to the end of the first
+* It is *your* responsibility to ensure that the first argument is "big enough" to handle whatever you concatenate
+* `strcat` handles the null terminating character for you!
+
+### Length limited versions
+
+* `strcpy` and `strcat` both have byte-limited versions: `strncpy` and `strncat`
+* You can give them another, third argument that limits how many bytes (how many characters) are copied or concatenated
+```c
+
+char fullName[100];
+//strcpy(fullName, "Bourke, Christopher");
+strncpy(fullName, "Bourke", 3);
+printf("%s\n", fullName);
+//append or concatenate ", ":
+strcat(fullName, ", ");
+strncat(fullName, "Christopher", 5);
+
+printf("%s\n", fullName);
+```
+
+### Substrings
+
+* Often you'll want only *part* of a string called a "substring"
+
+```c
+
+  //char -> char *
+  char message[] = "Hello World how are you?";
+  char word[100];
+  //goal: copy the "World" part of message into word
+  // start at message[6], copy 5 characters
+  strncpy(word, &message[6], 5);
+  printf("word = %s\n", word);
+```
+
+### More convenient functions
+
+* The `ctype.h` library provides some more functions that operate on individual characters: `isalpha(char c)` `isupper(c)`, `islower(c)`, convert: `toupper(c), tolower(c)`, `isspace(c)`, `isdigit(c)` 
+
+### String Formatting
+
+* Recall: `printf` prints a formatted string to the standard output
+* You can use another function, `sprintf` to "print" to another string
+* `sprintf` takes one new argument: the first argument is the string you want to print to (instead of the standard output)
+* It is YOUR responsibility to ensure that the destination string is big enough to hold the results
+
+```c
+
+  char message[1000];
+  int x = 42;
+  double pi = 3.14159;
+  char name[] = "Chris";
+  sprintf(message, "\tx = %d, pi =%10.2f, my name is %s\n", x, pi, name);
+  printf("%s", message);
+```
+
+### String Tokenization
+
+* Often, data is formatted: CSV, TSV (Comma or Tab Separated Value)
+* Example: `"Chris,Bourke,35140602,Omaha,NE,363 Avery Hall"`
+* Each piece of data is separated by a *token*
+* We'll stick to *simple* data tokenization: we will want to "split" a string along some delimiter and process each token separately
+
+* Function that we'll use is: `strtok`
+* It takes two arguments: the string you want to tokenize and a delimiter that you want to use
+* Generally we'll only use one delimiter, but you can use multiple ones 
+* Generally, the delimiter is ignored
+* The first time you call `strtok` you pass the string you want to tokenize
+* Each subsequent call, in order to continue tokenizing the same string, you need to pass in `NULL`
+* Keep in mind: `strtok` will *change the contents of your string*
+
+```c
+char data[] = "Chris,Bourke,35140602,Omaha,NE,363 Avery Hall";
+char *token;
+//process the first token:
+token = strtok(data, ",");
+
+while(token != NULL) {
+  printf("%s\n", token);
+  token = strtok(NULL, ",");
+}
+```
+
+## String Comparisons (Revisited)
+
+* In C, you *cannot* use the `==` operator to compare strings
+* `==` is a numerical operator, using it with strings `char *` is only comparing the memory addresses of strings, not their content
+* To properly compare strings according to their *content* you need to use a function: `strcmp`:
+  * It takes two strings, `a, b`
+  * It returns something negative, zero, or positive based on the relative ordering of the string (contents):
+  * If `a < b` (conceptually) it returns *something* negative
+  * If `a = b` (conceptually) it returns 0
+  * If `a > b` (out of order conceptually) it returns *something* positive
+  
+
+```c
+int result;
+
+result = strcmp("apple", "apple"); //0
+result = strcmp("apple", "apples"); //negative
+result = strcmp("apples", "apple"); //positive
+
+result = strcmp("Apple", "apple"); //negative
+
+result = strcmp("apples", "oranges"); //negative
+
+result = strcasecmp("ApPlE", "apple"); //zero
+```
+
+* all comparisons are according to the ASCII text table: "lexicographic ordering"  
+
+
+
+
