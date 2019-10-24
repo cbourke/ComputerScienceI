@@ -20,15 +20,7 @@ University of Nebraska--Lincoln}
 
 \hrule
 
-\section*{Introduction}
-
-Hack session activities are small weekly programming assignments intended
-to get you started on full programming assignments.  Collaboration is allowed
-and, in fact, \emph{highly encouraged}.  You may start on the activity before
-your hack session, but during the hack session you must either be actively 
-working on this activity or \emph{helping others} work on the activity.
-You are graded using the same rubric as assignments so documentation, style, 
-design and correctness are all important.  
+\input{instructions.tex}
 
 \section*{Problem Statement}
 
@@ -40,7 +32,6 @@ functionality.
   \item \mintinline{c}{double degreesToRadians(double degree);} - Write a 
   	function to convert degrees to radians using the formula 
 		$$\frac{d\cdot \pi}{180}$$
-\newpage
   \item Write a function to compute the air distance between two locations 
     identified by their latitude/longitude.  
 \begin{minted}{c}
@@ -64,6 +55,7 @@ the latitude/longitude to be in degrees.  Latitude should be in the range
 $[-90, 90]$ and longitude in the range $[-180, 180]$.  Negative values 
 correspond to the southern and western hemispheres.
 
+\newpage
   \item An object traveling at a velocity $v$ experiences time dilation
   relative to a stationary object which is quantified by the Lorentz equation:
   $$T = \frac{t}{\sqrt{(1-\frac{v^2}{c^2})}}$$
