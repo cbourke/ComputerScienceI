@@ -20,16 +20,9 @@ University of Nebraska--Lincoln}
 
 \hrule
 
-\section*{Introduction}
+\input{instructions.tex}
 
-Hack session activities are small weekly programming assignments intended
-to get you started on full programming assignments.  Collaboration is allowed
-and, in fact, \emph{highly encouraged}.  You may start on the activity before
-your hack session, but during the hack session you must either be actively 
-working on this activity or \emph{helping others} work on the activity.
-You are graded using the same rubric as assignments so documentation, style, 
-design and correctness are all important.  
-
+\newpage
 \section*{Exercises}
 
 To get more practice working with arrays, you will write several 
@@ -91,6 +84,7 @@ with them.
 You can declare and use a \mintinline{c}{Pixel} type like you would 
 an \mintinline{c}{int} or \mintinline{c}{double}: 
 
+\begin{figure}[H]
 \begin{minted}{c}
 //a single pixel:
 Pixel p;
@@ -104,6 +98,7 @@ Pixel temp = a;
 a = b;
 b = temp;
 \end{minted} 
+\end{figure}
 
 An $h \times w$ (height by width) image can be represented as a two dimensional
 array of \mintinline{c}{Pixel} types; in particular: \mintinline{c}{Pixel **image}.
