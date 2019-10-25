@@ -88,7 +88,12 @@ class Course:
         min = math.floor(len(self.students) / len(self.graders))
         max = math.ceil(len(self.students) / len(self.graders))
         r += "Each grader will grade %d - %d students\n"%(min,max)
-        for grader,students in assignment.items():
+        #dump graders to list of Person objects
+        graders = list(assignment.keys())
+        graders.sort(key=lambda x: x.name)
+        for grader in graders:
+          students = assignment[grader];
+          students.sort(key=lambda x: x.name)
           n = len(students)
           r += "%s (%d assigned)\n"%(grader.name,n)
           for s in students:
