@@ -272,13 +272,13 @@ Some tips/hints:
 %
 %\begin{enumerate}
 %  
+%  \item gameUtils.c line 23 should be \mintinline{c}{return copy;}; causes segfaults when free is called.
 %  \item gameUtils.c line 55 should be \mintinline{c}{i<2} otherwise an extraneous line is printed
+%  \item gameUtils.c line 85: should be \mintinline{c}{(board[0][0] == board[0][1] && board[0][1] == board[0][2] && board[0][0] == X)}; the indices being off only checks the upper left for a win condition instead of the entire row.
 %  \item gameUtils.c line 115 should be \mintinline{c}{board[i][j] == NONE}:
 %    Otherwise, it will immediately end the game because it is not a "playing" status.
-%  \item ticTacToeDriver.c line 29 should be \mintinline{c}{userMove(board, O);} (Oh, not zero): causes 2nd player's input is ignored and gets stuck in a loop unless that player selects an already chosen option, at which it goes back to player 1.
 %  \item playerUtils.c line 19: should be \mintinline{c}{board[(input-1)/3][(input-1)%3] = player;} otherwise only choices 1-3 work, choices 4-9 are ignored
-%  \item gameUtils.c line 85: should be \mintinline{c}{(board[0][0] == board[0][1] && board[0][1] == board[0][2] && board[0][0] == X)}; the indices being off only checks the upper left for a win condition instead of the entire row.
-%  \item gameUtils.c line 23 should be \mintinline{c}{return copy;}; causes segfaults when free is called.
+%  \item ticTacToeDriver.c line 29 should be \mintinline{c}{userMove(board, O);} (Oh, not zero): causes 2nd player's input is ignored and gets stuck in a loop unless that player selects an already chosen option, at which it goes back to player 1.
 %
 %\end{enumerate}
 
