@@ -169,7 +169,309 @@ int main(void) {
 
 ### Selection Sort
 
-* Basic idea: 
+* Basic Idea: search through the array and find the minimal element, swap it with the first element, `a[0]`
+  * Repeat: find the second smallest among the remaining $n-1$ elements, swap it with `a[1]`
+  * In general: on the $i$-th iteration, the first $i-1$ elements have been sorted, search the remaining $n-i$ elements and find the minimum, swap it with `a[i]`
+
+* Analysis
+    * How many comparisons does selection sort make on an array of size $n$?
+    * Selection sort requires about $n^2$ operations, it is a "quadratic" sorting algorithm
+    * IN practice, quadratic sorting algorithms are NOT feasible,
+    * For any even moderately large data set, quadratic algorithms are not feasible
+
+    ### Quick Sort
+
+    * Basic Idea:
+        * Choose a *pivot* element in the array
+        * Partition all other elements around the pivot: place element smaller to the left, larger to the right
+        * Repeat by recursing on the left partition and the right partition
+        * Until your partition becomes of size 0 or 1
+    * Analysis:
+      * Quick Sort make an average number of comparisons proportional to 
+$$\approx n\log{(n)}$$
+
+### Comparison
+
+* Selection sort: $n^2$ vs Quick Sort $n\log{(n)}$
+* Mathematical perspective: $n\log{(n)}$ is a smaller and smaller growing function (quasilinear function)
+* Consider doubling the input size, $n$:
+  * Selection sort would have the number of comparisons go from:
+$$n^2 \rightarrow (2n)^2 = 4n^2$$
+  * Doubling the input size, quadruples the number of operations that selection sort performs
+  * Quick sort would have the number of comparisons go from:
+$$n\log{(n)} \rightarrow 2n\log{(2n)} = 2n\log{(2)} + 2n\log{(n)} = 2n\log{n} + 2n$$
+  * Doubling the input size only doubles the number of operations (roughly)
+  
+* Practical perspective: Consider sorting a "large" array of 1 trillion elements: $10^{12}$:
+    * Selection Sort: 
+    $$(10^{12})^2 = 10^{24}$$
+    (1 septillion operations), at 7TFlops -> 4 million years
+    * Quick Sort:
+    $$10^{12}\log{(10^{12})} = 12 \cdot 10^{12}\log{10}$$
+    Only about 40 seconds with a 7TFLOP computer
+    
+## Searching & Sorting in Practice
+
+* In practice: you don't roll your own: you shouldn't have to write your own implementations unless there is a Very Good Reason to do so.
+* In practice you use the built-in searching and sort implementations provided by the language or standard libraries
+* To avoid multiple implementations you use *generic* programming
+* To avoid multiple implementations you use a comparator function
+* A comparator function takes to "things", a, b and determines their relative ordering:
+  * it returns *something* negative if a < b
+  * it returns zero if a is equal to b
+  * it returns *something* positive if a > b (b < a)
+
+### Comparators in C
+
+* In C a *comparator function* has the following signature:
+
+`int cmp(const void *a, const void *b)`
+
+* `void *` is a *generic* void pointer: it can point to *anytype of data* (this is nothing more than a generic memory location)
+* It is the comparator's responsibility to "recover" the type of variable in order to do its comparison
+* The return type is an `int`: something negative, positive or zero depending on the relative ordering of `a` and `b`
+* Inside the comparator, you follow a general pattern:
+  * you type cast the generic pointers into the type of data you intend to compare
+  * You then apply the logic to compare them
+  * You then return an integer corresponding to the relative ordering of the two elements
+* Once you have a comparator, you need to use it
+* Sorting: the C standard library has a nice generic sorting function:
+
+```c
+void qsort(void *base,
+           size_t nel,
+           size_t size,
+           int (*compar)(const void *, const void *));
+```
+
+* `void *base` is the array you want to sort
+* `nel` is the number of elements (size of the array)
+* `size` is the number of bytes each element takes
+* `compar` is a *function pointer* to the comparator you want to use to order elements
+
+### Function Pointers
+
+* How can we "pass" a function to another function as a parameter?
+* Doing so are generally referred to as "callbacks" (function passed to other functions so that those functions can call the functions)
+* Example: GUIs: you can define a button that when clicked, performs some action; to do this, you need a way to register the function that should be called when someone clicks the button: registering a callback
+* Example: `qsort` needs a way to order elements, you "pass in" a comparator function using a pointer to it
+* But: a function is code stored in memory, thus it has a *memory address*
+* It makes sense that you can create a pointer that points to a function (just like you can create a pointer that points to an integer)
+
+```c
+//create a pointer called ptrToFunc that can
+// point to any function that returns an integer
+// and takes three arguments: (int, double, char)
+int (*ptrToFunc)(int, double, char);
+
+//declare a pointer that can point to math's sqrt function
+double (*ptrToSqrt)(double);
+
+//what does ptrToSqrt point to?
+
+```
+
+
+
+
+
+
+
+
+
+```c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+  int nuid;
+  char *firstName;
+  char *lastName;
+  double gpa;
+} Student;
+
+
+int cmpDouble(const void *a, const void *b) {
+
+  const double *x = (const double *)a;
+  const double *y = (const double *)b;
+
+  if(*x < *y) {
+    //in order so return something negative
+    return -1;
+  } else if(*x > *y) {
+    //out of order, so return:
+    return 1;
+  } else {
+    //equal so return
+    return 0;
+  }
+}
+
+/**
+ * This comparator orders two Student instances
+ * by GPA in descending order
+ */
+int cmpStudentByGpa(const void *a, const void *b) {
+  const Student *x = (const Student *)a;
+  const Student *y = (const Student *)b;
+  return cmpDouble(&(y->gpa), &(x->gpa));
+}
+
+/**
+ * This comparator takes two Student instances and orders
+ * them by last name, first name
+ */
+int cmpStudentByName(const void *a, const void *b) {
+  const Student *x = (const Student *)a;
+  const Student *y = (const Student *)b;
+
+  int result = strcmp(x->lastName, y->lastName);
+  if(result == 0){ 
+    //have the same last name, break ties using hte
+    //first name:
+    return strcmp(x->firstName, y->firstName);
+  } else {
+    return result;
+  }
+}
+
+int cmpInt(const void *a, const void *b) {
+
+  const int *x = (const int *)a;
+  const int *y = (const int *)b;
+
+  if(*x < *y) {
+    //in order so return something negative
+    return -1;
+  } else if(*x > *y) {
+    //out of order, so return:
+    return 1;
+  } else {
+    //equal so return
+    return 0;
+  }
+}
+
+int cmpIntDesc(const void *a, const void *b) {
+  return cmpInt(b, a);
+}
+
+int main(void) {
+
+  int n = 9;
+  int arr[] = {5, 9, 3, 4, 0, 1, 4, 5, 2};
+  qsort(arr, n, sizeof(int), cmpIntDesc);
+  for(int i=0; i<n; i++) {
+    printf("%d, ", arr[i]);
+  }
+
+  return 0;
+}
+```
+
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+int cmpDouble(const void *a, const void *b) {
+
+  const double *x = (const double *)a;
+  const double *y = (const double *)b;
+
+  if(*x < *y) {
+    //in order so return something negative
+    return -1;
+  } else if(*x > *y) {
+    //out of order, so return:
+    return 1;
+  } else {
+    //equal so return
+    return 0;
+  }
+}
+
+int cmpInt(const void *a, const void *b) {
+
+  const int *x = (const int *)a;
+  const int *y = (const int *)b;
+
+  if(*x < *y) {
+    //in order so return something negative
+    return -1;
+  } else if(*x > *y) {
+    //out of order, so return:
+    return 1;
+  } else {
+    //equal so return
+    return 0;
+  }
+}
+int linearSearch(const void *key, const void *base, int n, size_t size,
+           int (*compar)(const void *, const void *)) {
+
+  //you want the i-th element: base[i]
+  // base + i * number of bytes each element takes
+  // base[i] is at memory location: base + i * size
+  for(int i=0; i<n; i++) {
+    if(compar( (base + i * size), key) == 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+double runMath(double x, double (*ptrToFunc)(double)) {
+  return ptrToFunc(x);
+}
+
+int main(void) {
+
+  // int x = 42;
+  // int *ptrTox = &x;
+  // *ptrTox = 101;
+
+  //declare a pointer that can point to math's sqrt function
+  double (*ptrToSqrt)(double);
+
+  //what does ptrToSqrt point to?
+  //nothing, or uninitialized 
+
+  //make it point to sqrt:
+  ptrToSqrt = &sqrt;
+  //or simply:
+  ptrToSqrt = sqrt;
+
+
+  double y = ptrToSqrt(2.0);
+  printf("square root of 2 is %f\n", y);
+
+  double x = M_PI;
+  y = runMath(x, sin);
+  printf("y = %f\n", y);
+
+  y = runMath(x, sqrt);
+  printf("y = %f\n", y);
+
+  int n = 9;
+  int arr[] = {5, 9, 3, 4, 0, 1, 4, 5, 2};
+  int key = 9;
+  int index = linearSearch(&key, arr, n, sizeof(int), cmpInt);
+  printf("found %d at index %d\n", key, index);
+
+  n = 4;
+  double brr[] = {3.14, 5.2, 33.4, 10.5};
+  double k = 10.5;
+  index = linearSearch(&k, brr, n, sizeof(double), cmpDouble);
+  printf("found %f at index %d\n", k, index);
+
+  return 0;
+}
+```
 
 
 
