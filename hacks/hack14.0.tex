@@ -88,23 +88,23 @@ file \mintinline{text}{transactions.csv} and hand it in.
 To ensure that your data parsing works, you'll need to produce a report
 that, for each type of transaction, produces a total number of transactions 
 as well as a total of all amounts of those transactions.  For example, 
-your report may look something like the output in Figure 
-\ref{figure:simpleReport}.
+the input in Figure \ref{figure:dataFile} should produce a report that
+may look like the output in Figure \ref{figure:simpleReport}.
 
 \begin{figure}[ht]
 \begin{minted}{text}
-  =======================================
-  Totals Report
-  =======================================
-  Type            Count             Total
-  =======================================
-  Payment        945842  $ 10169046406.18
-  Transfer        23281  $  8679244033.11
-  Withdraw       239406  $ 26637290889.70
-  Debit           28536  $   119148709.08
-  Deposit        488583  $ 96034475282.32
-  =======================================
-  Total         1725648  $141639205320.39
+=======================================
+Totals Report
+=======================================
+Type            Count             Total
+=======================================
+Payment             6  $       65615.95
+Transfer            0  $           0.00
+Withdraw            1  $       79628.70
+Debit               1  $        3225.27
+Deposit             2  $      308770.95
+=======================================
+Total              10  $      457240.87
 \end{minted}
 \caption{Simple aggregate report output example}
 \label{figure:simpleReport}
