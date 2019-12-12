@@ -157,6 +157,23 @@ that you should try before throwing in the towel.
     Using make: \\
     \mintinline{text}{scan-build make}
 
+    \item Facebook's Infer (\url{https://github.com/facebook/infer}) 
+    is another static analysis tool that can be used on C, Java, and 
+    several other programming languages.  Full documentation can be
+    found here: \url{https://fbinfer.com/docs/infer-workflow.html}, but
+    we've installed it on CSE and you can use it in a two phase process.
+    
+    First, capture static information using infer when you compile your
+    program: 
+     
+    \mintinline{text}{infer capture -- gcc hello.c}
+
+    This produces analysis data in a folder named \mintinline{text}{infer-out}
+    which you can then run static analysis on: 
+
+    \mintinline{text}{infer analyze}
+
+
   \end{itemize}
   
   \item Use a dynamic analyzer.  Valgrind is a dynamic analysis tool 
@@ -182,6 +199,7 @@ that you should try before throwing in the towel.
     \item Video Introduction to GDB: \url{https://www.youtube.com/watch?v=bWH-nL7v5F4&index=43}
     \item Hack 9.0: \url{https://github.com/cbourke/CSCE155-Hack9.0}
   \end{itemize}
+  
   
   \item ``Perf'' Test.  Performance testing may be necessary if you have 
   code that compiles, runs, and may even work, but seems to be inefficient.
