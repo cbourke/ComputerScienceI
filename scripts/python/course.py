@@ -32,7 +32,6 @@ class Course:
         for p in self.roster:
             if p.nuid in nuidsToCseLogins and nuidsToCseLogins[p.nuid] is not None:
                 p.cseLogin = nuidsToCseLogins[p.nuid]
-                p.cseEmail = p.cseLogin + "@cse.unl.edu"
                 
         #3. filter into the appropriate group
         #   This is done manually as the "role" is not available from canvas 

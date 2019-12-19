@@ -6,8 +6,6 @@ class Person:
     canvasLogin = None
     canvasEmail = None      
     cseLogin = None
-    #TODO: deprecate/remove cseEmail
-    cseEmail = None
     
     def __init__(self, nuid,
                        name = None,
@@ -21,7 +19,6 @@ class Person:
         self.canvasLogin = canvasLogin
         self.canvasEmail = canvasEmail      
         self.cseLogin    = cseLogin
-        self.cseEmail    = None
     def __str__(self):
         return "%-40s (%s) %-15s %s"%(self.name,self.nuid,self.cseLogin,self.canvasEmail)
     def __hash__(self):

@@ -52,8 +52,8 @@ for grader,students in gradingAssignment.items():
         if filenames:
           submission = codepost.submission.create(
              assignment=assignmentId,
-             students=[s.cseEmail],
-             grader=grader.cseEmail)
+             students=[s.canvasEmail],
+             grader=grader.canvasEmail)
           for fileName in filenames:
               print("pushing " + path+fileName)
               contents = open(path+fileName).read()
@@ -68,10 +68,3 @@ for grader,students in gradingAssignment.items():
                  extension=extension,
                  submission=submission.id
               )
-
-            # codepost.file.create(
-            #   name="Hello.go",
-            #   code='fmt.Println("hello world")',
-            #   extension="go",
-            #   submission=submission.id
-            # )

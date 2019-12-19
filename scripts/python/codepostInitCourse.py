@@ -96,34 +96,34 @@ def initAssignments():
 # be available from the API.  
 
 def updateRoster():
-    graderCSEEmails = []
-    studentCSEEmails = []
-    instructorCSEEmails = []
+    graderEmails = []
+    studentEmails = []
+    instructorEmails = []
 
     for nuid,instructor in course.instructors.items():
-        if instructor.cseEmail:
-            instructorCSEEmails.append(instructor.cseEmail)
+        if instructor.canvasEmail:
+            instructorEmails.append(instructor.canvasEmail)
         else:
             print("WARNING, instructor %s has no cse login/email"%instructor)
 
     for nuid,grader in course.graders.items():
-        if grader.cseEmail:
-            graderCSEEmails.append(grader.cseEmail)
+        if grader.canvasEmail:
+            graderEmails.append(grader.canvasEmail)
         else:
             print("WARNING, grader %s has no cse login/email"%grader)
 
     for nuid,student in course.students.items():
-        if student.cseEmail:
-            studentCSEEmails.append(student.cseEmail)
+        if student.canvasEmail:
+            studentEmails.append(student.canvasEmail)
         else:
             print("WARNING, student %s has no cse login/email"%student)
 
     codepost.roster.update(
       id=config.codePostCourseId,
-      students=studentCSEEmails,
-      graders=graderCSEEmails,
-      superGraders=graderCSEEmails,
-      courseAdmins=instructorCSEEmails)
+      students=studentEmails,
+      graders=graderEmails,
+      superGraders=graderEmails,
+      courseAdmins=instructorEmails)
 
 #initAssignments()
 updateRoster()
