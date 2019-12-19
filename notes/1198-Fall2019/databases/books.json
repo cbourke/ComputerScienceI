@@ -1,0 +1,170 @@
+[
+  {
+    "Course": "CSCE 155A",
+    "Title": "Thinking in Java",
+    "Author": "Eckel, Bruce",
+    "Topic": "Java",
+    "URL": "http://www.mindview.net/Books/TIJ/"
+  },
+  {
+    "Course": "CSCE 155A",
+    "Title": "Introduction to Programming Using Java",
+    "Author": "Eck, David J.",
+    "Topic": "Java",
+    "URL": "http://math.hws.edu/javanotes/"
+  },
+  {
+    "Course": "CSCE 155A",
+    "Title": "Java Programming",
+    "Author": null,
+    "Topic": "Java",
+    "URL": "https://en.wikibooks.org/wiki/Java_Programming"
+  },
+  {
+    "Course": "CSCE 155E",
+    "Title": "C Programming",
+    "Author": "",
+    "Topic": "C",
+    "URL": "https://en.wikibooks.org/wiki/C_Programming"
+  },
+  {
+    "Course": "CSCE 155T",
+    "Title": "Dive Into Python",
+    "Author": "Mark Pilgrim",
+    "Topic": "Python",
+    "URL": "http://www.diveintopython.net/toc/index.html"
+  },
+  {
+    "Course": "CSCE 155T",
+    "Title": "Learn Python The Hard Way",
+    "Author": "Zed A. Shaw",
+    "Topic": "Python",
+    "URL": "http://learnpythonthehardway.org/book/"
+  },
+  {
+    "Course": "CSCE 155T",
+    "Title": "Python for Informatics: Exploring Information",
+    "Author": "Charles Severance",
+    "Topic": "Python",
+    "URL": "http://www.pythonlearn.com/book.php"
+  },
+  {
+    "Course": "CSCE 156",
+    "Title": "Hacking With PHP",
+    "Author": "Hudson, Paul",
+    "Topic": "PHP",
+    "URL": "http://www.hackingwithphp.com/"
+  },
+  {
+    "Course": "CSCE 156",
+    "Title": "PHP Programming",
+    "Author": "",
+    "Topic": "PHP",
+    "URL": "http://en.wikibooks.org/wiki/PHP_Programming"
+  },
+  {
+    "Course": "CSCE 156",
+    "Title": "Data Structures and Algorithms with Object-Oriented Design Patterns in Java",
+    "Author": "Preiss, Bruno",
+    "Topic": "Data Structures, Java",
+    "URL": "http://www.brpreiss.com/books/opus5/"
+  },
+  {
+    "Course": "CSCE 156",
+    "Title": "MySQL Essentials",
+    "Author": "",
+    "Topic": "SQL",
+    "URL": "http://www.techotopia.com/index.php/MySQL_Essentials"
+  },
+  {
+    "Course": "CSCE 235",
+    "Title": "Book of Proof",
+    "Author": "Richard Hammack",
+    "Topic": "Discrete Mathematics",
+    "URL": "http://www.people.vcu.edu/~rhammack/BookOfProof/"
+  },
+  {
+    "Course": "CSCE 235",
+    "Title": "Mathematics for Computer Science",
+    "Author": "Albert R. Meyer",
+    "Topic": "Discrete Mathematics",
+    "URL": "https://www.seas.harvard.edu/courses/cs20/MIT6_042Notes.pdf"
+  },
+  {
+    "Course": "CSCE 235",
+    "Title": "Notes on Discrete Mathematics",
+    "Author": "James Aspnes",
+    "Topic": "Discrete Mathematics",
+    "URL": "http://www.cs.yale.edu/homes/aspnes/classes/202/notes.pdf"
+  },
+  {
+    "Course": "CSCE 235",
+    "Title": "Discrete Mathematics",
+    "Author": "",
+    "Topic": "Discrete Mathematics",
+    "URL": "https://en.wikibooks.org/wiki/Discrete_Mathematics"
+  },
+  {
+    "Course": "CSCE 310",
+    "Title": "C Plus Plus",
+    "Author": "",
+    "Topic": "C++",
+    "URL": "http://www.cplusplus.com/"
+  },
+  {
+    "Course": "CSCE 322",
+    "Title": "Prolog and Natural-Language Analysis",
+    "Author": "Fernando C. N. Pereira and Stuart M. Shieber",
+    "Topic": "Prolog",
+    "URL": "http://mtome.com/Publications/PNLA/pnla.html"
+  },
+  {
+    "Course": "CSCE 322",
+    "Title": "Learn You a Haskell for Great Good!",
+    "Author": "Miran Lipovaca",
+    "Topic": "Haskell",
+    "URL": "http://learnyouahaskell.com/"
+  },
+  {
+    "Course": "CSCE 322",
+    "Title": "Haskell",
+    "Author": "",
+    "Topic": "Haskell",
+    "URL": "http://en.wikibooks.org/wiki/Haskell"
+  },
+  {
+    "Course": "CSCE 322",
+    "Title": "Learn Haskell Fast and Hard",
+    "Author": "",
+    "Topic": "Haskell",
+    "URL": "http://yannesposito.com/Scratch/en/blog/Haskell-the-Hard-Way/"
+  },
+  {
+    "Course": "CSCE 322",
+    "Title": "Prolog",
+    "Author": "",
+    "Topic": "Prolog",
+    "URL": "http://en.wikibooks.org/wiki/Prolog"
+  },
+  {
+    "Course": "CSCE 322",
+    "Title": "Learn Prolog Now!",
+    "Author": "Patrick Blackburn and Johan Bos and Kristina Striegnitz",
+    "Topic": "Prolog",
+    "URL": "http://www.learnprolognow.org/"
+  },
+  {
+    "Course": "CSCE 322",
+    "Title": "Prolog Tutorial",
+    "Author": "R. J. Fisher",
+    "Topic": "Prolog",
+    "URL": "http://www.cpp.edu/~jrfisher/www/prolog_tutorial/contents.html"
+  },
+  {
+    "Course": "CSCE 477",
+    "Title": "Handbook of Applied Cryptography",
+    "Author": "Menezes, Alfred J. and Vanstone, Scott A. and Oorschot, Paul C. Van",
+    "Topic": "Cryptography",
+    "URL": "http://cacr.uwaterloo.ca/hac/"
+  }
+]

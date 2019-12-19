@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+  <book>
+    <Course>CSCE 155A</Course>
+    <Title>Thinking in Java</Title>
+    <Author>Eckel, Bruce</Author>
+    <Topic>Java</Topic>
+    <URL>http://www.mindview.net/Books/TIJ/</URL>
+  </book>
+  <book>
+    <Course>CSCE 155A</Course>
+    <Title>Introduction to Programming Using Java</Title>
+    <Author>Eck, David J.</Author>
+    <Topic>Java</Topic>
+    <URL>http://math.hws.edu/javanotes/</URL>
+  </book>
+  <book>
+    <Course>CSCE 155A</Course>
+    <Title>Java Programming</Title>
+    <Author></Author>
+    <Topic>Java</Topic>
+    <URL>https://en.wikibooks.org/wiki/Java_Programming</URL>
+  </book>
+  <book>
+    <Course>CSCE 155E</Course>
+    <Title>C Programming</Title>
+    <Author></Author>
+    <Topic>C</Topic>
+    <URL>https://en.wikibooks.org/wiki/C_Programming</URL>
+  </book>
+  <book>
+    <Course>CSCE 155T</Course>
+    <Title>Dive Into Python</Title>
+    <Author>Mark Pilgrim</Author>
+    <Topic>Python</Topic>
+    <URL>http://www.diveintopython.net/toc/index.html</URL>
+  </book>
+  <book>
+    <Course>CSCE 155T</Course>
+    <Title>Learn Python The Hard Way</Title>
+    <Author>Zed A. Shaw</Author>
+    <Topic>Python</Topic>
+    <URL>http://learnpythonthehardway.org/book/</URL>
+  </book>
+  <book>
+    <Course>CSCE 155T</Course>
+    <Title>Python for Informatics: Exploring Information</Title>
+    <Author>Charles Severance</Author>
+    <Topic>Python</Topic>
+    <URL>http://www.pythonlearn.com/book.php</URL>
+  </book>
+  <book>
+    <Course>CSCE 156</Course>
+    <Title>Hacking With PHP</Title>
+    <Author>Hudson, Paul</Author>
+    <Topic>PHP</Topic>
+    <URL>http://www.hackingwithphp.com/</URL>
+  </book>
+  <book>
+    <Course>CSCE 156</Course>
+    <Title>PHP Programming</Title>
+    <Author></Author>
+    <Topic>PHP</Topic>
+    <URL>http://en.wikibooks.org/wiki/PHP_Programming</URL>
+  </book>
+  <book>
+    <Course>CSCE 156</Course>
+    <Title>Data Structures and Algorithms with Object-Oriented Design Patterns in Java</Title>
+    <Author>Preiss, Bruno</Author>
+    <Topic>Data Structures, Java</Topic>
+    <URL>http://www.brpreiss.com/books/opus5/</URL>
+  </book>
+  <book>
+    <Course>CSCE 156</Course>
+    <Title>MySQL Essentials</Title>
+    <Author></Author>
+    <Topic>SQL</Topic>
+    <URL>http://www.techotopia.com/index.php/MySQL_Essentials</URL>
+  </book>
+  <book>
+    <Course>CSCE 235</Course>
+    <Title>Book of Proof</Title>
+    <Author>Richard Hammack</Author>
+    <Topic>Discrete Mathematics</Topic>
+    <URL>http://www.people.vcu.edu/~rhammack/BookOfProof/</URL>
+  </book>
+  <book>
+    <Course>CSCE 235</Course>
+    <Title>Mathematics for Computer Science</Title>
+    <Author>Albert R. Meyer</Author>
+    <Topic>Discrete Mathematics</Topic>
+    <URL>https://www.seas.harvard.edu/courses/cs20/MIT6_042Notes.pdf</URL>
+  </book>
+  <book>
+    <Course>CSCE 235</Course>
+    <Title>Notes on Discrete Mathematics</Title>
+    <Author>James Aspnes</Author>
+    <Topic>Discrete Mathematics</Topic>
+    <URL>http://www.cs.yale.edu/homes/aspnes/classes/202/notes.pdf</URL>
+  </book>
+  <book>
+    <Course>CSCE 235</Course>
+    <Title>Discrete Mathematics</Title>
+    <Author></Author>
+    <Topic>Discrete Mathematics</Topic>
+    <URL>https://en.wikibooks.org/wiki/Discrete_Mathematics</URL>
+  </book>
+  <book>
+    <Course>CSCE 310</Course>
+    <Title>C Plus Plus</Title>
+    <Author></Author>
+    <Topic>C++</Topic>
+    <URL>http://www.cplusplus.com/</URL>
+  </book>
+  <book>
+    <Course>CSCE 322</Course>
+    <Title>Prolog and Natural-Language Analysis</Title>
+    <Author>Fernando C. N. Pereira and Stuart M. Shieber</Author>
+    <Topic>Prolog</Topic>
+    <URL>http://mtome.com/Publications/PNLA/pnla.html</URL>
+  </book>
+  <book>
+    <Course>CSCE 322</Course>
+    <Title>Learn You a Haskell for Great Good!</Title>
+    <Author>Miran Lipovaca</Author>
+    <Topic>Haskell</Topic>
+    <URL>http://learnyouahaskell.com/</URL>
+  </book>
+  <book>
+    <Course>CSCE 322</Course>
+    <Title>Haskell</Title>
+    <Author></Author>
+    <Topic>Haskell</Topic>
+    <URL>http://en.wikibooks.org/wiki/Haskell</URL>
+  </book>
+  <book>
+    <Course>CSCE 322</Course>
+    <Title>Learn Haskell Fast and Hard</Title>
+    <Author></Author>
+    <Topic>Haskell</Topic>
+    <URL>http://yannesposito.com/Scratch/en/blog/Haskell-the-Hard-Way/</URL>
+  </book>
+  <book>
+    <Course>CSCE 322</Course>
+    <Title>Prolog</Title>
+    <Author></Author>
+    <Topic>Prolog</Topic>
+    <URL>http://en.wikibooks.org/wiki/Prolog</URL>
+  </book>
+  <book>
+    <Course>CSCE 322</Course>
+    <Title>Learn Prolog Now!</Title>
+    <Author>Patrick Blackburn and Johan Bos and Kristina Striegnitz</Author>
+    <Topic>Prolog</Topic>
+    <URL>http://www.learnprolognow.org/</URL>
+  </book>
+  <book>
+    <Course>CSCE 322</Course>
+    <Title>Prolog Tutorial</Title>
+    <Author>R. J. Fisher</Author>
+    <Topic>Prolog</Topic>
+    <URL>http://www.cpp.edu/~jrfisher/www/prolog_tutorial/contents.html</URL>
+  </book>
+  <book>
+    <Course>CSCE 477</Course>
+    <Title>Handbook of Applied Cryptography</Title>
+    <Author>Menezes, Alfred J. and Vanstone, Scott A. and Oorschot, Paul C. Van</Author>
+    <Topic>Cryptography</Topic>
+    <URL>http://cacr.uwaterloo.ca/hac/</URL>
+  </book>
+</books>

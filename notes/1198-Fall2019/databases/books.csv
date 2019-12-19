@@ -1,0 +1,25 @@
+Course,Title,Author(s),Topic(s),URL
+CSCE 155A,Thinking in Java,"Eckel, Bruce",Java,http://www.mindview.net/Books/TIJ/
+CSCE 155A,Introduction to Programming Using Java,"Eck, David J.",Java,http://math.hws.edu/javanotes/
+CSCE 155A,Java Programming,,Java,https://en.wikibooks.org/wiki/Java_Programming
+CSCE 155E,C Programming,,C,https://en.wikibooks.org/wiki/C_Programming
+CSCE 155T,Dive Into Python,Mark Pilgrim,Python,http://www.diveintopython.net/toc/index.html
+CSCE 155T,Learn Python The Hard Way,Zed A. Shaw,Python,http://learnpythonthehardway.org/book/
+CSCE 155T,Python for Informatics: Exploring Information,Charles Severance,Python,http://www.pythonlearn.com/book.php
+CSCE 156,Hacking With PHP,"Hudson, Paul",PHP,http://www.hackingwithphp.com/
+CSCE 156,PHP Programming,,PHP,http://en.wikibooks.org/wiki/PHP_Programming
+CSCE 156,Data Structures and Algorithms with Object-Oriented Design Patterns in Java,"Preiss, Bruno","Data Structures, Java",http://www.brpreiss.com/books/opus5/
+CSCE 156,MySQL Essentials,,SQL,http://www.techotopia.com/index.php/MySQL_Essentials
+CSCE 235,Book of Proof,Richard Hammack,Discrete Mathematics,http://www.people.vcu.edu/~rhammack/BookOfProof/
+CSCE 235,Mathematics for Computer Science,Albert R. Meyer,Discrete Mathematics,https://www.seas.harvard.edu/courses/cs20/MIT6_042Notes.pdf
+CSCE 235,Notes on Discrete Mathematics,James Aspnes,Discrete Mathematics,http://www.cs.yale.edu/homes/aspnes/classes/202/notes.pdf
+CSCE 235,Discrete Mathematics,,Discrete Mathematics,https://en.wikibooks.org/wiki/Discrete_Mathematics
+CSCE 310,C Plus Plus,,C++,http://www.cplusplus.com/
+CSCE 322,Prolog and Natural-Language Analysis,Fernando C. N. Pereira and Stuart M. Shieber,Prolog,http://mtome.com/Publications/PNLA/pnla.html
+CSCE 322,Learn You a Haskell for Great Good!,Miran Lipovaca,Haskell,http://learnyouahaskell.com/
+CSCE 322,Haskell,,Haskell,http://en.wikibooks.org/wiki/Haskell
+CSCE 322,Learn Haskell Fast and Hard,,Haskell,http://yannesposito.com/Scratch/en/blog/Haskell-the-Hard-Way/
+CSCE 322,Prolog,,Prolog,http://en.wikibooks.org/wiki/Prolog
+CSCE 322,Learn Prolog Now!,Patrick Blackburn and Johan Bos and Kristina Striegnitz,Prolog,http://www.learnprolognow.org/
+CSCE 322,Prolog Tutorial,R. J. Fisher,Prolog,http://www.cpp.edu/~jrfisher/www/prolog_tutorial/contents.html
+CSCE 477,Handbook of Applied Cryptography,"Menezes, Alfred J. and Vanstone, Scott A. and Oorschot, Paul C. Van",Cryptography,http://cacr.uwaterloo.ca/hac/
