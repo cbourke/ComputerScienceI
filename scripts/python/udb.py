@@ -13,28 +13,26 @@ from config import config
 #  for x in pyodbc.drivers():
 #    print(x)
 
-
-"""
-Maps NUIDs to CSE login IDs.  Given the map of NUIDs
-(some of which may already be mapped) it updates the
-map by querying the udb (User Database) on the cse-apps
-server, including any missing logins in the returned 
-map.
-
-If the specified pickleFileName is provided, the method
-first tries to load (but does not overwrite) any missing
-logins from the serialized pickle file to avoid going
-to the database (a database query is still made for any
-remaining missing records).  Further, the resulting
-map is persisted back to the pickle file (overwriting 
-the original) before it is returned.
-
-@param nuidToCseLogin: the given map of (possibly incomplete) NUIDs-to-CSE Logins
-@param pickleFileName: the name of the pickle file to persist from/to
-@return: an updated NUID-to-CSE Login map
-"""
 def mapNuidsToCseLogins(nuidToCseLogin, pickleFileName = None):
+  """
+    Maps NUIDs to CSE login IDs.  Given the map of NUIDs
+    (some of which may already be mapped) it updates the
+    map by querying the udb (User Database) on the cse-apps
+    server, including any missing logins in the returned 
+    map.
 
+    If the specified pickleFileName is provided, the method
+    first tries to load (but does not overwrite) any missing
+    logins from the serialized pickle file to avoid going
+    to the database (a database query is still made for any
+    remaining missing records).  Further, the resulting
+    map is persisted back to the pickle file (overwriting 
+    the original) before it is returned.
+
+    @param nuidToCseLogin: the given map of (possibly incomplete) NUIDs-to-CSE Logins
+    @param pickleFileName: the name of the pickle file to persist from/to
+    @return: an updated NUID-to-CSE Login map
+  """
   if pickleFileName is not None:
     if os.path.isfile(pickleFileName):
       print('loading from data file '+pickleFileName+'...')
