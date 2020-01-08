@@ -90,11 +90,6 @@ def initAssignments():
   addRubric(h.id, hackRubricCategories, hackRubricCategoriesComments)
   print("%s created with ID = %d"%(h.name,h.id))
   
-# graders and students are only valid if they have cse logins
-# alternatively, we could use the email address from Canvas but
-# students may have opted out of sharing this and it would not
-# be available from the API.  
-
 def updateRoster():
     graderEmails = []
     studentEmails = []

@@ -1,35 +1,52 @@
-import sys
-import os
-from os import walk
-import codepost
-from config import config
-from course import course
+"""
+This script interfaces with canvas, CSE's User Database and 
+codepost to assign graders to student submissions for a particular
+assignment including pushing all submission files to codepost.
 
-# this script interfaces with codepost and brings everything
-# together:
-# 1. It pulls the current roster from Canvas (and separates
-#    instructors/graders/students using the config.py params)
-# 2. It attempts to map NUIDs to CSE logins to grab submissions
-#    (failures will be excluded or "orphaned")
-# 3. It then randomizes grading assignments (tries to evenly
-#    distribute among the graders) and produces a hardcopy report
-# 4. It then scans the handin directory for specific files and
-#    submits them to codepost.io with the assigning the grader to
-#    each.
-#
-# This script assumes that the course and assignments have 
-# already been setup and that no submissions have been made.
-# Preexisting submissions will result in a fatal error (so it
-# is best to do this cleanly and/or wipe the assignment on
-# codepost.io and restart)
+Usage: python3 codepostAssignGraders.py cse_handin_assignment_name codepost_assignment_id
+
+where 
+  - cse_handin_assignment_name is the "name" of the handin assignment 
+    (corresponds to the handin directory created)
+  - codepost_assignment_id is the codepost assignment (database) ID.
+    You can retrieve this by first running codepostListCourseInfo.py
+
+In detail this script:
+
+ 1. It pulls the current roster from Canvas (and separates
+    instructors/graders/students using the config.py params)
+ 2. It attempts to map NUIDs to CSE logins to grab submissions
+    (failures will be excluded or "orphaned")
+ 3. It randomizes grading assignments (evenly distributing
+    them among graders) and outputs an assignment report to
+    the standard output
+ 4. It scans the handin directory for files whose extensions
+    match those in the config.py file and pushes them to 
+    codepost.io associated them with the assigned grader.
+    
+This script assumes that the course and assignments have 
+already been setup and that no files have been submitted 
+to codepost already.  Preexisting submissions will result 
+in a fatal error (so it is best to do this cleanly and/or 
+wipe the assignment on codepost.io and restart)
+"""
+import sys
 
 if(len(sys.argv) != 3):
   print("usage: cse_handin_assignment_name codepost_assignment_id")  
   exit(1)
 
-# this may need to be changed relative to where this script is used
-# TODO: consider moving this to config.py
-assignmentDir = "../handin/"+sys.argv[1]+"/"
+from config import config
+from course import course
+import os
+import codepost
+
+assignmentDir = config.handinDirectory + sys.argv[1]+"/"
+if not os.path.exists(assignmentDir):
+    print("assignment directory: " + assignmentDir + " does not seem to exist")
+    print("perhaps you need more practice operating your computer machine")
+    exit(1)
+
 assignmentId = int(sys.argv[2])
 
 codepost.configure_api_key(config.codePostApiKey)

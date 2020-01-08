@@ -20,7 +20,8 @@ class Person:
     Separate name elements (first, last) may not be available in
     Canvas and instead only a 'display' name may be available due
     to students being able to set a 'preferred name' in the 
-    registration system.
+    registration system.  Separate name elements may be available
+    in the CSE UDB but are not currently used.
     
     A person's cseLogin must be pulled from the CSE User DataBase 
     (see udb.py) via their NUID.
@@ -44,13 +45,21 @@ class Person:
         self.canvasLogin = canvasLogin
         self.canvasEmail = canvasEmail      
         self.cseLogin    = cseLogin
+
     def __str__(self):
         return "%-40s (%s) %-15s %s"%(self.name,self.nuid,self.cseLogin,self.canvasEmail)
+
     def __hash__(self):
         return hash(self.nuid)
         
     def __eq__(self,other):
+        """
+        Equality and ordering is determined based only on NUID
+        """
         return self.nuid == other.nuid
         
     def __lt__(self,other):
+        """
+        Equality and ordering is determined based only on NUID
+        """
         return (self.nuid < self.nuid)

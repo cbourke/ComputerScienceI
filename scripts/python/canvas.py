@@ -1,37 +1,46 @@
+"""
+This module provides a thin wrapper interface to the Canvas
+API utilizing CanvasAPIv1 (canvas-api-client).  It loads
+the roster (including students, TAs, instructors) from the
+Canvas course identified in the config.py module and creates
+a roster list (a list of Person objects, see the person.py
+module).
+
+References:
+ - UNL's Canvas API instance is at:
+   https://canvas.unl.edu/api/v1/
+ - UNL's Live instance:
+   https://canvas.unl.edu/doc/api/live
+ - CanvasAPIv1 (canvas-api-client) documentation:
+   https://wgwz.github.io/canvas-lms-tools/canvas_api_client.html#module-canvas_api_client.v1_client
+
+Note: the CanvasAPIv1 is somewhat limited.  There is no way way
+to get the role of a user directly (student, TA, etc.).  In any
+case, the course.py module is designed to manually define the 
+role of graders and (non-grader) instructors so that we have finer
+grained control on who is assigned to grade.
+"""
+
 from config import config
-from canvas_api_client.v1_client import CanvasAPIv1
 from person import Person
+from canvas_api_client.v1_client import CanvasAPIv1
 import sys
 
 # create an instance of the canvas API
 # using the configuration in config.py
-# 
-# for reference:
-#  - UNL's Canvas API instance is at:
-#    https://canvas.unl.edu/api/v1/
-#  - UNL's Live instance:
-#    https://canvas.unl.edu/doc/api/live
-#  - The CanvasAPIv1 (canvas-api-client) documentation:
-#    https://wgwz.github.io/canvas-lms-tools/canvas_api_client.html#module-canvas_api_client.v1_client
-#
-#  The python API wrapper seems very limited.  In particular
-#  there is no apparent way to get the role of a user.  The
-#  typical response (ex: 
-#   https://canvas.unl.edu/api/v1/courses/COURSEID/enrollments?access_token=TOKEN&per_page=100
-#  includes all this important information, but the get_course_users 
-#  does not; we'll have to manually handle the roles (grader, instructor, etc.)
-#  which might be better anyway
 api = CanvasAPIv1(config.canvasUrl, config.canvasApiKey)
+
+# The external roster list
+roster = []
 
 pages = api.get_course_users(config.canvasCourseId)
 # the API lazy loads elements and uses pagination, 
 # so a double iteration is necessary.
-roster = []
 for page in pages:
     for u in page:
         try: 
             # these two may not exist if the user
-            # has not consented 
+            # has not consented or accepted a coures invite 
             canvasLogin = None
             canvasEmail = None
             if 'login_id' in u:
@@ -49,7 +58,7 @@ for page in pages:
             p = Person(
               nuid        = u['sis_user_id'],
               canvasId    = u['id'],
-              name        = u['sortable_name'], #last, first
+              name        = u['sortable_name'], #format: "last, first"
               canvasLogin = canvasLogin,
               canvasEmail = canvasEmail
             )
@@ -59,17 +68,4 @@ for page in pages:
             print(u)
             e = sys.exc_info()[0]
             write_to_page( "<p>Error: %s</p>" % e )
-
-
-#ex:    
-#{
-#	'id': 19617,
-#	'name': 'Christopher Bourke',
-#	'created_at': '2015-08-19T13:47:56-05:00',
-#	'sortable_name': 'Bourke, Christopher',
-#	'short_name': 'Christopher Bourke',
-#	'sis_user_id': '35140602',
-#	'integration_id': None,
-#	'login_id': 'cbourke3',
-#	'email': 'cbourke@cse.unl.edu'
-#}
+            
