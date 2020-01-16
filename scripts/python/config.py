@@ -26,7 +26,7 @@ class Config:
     codePostCourseId = None
 
     # handin directory on the CSE file server 
-    handinDirectory = "~/handin/"
+    handinDirectory = "/home/grad/Classes/cse155e/handin/"
     # file extensions/types to include in codepost push
     # leave empty to include all files
     fileExtensions = [".c", ".h", ".md"]
@@ -42,8 +42,8 @@ class Config:
         driver   = "libmaodbc"
         host     = "cse-apps.unl.edu"
         database = "udb"
-        username = ""
-        password = ""
+        username = "cbourke"
+        password = "TODO"
 
     # Course-specific role configuration
     # All instructors' NUID should be listed even if 
