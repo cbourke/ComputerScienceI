@@ -64,7 +64,7 @@ class Course:
         #3. filter into the appropriate group
         #   This is done manually as the "role" is not available from canvas 
         #   using the canvas API and we want more fine-grained control anyway
-        #   - If there is no cse login, they are ignored
+        #   - If there is no cse login, they are "orphaned"
         #   - Otherwise, they are either a student XOR instructor/grader
         #     - instructors can be graders
         for p in self.roster:
@@ -88,6 +88,9 @@ class Course:
             r += str(p) + "\n"
         r += "Students (%d): \n"%(len(self.students))
         for nuid,p in self.students.items():
+            r += str(p) + "\n"
+        r += "Orphans (%d): \n"%(len(self.orphans))
+        for nuid,p in self.orphans.items():
             r += str(p) + "\n"
         return r
 
@@ -150,6 +153,9 @@ the course data defined in config.py
 
 def printCourse():
     print(course)
+    print("\n\n=====Emails for Piazza=====\n");
+    for p in course.roster:
+        print(p.canvasEmail);
 
 if __name__ == "__main__":
     printCourse()
