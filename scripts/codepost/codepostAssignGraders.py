@@ -73,7 +73,7 @@ for grader,students in gradingAssignment.items():
              grader=grader.canvasEmail)
           for fileName in filenames:
               print("pushing " + path+fileName)
-              contents = open(path+fileName).read()
+              contents = open(path+fileName, errors='ignore').read()
               #if the file is empty, add content to accommodate codepost's API
               if not contents:
                   contents = "EMPTY FILE"
