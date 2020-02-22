@@ -53,7 +53,10 @@ Your function should have the following signature:
 \mintinline{c}{int rgbToCMYK(int r, int g, int b, double *c, double *m, double *y, double *k)}
 
 Identify any and all error conditions and use the return value to indicate
-an error code (0 for no error, non-zero value(s) for error conditions).
+an error code (0 for no error, non-zero value(s) for error conditions).  Note
+that one edge case is black, when $(r,g,b) = (0,0,0)$ which would lead to a 
+division by zero in the formulas.  The equivalent CMYK values are $(0,0,0,1)$.
+
 
 \item Write a function to convert from CMYK to RGB using the following formulas.
 \begin{align*}
