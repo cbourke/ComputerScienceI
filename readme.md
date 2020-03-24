@@ -5,11 +5,21 @@
 This repository hosts documents, files, and other artifacts
 related to Computer Science I (offered as CSCE 155E, CSCE 155H).
 
-## YouTube Channel
+## Videos
 
-Though available through Canvas, all lecture and tutorial videos are hosted on my YouTube Channel:
+We have produced over 50 lecture and tutorial videos that should 
+be viewed prior to lecture and which are available in the following
+playlist:
 
 https://www.youtube.com/playlist?list=PL4IH6CVPpTZVkiEnCEOdGbYsFEdtKc5Bx
+
+Lectures are broadcast live on my YouTube streaming channel:
+
+https://www.youtube.com/c/ChrisBourkeUNL/live
+
+The videos are available immediately following on my YouTube channel,
+https://www.youtube.com/c/ChrisBourkeUNL/ and included in the playlist 
+below.
 
 ## Textbook
 
@@ -34,20 +44,21 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ## Course Offerings
 
-### Fall 2018 
+### Fall 2020
 
-- Course Link: https://canvas.unl.edu/courses/44933
-- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZVol2cCryFg8TeIxuUqKEGP
+- Course Link: To come
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZUDrM4PUMcqWDsLnkHfCMqN
 
 ### Fall 2019
 
 - Course Link: https://canvas.unl.edu/courses/66815
 - Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZWAvbYmuCa0098eJ8ut2HkV
 
-### Fall 2020
+### Fall 2018 
 
-- Course Link: To Come
-- Lectures: To Come
+- Course Link: https://canvas.unl.edu/courses/44933
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZVol2cCryFg8TeIxuUqKEGP
+
 
 ## License
 
