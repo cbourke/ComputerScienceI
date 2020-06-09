@@ -1,0 +1,197 @@
+\documentclass[12pt]{scrartcl}
+
+
+\usepackage{epsfig,amssymb}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{multirow}
+
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  bookmarks=true,
+  pdfpagemode=none,
+  pdftitle={BYOD: Bring Your Own Device},
+  pdflang={en},
+  pdfauthor={Christopher M. Bourke},
+  pdfcreator={$ $Id: cv-us.tex,v 1.28 2009/01/01 00:00:00 cbourke Exp $ $},
+  pdfsubject={PhD Thesis},
+  pdfkeywords={}
+}
+
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} %
+\usepackage{subfigure}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+\usepackage[newfloat=true]{minted}
+
+\setminted{mathescape,
+           linenos,
+           autogobble,
+           frame=none,
+           framesep=2mm,
+           framerule=0.4pt,
+           %label=foo,
+           xleftmargin=2em,
+           xrightmargin=0em,
+           %startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+           numbersep=10pt, %gap between line numbers and start of line
+           style=default} %syntax highlighting style, default is "default"
+
+\setmintedinline{bgcolor={mintedBackground}}
+%doesn't work with the above workaround:
+\setminted{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+%NOTE: you can embed algorithms in solutions, but they cannot be floating objects; use [H] to make them non-floats
+
+\usepackage{lastpage}
+
+%\usepackage{titling}
+\usepackage{fancyhdr}
+\renewcommand*{\titlepagestyle}{fancy}
+\pagestyle{fancy}
+%\renewcommand*{\titlepagestyle}{fancy}
+%\fancyhf{}
+\rhead{~}
+\lhead{~}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\lfoot{\Title\ -- Computer Science I}
+\cfoot{~}
+\rfoot{\thepage\ / \pageref*{LastPage}}
+
+\makeatletter
+\title{Tips for Succeeding in This and Other Online Courses}\let\Title\@title
+\subtitle{Computer Science I\\
+{\small
+\vskip.5cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-2cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\section{Treat It Like a Regular Course}
+
+This may be an online course, but it is every bit as rigorous and challenging
+as the traditional face-to-face version and you need to approach it as such.
+In fact, online courses are actually \emph{more} challenging to take than 
+a traditional course because you have to have the self-discipline to overcome
+the additional challenges that an online course provides.  Without the expectation
+and structure of showing up to a physical classroom, you can get complacent, 
+feel detached and your motivation may suffer as a result.
+
+Hold yourself accountable and make the commitment that you \emph{will} succeed
+in this course and that you \emph{will} take the necessary steps to doing so.
+
+\section{Get and Stay Organized}
+
+\begin{itemize}
+  \item Set a plan and set a regular schedule on when and how you will
+  engage with the material in this course. For example, though you may be able to 
+  watch the lectures and videos or do the readings asynchronously, you
+  should establish a routine and watch/read at the same time every day.
+  \item Schedule regular times to work on class assignments and build in
+  slack time: add more time to your estimate on how much time you'll need 
+  to complete it.  It is never wrong to get done early and the slack time
+  will allow you to deal with things that may come up or to seek additional
+  help if you get stuck.
+  \item Work \emph{everyday}: programming (and Computer Science in general) is
+  something you only get good at with practice.  It requires time and
+  hands-on effort which is best achieved with daily practice.  Like any skill, 
+  it can atrophy if not practiced.  Don't get into the ``cram'' mentality 
+  and think that you can pack in 5 hours of material in one sitting.  This
+  stuff takes time, spread that 5 hours over 5 days, one hour per day.
+  \item Organize your work and keep a calendar with reminders.  All assignments
+  are posted in Canvas and you can export due dates to iCal or ICS formats.
+  \item Organize your work my maintaining a TODO list or use an organization
+  app.
+  \item Schedule time for breaks, look into the \href{https://en.wikipedia.org/wiki/Pomodoro_Technique}{Pomodoro Technique}
+  \item Be sure to include \emph{all} aspects of your life including recreation, 
+  health, social engagements, etc. in your time management.  
+  \item Periodically reassess your daily and weekly schedules and make appropriate
+  adjustments.  
+\end{itemize}  
+  
+\section{Create a Regular Study Space}
+
+If you're not sitting in a class or lab it may not \emph{feel}
+like a class which can easily lead to distractions.  This is
+especially true if you have a TV, phone, games, etc.\ close by
+presenting a temptation.  To combat this, establish a good working 
+area away from distractions.  Don't take your work outside this
+area nor your recreation into this area.  Keep your worlds separate.
+
+\section{Network, Connect, and Stay Engaged}
+
+It can be difficult to not see other students or your instructor face-to-face
+which can leave you with a sense of disconnectedness which can lead to feelings
+of isolation and a negative effect on motivation.  Combat this by actively 
+staying connected to the course, your instructor, Learning Assistants and peer
+students by:
+
+\begin{itemize}
+  \item Regularly reading and participating in the online discussion forum (Piazza)
+  \item Regularly attending virtual office hours via Zoom (even if it is just
+  to ``hang out'' while you work).  
+  \item Reach out to classmates to find a study partner or collaborator and keep
+  in touch with collaboration tools (Zoom, Repl.it, etc.)
+\end{itemize}
+
+\section{Utilize Resources}
+
+\section{Stay Healthy}
+
+This advice goes beyond just this course or any course for that matter.  If
+good habits apply to a course, then they can be applied to everything in your
+life.  
+
+\begin{itemize}
+  \item Get into a good routine: wake up at the same time every day (and weekend)
+  and go to bed at the same time.   Get enough sleep.
+  \item Exercise; take a walk, bike, go to the gym, etc.
+  \item Engage in a healthy diet, physical health is the number one factor to
+  mental health
+  \item Don't cut recreation (video games, netflix, etc.) but regulate it.  
+  Schedule time for it but stick to that time.  
+  \item Set a balance: sleep more than you study (or work); study more than you party
+  and party as much as you can.
+\end{itemize}
+
+\end{document}

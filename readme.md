@@ -5,6 +5,8 @@
 This repository hosts documents, files, and other artifacts
 related to Computer Science I (offered as CSCE 155E, CSCE 155H).
 
+[![Course Introduction](https://img.youtube.com/vi/4chk0yJs0YI/0.jpg)](https://youtu.be/4chk0yJs0YI "Course Introduction")
+
 ## Videos
 
 We have produced over 50 lecture and tutorial videos that should 
@@ -46,7 +48,7 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ### Fall 2020
 
-- Course Link: To come
+- Course Link: https://canvas.unl.edu/courses/89445
 - Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZUDrM4PUMcqWDsLnkHfCMqN
 
 ### Fall 2019
