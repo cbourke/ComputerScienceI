@@ -1,5 +1,11 @@
-#include<stdio.h>
-#include<stdlib.h>
+/**
+ * This is a program that demonstrates the usage
+ * of the the protein utility library.  You can
+ * provide an RNA trigram as a command line argument
+ * and the corresponding protein will be printed.
+ */
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "protein_utils.h"
 

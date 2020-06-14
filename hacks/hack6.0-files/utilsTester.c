@@ -1,3 +1,8 @@
+/**
+ * This is a collection of unit tests and
+ * test functions for a color utilities C 
+ * library.
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>

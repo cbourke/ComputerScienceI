@@ -4,9 +4,9 @@
  * to provide n as a command line argument, but
  * defaults to the first n = 10 primes
  */
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
 
 /**
  * This function takes an integer array (of size n) and

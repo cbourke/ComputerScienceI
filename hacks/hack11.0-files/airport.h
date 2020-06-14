@@ -1,4 +1,8 @@
-
+/**
+ * This is a collection of utility functions involving
+ * and airport structure.
+ */
+ 
 typedef struct {
   // TODO: design your structure
 } Airport;
