@@ -80,6 +80,8 @@ through the basics of getting started.  You will setup a project with
 git using GitHub (\url{https://github.com}) as your remote server.  You
 will then collaborate with someone else to commit changes.
 
+\part*{On Campus Version}
+
 \section{Installation}
 
 All of the instructions in this Hack will involve using GitHub's 
@@ -242,6 +244,337 @@ policy.
   display the contents of your file.
 \end{enumerate}
 
+\part*{Online Version}
+\setcounter{section}{0}
+
+This version of the hack assumes that you are in the online
+section or have chosen to use the CS50 IDE.  The following
+instructions can also be used for \emph{any} command line 
+version of git.
+
+\section{Installation}
+
+Git is already installed on the CS50 IDE and so no further
+steps are necessary (though you will need your GitHub account).
+However, we do need to do some configuration before we start.
+
+Run the following two commands in your CS50 IDE.  
+
+\mintinline{text}{git config --global user.email "youremail@huskers.unl.edu"}
+
+\mintinline{text}{git config --global user.name "Your Name"}
+
+Where the email and name are substituted with your own.  We 
+recommend you use the same email as you used to sign up on GitHub.
+
+\section{Creating a Repository}
+
+To focus on the git process, you will create and work with a simple
+``Hello World''-style program but instead of printing ``Hello World'', 
+it will print your name. 
+
+\begin{enumerate}
+  \item Create a new folder (call it \mintinline{text}{hello}) 
+  at the root of your File Navigator and within it, create a 
+  \mintinline{text}{hello.c} source file with code in it that
+  prints your name.
+  
+  \item Make this folder (and all of its contents) into a git
+  repository by \emph{initializing} it.  In the console, change
+  directories to this newly created \mintinline{text}{hello}
+  directory and execute the following command:
+  
+  \mintinline{text}{git init}
+  
+  It will look something like the following.
+  \begin{center}
+  \includegraphics[scale=0.50]{./hack1.0-files/cl-gitinit.png}
+  \end{center}
+
+  \item This creates a repository on your CS50 IDE server, but it
+  does \emph{not} create a repository on GitHub.  We need to do 
+  this separately.  Go to your GitHub page (\url{https://github.com/login}
+  where \mintinline{text}{login} is replaced with your GitHub
+  login) and in the upper right, select \mintinline{text}{New repository}.
+
+  \begin{center}
+  \includegraphics[scale=0.50]{./hack1.0-files/cl-githubNewRepo.png}
+  \end{center}
+
+  \item Name your repo \mintinline{text}{hello}
+  \begin{center}
+  \includegraphics[scale=0.50]{./hack1.0-files/cl-githubNewRepoName.png}
+  \end{center}
+
+  \item Go back to your CS50 IDE
+  
+  \item We now need to make our first \emph{commit} which will commit
+  our code/changes to the repository.  You can make as many edits as
+  you want to your source code files and save them, but you only ``save''
+  them to your git repo when you \emph{commit} these changes.  Enter
+  the following command.
+  
+  \mintinline{text}{git add --all}
+  
+  Which will tell git to add all files in your directory 
+  (and subdirectories) to the ``index'' so that changes and
+  updates can be ``staged'' for the next commit.  Don't 
+  worry about the jargon for now, essentially this just tells
+  git to add files to its consideration.
+  
+  \item Enter the following command.
+
+  \mintinline{text}{git commit -m 'initial commit'}
+  
+  This commits your changes to the \emph{local} repository
+  (the repository on the CS50 IDE server).  It should look something
+  like the following.
+  
+  \begin{center}
+  \includegraphics[scale=0.50]{./hack1.0-files/cl-gitcommit}
+  \end{center}
+
+  \item We will now \emph{push} these changes to your \emph{remote}
+  GitHub repository.  First, we need to specify your GitHub 
+  repository as the remote.  Execute the following command:
+  
+  \mintinline{text}{git remote add origin https://github.com/login/hello.git}
+  
+  where \mintinline{text}{login} is replaced with your GitHub login.
+  
+  \item Now we can push your commit(s) to the remote repository
+  with the following command:
+  
+  \mintinline{text}{git push -u origin master}
+  
+  It will likely prompt you for your GitHub login and password.
+  Enter them and if successful, it should look something like
+  the following.\footnote{Note, you \emph{can} configure git 
+  to save your username and password; see \url{https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git-gitextension} for
+  instructions.  However, since CS50 IDE is a remote server you'd
+  be saving your password in plaintext (very bad idea).  That same
+  link has instructions for using an SSH Key instead which is
+  recommended.}
+  
+  \begin{center}
+  \includegraphics[scale=0.50]{./hack1.0-files/cl-gitPush}
+  \end{center}
+
+  \item Your repository should now be on GitHub.
+  Point your web browser to \url{https://github.com/login/hello}
+  where \mintinline{text}{login} is replaced with your GitHub user
+  name.  You can browse your repository, view its history, etc.
+  
+\end{enumerate}
+
+\subsection{Git Ignore}
+
+Often times there will be files or \emph{artifacts} that you want 
+to create, save and work with in your file system \emph{but} you 
+don't want them committed to the repository.  For example, when
+you compile your \mintinline{text}{hello.c} program, you probably
+don't want the executable file, \mintinline{text}{a.out} to be
+committed to the repo as you can always rebuild it.  The executable
+file is not part of your source code, but an \emph{artifact} of your 
+code.  In general, we want git to \emph{ignore} these artifacts.
+
+To do this, we can create a \mintinline{text}{.gitignore} file.  This
+is simply a plain text file that contains file and directory names 
+that git will ignore.  
+
+\begin{enumerate}
+  \item In your CS50 IDE in the \mintinline{text}{hello} directory
+  create a new file named \mintinline{text}{.gitignore}.  
+
+  \item Edit it and add \mintinline{text}{a.out} on a single line.
+  Save this file.
+  
+  \item Commit and push this new file to your local and remote
+  repositories by executing the series of commands:
+  
+  \begin{minted}{text}
+  git add .gitignore
+  git commit -m 'added gitignore file'
+  git push -u origin master
+  \end{minted}
+  
+  It should look something like the following.
+  
+  \begin{center}
+  \includegraphics[scale=0.50]{./hack1.0-files/cl-gitignore}
+  \end{center}
+  
+\end{enumerate}
+
+There are many standard \mintinline{text}{.gitignore} files for
+various types of projects that you may find useful: 
+\url{https://github.com/github/gitignore}
+
+\section{Making Changes}
+
+You'll often make changes to you code that you should periodically
+commit to your repository.  Though you may make changes and save them to a file, 
+the changes are not saved to the repository's history.  Committing is 
+the action that does this.  Committing only changes your \emph{local}
+repository, the changes will still need to be \emph{pushed} to GitHub.
+In this activity you'll make changes, commit them and then push them
+to GitHub.
+
+\begin{enumerate}
+  \item Open the \mintinline{text}{hello.c} file and add a line that
+  prints your major.  Also, change the line that prints your name
+  (add an exclamation point at the end or something).  Be sure to
+  save your file and compile and run your program to be sure it is 
+  correct.
+
+  \item Git can automatically track these changes, to display the
+  changes in your console execute the following command.
+  
+  \mintinline{text}{git status}
+  
+  Git will display all the changed files that are not yet \emph{staged}
+  (not yet added to the index to be committed).  It should look
+  something like the following.
+  
+  \begin{center}
+  \includegraphics[scale=0.5]{./hack1.0-files/cl-gitstatus}
+  \end{center}
+  
+  Note that the \mintinline{text}{a.out} file is not listed (git
+  is ignoring it as we directed it to!).
+  
+  \item Another useful tool allows you to view the changes or
+  \emph{differences} to a file.  Execute the following command.
+  
+  \mintinline{text}{git diff hello.c}
+
+  It should look something like the following.  Deletions (or edits)
+  are displayed in red and additions in green.
+
+  \begin{center}
+  \includegraphics[scale=0.5]{./hack1.0-files/cl-gitdiff}
+  \end{center}
+  
+  \item We can now commit and push our changes in the same way
+  as our initial commit.  Execute the following series of commands.
+  
+  \begin{minted}{text}
+  git add hello.c
+  git commit -m 'added my major to the output'
+  git push -u origin master  
+  \end{minted}
+
+\end{enumerate}
+  
+Some observations/notes:
+
+\begin{itemize} 
+  \item In our last commit, we did not use \mintinline{text}{git add --all} 
+  which would have added all (non-ignored) files.  Adding everything at once
+  can be convenient but in general commits should only include \emph{related}
+  changes and should be as \emph{fine grained} as possible.  You should
+  not use commits as a catch-all/save-all operation.
+
+  \item You should \emph{always} provide a good, descriptive commit message
+  that accurately reflects your changes.  Commit messages provide good
+  documentation on your changes.  For example, when fixing a bug, the commit
+  message should reference the original issue or bug report.  
+
+\end{itemize}
+
+\section{Collaborating With a Team}
+
+In this exercise, you'll need to team up with at least one other person.
+You'll make them a collaborator on your project so they can make changes
+and commit/push them to \emph{your} repository on GitHub.  Alternatively
+you can have them make a \emph{pull request}, but these instructions do 
+not cover that; refer to one of the resources in the 
+\hyperref[section:additionalResources]{Additional Resources} section
+for how how to make push/pull requests.
+
+\begin{enumerate}
+  \item On the GitHub webpage, click \mintinline{text}{Settings} in your project.
+  \item In the left menu, click \mintinline{text}{Manage access}
+  \item Click \mintinline{text}{Invite a collaborator} and type 
+  in your partner's GitHub user name and click \mintinline{text}{Add}
+\end{enumerate}
+
+\subsection{What your collaborator needs to do}
+
+Together with your partner, walk through the following steps.  These
+steps should be done on \emph{their} computer.
+
+\begin{enumerate}
+  \item Once you've sent an invite to collaborate, they need to 
+  accept it.
+  \item Your partner should create a new directory at the root of
+  their CS50 IDE (or whatever they are using) to hold \emph{your}
+  repository.
+  \item Your partner should execute the following command inside
+  of the new directory:
+  
+  \mintinline{text}{git clone https://github.com/login/hello}
+  
+  Where again \mintinline{text}{login} is replaced with your
+  GitHub login.  This clones the \emph{remote} repository and now you have a 
+  \emph{local} version of it!
+
+  \item Your partner should add 2 lines of code to 
+  print their name and their major.
+  
+  \item Your partner should follow the same procedure to commit 
+  and push their changes to \emph{your remote} repository using 
+  the same procedure as they did with theirs.
+  
+  \item Verify their changes by refreshing your repository on
+  GitHub.  You can click on the \mintinline{text}{hello.c} and if 
+  you both did everything correctly, you'll see multiple commits 
+  by multiple people:
+  \begin{center}
+  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo02.png}
+  \end{center}
+  If you click on \mintinline{text}{History} you can see the changes for
+  each commit: 
+  \begin{center}
+  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo03.png}
+  \end{center}
+
+\end{enumerate}
+
+Now, go back to \emph{your} CS50 IDE.  Remember, your partner's
+changes were \emph{pushed} to your \emph{remote} repository hosted
+on GitHub.  If you look at your \mintinline{text}{hello.c} file
+you won't see their changes because this is your \emph{local}
+repository.  
+
+In order to get your partner's changes you'll need to \emph{pull}
+their changes from your remote repository to your local repository.
+To do this, run the following command:
+
+\mintinline{text}{git pull}
+
+As long as there are no conflicting changes, all of your partner's
+changes should now be reflected in your local repository.  Of course,
+you'll need to repeat this process for your partner's repository (add
+your name/major to their and commit it so they can pull your changes).  
+
+You are \emph{highly encouraged} to start using git/GitHub (or 
+something similar) for all of your future assignments 
+but be sure to commit code to a \emph{private} repository 
+so that you do not violate the department's academic integrity 
+policy.  
+
+\subsection{Finishing Up}
+
+\begin{enumerate}
+  \item Put \emph{your} GitHub URL into a plain text file named 
+  \mintinline{text}{readme.md}.  Turn this file
+  in using webhandin.  Each individual student will need
+  to hand in their own copy and will receive their own individual
+  grade.
+  \item Verify what you handed in by running the webgrader which will
+  display the contents of your file.
+\end{enumerate}
 
 \section*{Additional Instructions}
 
@@ -255,6 +588,7 @@ policy.
 \end{itemize}
   
 \section*{Additional Resources}
+\label{section:additionalResources}
 
 \begin{itemize} 
   \item Video tutorial on Github Desktop: \url{https://www.youtube.com/watch?v=kFix7UDJ7LA}
