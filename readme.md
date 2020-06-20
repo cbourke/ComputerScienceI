@@ -29,20 +29,21 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ## Labs
 
-- Lab 01 - Introduction https://github.com/cbourke/CSCE155-C-Lab01
-- Lab 02 - Basics https://github.com/cbourke/CSCE155-C-Lab02
-- Lab 03 - Conditionals https://github.com/cbourke/CSCE155-C-Lab03
-- Lab 04 - Loops https://github.com/cbourke/CSCE155-C-Lab04
-- Lab 05 - Functions I https://github.com/cbourke/CSCE155-C-Lab05
-- Lab 06 - Functions II https://github.com/cbourke/CSCE155-C-Lab06
-- Lab 07 - Arrays https://github.com/cbourke/CSCE155-C-Lab07
-- Lab 09 - Strings https://github.com/cbourke/CS1-C-Strings
-- Lab 10 - File I/O https://github.com/cbourke/CSCE155-C-Lab10
-- Lab 11 - Structures https://github.com/cbourke/CSCE155-C-Lab11
-- Lab 12 - Recursion https://github.com/cbourke/CSCE155-C-Lab12
-- Lab 13 - Searching & Sorting https://github.com/cbourke/CSCE155-C-Lab13
-- Lab 14 - Graphical User Interfaces https://github.com/cbourke/CSCE155-C-Lab14
-- Lab 15 - Databases https://github.com/cbourke/CSCE155-C-Lab15
+- Lab 1.0 - Introduction https://github.com/cbourke/CSCE155-C-Lab01
+- Lab 2.0 - Basics https://github.com/cbourke/CSCE155-C-Lab02
+- Lab 3.0 - Conditionals https://github.com/cbourke/CSCE155-C-Lab03
+- Lab 4.0 - Loops https://github.com/cbourke/CSCE155-C-Lab04
+- Lab 5.0 - Functions I https://github.com/cbourke/CSCE155-C-Lab05
+- Lab 6.0 - Functions II https://github.com/cbourke/CSCE155-C-Lab06
+- Lab 7.0 - Arrays https://github.com/cbourke/CSCE155-C-Lab07
+- Lab 8.0 - Strings https://github.com/cbourke/CS1-C-Strings
+- (there is no lab 9.0 as this is typically midterm week)
+- Lab 10.0 - File I/O https://github.com/cbourke/CSCE155-C-Lab10
+- Lab 11.0 - Structures https://github.com/cbourke/CSCE155-C-Lab11
+- Lab 12.0 - Recursion https://github.com/cbourke/CSCE155-C-Lab12
+- Lab 13.0 - Searching & Sorting https://github.com/cbourke/CSCE155-C-Lab13
+- Lab 14.0 - Graphical User Interfaces https://github.com/cbourke/CSCE155-C-Lab14
+- Lab 15.0 - Databases https://github.com/cbourke/CSCE155-C-Lab15
 
 ## Course Offerings
 
