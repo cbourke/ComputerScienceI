@@ -23,8 +23,6 @@
   pdftitle={BYOD: Bring Your Own Device},
   pdflang={en},
   pdfauthor={Christopher M. Bourke},
-  pdfcreator={$ $Id: cv-us.tex,v 1.28 2009/01/01 00:00:00 cbourke Exp $ $},
-  pdfsubject={PhD Thesis},
   pdfkeywords={}
 }
 
@@ -81,8 +79,8 @@
 \pagestyle{fancy}
 %\renewcommand*{\titlepagestyle}{fancy}
 %\fancyhf{}
-%\rhead{Computer Science I}
-%\lhead{Guides and tutorials}
+\rhead{~}
+\lhead{~}
 \renewcommand{\headrulewidth}{0.0pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \lfoot{\Title\ -- Computer Science I}
@@ -130,12 +128,46 @@ already on the CSE server.  If you choose to go your own way and install
 alternative software, you may have difficulty installing libraries if you
 don't know what you're doing.
 
-\subsection*{Windows}
+\section{Remote/Online Users}
+
+For students in the online section and students who are looking to 
+completely untether from the physical CSE labs and the UNL campus, 
+one solution is to use an online IDE (Integrated Development Environment).  
+We recommend using Harvard's CS50 IDE (\url{https://ide.cs50.io/}) which
+gives you an entire development environment in your browser with no
+installations and the full functionality of a virtual machine all for
+free.  For a step-by-step process for getting started, see lab 1.0.
+
+There are many other alternatives for online, browser-based IDEs.
+These all vary according to cost and functionality.
+\begin{itemize}
+  \item REPL.it: \url{https://repl.it/}
+  \item Gitpod: \url{https://gitpod.io/}
+  \item Codeboard: \url{https://codeboard.io/}
+  \item Online GDB: \url{https://www.onlinegdb.com/online_c_compiler}
+\end{itemize}
+
+\section{On Campus Users}
+
+If you plan on doing most of your work on campus, you can utilize
+the CSE server (its resources, file storage, compiler and other
+software) from the command line.  We recommend that you use an 
+SSH client (in order to execute commands at the command line) in 
+conjunction with a samba connection so you can connect to your
+``Z-drive'' directly over the network.  This solution only works 
+if you are on campus since a samba connection would be fire-walled
+off campus.  
+
+Alternatively, you could use a Virtual Private Network (VPN) to make 
+it appear you are on campus.  UNL's VPN service (and the
+required software) can be found at: \url{https://its.unl.edu/services/vpn/}.
+
+\subsection{Windows}
 
 \begin{enumerate} 
   \item Connect to your Z: drive using the following FAQ: \\
   \url{https://cse.unl.edu/faq-section/windows#node-290}\\
-  This only works on campus; off campus you'd need to setup a VPN.
+  (hint: the URL contains a ONE, not a lower case ``L'').
   \item Install Atom IO \url{https://atom.io/}, a free code/text 
   editor.  Use this editor to edit files on your Z drive once connected.
   
@@ -148,18 +180,19 @@ don't know what you're doing.
     \item Under Settings, select \mintinline{text}{LF} instead of \mintinline{text}{CRLF}
   \end{enumerate}
   
-  \item Download and install Putty, a ``Secure Shell Client'': \\
+  \item Download and install Putty, an SSH (Secure Shell) client: \\
   \url{http://www.putty.org/}\\
   Once you've written your program(s), login to the CSE server
-  using Putty and compile and run your programs on the CSE server.
+  (the hostname is \mintinline{text}{cse.unl.edu})
+  using Putty and compile and run your programs on the CSE server.  
 \end{enumerate}
 
-\subsection*{Mac}
+\subsection{Mac}
 
 \begin{enumerate}
   \item Connect to your Z: drive using the following FAQ: \\
   \url{https://cse.unl.edu/faq-section/macintosh#node-295}\\
-  This only works on campus; off campus you'd need to setup a VPN.
+  (hint: the URL contains a ONE, not a lower case ``L'').
   \item Install Atom IO \url{https://atom.io/}, a free code/text 
   editor.  Use this editor to edit files on your Z drive once connected.
   \item Use Terminal (Apps $\rightarrow$ Utilities $\rightarrow$ Terminal) to
@@ -168,34 +201,29 @@ don't know what you're doing.
   is replaced with your CSE login.
 \end{enumerate}
 
-\section*{Getting Started}
+%\subsection{Getting Started}
+%
+%\begin{enumerate}
+%  \item In atom, create a new file named \mintinline{text}{hello.c} and be sure to 
+%save it on your Z: drive after you've connected.  You can also create directories
+%on your Z: drive to better organize your code.  
+%  \item Edit the new file to have the following contents.
+%\begin{minted}{c}
+%#include <stdlib.h>
+%#include <stdio.h>
+%
+%int main(int argc, char **argv) {
+%
+%  printf("Hello World!\n");
+%  return 0;
+%}
+%\end{minted}
+%  \item Using putty (windows) or terminal (mac), compile your file using:\\
+%  \mintinline{text}{gcc hello.c}
+%  \item Run your program:\\
+%  \mintinline{text}{./a.out}
+%\end{enumerate}
 
-\begin{enumerate}
-  \item In atom, create a new file named \mintinline{text}{hello.c} and be sure to 
-save it on your Z: drive after you've connected.  You can also create directories
-on your Z: drive to better organize your code.  
-  \item Edit the new file to have the following contents.
-\begin{minted}{c}
-#include <stdlib.h>
-#include <stdio.h>
-
-int main(int argc, char **argv) {
-
-  printf("Hello World!\n");
-  return 0;
-}
-\end{minted}
-  \item Using putty (windows) or terminal (mac), compile your file using:\\
-  \mintinline{text}{gcc hello.c}
-  \item Run your program:\\
-  \mintinline{text}{./a.out}
-\end{enumerate}
-
-\section*{Virtual Private Network}
-
-In order to access your Z drive from off campus, you'll need to
-use a VPN (Virtual Private Network).  UNL's VPN service (and the
-required software) can be found here: \url{https://its.unl.edu/services/vpn/}
 
 \section*{Alternatives}
 
@@ -207,21 +235,13 @@ you choose these.
   \item Eclipse for C/C++ is a full Integrated Development Environment (IDE):
   \url{https://www.eclipse.org/downloads/eclipse-packages/}
   \item Code::Blocks is another IDE for for C/C++: \url{http://www.codeblocks.org/}
-  \item Sublime Text is an excellent code editor but is commercial: \url{https://www.sublimetext.com/}
+  \item Sublime Text is an excellent code editor but is commercial: \url{https://www.sublimetext.com/} (this is an alternative to atom.io, it does not include
+  a compiler).
   \item If you are off campus and need to transfer files between your 
   own machine and the CSE server, you can use an SFTP (Secure File Transfer
   Protocol) client.  We recommend FileZilla: \url{https://filezilla-project.org/}
   (download the \emph{client}, not the server).  For the host, use 
   \mintinline{text}{sftp://cse.unl.edu} and use your cse login and password.
-  \item Another alternative is to use an online or cloud IDE.  Various products
-  and websites exist for this and vary according to cost and functionality.
-  You might try: 
-  \begin{itemize}
-    \item REPL.it: \url{https://codeboard.io/}
-    \item Codeboard: \url{https://codeboard.io/}
-    \item Online GDB: \url{https://www.onlinegdb.com/online_c_compiler}
-    \item Gitpod: \url{https://gitpod.io/}
-  \end{itemize}
 \end{itemize}
 
 
