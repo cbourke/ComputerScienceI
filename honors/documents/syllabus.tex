@@ -1,0 +1,661 @@
+\documentclass[12pt]{scrartcl}
+
+\usepackage[printwatermark,disablegeometry]{xwatermark}
+
+\usepackage{epsfig,amssymb}
+
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{multirow}
+\usepackage{colortbl} 
+
+
+\definecolor{steelblue}{RGB}{70, 130, 180}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  linkcolor=red,
+  citecolor=darkgreen,
+  menucolor=darkred,
+  urlcolor=blue,
+  pdfpagemode=none,
+  pdftitle={Syllabus},
+  pdfauthor={Christopher M. Bourke},
+  pdfkeywords={}
+}
+
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} %
+\usepackage{subfigure}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.08,0.45}
+\definecolor{MyDarkRed}{rgb}{0.45,0.08,0}
+\definecolor{MyDarkGreen}{rgb}{0.08,0.45,0.08}
+
+\definecolor{mintedBackground}{rgb}{0.95,0.95,0.95}
+\definecolor{mintedInlineBackground}{rgb}{.90,.90,1}
+
+\usepackage[newfloat=true]{minted}
+
+\setminted{mathescape,
+           linenos,
+           autogobble,
+           frame=none,
+           framesep=2mm,
+           framerule=0.4pt,
+           %label=foo,
+           xleftmargin=2em,
+           xrightmargin=0em,
+           %startinline=true,  %PHP only, allow it to omit the PHP Tags *** with this option, variables using dollar sign in comments are treated as latex math
+           numbersep=10pt, %gap between line numbers and start of line
+           style=default} %syntax highlighting style, default is "default"
+
+\setmintedinline{bgcolor={mintedBackground}}
+%doesn't work with the above workaround:
+\setminted{bgcolor={mintedBackground}}
+\setminted[text]{bgcolor={mintedBackground},linenos=false,autogobble,xleftmargin=1em}
+%\setminted[php]{bgcolor=mintedBackgroundPHP} %startinline=True}
+\SetupFloatingEnvironment{listing}{name=Code Sample}
+\SetupFloatingEnvironment{listing}{listname=List of Code Samples}
+
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\SetKwInOut{Input}{input}
+\SetKwInOut{Output}{output}
+%NOTE: you can embed algorithms in solutions, but they cannot be floating objects; use [H] to make them non-floats
+
+\usepackage{lastpage}
+
+%\usepackage{titling}
+\usepackage{fancyhdr}
+\renewcommand*{\titlepagestyle}{fancy}
+\pagestyle{fancy}
+%\renewcommand*{\titlepagestyle}{fancy}
+%\fancyhf{}
+%\rhead{Computer Science I}
+%\lhead{Guides and tutorials}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\lhead{~}
+\chead{~}
+\rhead{~}
+\lfoot{\Title\ -- CSCE 155H Syllabus}
+\cfoot{~}
+\rfoot{\thepage\ / \pageref*{LastPage}}
+
+\makeatletter
+\title{Computer Science I}\let\Title\@title
+\subtitle{Syllabus\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{CSCE 155H -- Fall 2020}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\newwatermark[allpages=true,scale=5,textmark=Draft]{},
+
+\hrule
+
+\begin{quote}
+``If you really want to understand something, the best way is to try and explain it to someone else. That forces you to sort it out in your own mind... that's really the essence of programming. By the time you've sorted out a complicated idea into little steps that even a stupid machine can deal with, you've certainly learned something about it yourself.'' 
+
+\hfill ---Douglas Adams, \emph{Dirk Gently's Holistic Detective Agency}
+\end{quote}
+
+\begin{quote}
+In my experience, you assert control over a computer--show it who's the boss--by making it do something unique. That means programming it... If you devote a couple of hours to programming a new machine, you'll feel better about it ever afterwards'' 
+
+\hfill ---Michael Crichton, Electronic Life
+\end{quote}
+
+\begin{quote}
+The readings were the most underrated things ever (I've never actually read them but I wish I did) thanks for providing them and leaving the whole course available to us. 
+
+\hfill ---Former student a year after taking this course
+\end{quote}
+
+\begin{quote}
+Enjoyed the videos. Did not really watch them videos until [later],
+realized that it was a mistake now.
+
+\hfill ---Former student a year after taking this course
+\end{quote}
+
+\begin{quote}
+``There are only two kinds of languages: the ones people complain 
+about and the ones nobody uses.''
+
+\hfill ---Bjarne Stroustrup (creator of C++)
+\end{quote}
+
+\begin{quote}
+``But be aware that you won't reach the skill level of a hacker or 
+even merely a programmer if you only know one language--you need to 
+learn how to think about programming problems in a general way, 
+independent of any one language.  To be a real hacker, you need to 
+have gotten to the point where you can learn a new language in days 
+by relating what's in the manual to what you already know.  This 
+means you should learn several very different languages.''
+
+\hfill ---Eric S. Raymond, How to Become a Hacker (The Cathedral and the Bazaar)
+\end{quote}
+
+\begin{quote}
+``I came into this class able to code by constantly using references 
+and needing to double check my code. I left as a coding machine. The 
+rate at which I did the last homework was like that of whole other 
+person.''
+
+\hfill ---Previous student via course evaluation
+\end{quote}
+
+
+
+
+\section{Course Info}
+
+\textbf{Prerequisites}: MATH 103 or equivalent.
+
+\textbf{Description}: Introduction to problem solving with computers. 
+Topics include problem solving methods, software development 
+principles, computer programming, and computing in society.
+
+\textbf{Credit Hours}: 3
+
+\textbf{Postrequisites}: The course after this course, CSCE 156 -- Computer 
+Science II requires that you receive a grade of C or better in this course to
+move on.  If you are a Computer Science or Computer Engineering major you will
+need to receive a C or better in this course to continue in the major.  
+
+For all other information, see the course website.
+
+\section{Skills Objectives}
+
+This course has several learning objectives and ``skills objectives.''
+These are the skills that, upon successful completion of this course, 
+you should be able to exhibit.
+
+\begin{itemize}
+  \item You should have a mastery of the fundamentals of programming 
+  in a high-level language, including data types and rudimentary data 
+  structures, control flow, repetition, selection, input/output, 
+  and procedures and functions.
+  \item You should be able to approach a reasonably complex problem, 
+  design a top-down solution, and code a program in a high-level programming 
+  language that automates solutions.
+  \item You should have a familiarity with problem solving methods, 
+  including problem analysis, requirements and specifications, design, 
+  decomposition and step-wise refinement, and algorithm development 
+  (including recursion).
+  \item You should have a familiarity with software development principles 
+  and practices, including data and operation abstraction, encapsulation, 
+  modularity, code and artifact reuse, prototyping, iterative development, 
+  best practices in coding design, style, and documentation, a good understanding
+  of proper testing and debugging techniques and a familiarity with
+  development tools.
+  \item You should have exposure to algorithms for searching, sorting 
+  and other problems, graphical user interfaces, event-driven programming, 
+  and database access. 
+  \item You should have a foundation for further software development and
+  exploration.  You should have a deep enough understanding of at least
+  one high-level programming language that you should be able to learn another
+  programming language with relative ease in a relatively short amount of time.  
+\end{itemize}
+
+\section{Honors Section}
+
+As an Honors course, topics are covered in a greater depth than the main
+section of this course.  We cover the same topics as the main section, 
+but we do so by covering two programming languages: C and Java.  This
+gives us an opportunity to highlight the differences and idiosyncrasies 
+of both languages.  Assignments include exercises in both languages.  
+Likewise, exams will also have questions that require knowledge of both 
+languages.  All students are responsible for material on both languages.
+Weekly lab assignments will also have two versions: one in C and one in 
+Java.  Both versions will cover the same concepts and have similar 
+exercises.  However, each student is required to complete only one 
+version (the choice is left to the student).  However, you are highly 
+encouraged to complete both versions to gain a better knowledge of both 
+languages.
+
+
+\section{Schedule}
+
+See the course website.
+
+\section{Accommodations for Students with Disabilities}
+
+%updated from https://www.unl.edu/ssd/content/syllabus-statement-faculty
+% 2020/07/01
+
+The University strives to make all learning experiences as 
+accessible as possible. If you anticipate or experience 
+barriers based on your disability (including mental health, 
+chronic or temporary medical conditions), please let me know 
+immediately so that we can discuss options privately. To 
+establish reasonable accommodations, I may request that you 
+register with Services for Students with Disabilities (SSD). 
+If you are eligible for services and register with their 
+office, make arrangements with me as soon as possible to 
+discuss your accommodations so they can be implemented in a 
+timely manner. SSD contact information:  117 Louise Pound 
+Hall.; 402-472-3787
+
+\section{Grading}
+
+Assessment (grading) will be based assignments, labs, 
+and two exams with the following point distributions.
+
+\begin{table}[h]
+\centering
+{\small
+\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+\renewcommand{\arraystretch}{1.2}% for the vertical padding
+
+\begin{tabular}{lrrr}
+\hline
+\rowcolor{steelblue!50} Category & Number & Points Each & Total \\
+\hline
+\rowcolor{steelblue!5}   Starter Points    &    &     &  10 \\
+\rowcolor{steelblue!10}  Attendance        &    &     &   0 \\
+\rowcolor{steelblue!5}   Labs              & 14 & 10  & 140 \\
+\rowcolor{steelblue!10}  Assignments       &  6 & 100 & 300 \\
+\rowcolor{steelblue!5}   Midterm           & 1  & 100 & 100 \\
+\rowcolor{steelblue!10}  Final             & 1  & 100 & 150 \\
+\hline
+Total  & & & 1,000 
+\end{tabular}
+}
+\end{table}
+
+
+\subsection{Starter Points}
+
+It is important to start out positively.  Put yourself in the mindset
+that you \emph{will} succeed in this course and commit yourself to
+putting in a full effort in every aspect of it.  To get you started,
+we're giving you 10 free points.  You have a perfect score in this
+course already!  Keep it up!
+
+\subsection{Attendance}
+
+Due to the continuing COVID-19 pandemic, the following policies and
+accommodations will be made for this course.
+\begin{itemize}
+  \item No assessment will be made based on any synchronous attendance 
+  for instructional sessions (which includes lecture, lab, and 
+  office hours).  The choice to attend face-to-face
+  instructional sessions is left entirely to your own judgment.  If you have
+  a medical condition or other consideration or simply do not wish to
+  unnecessarily expose yourself, you are \emph{encouraged} to refrain
+  from face-to-face sessions.  You will not be judged nor will you be
+  required to provide any documentation.
+  
+  \item If you feel sick, have a fever or other related symptoms, you
+  \emph{may not} attend face-to-face sessions.  Please attend remotely.
+  
+  \item At most, 1/3 of the normal capacity of any room may be utilized.
+  To accommodate this, attendance will be staggered and at most 1/2 of
+  enrolled students will be allowed to attend face-to-face while the 
+  other half must attend remotely.  The following schedule has been
+  designed to give you as many face-to-face learning opportunities 
+  on a weekly basis as possible under these conditions.
+  
+  If your NUID ends in an \textbf{even} number:
+  \begin{itemize}
+    \item You \emph{may} attend lecture face-to-face on Tuesdays 
+    \item You \emph{must} attend lecture remotely on Thursdays
+    \item You \emph{may} attend face-to-face for \emph{even} numbered labs
+    \item You \emph{must} attend virtually for \emph{odd} numbered labs
+  \end{itemize}
+  If your NUID ends in an \textbf{odd} number:
+  \begin{itemize}
+    \item You \emph{must} attend lecture remotely on Tuesdays 
+    \item You \emph{may} attend lecture face-to-face on Thursdays.
+    \item You \emph{may} attend face-to-face for \emph{odd} numbered labs
+    \item You \emph{must} attend virtually for \emph{even} numbered labs
+  \end{itemize}
+
+
+  \item All students, learning assistants, and faculty that do choose
+  to attend face-to-face instructional sessions will be required to adhere to
+  reasonable safety precautions as prescribed by UNL.  This includes:
+  \begin{itemize}
+    \item \emph{Properly} wearing face mask protection at all
+    times.  Both mouth and nose must be covered at all times 
+    including entering and exiting facilities
+    \item Observe social distancing by not physically interacting with
+    anyone and keeping a minimum of 6 feet (2 meters) distance between
+    you and anyone else.  
+    \item Choosing a seat that is at least
+    2 seats away from any other person (in any direction).  This
+    may require you to move to a different seat in order to accommodate
+    the proper number of students.
+  \end{itemize}
+  \item Failure to adhere to these guidelines may result in you 
+  being asked to leave class and to attend class sections remotely.
+\end{itemize}
+
+These are difficult conditions.  Under normal conditions attendance
+would generally be required and assessed as there is a 
+\emph{strong correlation} with students who regularly 
+attend lecture and labs and those who succeed academically
+in this course.  F
+
+This course will be ever more challenging by having fewer of these
+face-to-face opportunities.  However, we hope to make up for it using
+virtual sessions (via zoom) and have eliminated some assessments
+for this course offering.  
+
+
+%There is a \emph{strong correlation} with students who regularly 
+%attend lecture, labs, and hacks and those who succeed academically
+%in this course.  For example, students who regularly attended hack
+%sessions in Fall 2019 earned a full letter grade better in their
+%hack submissions than those who did not.  Note it is a \emph{correlation}
+%simply \emph{being} there is not enough, but it \emph{is} necessary.
+%To that end, we require and record attendance at all lectures (29 total), 
+%labs (14 total), and hack sessions (15 total).  
+%
+%Attendance will be recording either using an app (TODO) or by Learning
+%Assistants.  It is understandable that you may inevitably miss a class
+%or two due to illness or other obligations.  To accommodate such events, 
+%attendance only represents 50 points (50 events out of a possible 58).
+%Thus, up to 8 events can be missed without impacting your grade.  
+
+%\subsubsection*{What Attendance Means}
+%
+%Attendance is not merely \emph{being present} but \emph{being engaged}.
+%In lecture that means being attentive, paying attention and taking notes.
+%Countless studies have shown that the simple act of taking notes improves
+%retention and comprehension.  In labs and hacks that means actively 
+%engaging in the relevant work, asking for help and actively engaging
+%in \emph{collaboration}.  To that end, you may not leave lab
+%or hack early or when you have completed your own tasks.  Instead, you 
+%are to use the remaining time to assist your peers.  Share your
+%knowledge and your skills and do so in a positive and constructive manner.
+
+\subsection{Labs}
+
+There will be weekly labs that give you hands-on exercises for 
+topics recently covered in lecture.  The purpose of lab is not 
+only to give you further working experience with lecture topics, 
+but also to provide you with additional information and details 
+not necessarily covered in lecture.  Each lab will have some 
+programming requirements and a supplemental worksheet.  
+
+Depending on logistics, those in the on-campus section may be
+randomly paired with a partner.  One of you will 
+be the \emph{driver} and the other will be the \emph{navigator}.  
+The navigator will be responsible for reading the instructions 
+and guiding the driver.  The driver will be in charge of the 
+keyboard and will type the code.  Both driver and navigator are 
+responsible for developing and working through solutions together.
+Neither the navigator nor the driver is ``in charge,'' it is an 
+equal partnership.  Beyond your immediate pairing, you are 
+encouraged to help and interact and with other pairs in the lab.
+
+For those in the online section or those attending remotely, you 
+may work alone or we may partner you with someone in a zoom 
+breakout room.  
+
+Each lab is assessed based on completion.  In general you will
+need to submit code and an electronic writeup of your worksheet
+(plain text or markdown is preferred) through webhandin which
+can also be verified using the webgrader.  You will have until
+midnight on the day of the lab (Tuesdays) to submit your solutions.
+Points will be awarded based on the results of the webgrader.
+
+
+%Labs are setup as a \emph{peer programming} experience.  In each 
+%lab, you will be randomly paired with a partner.  One of you will 
+%be the \emph{driver} and the other will be the \emph{navigator}.  
+%The navigator will be responsible for reading the instructions 
+%and guiding the driver.  The driver will be in charge of the 
+%keyboard and will type the code.  Both driver and navigator are 
+%responsible for developing and working through solutions together.
+%Neither the navigator nor the driver is ``in charge,'' it is an 
+%equal partnership.  Beyond your immediate pairing, you are 
+%encouraged to help and interact and with other pairs in the lab.
+%
+%Unless otherwise stated, you are required to finish the lab by 
+%the end of your regular lab meeting time.  A lab instructor must 
+%sign off on your lab worksheet and you must turn it in to receive 
+%credit.  Labs not completed on time \emph{may not} receive
+%credit. This means that you \emph{must} show up to your lab on
+%time and be properly prepared.  Being prepared means having gone
+%through the relevant material and pre-lab required reading.  It 
+%means not being preoccupied with material or questions not related
+%to the lab material.  
+
+\subsection{Assignments}
+
+There are 6 assignments each constituting of several programming
+exercises.  Code and other relevant files must be submitted using 
+CSE?s webhandin.  Many assignments will have requirements (file 
+names, package requirements, command line input requirements, 
+etc.) that will facilitate grading through an automated script.  
+This script has been made available to you through the webgrader 
+interface.  You are expected to utilize this webgrader interface 
+to ensure that your program is running as required and to fix any 
+issues prior to the final due date (you may handin and run the 
+script as many times as you like up to the due date).  If your 
+program fails to compile or run through the webgrader interface, 
+you may receive a zero.
+
+Understand that the webgrader interface is a black box tester.  
+It is not a substitute for developing your own test cases and 
+should not be used as the primary resource to debug your program; 
+instead it is intended as a last-check mechanism.
+
+The final homework may be due as late as Friday of Dead Week.  
+As per the 15th week policy, this serves as written notice.
+
+\subsection{Exams}
+
+There will be one midterm exam and a comprehensive final exam.  These
+will be open-book, open-note, \emph{required computer} exams.  The
+exams consist of live coding exercises for which you will need your
+own machine as you will be coding and submitting programs online for
+grading.  More details will be announced closer to the exam dates.
+Due to attendance limitations, these will likely be ``take home''
+exams.  You will be on your own honor to complete these exams alone
+and without collaboration.
+
+%There will be one midterm exam and a comprehensive final exam.  These
+%will be open-book, open-note, \emph{required computer} exams.  The
+%exams consist of live coding exercises for which you will need your
+%own machine as you will be coding and submitting programs online for
+%grading.  A working laptop with the proper development tools and
+%resources is required to take these exams.  If you do not have a 
+%working laptop computer during the exam dates, please contact us for
+%alternative accommodations.  More details will be announced closer 
+%to the exam dates.
+
+\subsection{15th Week Policy Notification}
+\label{subsection:deadweek}
+
+A per UNL's 15th Week Policy (also known as ``dead week'') available here: 
+
+\url{https://registrar.unl.edu/academic-standards/policies/fifteenth-week-policy/}
+
+we are required to serve written notice that the final assignment
+as well as the final lab, hack, and assignment will be due during the 15th 
+week.
+
+\subsection{Scale}
+
+Final letter grades will be awarded based on the following 
+standard scale. This scale may be adjusted upwards if the 
+instructor deems it necessary based on the final grades only.  
+No scale will be made for individual assignments or exams.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{1cm}c}
+Letter Grade & Percent \\
+\hline\hline
+A+ & $\geq 97$ \\
+A  & $\geq 93$ \\
+A- & $\geq 90$ \\
+B+ & $\geq 87$ \\
+B  & $\geq 83$ \\
+B- & $\geq 80$ \\
+C+ & $\geq 77$ \\
+C  & $\geq 73$ \\
+C- & $\geq 70$ \\
+D+ & $\geq 67$ \\
+D  & $\geq 63$ \\
+D- & $\geq 60$ \\
+F  & $<60$ \\
+\end{tabular}
+\end{table}
+
+\subsection{Grading Policy}
+
+If you have questions about grading or believe that points were 
+deducted unfairly, you must first address the issue with the 
+individual who graded it to see if it can be resolved.  Such 
+questions should be made within a reasonable amount of time 
+after the graded assignment has been returned.  No further 
+consideration will be given to any assignment a week after 
+it grades have been posted.  It is important to emphasize that 
+the goal of grading is consistency.  A grade on any given 
+assignment, even if it is low for the entire class, should 
+not matter that much.  Rather, students who do comparable 
+work should receive comparable grades (see the subsection 
+on the scale used for this course).
+
+\subsection{Late Work Policy}
+
+In general, there will be no make-up exams or late work
+accepted.  Exceptions may be made in certain circumstances 
+such as health or emergency, but you must make every effort 
+to get prior permission.  Documentation may also be required.
+
+Homework assignments have a strict due date/time as defined by
+the CSE server's system clock.  All program files must be handed
+in using CSE's webhandin as specified in individual assignment
+handouts.  Programs that are even a few seconds past the due 
+date/time will be considered late and you will be locked out
+of handing anything in after that time.  
+
+\subsection{Webgrader Policy}
+
+Failure to adhere to the requirements of an assignment in such 
+a manner that makes it impossible to grade your program via 
+the webgrader means that a disproportionate amount of time 
+would be spent evaluating your assignment.  For this reason, 
+we will not grade any assignment that does not compile and 
+run through the webgrader.  
+
+\subsection{Academic Integrity}
+
+All homework assignments, programs, and exams must represent
+your own work unless otherwise stated.  No collaboration with 
+fellow students, past or current, is allowed unless otherwise 
+permitted on specific assignments or problems.  The Department of
+Computer Science \& Engineering has an Academic Integrity Policy.  
+All students enrolled in any computer science course are bound 
+by this policy.  You are expected to read, understand, and follow 
+this policy.  Violations will be dealt with on a case by case 
+basis and may result in a failing assignment or a failing grade 
+for the course itself.  The most recent version of the Academic 
+Integrity Policy can be found at \url{http://cse.unl.edu/academic-integrity}
+
+\section{Communication \& Getting Help}
+
+The primary means of communication for this course is Piazza, an online
+forum system designed for college courses.  We have established a Piazza 
+group for this course and you should have received an invitation to join.
+If you have not, contact the instructor immediately.  With Piazza you 
+can ask questions anonymously, remain anonymous to your classmates, or 
+choose to be identified.  Using this open forum system the entire class 
+benefits from the instructor and TA responses.  In addition, you and 
+other students can also answer each other's questions (again you may
+choose to remain anonymous or identify yourself to the instructors or
+everyone).  You may still email the instructor or TAs, but more than 
+likely you will be redirected to Piazza for help.
+
+In addition, there are two anonymous suggestion boxes that you may 
+use to voice your concerns about any problems in the course if you 
+do not wish to be identified.  My personal box is available on the
+course webpage.  The department also maintains an anonymous suggestion
+box available at \url{https://cse.unl.edu/contact-form}.
+
+\subsection{Getting Help}
+
+Your success in this course is ultimately your responsibility.  Your
+success in this course depends on how well you utilize the opportunities
+and resources that we provide.  There are numerous outlets for learning
+the material and getting help in this course:
+\begin{itemize}
+  \item Lectures: attend lectures regularly and when you do use the 
+  time appropriately.  Do not distract yourself with social media or other
+  time wasters.  Actively take notes (electronic or hand written).  It is
+  well-documented that good note taking directly leads to understanding and
+  retention of concepts.
+  \item Lecture Videos: Lecture videos are intended as a supplement
+  that mirrors lecture material but that may not cover everything.  Watch
+  them at your own pace on a regular basis for reiteration or in case
+  you missed something in lecture.  
+  \item Required Reading: do the required reading on a regular basis.  The
+  readings provide additional details and depth that you may not necessarily
+  get directly in lecture.  
+  \item Labs \& Hack Sessions: use your time during lab and hack sessions 
+  wisely.  Engage with your lab instructors, teaching assistants, your partner(s)
+  and other students.  Be sure to adequately prepare for labs by reading
+  the handouts before coming to lab.  Get started and don't get distracted.
+  \item Piazza: if you have questions ask them on Piazza.  It is the best and
+  likely fastest way to get help with your questions.  Also, be sure to read
+  other student's posts and questions and feel free to answer yourself!
+  \item Office Hours \& Student Resource Center: the instructor and teaching
+  assistants hold regular office hours throughout the week as posted on the
+  course website.  Attend office hours if you have questions or want to 
+  review material.  The Student Resource Center (SRC, \url{http://cse.unl.edu/src})
+  Monday through Friday.  Even if your TAs are not scheduled
+  during that time, there are plenty of other TAs and students present that
+  may be able to help.  And, you may be able to help others!
+  \item Don't procrastinate.  The biggest reason students fail this course
+  is because they do not give themselves enough opportunities to learn the
+  material.  Don't wait to the last minute to start your assignments.  Many
+  people wait to the last minute and flood the TAs and SRC, making it difficult
+  to get help as the due date approaches.  Don't underestimate how much time 
+  your assignment(s) will take and don't wait to the week before hand to get 
+  started.  Ideally, you should be working on the problems as we are covering 
+  them.
+  \item Get help in the \emph{right way}: when you go to the instructor or
+  TA for help, you must demonstrate that you have put forth a good faith 
+  effort toward understanding the material.  Asking questions that clearly 
+  indicate you have failed to read the required material, have not been
+  attending lecture, etc.\ is \emph{not acceptable}.  Don't ask generic
+  questions like ``I'm lost, I don't know what I'm doing''.  Instead, 
+  explain what you have tried so far.  Explain why you think what you 
+  have tried doesn't seem to be working.  Then the TA will have an 
+  easier time to help you identify misconceptions or problems.  This 
+  is known as ``Rubber Duck Debugging'' where in if you try to explain 
+  a problem to someone (or, lacking a live person, a rubber duck), 
+  then you can usually identify the problem yourself.  Or, at the very 
+  least, get some insight as to what might be wrong.
+\end{itemize}
+
+
+
+\end{document}
