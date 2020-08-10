@@ -60,7 +60,7 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 - Lab 8.0 - Debugging https://github.com/cbourke/CSCE155-Java-Lab08
 - Lab 9.0 - Strings https://github.com/cbourke/CSCE155-Java-Lab09
 - Lab 10.0 - File I/O https://github.com/cbourke/CSCE155-Java-Lab10
-- Lab 11.0 - Structures https://github.com/cbourke/CSCE155-Java-Lab11
+- Lab 11.0 - Objects https://github.com/cbourke/CSCE155-Java-Lab11
 - Lab 12.0 - Recursion https://github.com/cbourke/CSCE155-Java-Lab12
 - Lab 13.0 - Searching & Sorting https://github.com/cbourke/CSCE155-Java-Lab13
 - Lab 14.0 - Graphical User Interfaces https://github.com/cbourke/CSCE155-Java-Lab14
