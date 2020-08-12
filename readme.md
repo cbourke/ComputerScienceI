@@ -9,7 +9,7 @@ related to Computer Science I (offered as CSCE 155E, CSCE 155H).
 
 ## Videos
 
-We have produced over 50 lecture and tutorial videos that should 
+We have produced over 60 lecture and tutorial videos that should 
 be viewed prior to lecture and which are available in the following
 playlist:
 
