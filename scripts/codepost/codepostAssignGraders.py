@@ -52,7 +52,7 @@ assignmentId = int(sys.argv[2])
 
 codepost.configure_api_key(config.codePostApiKey)
 
-gradingAssignment = course.getAssignment()
+gradingAssignment = course.getGradingAssignment()
 s = course.assignmentToString(gradingAssignment)
 print(s)
 
@@ -80,7 +80,7 @@ def pushAssignments(gradingAssignment):
           codepost.file.create(
             name=name,
             code=contents,
-            extension=extension,
+            extension=ext,
             submission=submission.id
           )
 
