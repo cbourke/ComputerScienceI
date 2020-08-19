@@ -1,6 +1,5 @@
 import pickle
 import os.path
-import pyodbc
 from config import config
 
 # For pyodbc you can find your odbc ini file using:
@@ -51,6 +50,7 @@ def mapNuidsToCseLogins(nuidToCseLogin, pickleFileName = None):
     
   # if missing logins, try to get them from the DB:
   if missingLogins:
+    import pyodbc
     try:
       print("loading missing logins from db...")
       print(missingLogins)
@@ -86,12 +86,3 @@ def mapNuidsToCseLogins(nuidToCseLogin, pickleFileName = None):
     outFile.close()
 
   return nuidToCseLogin
-
-#nuids = ['35140602', '12345678', '49883755', '61910486']
-#b = dict(zip(nuids, [None for x in nuids]))
-#for nuid,login in b.items():
-#  print(nuid + " -> " + str(login))
-
-#b = mapNuidsToCseLogins(b, config.nuidToCseLoginPickle)
-#for nuid,login in b.items():
-#  print(nuid + " -> " + str(login))
