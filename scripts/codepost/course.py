@@ -51,11 +51,9 @@ class Course:
     def __init__(self, instructorNuids = [], graderNuids = []):
         self.instructorNuids = instructorNuids
         self.graderNuids = graderNuids
-        # 1. load full roster and groups from canvas
+        # 1. load full roster from canvas
         # {NUID => Person}
         self.roster = roster
-        # [Group]
-        self.groups = groups
         # 2. get as many cse logins as possible
         # 2a. dump NUIDs to map
         nuids = self.roster.keys()
@@ -84,6 +82,11 @@ class Course:
                         self.graders[nuid] = p
                 else:
                     self.students[nuid] = p
+        # update groups to exclude instructors and graders [Group]
+        self.groups = []
+        for g in groups:
+          if g.members[0].nuid in self.students:
+            self.groups.append(g)
 
     def __str__(self):
         r = "Instructors (%d): \n"%(len(self.instructors))
