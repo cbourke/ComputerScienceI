@@ -28,7 +28,9 @@ functionality to randomly create a grading assignment
 
 from config import config
 from canvas import roster
+from canvas import groups
 import udb
+import copy
 import math
 import random
 
@@ -41,6 +43,7 @@ class Course:
     graders = {}
     
     students = {}
+    groups = []
     
     #students with no cse login for some reason
     orphans = {}
@@ -48,18 +51,21 @@ class Course:
     def __init__(self, instructorNuids = [], graderNuids = []):
         self.instructorNuids = instructorNuids
         self.graderNuids = graderNuids
-        # 1. load full roster from canvas
+        # 1. load full roster and groups from canvas
+        # {NUID => Person}
         self.roster = roster
+        # [Group]
+        self.groups = groups
         # 2. get as many cse logins as possible
         # 2a. dump NUIDs to map
-        nuids = [p.nuid for p in self.roster]
+        nuids = self.roster.keys()
         nuidsToCseLogins = dict(zip(nuids, [None for x in nuids]))
-        # 2b. update
+        # 2b. update from UDB
         nuidsToCseLogins = udb.mapNuidsToCseLogins(nuidsToCseLogins,config.nuidToCseLoginPickle)
-        # 2c. update roster instances
-        for p in self.roster:
-            if p.nuid in nuidsToCseLogins and nuidsToCseLogins[p.nuid] is not None:
-                p.cseLogin = nuidsToCseLogins[p.nuid]
+        # 2c. update cse logins for all roster instances
+        for nuid,p in self.roster.items():
+          if nuid in nuidsToCseLogins and nuidsToCseLogins[nuid] is not None:
+            p.cseLogin = nuidsToCseLogins[nuid]
                 
         #3. filter into the appropriate group
         #   This is done manually as the "role" is not available from canvas 
@@ -67,17 +73,17 @@ class Course:
         #   - If there is no cse login, they are "orphaned"
         #   - Otherwise, they are either a student XOR instructor/grader
         #     - instructors can be graders
-        for p in self.roster:
+        for nuid,p in self.roster.items():
             if p.cseLogin is None:
-                self.orphans[p.nuid] = p
+                self.orphans[nuid] = p
             else:
-                if p.nuid in instructorNuids or p.nuid in graderNuids:
-                    if p.nuid in instructorNuids: 
-                        self.instructors[p.nuid] = p
-                    if p.nuid in graderNuids: 
-                        self.graders[p.nuid] = p
+                if nuid in instructorNuids or nuid in graderNuids:
+                    if nuid in instructorNuids: 
+                        self.instructors[nuid] = p
+                    if nuid in graderNuids: 
+                        self.graders[nuid] = p
                 else:
-                    self.students[p.nuid] = p
+                    self.students[nuid] = p
 
     def __str__(self):
         r = "Instructors (%d): \n"%(len(self.instructors))
@@ -94,10 +100,10 @@ class Course:
             r += str(p) + "\n"
         return r
 
-    def getAssignment(self):
+    def getGradingAssignment(self):
         """
         Returns a randomized mapping of graders (Person objects) 
-        to a list of students (Person objects) they are assigned 
+        to a list of students (Group objects) they are assigned 
         to grade.
         
         Assignments are made in a round-robin manner so that the 
@@ -105,20 +111,21 @@ class Course:
         grade.
         """
         graderNuids = list(self.graders.keys())
-        studentsNuids = list(self.students.keys())
+        groups = copy.deepcopy(self.groups)
         random.shuffle(graderNuids)
-        random.shuffle(studentsNuids)
+        random.shuffle(groups)
         assignment = {}
         #initialize lists 
         for gNuid in graderNuids:
             assignment[self.graders[gNuid]] = []
-        i = 0
-        for sNuid in studentsNuids:
+        i = 0        
+        n = len(graderNuids)
+        for group in groups:
             g = self.graders[graderNuids[i]]
-            assignment[g].append(self.students[sNuid])
-            i = (i+1)%len(graderNuids)
+            assignment[g].append(group)
+            i = (i+1)%n
         return assignment
-        
+
     def assignmentToString(self,assignment):
         """
         Given an assignment (a mapping of Person objects to a
@@ -136,12 +143,12 @@ class Course:
         graders = list(assignment.keys())
         graders.sort(key=lambda x: x.name)
         for grader in graders:
-          students = assignment[grader];
-          students.sort(key=lambda x: x.name)
-          n = len(students)
+          groups = assignment[grader];
+          groups.sort(key=lambda x: x.members[0].name)
+          n = len(groups)
           r += "%s (%d assigned)\n"%(grader.name,n)
-          for s in students:
-            r += "\t"+str(s)+"\n"
+          for g in groups:
+            r += str(g)
         return r
 
 course = Course(instructorNuids=config.instructorNuids, 
@@ -153,10 +160,9 @@ the course data defined in config.py
 
 def printCourse():
     print(course)
-    print("\n\n=====Emails for Piazza=====\n");
-    for p in course.roster:
+    print("\n\n===== Student Emails (for Piazza) =====\n");
+    for nuid,p in course.students.items():
         print(p.canvasEmail);
 
 if __name__ == "__main__":
     printCourse()
-

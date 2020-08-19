@@ -36,10 +36,11 @@ if(len(sys.argv) != 3):
   print("usage: cse_handin_assignment_name codepost_assignment_id")  
   exit(1)
 
-from config import config
-from course import course
 import os
 import codepost
+from config import config
+from course import course
+from fileUtils import getFiles 
 
 assignmentDir = config.handinDirectory + sys.argv[1]+"/"
 if not os.path.exists(assignmentDir):
@@ -55,33 +56,32 @@ gradingAssignment = course.getAssignment()
 s = course.assignmentToString(gradingAssignment)
 print(s)
 
-for grader,students in gradingAssignment.items():
-    for s in students:
-        path = assignmentDir+s.cseLogin+"/"
-        print("Looking in " + path)
-        if not os.path.exists(path):
-            print("no files...")
-            filenames = []
-        else:
-            (_, _, filenames) = next(os.walk(assignmentDir+s.cseLogin))
-        if config.fileExtensions:
-            filenames = [ f for f in filenames if f.endswith(tuple(config.fileExtensions)) ]
-        if filenames:
-          submission = codepost.submission.create(
-             assignment=assignmentId,
-             students=[s.canvasEmail],
-             grader=grader.canvasEmail)
-          for fileName in filenames:
-              print("pushing " + path+fileName)
-              contents = open(path+fileName, errors='ignore').read()
-              #if the file is empty, add content to accommodate codepost's API
-              if not contents:
-                  contents = "EMPTY FILE"
-              (_,extension) = os.path.splitext(fileName)
-              extension = extension[1:] #chomp period: .c -> c
-              codepost.file.create(
-                 name=fileName,
-                 code=contents,
-                 extension=extension,
-                 submission=submission.id
-              )
+# TODO: port over Hundter's CSV dump
+
+def pushAssignments(gradingAssignment):
+  for grader,groups in gradingAssignment.items():
+    for g in groups:
+      s = g.members[0]
+      path = assignmentDir+s.cseLogin+"/"
+      print("Pushing files in " + path + "...")
+      try:
+        files = getFiles(path)
+      except:
+        e = sys.exc_info()[0]
+        print("Error: %s" % e )
+        files = {}
+      if files:
+        submission = codepost.submission.create(
+          assignment=assignmentId,
+          students=[m.canvasEmail for m in g.members],
+          grader=grader.canvasEmail)
+        for (fullPath,name,ext),contents in files.items():
+          print("pushing " + name)
+          codepost.file.create(
+            name=name,
+            code=contents,
+            extension=extension,
+            submission=submission.id
+          )
+
+pushAssignments(gradingAssignment)
