@@ -32,6 +32,7 @@ class Person:
     canvasLogin = None
     canvasEmail = None      
     cseLogin = None
+    group = None
     
     def __init__(self, nuid,
                        name = None,
@@ -62,4 +63,4 @@ class Person:
         """
         Equality and ordering is determined based only on NUID
         """
-        return (self.nuid < self.nuid)
+        return (self.nuid < other.nuid)

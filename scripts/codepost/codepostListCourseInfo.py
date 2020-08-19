@@ -17,6 +17,9 @@ for a in course.assignments:
   print("%s (id=%d)"%(a.name,a.id))
 
 roster = codepost.roster.retrieve(id=config.codePostCourseId)
-print(roster.graders)
-print(roster.students)
-
+print("Graders")
+for g in roster.graders:
+  print("  %s"%g)
+print("Students")
+for s in roster.students:
+  print("  %s"%s)

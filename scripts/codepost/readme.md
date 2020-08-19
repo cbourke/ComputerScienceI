@@ -26,10 +26,10 @@ to assign graders and push submissions to codepost.
     udb database on cse-apps
   - Update the `username` and `password` variables
   
-4. Update the `handinDirectory` and `fileExtensions` variables 
-appropriately for your course if necessary
-
-5. Update the `instructorNuids` and `graderNuids` lists to
+4. Update the remaining configurations for your course including
+the `handinDirectory` and `fileExtensions` variables, the 
+group-related variables (if you use canvas groups for group 
+assignments) and the `instructorNuids` and `graderNuids` lists to
 include all relevant NUIDs (as strings).  
 
 ## Running
