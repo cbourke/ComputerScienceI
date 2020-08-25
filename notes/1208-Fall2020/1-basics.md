@@ -105,6 +105,8 @@ x = 10;
 
 ```
 
+### Assignment Operator
+
 * The assignment operator means: put the value on the right hand side into the variable on the left hand side
 * The left hand side must always be a variable
 * The right hand side can be a variable, a *literal* or an expression
@@ -128,7 +130,119 @@ int r = (-b + sqrt(b*b - 4*a*c)) / (2*a)
 ```
 
 * Programming expressions follow PEMDAS
-* Note: there is no "native" exponentiation in C; you have to use `pow(x, y)` for $x^y$ (you cannot use the carret: `x^y`)
+* Note: there is no "native" exponentiation in C; you have to use `pow(x, y)` for $x^y$ (you cannot use the caret: `x^y`)
+
+### Variable Naming
+
+* A variable's *name* (*identifier*) must follow several rules
+  * A variable's name may consist of letters, a-z, A-Z, underscores _ and numbers 0-9
+  * It may NOT begin with a number
+* Good style:
+  * Variables should be named after the things they model
+  * Use descriptive variables: `x` (if it is a point), `numberOfStudents`, `miles`, `kilometers`
+  * In general, avoid abbreviations, acronyms, etc. unless the context is absolutely clear
+  * Don't use placeholder names in real code: `foo, bar, baz`, `myVariable`, `var1, var2`
+  * In general you should be *consistent* with your naming conventions
+  * `lowerCamelCasing` is a good one to follow, another: `lower_underscore_casing`
+
+### Operators
+
+* Arithmetic Operators: `+, -, *, /` 
+* Consider: `a + b * c` is that the same as `(a + b) * c`
+* PEMDAS
+* Another operator: integer division operator `%`
+* It results in the *remainder* of a division
+* also known as the modulus or simply "mod operation"
+* Examples:
+  * `10 % 3` results in 1 (a remainder of 1)
+  * `11 % 3` results in 2
+  * `10 % 2` results in 0
+
+### Pitfall: Truncation
+
+```c
+int a = 10;
+int b = 20;
+int c = a / b; //result zero
+```
+
+* When you have two integers in your arithmetic operations, the result is *always* an integer
+* If you divide an integer by an integer, the result must be an integer: the fractional part gets cut off and thrown away
+* This is known as truncation
+* It is not rounding, it is not flooring 
+* You can solve this problem by "temporarily" making one or both of your operands compatible with a `double` using *type casting*
+
+```c
+int a = 10;
+int b = 20;
+double c = (double) a / b; //result 0.5
+```
+
+* Math library functions
+  * `#include <math.h>` has a bunch of nice mathematical functions: `sin(), cos(), tan(), sqrt()`
+  * It also has nice constants: `M_PI`, `M_E`
+  * IF YOU WORK ON CSE: you *may* need to use the `-lm` flag to compile with the math library
+  `gcc -lm myProgram.c`
+  * What other functions may there be?  RTM = Read The Manual
+
+## Basic I/O
+
+* I = input, O = output
+* With *interactive input* a program prompts the user to enter a value, then reads the value from the user 
+* The computer will *block* execution and waits for the user to mash their keyboard and then hit enter
+* Input: for interactive input you use `scanf` (scan the standard input in a *f*ormatted manner)
+* The format means you can use one of several placeholders depending on the variable type you want to read in:
+  * `int`: `%d`
+  * `double`: `%lf`
+  * `char`: `%c`
+* In general you only read one value at a time
+* Never forget the ampersand in front of the variable you want to store the value in (for now: its magic)
+
+### Basic Output
+
+* You can print to the standard output using `printf`
+* Same formats: you provide any number of placeholders and a comma delimited list of variables whose value you want to print
+  * `int`: `%d` 
+  * `double`: `%f`
+  * `char`: `%c`
+* When printing numbers, you have more fine-grained control over how many "columns" to print and how many digits of accuracy you want to print using placeholder modifiers
+  * `%n.mf`
+
+```c
+
+  printf("pi = %f\n", M_PI);
+  //10 decimals of accuracy:
+  printf("pi = %.10f\n", M_PI);
+  printf("pi = %.15f\n", M_PI);
+  printf("pi = %2.10f\n", M_PI);
+
+  int x = 1234;
+  printf("x = %10d\n", x);
+  printf("x = %010d\n", x);
+  //left justification:
+  printf("x = %-10d hello\n", x);
+
+```
+
+### Non-interactive input
+
+* Arguments are provided to the program from the command line as "Command Line Arguments" or CLAs
+* No interaction with the user: no prompting, no reading, the program reads them when the program starts
+* Command line arguments are provided by the 
+  * `argc` - number of arguments (argument count)
+  * `argv` - the vector of arguments
+  * `argv[0]` is always the executable program name! (ex: `a.out`)
+  * `argv[1]` is the actual first argument provided by the user
+  * `argv[2]` is the second, etc.
+* You can convert arguments using 
+  * `atof()` to convert to a floating point number (`double`)
+  * `atoi()` to convert to an integer (`int`)
+
+
+### Exercise
+
+* Write a program that reads in 3 coefficients of a quadratic polynomial and outputs its roots
+  $$ax^2 + bx + c = 0$$
 
 
 ```text
