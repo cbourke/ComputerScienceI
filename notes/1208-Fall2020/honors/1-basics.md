@@ -92,8 +92,134 @@ An overview of basics of C and Java including variables, input and output.
 ## Operators
 
 * Assignment operator: the single equals sign allows you to assign and reassign values to variables
+* The single equals sign is the *assignment operator*: take the thing/value on the RHS (right hand side) and place it into the single variable on the LHS (left hand side)
+* You can assign a value at declaration or at any time after declaration 
+
+### Default Values
+
+* In Java, if you do not assign a value then the variable cannot be used (compiler error)
+* In C, there is no default value for uninitialized variables, thus it *could* have garbage values
+
+### Scoping
+
+* The *scope* of a variable is the section(s) of code in which it is *visible*: after declaration, up until the end of a code block
+
+### Naming
+
+* Both languages have identifier naming rules: may consist of letters, numbers, underscores, etc.; it may NOT begin with a number
+* In general: adopt a clear and consistent naming convention
+* Example: `lowerCamelCasing`: no underscores, the first word is all lower case, each subsequent word has its first letter as a capital
+* Example: old school `lower_underscore_casing`
+* Java class names are always `UpperCamelCased`
+* Always be consistent with whatever convention you adopt
+* Avoid poor nondescriptive variable names `x`, `foo`, `myVariable`; name a variable after what it represents
+* Avoid pluralizations 
+* Avoid abbreviations/short forms/acronyms unless it is *absolutely* understood from the context
+
+### More Operators
+
+* Arithmetic operators: `+, -, *, /`
+* Operators also follow PEMDAS rules (order of operations)
+* `a + b * c` is not the same as `(a + b) * c`
+* Integer division or *modulus* operator: `%` gives you the remainder of integer division
+* Division by zero can lead to *consequences*: floating point exceptions, division by zero, INF, NaN
+
+### Truncation
+
+* an integer and a floating number are not the same thing
+* When you operate on two integers, the result *must* be an integer: addition, subtraction, multiplication: no problem
+* Division presents a problem: the result must be an integer
+* When two integers are divided, the fractional part (floating point part) is cut off and thrown away
+* This is *NOT* rounding or flooring
+* Solution: use temporary *type casting*: you temporarily treat at least one of the operands as a `double` variable
+
+## Basic Input/Output
+
+* Both languages support output/input to the *standard output/input*
+* standard input = keyboard
+* standard output = terminal
+
+* Standard Input: C
+
+* You use the `scanf` function
+* When invoked/called a program will *block* until the user enters an input and hits enter; at which point the program resumes operation and reads whatever the user entered
+* When using `scanf` you can use one of several *placeholders* depending on the type of variable you want to read
+  * `int`: `%d`
+  * `double`: `%lf`
+  * `char`: `%c`
+* For now: just remember that you *have to* put an ampersand in front of the variable that you want the input stored in
+
+* Standard Output: C
+
+* For output you use the `printf` function
+* F = formatted, you can use *similar* placeholders
+  * `int`: `%d`
+  * `double`: `%f`
+  * `char`: `%c`
+* You can provide multiple placeholders as long as you provide multiple variables or values to print; the order matters
+
+* With `printf` you also have more fine-grained control on how things are printed: how many columns and how many digits of accuracy for `double` values
+
+```c
+
+  //default: 6 decimals of accuracy
+  printf("pi = %f\n", M_PI);
+  //print it out to 10 decimals of accuracy:
+  printf("pi = %.10f\n", M_PI);
+  //you can also print out leading columns or "padded" columns:  
+  printf("pi = %10.3f\n", M_PI);
+
+  //you can also do it for integers:
+  int nuid = 1234;
+  printf("nuid = %08d\n", nuid);
+
+```
+
+### Java I/O
+
+* For standard output you can use `System.out.print` (no endline added), `System.out.println` (adds the endline for you), 
+`System.out.printf` (copy paste all your knowledge about C into this!)
+
+```java
+int a = 10;
+double x = 3.1415;
+char initial = 'C';
+
+System.out.println(
+  "a has the value " +
+  a + 
+  " and x = " + 
+  x + 
+  " and my initial is " + 
+  initial);
+System.out.printf("a = %d, x = %f and 
+  my initial is %c\n", a, x, initial);
+
+```
+
+* Standard input in Java: use a `Scanner`
+* a `Scanner` can be initialized to read in from the standard input: `System.in`
+* You can then use `.next()` (strings) or `.nextInt()`, `.nextDouble()` etc.
+
+## non-interactive input
+
+* Scanner/scanf essential prompt a human user for input and wait for standard input (from a human mashing their keyboard)
+* You can read in input directly from the command line as *Command Line Arguments* (CLAs)
+
+### C
+
+* CLAs are provided using the `argc` (argument count, the number of arguments provided) and `argv` (argument vector: the list of arguments) arguments to the `main` function
+* `argv[0]` is *always* the executable file name (example: `a.out`)
+* `argv[1]` is the first actual argument provided by the user
+* `argv[2]` is the second
+* `argv[argc-1]` is the last one!
+* All arguments are actually strings in both languages, so you may need to conver them:
+  * convert to a `double`: use `atof()`
+  * convert to an `int`: use `atoi()`
 
 ```text
+
+
 
 
 
