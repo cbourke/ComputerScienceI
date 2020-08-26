@@ -154,6 +154,23 @@ class Course:
             r += str(g)
         return r
 
+    def assignmentToCSV(self,assignment):
+        r = ""
+        graders = list(assignment.keys())
+        graders.sort(key=lambda x: x.name)
+        for grader in graders:
+            groups = assignment[grader]
+            groups.sort(key=lambda x: x.members[0].name)
+            nameTokens = grader.name.split(",")
+            graderLast = nameTokens[0]
+            graderFirst = nameTokens[1]
+            for g in groups:
+                nameTokens = grader.name.split(",")
+                studentLast = nameTokens[0]
+                studentFirst = nameTokens[1]
+                r += "%s,%s,%s,%s,%s,%s,%s,%s\n"%(grader.nuid,graderLast,graderFirst,g.members[0].nuid,studentLast,studentFirst,g.members[0].cseLogin,g.members[0].canvasEmail)
+        return r
+
 course = Course(instructorNuids=config.instructorNuids, 
                 graderNuids=config.graderNuids)
 """

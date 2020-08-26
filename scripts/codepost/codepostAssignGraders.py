@@ -56,7 +56,10 @@ gradingAssignment = course.getGradingAssignment()
 s = course.assignmentToString(gradingAssignment)
 print(s)
 
-# TODO: port over Hundter's CSV dump
+csv = course.assignmentToCSV(gradingAssignment)
+f = open(sys.argv[1]+".csv", "w")
+f.write(csv)
+f.close()
 
 def pushAssignments(gradingAssignment):
   for grader,groups in gradingAssignment.items():
