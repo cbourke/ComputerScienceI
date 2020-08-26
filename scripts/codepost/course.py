@@ -162,12 +162,12 @@ class Course:
             groups = assignment[grader]
             groups.sort(key=lambda x: x.members[0].name)
             nameTokens = grader.name.split(",")
-            graderLast = nameTokens[0]
-            graderFirst = nameTokens[1]
+            graderLast = nameTokens[0].strip()
+            graderFirst = nameTokens[1].strip()
             for g in groups:
-                nameTokens = grader.name.split(",")
-                studentLast = nameTokens[0]
-                studentFirst = nameTokens[1]
+                nameTokens = g.members[0].name.split(",")
+                studentLast = nameTokens[0].strip()
+                studentFirst = nameTokens[1].strip()
                 r += "%s,%s,%s,%s,%s,%s,%s,%s\n"%(grader.nuid,graderLast,graderFirst,g.members[0].nuid,studentLast,studentFirst,g.members[0].cseLogin,g.members[0].canvasEmail)
         return r
 
