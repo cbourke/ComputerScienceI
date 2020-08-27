@@ -245,6 +245,16 @@ double c = (double) a / b; //result 0.5
   $$ax^2 + bx + c = 0$$
 
 
+### Misc
+
+* Take care that some operations are "invalid": `sqrt(-1)` results in nan (not a number); division by zero results in `inf` etc.
+* On some systems to compile with the math library you may need to use the `-lm` flag
+  * CS50: `gcc foo.c -lm`
+  * CSE: `gcc -lm foo.c`
+* C has no default variable values!
+  * Uninitialized variables may not have a default value
+  * If a default value of zero is observed that is entirely due to the compiler and/or operating system
+
 ```text
 
 
