@@ -23,16 +23,24 @@ class Group:
         self.canvasGroupId   = canvasGroupId
         self.canvasGroupName = canvasGroupName
     def __str__(self):
+        s = ""
         if len(self.members) > 1:
           s = "  %-20s (%s) \n"%(self.canvasGroupName,self.canvasGroupId)
+          for member in self.members:
+            s += "%s\n"%(formatMember(member,"    "))
         else:
-          s = "  %-20s \n"%("Group of One")
-        for member in self.members:
-          s += "    %s\n"%(member)
+          for member in self.members:
+            s += "%s\n"%(formatMember(member,"  "))
         return s
     def __eq__(self,other):
         return self.members == other.members        
     def __lt__(self,other):
         return (self.members[0].name < other.members[0].name)
+
+    def formatMember(self, member, padding=""):
+        n = 40 - len(padding)
+        format = "%s%-"+str(n)+"s (%s) %-15s %s"
+        return format%(padding,member.name,member.nuid,member.cseLogin,member.canvasEmail)
+
     def addMembers(self, members):
         self.members = sorted(members, key=attrgetter('name'))
