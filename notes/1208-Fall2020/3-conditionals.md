@@ -178,7 +178,157 @@ if(cubsScore > tigersScore) {
   * In C we use the `||`
   * Example: `isStudent || isFreshman` is true if either of the conditions is true (or both)
   * It is false only when BOTH of the conditions are false
-  * 
+
+## Comparisons with characters
+
+* Recall: you *cannot* use the `==` for strings
+* Why?  Because it will compare the *memory addresses* of the strings, not their contents
+* BUT you *can* use them for single characters, `char`
+* Why can you do this? Because all characters are ASCII text characters: they are all numbers
+
+```c
+printf("Are you a student? Y/N");
+char answer;
+scanf("%c", &answer);
+
+if(answer == 'y' || answer == 'Y') {
+  printf("You get a student discount!\n");
+} else {
+  printf("You pay full price!\n");
+}
+
+```
+
+### Pitfalls
+
+* Consider the following code:
+
+```c
+if(0 <= a <= 10) {
+  ...
+}
+```
+
+* The above will compile, execute and (not) work for certain values
+* The correct way of doing this is:
+
+```c
+if(0 <= a && a <= 10) {
+  ...
+}
+```
+
+## Pitfall 2
+* Consider the following code:
+
+```c
+//C:
+int a = 5;
+
+if(a = 10) { ... }
+```
+
+* The above code will compile, run but give incorrect results:
+* `a = 10` is the assignment operator, when evaluated, the expression gets the value 10 and so is true
+* Always use `==` for equality testing!
+
+### Pitfall 3
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+
+```
+
+* The above is wrong because the if statement is bound to an empty block
+* regardless of the value of `a`, the print statement will execute
+* Place semicolons properly!
+
+## Exercise:
+
+Write a program that reads a decibel level from the user
+and gives the user a description of the sound level.
+
+* 0 - 60 Quiet
+* 61 - 70 Conversational
+* 71 - 110 Loud
+* 111 - 194 Dangerous
+* < 0 or 195+
+
+```c
+/**
+ * Chris Bourke
+ * 2020/08/31
+ *
+ * This program reads in a decibel level from the
+ * user and gives a human-readable description of it.
+ */
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+
+  printf("Please enter your decibel level:");
+  int decibel;
+  scanf("%d", &decibel);
+
+  if(decibel < 0) {
+      printf("error: cannot have negative sounds\n");
+  } else if(decibel <= 60) {
+      printf("Quiet\n");
+  } else if(decibel <= 70) {
+      printf("Conversational\n");
+  } else if(decibel <= 110) {
+      printf("Loud\n");
+  } else if(decibel <= 194) {
+      printf("Dangerous\n");
+  } else {
+      printf("Unknown\n");
+  }
+
+
+  return 0;
+}
+
+```
+
+### Short Circuiting
+
+* Consider the following logical statement: `a && b`
+  * Suppose `a` is evaluates to false, does it matter what the value of `b` is?
+  * No, no matter what value `b` has, the expression is false
+  * Consequently: C (and the vast majority of programming languages) will *not* evaluate `b`, it is "skipped" or "short-circuited"
+* Consider the following:`a || b`
+  * Suppose `a` is true, does it matter what `b` is?
+  * No, the expression is true regardless of the value of `b`
+* For the majority of cases, this does not play a big role.
+* It *is* important if you are calling functions:
+
+```c
+if(a && writeToTheDatabase(b)) {
+  //do something  
+}
+```
+
+* Q: do you need the parentheses:
+
+`if((0<=decibel) && (decibel <190))`
+
+* A: no, it would be better to write
+
+`if( 0 <= decibel && decibel < 190 )`
+
+## Linters
+
+* Code may be syntactically correct (it will compile) but still may have errors
+* Lint are piece of code that may look suspicious and may lead to errors but are not syntax errors.  
+* Linters are *static analysis* tools that look for such *potential* errors in your code and report them (usually as warnings)
+* Static analysis: a program that analyzes the *source code* of another program pre-compilation
+* `gcc` can be used as a rudimentary linter using the flag `-Wall`
+* Its best practice to always compile with this flag, *take care of all your compiler warnings!*
+
 
 
 ```text
