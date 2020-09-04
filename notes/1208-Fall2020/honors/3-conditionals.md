@@ -162,6 +162,100 @@ int a = 5;
 if(a = 10) { ... }
 ```
   
+* The above will compile and run but give bad results
+* `a = 10` is an assignment, which assigns the value of 10 to `a` and 10 is true, thus the condition will always evaluate to true
+* This mistake is not possible in Java
+* Keep an eye out for such things by using a good font!
+
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+```
+
+* An empty code block may or may not execute, but the code block in curly brackets is *not bound* to the conditional statement
+* This is possible in both languages: it is always possible to tell a computer to do nothing, "noop" (No operation)
+
+## Very nice tool: linter
+
+* In C: make your life easier by using proper gcc flags
+  * Lint: not necessarily "dirt" (ie not really syntax errors) but likely stuff that will result in a bug or other error (stuff we don't want)
+  * A linter will run "static analysis" on your code: looks at the code *before* it compiles and finds "suspicious" looking code
+  * Best practice: always use the `-Wall` flag when compiling!
+
+## Misc
+
+### Short Circuiting
+
+* Consider a logical and: `a && b`
+  * If `a` evaluates to false, does it matter what the value of `b` is?
+  * No, the value of `b` will not change the value of the expression, so it is ignored
+  * This is known as *short circuiting*
+* Consider a logical or: `a || b`
+  * If `a` evaluates true, does it matter what the value of `b` is?
+  * No, the value of the expression is true regardless of `b`, so it is not evaluated
+* Programmers expect this behavior and program toward it: they often use *programming idioms* to exploit it
+
+### Non-numeric comparisons
+
+* IN both languages you can use the numerical comparison operators to compare single characters
+
+```c
+char initial = 'C';
+
+if(initial == 'c' || initial == 'C') {
+  //...
+}
+```
+
+* Both languages allow you to do this because characters are numbers (ASCII)
+* In neither language can you use the numerical comparison operators for full strings
+  
+  
+## Exercise:
+
+Write a program that reads a decibel level from the user
+and gives the user a description of the sound level.
+
+* 0 - 60 Quiet
+* 61 - 70 Conversational
+* 71 - 110 Loud
+* 111 - 194 Dangerous
+* < 0 or 195+
+
+## Comparing Strings (preview)
+
+* in neither language can you use `==` to compare strings
+* You are comparing *memory addresses*, not the contents of the string
+
+### Java
+
+* `a.equals(b)` returns `true` if the contents of `a` and `b` are the same (case sensitive)
+* `a.equalsIgnoreCase(b)` (this disregards differences in upper/lower case)
+* `a.compareTo(b)`: returns an `int` value that represents which string comes first (in ASCII/lexicographic order)
+* It is a *comparator pattern*: it returns
+  * if $a < b$ then it returns something negative
+  * if $a = b$ then it returns zero
+  * if $a > b$ then it returns something positive
+```java
+    String a = "1024";
+		String b = "500";
+		
+		if(a.compareTo(b) == 0) {
+			System.out.println(a + " is equal to " + b);
+		} else if(a.compareTo(b) < 0) {
+			System.out.println(a + " comes before " + b);			
+		} else if(a.compareTo(b) > 0){
+			System.out.println(a + " comes after " + b);			
+		}
+```
+
+* In C:
+    * `strcmp(a, b)` is also a comparator pattern
+    * It is included in the string libarary, `#include <string.h>`
+    * Revisit this when we look at strings
 
 ```text
 
