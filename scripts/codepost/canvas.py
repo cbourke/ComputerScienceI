@@ -153,24 +153,24 @@ def getGroups(roster):
   associated with its group.
   """
   groups = []
-  #if config.gradingGroupName is None:
-  #  return groups
-  groupData = getGroupTuples(config.gradingGroupName)
-  for gd in groupData:
-    #(groupId,"groupName",[membersCanvasIds])
-    g = Group(gd[0],gd[1])
-    members = []
-    for memberCanvasId in gd[2]:
-      for nuid,p in roster.items():
-        if p.canvasId == memberCanvasId:
-          members.append(p)
-          p.group = g;
-          break
-    g.addMembers(members)
-    groups.append(g)
+  if config.gradingGroupName is not None:
+    groupData = getGroupTuples(config.gradingGroupName)
+    for gd in groupData:
+      #(groupId,"groupName",[membersCanvasIds])
+      g = Group(gd[0],gd[1])
+      members = []
+      for memberCanvasId in gd[2]:
+        for nuid,p in roster.items():
+          if p.canvasId == memberCanvasId:
+            members.append(p)
+            p.group = g;
+            break
+      g.addMembers(members)
+      groups.append(g)
     
   # iterate through roster and create groups of one:
   for nuid,p in roster.items():
+    # but only if they have not already been assigned to a group
     if p.group is None:
       g = Group()
       g.addMembers([p])
