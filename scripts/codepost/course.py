@@ -84,7 +84,9 @@ class Course:
                     self.students[nuid] = p
         # update groups to exclude instructors and graders [Group]
         self.groups = []
+        # for each group in canvas.groups:
         for g in groups:
+          # if the group leader (first listed) is a student, then add them
           if g.members[0].nuid in self.students:
             self.groups.append(g)
 
