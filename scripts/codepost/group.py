@@ -27,10 +27,10 @@ class Group:
         if len(self.members) > 1:
           s = "  %-20s (%s) \n"%(self.canvasGroupName,self.canvasGroupId)
           for member in self.members:
-            s += "%s\n"%(formatMember(member,"    "))
+            s += "%s\n"%(self.formatMember(member,"    "))
         else:
           for member in self.members:
-            s += "%s\n"%(formatMember(member,"  "))
+            s += "%s\n"%(self.formatMember(member,"  "))
         return s
     def __eq__(self,other):
         return self.members == other.members        
