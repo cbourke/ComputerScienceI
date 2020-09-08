@@ -173,6 +173,28 @@ while (days > 365)
 }
 ```
 
+
+## Exercises
+
+1. Write a program that constructs a multiplication table for all values 1 up to $n$ where $n$ is read in as a command line argument
+2. Write a program to compute the arthmetic-geometric mean of two numbers
+3. Compute a loan amortization table using a monthly payment formula:
+  $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
+where 
+ * rate is the rate per period (.05/12 for monthly payments)
+ * $n$ is the number of periods (months) in the loan 
+ * Ex: A $10,000 5 year loan at 5% interest (60 payments):
+ $$\frac{\frac{.05}{12} \times 10,000}{1-(1+\frac{.05}{12})^{-60}} = 188.71$$
+  
+
+## Example
+
+* AGM of 1, 4 ?
+* arithmetic mean: $\frac{1+4}{2} = 2.5$
+* geometric mean: $\sqrt{1\cdot 4} = 2$
+* repeat: now our two numbers are 2, 2.5
+* arithmetic mean: $\frac{2+2.5}{2} = 2.25$
+* geometric mean: $\sqrt{2\cdot 2.5} = 2.236$
 ```text
 
 

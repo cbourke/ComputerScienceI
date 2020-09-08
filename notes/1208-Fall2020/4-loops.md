@@ -13,7 +13,7 @@
 ## For Loops
 
 * A for loop uses the keyword `for`
-* All three elements (intialization, continuation, increment) are all located on the same line
+* All three elements (initialization, continuation, increment) are all located on the same line
 
 ```c
 for(int i=1; i<=10; i++) {
@@ -156,6 +156,21 @@ for(int i=1; i<=10; i++) {
 * In general, use a `for` loop when you know  up front how many iterations you are going to go (10 iterations, 20 iterations or `n` iterations)
 * In general, use a `while` loop when the number of iterations is *not* known up front (instead it depends on some value(s) that are changed in the loop)
 * Example: write a loop to compute how many digits are in a number
+
+## Exercises
+
+1. Write a program that constructs a multiplication table for all values 1 up to $n$ where $n$ is read in as a command line argument
+2. Write a program to compute a sum of the (partial) harmonic series:
+  $$\sum_{i=1}^{n} \frac{1}{i}$$
+3. Write a program to compute your massive fake profits from Doge Coin: assume it increases in value every week by 20% and that you "bank" half of your profits each week.
+4. Compute a loan amortization table using a monthly payment formula:
+  $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
+where 
+ * rate is the rate per period (.05/12 for monthly payments)
+ * $n$ is the number of periods (months) in the loan 
+ * Ex: A $10,000 5 year loan at 5% interest (60 payments):
+ $$\frac{\frac{.05}{60} \times 10,000}{1-(1+\frac{.05}{60})^{-60}}$$
+  
 
 ```text
 
