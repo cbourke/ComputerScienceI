@@ -133,6 +133,158 @@ public class RoundUtils {
   * To compile the `roundUtils.c` "library" use `gcc -c roundUtils.c` which produces a `roundUtils.o` object file
   * To compile and link your full program:
   `gcc roundUtils.o demo.c`
+  * For C (and many other languages) use a build system: `make`
+  * For Java: Ant, Maven, JenkinsCI, etc.
+
+
+### How do functions actually work?
+
+* Programs have a *program stack* (or *call stack*)
+* Stack: LIFO Data Structure
+  * LIFO = Last In First Out
+  * push: insert an element at the "top" of the stack
+  * pop: retrieve/remove an element at the top of the stack
+  * A stack can be used to keep track of *breadcrumbs*
+* Each time a function is called, a new *stack frame* is created/pushed on top of the call stack
+* Each time a function returns, the stack frame is popped off the top
+* Each stack frame keeps track of:
+  * Local variables
+  * Parmeter variables
+  * Return values
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+double sum(double a, double b) {
+  double x = a + b;
+  return x;
+}
+
+double average(double a, double b) { 
+  double y = sum(a, b) / 2.0;
+  return y;
+}
+
+int main(int argc, char **argv) {
+  double n = 10.0;
+  double m = 16.0;
+  double ave = average(n, m);
+  printf("average = %f\n", ave);
+  return 0;
+}
+```
+
+* Consequence: every stack frame's variables are separate (this is how function scoping works!)
+* Every function gets its own scope and its own stack frame, its own variables
+* In most programming languages, variables are *passed by value*
+  * The value of the variables are copied into the parameter variables
+  * The original variables are completely different
+  * Only *copies of the values* are passed to the function
+* Sometimes you *do* want to pass the variables instead of their values
+* This is known as *passing by reference*
+
+## C: Pointers
+
+* Every piece of data in a computer is stored in memory
+* Memory consists of both an *address* (location) and contents (the data actually stored)
+* In C you can create a *pointer* variable that represents not the data, but the *memory address* where the data is stored
+* TO create create a pointer variable, you use the `*` symbol
+
+```c
+//regular old variable:
+int a = 42;
+//pointer variable declaration:
+int *ptrToA;
+```
+
+* `ptrToA` is a pointer variable that can point to *any* memory location that holds an integer (4 bytes, usually)
+* In general, it is best practice to initialize your pointer to point to *something*
+* If you know what you want it to point to, do it; if not then at least point it to `NULL`
+* If you don't, you have an *uninitialized pointer*: it could point to anything
+  * It could point to an invalid or non-existant memory location
+  * It could point to a memory location that exists, but doesn't belong to you
+  * It could point to your own memory location; BUT you risk corrupting your own memory!
+
+```c
+//initialize our pointer to NULL:
+ptrToA = NULL;
+```
+
+* If you want it to point to a valid memory location, you need to get the variable's address
+* `int a;` is a regular old variable, to get its memory location you use the `&` operator (referencing operator):
+
+```c
+//make ptrToA point to a's memory location:
+ptrToA = &a;
+```
+
+* Putting an ampersand in front of a regular old variable, gives you the memory address of that variable
+* Further: you can now manipulate the contents of a variable through its pointer
+
+```c
+int a = 42;
+//reset a:
+a = 17;
+
+//make ptrToA point to a:
+int *ptrToA = &a;
+//change the contents of a via its pointer:
+*ptrToA = 30;
+```
+
+* The star operator, `*` is the *dereferencing* operator
+
+## Java
+
+* Java has no pointers, you do not (generally) directly manipulate memory contents
+* By default, all primitive types in Java are passed by value: `int, double, char`
+* All *reference* values `String, Integer, Double`, etc. are passed by reference, BUT...
+* Generally built-in types are *immutable*
+* Immutability is a Very Good Thing
+
+## Misc
+
+* In C, a pointer type must match the type it points to: the following is wrong
+
+```c
+double pi = 3.14;
+//you should not have an integer pointer 
+//point to a double
+int *ptrToPi = &pi;
+//if you want a double pointer, just create it:
+double *correctPointerToPi = &pi;
+```
+
+* Recall: when we used `scanf`, we used the ampersand: why?
+* `scanf("%d", &a)`
+
+* Summary:
+  * To change a regular variable into a pointer (memory address) use the `&`
+  * To change a pointer variable into a regular old variable, use the `*`
+
+* You can also check for `NULL`:
+
+```c
+if(pointerToA == NULL) {
+  printf("invalid memory!\n");
+}
+```
+
+## Demonstration
+
+* Write a function that "returns" multiple values: write a function
+to convert a given number of `totalSeconds` into `hours`, `minutes`, `seconds`
+So 12282 seconds $\rightarrow$ 3:24:42
+
+* Write a function to compute the inflation-adjusted rate of return and
+deal with potential input errors 
+
+$$\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1$$
+
+* Write unit tests for each
+
+* Java?
 
 ```text
 
