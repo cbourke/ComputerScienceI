@@ -67,6 +67,85 @@ DayOfWeek foo = MONDAY + 500;//has the value 501
 * The first item in the list gets the value 0 by default, each one after is incremented by 1 (`SUNDAY = 0, MONDAY = 1, SATURDAY = 6`)
 * BE CAREFUL, do not use enumerated types in numerical expressions, only for setting/conditionals
 
+## How C does system-level error handling
+
+* The POSIX = Portable Operating System Interface standard defines only 3 error codes:
+  * `EDOM`: indicates an error in the *domain* of a function: ie an error in the input; example: `sqrt(-1)`
+  * `ERANGE`: indicates an error in the *range* of a function: ie an error in the output; example: `log(0)`
+  * `EILSEQ`: indicates an illegal byte sequence
+* All of these (and more) are defined in a header file, `errno.h` (error number)
+* Instead of returning an error code, a global variable named `errno` (an int) is set, convention: 0 is no error, 
+
+## Error handling in Java: Exceptions
+
+* Java uses exceptions instead of defensive programming
+* An *exception* is an interruption of the normal linear flow of control
+* Philosophy: go ahead and leap before you look: `try` a potentially dangerous operation, we'll `catch` you if you fall and then you can handle the error
+* Advantages:
+  * With error codes, there is no *semantic* meaning to the code, it is just a number; even if you don't use magic numbers, they are all still just integers
+  * But with exceptions, you *do* have semantic meaning: a `NullPointerException` is not the same thing as a `ArithmeticException` which is not the same thing as `InputMismatchException`
+  * Often defensive programming leads to large, nested and separate error handling code and "GOTO FAIL" style errors
+  
+### Exceptions in Java
+
+```java
+int a = 10;
+int b = 0;
+try {
+  int c = a / b;
+  System.out.println("c = " + c);
+} catch(NullPointerException npe) {
+  System.out.println("uh, the denominator is null");
+  //TODO: decide what to do here!
+  //do something else??
+} catch(ArithmeticException ae) {
+  System.out.println("INFINIITY, look into the void!");
+  throw new RuntimeException(ae);			
+  //TODO: decide what to do here!
+} catch(Exception e) {
+  //this will catch any other type of exception
+  //TODO: decide what to do here!
+  throw new RuntimeException(e);
+}
+```
+
+* In Java all exceptions are a "subclass" of `Throwable` objects
+  * `Error`: mainly used by the JVM and is always fatal
+  * `Exception`: this is what you *do* use in your code; there are two types of exceptions:
+    * `Exception`: a "checked" exception: you are forced to surround it with `try-catch` statement and decide what to do with it
+    * `RuntimeException`: an "unchecked" exception: you may surround it with a `try-catch` if you choose, or not (in which case its fatal)  
+* Checked exceptions were a mistake, but we still have to live with them
+* In general, if you *have* to surround a piece of code because of a checked exception: catch and release: `catch` the exception and (re)`throw` it as a `RuntimeException`
+
+```java
+try {
+  Scanner s = new Scanner(new File("input.txt"));
+} catch (FileNotFoundException e1) {
+  throw new RuntimeException(e1);			
+}
+```
+
+* You can also define your own types of exceptions by defining a class:
+
+```java
+
+public class TimeException extends RuntimeException {
+
+	public TimeException(String message) {
+		super(message);
+	}
+	
+}
+```
+
+* With `try-catch` blocks you can also have a `finally` block
+* The `finally` block will execute regardless of whether or not an exception occurred
+* Use case: if you have open resources that still need to be cleaned up
+  * Example: you successfully connect to the database, but the table you are querying is missing: EXCEPTION
+  * The database connection is still open
+  * To close it, put the "close the database" code into a `finally` block
+* Java 7 or 8 introduced a "try with resources" syntax that automatically closes resources for you without a `finally` block
+
 ```text
 
 
