@@ -210,6 +210,9 @@ static void testBidirectionalValues(void **state) {
 
 int main(int argc, char **argv) {
     // values to test bi-directionally
+    // each color is a collection of RGB and CMYK values
+    // example: aquamarine has RGB values 128, 255, 212
+    //          with equivalent CMYK values .5, 0, .17, 0
     double aquamarine[] =       {128, 255, 212,  0.5,    0, 0.17,    0};
     double salmon[] =           {250, 127, 115,  0.0, 0.49, 0.54, 0.02};
     double huskerRed[] =        {209,   0,   0,  0.0,    1,    1, 0.18};
