@@ -94,6 +94,8 @@ int arr[n]; //of size 100
   
 ## Dynamic Arrays
 
+`ulimit -a`
+`free -ht`
 * Alternative: use dynamic arrays
 * Dynamic arrays are arrays that are allocated on the program "heap" instead of the program stack
 * The heap is a larger, but less "well organized" chunk of memory
