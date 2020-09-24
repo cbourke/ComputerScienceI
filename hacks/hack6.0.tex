@@ -64,8 +64,7 @@ r & = 255 \cdot (1 - c) \cdot (1-k) \\
 g & = 255 \cdot (1 - m) \cdot (1-k) \\
 b & = 255 \cdot (1 - y) \cdot (1-k) \\
 \end{align*}
-Results should be rounded with any values exceeding 255 reset to 255.
-Your function should have the following signature:
+Results should be rounded.  Your function should have the following signature:
 
 \mintinline{c}{int cmykToRGB(double c, double m, double y, double k, int *r, int *g, int *b)}
 
