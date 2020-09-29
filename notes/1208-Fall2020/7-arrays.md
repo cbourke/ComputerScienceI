@@ -180,7 +180,164 @@ int sumArray(int *arr, int n) {
   * Careful: you cannot also directly return the size of the array!
 * Demonstration:
   * Write a function that creates a new array of integers all initialized to zeros
+  * Write a function that *returns a new array* containing only the even integers of a given array
 
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+int *getZerosArray(int n) {
+  int *arr = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    arr[i] = 0;
+  }
+  return arr;
+}
+
+/**
+ * This function takes an array of integers and
+ * returns a new array filled with only even values
+ * from the array.
+ *
+ * The size of the resulting array is communicated
+ * back to the calling function by using the pass-by-reference
+ * variable, newSize
+ *
+ */
+int *getEvens(int *arr, int n, int *newSize) {
+
+  //0. error checking
+  if(arr == NULL || n <= 0 || newSize == NULL) {
+    return NULL;
+  }
+
+  //1. iterate through an array to determine
+  //  how big of a new array you need
+  int count = 0;
+  for(int i=0; i<n; i++) {
+    if(arr[i] % 2 == 0) {
+      count++;
+    }
+  }
+  //2. allocate memory for the new array:
+  int *result = (int *) malloc(count * sizeof(int));
+
+  //3. copy over the even values:
+  int index = 0;
+  for(int i=0; i<n; i++) {
+    if(arr[i] % 2 == 0) {
+      result[index] = arr[i];
+      index++;
+    }
+  }
+
+  //4. set newSize to count:
+  *newSize = count;
+
+  return result;
+}
+
+int main(int argc, char **argv) {
+
+  int n = 10;
+  int *arr = getZerosArray(n);
+
+  // for(int i=0; i<n; i++) {
+  //     printf("arr[%d] = %d\n", i, arr[i]);
+  // }
+
+  int brr[] = {2, 3, 4, 6, 10, 4, 2, 3, 1, 4};
+  int newSize;
+  int *bEvens = getEvens(brr, 10, &newSize);
+
+  for(int i=0; i<newSize; i++) {
+      printf("bEvens[%d] = %d\n", i, bEvens[i]);
+  }
+
+}
+```
+
+## Other Issues
+
+### Pointer Arithmetic
+
+* The square bracket syntax is actual "syntactic sugar" for pointer arithmetic
+* When passing an array to a function, no ampersand is necessary
+* The name of an array is its memory address!  It is already a pointer, so no need to change it into a pointer
+* By default, all arrays are passed-by-reference
+* Without the square brackets, we'd have to determine which memory location the second element is at, the third, etc.
+  * Suppose we have an integer array, `arr`
+  * The first element is at memory location `arr` (or `arr[0]` ie 0 bytes away from `arr`) or equivalently, `arr + 0`
+  * The second element is 4 bytes away: `arr + 4`
+  * The third element is 8 bytes away: `arr + 8`
+  * In general, the $i$-th element is `i * 4` bytes away: `arr + 4 * i`, `arr + sizeof(int) * i`
+  * It is far more convenient to write `arr[0]`, `arr[1]`, `arr[2]`, `arr[i]`
+
+## Constant Arrays
+
+* If you don't want a function to make changes to your array, you can declare it as `const` (constant)
+* This makes your array (nearly) read-only
+* Attempts to change a `const` array can be detected by the compiler and it results in a compiler error
+* In general, any function that does *not* make changes to an array should declare them as `const`
+* In general, non-`const` arrays are *assumed* to be changed by the function
+
+## Shallow Versus Deep Copies
+
+* When references are copied, they are only *shallow* copies: changes to an array through one reference are "seen" by the second reference
+* Alternatively: if you want a totally distinct copy, you want a *deep copy*: you want two completely different arrays stored in two completely different memory addresses.
+* Use deep copies when you *don't* want changes to the original (or you want to retain the original data)
+
+## Multidimensional Arrays
+
+* You can always have arrays with more than one "dimension"
+* 1-D arrays: regular old arrays
+* 2-D arrays: rows and columns (tables, matrices)
+* 3-D arrays: rows, columns, aisles or "lanes"
+* 4-D arrays: Nah
+* In general, limit consideration to 2-D arrays at most
+* In C, a pointer `int *arr` points to a 1-D array
+* Consequently, an `int **mat` points to a 2-D array
+* essentially, the `**` points to an array of pointers
+* Each pointer in the array points to its own 1-D array!
+* Demo:
+
+```c
+
+  int n = 3;
+  int m = 2;
+  int **mat = (int **) malloc(n * sizeof(int*));
+  for(int i=0; i<n; i++) {
+    mat[i] = (int *) malloc(m * sizeof(int));
+  }
+  mat[0][0] = 42;
+  mat[0][1] = 101;
+
+  mat[1][0] = 3;
+  mat[1][1] = 20;
+
+  mat[2][0] = 17;
+  mat[2][1] = 34;
+
+  //print out the matrix:
+  for(int i=0; i<n; i++) { //for each row...
+    printf("[ ");
+    for(int j=0; j<m; j++) { //for each column in row i...
+      printf("%3d ", mat[i][j]);
+    }
+    printf("]\n");
+  }
+  
+  //clean up
+  //free up each row first...  
+  for(int i=0; i<n; i++) {
+    free(mat[i]);
+  }
+  free(mat);
+```
+
+* What about arrays of `char` values?  Strings (after the midterm)
+
+* Next: some tooling: profiler (static analysis tool) and a (proper) debugger
 ```text
 
 
