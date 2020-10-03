@@ -71,7 +71,7 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 ### Fall 2020
 
 - Course Link: https://canvas.unl.edu/courses/89439
-- Lectures: TBD
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZWbPZ_-bfoaVfi0evkt936B
 
 
 ## License
