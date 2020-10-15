@@ -166,6 +166,152 @@ for(Character c : name.toCharArray()) {
 		System.out.println(sb);
 ```
 
+## More String Processing in C
+
+### Formatting
+
+* Recall that you can use `printf` to format output that gets printed to the standard output
+* You can also use `sprintf` to format to a string "output"
+* Signature: `int sprintf(char *str, const char *format, ...);`
+ 
+```c
+char firstName[] = "Chris";
+char lastName[] = "Bourke";
+char fullName[100];
+sprintf(fullName, "%s, %s", lastName, firstName);
+printf("Hello, %s\n", fullName);
+```
+
+* `sprintf` assumes that the destination string is big enough to hold whatever you are printing
+* Common pattern: you can use a temporary buffer that is "big enough" to work with then create a dynamic string of the *exact* size you need:
+
+```c
+
+  char firstName[] = "Chris";
+  char lastName[] = "Bourke";
+  char buffer[100];
+  sprintf(buffer, "%s, %s", lastName, firstName);
+  char *fullName = (char *) malloc(sizeof(char) * (strlen(buffer)+1));
+  strcpy(fullName, buffer);
+  printf("Hello, %s\n", fullName);
+```
+
+### String Tokenization
+
+* Often, data is formatted: CSV, TSV (flat file formats)
+* CSV = Comma Separated Value data
+* Example: `"Chris,Bourke,35140602,Omaha,NE,103 Schorr"`
+* You want to process the record token by token: each *token* of data is separated by a *delimiter*
+* In C you can use a function called `strtok` that "splits" a string into their separte tokens
+* `char *strtok(char *str, const char *delim);`
+  * The first argument is the string you want to process (tokenize)
+  * NOTE: the first argument is not `const`: `strtok` *will* change your string
+  * The second is a string containing delimiter(s)
+  * It returns a pointer to the next token
+  * Beware: the first time you call `strtok` you pass in the string you want to tokenize; each *subsequent* call you pass in `NULL` to *continue* processing the same string
+  * `strtok` returns `NULL` when there are no more tokens to process
+
+```c
+
+  char data[] = "Chris,foo,Bourke,35140602,Omaha,NE,103 Schorr";
+  char *token = strtok(data, ",");
+  int numTokens = 0;
+  while(token != NULL) {
+    printf("token = %s\n", token);
+    numTokens++;
+    token = strtok(NULL, ",");
+  }
+  if(numTokens != 6) {
+    printf("bad data!\n");
+  }
+  ```
+  
+### string Comparisons
+
+* In C, `strcmp` can be used to compare the *contents* of two strings
+* You *cannot* use the `==` operator to compare strings!  
+* `strcmp` follows a *comparator pattern*: 
+  * It takes two arguments, `a, b`
+  * IT returns an integer:
+  * It returns *something* negative if `a` comes before `b`
+  * It returns 0 if `a` and `b` have the same contents
+  * It returns *something* positive if `a` comes after `b`
+* `strcmp` uses *lexicographic* ordering NOT dictionary or alphabetic ordering: it uses the ASCII text table values
+* `strcasecmp` compares lexicographically but ignores the upper/lower case (case insensitive)
+* `strncmp` is a byte-limited version
+* `strncasecmp` is a variation that includes both!
+
+```c
+char a[] = "Apple";
+char b[] = "apples";
+
+int r = strncasecmp(a, b, 5);
+
+if(r < 0) {
+  printf("%s comes before %s\n", a, b);
+} else if(r > 0) {
+  printf("%s comes before %s\n", b, a);
+} else {
+  printf("%s and %s are equal!\n", a, b);
+}
+int result;
+
+result = strcmp("apple", "apple"); //0
+result = strcmp("apple", "apples"); //negative
+result = strcmp("apples", "apple"); //positive
+
+result = strcmp("Apple", "apple"); //negative
+
+result = strcmp("apples", "oranges"); //negative
+
+result = strcasecmp("ApPlE", "apple"); //zero
+```
+
+
+## More String Processing in Java
+
+### Formatting
+
+* To format using `printf`-style formatting, you can use `String.format()`
+
+```java
+String firstName = "Chris";
+String lastName = "Bourke";
+String fullName = String.format("%s, %s", lastName, firstName);
+System.out.println(fullName);
+```
+
+### Tokenization
+
+```
+String data = "Chris,foo,Bourke,35140602,Omaha,NE,103 Schorr";
+String tokens[] = data.split(",");
+System.out.println(Arrays.toString(tokens));
+for(String token : tokens) {
+  System.out.println(token);
+}
+```
+
+### String Comparisons
+
+
+```java
+String a = "Apple";
+String b = "apple";
+
+int r = a.compareTo(b);
+
+if (r < 0) {
+  System.out.printf("%s comes before %s\n", a, b);
+} else if (r > 0) {
+  System.out.printf("%s comes before %s\n", b, a);
+} else {
+  System.out.printf("%s and %s are equal!\n", a, b);
+}
+```
+
+* Case insensitive version: `a.compareToIgnoreCase(b)`
+* Byte limited versions: create a substring!
 
 ```text
 

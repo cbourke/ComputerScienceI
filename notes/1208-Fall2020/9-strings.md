@@ -122,6 +122,127 @@ int main(int argc, char **argv) {
 
 ## String Processing
 
+### Substring
+
+* Often you want to get a part of a string or a "substring"
+* To do this in C you can use `strncpy`
+
+```c
+
+  char name[] = "Christopher Michael Bourke";
+  char shortName[6];
+  //copy the first 5 bytes:
+  strncpy(shortName, name, 5);
+  shortName[5] = '\0';
+
+  printf("Hello, %s\n", shortName);
+
+  char middleName[8];
+  strncpy(middleName, &name[12], 8);
+  middleName[7] = '\0';
+
+  printf("Hello, %s\n", middleName);
+```
+
+### Other Convenience Functions
+
+* The `ctype.h` library provides many other useful functions for single characters:
+  * `isalpha(char c)` - true if `c` is an alpha-numeric character
+  * `isspace(char c)` - true if `c` is a space character (` , \t, \n, \r`)
+  * `isupper(c), islower(c)` - true if `c` is an uppercase or lowercase character
+  * `toupper(c), tolower(c)` - convert to the lower/upper equivalent
+  * `isdigit(c)` - true for 0 - 9
+
+### String Formatting
+
+* Recall that `printf` formats a string and prints it to the standard output
+* You also have a `sprintf` formats a string and "prints" it to a given string buffer
+
+```c
+
+  char firstName[] = "Chris";
+  char lastName[] = "Bourke";
+
+  char buffer[1000];
+  sprintf(buffer, "%s, %s", lastName, firstName);
+
+  char *formattedName = (char *) malloc(sizeof(char) * (strlen(buffer) + 1));
+  strcpy(formattedName, buffer);
+  printf("hello, %s\n", formattedName);
+  free(formattedName);
+```
+
+### String Tokenizing
+
+* Often data is formatted: CSV, TSV (flat file formats)
+* CSV = Comma Separated Value data, TSV = Tab Separated Value
+* Example: `"Chris,Bourke,35140602,Omaha,NE,103 Schorr"`
+* Each *token* of data is separated by a *delimiter*
+* We want to "split" the data into their separate tokens and process each one by itself
+* C provides a function, `strtok`
+* `char *strtok(char *str, const char *delim);`
+* It takes two arguments: 
+  * the first one is the string you want to tokenize
+  * The second is a string containing the delimiter(s) you want to use
+  * The return value is the next token
+  * Note: `strtok` ends up modifying your string!
+  * Each subsequent cll to `strtok` should pass `NULL` for the first argument in order for it to continue tokenizing the same string!
+  * IF there are no more tokens, it returns `NULL`
+
+```c
+
+  char data[] = "Chris,Bourke,35140602,Omaha,NE,103 Schorr";
+
+  char *token = strtok(data, ",");
+  while(token != NULL) {
+    printf("token = %s\n", token);
+    token = strtok(NULL, ",");
+  }
+```
+
+### String Comparisons
+
+* In C, `strcmp` is used to compare the *contents* of two strings
+* Remember: you CANNOT use the `==` operator
+* The `==` operator only compares memory addresses (and besides it cannot tell you that one string is less than or greater than another)
+* To properly compare strings use a *comparator* function: `strcmp`
+  * It takes two strings, `a`, `b`
+  * The return value is always an integer
+  * It returns *something* negative if `a` comes before `b`
+  * It returns zero if `a` and `b` have the same contents
+  * It returns *something* positive if `b` comes before `a`
+* Ordering is based on the ASCII text table!  It is *lexicographic* ordering, not alphabetic  
+* You can also use `strcasecmp` to ignore casing! (it is a case-insensitive version)
+* another alternative: `strncmp` which only compares the first `n` characters; also: `strncasecmp`
+
+```c
+
+  char a[] = "Apple";
+  char b[] = "apples";
+
+  int r = strncasecmp(a, b, 5);
+
+  if(r < 0) {
+    printf("%s comes before %s\n", a, b);
+  } else if(r > 0) {
+    printf("%s comes before %s\n", b, a);
+  } else {
+    printf("%s and %s are equal!\n", a, b);
+  }
+int result;
+
+result = strcmp("apple", "apple"); //0
+result = strcmp("apple", "apples"); //negative
+result = strcmp("apples", "apple"); //positive
+
+result = strcmp("Apple", "apple"); //negative
+
+result = strcmp("apples", "oranges"); //negative
+
+result = strcasecmp("ApPlE", "apple"); //zero
+```
+
+
 ```text
 
 
