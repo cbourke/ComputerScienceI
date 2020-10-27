@@ -41,6 +41,8 @@ the following functions.
   the file and returns the contents of the file as an array of strings.
   Each element in the array should correspond to a line in the file.
   Any end line character should be \emph{chomped out} and not included.
+  The size of the resulting array of strings is communicated to the calling
+  function using the pass-by-reference \mintinline{c}{numLines} parameter.
 
   \mintinline{c}{char **getFileLines(const char *filePath, int *numLines);}
 
