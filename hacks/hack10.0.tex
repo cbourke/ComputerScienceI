@@ -41,8 +41,9 @@ the following functions.
   the file and returns the contents of the file as an array of strings.
   Each element in the array should correspond to a line in the file.
   Any end line character should be \emph{chomped out} and not included.
-  The size of the resulting array of strings is communicated to the calling
-  function using the pass-by-reference \mintinline{c}{numLines} parameter.
+  The size of the resulting array of strings needs to be communicated to the calling
+  function using the pass-by-reference \mintinline{c}{numLines} parameter
+  (it is \emph{not} input).
 
   \mintinline{c}{char **getFileLines(const char *filePath, int *numLines);}
 
@@ -113,7 +114,15 @@ Place all your code in a file named \mintinline{text}{proteinTranslator.c}.
   \url{https://github.com/cbourke/CSCE155-Hack10.0}
 
   However, you only need to handin \mintinline{text}{proteinTranslator.c}
-  (and anything else that you may find helpful).
+  (and anything else that you may find helpful).  Do \emph{not} make changes
+  to the provided files since you won't be able to hand them in (the grading
+  script provides them for you).
+  
+  \item \textbf{Hint}: Code reuse is a Very Good Thing.  Your protein program
+  can use your file utility functions, but also: feel free to include
+  any additional functions you may have written before in the 
+  \mintinline{text}{file_utils.h} and \mintinline{text}{file_utils.c} files
+  and use them in your protein translator program.
 
   \item You are encouraged to collaborate any number of students 
   before, during, and after your scheduled hack session.  
