@@ -51,12 +51,32 @@ $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
   * BUT once you have computed the value, *store* it in a *cache*
   * The next time you need to compute the value, you *don't* pay for the recursion: you look it up in the cache
 
+```c
+int fibonacciMemoization(int n, int *table) {
+  if(n < 0) {
+    return 0;
+  } else if(n <= 1) {
+    return 1;
+  } else if(table[n] > 0) {
+    return table[n];
+  } else {
+    int a = fibonacciMemoization(n-1, table);
+    int b = fibonacciMemoization(n-2, table);
+    int result = (a + b);
+    table[n] = result;
+    return result;
+  }
+}
+```
+
+
 ## Hack 12
 
 * You'll compute how long it would take to compute binomial coefficients recursively
 $${n \choose k} = \frac{n!}{(n-k)!k!} = {n-1\choose k } + {n-1 \choose k-1}$$
 * read: n choose k 
 * it is the number of ways to choose k elements from a set of size n without consideration on the order
+
 
 ```text
 
