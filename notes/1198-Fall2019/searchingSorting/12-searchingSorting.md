@@ -179,7 +179,7 @@ int main(void) {
     * IN practice, quadratic sorting algorithms are NOT feasible,
     * For any even moderately large data set, quadratic algorithms are not feasible
 
-    ### Quick Sort
+### Quick Sort
 
     * Basic Idea:
         * Choose a *pivot* element in the array

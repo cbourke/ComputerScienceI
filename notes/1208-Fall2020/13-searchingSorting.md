@@ -162,8 +162,461 @@ int main() {
 * BUT: binary search requires the array to be sorted
 * It may be worth it to "invest" some computation time to sort OR maintain the order of an array so that you can use binary search to search fast
 
+## Sorting
 
+* Huge variety of sorting algorithms with different strategies and approaches
+
+### Selection Sort
+
+* Basic idea: search through an array and find the minimal element, swap it with the first element
+  * Repeat: find the second smallest, place it at the second location
+  * Find the 3rd smallest, place it at the third location
+  * Find the ith smallest and place it at the ith position
+  * The last one will be by definition, be sorted
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+void selectionSort(int *arr, int n) {
+
+    for(int i=0; i<n-1; i++) {
+        //find the minimum among the elements...
+        //at the ith iteration, I know that elements
+        //arr[0] thru arr[i-1] are sorted!
+        //find the minimum among elements arr[i]...arr[n-1]
+        int minIndex = i;
+        for(int j=i+1; j<n; j++) {
+            if(arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        //the minimum is at minIndex, swap it
+        //with the ith element
+        int temp = arr[minIndex];
+        arr[minIndex] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+int main() {
+
+    int n = 9;
+    int arr[] = {2, 7, 5, 4, 3, 6, 1, 8, 5};
+    selectionSort(arr, n);
+    for(int i=0; i<n; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("\n");
+}
+
+```
+
+### Analysis
+
+* Our notion of "work": the number of comparisons
+* How many comparisons does selection sort make on an array of size *n*?
+* Selection sort requires *about* n^2 operations; it is a "quadratic" sorting algorithm
+* How "bad" is this?
+* In practice, you do not use even quadratic algorithms because they are too slow (unless there is a Very Good Engineering Reason to do so)
+* Even for a moderately large data set, quadratic is not practical
+* Example: suppose you need to sort 1 trillion elements (10^12)
+  * Number of comparisons: (10^12)^2 = 10^24
+  * With a 7TFLOP computer: 4526 years!
+  * This is not really all that big of data
+* Example: suppose you sort a moderately large data set of size *n*
+  * Suppose it takes you *t* time
+  * Suppose you go and *double* the input size: *n* to *2n*
+  * How much slower is it now?
+  * Twice as big means it takes (2n)^2 operations!
+  * (2n)^2 = 4n^2, it now takes 4 times as much time! *4t* time
+
+## Quick Sort
+
+* Basic Idea: 
+  * Choose a *pivot* element (usually just the first element)
+  * Partition all other elements around it: all elements *less* than the pivot are placed to its left; all elements *greater* than the pivot are placed to its right
+  * "recursively" sort the left and the right partitions
+  * UNTIL: you get down to an array of size 1
+* Analysis:
+  * A full analysis is omitted, but...
+  * You get the best performance if the partitioning *most of the time* divides the array into two roughly equally sized halves
+  * In the average case and the best case, quick sort makes $n \log(n)$ comparisons
+  * IN the worst case, quick sort can "devolve" into selection sort (if your choice of pivot is always the minimum): $n^2$ operations
+  * $n \log(n)$ is usually called "quasilinear"
+  * Examples: sorting 1 trillion elements now only requires 
+  $10^{12} \log(10^{12})$ comparisons; with the same 7TFLOP computer, it now only takes 7 seconds!
+  * Example: going from $n$ to $2n$ sized arrays only requires how many more comparisons?
+  * $2n \log(2n) = 2n\log{2} + 2n\log{n}$ (essentially a little more than twice as many operations)
+
+## Searching & Sorting in Practice
+
+* In practice: you don't want to roll your own sorting functions unless you have a Very Good Reason to do so
+* In practice: use the built-in functionality or a library of searching and sorting implementations
+* To avoid multiple implementions, use *generics* 
+* You want ONE implementation that "sorts"
+* HOWEVER, that implementation still needs to know how to "order"
+* Ordering: given two elements, which one comes first (or are they equal)?
+* Sorting: given a whole bunch of elements, arrange them *according to an ordering*
+* In C, to order things, you use a *comparator function*
+
+### Comparators in C
+
+* In C a *comparator function* has the following signature:
+
+`int cmp(const void *a, const void *b)`
+
+* It returns an integer value with the following contract:
+  * it returns *something* negative if a < b
+  * it returns zero if a is equal to b
+  * it returns *something* positive if a > b (b < a)
+* Note: each element is labeled `const`: no changes will be made to the passed elements
+* `void *` is a generic void pointer; void in this context means anything
+  * a generic void pointer is a "raw" pointer that simply points to a memory location
+  * That memory location could hold any type of variable
+* inside the function, you *do* need some information on what `a` and `b` are in order to make your comparison
+* inside the comparator: you do the following pattern
+  * You type cast the generic pointers into the type of data you *expect* 
+  * Then you apply whatever logic you need to compare them
+  * You return a value that fully specifies their ordering
+* Once you have a comparator you can use it in the standard searching and sorting function...
+  
+### Sorting in C
+
+* C provides a standard "quick sort" implementation
+
+```c
+void qsort(void *base,
+           size_t nel,
+           size_t size,
+           int (*compar)(const void *, const void *));
+```
+
+* `void *base` is the array you want sorted
+* `nel` is the number of elements in the array (size of the array)
+* `size` is the size in bytes of each element in the array
+* `compar` is a *function pointer*; a reference to the comparator you want to use!  
+  
+### Demonstration
+
+```c
+int cmpInt(const void *a, const void *b) {
+  //step 1: convert the inputs to the expected type
+  const int *x = (const int *) a;
+  const int *y = (const int *) b;
+  if( *x < *y ) {
+    return -1;
+  } else if( *x > *y ) {
+    return 1;
+  } else {
+    return 0;
+  }
+
+}
+
+
+int cmpIntDesc(const void *a, const void *b) {
+  return cmpInt(b, a);
+}
+
+int main() {
+
+    int n = 9;
+    int arr[] = {2, 7, 5, 4, 3, 6, 1, 8, 5};
+    qsort(arr, n, sizeof(int), cmpIntDesc);
+    for(int i=0; i<n; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("\n");
+}
+```
+## Recap - Comparators and `qsort` with structures
+
+```c
+
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "account.h"
+
+int main() {
+
+  int n = 5;
+  BankAccount accounts[] = {
+    { 1234, "Chris", "Bourke", 42.42 },
+    { 4567, "Joe", "Smith", 1000.01 },
+    { 8282, "Zelda", "Smith", 324324.00 },
+    { 3213, "Alan", "Turing", 1000.05 },
+    { 32145, "Grace", "Hopper", 100432.99 }
+  };
+
+  printAccounts(accounts, n);
+  qsort(accounts, n, sizeof(BankAccount), cmpBankAccountByBalance);
+  printAccounts(accounts, n);
+  qsort(accounts, n, sizeof(BankAccount), cmpBankAccountByName);
+  printAccounts(accounts, n);
+
+}
+
+-------
+
+typedef struct {
+    int accountNumber;
+    char *ownerFirstName;
+    char *ownerLastName;
+    double balance;
+} BankAccount;
+
+-----
+
+
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "account.h"
+
+
+void printAccounts(const BankAccount *accounts, int n) {
+
+  printf("Accounts\n");
+  printf("=========================\n");
+  for(int i=0; i<n; i++) {
+      printf("%-8d $%10.2f %s, %s\n",
+        accounts[i].accountNumber,
+        accounts[i].balance,
+        accounts[i].ownerLastName,
+        accounts[i].ownerFirstName
+        );
+
+  }
+
+}
+
+int cmpBankAccountByBalance(const void *a, const void *b) {
+  //step 1: cast them as bank accounts
+  const BankAccount *x = (const BankAccount *) a;
+  const BankAccount *y = (const BankAccount *) b;
+
+  if( x->balance < y->balance ) {
+    return -1;
+  } else if( x->balance > y->balance ) {
+    return 1;
+  } else {
+    return 0;
+  }
+
+
+}
+
+int cmpBankAccountByName(const void *a, const void *b) {
+  const BankAccount *x = (const BankAccount *) a;
+  const BankAccount *y = (const BankAccount *) b;
+  int result = strcmp(x->ownerLastName, y->ownerLastName);
+  if(result == 0) {
+    result = strcmp(x->ownerFirstName, y->ownerFirstName);
+  }
+  return result;
+}
+```
+
+## Deeper Look: Function Pointers
+
+* HOw can we "pass" a function to another functions as a parameter so that that function can "use" (call) the passed function
+* Doing so is generally referred to as a "callback" (a function passed to another function is the "callback" and the function invoking it "calls it back")
+* GUI = Graphical User Interfaces: you define a button. 
+* What function gets invoked when a user clicks the button?
+* Example: `qsort` needs a way to order elements, so you "pass in" a comparator as a function pointer
+* But: a function is simply code that is stored in memory
+* Ie the function is stored at a particular memory address (in the stack)
+* you can create a pointer that "points" to the code of a function!
+* This is known as a function pointer
+
+demoPtr.c:
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#include "account.h"
+
+double runMath(double x, double (*func)(double) ) {
+  double y = func(x);
+  return y;
+}
+
+int main() {
+
+  //create a function pointer called "ptrToFunc" that
+  //can point to any function that 1. returns an integer
+  // 2. takes three inputs: (int, double, char)
+  int (*ptrToFunc)(int, double, char);
+  //make the pointer point to NULL:
+  ptrToFunc = NULL;
+
+  double (*ptrToSqrt)(double);
+  ptrToSqrt = sqrt;
+
+  double y = sqrt(2.0);
+  printf("sqrt of 2 is %f\n", y);
+
+  y = ptrToSqrt(2.0);
+  printf("sqrt of 2 is %f\n", y);
+
+  y = runMath(2.0, sqrt);
+  printf("sqrt of 2 is %f\n", y);
+
+  y = runMath(2.0, sin);
+  printf("sin of 2 is %f\n", y);
+
+  y = runMath(-2.0, fabs);
+  printf("fabs of -2 is %f\n", y);
+
+}
+```
+
+account.c:
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "account.h"
+
+
+void printAccounts(const BankAccount *accounts, int n) {
+
+  printf("Accounts\n");
+  printf("=========================\n");
+  for(int i=0; i<n; i++) {
+      printf("%-8d $%10.2f %s, %s\n",
+        accounts[i].accountNumber,
+        accounts[i].balance,
+        accounts[i].ownerLastName,
+        accounts[i].ownerFirstName
+        );
+
+  }
+
+}
+
+int cmpBankAccountByBalance(const void *a, const void *b) {
+  //step 1: cast them as bank accounts
+  const BankAccount *x = (const BankAccount *) a;
+  const BankAccount *y = (const BankAccount *) b;
+
+  if( x->balance < y->balance ) {
+    return -1;
+  } else if( x->balance > y->balance ) {
+    return 1;
+  } else {
+    return 0;
+  }
+
+
+}
+
+int cmpBankAccountByName(const void *a, const void *b) {
+  const BankAccount *x = (const BankAccount *) a;
+  const BankAccount *y = (const BankAccount *) b;
+  int result = strcmp(x->ownerLastName, y->ownerLastName);
+  if(result == 0) {
+    result = strcmp(x->ownerFirstName, y->ownerFirstName);
+  }
+  return result;
+}
+
+int cmpBankAccountByNumber(const void *a, const void *b) {
+  const BankAccount *x = (const BankAccount *) a;
+  const BankAccount *y = (const BankAccount *) b;
+  if( x->accountNumber < y->accountNumber) {
+    return -1;
+  } else if(x->accountNumber > y->accountNumber) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+int linearSearch(const void *arr, int n, size_t size, const void *key, int (*cmp)(const void *a, const void *b)) {
+
+  //arr is the memory address of the start of the array
+  //arr[i] is the ith element in the array IF the compiler
+  //   knew how many bytes each one took
+  //since it is a void * pointer, the compiler doesn't know
+  // what they are and so does not know how many bytes each
+  // one takes, BUt
+  // we DO!
+  //
+  // The first elements is at arr (memory address) arr[0]
+  // the second element is size bytes away from arr:
+  //    arr + size
+  // the third element is size * 2 bytes away:
+  //    arr + 2 * size
+  // ..
+  //  the ith element is size * i bytes away:
+  //    arr + i * size
+
+  for(int i=0; i<n; i++) {
+    if(cmp(arr + i * size, key) == 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+```
+
+account.h:
+```c
+
+typedef struct {
+    int accountNumber;
+    char *ownerFirstName;
+    char *ownerLastName;
+    double balance;
+} BankAccount;
+
+void printAccounts(const BankAccount *accounts, int n);
+
+int cmpBankAccountByBalance(const void *a, const void *b);
+
+int cmpBankAccountByName(const void *a, const void *b);
+
+int cmpBankAccountByNumber(const void *a, const void *b);
+
+int linearSearch(const void *arr, int n, size_t size, const void *key, int (*cmp)(const void *a, const void *b));
+```
+
+demo.c:
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "account.h"
+
+int main() {
+
+  int n = 5;
+  BankAccount accounts[] = {
+    { 1234, "Chris", "Bourke", 42.42 },
+    { 4567, "Joe", "Smith", 1000.01 },
+    { 8282, "Zelda", "Smith", 324324.00 },
+    { 3213, "Alan", "Turing", 1000.05 },
+    { 32145, "Grace", "Hopper", 100432.99 }
+  };
+
+  BankAccount key = { 3218282, NULL, NULL, 0.0 };
+  int index = linearSearch(accounts, n, sizeof(BankAccount), &key, cmpBankAccountByNumber);
+  printf("found my account at index %d\n", index);
+}
+```
+
+  
 ```text
+
+
+
 
 
 
