@@ -241,6 +241,285 @@ void qsort(void *base,
 * `size` is the number of bytes each element takes
 * `compar` is a *function pointer* that points to a comparator that  `qsort` will use to order elements
 
+## Recap - Comparators and `qsort` with structures
+
+## Deeper Look: Function Pointers
+
+* How can we "pass" a function to another function as a parameter so that that function can "use" or call the passed function
+* Doing so is generally referred to as using a "callback" (the passed function is the callback and the function that uses it "calls it back")
+* GUI = Graphical User Interface programming: when a button is clicked, a function must be called to "handle" that event: you register a callback to do this
+* Example: `qsort` needs a way to order elements so you "pass in" a comparator as a *function pointer*
+* But: a function is simply code that is stored in memory
+* Ie the function is stored at some memory address which can be *pointed* to by a function pointer!
+
+demoPtr.c:
+```c
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+void runMath(double x, double (*ptrToMath)(double)) {
+
+  double y = ptrToMath(x);
+  printf("2 of some function is is %f\n", y);
+
+}
+
+
+int main() {
+
+  //create a function pointer that can point to a
+  // a function that returns an integer and takes 3
+  // parameters: (int, char, double)
+  int (*ptrToFunc)(int, char, double);
+  ptrToFunc = NULL;
+
+  //create a function pointer that can point to
+  // the square root function
+  double (*ptrToMath)(double);
+  //make it "point" to sqrt:
+  ptrToMath = sqrt;
+
+  double y = sqrt(2.0);
+  printf("sqrt of 2 is %f\n", y);
+
+  y = ptrToMath(2.0);
+  printf("sqrt of 2 is %f\n", y);
+
+  ptrToMath = cos;
+  y = ptrToMath(2.0);
+  printf("cos of 2 is %f\n", y);
+
+  // ptrToMath = pow;
+  // y = ptrToMath(2.0);
+  // printf("cos of 2 is %f\n", y);
+
+  runMath(2, sqrt);
+  runMath(2, sin);
+  runMath(-2, fabs);
+
+}
+
+```
+
+account.h:
+```c
+
+//TODO: define a structure for bank accounts
+typedef struct {
+    int number;
+    char *firstName;
+    char *lastName;
+    double balance;
+} BankAccount;
+
+void printAccounts(const BankAccount *accounts, int n);
+
+//TODO
+int cmpAccountsByName(const void *a, const void *b);
+
+int linearSearch(const void *arr, int n, size_t size, const void *key, int (*cmp)(const void *, const void *));
+```
+
+account.c:
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "account.h"
+
+
+void printAccounts(const BankAccount *accounts, int n) {
+
+  printf("Accounts\n");
+  printf("=========================\n");
+  for(int i=0; i<n; i++) {
+      printf("%-8d $%10.2f %s, %s\n",
+        accounts[i].number,
+        accounts[i].balance,
+        accounts[i].lastName,
+        accounts[i].firstName
+        );
+
+  }
+
+}
+
+
+int cmpAccountsByName(const void *a, const void *b) {
+  //step 1: force the generic void pointers to
+  // become the type  that you expect
+  const BankAccount *x = (const BankAccount *)a;
+  const BankAccount *y = (const BankAccount *)b;
+
+  int result = strcmp(x->lastName, y->lastName);
+  if(result == 0) {
+    result = strcmp(x->firstName, y->firstName);
+  }
+  return result;
+}
+
+int linearSearch(const void *arr, int n, size_t size, const void *key, int (*cmp)(const void *, const void *)) {
+
+  //arr is the memory address of the beginning of the array
+  //arr[0] is the first element
+  //arr[1] is the second element
+  // BUT this only works if the compiler *knows* what
+  // these are
+  // int: 0 is zero bytes away from the beginning
+  // int: 4 bytes away from the beginning
+  // int: 8 bytes away from the beginning
+  // double: 0 is zero bytes away from the beginning
+  // double: 8 bytes away from the beginning
+  // double: 16 bytes away from the beginning
+  // void/?: first is 0 bytes away
+  //         second is size bytes away
+  //         third is 2 * size bytes away
+  // ith element is at (arr + i * size) bytes away
+
+  for(int i=0; i<n; i++) {
+      if( cmp( arr + i * size, key) == 0 ) {
+          return i;
+      }
+  }
+  return -1;
+}
+```
+demo.c:
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "account.h"
+
+int main() {
+
+  int n = 5;
+  BankAccount accounts[] = {
+    { 1234, "Chris", "Bourke", 42.42 },
+    { 4567, "Joe", "Smith", 1000.01 },
+    { 8282, "Zelda", "Smith", 324324.00 },
+    { 3213, "Alan", "Turing", 1000.05 },
+    { 32145, "Grace", "Hopper", 100432.99 }
+  };
+
+  printAccounts(accounts, n);
+  qsort(accounts, n, sizeof(BankAccount), cmpAccountsByName);
+  printAccounts(accounts, n);
+
+  //create a dummy bank account with the values you are
+  // searching for
+  BankAccount key = { 0, "Grace", "Hoopper", 0 };
+  int index = linearSearch(accounts, n, sizeof(BankAccount), &key, cmpAccountsByName);
+  printf("found account at index %d\n", index);
+}
+```
+
+BankAccount.java:
+```java
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class BankAccount {
+
+    private int number;
+    private String firstName;
+	private String lastName;
+    private double balance;
+
+	public BankAccount(int number, String firstName, String lastName, double balance) {
+		super();
+		this.number = number;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.balance = balance;
+	}
+
+    public int getNumber() {
+		return number;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public double getBalance() {
+		return balance;
+	}
+	
+		@Override
+	public String toString() {
+		return "BankAccount [number=" + number + ", firstName=" + firstName + ", lastName=" + lastName + ", balance="
+				+ balance + "]";
+	}
+
+	public static void main(String[] args) {
+		List<BankAccount> accounts = Arrays.asList(
+			    new BankAccount(1234, "Chris", "Bourke", 42.42 ),
+			    new BankAccount(4567, "Joe", "Smith", 1000.01 ),
+			    new BankAccount(8282, "Zelda", "Smith", 324324.00 ),
+			    new BankAccount(3213, "Alan", "Turing", 1000.05 ),
+			    new BankAccount(32145, "Grace", "Hopper", 100432.99)
+				);
+		for(BankAccount a : accounts) {
+			System.out.println(a);
+		}
+		
+		Comparator<BankAccount> c = new Comparator<>() {
+
+			@Override
+			public int compare(BankAccount o1, BankAccount o2) {
+				int result = o1.lastName.compareTo(o2.lastName);
+				if(result == 0) { 
+					result = o1.firstName.compareTo(o2.firstName);
+				}
+				return result;
+			}
+			
+		};
+		
+		Collections.sort(accounts, c);
+		for(BankAccount a : accounts) {
+			System.out.println(a);
+		}
+
+		Comparator<BankAccount> c2 = Comparator.comparing(BankAccount::getNumber)
+				.thenComparing(BankAccount::getLastName)
+				.thenComparing(BankAccount::getFirstName)
+				.reversed();
+		BankAccount key = new BankAccount(0, "Grace", "Hoopper", 0);
+		int index = linearSearch(accounts, c, key);
+		
+		index = Collections.binarySearch(accounts, key, c);
+
+		System.out.println("Found it at index " + index);
+
+		
+	}
+	
+	public static <T> int linearSearch(List<T> items, Comparator<T> cmp, T key) {
+		for(int i=0; i<items.size(); i++) {
+			if( cmp.compare(items.get(i), key) == 0) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+}
+
+```
 
 ```text
 
