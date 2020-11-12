@@ -521,6 +521,284 @@ public class BankAccount {
 
 ```
 
+## Misc
+
+### Arrays of Structure Pointers
+
+* Code: TODO
+
+### Sorting Stability
+
+* Consider the following values:   
+  3A, 7, 3B, 1  
+  1, 3B, 3A, 7 
+* The above is an unstable sorting
+* A sorting algorithm is *stable* if it never puts two otherwise equal elements out of their original order
+* Why is this important?
+* It is often necessary or at least preferable to preserve the original ordering (ex: sorting by GPA then by year)
+* Is selection sort stable? No
+* Is quicksort stable?  It can be
+
+## Natural vs Artificial Ordering
+
+* Example: generalliy Freshmen, Sophomore, Junior Senior is the order expected
+* BUT, the "natural" ordering (when represented as strings) is 
+
+`"Freshman", "Junior", "Senior", "Sophomore"`
+
+account.h:
+```c
+
+typedef enum {
+  GOLD,
+  SILVER,
+  BRONZE,
+} Type;
+
+//TODO: define a structure for bank accounts
+typedef struct {
+    int number;
+    char *firstName;
+    char *lastName;
+    double balance;
+    Type type;
+    //char *type; //Gold, Silver, Bronze
+
+} BankAccount;
+
+void printAccounts(BankAccount **accounts, int n);
+
+//TODO
+int cmpBankAccountByNumber(const void *a, const void *b);
+```
+
+account.c:
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "account.h"
+
+const char *typeToString[] = {
+  "Gold", "Silver", "Bronze"
+};
+
+void printAccounts(BankAccount **accounts, int n) {
+
+  printf("Accounts\n");
+  printf("=========================\n");
+  for(int i=0; i<n; i++) {
+      printf("%-8d $%10.2f %s, %s %s\n",
+        accounts[i]->number,
+        accounts[i]->balance,
+        accounts[i]->lastName,
+        accounts[i]->firstName,
+        typeToString[accounts[i]->type]
+        );
+
+  }
+
+}
+
+int cmpBankAccountByNumber(const void *a, const void *b) {
+  //step 1: cast these as the proper type
+  const BankAccount **x = (const BankAccount **)a;
+  const BankAccount **y = (const BankAccount **)b;
+
+  const BankAccount *A = *x;
+  const BankAccount *B = *y;
+
+  if( A->number < B->number ) {
+    return -1;
+  } else if( A->number > B->number ) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+demo.c:
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "account.h"
+
+int main() {
+
+  int n = 5;
+  BankAccount accounts[] = {
+    { 1234, "Chris", "Bourke", 42.42, GOLD },
+    { 4567, "Joe", "Smith", 1000.01, SILVER },
+    { 8282, "Zelda", "Smith", 324324.00, BRONZE },
+    { 3213, "Alan", "Turing", 1000.05, BRONZE },
+    { 32145, "Grace", "Hopper", 100432.99, GOLD }
+  };
+
+  BankAccount **pAccounts = (BankAccount **) malloc(n * sizeof(BankAccount *));
+  for(int i=0; i<n; i++) {
+    pAccounts[i] = &accounts[i];
+  }
+  printAccounts(pAccounts,n);
+
+  //sort by number
+  qsort(pAccounts, n, sizeof(BankAccount *), cmpBankAccountByNumber);
+  printAccounts(pAccounts,n);
+
+  BankAccount key = { 32145, NULL, NULL, 0 };
+  BankAccount *pKey = &key;
+  BankAccount **needle = bsearch(&pKey, pAccounts, n, sizeof(BankAccount *), cmpBankAccountByNumber);
+  if(needle == NULL) {
+    printf("didn't find it\n");
+  } else {
+    printf("found %s's account!\n", (*needle)->firstName);
+  }
+
+}
+```
+
+```
+
+BankAccount.java:
+```java
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class BankAccount extends Object {
+	
+	public static enum Type {
+		GOLD,
+		SILVER,
+		BRONZE;
+		
+		private static final Map<Type, String> typeToString = new HashMap<>();
+		static {
+			typeToString.put(GOLD, "Gold");
+			typeToString.put(SILVER, "Silver");
+			typeToString.put(BRONZE, "Bronze");
+		}
+		public String toString() {
+			return typeToString.get(this);
+		}
+	}
+
+    private int number;
+    private String firstName;
+	private String lastName;
+    private double balance;
+    private Type type;
+
+	public BankAccount(int number, String firstName, String lastName, double balance, Type type) {
+		super();
+		this.number = number;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.balance = balance;
+		this.type = type;
+	}
+
+    public int getNumber() {
+		return number;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public double getBalance() {
+		return balance;
+	}
+	
+		@Override
+	public String toString() {
+		return "BankAccount [number=" + number + ", firstName=" + firstName + ", lastName=" + lastName + ", balance="
+				+ balance + "]" + this.type.toString();
+	}
+
+	public static void main(String[] args) {
+		List<BankAccount> accounts = Arrays.asList(
+			    new BankAccount(1234, "Chris", "Bourke", 42.42, Type.GOLD ),
+			    new BankAccount(4567, "Joe", "Smith", 1000.01, Type.SILVER ),
+			    new BankAccount(8282, "Zelda", "Smith", 324324.00, Type.BRONZE ),
+			    new BankAccount(3213, "Alan", "Turing", 1000.05, Type.GOLD ),
+			    new BankAccount(32145, "Grace", "Hopper", 100432.99, Type.SILVER)
+				);
+		for(BankAccount a : accounts) {
+			System.out.println(a);
+		}
+		
+		Comparator<BankAccount> byType = new Comparator<>() {
+
+			@Override
+			public int compare(BankAccount o1, BankAccount o2) {
+				return o1.type.compareTo(o2.type);
+			}
+			
+		};
+		Collections.sort(accounts, byType);
+		System.out.println("BY TYpe");
+		for(BankAccount a : accounts) {
+			System.out.println(a);
+		}
+
+		
+		
+		Comparator<BankAccount> c = new Comparator<>() {
+
+			@Override
+			public int compare(BankAccount o1, BankAccount o2) {
+				int result = o1.lastName.compareTo(o2.lastName);
+				if(result == 0) { 
+					result = o1.firstName.compareTo(o2.firstName);
+				}
+				return result;
+			}
+			
+		};
+		
+		Collections.sort(accounts, c);
+		for(BankAccount a : accounts) {
+			System.out.println(a);
+		}
+
+		Comparator<BankAccount> c2 = 
+				(a, b) -> a.getLastName().compareTo(b.getLastName()); 
+		c2 = c2.thenComparing( (a, b) -> a.getFirstName().compareTo(b.getFirstName()) );
+		c2 = c2.reversed();
+		BankAccount key = new BankAccount(0, "Grace", "Hoopper", 0, Type.GOLD);
+		int index = linearSearch(accounts, c, key);
+		
+		index = Collections.binarySearch(accounts, key, c);
+
+		System.out.println("Found it at index " + index);
+
+		
+	}
+	
+	public static <T> int linearSearch(List<T> items, Comparator<T> cmp, T key) {
+		for(int i=0; i<items.size(); i++) {
+			if( cmp.compare(items.get(i), key) == 0) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+}
+```
+
 ```text
 
 
