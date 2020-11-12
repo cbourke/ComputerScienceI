@@ -612,7 +612,167 @@ int main() {
 }
 ```
 
-  
+## Searching & Sorting Arrays of *Pointers* to Structures
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "account.h"
+
+int main() {
+
+  int n = 5;
+  BankAccount accounts[] = {
+    { 1234, "Chris", "Bourke", 42.42 },
+    { 4567, "Joe", "Smith", 1000.01 },
+    { 8282, "Zelda", "Smith", 324324.00 },
+    { 3213, "Alan", "Turing", 1000.05 },
+    { 32145, "Grace", "Hopper", 100432.99 }
+  };
+/*
+  printAccounts(accounts, n);
+  qsort(accounts, n, sizeof(BankAccount), cmpAccountsByName);
+  printAccounts(accounts, n);
+
+  //create a dummy bank account with the values you are
+  // searching for
+  BankAccount key = { 0, "Grace", "Hopper", 0 };
+  BankAccount *needle = (BankAccount *) bsearch(&key, accounts, n, sizeof(BankAccount), cmpAccountsByName);
+  if(needle == NULL) {
+    printf("unsuccessful search!\n");
+  } else {
+    printf("Found account #%d\n", needle->number);
+  }
+*/
+  BankAccount **pAccounts = (BankAccount **) malloc(sizeof(BankAccount*) * n);
+  for(int i=0; i<n; i++) {
+    pAccounts[i] = &accounts[i];
+  }
+  printAccountsPtr(pAccounts, n);
+  qsort(pAccounts, n, sizeof(BankAccount*), cmpAccountsByNamePtr);
+  printAccountsPtr(pAccounts, n);
+
+  BankAccount key = { 0, "Grace", "Hopper", 0 };
+  BankAccount *ptrKey = &key;
+  BankAccount **needle = (BankAccount **) bsearch(&ptrKey, pAccounts, n, sizeof(BankAccount*), cmpAccountsByNamePtr);
+  if(needle == NULL) {
+    printf("unsuccessful search!\n");
+  } else {
+    printf("Found account #%d\n", (*needle)->number);
+  }
+
+
+}
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "account.h"
+
+
+void printAccounts(const BankAccount *accounts, int n) {
+
+  printf("Accounts\n");
+  printf("=========================\n");
+  for(int i=0; i<n; i++) {
+      printf("%-8d $%10.2f %s, %s\n",
+        accounts[i].number,
+        accounts[i].balance,
+        accounts[i].lastName,
+        accounts[i].firstName
+        );
+
+  }
+
+}
+
+void printAccountsPtr(BankAccount **accounts, int n) {
+
+  printf("Accounts\n");
+  printf("=========================\n");
+  for(int i=0; i<n; i++) {
+      printf("%-8d $%10.2f %s, %s\n",
+        accounts[i]->number,
+        accounts[i]->balance,
+        accounts[i]->lastName,
+        accounts[i]->firstName
+        );
+
+  }
+
+}
+
+int cmpAccountsByNumber(const void *a, const void *b) {
+  const BankAccount *x = (const BankAccount *)a;
+  const BankAccount *y = (const BankAccount *)b;
+  if( x->number < y->number ) {
+    return -1;
+  } else if ( x->number > y->number ) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+int cmpAccountsByName(const void *a, const void *b) {
+  //step 1: force the generic void pointers to
+  // become the type  that you expect
+  const BankAccount *x = (const BankAccount *)a;
+  const BankAccount *y = (const BankAccount *)b;
+
+  int result = strcmp(x->lastName, y->lastName);
+  if(result == 0) {
+    result = strcmp(x->firstName, y->firstName);
+  }
+  return result;
+}
+
+/**
+ * This comparator is used to order an array of pointers
+ * to BankAccount structures by the owner's last name/first name
+ */
+int cmpAccountsByNamePtr(const void *a, const void *b) {
+  const BankAccount **x = (const BankAccount **)a;
+  const BankAccount **y = (const BankAccount **)b;
+
+  const BankAccount *A = *x;
+  const BankAccount *B = *y;
+
+  int result = strcmp(A->lastName, B->lastName);
+  if(result == 0) {
+    result = strcmp(A->firstName, B->firstName);
+  }
+  return result;
+}
+```
+
+## Sorting Stability
+
+* Consider the following values:   
+  3A, 7, 3B, 1  
+  1, 3B, 3A, 7 
+* Consider the following values:   
+    3A, 7, 3B, 1  
+    1, 3A, 3B, 7 
+* A sorting algorithm is *stable* if it never puts two otherwise equal elements out of the original order
+* Why is this important?  It is often necessary or at least preferable to preserve the original ordering (GPA then by year)
+* Is selection sort stable?  No
+* Is quicksort stable?  It can be.
+
+## Natural vs Artificial Ordering
+
+* Example: we would expect (generally) Freshmen, Sophomore, Junior, Senior
+* BUT a natural ordering would be: 
+Freshmen, Junior, Senior, Sophomore (lexicographic)
+* How do we best achieve an "artificial" ordering of small "lists" of values?
+* Use an enumerated type!
+* Then your comparators can use the "difference trick": you simply compute the difference of the enumerate type's values and return the difference: 5 - 10 is negative, 10 - 5 is positive, 5 - 5 is 0
+* BUT you cannot use the difference trick in general 2 billion - (-2 billion) leads to over overflow (or underflow) and wrong values
+
+
+
 ```text
 
 
