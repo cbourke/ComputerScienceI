@@ -53,8 +53,9 @@ following reports which should all be output to the standard output.
   air distance) to Lincoln.  Lincoln is located at 40.8507N, 96.7581W.
   \item Search for and print out the airport that is the geographic west-east
   median\footnote{With 0-indexed arrays, the median is usually the element at
-  index \mintinline{c}{n/2}, relying on truncation to give the middle index of
-  odd-sized arrays and preferring the ``right'' element for even-sided arrays.} 
+  index \mintinline{c}{n/2} when sorted.  This relies on truncation to give 
+  the middle index of odd-sized arrays and prefers the ``right'' element 
+  for even-sized arrays.} 
   of the given airports with respect to longitude.  
   \item Search for an airport located in the city New York (city would 
   be \mintinline{text}{New York} and the country would be 
