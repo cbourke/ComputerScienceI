@@ -1,6 +1,7 @@
 
 # Graphical User Interfaces & Event-Based Programming
 
+
 * Up to now: sequential programming, CLI (Command Line Interface)
 * Most (modern) HCI (Human Computer Interaction) is done through a GUI
 * Thin clients: browsers, cross-platform
@@ -15,8 +16,8 @@
 * Macintosh (IIgs) 1986
 * Microsoft Windows 1.0 (1985)
 * 90s user interfaces blew up
-* 2010: mobile devices and interfaces
-* Beyond: Kinect/gesture, VR/AR interfaces
+* 2010s: mobile devices and interfaces
+* Beyond: Kinect/gesture, VR/AR/XR interfaces
 
 ## Frameworks
 
@@ -64,7 +65,7 @@
 
 ## Events
 
-* Events are asynchronous: there may be thousands per second, there may or may not be a logical order to them
+* Events are asynchronous: there may be thousands per second, there may or may not be a *sequential* order to them
     * Clicking a widget
     * Mouse: move, mouse over, out, down, up, etc.
     * hover
@@ -86,7 +87,17 @@
 
 ```
 
+JavaFX:  
+https://docs.oracle.com/javafx/2/get_started/hello_world.htm
+FXML:  
+https://javafxpedia.com/en/tutorial/1580/fxml-and-controllers
+JavaFX Scene Builder:  
+https://javafxpedia.com/en/tutorial/5445/scene-builder
 
+App Studio:  
+https://developer.android.com/studio/
+Hello World:  
+https://developer.android.com/codelabs/android-training-hello-world#0
 
 
 
