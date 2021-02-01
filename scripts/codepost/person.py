@@ -26,6 +26,7 @@ class Person:
     A person's cseLogin must be pulled from the CSE User DataBase 
     (see udb.py) via their NUID.
     """
+    
     nuid = None
     name = None
     canvasId = None
@@ -64,3 +65,6 @@ class Person:
         Equality and ordering is determined based only on NUID
         """
         return (self.nuid < other.nuid)
+
+    def toCsv(self):
+        return "%s,%s,%s,%s,%s,%s\n"%(self.nuid,self.name,self.canvasId,self.canvasEmail,self.canvasLogin,self.cseLogin)
