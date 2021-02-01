@@ -29,6 +29,7 @@ functionality to randomly create a grading assignment
 from config import config
 from canvas import roster
 from canvas import groups
+from group import Group
 import udb
 import copy
 import math
@@ -103,6 +104,13 @@ class Course:
         r += "Orphans (%d): \n"%(len(self.orphans))
         for nuid,p in self.orphans.items():
             r += str(p) + "\n"
+        r += "Groups: \n"
+        for g in self.groups:
+            r += str(g)
+        r += "CSV Data:\n"
+        r += "nuid,name,canvasId,canvasEmail,canvasLogin,cseLogin\n"
+        for nuid,p in self.students.items():
+            r += p.toCsv()
         return r
 
     def getGradingAssignment(self):
@@ -141,14 +149,14 @@ class Course:
         """
         r  = "Assigned Grading\n"
         r += "================\n"
-        min = math.floor(len(self.students) / len(self.graders))
-        max = math.ceil(len(self.students) / len(self.graders))
-        r += "Each grader will grade %d - %d students\n"%(min,max)
+        min = math.floor(len(self.groups) / len(self.graders))
+        max = math.ceil(len(self.groups) / len(self.graders))
+        r += "Each grader will grade %d - %d groups\n"%(min,max)
         #dump graders to list of Person objects
         graders = list(assignment.keys())
         graders.sort(key=lambda x: x.name)
         for grader in graders:
-          groups = assignment[grader];
+          groups = assignment[grader]
           groups.sort(key=lambda x: x.members[0].name)
           n = len(groups)
           r += "%s (%d assigned)\n"%(grader.name,n)
@@ -182,9 +190,6 @@ the course data defined in config.py
 
 def printCourse():
     print(course)
-    print("\n\n===== Student Emails (for Piazza) =====\n");
-    for nuid,p in course.students.items():
-        print(p.canvasEmail);
 
 if __name__ == "__main__":
     printCourse()
