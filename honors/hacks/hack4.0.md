@@ -23,6 +23,8 @@ $$\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1$$
 
 <img src="https://render.githubusercontent.com/render/math?math=\frac{1 + \textrm{rate\,of\,return}}{1+\textrm{inflation\,rate}} - 1">
 
+![formula](https://render.githubusercontent.com/render/math?math=\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1)
+
 Write a program that produces an *amortization table* for a 401(k)
 account. Your program will read the following inputs as *command line
 arguments*.
