@@ -21,7 +21,7 @@ for inflation, you can use the following formula
 which is the inflation-adjusted rate of return.
 $$\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1$$
 
-<img src="https://render.githubusercontent.com/render/math?math=\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1">
+<img src="https://render.githubusercontent.com/render/math?math=\frac{1 + \textrm{rate\,of\,return}}{1+\textrm{inflation\,rate}} - 1">
 
 Write a program that produces an *amortization table* for a 401(k)
 account. Your program will read the following inputs as *command line
@@ -32,9 +32,9 @@ arguments*.
 -   A monthly contribution amount (we'll assume its the same over the
     life of the savings plan)
 
--   An (average) annual rate of return (on the scale $[0, 1]$)
+-   An (average) annual rate of return (on the scale [0, 1])
 
--   An (average) annual rate of inflation (on the scale $[0, 1]$)
+-   An (average) annual rate of inflation (on the scale [0, 1])
 
 -   A number of years until retirement
 
