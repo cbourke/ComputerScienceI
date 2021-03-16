@@ -60,7 +60,7 @@ be presented.
     are known to be correct using means other than your program.
 
 -   Include the name(s) of everyone who collaborated on this activity
-        in your source file's header.
+    in your source file's header.
 
 -   Place your code in a `main()` method in a source file named
     `DataPlan.java` and turn it in via webhandin.  Make sure that
