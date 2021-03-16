@@ -19,11 +19,16 @@ different ways. While the account may grow tax free, it is not immune to
 [inflation](https://en.wikipedia.org/wiki/Inflation). To account 
 for inflation, you can use the following formula
 which is the inflation-adjusted rate of return.
-<!--
-$$\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1$$
--->
 
-<p align="center"><img width="25%" src="https://render.githubusercontent.com/render/math?math=\frac{1 %2B \textrm{rate}\,\textrm{of}\,\textrm{return}}{1%2B\textrm{inflation}\,\textrm{rate}} - 1"></p>
+<p align="center">
+<img width="25%" src="images/rateOfReturn.svg">
+<!--
+original:
+$$\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1$$
+github renderer:
+<img width="25%" src="https://render.githubusercontent.com/render/math?math=\frac{1 %2B \textrm{rate}\,\textrm{of}\,\textrm{return}}{1%2B\textrm{inflation}\,\textrm{rate}} - 1">
+-->
+</p>
 
 Write a program that produces an *amortization table* for a 401(k)
 account. Your program will read the following inputs as *command line
