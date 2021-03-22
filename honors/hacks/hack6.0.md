@@ -6,11 +6,6 @@
 > Java Version
 ------------------------------------------------------------------------
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
-
 ## Problem Statement
 
 In this hack you'll get some more practice writing functions that
@@ -28,9 +23,9 @@ functions to convert between these models.
 1.  Write a function to convert from an RGB color model to CMYK. To
     convert to CMYK, you first need to scale each integer value to the
     range [0, 1] by computing
-    $$r' = \frac{r}{255}, \quad g' = \frac{g}{255}, \quad b' = \frac{b}{255}$$
+    <!-- $$r' = \frac{r}{255}, \quad g' = \frac{g}{255}, \quad b' = \frac{b}{255}$$ -->
     <p align="center">
-    <img src="images/rgb01.png"/>
+    <img src="./images/rgb01.png"/>
     </p>
     and then using the following formulas: 
     <!--$$\begin{aligned}
@@ -40,12 +35,12 @@ functions to convert between these models.
     y & = \frac{(1-b'-k)}{(1-k)} \\\
     end{aligned}$$-->
     <p align="center">
-    <img src="images/convertRGBtoCMYK.png"/>
+    <img src="./images/convertRGBtoCMYK.png"/>
     </p>
     
     Your method should have the following signature:
     
-    TODO: need to revamp this; use `Rgb` and `Cmyk` classes
+    `public static CMYK rgbToCMYK(RGB color)`
 
     Identify any and all error conditions and use the return value to
     indicate an error code (0 for no error, non-zero value(s) for error
@@ -65,12 +60,19 @@ functions to convert between these models.
     <img src="images/convertCMYKtoRGB.png"/>
     </p>
 
-    Results should
-    be rounded. Your function should have the following signature:
+    All results should be rounded. Your function should have the 
+    following signature:
+    
+    `public static RGB cmykToRGB(CMYK color)`
 
-    Identify any and all error conditions and use the return value to
-    indicate an error code (0 for no error, non-zero value(s) for error
-    conditions).
+The `RGB` and `CMYK` classes have been provided for you.  See
+the `main` method of each class for examples on how to create
+and use *instances* of each class.
+
+Place both methods in a source file named `ColorUtils.java`
+in the package `unl.cse`.  For both methods, identify any and 
+all error conditions and throw an `IllegalArgumentException` 
+with an appropriate error message.
 
 ## Instructions
 
@@ -88,8 +90,7 @@ functions to convert between these models.
 -   Include the name(s) of everyone who worked together on this activity
     in your source file's header.
 
--   Place your prototypes and documentation in a header file named and
-    your source in a file named .
+TODO: here
 
 -   A testing file, has been provided that uses cmocka
     (<https://cmocka.org/>), a unit testing framework for C. We have
