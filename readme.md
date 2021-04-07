@@ -20,8 +20,8 @@ Lectures are broadcast live on my YouTube streaming channel:
 https://www.youtube.com/c/ChrisBourkeUNL/live
 
 The videos are available immediately following on my YouTube channel,
-https://www.youtube.com/c/ChrisBourkeUNL/ and included in the playlist 
-below.
+https://www.youtube.com/c/ChrisBourkeUNL/ and included in the (current) 
+playlist below.
 
 ## Textbook
 
@@ -46,6 +46,11 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 - Lab 15.0 - Databases https://github.com/cbourke/CSCE155-C-Lab15
 
 ## Course Offerings
+
+### Fall 2021
+
+- Course Link: https://canvas.unl.edu/courses/114201
+- Lectures: To Come
 
 ### Fall 2020
 
