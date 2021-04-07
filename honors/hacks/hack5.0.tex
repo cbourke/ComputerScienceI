@@ -1,0 +1,115 @@
+\documentclass[12pt]{scrartcl}
+
+\input{preamble}
+
+\makeatletter
+\title{Hack 5.0}\let\Title\@title
+\subtitle{Computer Science I -- Honors\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\input{instructions.tex}
+
+\section*{Problem Statement}
+
+To get some practice designing and using functions, you will 
+create a small library of utility functions by implementing
+the following functions with the given prototypes and specified 
+functionality.
+\begin{enumerate}
+  \item Write a method to convert degrees to radians using the formula 
+		$$\frac{d\cdot \pi}{180}$$
+	Your method should have the following signature.
+	
+	\mintinline{java}{public static double degreesToRadians(double degree)}
+  \item Write a function to compute the air distance between two locations 
+    identified by their latitude/longitude. Your method should have the 
+    following signature.
+
+\begin{minted}{java}
+public static double getAirDistance(double originLatitude, 
+                                    double originLongitude, 
+                                    double destinationLatitude, 
+                                    double destinationLongitude)
+\end{minted}  
+The air distance between two latitude/longitude points can be calculated 
+using the Spherical Law of Cosines:
+ $$d = \arccos{(\sin(\varphi_1) \sin(\varphi_2) + \cos(\varphi_1) \cos(\varphi_2) \cos(\Delta) )} \cdot R$$
+where
+\begin{itemize}
+  \item $\varphi_1$ is the latitude of location $A$, $\varphi_2$ is the latitude of location $B$
+  \item $\Delta$ is the difference between location $B$'s longitude and location $A$'s longitude
+  \item $R$ is the (average) radius of the earth, 6,371 kilometers
+\end{itemize}
+Note: the formula above assumes that latitude and longitude are measured 
+in radians $r$, $-\pi \leq r \leq \pi$, but the function will expect 
+the latitude/longitude to be in degrees.  Latitude should be in the range 
+$[-90, 90]$ and longitude in the range $[-180, 180]$.  Negative values 
+correspond to the southern and western hemispheres.
+
+  \item An object traveling at a velocity $v$ experiences time dilation
+  relative to a stationary object which is quantified by the Lorentz equation:
+  $$T = \frac{t}{\sqrt{(1-\frac{v^2}{c^2})}}$$
+  where $t$ is the normal amount of lapsed time (stationary object) 
+  and $T$ is the dilated time experienced by the traveling object.  
+  For small velocities, the dilation is small, but for velocities
+  approaching a \emph{percentage} of the speed of light, $c$, the 
+  dilation becomes significant.
+  
+  For example, at 25\% the speed of light, a year for the object 
+  traveling would correspond to 1.032796 years at the stationary object 
+  (or nearly 12 extra days).   A person traveling at high velocity 
+  would experience ``slowed'' time
+  relative to the stationary \emph{frame}.  Implement a function to 
+  compute the dilated time given the normal time $t$ (units may vary)
+  and the percentage of the speed of light.
+\begin{minted}{java}
+public static double lorentzTimeDilation(double t, double percentC);
+\end{minted}
+
+\end{enumerate}  
+
+\section*{Instructions}
+
+\begin{itemize}
+  \item You are encouraged to collaborate any number of students 
+  before, during, and after your scheduled hack session.  
+  \item Design at least 3 test cases for each function
+  \emph{before} you begin
+  designing or implementing your program.  Test cases are 
+  input-output pairs that are known to be correct using means
+  other than your program.
+  \item Include the name(s) of everyone who worked together on
+  this activity in your source file's header.
+  \item Place your methods with documentation in a source file named 
+    \mintinline{text}{Utils.java}.
+
+  \item In addition, implement all of your test cases in a 
+    \emph{test driver} file named \mintinline{text}{UtilsTester.java} 
+    which should output the expected output, the actual
+    output and a message on whether or not the test case passed. You
+    must have at least 3 test cases for \emph{each} of your functions. You
+    should \emph{not} prompt for input or use command line arguments. Your
+    test cases should be hardcoded in your test driver's \mintinline{java}{main()} method.
+    
+  \item Turn in all of your files via webhandin, making sure that it runs
+    and executes correctly in the webgrader. Each individual student
+    will need to hand in their own copy and will receive their own
+    individual grade.
+\end{itemize}
+  
+
+
+\end{document}
