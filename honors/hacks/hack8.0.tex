@@ -1,0 +1,92 @@
+\documentclass[12pt]{scrartcl}
+
+\input{preamble}
+
+\makeatletter
+\title{Hack 8.0}\let\Title\@title
+\subtitle{Strings \& String Processing\\
+Computer Science I -- Java\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\input{instructions.tex}
+
+\section*{Exercises}
+
+To get more practice working with strings, you will write several 
+methods that involve operations on strings.  In particular, implement
+the following methods with the described behavior.  You \emph{must}
+use the given signatures.
+
+\begin{enumerate}
+
+  \item Write a method that replaces instances of a given character 
+  with a different character in a string.
+  
+  \mintinline{java}{public static String replaceChar(String s, char oldChar, char newChar)}
+  
+  This method will replace any instance of the character stored in 
+  \mintinline{java}{oldChar} with the character stored in \mintinline{java}{newChar} 
+  in the string \mintinline{java}{s}.  
+
+  \item Write a method that takes a string and removes all instances 
+  of a certain character from it.
+  
+  \mintinline{java}{public static String removeChar(String s, char c)}
+
+  \item Write a method that takes a string and splits it up to a 
+  \emph{list} of strings.  The split will be length-based: the function 
+  will take an integer $n$ and will split the given string up into 
+  strings of length $n$.  It is possible that the last string will not 
+  be of length $n$.
+  
+  \mintinline{java}{public static List<String> lengthSplit(String s, int n)}
+
+  For example, if we pass \mintinline{java}{"Hello World, how are you?"} with 
+  $n = 3$ then it 
+  should return a list of size 9 containing the strings \mintinline{java}{"Hel"}, \mintinline{java}{"lo "}, \mintinline{java}{"Wor"}, 
+\mintinline{java}{"ld,"}, \mintinline{java}{" ho"}, \mintinline{java}{"w a"}, \mintinline{java}{"re "}, \mintinline{java}{"you"}, \mintinline{java}{"?"}
+
+\end{enumerate}
+
+\section*{Instructions}
+
+\begin{itemize}
+
+  \item Place all your methods into a source file 
+  named \mintinline{text}{StringUtils.java} along with proper documentation.
+  
+  \item In addition, create a main test driver program called
+  \mintinline{text}{StringTester.java} that demonstrates at least 3 cases 
+  per function to verify their output.  Hand in your tester.
+  
+  \item You are encouraged to collaborate with any number of students 
+  before, during, and after your scheduled hack session.  
+
+  \item You may (in fact are encouraged) to define any additional
+  ``helper'' methods that may help you.
+  
+  \item Include the name(s) of everyone who worked together on
+  this activity in your source file's header.
+
+  \item Turn in all of your files via webhandin, making sure that 
+  it runs and executes correctly in the webgrader.  Each individual 
+  student will need to hand in their own copy and will receive 
+  their own individual grade.
+
+\end{itemize}  
+
+
+\end{document}
