@@ -1,0 +1,116 @@
+\documentclass[12pt]{scrartcl}
+
+\input{preamble}
+
+\makeatletter
+\title{Hack 6.0}\let\Title\@title
+\subtitle{Computer Science I -- Java\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-1cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\input{instructions.tex}
+
+\section*{Problem Statement}
+
+In this hack you'll get some more practice writing functions that utilize 
+pass-by-reference (pointers), error handling and enumerated types.  There 
+are several different
+ways to model colors including RGB and CMYK.  RGB is generally used in displays
+and models a color with three values in the range $[0, 255]$ corresponding to 
+the red, green and blue ``contribution'' to the color.  For example, the
+triple $(255, 255, 0)$ corresponds to a full red and green (additive) value
+which results in yellow.  CMYK or Cyan-Magenta-Yellow-Black is a model used
+in printing where four colors of ink are combined to make various colors.
+In this system, the four values are on the scale $[0, 1]$.  Write 
+functions to convert between these models.
+
+\begin{enumerate}
+\item Write a function to convert from an RGB color model to CMYK.  To 
+convert to CMYK, you first need to scale each integer value to the range 
+$[0, 1]$ by simply computing
+	$$r' = \frac{r}{255}, \quad g' = \frac{g}{255}, \quad b' = \frac{b}{255}$$
+	and then using the following formulas:
+\begin{align*}
+k & = 1-\max\{r', g', b'\} \\
+c & = \frac{(1-r'-k)}{(1-k)} \\
+m & = \frac{(1-g'-k)}{(1-k)} \\
+y & = \frac{(1-b'-k)}{(1-k)} \\
+\end{align*}
+Your method should have the following signature:
+
+\mintinline{java}{public static CMYK rgbToCMYK(RGB color)}
+
+Note that one edge case is black, when $(r,g,b) = (0,0,0)$ which would lead to a 
+division by zero in the formulas.  The equivalent CMYK values are $(0,0,0,1)$.
+
+
+\item Write a function to convert from CMYK to RGB using the following formulas.
+\begin{align*}
+r & = 255 \cdot (1 - c) \cdot (1-k) \\
+g & = 255 \cdot (1 - m) \cdot (1-k) \\
+b & = 255 \cdot (1 - y) \cdot (1-k) \\
+\end{align*}
+Results should be rounded.  Your method should have the following signature:
+
+\mintinline{java}{public static RGB cmykToRGB(CMYK color)}
+
+\end{enumerate}
+
+The \mintinline{java}{RGB} and \mintinline{java}{CMYK} classes have 
+been provided for you.  See the \mintinline{java}{main} method of 
+each class for examples on how to create and use \emph{instances} 
+of each class.
+
+Place both methods in a source file named \mintinline{text}{ColorUtils.java}
+in the package \mintinline{java}{unl.cse}.  For both methods, identify any and 
+all error conditions and throw an \mintinline{java}{IllegalArgumentException} 
+with an appropriate error message.
+
+
+\section*{Instructions}
+
+\begin{itemize}
+  \item You are encouraged to collaborate any number of students 
+  before, during, and after your scheduled hack session.  
+  \item Design at least 3 test cases for each function
+  \emph{before} you begin
+  designing or implementing your program.  Test cases are 
+  input-output pairs that are known to be correct using means
+  other than your program.
+  \item You may (in fact are encouraged) to define any additional
+  ``helper'' functions that you find useful.
+  \item Include the name(s) of everyone who worked together on
+  this activity in your source file's header.
+
+  \item A testing file, \mintinline{text}{ColorUtilsTests.java} has been 
+  provided that uses JUnit (\url{https://junit.org/junit5/}), a unit testing 
+  framework for Java.  We have already written several test cases 
+  for you.  Using these examples, implement your test cases using JUnit
+  for your two functions.  You should add at least 3 test methods.
+
+  The starter file should be sufficient to demonstrate how to use
+  JUnit, but the full documentation can be found here: 
+  \url{https://junit.org/junit5/docs/current/api/}.
+  A \mintinline{text}{readme.me} file has also been provided describing
+  how to add JUnit to your Eclipse project.   
+  
+  \item Turn in all of your files via webhandin, making sure that 
+  it runs and executes correctly in the webgrader.  Each individual 
+  student will need to hand in their own copy and will receive 
+  their own individual grade.
+\end{itemize}  
+
+
+\end{document}
