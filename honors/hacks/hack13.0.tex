@@ -1,0 +1,96 @@
+\documentclass[12pt]{scrartcl}
+
+\input{preamble}
+
+\makeatletter
+\title{Hack 13.0}\let\Title\@title
+\subtitle{Computer Science I -- Java\\
+Searching \& Sorting\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-3cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\input{instructions.tex}
+
+\section*{Problem Statement}
+
+You will use the implementation of your \mintinline{java}{Airport} class 
+from a previous hack to develop several reports that will require you to 
+sort and search (a subset of) the International Civil Aviation Organization 
+database for particular airports.  
+
+We have provided a source file, \mintinline{text}{AirportUtils.java} with
+several comparators and methods you need to implement.  Details are provided
+in the documentation.  
+
+The \mintinline{java}{generateReports()} takes a list of 
+\mintinline{java}{Airport}s and should produce the
+following reports which should all be output to the standard output.
+
+\begin{itemize}
+  \item To help you troubleshoot, you should print out the list of
+  airports in the original order to the standard output.
+  
+  \item Sort the airports by each of the 8 comparators and print them 
+  out (8 reports total).
+
+  \item Search for and print out the airport in the array that is closest (via 
+  air distance) to Lincoln.  Lincoln is located at 40.8507N, 96.7581W.
+
+  \item Search for and print out the airport that is the geographic west-east
+  median\footnote{With 0-indexed lists, the median is usually the element at
+  index \mintinline{c}{n/2} when sorted.  This relies on truncation to give 
+  the middle index of odd-sized lists and prefers the ``right'' element 
+  for even-sized lists.} 
+  of the given airports with respect to longitude.  
+  
+  \item Search for an airport located in the city New York (city would 
+  be \mintinline{text}{New York} and the country would be 
+  \mintinline{text}{US}) and print it out
+  if it exists.  If no such airport exists, print out an appropriate message.
+  
+  \item Search for an airport whose type is \mintinline{text}{large_airport} and
+  print it out if it exists.  If no such airport exists, print out an appropriate message.
+\end{itemize}
+
+\section*{Instructions}
+
+\begin{itemize}
+
+  \item Hand in both your \mintinline{text}{Airport.java} and 
+  \mintinline{text}{AirportUtils.java} source files.  You may add any 
+  utility methods you wish but you must \emph{not} change any of the 
+  signatures of the required methods.
+  
+  \item In addition, you must create a \mintinline{java}{main} 
+  method in your \mintinline{text}{AirportUtils.java} class that
+  tests your reports with at least least 5 airports. 
+  
+  \item You are encouraged to collaborate any number of students 
+  before, during, and after your scheduled hack session.  
+
+  \item You may (in fact are encouraged) to define any additional
+  ``helper'' methods that may help you.
+
+  \item Include the name(s) of everyone who worked together on
+  this activity in your source file's header.
+
+  \item Turn in all of your files via webhandin, making sure that 
+  it runs and executes correctly in the webgrader.  Each individual 
+  student will need to hand in their own copy and will receive 
+  their own individual grade.
+\end{itemize}  
+
+
+\end{document}
