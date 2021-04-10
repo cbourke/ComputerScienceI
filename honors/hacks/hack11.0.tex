@@ -1,0 +1,91 @@
+\documentclass[12pt]{scrartcl}
+
+\input{preamble}
+
+\makeatletter
+\title{Hack 11.0}\let\Title\@title
+\subtitle{Computer Science I -- Java\\
+Encapsulation\\
+{\small
+\vskip1cm
+Department of Computer Science \& Engineering \\
+University of Nebraska--Lincoln}
+\vskip-3cm}
+%\author{Dr.\ Chris Bourke}
+\date{~}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\hrule
+
+\input{instructions.tex}
+
+\section*{Problem Statement}
+
+There are thousands of commercial, military, and local airports in the US and
+around the world.  The International Civil Aviation Organization maintains a
+database of current and inactive airports around the world.  The database 
+uniquely identifies each airport by an alphanumeric GPS code.  Further, each
+record contains the following pieces of data on each airport:
+\begin{itemize}
+  \item The name of the airport
+  \item Its latitude in degrees in the range $[-90, 90]$ with negative values corresponding to the southern hemisphere
+  \item Its longitude in degrees in the range $[-180, 180]$ with negative values corresponding to the western hemisphere
+  \item The type of airport 
+  \item Its elevation in (whole) feet above sea level
+  \item Its municipality and its country
+\end{itemize}
+
+Design a Java class to encapsulate these attributes to model an
+airport record from the ICAO database.  Also design several methods
+to support your class including a constructor, getters, a \mintinline{java}{toString()}
+method, etc.  You will also implement several utility methods that 
+use your class to compute the air
+distance(s) between airport locations using their latitude and longitude.
+Recall that the air distance $d$ between two latitude/longitude points can be 
+estimated using the Spherical Law of Cosines.
+
+ $$d = \arccos{(\sin(\varphi_1) \cdot \sin(\varphi_2) + \cos(\varphi_1) \cos(\varphi_2) \cos(\Delta) )} \cdot R$$
+where
+\begin{itemize}
+  \item $\varphi_1$ is the latitude of location $A$, $\varphi_2$ is the latitude of location $B$
+  \item $\Delta$ is the difference between location $B$'s longitude and location $A$'s longitude
+  \item $R$ is the (average) radius of the earth, 6,371 kilometers
+\end{itemize}
+This formula assumes that latitude and longitude are in radians 
+$r$, $-\pi \leq r \leq \pi$.  To convert from degrees $d$ ($-180 \leq d \leq 180$) 
+to radians $r$, you can use the simple formula:
+  $$r = \frac{d}{180} \pi$$
+
+More details have been provided in a starter file, \mintinline{text}{Airport.java}.
+You will need to design your class and implement all of the specified 
+methods.
+
+\section*{Instructions}
+
+\begin{itemize}
+
+  \item In addition, you must create a main test driver program that 
+  demonstrates at least 3 cases per non-trivial function.  Name this file 
+  \mintinline{text}{AirportTester.java} and hand it in.
+
+  \item You are encouraged to collaborate any number of students 
+  before, during, and after your scheduled hack session.  
+
+  \item You may (in fact are encouraged) to define any additional
+  ``helper'' methods that may help you.
+
+  \item Include the name(s) of everyone who worked together on
+  this activity in your source file's header.
+
+  \item Turn in all of your files via webhandin, making sure that 
+  it runs and executes correctly in the webgrader.  Each individual 
+  student will need to hand in their own copy and will receive 
+  their own individual grade.
+\end{itemize}  
+
+
+\end{document}
