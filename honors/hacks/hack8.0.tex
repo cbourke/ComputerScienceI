@@ -50,7 +50,7 @@ use the given signatures.
   \emph{list} of strings.  The split will be length-based: the function 
   will take an integer $n$ and will split the given string up into 
   strings of length $n$.  It is possible that the last string will not 
-  be of length $n$.
+  be of length $n$.  Throw an \mintinline{java}{IllegalArgumentException} for any invalid inputs.
   
   \mintinline{java}{public static List<String> lengthSplit(String s, int n)}
 
