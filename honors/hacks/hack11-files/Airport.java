@@ -10,6 +10,14 @@ public class Airport {
 
 	//TODO: define your member variables and methods
 
+  /**
+	 * Required constructor
+	 * TODO: add documentation, implement
+	 */
+	public Airport(String gpsId, String name, double latitude, double longitude, String type, int elevationFeet,
+		 String city, String country) {
+  }
+
 	/**
 	 * Computes the air distance, in kilometers, from <code>this<code>
 	 * airport to the given <code>destination</code> using their latitude/longitude
