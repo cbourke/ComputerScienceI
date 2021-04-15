@@ -141,6 +141,9 @@ to avoid unnecessary repeated recursive calls.
   
   \item Modify your \mintinline{java}{binomial} method to use this map
   to store and use values to avoid unnecessary repeated recursive calls.
+  Your method should have the following signature:
+  
+  \mintinline{java}{public static BigInteger binomial(int n, int k)}
   
   When the method needs to compute ${n \choose k}$ it checks the map
   first: if the value has already been computed (is not \mintinline{java}{null}) then it
