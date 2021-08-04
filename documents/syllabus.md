@@ -37,7 +37,8 @@
 
 ## Course Info
 
-**Prerequisites**: [MATH 103](https://catalog.unl.edu/search/?P=MATH%20103)  or equivalent.
+**Prerequisites**: [MATH 103](https://catalog.unl.edu/search/?P=MATH%20103)
+or equivalent.
 
 **Description**: Introduction to problem solving with computers. Topics
 include problem solving methods, software development principles,
@@ -45,7 +46,7 @@ computer programming, and computing in society.
 
 **Credit Hours**: 3
 
-**Postrequisites**: The course after this course, 
+**Postrequisites**: The course after this course,
 [CSCE 156](https://catalog.unl.edu/search/?P=CSCE%20156) – Computer
 Science II requires that you receive a grade of C or better in this
 course to move on. If you are a Computer Science or Computer Engineering
@@ -110,7 +111,7 @@ Administration, 472-3787 voice or TTY.
 ### Counseling and Psychological Services
 
 UNL offers a variety of options to students to aid them in dealing with
-stress and adversity. [Counseling and Psychological Services](https://caps.unl.edu/) 
+stress and adversity. [Counseling and Psychological Services](https://caps.unl.edu/)
 (CAPS) is a multidisciplinary team of psychologists and counselors that works
 collaboratively with Nebraska students to help them explore their
 feelings and thoughts and learn helpful ways to improve their mental,
@@ -125,20 +126,15 @@ with others, develop grit and navigate transitions.
 Assessment (grading) will be based on readings, labs, "hacks", a
 semester project and two exams with the following point distributions.
 
-TODO: 
-1. finalize point distribution
-2. Finalize attendance policy
-3. Finalize exams
-
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     10|
+|  Starter Points     |        |             |     20|
 |  Reading (zyBooks)  |      13|           15|    195|
-|  Labs               |     14*|           15|    195|
-|  Hacks              |     14*|           25|    325|
-|  Project            |       1|          100|     75|
-|  Midterm            |       1|          100|    100|
-|  Final              |       1|          100|    100|
+|  Labs               |      14|           15|    195|
+|  Hacks              |      14|           25|    325|
+|  Project            |       1|           75|     75|
+|  Midterm            |       1|           75|     75|
+|  Final              |       1|           75|     75|
 |  Total              |        |             |  1,000|
 
 Honors:
@@ -158,10 +154,11 @@ Honors:
 It is important to start out positively. Put yourself in the mindset
 that you *will* succeed in this course and commit yourself to putting in
 a full effort in every aspect of it. To get you started, we're giving
-you 35 free points. You have a perfect score in this course already!
+you **free starter points**. You have a perfect score in this course already!
 Keep it up!
 
 ### Attendance Policies
+
 
 TODO
 
@@ -241,10 +238,8 @@ There will be one midterm exam and a comprehensive final exam. These
 will be open-book, open-note, *required computer* exams. The exams
 consist of live coding exercises for which you will need your own
 machine as you will be coding and submitting programs online for
-grading. More details will be announced closer to the exam dates. Due to
-attendance limitations, these will likely be "take home" exams. You will
-be on your own honor to complete these exams alone and without
-collaboration.
+grading. More details will be announced closer to the exam dates.
+No collaboration is allowed on exams.
 
 ### 15th Week Policy Notification
 
@@ -313,6 +308,26 @@ that a disproportionate amount of time would be spent evaluating your
 assignment. For this reason, we will not grade any assignment that does
 not compile and run through the webgrader.
 
+## Honors Section
+
+There is a separate honors section for this course.  The honors section
+covers the same topics but in at accelerated pace and comes with higher
+expectations.  In particular, we cover two programming languages in
+parallel (typically C and Java) and several assignments will will require
+knowledge of both.
+
+-  Each weekly lab has both a C and Java version.  You are highly
+   recommended to complete both but only one version needs to be
+   submitted for credit.
+
+-  Each weekly hack has both a C and Java version.  You are **required**
+   to submit both of them for credit.
+
+-  The semester project has both a C and Java version.  You are **required**
+   to submit both of them for credit.
+
+-  Exams will have a mixture of C and Java exercises.  
+
 ## Academic Integrity
 
 All homework assignments, programs, and exams must represent your own
@@ -350,17 +365,17 @@ available at <https://cse.unl.edu/contact-form>.
 ### Learning Assistant Program (LAP)
 
 This course is supported by the CSE Learning Assistant Program (LAP).  
-The mission of the LAP is to improve student comprehension and 
-retention in computing fields by focusing on the learner's experience. 
-This course will be supplemented by Learning Assistants (LAs) and Course 
-Leaders (CLs) to help improve your learning. LAs and CLs are other 
-undergraduate students who have taken the same or similar courses 
-and have been trained to help you succeed in this course. Your LAs 
-and CLs will hold regular office hours, help with grading, and assist 
+The mission of the LAP is to improve student comprehension and
+retention in computing fields by focusing on the learner's experience.
+This course will be supplemented by Learning Assistants (LAs) and Course
+Leaders (CLs) to help improve your learning. LAs and CLs are other
+undergraduate students who have taken the same or similar courses
+and have been trained to help you succeed in this course. Your LAs
+and CLs will hold regular office hours, help with grading, and assist
 you with labs/assignments.
 
-I strongly encourage you to utilize the LAs and CLs when you are 
-completing coursework. More information can be found in the Learning 
+I strongly encourage you to utilize the LAs and CLs when you are
+completing coursework. More information can be found in the Learning
 Assistant Program Module on Canvas.
 
 ### Getting Help
