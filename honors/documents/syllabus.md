@@ -1,6 +1,6 @@
-# Computer Science I
+# Computer Science I - Honors
 
-### CSCE 155E - Syllabus - Fall 2021
+### CSCE 155H - Syllabus - Fall 2021
  [Department of Computer Science & Engineering](https://cse.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
@@ -31,7 +31,30 @@
 > Enjoyed the videos. Did not really watch them videos until \[later\],
 > realized that it was a mistake now.
 >
-> —Former student a year after taking this course
+> -Former student a year after taking this course
+
+> There are only two kinds of languages: the ones people complain
+> about and the ones nobody uses.
+>
+> -Bjarne Stroustrup (creator of C++)
+
+> But be aware that you won't reach the skill level of a hacker or
+> even merely a programmer if you only know one language--you need to
+> learn how to think about programming problems in a general way,
+> independent of any one language.  To be a real hacker, you need to
+> have gotten to the point where you can learn a new language in days
+> by relating what's in the manual to what you already know.  This
+> means you should learn several very different languages.
+>
+> -Eric S. Raymond, How to Become a Hacker (The Cathedral and the Bazaar)
+
+> I came into this class able to code by constantly using references
+> and needing to double check my code. I left as a coding machine. The
+> rate at which I did the last homework was like that of whole other
+> person.
+>
+> -Previous student via course evaluation
+
 
 ***
 
@@ -123,20 +146,18 @@ with others, develop grit and navigate transitions.
 
 ## Grading
 
-Assessment (grading) will be based on readings, labs, "hacks", a
+Assessment (grading) will be based on labs, "hacks", a
 semester project and two exams with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     20|
-|  Reading (zyBooks)  |      13|           15|    195|
-|  Labs               |      14|           15|    195|
-|  Hacks              |      14|           25|    325|
-|  Project            |       1|           75|     75|
-|  Midterm            |       1|           75|     75|
-|  Final              |       1|           75|     75|
-|  Total              |        |             |  1,000|
-
+|  Starter Points     |        |             |     40|
+|  Labs               |      14|           15|    210|
+|  Hacks              |      28|           25|    700|
+|  Project            |       2|           75|    150|
+|  Midterm            |       1|          100|    100|
+|  Final              |       1|          100|    100|
+|  Total              |        |             |  1,300|
 
 ### Starter Points
 
@@ -185,28 +206,6 @@ to wear a face mask when you attend lecture, lab, and hack sessions in person.
 If you prefer not to comply with this requirement for this course, you will need
 to attend lecture, lab, and hack sessions virtually.
 
-
-### Readings
-
-This course is organized into modules (roughly 1 module per week) and
-each module has reading associated with it. Some reading is required and
-other readings are suggested/recommended and provide a deeper
-understanding of the topics. Some of the required reading will be
-assessed and will count toward your grade.
-
-The assessed reading for this course is delivered through an online
-textbook provided by zyBooks (<https://www.zybooks.com/>). This is a
-web-based interactive text book that has you do some reading and then
-assesses your understanding through short quiz questions. You may retry
-these quizzes until you get them right. These readings are assessed
-based on completion and are generally due *before* the lectures on the
-modules in order to better prepare you for the presented material. If
-you do not complete the readings for each module, you will not receive
-any credit.
-
-Not every set of required reading represents an equal amount of work.
-Some modules have more reading than others. However, all assessment is
-equally weighted since it is based on completion.
 
 ### Labs
 
@@ -332,6 +331,40 @@ that a disproportionate amount of time would be spent evaluating your
 assignment. For this reason, we will not grade any assignment that does
 not compile and run through the webgrader.
 
+## Honors Section
+
+This is the honors section of our main Computer Science I course
+(CSCE 155E).  We cover the same topics but at accelerated pace
+and there are higher expectations.  In particular, we cover ***two***
+programming languages in parallel (typically C and Java) and
+most assignments will require knowledge of both.  
+
+The key differences between the honors section and the main section
+include:
+
+TODO
+
+-  We do not use zyBooks (an online interactive textbook with
+   graded readings).  Instead, you will be expected to keep up
+   with recommended reading as necessary to learn/reinforce the
+   material on your own.  The recommended reading for this course
+   is taken from my free online Computer Science I textbook so
+   there is nothing additional to purchase.
+
+-  Each weekly lab has both a C and Java version.  You are ***highly
+   recommended*** to complete both but only *one version* needs to be
+   submitted for credit.
+
+-  Each weekly hack has both a C and Java version.  You are ***required***
+   to submit both of them for credit.
+
+-  In addition, though you have a scheduled lab section each week,
+   there is no additional *scheduled* hack session.
+
+-  The semester project has both a C and Java version.  You are ***required***
+   to submit both of them for credit.
+
+-  Exams will have a mixture of C and Java exercises.  
 
 ## Academic Integrity
 
