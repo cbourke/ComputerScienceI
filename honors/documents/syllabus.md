@@ -202,7 +202,8 @@ and hack sessions in person.  Several vaccines are widely available, highly
 effective and backed by sound science.  The good majority of adults have
 been vaccinated and you should be one of them.  UNL has provided
 opportunities to receive a vaccine (free of charge); please consider doing this
-as soon as possible.  More information can be found here: [link to be determined].
+as soon as possible.  More information can be found here:
+https://covid19.unl.edu/vaccination-information.
 
 In addition, you should follow all health and safety guidelines published by
 the CDC, healthcare officials and the University of Nebraska--Lincoln.  This includes
