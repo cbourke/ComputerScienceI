@@ -128,7 +128,7 @@ semester project and two exams with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     20|
+|  Skills Survey      |        |             |     20|
 |  Reading (zyBooks)  |      13|           15|    195|
 |  Labs               |      14|           15|    195|
 |  Hacks              |      14|           25|    325|
@@ -138,13 +138,22 @@ semester project and two exams with the following point distributions.
 |  Total              |        |             |  1,000|
 
 
-### Starter Points
+### Skills Survey
 
-It is important to start out positively. Put yourself in the mindset
+The CSE Skills Inventory Survey involves two short surveys
+administered through an external website.  We administer
+this survey in order to collect data to better place students
+into future Computer Science courses.  These surveys are
+required and are worth 20 points total.  Please take the
+survey seriously and answer truthfully.  You are not being
+graded on your answers, only that you complete the surveys.  
+Both surveys should take less than 1 hour to complete.
+
+<!--It is important to start out positively. Put yourself in the mindset
 that you *will* succeed in this course and commit yourself to putting in
 a full effort in every aspect of it. To get you started, we're giving
 you **free starter points**. You have a perfect score in this course already!
-Keep it up!
+Keep it up!-->
 
 ### Attendance Policies
 
