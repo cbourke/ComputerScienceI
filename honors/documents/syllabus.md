@@ -195,6 +195,7 @@ in a "hybrid" manner:
 
 #### COVID Considerations
 
+
 Out of respect for faculty and staff, out of respect for the Learning Assistants,
 and out of respect for your fellow students and most especially yourself, you
 should make sure you are fully vaccinated if you plan to attend lecture, lab,
@@ -205,18 +206,23 @@ opportunities to receive a vaccine (free of charge); please consider doing this
 as soon as possible.  More information can be found here:
 https://covid19.unl.edu/vaccination-information.
 
-In addition, you should follow all health and safety guidelines published by
-the CDC, healthcare officials and the University of Nebraska--Lincoln.  This includes
-wearing masks indoors and attempting to keep social distance between peers
-***regardless of your vaccination status***.  If you feel ill or have had
-exposure to COVID-19, you **should not attend in-person** and instead utilize
-the online resources we have provided as outlined above.  
+Everyone is required and expected to follow all health and safety
+guidelines published by the CDC, healthcare officials and the
+University of Nebraska--Lincoln.  If you are not fully vaccinated and
+still decide to attend in-person lecture, lab or hack sessions,
+you will be ***required*** to wear a mask.  If you are fully
+vaccinated, you are still **strongly recommended** to wear a mask
+given the limited social distancing and disappointingly low
+vaccination rates among college age groups in Nebraska.  
 
-Because there may be many faculty, staff, and students who have family members
-(myself included) who are yet unable to be vaccinated, you will be ***required***
-to wear a face mask when you attend lecture, lab, and hack sessions in person.
-If you prefer not to comply with this requirement for this course, you will need
-to attend lecture, lab, and hack sessions virtually.
+If you feel ill or have had exposure to COVID-19, you
+**should not attend in-person** and instead utilize the online
+opportunities we have provided.  Those who violate the testing
+policies or receive a positive test may not be granted access to
+University buildings and so you may need to attend remotely.  Getting
+vaccinated as soon as you can greatly improves not only your health
+risks but also greatly reduces the chance that your access will be
+restricted.  
 
 
 ### Labs
