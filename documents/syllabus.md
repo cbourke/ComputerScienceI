@@ -200,6 +200,12 @@ vaccinated as soon as you can greatly improves not only your health
 risks but also greatly reduces the chance that your access will be
 restricted.  
 
+Full expectations and consequences are outlined here:
+
+ - https://studentconduct.unl.edu/covid-19-related-expectations-and-non-compliance
+
+ - https://covid19.unl.edu/face-covering-policy
+
 
 ### Readings
 
