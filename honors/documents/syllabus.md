@@ -230,7 +230,7 @@ Full expectations and consequences are outlined here:
 
  - https://covid19.unl.edu/face-covering-policy
 
- 
+
 ### Labs
 
 There will be weekly labs that give you hands-on exercises for topics
@@ -366,9 +366,7 @@ most assignments will require knowledge of both.
 The key differences between the honors section and the main section
 include:
 
-TODO
-
--  We do not use zyBooks (an online interactive textbook with
+-  We do *not* use zyBooks (an online interactive textbook with
    graded readings).  Instead, you will be expected to keep up
    with recommended reading as necessary to learn/reinforce the
    material on your own.  The recommended reading for this course
