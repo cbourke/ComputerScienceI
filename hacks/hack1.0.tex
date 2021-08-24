@@ -101,172 +101,172 @@ through the basics of getting started.  You will setup a project with
 git using GitHub (\url{https://github.com}) as your remote server.  You
 will then collaborate with someone else to commit changes.
 
-\part*{On Campus Version}
-
-\section{Installation}
-
-All of the instructions in this Hack will involve using GitHub's 
-Desktop Client.  The screenshots were from the Mac version of this
-program so it may look slightly different on other systems.  There 
-are other alternatives and if you wish to use them you are welcome 
-to do so.
-
-\begin{enumerate}
-  \item Go to \url{https://github.com/} and sign up/register with
-  an account if you have not already done so.
-  \item Download and the client here: \url{https://desktop.github.com/}.
-\end{enumerate}
-
-\section{Creating a Repository}
-
-To focus on the git process, you will create and work with a simple
-``Hello World''-style program but instead of printing ``Hello World'', 
-it will print your name. 
-
-\begin{enumerate}
-  \item Create a new folder (call it \mintinline{text}{hello}) somewhere 
-  on your computer and within it, 
-  create a \mintinline{text}{hello.c} source file with code in it that
-  prints your name.
-  
-  \item Open your GitHub Desktop Client (you may need to sign in with your
-  new GitHub credentials).
-  
-  \item Drag and drop your \mintinline{text}{hello} folder to the GitHub Desktop
-  Client.  It will look something like the following.
-  \begin{center}
-  \includegraphics[scale=0.50]{./hack1.0-files/drag.png}
-  \end{center}
-  Click \mintinline{text}{create a repository} and it should look something
-  like the following.
-  \begin{center}
-  \includegraphics[scale=0.35]{./hack1.0-files/setup.png}
-  \end{center}
-  Provide a simple description and click \mintinline{text}{Create Repository}
-
-  \item If everything is successful, it should look something like the following.
-  \begin{center}
-  \includegraphics[scale=0.125]{./hack1.0-files/postCreation.png}
-  \end{center}
-  The GitHub client will have made an initial commit of the existing
-  files for you.
-
-  \item Push/publish your repository to GitHub.com by clicking 
-  \mintinline{text}{Publish repository} at the top right.  It 
-  should look look something like the following.  
-  \begin{center}
-  \includegraphics[scale=0.35]{./hack1.0-files/publish.png}
-  \end{center}
-  Be sure that \mintinline{text}{Keep this code private} is 
-  \emph{not selected} and click \mintinline{text}{Publish Repository}
-  
-  \item If successful, your repository should now be on GitHub.
-  Point your web browser to \url{https://github.com/login/hello}
-  where \mintinline{text}{login} is replaced with your GitHub user
-  name.  You can browse your repository, view its history, etc.
-  
-\end{enumerate}
-
-\section{Making Changes}
-
-You'll often make changes to you code that you should \emph{commit} to
-your repository.  Though you may make changes and save them to a file, 
-the changes are not saved to the repository's history.  Committing is 
-the action that does this.  Committing only changes your \emph{local}
-repository, the changes will still need to be \emph{pushed} to GitHub.
-In this activity you'll make changes, commit them and then push them
-to GitHub.
-
-\begin{enumerate}
-  \item Open the \mintinline{text}{hello.c} file and add a line that
-  prints your major.  Be sure to save the file.
-
-  \item The GitHub Client should ``see'' these changes.  It should look
-  something like the following. 
-  \begin{center}
-  \includegraphics[scale=0.125]{./hack1.0-files/change.png}
-  \end{center}
-
-  \item Commit your changes by filling out the summary (required) and description.
-  This is your chance to \emph{document} why you made changes to your code.
-  Then click \mintinline{text}{Commit to master}.  Your changes have now
-  been committed to your repository.  
-  \begin{center}
-  \includegraphics[scale=0.125]{./hack1.0-files/commit.png}
-  \end{center}
-  
-  \item Push your changes to GitHub by clicking \mintinline{text}{Push origin}
-  at the top right.  You can verify that your changes have been published
-  to GitHub by refreshing your web browser.
-  \begin{center}
-  \includegraphics[scale=0.125]{./hack1.0-files/pushChange.png}
-  \end{center}
-
-\end{enumerate}
-
-\section{Collaborating With a Team}
-
-In this exercise, you'll need to team up with at least one other person.
-You'll make them a collaborator on your project so they can make changes
-and commit/push them to \emph{your} repository on GitHub.  Alternatively
-you can have them make a pull request, but these instructions do not cover 
-that; refer to one of the resources below for how how to make push/pull
-requests.
-
-\begin{enumerate}
-  \item On GitHub.com, click \mintinline{text}{Settings} in your project.
-  \item In the left menu, click \mintinline{text}{Collaborators}
-  \item Type in your partner's GitHub user name and click \mintinline{text}{Add collaborator}
-\end{enumerate}
-
-\subsection{What your collaborator needs to do}
-
-Together with your partner, walk through the following steps.  These
-steps should be done on \emph{their} computer.
-
-\begin{enumerate}
-  \item Once you've sent an invite to collaborate, they need to accept it.
-  \item Have them navigate their web browser to your GitHub 
-  repository and click \mintinline{text}{Clone or download} and select
-  \mintinline{text}{Open in Desktop}.  This will launch their GitHub
-  Desktop Client and check out \emph{your} code.
-  \item Have them add 2 lines of code to print their name and their major.
-  \item In the GitHub Client, follow the same procedure to commit and push
-  their changes to your repository using the same procedure as above.
-  \item Verify their changes by refreshing your repository.  You can click
-  on the \mintinline{text}{hello.c} and if you both did everything correctly, 
-  you'll see multiple commits by multiple people:
-  \begin{center}
-  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo02.png}
-  \end{center}
-  If you click on \mintinline{text}{History} you can see the changes for
-  each commit: 
-  \begin{center}
-  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo03.png}
-  \end{center}
-
-\end{enumerate}
-
-You are \emph{highly encouraged} to start using git/GitHub (or 
-something similar) for all of your future assignments 
-but be sure to commit code to a \emph{private} repository 
-so that you do not violate the department's academic integrity 
-policy.  
-
-\subsection{Finishing Up}
-
-\begin{enumerate}
-  \item Put \emph{your} GitHub URL into a plain text file named 
-  \mintinline{text}{readme.md}.  Turn this file
-  in using webhandin.  Each individual student will need
-  to hand in their own copy and will receive their own individual
-  grade.
-  \item Verify what you handed in by running the webgrader which will
-  display the contents of your file.
-\end{enumerate}
-
-\part*{Online Version}
-\setcounter{section}{0}
+%\part*{On Campus Version}
+%
+%\section{Installation}
+%
+%All of the instructions in this Hack will involve using GitHub's 
+%Desktop Client.  The screenshots were from the Mac version of this
+%program so it may look slightly different on other systems.  There 
+%are other alternatives and if you wish to use them you are welcome 
+%to do so.
+%
+%\begin{enumerate}
+%  \item Go to \url{https://github.com/} and sign up/register with
+%  an account if you have not already done so.
+%  \item Download and the client here: \url{https://desktop.github.com/}.
+%\end{enumerate}
+%
+%\section{Creating a Repository}
+%
+%To focus on the git process, you will create and work with a simple
+%``Hello World''-style program but instead of printing ``Hello World'', 
+%it will print your name. 
+%
+%\begin{enumerate}
+%  \item Create a new folder (call it \mintinline{text}{hello}) somewhere 
+%  on your computer and within it, 
+%  create a \mintinline{text}{hello.c} source file with code in it that
+%  prints your name.
+%  
+%  \item Open your GitHub Desktop Client (you may need to sign in with your
+%  new GitHub credentials).
+%  
+%  \item Drag and drop your \mintinline{text}{hello} folder to the GitHub Desktop
+%  Client.  It will look something like the following.
+%  \begin{center}
+%  \includegraphics[scale=0.50]{./hack1.0-files/drag.png}
+%  \end{center}
+%  Click \mintinline{text}{create a repository} and it should look something
+%  like the following.
+%  \begin{center}
+%  \includegraphics[scale=0.35]{./hack1.0-files/setup.png}
+%  \end{center}
+%  Provide a simple description and click \mintinline{text}{Create Repository}
+%
+%  \item If everything is successful, it should look something like the following.
+%  \begin{center}
+%  \includegraphics[scale=0.125]{./hack1.0-files/postCreation.png}
+%  \end{center}
+%  The GitHub client will have made an initial commit of the existing
+%  files for you.
+%
+%  \item Push/publish your repository to GitHub.com by clicking 
+%  \mintinline{text}{Publish repository} at the top right.  It 
+%  should look look something like the following.  
+%  \begin{center}
+%  \includegraphics[scale=0.35]{./hack1.0-files/publish.png}
+%  \end{center}
+%  Be sure that \mintinline{text}{Keep this code private} is 
+%  \emph{not selected} and click \mintinline{text}{Publish Repository}
+%  
+%  \item If successful, your repository should now be on GitHub.
+%  Point your web browser to \url{https://github.com/login/hello}
+%  where \mintinline{text}{login} is replaced with your GitHub user
+%  name.  You can browse your repository, view its history, etc.
+%  
+%\end{enumerate}
+%
+%\section{Making Changes}
+%
+%You'll often make changes to you code that you should \emph{commit} to
+%your repository.  Though you may make changes and save them to a file, 
+%the changes are not saved to the repository's history.  Committing is 
+%the action that does this.  Committing only changes your \emph{local}
+%repository, the changes will still need to be \emph{pushed} to GitHub.
+%In this activity you'll make changes, commit them and then push them
+%to GitHub.
+%
+%\begin{enumerate}
+%  \item Open the \mintinline{text}{hello.c} file and add a line that
+%  prints your major.  Be sure to save the file.
+%
+%  \item The GitHub Client should ``see'' these changes.  It should look
+%  something like the following. 
+%  \begin{center}
+%  \includegraphics[scale=0.125]{./hack1.0-files/change.png}
+%  \end{center}
+%
+%  \item Commit your changes by filling out the summary (required) and description.
+%  This is your chance to \emph{document} why you made changes to your code.
+%  Then click \mintinline{text}{Commit to master}.  Your changes have now
+%  been committed to your repository.  
+%  \begin{center}
+%  \includegraphics[scale=0.125]{./hack1.0-files/commit.png}
+%  \end{center}
+%  
+%  \item Push your changes to GitHub by clicking \mintinline{text}{Push origin}
+%  at the top right.  You can verify that your changes have been published
+%  to GitHub by refreshing your web browser.
+%  \begin{center}
+%  \includegraphics[scale=0.125]{./hack1.0-files/pushChange.png}
+%  \end{center}
+%
+%\end{enumerate}
+%
+%\section{Collaborating With a Team}
+%
+%In this exercise, you'll need to team up with at least one other person.
+%You'll make them a collaborator on your project so they can make changes
+%and commit/push them to \emph{your} repository on GitHub.  Alternatively
+%you can have them make a pull request, but these instructions do not cover 
+%that; refer to one of the resources below for how how to make push/pull
+%requests.
+%
+%\begin{enumerate}
+%  \item On GitHub.com, click \mintinline{text}{Settings} in your project.
+%  \item In the left menu, click \mintinline{text}{Collaborators}
+%  \item Type in your partner's GitHub user name and click \mintinline{text}{Add collaborator}
+%\end{enumerate}
+%
+%\subsection{What your collaborator needs to do}
+%
+%Together with your partner, walk through the following steps.  These
+%steps should be done on \emph{their} computer.
+%
+%\begin{enumerate}
+%  \item Once you've sent an invite to collaborate, they need to accept it.
+%  \item Have them navigate their web browser to your GitHub 
+%  repository and click \mintinline{text}{Clone or download} and select
+%  \mintinline{text}{Open in Desktop}.  This will launch their GitHub
+%  Desktop Client and check out \emph{your} code.
+%  \item Have them add 2 lines of code to print their name and their major.
+%  \item In the GitHub Client, follow the same procedure to commit and push
+%  their changes to your repository using the same procedure as above.
+%  \item Verify their changes by refreshing your repository.  You can click
+%  on the \mintinline{text}{hello.c} and if you both did everything correctly, 
+%  you'll see multiple commits by multiple people:
+%  \begin{center}
+%  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo02.png}
+%  \end{center}
+%  If you click on \mintinline{text}{History} you can see the changes for
+%  each commit: 
+%  \begin{center}
+%  \includegraphics[scale=0.25]{./hack1.0-files/completedRepo03.png}
+%  \end{center}
+%
+%\end{enumerate}
+%
+%You are \emph{highly encouraged} to start using git/GitHub (or 
+%something similar) for all of your future assignments 
+%but be sure to commit code to a \emph{private} repository 
+%so that you do not violate the department's academic integrity 
+%policy.  
+%
+%\subsection{Finishing Up}
+%
+%\begin{enumerate}
+%  \item Put \emph{your} GitHub URL into a plain text file named 
+%  \mintinline{text}{readme.md}.  Turn this file
+%  in using webhandin.  Each individual student will need
+%  to hand in their own copy and will receive their own individual
+%  grade.
+%  \item Verify what you handed in by running the webgrader which will
+%  display the contents of your file.
+%\end{enumerate}
+%
+%\part*{Online Version}
+%\setcounter{section}{0}
 
 This version of the hack assumes that you are in the online
 section or have chosen to use the CS50 IDE.  The following
@@ -368,8 +368,17 @@ it will print your name.
   
   \mintinline{text}{git push -u origin master}
   
-  It will likely prompt you for your GitHub login and password.
-  Enter them and if successful, it should look something like
+  It will likely prompt you for your GitHub username and password.
+
+  \textbf{Update}: as of August 2021, GitHub has changed its security
+  requirements.  Instead of providing a password, it now requires you
+  to generate a personal access token.  Instructions for how to do this
+  are available here:
+  
+  \url{https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token}
+  
+  Enter your GitHub username and your personal access token as your
+  password.  If successful, it should look something like
   the following.\footnote{Note, you \emph{can} configure git 
   to save your username and password; see \url{https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git-gitextension} for
   instructions.  However, since CS50 IDE is a remote server you'd
