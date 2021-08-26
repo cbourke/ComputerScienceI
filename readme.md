@@ -9,7 +9,7 @@ related to Computer Science I (offered as CSCE 155E, CSCE 155H).
 
 ## Videos
 
-We have produced over 60 lecture and tutorial videos that should 
+We have produced over 60 lecture and tutorial videos that should
 be viewed prior to lecture and which are available in the following
 playlist:
 
@@ -20,12 +20,12 @@ Lectures are broadcast live on my YouTube streaming channel:
 https://www.youtube.com/c/ChrisBourkeUNL/live
 
 The videos are available immediately following on my YouTube channel,
-https://www.youtube.com/c/ChrisBourkeUNL/ and included in the (current) 
+https://www.youtube.com/c/ChrisBourkeUNL/ and included in the (current)
 playlist below.
 
 ## Textbook
 
-We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf) which covers C, Java, and even [PHP](http://phpsadness.com/); complete source is hosted here: https://bitbucket.org/chrisbourke/computersciencei 
+We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf) which covers C, Java, and even [PHP](http://phpsadness.com/); complete source is hosted here: https://bitbucket.org/chrisbourke/computersciencei
 
 ## Labs
 
@@ -50,7 +50,7 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 ### Fall 2021
 
 - Course Link: https://canvas.unl.edu/courses/114201
-- Lectures: To Come
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZVv8VB5oo4KpAoma6OFusdu
 
 ### Fall 2020
 
@@ -62,7 +62,7 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 - Course Link: https://canvas.unl.edu/courses/66815
 - Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZWAvbYmuCa0098eJ8ut2HkV
 
-### Fall 2018 
+### Fall 2018
 
 - Course Link: https://canvas.unl.edu/courses/44933
 - Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZVol2cCryFg8TeIxuUqKEGP
@@ -70,4 +70,4 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ## License
 
-All material in this repository as well as the linked labs and videos is released under a Creative Commons Attribution-ShareAlike 4.0 International license. 
+All material in this repository as well as the linked labs and videos is released under a Creative Commons Attribution-ShareAlike 4.0 International license.

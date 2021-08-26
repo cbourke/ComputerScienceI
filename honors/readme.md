@@ -11,7 +11,7 @@ the main section, but we cover two languages (C and Java) in parallel.
 
 ## Videos
 
-We have produced over 50 lecture and tutorial videos that should 
+We have produced over 50 lecture and tutorial videos that should
 be viewed prior to lecture and which are available in the following
 playlist.  Note that these pre-prepared video lectures only cover
 C at this time.
@@ -23,12 +23,12 @@ Lectures are broadcast live on my YouTube streaming channel:
 https://www.youtube.com/c/ChrisBourkeUNL/live
 
 The videos are available immediately following on my YouTube channel,
-https://www.youtube.com/c/ChrisBourkeUNL/ and included in the playlist 
+https://www.youtube.com/c/ChrisBourkeUNL/ and included in the playlist
 below.
 
 ## Textbook
 
-We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf) which covers C, Java, and even [PHP](http://phpsadness.com/); complete source is hosted here: https://bitbucket.org/chrisbourke/computersciencei 
+We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf) which covers C, Java, and even [PHP](http://phpsadness.com/); complete source is hosted here: https://bitbucket.org/chrisbourke/computersciencei
 
 ## Labs - C
 
@@ -70,8 +70,8 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ### Fall 2021
 
-- Course Link: To Come
-- Lectures: To Come
+- Course Link: https://canvas.unl.edu/courses/114043
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZUNw8KFCbc6TUVV3lp0_Wk6
 
 ### Fall 2020
 
@@ -81,6 +81,6 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ## License
 
-All material in this repository as well as the linked labs and videos is 
-released under a Creative Commons Attribution-ShareAlike 4.0 International 
-license. 
+All material in this repository as well as the linked labs and videos is
+released under a Creative Commons Attribution-ShareAlike 4.0 International
+license.
