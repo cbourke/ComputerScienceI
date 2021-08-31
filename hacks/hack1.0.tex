@@ -301,8 +301,18 @@ it will print your name.
   prints your name.
   
   \item Make this folder (and all of its contents) into a git
-  repository by \emph{initializing} it.  In the console, change
-  directories to this newly created \mintinline{text}{hello}
+  repository by \emph{initializing} it.  Before you do, make sure
+  your terminal is in the correct directory (the \mintinline{text}{hello}
+  directory).  Recall the following commands from the previous lab:
+  \begin{itemize}
+    \item \mintinline{text}{pwd} - lists what directory you are currently in
+    \item \mintinline{text}{cd hello} - changes your current directory to 
+    \mintinline{text}{hello}
+    \item \mintinline{text}{ls} - lists the files in the current directory
+  \end{itemize}
+  
+  In the console, change directories to this newly created 
+  \mintinline{text}{hello}
   directory and execute the following command:
   
   \mintinline{text}{git init}
@@ -361,7 +371,18 @@ it will print your name.
   
   \mintinline{text}{git remote add origin https://github.com/login/hello.git}
   
-  where \mintinline{text}{login} is replaced with your GitHub login.
+  where \mintinline{text}{login} is replaced with your GitHub login.\footnote{
+  If you screw this step up and don't replace \mintinline{text}{login} properly, 
+  here's how you fix it: 
+  \begin{itemize}
+    \item Read and follow all instructions going forward
+    \item You can use \mintinline{text}{git remote -v} to list the remote URL, 
+    verify that you screwed it up
+    \item Fix it by running 
+    \mintinline{text}{git remote set-url origin https://github.com/login/hello.git}
+    \emph{change the login to your login}.
+  \end{itemize}
+  }
   
   \item Now we can push your commit(s) to the remote repository
   with the following command:
@@ -373,7 +394,8 @@ it will print your name.
   \textbf{Update}: as of August 2021, GitHub has changed its security
   requirements.  Instead of providing a password, it now requires you
   to generate a personal access token.  Instructions for how to do this
-  are available here:
+  are available here.  Be sure to follow these instructions carefully,
+  you need to click ``repo'' (Full control of private repositories).
   
   \url{https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token}
   
