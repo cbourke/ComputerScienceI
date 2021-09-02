@@ -214,6 +214,43 @@ double balance = 42.509;
 
 # Non-interactive Input
 
+
+* Interactive input (using `scanf`) makes the program pause and wait for the user to enter in their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments*
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * This example has *4* command line arguments
+  * The first one is always the executable file name, `./a.out`
+* Inside of your program, yoou have access to these *arguments* using `main`'s `argc` and `argv`
+  * `argc` is the *count* of the number of arguments provided
+  * `argv` is the "vector" or simply just a list or array of arguments
+  * `argv[0]` is the first argument which is *always* the executable file name
+  * `argv[1]` is the first user-provided argument
+  * `argv[2]` is the second
+  * `argv[3]` is the third
+  * etc.
+* CLAs are all *strings* not numbers
+* To convert arguments into numbers, you can use:
+  * `atoi()` converts the argument into an integer
+  * `atof()` converts the argument into a `double`
+
+```c
+//convert the first user argument to an integer:
+int x = atoi(argv[1]);
+//convert hte second user argument to a double:
+double y = atof(argv[2]);
+
+```
+
+### Java
+
+* In Java, the arguments are provided in the array `args`
+* There is no `argc` instead use `args.length`
+* The first argument is the actual first user argument, not the class name!
+* To convert use:
+  * `Double.parseDouble(...)`
+  * `Integer.parseInt(...)`
+
 ```text
 
 
