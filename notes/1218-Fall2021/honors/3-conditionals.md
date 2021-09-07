@@ -190,6 +190,139 @@ if(0 <= a <= 10) {
 }
 ```
 
+* The above code (in C) compiles and runs but does not give you the *intended* results
+* In Java: it won't even compile
+* Solution: use logical and operator:
+
+```c
+int a = 15;
+if(0 <= a && a <= 10) {
+    printf("foo\n");
+}
+```
+
+* Consider the following code:
+
+```c
+//C:
+int a = 5;
+
+if(a = 10) { ... }
+```
+
+* In C the above compiles and runs but does not give expected results
+* In Java: does not compile (you need to use proper boolean types)
+* Mistake is misuing the *assignment operator*
+```c
+//C:
+int a = 5;
+
+if(a == 10) { ... }
+```
+
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+```
+
+* The above will compile and run in *both* langauges! but not give correct results
+* THe semicolon means that the if-statement *binds* to an empty executable statement
+
+## Very Nice Tool: linter
+
+* In C: make your life easier by using proper gcc flags
+  * Lint: not necessarily "dirt" (ie not really syntax errors) but likely stuff that will result in a bug or other error (stuff we don't want)
+  * A linter will run "static analysis" on your code: looks at the code *before* it compiles and finds "suspicious" looking code
+  * Best practice: always use the `-Wall` flag when compiling!
+
+## Misc
+
+### Short Circuiting
+
+* Consider a logical and: `a && b`
+  * If `a` evaluates to false, does it matter what the truth value of `b` is?
+  * No, the value of `b` will not even be looked at by the program
+  * The program will "skip" or short-circuit the evaluation of `b`
+* Consider the logical or operator: `a || b`
+  * If `a` evaluates to true, does it matter what the value of `b` is?
+  * No, so it too is short circuited and not evaluated
+* Programmers expect this behavior and program toward it: they often use *programming idioms* to exploit it
+
+
+### Non-numeric comparisons
+
+* IN both languages you can use the numerical comparison operators to compare single characters
+
+```c
+char initial = 'C';
+
+if(initial == 'c' || initial == 'C') {
+  //...
+}
+```
+
+* Both languages allow you to do this because characters are numbers (ASCII)
+* In neither language can you use the numerical comparison operators for full strings
+
+## Exercise:
+
+Write a program that reads a decibel level from the user
+and gives the user a description of the sound level.
+
+* 0 - 60 Quiet
+* 61 - 70 Conversational
+* 71 - 110 Loud
+* 111 - 194 Dangerous
+* < 0 or 195+
+
+```c
+
+
+    printf("Please enter a decibel level: ");
+    double decibel;
+    scanf("%lf", &decibel);
+
+    if(decibel < 0) {
+      printf("You cannot have negative sound!\n");
+    } else if(decibel <= 60) {
+      printf("quiet\n");
+    } else if(decibel <= 70) {
+      printf("conversational\n");
+    } else if(decibel <= 110) {
+      printf("loud\n");
+    } else if(decibel <= 194) {
+      printf("dangerous\n");
+    } else {
+      printf("unknown volume level!\n");
+    }
+```
+
+```java
+//java v ersion
+
+
+		System.out.printf("Please enter a decibel level: ");
+	    double decibel;
+	    Scanner s = new Scanner(System.in);
+	    decibel = s.nextDouble();
+
+	    if(decibel < 0) {
+	      System.out.printf("You cannot have negative sound!\n");
+	    } else if(decibel <= 60) {
+	      System.out.printf("quiet\n");
+	    } else if(decibel <= 70) {
+	      System.out.printf("conversational\n");
+	    } else if(decibel <= 110) {
+	      System.out.printf("loud\n");
+	    } else if(decibel <= 194) {
+	      System.out.printf("dangerous\n");
+	    } else {
+	      System.out.printf("unknown volume level!\n");
+	    }
+```
 
 ```text
 
