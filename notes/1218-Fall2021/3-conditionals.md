@@ -223,8 +223,76 @@ int a = 5;
 if(a = 10) { ... }
 ```
 
+* the mistake is using a single equals sign (assignment operator) instead of the `==` equality operator
+
+### Pitfall 3
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+
+```
+
+## Linters
+
+* Code may be syntactically correct (it will compile) but still may have errors
+* Lint are piece of code that may look suspicious and may lead to errors but are not syntax errors.  
+* Linters are *static analysis* tools that look for such *potential* errors in your code and report them (usually as warnings)
+* Static analysis: a program that analyzes the *source code* of another program pre-compilation
+* `gcc` can be used as a rudimentary linter using the flag `-Wall`
+* Its best practice to always compile with this flag, *take care of all your compiler warnings!*
+
+## Short Circuiting
+
+* Consider the following logical statement: `a && b`
+  * SUppose that `a` evaluates to false, does it matter what the value of `b` is?
+  * No matter the value of `b`, the statement is false
+  * Consequently: C and the vast majority of languages do not even look at `b` or evaluate it
+* Consider: `a || b`
+  * if `a` is true does it matter what `b` is?
+  * No, again it is short-circuited and not evaluated/looked at
+* This is a common programming *idiom*   
+
+## Exercise:
+
+Write a program that reads a decibel level from the user
+and gives the user a description of the sound level.
+
+* 0 - 60 Quiet
+* 61 - 70 Conversational
+* 71 - 110 Loud
+* 111 - 194 Dangerous
+* < 0 or 195+
+
+```c
 
 
+  if(argc != 2) {
+    printf("Error: give me your decibel level\n");
+    exit(1);
+  }
+
+  double decibel = atof(argv[1]);
+
+  printf("Decibel level: %f\n", decibel);
+
+  if(decibel < 0) {
+    printf("invalid decibel level\n");
+  } else if(decibel <= 60) {
+    printf("Its quiet\n");
+  } else if(decibel <= 70) {
+    printf("It is conversational\n");
+  } else if(decibel <= 110) {
+    printf("Loud\n");
+  } else if(decibel <= 194) {
+    printf("Danger\n");
+  } else {
+    printf("Unknown level\n");
+  }
+
+```
 ```text
 
 
