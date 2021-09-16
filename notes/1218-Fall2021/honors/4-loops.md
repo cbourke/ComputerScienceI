@@ -163,6 +163,50 @@ where
      6   $ 9258.63   $   38.58   $  150.13  $ 9108.50
  ```
 
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2021/09/14
+ *
+ * This program takes in loan data and produces
+ * a loan amortization table
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#include "utils.h"
+
+int main(int argc, char **argv) {
+
+    if(argc != 4) {
+        printf("Usage: provide the principle, annualRate and years as command line arguments!\n");
+        exit(1);
+    }
+
+    double principle = atof(argv[1]);
+    double annualRate = atof(argv[2]);
+    int years = atoi(argv[3]);
+
+    double monthlyPayment = getMontlyPayment(annualRate, principle, years);
+    monthlyPayment = roundToCents(monthlyPayment);
+    printf("Monthly Payment: $%.2f\n", monthlyPayment);
+    printf("Month    Balance    Interest    To Principle    New Balance\n");
+
+    double balance = principle;
+    for(int month=1; month < 12 * years; month++) {
+      double toInterest = roundToCents( (annualRate / 12) * balance);
+      double toPrinciple = roundToCents( monthlyPayment - toInterest);
+      double newBalance = roundToCents( balance - toPrinciple );
+      printf("%5d $%10.2f   $%10.2f  $%10.2f  $%10.2f\n", month, balance, toInterest, toPrinciple, newBalance);
+      balance = newBalance;
+    }
+    //TODO: handle the last month separately
+
+    return 0;
+}
+```
+
 ```text
 
 
