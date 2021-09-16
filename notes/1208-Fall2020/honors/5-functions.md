@@ -11,7 +11,7 @@
   * You can also have multivariate functions: $f(x, y)$, $f(x, y, z)$, $f()$
 * Functions facilitate code reuse: you don't have to copy-pasta chunks of code; instead you put them into a function and then *call* or *invoke* the function
 * DRY Principle: Don't Repeat Yourself!
-* Procedural Abstraction: 
+* Procedural Abstraction:
   * How does the `sqrt()` function work?
   * A: Who cares? We simply want to use the functionality
 * By *encapsulating* functionality into a function then it relieves us of the need to think about these small details
@@ -23,8 +23,8 @@
 ## Functions in C
 
 * As with variables, functions must be declared before you can use them
-* In C, you "declare" a function by using a *prototype* 
-* A prototype declares a function's *signature* 
+* In C, you "declare" a function by using a *prototype*
+* A prototype declares a function's *signature*
   * You define the *return type*: the type of variable that the function returns (`double`, `int`, if none, then it is a `void` function)
   * The function's name or *identifier*
   * The number (arity) and type of the function's inputs called "parameters" or "arguments"
@@ -33,7 +33,7 @@
 ```c
 /**
  * This function rounds the given value (assumed
- * to be a dollar value) and rounds it to the 
+ * to be a dollar value) and rounds it to the
  * nearest cent
  */
 double roundToCents(double amount);
@@ -43,7 +43,7 @@ Observations:
 * The prototype has no "body": we are *not* defining what the function does YET
 * The prototype ends with a semicolon
 * Convention: use `lowerCamelCasing` for function names, and in general we use *verbs*
-* Later on in your program, you *then* define what the function does by providing a function *definition*: repeat the prototype but instead of a semicolon you provide a function *body* 
+* Later on in your program, you *then* define what the function does by providing a function *definition*: repeat the prototype but instead of a semicolon you provide a function *body*
 * The code in the function body is what is executed when the function is called or invoked
 
 ```c
@@ -67,7 +67,7 @@ Observations:
 * For now the important thing is how to invoke a method in Java:
   * You use the class name + dot + the name of the function
   * `Math.sqrt()`
-  
+
 ```java
 
 public class RoundUtils {
@@ -90,7 +90,7 @@ public class RoundUtils {
   * `private`: only the class can "see" it
   * `protected`: only the class and subclasses can "see" it
   * the abscence of a keyword is "package protected": only other classes in the same package can "see" it
-  
+
 ## Other Issues
 
 * A method or function that doesn't return anything is a `void` function
@@ -99,7 +99,7 @@ public class RoundUtils {
   * A function that takes no input: you can also use the `void` keyword but probably should not:
     * `int foo(void)`
     * `int foo()` (preferred)  
-    
+
 ### Function Overloading
 
 * In C, to compute the absolute value you can use `abs(), fabs(), labs(), llabs(),` etc.
@@ -109,7 +109,7 @@ public class RoundUtils {
 * Java supports this: there are 3 absolute value functions in the math library, but they all have the same name: `abs()`
 * In Java: the compiler is "smart" enough to figure out at compile time which function you meant to call (this mechanism is called "static dispatch")
 * C does not support function overloading, thus it needs different names for each function: you cannot have two functions with the same name
-* In C You end up either *polluting the namespace* or appending a common "tag" 
+* In C You end up either *polluting the namespace* or appending a common "tag"
 
 ## Modularity
 
@@ -161,7 +161,7 @@ double sum(double a, double b) {
   return x;
 }
 
-double average(double a, double b) { 
+double average(double a, double b) {
   double y = sum(a, b) / 2.0;
   return y;
 }
@@ -249,7 +249,7 @@ int *ptrToA = &a;
 
 ```c
 double pi = 3.14;
-//you should not have an integer pointer 
+//you should not have an integer pointer
 //point to a double
 int *ptrToPi = &pi;
 //if you want a double pointer, just create it:
@@ -278,7 +278,7 @@ to convert a given number of `totalSeconds` into `hours`, `minutes`, `seconds`
 So 12282 seconds $\rightarrow$ 3:24:42
 
 * Write a function to compute the inflation-adjusted rate of return and
-deal with potential input errors 
+deal with potential input errors
 
 $$\frac{1 + \textrm{rate of return}}{1+\textrm{inflation rate}} - 1$$
 

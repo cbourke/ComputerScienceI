@@ -7,7 +7,7 @@
 * There are four basic elements to a loop control structure:
   * An initialization statement: where the loop starts
   * A continuation condition (how long should the loop continue or when should it stop; or "termination condition")
-  * An increment or "update" statement that makes *progress* toward the termination condition 
+  * An increment or "update" statement that makes *progress* toward the termination condition
   * Loop body: the code that executes for every *iteration* of the loop
 
 ## For Loops
@@ -106,7 +106,7 @@ while(i < 10)
 * The missing curly brackets mean that the loop only prints and never increments
 * Best practice/style: ALWAYS write your curly brackets
 
-## Zune 
+## Zune
 
 * On December 31st, 2008 every zune froze for 24 hours
 * classic off-by-one error
@@ -115,20 +115,20 @@ while(i < 10)
 
 ```c
 //zune bug
-while (days > 365) 
+while (days > 365)
 {
-  if (IsLeapYear(year)) 
+  if (IsLeapYear(year))
 	{
-		if (days > 366) 
+		if (days > 366)
 		{
 			days -= 366;
-			year += 1; 
+			year += 1;
 	  }
   }
   else
   {
     days -= 365;
-    year += 1; 
+    year += 1;
   }
 }
 ```
@@ -165,12 +165,12 @@ for(int i=1; i<=10; i++) {
 3. Write a program to compute your massive fake profits from Doge Coin: assume it increases in value every week by 20% and that you "bank" half of your profits each week.
 4. Compute a loan amortization table using a monthly payment formula:
   $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
-where 
+where
  * rate is the rate per period (.05/12 for monthly payments)
- * $n$ is the number of periods (months) in the loan 
+ * $n$ is the number of periods (months) in the loan
  * Ex: A $10,000 5 year loan at 5% interest (60 payments):
  $$\frac{\frac{.05}{60} \times 10,000}{1-(1+\frac{.05}{60})^{-60}}$$
-  
+
 
 ```text
 
