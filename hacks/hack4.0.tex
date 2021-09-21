@@ -60,7 +60,7 @@ message on any potential bad input(s).  For inputs
 
 \mintinline{text}{10000 500 0.09 0.012 10} 
 
-your output should look something like the following:
+your output should look something like the following.
 
 \begin{figure}[H]
 \begin{minted}{text}
@@ -84,6 +84,14 @@ Total Interest Earned: $  41556.16
 Total Nest Egg: $ 111556.16
 \end{minted}
 \end{figure}
+
+Take, as an example, the first month's calculation.  The 
+inflation-adjusted annual rate would come to:
+  $$\frac{1 + .09}{1+.012} - 1 = 0.077075\ldots$$
+and so monthly would be $0.0064229\ldots$.  With an initial
+balance of 10,000, that gives us $64.229249$ dollars and when
+rounded gives us the \$64.23 in the table.
+
 
 \section*{Instructions}
 
