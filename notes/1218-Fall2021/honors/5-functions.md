@@ -95,8 +95,116 @@ which produced a (machine code) object file `utils.o`
 
 `gcc utils.o loan.c -lm`
 
+### How do functions actually work?
+
+* Programs have a *program stack* (or *call stack*)
+* Stack: LIFO Data Structure
+  * LIFO = Last In First Out
+  * push: insert an element at the "top" of the stack
+  * pop: retrieve/remove an element at the top of the stack
+  * A stack can be used to keep track of *breadcrumbs*
+* Each time a function is called, a new *stack frame* is created/pushed on top of the call stack
+* Each time a function returns, the stack frame is popped off the top
+* Each stack frame keeps track of:
+  * Local variables
+  * Parmeter variables
+  * Return values
+* Consequence: every stack frame's variables are separate (this is how function scoping works!)
+* Every function gets its own scope and its own stack frame, its own variables
+* In most programming languages (in C and Java), variables are passed to functions as *pass by value*
+  * The value of the variables are copied into the parameter variables
+  * The original variables are completely different
+  * Only *copies* of the values are passed to the function
+* Sometimes you *do* want to pass a variable instead of the variable's value
+* This is known as *pass by reference*
+
+## C: Pointers
+
+* Every piece of data in a computer is stored in memory
+* Memory consists of an *address* (location) and its contents (the actual data stored)
+* In C you can create a *pointer* variable that "points" or references an actual *memory address* instead of (say) an integer value
+* To create a pointer variable you use the `*`
+
+```c
+//regular old variable declaration:
+int a = 42;
+//pointer variable to an integer:
+int *ptrToA;
+```
+
+* `ptrToA` is a pointer variable that can point to *any* memory location that holds an integer (usually 4 bytes)
+* At this point in the code: what does `ptrToA` point to?  Who knows, it is undefined.
+* In general it is best practice to *initialize* a pointer to *something*
+* If you don't know what you want it to point to, you initialize it to `NULL`
+
+```c
+int *ptrToA = NULL;
+if(ptrToA == NULL) {
+  printf("don't use the pointer!\n");
+}
+```
+
+* To make a pointer point to an actual variable, you need the *memory address* of that variable
+* To get the memory address of a variable, use the *referencing operator*: `&`
+
+```c
+ptrToA = &a;
+```
+
+* Now `ptrToA` actually points to `a`
+* Careful: you don't want a pointer to point to an *invalid* memory location or a one that does not belong to your program.
+
+```c
+//The following are invalid:
+ptrToA = 42;
+ptrToA = a;
+```
+
+
+* Putting an ampersand in front of a regular old variable, gives you the memory address of that variable
+* Further: you can now manipulate the contents of a variable through its pointer
+
+
+```c
+int a = 42;
+//reset a:
+a = 17;
+
+//make ptrToA point to a:
+int *ptrToA = &a;
+//change the contents of a via its pointer:
+*ptrToA = 30;
+```
+
+* The star operator, `*` is the *dereferencing* operator
+
+## Java
+
+* Java has no pointers, you do not generally manipulate memory contents directly in Java
+* By default, all primitive types in Java: `int, double, char` are passed by value
+* All object types `String, Integer, Double` etc. are passed by reference BUT...
+* Generally all built-in types are *immutable*
+* Once created, an immutable variable's contents *cannot* be changed
+* Immutability is a *Very Good Thing*: immutability provides automatic *thread safety*!
+
+## Gotchas/Errors
+
+* In C, a pointer type must match the type it points to: the following is wrong
+
+```c
+double foo = 3.14;
+
+int *badPtr = &foo;
+
+//create a proper double pointer:
+double *bar = &foo;
+```
+
 
 ```text
+
+
+
 
 
 

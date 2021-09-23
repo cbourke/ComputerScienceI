@@ -177,7 +177,14 @@ printf("q points to memory location %p\n", q);
 printf(" what is stored there?  %f\n", *q);
 ```
 
+
+
+
+
 ```text
+
+
+
 
 
 
