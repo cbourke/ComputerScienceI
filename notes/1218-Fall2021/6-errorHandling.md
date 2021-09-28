@@ -91,6 +91,16 @@ if(today == SATURDAY) {
 
 * Design (and rigorously test) a function to compute the amount of change: given a dollar amount in the range 0 thru .99 and "outputs" the number of quarters, dimes, nickels and pennies to make change.
 * Rigorous testing = automated, unit testing
+  * A *unit* in coding is simply some indivisible piece of code: it could be a snippet, it could be an entire module or library
+  * USUALLY: our unit is a function
+  * A unit test is a triple: input, expected output and an actual output
+  * Your code *passes* the unit test if the expected output "matches" the actual output
+  * Generally the expected output is computed using *some other means*: your calculator, an online resource,
+  * You can have *false positives*: your test passes but your code is actually wrong
+  * You can have *false negatives*: your test fails but your code is actually correct (your test may be wrong)
+  * Unit testing never provides 100% assurance that your code is correct, only a high-degree of certainty
+  * The more tests you have, the more certainty you have
+  * Tests should also *cover* your code well: 
 
 ```c
 
