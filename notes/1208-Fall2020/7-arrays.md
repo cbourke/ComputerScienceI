@@ -11,7 +11,7 @@
   * Elements in an array can be accessed using an *index*: the first element is always at index 0.  The second is at index 1, etc.
   * If there are `n` element in an array, the last one is at index `n-1`
   * Indexing is achieved using square brackets: `a[0]` would be the first element
-  
+
 ## Static Arrays
 
 * Static arrays are arrays of a fixed size that are allocated on top of the program stack
@@ -43,7 +43,7 @@ arr[-1] = 102;
 
 * Accessing elements outside an array is *undefined behavior*
   * MAY be a segmentation fault
-  * MAY be a stack smashing 
+  * MAY be a stack smashing
   * MAY simply corrupt your own memory
   * It may or may not result in bad consequences, but it is just not good!
 
@@ -57,7 +57,7 @@ int primes[] = {2, 3, 5, 7, 11, 13, 17};
 ```
 
 * In general, there is NO WAY to determine the size of an array after it has been created in C
-* In C, YOU *must* keep track of the size of every array that you create; this is known as *memory management* 
+* In C, YOU *must* keep track of the size of every array that you create; this is known as *memory management*
 * Also called "bookkeeping"
 * It is *your* responsibility to keep track of all the sizes of every array
 * Consequence: if you pass an array to a function, you *also* need to pass the *size* of the array to the function (in general this is a separate integer value)
@@ -88,10 +88,10 @@ int primes[] = {2, 3, 5, 7, 11, 13, 17};
 * Alternative: dynamic arrays
 * Dynamic arrays are arrays whose memory is allocated on the program "heap" instead of the program stack
 * The Heap is a much larger but "less organized" chunk of memory
-* In general, we ask the operating system for more memory; it either gives us a chunk of memory or an error 
+* In general, we ask the operating system for more memory; it either gives us a chunk of memory or an error
 * The way you ask for memory is through **m**emory **alloc**ation
 * The function you use to do this is `malloc`
-* Signature: 
+* Signature:
 
 `void * malloc(size_t size);`
 
@@ -122,7 +122,7 @@ brr[n-1] = 42.5;
 ```
 
 * More Details
-  * If `malloc` fails for any reason, it returns `NULL` 
+  * If `malloc` fails for any reason, it returns `NULL`
   * After allocation you can treat the array like a regular old array using square brackets for indexing, the first element is still at index zero, last element is still at index `n-1`
   * YOU STILL HAVE TO KEEP TRACK of the size of the array
 
@@ -326,7 +326,7 @@ int main(int argc, char **argv) {
     }
     printf("]\n");
   }
-  
+
   //clean up
   //free up each row first...  
   for(int i=0; i<n; i++) {

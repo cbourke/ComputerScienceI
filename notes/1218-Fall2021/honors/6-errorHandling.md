@@ -121,6 +121,26 @@ when = today + 500;
 
 ```
 
+## Unit Testing
+
+* Design and **rigorously test** a function to compute the amount of change: given a dollar amount in the range 0 thru .99 and "outputs" the number of quarters, dimes, nickels and pennies to make change.
+* Rigorous testing = automated unit testing
+  * A unit in code is simply some indivisible piece of code: a snippet, it could be an entire library
+  * For us, our "unit" will be a function
+  * A unit test is a triple: input, expected output, the actual output
+  * Your test *passes* the unit test if the expected output "matches" the actual output
+  * Generally, the expected output is computed using *some other means*: a calculator, some online resource, etc.
+  * You can have *false positives*: your test passes but your code is actually wrong
+  * You can have *false negatives*: your test fails, but your code is actually right
+  * Unit testing never provides a 100% guarantee that your code is correct
+  * Many tests and good *test coverage* provide a *high* assurance that your code is correct
+  * Testing can be tedious but it can be made better by using a *formal testing framework*
+    * C: cmocka
+    * Java: junit
+
+
+
+
 ```text
 
 
