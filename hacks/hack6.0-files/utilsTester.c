@@ -1,6 +1,6 @@
 /**
  * This is a collection of unit tests and
- * test functions for a color utilities C 
+ * test functions for a color utilities C
  * library.
  */
 #include <stdlib.h>
@@ -33,6 +33,15 @@ const int RANDOM_TEST = 1000;
  */
 static int isClose(double x, double y) {
   return fabs(x - y) < EPSILON;
+}
+
+/**
+ * This function is used to determine if two integer
+ * numbers are "close enough" to each other; specifically
+ * if their difference is 1 or less.
+ */
+static int isCloseInt(int x, int y) {
+  return abs(x - y) <= 1;
 }
 
 /**
@@ -96,7 +105,7 @@ static void testRgbToCmykOutOfBounds(void **state) {
 
 /**
  * This function tests rgbToCMYK passing a single, hard-coded
- * rgb-value (Steele Blue, 70, 130, 180).  
+ * rgb-value (Steele Blue, 70, 130, 180).
  */
 static void testRgbToCmyk001(void **state) {
   double c, m, y, k;
@@ -182,9 +191,10 @@ static void testRgbToCmykValues(void **state) {
 /**
  * This function is a generic testing function for cmykToRGB
  * in which the passed state is expected to have 7 double values
- * corresponding to  3 RGB output values and 4 CMYK input values
+ * corresponding to 3 RGB output values and 4 CMYK input values
  * that are known to be equivalent.
  *
+ * A difference of 1 in each result is tolerated.
  */
 static void testCmykToRgbValues(void **state) {
     //cast the generic state to a double array
@@ -192,9 +202,9 @@ static void testCmykToRgbValues(void **state) {
     int r, g, b;
     cmykToRGB(values[3], values[4], values[5], values[6], &r, &g, &b);
     assert_true(
-            r == values[0] &&
-            g == values[1] &&
-            b == values[2]
+            isCloseInt(r, values[0]) &&
+            isCloseInt(g, values[1]) &&
+            isCloseInt(b, values[2])
     );
 }
 
