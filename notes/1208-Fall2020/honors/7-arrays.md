@@ -13,7 +13,7 @@
   * The second is at index 1, etc.
   * The last (assuming it has `n` elements) is at index `n-1`
   * Indexing is done via square bracket syntax: `arr[0]`, or `arr[n-1]` or in general `arr[i]` (the ith element)
-  
+
 ## Arrays in C
 
 ### Static Arrays
@@ -23,14 +23,14 @@
 
 ```c
 int arr[5];
-  
+
 for(int i=0; i<5; i++) {
   arr[i] = (i+1);
 }
 ```
 
 * Since static arrays are allocated on the stack, they exist inside stack frames, those stack frames are destroyed when the function returns
-* Remember: the stack space is small (8MB), allocating even moderately large arrays will result in a stack overflow
+* Remember: the stack space is small (8MB, `ulimit -a`), allocating even moderately large arrays will result in a stack overflow
 * In Java: static arrays are not even possible
 
 ## Dynamic Arrays
@@ -64,7 +64,7 @@ arr[9] = 101;
 
 ## Bookkeeping
 
-* C has *manual memory management*: it is on you, the programmer to 
+* C has *manual memory management*: it is on you, the programmer to
   * keep track of the size of the arrays you create
   * Pass that size to any function(s) that you pass an array to
   * Ensure that you do not access values outside the array's range
@@ -105,7 +105,7 @@ arr[9] = 101;
 		int x = list.get(0);
 		System.out.println(x);
 		System.out.println("size = " + list.size());
-		
+
 		List<Double> numbers = new ArrayList<>();
 		numbers.add(3.14);
 		//NO: numbers.add("Hello");
@@ -160,7 +160,7 @@ arr[9] = 101;
 			String value = nuidToName.get(key);
 			System.out.println(key + " maps to " + value);
 		}
-		
+
 		Map<String, Integer> numbers = new HashMap<>();
 		numbers.put("ten", 10);
 		numbers.put("hundred", 100);
@@ -179,7 +179,7 @@ arr[9] = 101;
 int n = 2, m = 3;
 //2 x 3 matrix, 2 rows, 3 columns
 int matrix[][] = new matrix[n][m];
-//by default all values will be zero, 
+//by default all values will be zero,
 //you can use 2 indices to access/set
 matrix[0][0] = 42;
 //lower right element:
@@ -312,8 +312,8 @@ public class Demo {
 		int b[] = Arrays.copyOf(a, a.length);
 		a[0] = 42;
 		System.out.println(b[0]);
-		
-		//lists sets and maps also have deep copy 
+
+		//lists sets and maps also have deep copy
 		// functionality:
 		List<String> names = new ArrayList<>();
 		names.add("Chris");
@@ -325,14 +325,14 @@ public class Demo {
 		System.out.println(names);
 		System.out.println(copyOfNames);
 		System.out.println(copySet);
-		
+
 		Map<Integer, String> nuidToName = new HashMap<>();
 		nuidToName.put(35140602, "Chris");
 		nuidToName.put(12345678, "Joe");
 		nuidToName.put(87654321, "Jill");
 		List<String> theNamesFromTheMap = new ArrayList<>(nuidToName.values());
 		System.out.println(theNamesFromTheMap);
-		
+
 	}
 }
 
