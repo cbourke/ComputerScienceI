@@ -126,9 +126,247 @@ int *arr = (int *) malloc(n * sizeof(int));
 * Once you are done with it, you need to clean it up
 * You *should* give it back to the OS so it can be reused
 * To give it back, you use the `free()` function: it frees up the memory that you allocated so it can be used again by other programs or reused/reallocated for your program
-* 
+* You simply have to give the pointer to the `free()` function
+
+```c
+int *arr = (int *) malloc(n * sizeof(int));
+//use the array...
+
+//free up the memory:
+free(arr)
+```
+
+* You must make sure you are *done* with the memory before freeing it: once freed, the memory is no longer yours
+* Attempting to free something twice results in a "double free" error
+* Being good stewards of your memory and doing good bookkeeping is known as "memory management"
+
+### Who "owns" memory?
+
+* If you allocate memory inside a function: does the function "own" the memory or not?
+* Whatever piece of code "own" the memory is responsible for also cleaning it up
+* If a function only allocates memory for temporary use and does not return it, it is responsible: it owns it and it *must* free it
+* If the function returns the array, the *calling function* owns it
+
+```c
+
+#include <stdlib.h>
+#include <stdio.h>
+
+//TODO: document!
+int sum(int *arr, int n) {
+
+  int total = 0;
+  for(int i=0; i<n; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+
+/**
+ * This function creates a new dynamic array
+ * of the given size n filled with 1s
+ */
+int * getOnesArray(int n) {
+  if(n < 0) {
+    return NULL;
+  }
+  //create the array of the given size:
+  int *arr = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    arr[i] = 1;
+  }
+  //wrong: free(arr);
+  return arr;
+}
+
+int main(int argc, char **argv) {
+
+  int n = 10;
+  int *arr = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    arr[i] = (i+1) * 10;
+  }
+  int total = sum(arr, n);
+  printf("total = %d\n", total);
+  for(int i=0; i<n; i++) {
+    printf("%d\n", arr[i]);
+  }
+  //this is proper but not necessary in the main:
+  free(arr);
+
+  arr = getOnesArray(n);
+  for(int i=0; i<n; i++) {
+    printf("%d\n", arr[i]);
+  }
+  free(arr);
+
+    return 0;
+
+}
+```
+
+## Using arrays with functions
+
+* Passing an array to a function
+  * All arrays are actually memory addresses
+  * Thus all arrays are simply pointers
+  * To pass an array to a function, you pass a pointer
+  * In other words you pass by reference
+* Example: design a function to compute the sum of elements in an integer array
+
+* Observations:
+  * When you pass an array to a function, you also have to pass its size!
+  * `int *` can be a SINGLE integer variable OR it can be an entire array of integer variables
+  * The way that arrays actually work is that the array/pointer name (identifier) is simply pointing to the first element in the array  
+* You can also return arrays from a function
+    * The return type is simply a pointer
+    * Careful: you cannot also directly return the size of the array!
+  * Demonstration:
+    * Write a function that creates a new array of integers all initialized to zeros
+    * Write a function that *returns a new array* containing only the even integers of a given array
+```c
+
+/**
+ * This function takes an array of integers
+ * and returns a *new* array containing all of
+ * the positive values in the array.
+ */
+int * getPositives(int *arr, int n, int *sizeOfResult) {
+
+  //iterate through the array and find out how
+  // many integers are positives...
+  int numPos = 0;
+  for(int i=0; i<n; i++) {
+    if(arr[i] > 0) {
+      numPos++;
+    }
+  }
+  int *result = (int *) malloc(numPos * sizeof(int));
+  int indexOfResult = 0;
+  for(int i=0; i<n; i++) {
+    if(arr[i] > 0) {
+      //put the ith value into result...
+      result[indexOfResult] = arr[i];
+      //increment indexOfResult
+      indexOfResult++;
+    }
+  }
+  *sizeOfResult = numPos;
+  return result;
+}
+```
+
+## Other Issues
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array
+* You can have a 2-D array with both *rows* and *columns*:
+  * IE Matrices or
+  * tables
+* 3D, 4D, etc. arrays are possible, but not recommended
+* In C a regular old array is `int *arr`
+* Consequently to have a 2-D array, you use `int **mat`
+* To index a 2-D array, you provide both the row number and the column number: `arr[3][4]` is the 4th row, 5th column
+
+```c
+
+int main() {
+
+  //create a 3 x 5 table/matrix/2D array
+  int n = 3;
+  int m = 5;
+  //create an array of POINTERS to point to each row
+  int **table = (int **) malloc(n * sizeof(int *));  
+  for(int i=0; i<n; i++) {
+    table[i] = (int *) malloc(m * sizeof(int));
+  }
+
+  //set values in the table:
+  int v = 10;
+  for(int i=0; i<n; i++) { //for each row...
+    for(int j=0; j<m; j++) {
+      table[i][j] = v;
+      v += 10;
+    }
+  }  
+
+  return 0;
+}
+```
+
+## Protecting Arrays
+
+* If you pass an array to a function, that function can *change the contents*
+* Often we will want to *prevent* changes to an array
+* You can use the `const` keyword to indicate that you will not make changes
+* If you use `const` and *do* make changes, the compiler will issue an error!
+
+## Freeing 2-D Arrays
+
+* You need to make sure you clean up each row before deleting the array of pointers or you will have a memory leak
+
+```c
+
+
+  int n = 3;
+  int m = 4;
+  int **table = (int **) malloc(sizeof(int *) * n);
+  for(int i=0; i<n; i++) {
+    table[i] = (int *) malloc(sizeof(int) * m);
+    for(int j=0; j<m; j++) {
+      table[i][j] = (i+j+1) * 10;
+    }
+  }
+
+  for(int i=0; i<n; i++) {
+    free(table[i]);
+  }  
+  free(table);
+```
+
+## Shallow vs Deep Copies
+
+* A *shallow* copy of an array is when two references reference the same memory location
+* Changes to one reference (pointer/array) will affect the other
+
+```c
+
+
+int n = 5;
+int *a = (int *) malloc(sizeof(int) * n);
+for(int i=0; i<n; i++) {
+  a[i] = (i+1) * 10;
+}
+//shallow copy:
+int *b = a;
+a[0] = 42;
+printf("b[0] = %d\n", b[0]);
+```
+* a *deep* copy of an array is a distinct array (different memory address) but with the same values
+
+```c
+int * deepCopy(int *arr, int n) {
+  if(arr == NULL || n < 0) {
+    return NULL;
+  }
+
+  int *c = (int *) malloc(sizeof(int) * n);
+  if(c == NULL) {
+    return NULL;
+  }
+  for(int i=0; i<n; i++) {
+    c[i] = arr[i];
+  }
+  return c;
+}
+```
 
 ```text
+
+
+
+
 
 
 

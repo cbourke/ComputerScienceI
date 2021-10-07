@@ -98,10 +98,227 @@ arr[9] = 101;
 
 * `List`s are ordered collections that use 0-indexing BUT
   * they grow and shrink dynamically and automatically as you put stuff and take stuff out!
+  * To interact with a `List` or `ArrayList` you call various methods on it
+  * You also specify that a list holds a certain type of variable using *parameterization*
+
+```java
+
+		List<Integer> myList = new ArrayList<>();
+
+		myList.add(10);
+		myList.add(20);
+		myList.add(30);
+
+		System.out.println(myList);
+
+		myList.add(0, 42);
+
+		System.out.println(myList);
+
+		myList.remove(1);
+
+		System.out.println(myList);
+
+		for(int i=0; i<myList.size(); i++) {
+			System.out.println(myList.get(i));
+		}
+
+		for(Integer x : myList) {
+			System.out.println(x);			
+		}
+```
+
+### Sets
+
+* Sets are *unordered* collections of *unique* elements
+
+```java
+
+		Set<Integer> s = new HashSet<>();
+		s.add(10);
+		s.add(20);
+		s.add(30);
+		System.out.println(s);
+
+		for(Integer x : s) {
+			System.out.println(x);
+		}
+
+		s.remove(30);
+		System.out.println(s);
+
+		//adding duplicates?
+		s.add(20);
+		s.add(20);
+		System.out.println(s);
 
 
+    		List<Integer> numbers = new ArrayList<>();
+
+    		numbers.add(10);
+    		numbers.add(10);
+    		numbers.add(20);
+    		numbers.add(30);
+    		numbers.add(30);
+    		numbers.add(30);
+    		System.out.println(numbers);
+
+    		Set<Integer> uniqueElements = new HashSet<>(numbers);
+    		System.out.println(uniqueElements);
+```
+
+### Maps
+
+* A map is a key-value collection: you can store elements *of any type* using a key of any type!
+* At least a list is dynamic: it can grow/shrink as needed, but it is still limited by its indexing
+* A map is a key-value pair data structure; it stores elements (values) using any arbitrary key (which can be any object)
+
+```java
+
+		Map<Integer, String> m = new HashMap<>();
+
+		m.put(10, "ten");
+		m.put(2, "two");
+		m.put(42, "forty-two");
+		System.out.println(m);
+
+		//get an element by its key:
+		String s = m.get(42);
+		System.out.println(s);
+		m.put(42, "answer");
+		System.out.println(m);
+
+		//iterate over the elements:
+		for(Integer key : m.keySet()) {
+			System.out.println(key + " maps to " + m.get(key));
+		}
+
+		//iterate over the elements by value:
+		for(String str : m.values()) {
+			System.out.println(str);
+		}
+```
+
+## Multidimensional Arrays
+
+* Both languages support multidimensional arrays
+* 1-D arrays: regular old arrays
+* 2-D arrays: rows and columns, ie a *table* or *matrices*
+* 3+ dimensions but rethink it
+
+### Java
+
+```java
+
+		//3 rows, 4 column table:
+		int table[][] = new int[3][4];
+		//set the top left most element:
+		table[0][0] = 42;
+		//set the bottom right most element:
+		table[2][3] = 101;
+
+		for(int i=0; i<table.length; i++) {//for each row...
+			System.out.printf("[");
+			for(int j=0; j<table[i].length; j++) {//for each column in row i...
+				System.out.printf("%4d", table[i][j]);				
+			}
+			System.out.print("]\n");
+		}
+```
+
+### C
+
+```c
+    //3 rows, 4 column table:
+    int n = 3;
+    int m = 4;
+    int **table = (int **) malloc(n * sizeof(int *));
+    for(int i=0; i<n; i++) {
+      table[i] = (int *) malloc(m * sizeof(int));
+    }
+
+    int value = 10;
+    for(int i=0; i<n; i++) {//for each row...
+      for(int j=0; j<m; j++) {//for each column in row i...
+        table[i][j] = value;
+        value += 10;
+      }
+    }
+
+    int *a = NULL;
+    *a = 42;
+
+    //clean up...
+    //clean up...
+    for(int i=0; i<n; i++) {//for each row...
+      //free it...
+      free(table[i]);
+    }
+    free(table);
+```
+
+## Deep vs Shallow copies
+
+* A *shallow* copy of an array is simply when 2 references (pointers in C or variables in Java) refer to the same thing
+* A *deep copy* is when 2 references refer to completely different areas of memory with the same contents
+
+```c
+
+//this function creates a *deep copy* of the given
+// array of integers
+int * deepCopyInt(int *arr, int n) {
+  int *c = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    c[i] = arr[i];
+  }
+  return c;
+}
+
+int main() {
+
+  int n = 5;
+  int *a = (int *) malloc(n * sizeof(int));
+  for(int i=0; i<n; i++) {
+    a[i] = (i+1) * 10;
+  }
+
+  int * b = deepCopyInt(a, n);
+
+  a[0] = 42;
+  printf("b[0] = %d\n", b[0]);
+
+
+
+  return 0;
+}
+```
+
+### Java
+
+```java
+
+		int a[] = new int[5];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = (i + 1) * 10;
+		}
+
+		int b[] = a;
+//		a[0] = 42;
+//		System.out.printf("b[0] = %d\n", b[0]);
+
+		//deep copy
+		b = Arrays.copyOf(a, a.length);
+		a[0] = 42;
+		System.out.println(Arrays.toString(a));
+		System.out.println(Arrays.toString(b));
+```
 
 ```
+
+
+
+
+
 
 
 
