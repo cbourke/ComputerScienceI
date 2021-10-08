@@ -22,7 +22,6 @@ University of Nebraska--Lincoln}
 
 \input{instructions.tex}
 
-\newpage
 \section*{Exercises}
 
 To get more practice working with arrays, you will write several 
@@ -111,68 +110,74 @@ implement.
 \begin{itemize}
   \item \mintinline{c}{copyImage()} should produce a deep copy of the given
   image.
+
   \item \mintinline{c}{flipHorizontal()} should flip the image horizontally
-  as depicted in Figure \ref{image:pointersHFlip}.
-  
-  \begin{figure}[h]  
-  \centering
-  \includegraphics[scale=.50]{hack7.0-files/pointers.png}
-  \caption{Original Image}
-  \end{figure}
-  \begin{figure}[h]  
-  \centering
-  \includegraphics[scale=.50]{hack7.0-files/pointersHFlip}
-  \caption{Flipped Horizontally}
-  \label{image:pointersHFlip}
-  \end{figure}
+  as depicted in Figure \ref{image:pointersHFlip}.  
+
   \item \mintinline{c}{flipVertical()} should flip the image vertically as
   depicted in Figure \ref{image:pointersVFlip}.
-  \begin{figure}[h]  
-  \centering
-  \includegraphics[scale=.50]{hack7.0-files/pointersVFlip}
-  \caption{Flipped Vertically}
-  \label{image:pointersVFlip}
-  \end{figure}
+
   \item \mintinline{c}{rotateClockwise()} should produce a new image that
   is rotated 90 degrees clockwise.  This function must produce a new image
   because an $h \times w$ sized image that has been rotated will be a 
   $w \times h$ image.  This operation is depicted in Figure \ref{image:pointersRotated}.
-  \begin{figure}[h]  
-  \centering
+
+\end{itemize}  
+
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.4\textwidth}
+  \includegraphics[scale=.50]{hack7.0-files/pointers.png}
+  \caption{Original Image}
+  \label{fig:original}
+\end{subfigure}
+\hspace*{1cm}
+\begin{subfigure}{0.4\textwidth}
+  \includegraphics[scale=.50]{hack7.0-files/pointersHFlip}
+  \caption{Flipped Horizontally}
+  \label{image:pointersHFlip}
+\end{subfigure}
+
+\begin{subfigure}{0.4\textwidth}
+  \includegraphics[scale=.50]{hack7.0-files/pointersVFlip}
+  \caption{Flipped Vertically}
+  \label{image:pointersVFlip}
+\end{subfigure}
+\hspace*{1cm}
+\begin{subfigure}{0.4\textwidth}
   \includegraphics[scale=.50]{hack7.0-files/pointersRotated}
   \caption{Rotated Clockwise}
   \label{image:pointersRotated}
-  \end{figure}
-\end{itemize}  
+\end{subfigure}
+\caption{Manipulated Images}
+\end{figure}
 
 \section*{Instructions}
 
-
-
-
 \begin{itemize}
+
+  \item We have provided some starter code in the following project that
+  you can clone:
+  
+  \url{https://github.com/cbourke/CSCE155-Hack7.0}
 
   \item For the warm-up, place all your function prototypes into a file 
   named \mintinline{text}{array_utils.h} and and their definitions in a
   file named \mintinline{text}{array_utils.c}.  You will need to turn
   these in via webhandin.
   
-  \item In addition, you'll want to create a main test driver program 
-  that demonstrates at least 3 cases per function to verify their output.  
-  You need not hand in this test file, however.
+  \item You'll want to rigorously test your functions to verify they
+  are correct.  We've provided a starter test file, 
+  \mintinline{text}{arrayUtilsTester.c} that you can use.  You 
+  do not need to hand in this file.
   
-  \item For the Image Manipulation section, you can use the starter code
-  provided here:
+  \item You should test all your functions with an image using the
+  image driver program we've provided.
   
-  \url{https://github.com/cbourke/CSCE155-Hack7.0}
-  
-  However, you only need to handin \mintinline{text}{imageUtils.h} and
-  \mintinline{text}{imageUtils.c}
-
-  \item You should test all your functions with an image (load it, manipulate
-  it and save it) of your choice.
-  \item As a first step, you should add documentation to all your functions.
-  Use this as an opportunity to discuss how the functions should work and
+  \item You should write/add documentation to all your functions
+  \emph{first}. Use this as an opportunity to think/discuss how the 
+  functions should work and
   to \emph{whiteboard} your designs and solutions with other students.
   
   \item You are encouraged to collaborate any number of students 
@@ -180,13 +185,21 @@ implement.
 
   \item You may (in fact are encouraged) to define any additional
   ``helper'' functions that may help you.
+
   \item Include the name(s) of everyone who worked together on
   this activity in your source file's header.
 
-  \item Turn in all of your files via webhandin, making sure that 
+  \item Turn in the following files to the webhandin, making sure that 
   it runs and executes correctly in the webgrader.  Each individual 
   student will need to hand in their own copy and will receive 
   their own individual grade.
+  \begin{itemize}
+    \item \mintinline{text}{array_utils.h} 
+    \item \mintinline{text}{array_utils.c} 
+    \item \mintinline{text}{imageUtils.h} 
+    \item \mintinline{text}{imageUtils.c}
+  \end{itemize}
+
 \end{itemize}  
 
 

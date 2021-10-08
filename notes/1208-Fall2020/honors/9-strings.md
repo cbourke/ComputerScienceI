@@ -15,13 +15,13 @@
   * It is not the same thing as zero
   * It is not the same thing as the character, `0`
   * It is not the same thing as `NULL`
-  * It is not space, it is not an *end line* character 
+  * It is not space, it is not an *end line* character
 * If an array of characters is not null-terminated, then it may result in undefined behavior
 
 ```c
 //create a static array of characters, ie a string:
 char message[] = "hello World!";
-``` 
+```
 
 * In the example above, the compiler will take care of the null terminator for you
 * So the actual size of the array is 13 (1 additional to account for the null terminator)
@@ -70,13 +70,13 @@ char * deepCopyString(const char *source) {
   * It appends the contents of `src` to the end of the `dest` string
   * It assumes that `dest` is large enough, it assumes that `src` is properly null terminated
   * If so, it takes care of the null terminator for you
-  
+
 ### Byte Limited Versions  
 
 * There is also `strncpy` and `strncat` that take a third argument: the maximum number of characters to copy/concatenate
 * IF either function sees the null terminating character within the first `n` bytes, it will be copied over
 * Otherwise, the null terminator will NOT be copied over: ***It becomes your responsibility to do so***
-* This is very useful to copy *substrings* 
+* This is very useful to copy *substrings*
 
 ```c
 char fullName[100];
@@ -154,14 +154,14 @@ for(Character c : name.toCharArray()) {
 		sb.append(" ");
 		sb.append("Worll!");
 		System.out.println(sb);
-		
+
 		sb.setCharAt(0, 'H');
 		sb.setCharAt(10, 'd');
 		System.out.println(sb);
-		
+
 		sb.insert(0, "message: ");
 		System.out.println(sb);
-		
+
 		sb.replace(15, 21, "Universe");
 		System.out.println(sb);
 ```
@@ -173,7 +173,7 @@ for(Character c : name.toCharArray()) {
 * Recall that you can use `printf` to format output that gets printed to the standard output
 * You can also use `sprintf` to format to a string "output"
 * Signature: `int sprintf(char *str, const char *format, ...);`
- 
+
 ```c
 char firstName[] = "Chris";
 char lastName[] = "Bourke";
@@ -225,12 +225,12 @@ printf("Hello, %s\n", fullName);
     printf("bad data!\n");
   }
   ```
-  
+
 ### string Comparisons
 
 * In C, `strcmp` can be used to compare the *contents* of two strings
 * You *cannot* use the `==` operator to compare strings!  
-* `strcmp` follows a *comparator pattern*: 
+* `strcmp` follows a *comparator pattern*:
   * It takes two arguments, `a, b`
   * IT returns an integer:
   * It returns *something* negative if `a` comes before `b`
