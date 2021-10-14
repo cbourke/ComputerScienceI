@@ -86,6 +86,150 @@ char * deepStringCopy(const char * s) {
 }
 ```
 
+## String Processing
+
+### Concatenation
+
+* Concatenation is the operation of combining two strings together: you append one string to the end of the other
+* C does not have a concatenation operator (some languages let you use the `+` operator, C does *not*)
+* Instead C provides the `strcat`
+* `char *strcat(char *dest, const char *src);`
+  * It appends the contents of `src` to the end of the `dest` string
+  * It assumes that `src` is null terminated
+  * It assumes that `dest` is big enough to hold both strings
+* You can use `strncat` to concatenate at most `n` bytes
+
+### Substrings
+
+* A *substring* is simply just a part of a string
+* There no "substring" function in the string library, but you can use a combination of pointers and strcat/strcpy to get the same effect.
+
+```c
+char name[] = "Christopher Michael Bourke";
+char shortName[6];
+strncpy(shortName, name, 5);
+shortName[5] = '\0';
+
+char middleName[8];
+strncpy(middleName, &name[12], 7);
+middleName[7] = '\0';
+
+printf("hello, %s\n", shortName);
+printf("hello, %s\n", middleName);
+```
+
+### Other Convenience Functions
+
+* The `ctype.h` library provides many other useful functions for single characters:
+  * `isalpha(char c)` - true if `c` is an alpha-numeric character
+  * `isspace(char c)` - true if `c` is a space character (` , \t, \n, \r`)
+  * `isupper(c), islower(c)` - true if `c` is an uppercase or lowercase character
+  * `toupper(c), tolower(c)` - convert to the lower/upper equivalent
+  * `isdigit(c)` - true for 0 - 9
+
+### String Formatting
+
+* `printf` will format a result to the standard output
+* `sprintf` will format a string and "print" it to another string
+
+```c
+
+    int a = 42;
+    double b = 3.14;
+    char name[] = "Chris";
+    char result[1000];
+
+    printf("Hello, %s, your number is %d, pi is %f\n", name, a, b);
+    sprintf(result, "Hello, %s, your number is %d, pi is %f\n", name, a, b);
+    printf("result = %s\n", result);
+
+```
+
+## Tokenization
+
+* Often data is given in a textual but formatted manner: CSV, TSV (flat files)
+* CSV = Comma Separated Value data
+* Example: `"Chris,Bourke,35140602,Omaha,NE,103 Schorr"`
+* Each *token* of data is separated by a *delimiter*
+* We want to "split" the data into their separate tokens and process each one by itself
+* C provides a function, `strtok`
+* `char *strtok(char *str, const char *delim);`
+  * The first argument is the string you want to tokenize
+  * The second argument is a string containing (multiple) delimiters
+  * The return value is the *next* token
+  * The first call you pass in the string you want to tokenize
+  * Each subsequent call, you pass in `NULL` for the first argument to *continue* the tokenization
+  * When there are no more tokens, `strtok` returns `NULL`
+* Note:
+  * `strtok` will NOT include the delimiters in the token
+  * ***As a consequence***: it changes the string you give it!!!
+
+```c
+
+    char data[] = "Chris,Bourke,35140602,Omaha,NE,103 Schorr";
+
+    char *currentToken = NULL;
+
+    int numExpectedTokens = 6;
+    int count = 1;
+
+    currentToken = strtok(data, ",");
+    while(currentToken != NULL) {
+        printf("token %d = %s\n", count, currentToken);
+        count++;
+        currentToken = strtok(NULL, ",");
+    }
+    if(count - 1 != numExpectedTokens) {
+        printf("Error\n");
+    }
+
+    printf("the original data is...\n");
+    for(int i=0; i<50; i++) {
+        printf("data[%d] = %c (%d)\n", i, data[i], (int) data[i]);
+    }
+
+```
+
+## String Comparisons
+
+* In C, `strcmp` is used to compare the *contents* of two strings
+* Remember: you CANNOT use the `==` operator
+* The `==` operator only compares memory addresses (and besides it cannot tell you that one string is less than or greater than another)
+* To properly compare strings use a *comparator* function: `strcmp`
+  * It takes two strings, `a, b`
+  * if the contents are equal it returns zero
+  * If `a` comes before `b` lexicographically (alphanumerically) it returns *SOMETHING* negative
+  * IF `a` comes after `b` lexicographically, it returns *SOMETHING* positive
+  * You can also use `strcasecmp` to ignore casing! (it is a case-insensitive version)
+  * another alternative: `strncmp` which only compares the first `n` characters; also: `strncasecmp`
+
+  ```c
+
+    char a[] = "Apple";
+    char b[] = "apples";
+
+    int r = strncasecmp(a, b, 5);
+
+    if(r < 0) {
+      printf("%s comes before %s\n", a, b);
+    } else if(r > 0) {
+      printf("%s comes before %s\n", b, a);
+    } else {
+      printf("%s and %s are equal!\n", a, b);
+    }
+  int result;
+
+  result = strcmp("apple", "apple"); //0
+  result = strcmp("apple", "apples"); //negative
+  result = strcmp("apples", "apple"); //positive
+
+  result = strcmp("Apple", "apple"); //negative
+
+  result = strcmp("apples", "oranges"); //negative
+
+  result = strcasecmp("ApPlE", "apple"); //zero
+  ```
+  
 ```text
 
 

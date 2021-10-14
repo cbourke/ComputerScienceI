@@ -118,9 +118,169 @@ strcpy(fullName, "Christopher");
 * You also have a "string library" (a collection of methods that can manipluate strings)
 * Java strings are *NOT* null terminated: don't use the null terminator in Java!
 * In Java, strings are *immutable*: once created, their contents *cannot be changed*
+* You *can* use the assignment operator to make a `String` reference refer to a new string
+* You can also use the `+` operator to automatically concatenate strings
+* The `.length()` method gives you the length of a string
+* You can iterate over each character in a string:
+
+### Mutable Strings in Java: `StringBuilder`
+
+* A `StringBuilder` is a mutable (changeable) version of a string: you change its contents
+
+```java
+StringBuilder sb = new StringBuilder();
+sb.append("hello").append(" ").append("world");
+System.out.println(sb);
+sb.setCharAt(0, 'H');
+System.out.println(sb);
+//dump a string builder to a string:
+String mesage = sb.toString();
+
+```
+
+## More String Processing
+
+### Formatting
+
+* In C you can use `printf` to format the output (to the standard output).
+* You can use `sprintf` to "print" to a string in a formatted manner
+
+```c
+int a = 42;
+double b = 3.14;
+char name[] = "Chris";
+char message[100];
+
+printf("Hello, %s, your number is %d, pi is %f\n", name, a, b);
+sprintf(message, "Hello, %s, your number is %d, pi is %f\n", name, a, b);
+printf("message = %s\n", message);
+```
+
+* Common pattern: you can use a temporary buffer that is "big enough" to work with then create a dynamic string of the *exact* size you need:
+
+```c
+
+  char firstName[] = "Chris";
+  char lastName[] = "Bourke";
+  char buffer[100];
+  sprintf(buffer, "%s, %s", lastName, firstName);
+  char *fullName = (char *) malloc(sizeof(char) * (strlen(buffer)+1));
+  strcpy(fullName, buffer);
+  printf("Hello, %s\n", fullName);
+```
+
+#### Java
+
+```java
+int a = 42;
+double b = 3.14;
+String name = "Chris";
+
+System.out.printf("Hello, %s, your number is %d, pi is %f\n", name, a, b);
+String message = String.format("Hello, %s, your number is %d, pi is %f\n", name, a, b);
+System.out.println(message);
+```
+
+### Tokenizing Data
+
+* Often, data is formatted: CSV, TSV (flat file formats)
+* CSV = Comma Separated Values
+* Example: `"Chris,Bourke,35140602,Omaha,NE,105 Schorr"`
+* You want to process the record token by token: each *token* of data is separated by a *delimiter*
+* In C you can use a function called `strtok` that "splits" a string into its separate tokens
+* `char *strtok(char *str, const char *delim);`
+  * First argument: string of data you want to tokenize
+  * Second argument: delimiter (or list of delimiters) you want to use
+  * The first argument is not `const`: `strtok` *will* make changes to your data!
+  * The return value is a pointer to a string that represents the next token
+  * on the first call you pass it the data you want to tokenize, it returns a pointer to the token
+  * On each subsequent call, you pass in `NULL` to continue tokenizing the same data
+  * It will return `NULL` when there are no more tokens available
+
+```c
+char data[] = "Chris,Bourke,35140602,Omaha,NE,105 Schorr";
+
+int numTokens = 0;
+char *token = strtok(data, ",");
+while(token != NULL) {
+  printf("token = %s\n", token);
+  numTokens++;
+  token = strtok(NULL, ",");
+}
+//TODO: check that numTokens is correct
+printf("numTokens = %d\n", numTokens);
+
+```
+
+Java
+
+* Use the `String.split()` method
+* You can use regular expressions to do some really powerful stuff
+
+## String Comparisons
+
+* In *neither* language can you use the `==` operator to compare strings!
+* In Both languages, `==` operator compares memory addresses!
+* In C you can use `strcmp` to compare the contents of two strings
+* This is a *comparator pattern*
+  * It takes two arguments; $a, b$
+  * It returns *something* negative if $a < b$
+  * It returns *something* positive if $a > b$
+  * It returns 0 if they are "equal"
+* `strcmp` uses *lexicographic* ordering NOT dictionary or alphabetic ordering: it uses the ASCII text table values
+* `strcasecmp` compares lexicographically but ignores the upper/lower case (case insensitive)
+* `strncmp` is a byte-limited version
+* `strncasecmp` is a variation that includes both!
+
+```c
+char a[] = "Apple";
+char b[] = "apples";
+
+int r = strncasecmp(a, b, 5);
+
+if(r < 0) {
+  printf("%s comes before %s\n", a, b);
+} else if(r > 0) {
+  printf("%s comes before %s\n", b, a);
+} else {
+  printf("%s and %s are equal!\n", a, b);
+}
+int result;
+
+result = strcmp("apple", "apple"); //0
+result = strcmp("apple", "apples"); //negative
+result = strcmp("apples", "apple"); //positive
+
+result = strcmp("Apple", "apple"); //negative
+
+result = strcmp("apples", "oranges"); //negative
+
+result = strcasecmp("ApPlE", "apple"); //zero
+```
+
+* In Java you use `a.compareTo(b)`
 
 
+### String Comparisons
 
+
+```java
+String a = "Apple";
+String b = "apple";
+
+int r = a.compareTo(b);
+
+if (r < 0) {
+  System.out.printf("%s comes before %s\n", a, b);
+} else if (r > 0) {
+  System.out.printf("%s comes before %s\n", b, a);
+} else {
+  System.out.printf("%s and %s are equal!\n", a, b);
+}
+```
+
+* Case insensitive version: `a.compareToIgnoreCase(b)`
+* Byte limited versions: create a substring!
 
 ```text
 

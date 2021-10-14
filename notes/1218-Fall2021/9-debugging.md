@@ -1,19 +1,21 @@
 
 # CSCE 155E - Computer Science I
 ## Debugging & Tooling
-### Fall 2020
+### Fall 2021
 
 ## Tooling
 
 * Source Control & Software Versioning:
   * git: distributed VCS
-  * Old and grimy: CVS, SVN
 * Build Systems
   * make, cmake
   * Dependency management of external libraries
   * Package management
   * Dev Ops = Development Operations
-* Unit Testing: ad-hoc, informal, formal framework: cmocka
+* Unit Testing
+  * ad-hoc
+  * informal
+  * formal: cmocka
 * Static Analysis Tools
   * Static analysis is an analysis of your code *before* it compiles
   * Example: `gcc` can be used as a linter: `-Wall`
@@ -34,10 +36,9 @@
 
 # Debugging
 
-![Bug Sus](bugsus.jpg)
-
 * "poor man's debugger": `printf`
 * You'll want to use a proper debugger: `gdb`
+* https://ftp.gnu.org/old-gnu/Manuals/gdb/html_chapter/gdb_19.html
 * A debugger is a program that simulates/runs another program and allows you to:
   * pause the execution
   * view variable values
@@ -48,7 +49,7 @@
   * always compile with the `-g` flag: it preserves variable and function names as well as line numbers
   * To run GDB use: `gdb a.out`
   * To run your program: `run`
-  * To view your source code you can use `layout next`
+  * To view your source code you can use `layout next` or `layout src`
   * Sometimes it screws up, just type: `refresh`  
   * You can set a function breakpoint: `break main`
   * You can set a line breakpoint: `break 12`

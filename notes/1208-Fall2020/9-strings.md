@@ -62,13 +62,13 @@ name[3] = '\0';
   * It copies at most `n` characters over to the destination string
   * If the null terminating character occurs within the first `n` characters, it takes care of it for you (copies the null terminator)
   * If it is not within the first `n` characters, it will *NOT* copy the null terminator and YOU NEED TO TAKE CaRE OF IT
-  
+
 ## String length
 
 * The length of a string is the number of characters in it, *NOT* counting the null terminating character
 * To compute the length of a given string you can use the string library's `strlen` function
 
-## Exercise 
+## Exercise
 
 * A *shallow* copy is simply a reference copy: changes to one element affect both
 * A *deep* copy is where you copy the contents of (say) a string into a completely new string so that changes to one do not affect the other
@@ -181,7 +181,7 @@ int main(int argc, char **argv) {
 * We want to "split" the data into their separate tokens and process each one by itself
 * C provides a function, `strtok`
 * `char *strtok(char *str, const char *delim);`
-* It takes two arguments: 
+* It takes two arguments:
   * the first one is the string you want to tokenize
   * The second is a string containing the delimiter(s) you want to use
   * The return value is the next token
