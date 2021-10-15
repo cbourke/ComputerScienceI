@@ -172,6 +172,12 @@ implement.
   \mintinline{text}{arrayUtilsTester.c} that you can use.  You 
   do not need to hand in this file.
   
+  \item All functions should perform reasonable error checks and
+  handling even though they are not returning error codes.  Ex:
+  an invalid array cannot possibly hold an element $x$; functions
+  that return a pointer can only return \mintinline{c}{NULL} for
+  an error.
+  
   \item You should test all your functions with an image using the
   image driver program we've provided.
   
