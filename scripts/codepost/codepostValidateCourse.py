@@ -21,16 +21,16 @@ roster = codepost.roster.retrieve(id=config.codePostCourseId)
 graders = list()
 students = list()
 
-print("Admins")
+print("Admins (",len(roster.courseAdmins),")")
 for a in roster.courseAdmins:
   print("  %s"%a)
   graders.append(a);
-print("Graders")
+print("Graders (",len(roster.graders),")")
 for g in roster.graders:
   print("  %s"%g)
   graders.append(g);
 graders = list(set(graders))
-print("Students")
+print("Students (",len(roster.students),")")
 for s in roster.students:
   print("  %s"%s)
   students.append(s);
@@ -39,24 +39,22 @@ for s in roster.students:
 print("Checking Instructors...")
 for nuid,instructor in course.instructors.items():
   if instructor.canvasEmail not in graders:
-    print("Instructor %s not in codepost"%instructor)  
+    print("Instructor %s not in codepost"%instructor)
   else:
-    graders.remove(instructor.canvasEmail)    
+    graders.remove(instructor.canvasEmail)
 if graders:
   print("Instructors in codepost missing in canvas:")
   for g in graders:
     print("  %s"%g)
-    
+
 # check that codepost students are in canvas class
 print("Checking Students...")
 for nuid,student in course.students.items():
   if student.canvasEmail not in students:
-    print("Student %s not in codepost"%student)  
+    print("Student %s not in codepost"%student)
   else:
-    students.remove(student.canvasEmail)    
+    students.remove(student.canvasEmail)
 if student:
   print("Students in codepost missing in canvas:")
   for s in students:
-    print("  %s"%s)    
-    
-    
+    print("  %s"%s)
