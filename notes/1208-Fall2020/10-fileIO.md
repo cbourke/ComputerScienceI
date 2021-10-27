@@ -9,17 +9,17 @@
 * Files may be plaintext or binary (or plaintext but structured and not intended for human consumption): JSON, XML, etc. Base-64 encoding
 * Basic steps of working with files:
   1. Open the file
-  2. Process the file 
+  2. Process the file
   3. Close the file
-  
+
 ### Opening a file in C
 
 * A file is represented by the `FILE *` built into the standard library
-* To open a file use `fopen()` function 
+* To open a file use `fopen()` function
 * The `fopen()` function takes two arguments:
   * a string representing the path/name of the file you want to open
   * a second string that represents the *mode*: `"r"` (input, reading), `"w"` (writing, output)
-  * It returns a pointer to the file (upon success) 
+  * It returns a pointer to the file (upon success)
 * Examples
 
 ```c
