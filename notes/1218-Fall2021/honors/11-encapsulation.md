@@ -67,8 +67,16 @@ Observations
 
 ## Using Structures
 
-* Once declared, you can create an instance of a structure naturally
-
+* Once declared, you can create an instance of a structure like other variable types
+* when you have a regular old structure, you use the dot operator `.` to access member variables
+* When you have a pointer to a structure, you use the arrow operator `->`
+* Alternatively: you can create an "initialization" function: if you already have a structure allocated, you simpley need to set is values
+* Other convenience functions
+  * A way to print a structure to the standard output
+  * A way to generally provide a string representation of a structure
+     * Human readable
+     * XML or JSON for EDI = Electronic Data Interchange
+  * A function to free up a structure (destructor)
 
 ```text
 

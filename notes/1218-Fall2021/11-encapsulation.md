@@ -57,9 +57,30 @@ Observations
 
 ## Using Structures
 
-* You can declare a structure once defined 
+* You can declare a structure once defined as you would with any built-in type: `Film f;`
+* You can easily create a "factory" function to help you create instances of structures
+* You can use pointers to structures as you have with pointers to other variable types
+  * When you have a pointer to a structure, you use the arrow operator, `->` to access member variables
+* When you have a regular old structure, you use the dot operator, `.` to access member variables
+* Once you have defined a structure, you can use `sizeof(Film)` to determine how many bytes each one takes
+* Other common/convenience functions include:
+  * A function to create a human-readable string representation of a structure (a "to string" function)
+  * A function to free up all aspects of a string a "destructor" function
+  * An "initialization" function: if you already have an instance of a structure and you want to initialize its values
+  * Similar functions that act on arrays of structures
 
+## Arrays of Structures and Functions
 
+* See code
+
+## Summary
+
+* Principles of Design: when defining/designing a structure: think about the essential pieces of data that make it up
+  * Identify each "field" or "member" variable and its type
+  * Decompose a structure into smaller and smaller parts or "substructures" UNTIL it is either trivially representable OR a structure is already defined for you `date_t`
+  * Beware of YAGNI: You Ain't Gonna Need It (don't unnecessarily over-engineer your structures)
+  * Don't reinvent the wheel: if there is a nice (convenient) structure already defined, use it
+  * The *semantics* of a real-world entity will dictate design
 
 ```text
 
