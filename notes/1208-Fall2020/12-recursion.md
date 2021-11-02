@@ -4,7 +4,7 @@
 ### Fall 2020
 
 * Motivating Demonstration: sum the elements of an array without using a loop!
-* What is recursion? 
+* What is recursion?
 * In general, *recursion* is something that references itself
 * In coding, a function is recursive if it makes one or more calls to *itself*
 * Mathematics: fractals
@@ -45,7 +45,7 @@ $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
 
 * In general, recursion is not necessary
 * You can take any recursive function (computable) and write equivalent code that either uses a loop or "simulates" recursion
-* You can also use *memoization* 
+* You can also use *memoization*
   * If you need to compute a recursive value, go ahead
   * If the value has not already been computed, "pay" for the recursion
   * BUT once you have computed the value, *store* it in a *cache*
@@ -74,7 +74,7 @@ int fibonacciMemoization(int n, int *table) {
 
 * You'll compute how long it would take to compute binomial coefficients recursively
 $${n \choose k} = \frac{n!}{(n-k)!k!} = {n-1\choose k } + {n-1 \choose k-1}$$
-* read: n choose k 
+* read: n choose k
 * it is the number of ways to choose k elements from a set of size n without consideration on the order
 
 
@@ -87,7 +87,3 @@ $${n \choose k} = \frac{n!}{(n-k)!k!} = {n-1\choose k } + {n-1 \choose k-1}$$
 
 
 ```
-
-
-
-

@@ -78,6 +78,20 @@ Observations
      * XML or JSON for EDI = Electronic Data Interchange
   * A function to free up a structure (destructor)
 
+### Structures, Arrays, Functions
+
+* See the code demo
+
+
+## Summary
+
+* Principles of Design: when defining/designing a structure: think about the essential pieces of data that make it up
+  * Identify each "field" or "member" variable and its type
+  * Decompose a structure into smaller and smaller parts or "substructures" UNTIL it is either trivially representable OR a structure is already defined for you `date_t`
+  * Beware of YAGNI: You Ain't Gonna Need It (don't unnecessarily over-engineer your structures)
+  * Don't reinvent the wheel: if there is a nice (convenient) structure already defined, use it
+  * The *semantics* of a real-world entity will dictate design
+
 ```text
 
 
