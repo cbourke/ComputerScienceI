@@ -32,7 +32,7 @@ $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
   * Many divide and conquer style algorithms initially use recursion to solve a problem
   * Many functional programming languages (Haskell) use recursion as the "default" way of computing things
   * Recursion can also lead to "clean" or "Beautiful" or "easily understood" code
-  
+
 ## Recursion; Bad
 
 * Recursive function essentially abuse the stack: you're always risking a stack overflow
@@ -48,9 +48,9 @@ $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...$$
   * If you need to compute a value, go ahead and "pay" for the recursion
   * BUT, once computed, *store* the result into a table or *cache*
   * When you need to compute a value, look in the cache first: if it is already computed, use it!  Otherwise again pay for the recursion
-  
+
 ## java
-  
+
 
 ```text
 

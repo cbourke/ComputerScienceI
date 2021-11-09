@@ -13,7 +13,7 @@
 * But: not all algorithms are created equally
 * Ex: The Maliciously Compliant Painter
 
-## Searching 
+## Searching
 
 * Given a collection of elements and a key element *k* you want to search the collection to see if anything exists in it that "matches" *k*
 * In the context of C:
@@ -27,7 +27,7 @@
 ### Design Considerations
 
 * *What* are you searching: an array, or other data structure?  Strings?  Integers?  Airports?  etc.
-* *How* are you searching: 
+* *How* are you searching:
   * Do you find the first one, the last one, all of them?
   * If you have a structure, `Airport`: how do you know the airport matches your search criteria
   * Criteria:
@@ -42,7 +42,7 @@
 * Linear search: the idea of "work" can be captured by the number of operations, specifically the number of comparisons it makes
 * Best case scenario: Linear could get lucky and find the needle at the first element: just 1 comparison needed
 * Worst case scenario: if the array has *n* elements, you make *n* comparisons
-* Average case scenario: on average you would make n/2 comparisons 
+* Average case scenario: on average you would make n/2 comparisons
 * Linear search makes a linear number of comparisons
 * If you increase the input size (the size of the input array) then the amount of work increases by a linear amount
 * Size: n -> 10n; suppose an input of n took 10 seconds, an input of 10n takes 100 seconds!
@@ -97,14 +97,14 @@ int searchTransactions();
 
 * The above implementations are naive: you would require a function for every type and every criteria you would ever want
 * Is there a better way?  
-  * Can we write *ONE* linear search function that will search ANY array of ANY time 
+  * Can we write *ONE* linear search function that will search ANY array of ANY time
   * Yes, BUT you still need a "component" that tells you when you've found what you're looking for
 
 ## Binary Search
 
 * Consider an array that is already sorted
 * Sorted array have *structure* you may be able to *exploit* that structure to improve efficiency
-* Idea: 
+* Idea:
   * Examine the middle element, if it matches the key, stop (you found what you're looking for)
   * If the middle element is greater than the element you are search for, repeat your search in the lower half (left half)
   * If the middle elements is less than the element you are searching for, repeat your search in the upper half (right half)
@@ -233,7 +233,7 @@ int main() {
 
 ## Quick Sort
 
-* Basic Idea: 
+* Basic Idea:
   * Choose a *pivot* element (usually just the first element)
   * Partition all other elements around it: all elements *less* than the pivot are placed to its left; all elements *greater* than the pivot are placed to its right
   * "recursively" sort the left and the right partitions
@@ -244,7 +244,7 @@ int main() {
   * In the average case and the best case, quick sort makes $n \log(n)$ comparisons
   * IN the worst case, quick sort can "devolve" into selection sort (if your choice of pivot is always the minimum): $n^2$ operations
   * $n \log(n)$ is usually called "quasilinear"
-  * Examples: sorting 1 trillion elements now only requires 
+  * Examples: sorting 1 trillion elements now only requires
   $10^{12} \log(10^{12})$ comparisons; with the same 7TFLOP computer, it now only takes 7 seconds!
   * Example: going from $n$ to $2n$ sized arrays only requires how many more comparisons?
   * $2n \log(2n) = 2n\log{2} + 2n\log{n}$ (essentially a little more than twice as many operations)
@@ -253,7 +253,7 @@ int main() {
 
 * In practice: you don't want to roll your own sorting functions unless you have a Very Good Reason to do so
 * In practice: use the built-in functionality or a library of searching and sorting implementations
-* To avoid multiple implementions, use *generics* 
+* To avoid multiple implementions, use *generics*
 * You want ONE implementation that "sorts"
 * HOWEVER, that implementation still needs to know how to "order"
 * Ordering: given two elements, which one comes first (or are they equal)?
@@ -276,11 +276,11 @@ int main() {
   * That memory location could hold any type of variable
 * inside the function, you *do* need some information on what `a` and `b` are in order to make your comparison
 * inside the comparator: you do the following pattern
-  * You type cast the generic pointers into the type of data you *expect* 
+  * You type cast the generic pointers into the type of data you *expect*
   * Then you apply whatever logic you need to compare them
   * You return a value that fully specifies their ordering
 * Once you have a comparator you can use it in the standard searching and sorting function...
-  
+
 ### Sorting in C
 
 * C provides a standard "quick sort" implementation
@@ -296,7 +296,7 @@ void qsort(void *base,
 * `nel` is the number of elements in the array (size of the array)
 * `size` is the size in bytes of each element in the array
 * `compar` is a *function pointer*; a reference to the comparator you want to use!  
-  
+
 ### Demonstration
 
 ```c
@@ -425,7 +425,7 @@ int cmpBankAccountByName(const void *a, const void *b) {
 
 * HOw can we "pass" a function to another functions as a parameter so that that function can "use" (call) the passed function
 * Doing so is generally referred to as a "callback" (a function passed to another function is the "callback" and the function invoking it "calls it back")
-* GUI = Graphical User Interfaces: you define a button. 
+* GUI = Graphical User Interfaces: you define a button.
 * What function gets invoked when a user clicks the button?
 * Example: `qsort` needs a way to order elements, so you "pass in" a comparator as a function pointer
 * But: a function is simply code that is stored in memory
@@ -752,10 +752,10 @@ int cmpAccountsByNamePtr(const void *a, const void *b) {
 
 * Consider the following values:   
   3A, 7, 3B, 1  
-  1, 3B, 3A, 7 
+  1, 3B, 3A, 7
 * Consider the following values:   
     3A, 7, 3B, 1  
-    1, 3A, 3B, 7 
+    1, 3A, 3B, 7
 * A sorting algorithm is *stable* if it never puts two otherwise equal elements out of the original order
 * Why is this important?  It is often necessary or at least preferable to preserve the original ordering (GPA then by year)
 * Is selection sort stable?  No
@@ -764,7 +764,7 @@ int cmpAccountsByNamePtr(const void *a, const void *b) {
 ## Natural vs Artificial Ordering
 
 * Example: we would expect (generally) Freshmen, Sophomore, Junior, Senior
-* BUT a natural ordering would be: 
+* BUT a natural ordering would be:
 Freshmen, Junior, Senior, Sophomore (lexicographic)
 * How do we best achieve an "artificial" ordering of small "lists" of values?
 * Use an enumerated type!
@@ -789,6 +789,3 @@ Freshmen, Junior, Senior, Sophomore (lexicographic)
 
 
 ```
-
-
-
