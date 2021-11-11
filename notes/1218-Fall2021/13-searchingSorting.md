@@ -49,9 +49,56 @@
 * If you increase the input size (the size of the input array) then the amount of work increases by a linear amount
 * Size: n -> 10n; suppose an input of n took 10 seconds, an input of 10n takes 100 seconds!
 
-Aside
+## Binary Search
 
-* suppose that the algorithm was "inefficient", suppose it took $n^2$ comparisons!
+* A *sorted* array has *structure* that can be exploited
+* Idea:
+  * Examine the middle element, if it matches the key, stop (you found what you're looking for)
+  * If the middle element is greater than the element you are search for, repeat your search in the lower half (left half)
+  * If the middle elements is less than the element you are searching for, repeat your search in the upper half (right half)
+  * repeat until you found what you are looking for OR you don't find it and the array "partition" is now empty
+* In either case, you have cut the input in half each time
+* this is a divide and conquer style algorithm
+* Recursive implementation
+* Non-recursive implementation
+
+### Analysis
+
+* For an array of size $n$, we perform at most $\log{(n)}$ comparisons!
+* Contrast that with linear search: $n$ comparisons
+
+
+## Selection Sort
+
+* Basic idea:
+  * go through and find the smallest element and swap it with the first
+  * go through the remaining $n-1$ elements and find the smallest among those, swapping it with the second
+  * repeat until you have the first $n-1$ sorted
+  * The last element will be where it needs to be!
+
+## Quick Sort
+
+* It is quick!
+
+## Searching & Sorting in Practice
+
+* In general, you do not need or want to write your own searching/sorting algorithms
+* Lots of copy-pasta for different types
+* Lots of testing
+* Lots of debugging, etc.
+* Don't roll your own!
+* qsort and other built-in algorithms know how to sort, they just don't know how to *order*
+* They don't know what the elements are in the given array, they coudl be integers, doubles, films, etc.
+* `qsort` needs to be told how to order those *things*
+* A comparator function solves this problem
+* A comparator function takes two generic *things* $a, b$ and returns an integer:
+  * *Something* negative if $a$ comes before $b$
+  * ZERO if $a$ "equals" $b$
+  * *Something* positive if $a$ comes after $b$ ($b$ comes before $a$)
+
+
+
+
 
 ```text
 
