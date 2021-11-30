@@ -1,5 +1,9 @@
 
-# Graphical User Interfaces & Event-Based Programming
+# CSCE 155E - Computer Science I
+## Graphical User Interfaces & Event-Based Programming
+### Fall 2021
+
+# Introduction
 
 * Up to now: sequential programming, CLI (Command Line Interface)
 * Most (modern) HCI (Human Computer Interaction) is done through a GUI
@@ -24,8 +28,7 @@
 * C++: GTK+, Qt, wxWidgets, etc.
 * Java: AWT, Swing, JavaFX
 * Android Studio (WYSIWYG): https://developer.android.com/studio/
-* Swift
-
+* iOS: Swift
 
 ## GUI Components
 
@@ -41,37 +44,40 @@
     * They may be visible or invisible
     * They may be interactive or static
     * Examples:
-        * Buttons
-        * Sliders
-        * Label
-        * Text boxes
-        * Drop Down menus
-        * Radio boxes
-        * Check box
-        * Images, icons
-        * Menu
-        * Windows
-        * popups, prompts, etc.
-        * Layouts: grids, rows, columns
+      * Buttons
+      * Text boxes (static)
+      * Text boxes for input
+      * Sliders
+      * Labels
+      * Menus
+      * Drop down menus
+      * "canvas"
+      * date or time selector
+      * color selector
+      * Windows
+      * images, icons, etc.
+      * Popups, prompts, etc
+      * Layouts: grid layouts, rows, columns
 
 ## Event-Based Programming
 
 * The program (window manager) waits for actions/events and messages/delegates actions to handlers through an infinite *poll loop*
 * User-centric: there are many ways to accomplish the same thing
 * and: there may or may not be a sequential flow of control
-* UX: User Experience: good user interfaces will provide good feedback, good instruction/direction to human users and discourage bad behavior
+* Good UX: User Experience:
+  * Good interfaces will *guide* a user to the "correct" actions
+  * Good interfaces will dissuade or prevent "bad" actions
 * Modal behavior: at any point in the program, some subset of actions may be prevented or the user may only be able to "see" a small set of them
 * Asynchronicity: User interfaces should not "block" a program; with an asynchronous program, you have the capability of continuing your interaction with the GUI
-* Demo
 
 ## Events
 
 * Events are asynchronous: there may be thousands per second, there may or may not be a *sequential* order to them
-    * Clicking a widget
-    * Mouse: move, mouse over, out, down, up, etc.
-    * hover
-    * Drag, drop, etc.
-    * Keyboard events: key up key down, etc. Key combinations
+* Clicking a widget
+* Mouse: move, mouse over, out, down, up, etc.
+* hover
+* Drag, drop, etc.
+* Keyboard events: key up key down, etc. Key combinations
 * Event registration: with a particular event and a particular widget you can *register* a *handler* for that event
 * Usually done via a "callback"
 
@@ -81,32 +87,7 @@
 2. You need a way to specify a layout of widgets
 3. You need a way to register events
 
-## GTK Demo
-
-`ssh -Y login@cse.unl.edu`
-Mac:
-https://www.xquartz.org/
-```
-
-JavaFX:  
-https://docs.oracle.com/javafx/2/get_started/hello_world.htm
-FXML:  
-https://javafxpedia.com/en/tutorial/1580/fxml-and-controllers
-JavaFX Scene Builder:  
-https://javafxpedia.com/en/tutorial/5445/scene-builder
-
-App Studio:  
-https://developer.android.com/studio/
-Hello World:  
-https://developer.android.com/codelabs/android-training-hello-world#0
-
-
-
-
-
-
-
-
+```text
 
 
 
