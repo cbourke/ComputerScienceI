@@ -1,5 +1,5 @@
 
-# CSCE 155E - Computer Science I
+# Computer Science I
 ## Graphical User Interfaces & Event-Based Programming
 ### Fall 2021
 

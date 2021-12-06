@@ -1,5 +1,6 @@
 # Computer Science I
-**[Department of Computer Science & Engineering](https://cse.unl.edu)**  
+**[School of Computing](https://computing.unl.edu/)**  
+**[College of Engineering](https://engineering.unl.edu/)**
 **[University of Nebraska-Lincoln](https://unl.edu)**
 
 This repository hosts documents, files, and other artifacts
@@ -25,7 +26,9 @@ playlist below.
 
 ## Textbook
 
-We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf) which covers C, Java, and even [PHP](http://phpsadness.com/); complete source is hosted here: https://bitbucket.org/chrisbourke/computersciencei
+We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf)
+which covers C, Java, and even [PHP](http://phpsadness.com/); complete source
+is hosted on [Bitbucket](https://bitbucket.org/chrisbourke/computersciencei).
 
 ## Labs
 
@@ -46,6 +49,14 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 - Lab 15.0 - Databases https://github.com/cbourke/CSCE155-C-Lab15
 
 ## Course Offerings
+
+### Spring 2022
+
+During the Spring 2022, this course is being offered on the University of
+Nebraska--Omaha campus at the Peter Kiewit Institute as ECEN 1940
+
+- Course Link: https://canvas.unl.edu/courses/129028
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZVQw4JPYXXHZP-nflxISelP
 
 ### Fall 2021
 
@@ -70,4 +81,6 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ## License
 
-All material in this repository as well as the linked labs and videos is released under a Creative Commons Attribution-ShareAlike 4.0 International license.
+All material in this repository as well as the linked labs and videos is
+released under a Creative Commons Attribution-ShareAlike 4.0 International
+license.
