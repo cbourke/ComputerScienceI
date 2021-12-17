@@ -175,8 +175,8 @@ you must:
   * Put forth a full effort -- you must work on the lab/hack for that
     week or for other material in the course; you may not work on
     other material or remain idle
-  * If you have completed the lab/hack for that week, you should go
-    into "peer help mode" and assist others as appropriate
+  * You may only leave the lab/hack session early if you have already
+    completed both the lab and hack for that module.
 
 **Alternative**
 
@@ -238,7 +238,9 @@ hack session.  Instead, they are generally due the following
 week (see Canvas for due dates).  
 
 You may complete hacks on your own, but you are encouraged to
-collaborate with 1 (at most 2) other students.  
+pair up and collaborate with (**at most**) one other student.
+If you choose to pair up with another student, you must form
+a pair using canvas (People -> Hack Pairs).
 
 ### Midterm
 
