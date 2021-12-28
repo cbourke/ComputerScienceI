@@ -87,28 +87,18 @@ See the course website.
 
 ## University Services
 
-### Accommodations for Students with Disabilities
+### Accessibility Accommodations
 
-It is the policy of the University of Nebraska-Lincoln to provide
-flexible and individualized accommodations to students with documented
-disabilities that may affect their ability to fully participate in
-course activities or to meet course requirements. To receive
-accommodation services, students must be registered with the Services
-for Students with Disabilities (SSD) office, 232 Canfield
-Administration, 472-3787 voice or TTY.
+It is my goal that this class be an accessible and welcoming experience for
+all students. Reasonable accommodations are provided for students who are
+registered with Accessibility Services Center (ASC) and make their requests
+sufficiently in advance. For more information, contact ASC (Location: 104
+H&K, Phone: 402.554.2872, Email: unoaccessibility@unomaha.edu)
 
-### Counseling and Psychological Services
+Accessibility Services Center:
 
-UNL offers a variety of options to students to aid them in dealing with
-stress and adversity. [Counseling and Psychological Services](https://caps.unl.edu/)
-(CAPS) is a multidisciplinary team of psychologists and counselors that works
-collaboratively with Nebraska students to help them explore their
-feelings and thoughts and learn helpful ways to improve their mental,
-psychological and emotional well-being when issues arise. CAPS can be
-reached by calling 402-472-7450. Big Red Resilience & Well-Being
-provides fun events, innovative education, and dynamic services to help
-students understand emotions, manage stress, build strength, connect
-with others, develop grit and navigate transitions.
+https://www.unomaha.edu/student-life/accessibility/faculty-and-staff.php)
+
 
 ## Grading
 
@@ -196,7 +186,7 @@ for the attendance portion of the module.
 #### Continuation of Instruction
 
 If in-person classes are canceled by the University during a lecture
-day, lecture will still be livesreamed.  If in-person classes are canceled
+day, lecture will still be livestreamed.  If in-person classes are canceled
 by the University during a lab/hack day, in-person attendance will not be
 required, help will be made available via zoom and you will still be
 expected to complete the work remotely.
@@ -340,7 +330,7 @@ to read, understand, and follow this policy. Violations will be dealt
 with on a case by case basis and may result in a failing assignment or a
 failing grade for the course itself. The most recent version of the
 Academic Integrity Policy can be found at
-<http://cse.unl.edu/academic-integrity>
+<https://computing.unl.edu/academic-integrity-policy>
 
 ## Communication & Getting Help
 
@@ -360,7 +350,7 @@ In addition, there are two anonymous suggestion boxes that you may use
 to voice your concerns about any problems in the course if you do not
 wish to be identified. My personal box is available on the course
 webpage. The department also maintains an anonymous suggestion box
-available at <https://cse.unl.edu/contact-form>.
+available at <https://computing.unl.edu/anonymous-department-feedback-form>.
 
 ### Getting Help
 
@@ -395,16 +385,10 @@ the material and getting help in this course:
     read other student's posts and questions and feel free to answer
     yourself!
 
-TODO: is there a UNO SRC?
-
--   Office Hours & Student Resource Center: the instructor and teaching
+-   Office Hours: the instructor and teaching
     assistants hold regular office hours throughout the week as posted
     on the course website. Attend office hours if you have questions or
-    want to review material. The Student Resource Center (SRC,
-    <http://cse.unl.edu/src>) Monday through Friday. Even if your TAs
-    are not scheduled during that time, there are plenty of other TAs
-    and students present that may be able to help. And, you may be able
-    to help others!
+    want to review material. 
 
 -   Don't procrastinate. The biggest reason students fail this course is
     because they do not give themselves enough opportunities to learn
