@@ -22,7 +22,6 @@ An overview of basics including variables, input and output in C.
   * All at once: `gcc hello.c`
 
 ```c
-
 /**
  * Author: Chris Bourke
  * Date: 2021/08/25
