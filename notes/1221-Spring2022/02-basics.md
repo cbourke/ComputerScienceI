@@ -277,14 +277,14 @@ int main(int argc, char **argv) {
         printf("ERROR: usage: provide a single numerical input!\n");
         exit(1);
     }
-    
+
     double kilograms, pounds;
 
     //converting the first *user provided* argument to a double:
     kilograms = atof(argv[1]);
 
     if(kilograms < 0) {
-        printf("ERROR: negaive weight is not possible!\n");
+        printf("ERROR: negative weight is not possible!\n");
         exit(1);
 
     }
