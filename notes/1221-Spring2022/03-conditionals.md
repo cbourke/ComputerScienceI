@@ -296,6 +296,146 @@ int a = 5;
 if(a = 10) { ... }
 ```
 
+* the mistake is using a single equals sign (assignment operator) instead of the `==` equality operator
+
+### Pitfall 3
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+
+```
+
+## Short Circuiting
+
+* Consider the following logical statement: `a && b`
+  * Suppose that `a` evaluates to false, does it matter what `b` is?
+  * No, the first one being false makes the entire statement false regardless of the second operand
+  * Something called "short-circuiting": the code will skip the second statement entirely
+* Consider: `a || b`
+  * If `a` is true, does it matter what `b` is?
+  * No, the first one being true makes the entire statement tru
+* This is a common programming *idiom*   
+
+## Linters
+
+* Code may be syntactically correct (it will compile) but still may have errors
+* Lint are piece of code that may look suspicious and may lead to errors but are not syntax errors.  
+* Linters are *static analysis* tools that look for such *potential* errors in your code and report them (usually as warnings)
+* Static analysis: a program that analyzes the *source code* of another program pre-compilation
+* `gcc` can be used as a rudimentary linter using the flag `-Wall`
+* Its best practice to always compile with this flag, *take care of all your compiler warnings!*
+
+## Exercises
+
+* Write a program to compute quadratic roots and deal with any "bad" inputs
+
+* Write a program to describe the effects of an electric shock (on males, DC current) based on the milliampere (mA) current (Charles Dalziel):
+
+  * 0 - 1 no effect
+  * 1 - 5.2 mA slight sensation
+  * 5.2 - 62 Pain, voluntary muscle control
+  * 62 - 76 Pain, loss of control
+  * 76 - 90 Severe pain
+  * 90 - 500 Heart fibrillation
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+/**
+ * This program reads in 3 coefficients (a, b, c) of a
+ * quadratic formula as command line arguments
+ * and computes and outputs the roots
+ *
+ * Chris Bourke
+ * 2022/02/07
+ */
+int main(int argc, char **argv) {
+
+    if(argc != 4) {
+        printf("Error: provide 3 numerical coefficients\n");
+        exit(1);
+    }
+
+    double a = atof(argv[1]);
+    double b = atof(argv[2]);
+    double c = atof(argv[3]);
+
+    if( b*b < 4*a*c ) {
+        printf("ERROR: cannot handle imaginary roots\n");
+        exit(1);
+    } else if(a == 0) {
+        // printf("ERROR: cannot divide by zero! (a cannot be zero)\n");
+        // exit(1);
+        // or:
+        double root1 = -c / b;
+        printf("You gave a linear equation which has a solution at x = %f\n", root1);
+    } else {
+
+        double root1 = (-b + sqrt(b*b - 4*a*c)) / (2*a);
+        double root2 = (-b - sqrt(b*b - 4*a*c)) / (2*a);
+
+        printf("The roots of %fx^2 + %fx + %f are \n", a, b, c);
+        printf(" root 1 = %f\n", root1);
+        printf(" root 1 = %f\n", root2);
+    }
+    return 0;
+}
+```
+
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+/**
+ * This program reads a milliamp value from the user and
+ * outputs a danger level for direct current on male subjects
+ * using the Charles Dalziel chart.
+ *
+ * See <a href="https://hubbellcdn.com/literature/07-0801-02_BodyEffects_PGrounding.pdf">here</a>
+ */
+int main(int argc, char **argv) {
+
+    if(argc != 2) {
+        printf("Error: provide a mA value (numeric)\n");
+        exit(1);
+    }
+
+    double mAmps = atof(argv[1]);
+
+    mAmps = fabs(mAmps);
+
+    printf("%f mAmps is...\n", mAmps);
+
+    if(0 <= mAmps && mAmps < 1) {
+        printf("No effect\n");
+    } else if(mAmps < 5.2) {
+        printf("Slight Senation\n");
+    } else if(mAmps < 62) {
+        printf("Pain, voluntary muscle control\n");
+    } else if(mAmps < 76) {
+        printf("Pain, loss of control\n");
+    } else if(mAmps < 90) {
+        printf("Severe pain\n");
+    } else if(mAmps < 500) {
+        printf("Heart fibrillation\n");
+    } else {
+        printf("Undefined\n");
+    }
+
+
+    return 0;
+}
+```
+
 ```text
 
 
