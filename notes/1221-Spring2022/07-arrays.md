@@ -102,6 +102,93 @@ int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
   * If it didn't, what would it return?
   * With one version of malloc, we don't have to create new versions for each new type
 
+### More details
+
+* If `malloc` fails for any reason it returns `NULL`
+* After allocation, you can treat the array like a regular old array, indexing from 0 up to `n-1`
+* Attempts to access memory outside that array are *undefined behavior*
+  * It *may* result in a seg fault
+  * It *may* do nothing
+  * It *may* simply corrupt your own memory
+* You still need to keep track of the size of an array; in general there is no way to determine the size of an array: certain *never* for a dynamic array
+  * Just keep track of the size of an array in a variable (easiest)
+* Other functions:
+  * `calloc`
+  * `realloc`
+  * RTFM = Read The (freakin') Manual
+
+## Memory Management
+
+* Once you allocate a chunk of dynamic memory, you can use it however long you want in your program
+* Once you are done with it you should clean it up
+* You can *free* up memory (give it back to the heap or to the OS) using the `free()` function
+* You simply pass in the pointer to the dynamically allocated memory
+* Don't Do What Donny Don't Does:
+  * Don't "double" free an array (you cannot free something twice)
+  * Don't free your stack
+  * Don't free `NULL` or invalid variables
+  * Don't try to use an array after it has been free'd
+* Always remember to free your memory when you are done with it
+* Failure to do so will lead to "memory leaks"
+
+### Who "owns" memory?
+
+* Which function or functions are responsible for cleaning up the memory?
+* Whatever piece of code "own" the memory is responsible for also cleaning it up
+* If a function only allocates memory for temporary use and does not return it, it is responsible: it owns it and it *must* free it
+* If the function returns the array, the *calling function* owns it
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+
+int doSomethingComplicated() {
+    int n = 1000000;
+    int *arr = (int *) malloc(n * sizeof(int));
+    //TODO: do something with those integers...
+    //doSomethignComplicated is responsible...
+    free(arr);
+    return 0;
+
+}
+
+/**
+ * This function creates a new dynamic integer array of the
+ * given size and initializes each value to 1.
+ */
+int *getOnesArray(int n) {
+    int *result = (int *) malloc(n * sizeof(int));
+    for(int i=0; i<n; i++) {
+        result[i] = 1;
+    }
+    //bad: free(result);
+    return result;
+}
+
+int main(int argc, char **argv) {
+
+    doSomethingComplicated();
+    int *ones = getOnesArray(1000000);
+    printf("middle = %d\n", ones[999999]);
+    free(ones);
+
+    return 0;
+}
+```
+
+## Using arrays with functions
+
+* Passing an array to a function
+  * All arrays are actually memory addresses
+  * Thus all arrays are simply pointers
+  * To pass an array to a function, you pass a pointer
+  * In other words you pass by reference
+  * In addition, you *must* pass the size of an array to the function
+* Example: design a function to compute the sum of elements in an integer array
+
 ```text
 
 
