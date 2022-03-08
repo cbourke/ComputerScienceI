@@ -189,6 +189,162 @@ int main(int argc, char **argv) {
   * In addition, you *must* pass the size of an array to the function
 * Example: design a function to compute the sum of elements in an integer array
 
+## Deep vs Shallow Copies
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+/**
+ * sums up the elements in the given integer array
+ */
+int sum(const int *arr, int n) {
+  int total = 0;
+  for(int i=0; i<n; i++) {
+      total += arr[i];
+      //arr[i] = 0;
+  }
+  return total;
+}
+
+/**
+ * Creates a deep copy of the given integer array of the
+ * given size, returns a new array
+ */
+int *deepCopyInt(const int *original, int n);
+
+int main(int argc, char **argv) {
+
+    int n = 6;
+    int primes[] = {2, 3, 5, 7, 11, 13};
+    int total = sum(primes, n);
+    printf("%d\n", total);
+    total = sum(primes, n);
+    printf("%d\n", total);
+    return 0;
+}
+
+int *deepCopyInt(const int *original, int n) {
+  int *copy = (int *) malloc(sizeof(int) * n);
+  memcpy(copy, original, sizeof(int) * n);
+  return copy;
+}
+```
+
+## Multidimensional Arrays
+
+* Regular old arrays are 1-D arrays
+* 2-D arrays are: tables, matrices, etc.
+* You have *rows* and *columns*
+* 3-D, 4-D, etc.  (rethink what you are doing)
+* If regular old arrays are `int *`, 2-D arrays would be... `int **`
+* TODO:
+  * Create a dynamic 2-D array
+  * Modify its contents using TWO indices: `matrix[row][col]`
+
+```c
+int main() {
+
+  int numRows = 3, numCols = 4; //n, m
+
+  int **matrix = (int **) malloc(sizeof(int *) * numRows);
+  for(int i=0; i<numRows; i++) {
+    //create the i-th row:
+    matrix[i] = (int *) malloc(sizeof(int) * numCols);
+  }   
+
+  matrix[0][0] = 42;
+  matrix[2][3] = 101;
+
+  int value = 10;
+  for(int i=0; i<numRows; i++) {  //for each row...
+    for(int j=0; j<numCols; j++) { //for each column...
+      matrix[i][j] = value;
+      value += 10;
+    }
+  }
+
+  for(int i=0; i<numRows; i++) {
+    //free the i-th row:
+    free(matrix[i]);
+  }   
+  free(matrix);
+
+
+
+  return 0;
+}
+```
+
+# Exercise
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+/**
+ * Given the integer array of n elements, this function
+ * filters out all even numbers, returning a new array
+ * containing only the odd numbers
+ * Example input:  [0, 2, 5, 7, 3, 2, 8, 9]
+ * Example output: [5, 7, 3, 9]
+ *
+ * The size of the returned array is communicated to the calling
+ * function through the pass-by-reference variable, resultSize
+ */
+int *filterEvens(const int *arr, int n, int *resultSize);
+
+int main(int argc, char **argv) {
+
+  int n = 9;
+  int numOdds;
+  int arr[] = {0, 2, 5, 7, 3, 2, 8, 9, 11};
+  int *filtered = filterEvens(arr, n, &numOdds);
+
+
+  for(int i=0; i<numOdds; i++) {
+    printf("filtered[%d] = %d\n", i, filtered[i]);
+  }
+  free(filtered);
+
+
+    return 0;
+}
+
+int *filterEvens(const int *arr, int n, int *resultSize) {
+
+  //when the return value is a poitner, the only sensible
+  // return value to indicate an error is NULL...
+  if(arr == NULL || resultSize == NULL || n < 0) {
+    return NULL;
+  }
+
+  int numOdds = 0;
+  for(int i=0; i<n; i++) {
+    if(arr[i] % 2 == 1) {
+      numOdds++;
+    }
+  }
+  //pointer -> regular variable: * (dereference)
+  //regular variable -> pointer: & (reference)
+  *resultSize = numOdds;
+
+  int *result = (int *) malloc(sizeof(int) * numOdds);
+  int j = 0;
+  for(int i=0; i<n; i++) { //for each element in arr...
+    if(arr[i] % 2 == 1) {  //if it is odd, add it to the result...
+      result[j] = arr[i];
+      j++;
+    }
+  }
+  return result;
+}
+```
+
 ```text
 
 
