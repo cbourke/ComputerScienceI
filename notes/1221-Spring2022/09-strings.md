@@ -97,6 +97,164 @@
 
 ### Concatenation
 
+* Concatenation is the operation of combining two strings together: you append one string to the end of the other string
+* C does not have a concatenation operator instead you use a function:
+* Instead C provides the `strcat`
+* `char *strcat(char *dest, const char *src);`
+  * it takes the contents of the `src` string and appends it to the end of the `dest` string
+  * It is *your* responsibility to ensure that `dest` is big enough to hold the entire string
+  * It is *your* responsibility to ensure that `src` is a valid, null-terminated string
+  * It will take care of the null-terminator for you
+* Byte limited version: `strncat`, it does NOT necesssarily take care of the null-terminating character for you
+```c
+
+    char message[1000];
+    strcpy(message, "Hello");
+    strcat(message, " World!!!\n");
+
+    char shortMessage[100];
+    shortMessage[0] = '\0';
+    strncpy(shortMessage, message, 12);
+    shortMessage[12] = '\0';
+
+    strncat(shortMessage, "!!!!", 2);
+    shortMessage[14] = '\0';
+```
+
+### Other Convenience Functions
+
+* The `ctype.h` library provides many other useful functions for single characters
+  * `isalpha(char c)` - returns true if `c` is an alpha-numeric character 0-9, a-z, A-Z
+  * `isspace(char c)` - returns true for all whitespace characters, `\t, \n, ` (space character)
+  * `isupper(c), islower(c)` true or false if `c` is an upper case letter or lower case letter
+  * `toupper(c), tolower(c)` return the upper/lower case version of `c`, returns `c` itself if it is not a letter
+  * `isdigit(c)` true for 0-9
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+#include <string.h>
+#include <ctype.h>
+
+char * toUpperCase(const char *s) {
+
+  int n = strlen(s);
+  //1. make a copy of the string...
+  char *c = (char *) malloc( sizeof(char) * (n + 1) );
+
+  //2. convert each letter into an upper case letter
+  int i=0;
+  while(s[i] != '\0') {
+    //convert to an upper case
+    c[i] = toupper(s[i]);
+    i++;
+  }
+  c[i] = '\0';
+
+
+  //3. return the new copy...
+  return c;
+}
+
+void removeWhitespace(char *s) {
+
+  int n = strlen(s);
+  //1. make a copy of the string...
+  char *copy = (char *) malloc( sizeof(char) * (n + 1) );
+
+  int i=0;
+  int j=0;
+  while(s[i] != '\0') {
+    //copy over but only if it is not a white space character...
+    if( !isspace(s[i]) ) {
+      copy[j] = s[i];
+      j++;
+    }
+    i++;
+  }
+  copy[j] = '\0';
+  strcpy(s, copy);
+  free(copy);
+
+  return;
+}
+
+int main(int argc, char **argv) {
+
+    char msg[] = "Hello World how are you, today?";
+    char *copy = toUpperCase(msg);
+    printf("msg  = %s\n", msg);
+    printf("copy = %s\n", copy);
+
+    removeWhitespace(copy);
+    printf("msg  = %s\n", msg);
+    printf("copy = %s\n", copy);
+
+
+    return 0;
+}
+
+```
+
+### String Formatting
+
+* `printf` will format a result to the standard output
+* `sprintf` will format a result into a string instead
+
+```c
+
+    char buffer[1000];
+
+    int x = 42;
+    double pi = 3.14159;
+    char name[] = "Bourke";
+
+    sprintf(buffer, "Hello, %s, the answer is %d with pi = %f\n", name, x, pi);
+    printf("%s\n", buffer);
+
+```
+
+### String Comparisons
+
+* You *cannot* ever use `==` operator to compar strings!
+* It ends up comparing memory addresses, NOT the contents of the strings!
+* You use the function, `strcmp()`
+* It takes two arguments: `a, b` which are both `const char *` (strings)
+* It returns an integer:
+  * *something* negative if `a < b`
+  * zero if they are equal
+  * *something* positive if `a > b` (`b < a`)
+* Ordering is based on the ascii text table called "lexicographic" ordering, NOT dictionary order
+* You can use `strcasecmp` to ignore casing in your comparison
+
+```c
+
+  char a[] = "Apple";
+  char b[] = "apples";
+
+  int r = strncasecmp(a, b, 5);
+
+  if(r < 0) {
+    printf("%s comes before %s\n", a, b);
+  } else if(r > 0) {
+    printf("%s comes before %s\n", b, a);
+  } else {
+    printf("%s and %s are equal!\n", a, b);
+  }
+int result;
+
+result = strcmp("apple", "apple"); //0
+result = strcmp("apple", "apples"); //negative
+result = strcmp("apples", "apple"); //positive
+
+result = strcmp("Apple", "apple"); //negative
+
+result = strcmp("apples", "oranges"); //negative
+
+result = strcasecmp("ApPlE", "apple"); //zero
+```
 
 ### Tokenization
 
@@ -108,10 +266,17 @@
 ```text
 first,last,nuid,city,state,office
 Chris,Bourke,35140602,Omaha,NE,103 Schorr
-Bonita,Sharif,1234,Lincoln,NE,105 Schorr
+Margaret,Hamilton,1234,Lincoln,NE,105 Schorr
 Joe,Smith,5678,Atlanta,GA,120 Foo
 
 ```
+
+* You can tokenize a string based on any *delimiter* using `strtok`
+  * `char * strtok(char *str, const char *delim)`
+  * You provide with two arguments: the string you want to tokenize and the delimiter you want to tokenize on
+  * The first call you provide the string, each subsequent call you provide `NULL` so that it continues to work on the same string
+  * The return value can be used to determine if you are at the end of the string: when you are at the end it returns `NULL`
+
 
 ```text
 
