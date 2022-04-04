@@ -190,7 +190,7 @@ printf("hello, %s\n", middleName);
 
 ```
 
-## String Comparisons
+### String Comparisons
 
 * In C, `strcmp` is used to compare the *contents* of two strings
 * Remember: you CANNOT use the `==` operator
@@ -229,9 +229,8 @@ printf("hello, %s\n", middleName);
 
   result = strcasecmp("ApPlE", "apple"); //zero
   ```
-  
-```text
 
+```text
 
 
 
