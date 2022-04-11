@@ -1,5 +1,6 @@
 # Computer Science I - Honors
-**[Department of Computer Science & Engineering](https://cse.unl.edu)**  
+**[School of Computing](https://computing.unl.edu/)**  
+**[College of Engineering](https://engineering.unl.edu/)**
 **[University of Nebraska-Lincoln](https://unl.edu)**
 
 This repository hosts documents, files, and other artifacts
@@ -67,6 +68,11 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 - Lab 15.0 - Databases https://github.com/cbourke/CSCE155-Java-Lab15
 
 ## Course Offerings
+
+### Fall 2022
+
+- Course Link: https://canvas.unl.edu/courses/136400
+- Lectures: To Come
 
 ### Fall 2021
 

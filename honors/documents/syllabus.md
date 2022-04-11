@@ -1,7 +1,7 @@
 # Computer Science I - Honors
 
-### CSCE 155H - Syllabus - Fall 2021
- [Department of Computer Science & Engineering](https://cse.unl.edu/)  
+### CSCE 155H - Syllabus - Fall 2022
+ [School of Computing](https://computing.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
 
@@ -78,6 +78,65 @@ in the major.
 
 For all other information, see the course website.
 
+## Course Delivery
+
+This course has both an in-person section as well as an online section
+but is delivered in a **hyrid** mode.  This means that:
+
+- All lectures are livestreamed via YouTube and recordings are available
+immediately after. A live Q&A through Piazza is available during lecture
+as well.
+
+- All lab and hack sessions as well as office hours will have Learning
+Assistants available both in-person and online via zoom.
+
+### Continuation of Instruction
+
+If in-person classes are canceled by the University during a lecture
+day, lecture will still be livestreamed.  If in-person classes are canceled
+by the University during a lab/hack day, in-person attendance will not be
+required, help will be made available via zoom and you will still be
+expected to complete the work remotely.
+
+### Honors Section
+
+This is the honors section of our main Computer Science I course
+(CSCE 155E).  We cover the same topics but at accelerated pace
+and there are higher expectations.  In particular, we cover ***two***
+programming languages in parallel (typically C and Java) and
+most assignments will require knowledge of both.  
+
+The key differences between the honors section and the main section
+include:
+
+-  We do *not* use zyBooks (an online interactive textbook with
+   graded readings).  Instead, you will be expected to keep up
+   with recommended reading as necessary to learn/reinforce the
+   material on your own.  The recommended reading for this course
+   is taken from my free online Computer Science I textbook so
+   there is nothing additional to purchase.
+
+-  We do *not* grade based on attendance.  You don't get points
+   simply for showing up.  Instead, you are expected to be responsible
+   enough to attend lecture, lab, and hack on a regular basis or to
+   have the self-discipline enough to keep up with the material and
+   assignments on your own.
+
+-  Each weekly lab has both a C and Java version.  You are ***highly
+   recommended*** to complete both but only *one version* needs to be
+   submitted for credit.
+
+-  Each weekly hack has both a C and Java version.  You are ***required***
+   to submit both of them for credit.
+
+-  In addition, though you have a scheduled lab section each week,
+   there is no additional *scheduled* hack session.
+
+-  The semester project has both a C and Java version.  You are ***required***
+   to submit both of them for credit.
+
+-  Exams will have a mixture of C and Java exercises.  
+
 ## Skills Objectives
 
 This course has several learning objectives and "skills objectives."
@@ -151,85 +210,22 @@ semester project and two exams with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Skills Survey      |        |            1|     40|
-|  Labs               |      14|           15|    210|
+|  Starter Points     |        |             |      5|
+|  Labs               |      13|           15|    195|
 |  Hacks              |      28|           25|    700|
-|  Project            |       2|           75|    150|
+|  Projects           |       2|           75|    150|
 |  Midterm            |       1|          100|    100|
-|  Final              |       1|          100|    100|
+|  Final              |       1|          150|    150|
 |  Total              |        |             |  1,300|
 
-### Skills Survey
 
-The CSE Skills Inventory Survey involves two short surveys
-administered through an external website.  We administer
-this survey in order to collect data to better place students
-into future Computer Science courses.  These surveys are
-required and are worth 40 points total.  Please take the
-survey seriously and answer truthfully.  You are not being
-graded on your answers, only that you complete the surveys.  
-Both surveys should take less than 1 hour to complete.
+### Starter Points
 
-<!--
 It is important to start out positively. Put yourself in the mindset
 that you *will* succeed in this course and commit yourself to putting in
 a full effort in every aspect of it. To get you started, we're giving
 you **free starter points**. You have a perfect score in this course already!
 Keep it up!
--->
-
-### Attendance Policies
-
-Due to the continuing COVID-19 pandemic, physical attendance at lecture,
-labs, and hacks is not required.  We will continue to deliver this course
-in a "hybrid" manner:
-
--  All lectures are livestreamed and recordings are available immediately after.
-   A live Q&A through Piazza is available during lecture as well.  
-
--  All lab and hack sessions as well as office hours will have Learning
-   Assistants available both in-person and online via zoom.
-
--  There is a 100% online section for this course (main section only) as an
-   alternative.  
-
-#### COVID Considerations
-
-
-Out of respect for faculty and staff, out of respect for the Learning Assistants,
-and out of respect for your fellow students and most especially yourself, you
-should make sure you are fully vaccinated if you plan to attend lecture, lab,
-and hack sessions in person.  Several vaccines are widely available, highly
-effective and backed by sound science.  The good majority of adults have
-been vaccinated and you should be one of them.  UNL has provided
-opportunities to receive a vaccine (free of charge); please consider doing this
-as soon as possible.  More information can be found here:
-https://covid19.unl.edu/vaccination-information.
-
-Everyone is required and expected to follow all health and safety
-guidelines published by the CDC, healthcare officials and the
-University of Nebraska--Lincoln.  If you are not fully vaccinated and
-still decide to attend in-person lecture, lab or hack sessions,
-you will be ***required*** to wear a mask.  If you are fully
-vaccinated, you are still **strongly recommended** to wear a mask
-given the limited social distancing and disappointingly low
-vaccination rates among college age groups in Nebraska.  
-
-If you feel ill or have had exposure to COVID-19, you
-**should not attend in-person** and instead utilize the online
-opportunities we have provided.  Those who violate the testing
-policies or receive a positive test may not be granted access to
-University buildings and so you may need to attend remotely.  Getting
-vaccinated as soon as you can greatly improves not only your health
-risks but also greatly reduces the chance that your access will be
-restricted.  
-
-Full expectations and consequences are outlined here:
-
- - https://studentconduct.unl.edu/covid-19-related-expectations-and-non-compliance
-
- - https://covid19.unl.edu/face-covering-policy
-
 
 ### Labs
 
@@ -354,39 +350,6 @@ that makes it impossible to grade your program via the webgrader means
 that a disproportionate amount of time would be spent evaluating your
 assignment. For this reason, we will not grade any assignment that does
 not compile and run through the webgrader.
-
-## Honors Section
-
-This is the honors section of our main Computer Science I course
-(CSCE 155E).  We cover the same topics but at accelerated pace
-and there are higher expectations.  In particular, we cover ***two***
-programming languages in parallel (typically C and Java) and
-most assignments will require knowledge of both.  
-
-The key differences between the honors section and the main section
-include:
-
--  We do *not* use zyBooks (an online interactive textbook with
-   graded readings).  Instead, you will be expected to keep up
-   with recommended reading as necessary to learn/reinforce the
-   material on your own.  The recommended reading for this course
-   is taken from my free online Computer Science I textbook so
-   there is nothing additional to purchase.
-
--  Each weekly lab has both a C and Java version.  You are ***highly
-   recommended*** to complete both but only *one version* needs to be
-   submitted for credit.
-
--  Each weekly hack has both a C and Java version.  You are ***required***
-   to submit both of them for credit.
-
--  In addition, though you have a scheduled lab section each week,
-   there is no additional *scheduled* hack session.
-
--  The semester project has both a C and Java version.  You are ***required***
-   to submit both of them for credit.
-
--  Exams will have a mixture of C and Java exercises.  
 
 ## Academic Integrity
 

@@ -2,9 +2,12 @@
 **[School of Computing](https://computing.unl.edu/)**  
 **[College of Engineering](https://engineering.unl.edu/)**
 **[University of Nebraska-Lincoln](https://unl.edu)**
+**[University of Nebraska-Omaha](https://http://unomaha.edu/)**
 
 This repository hosts documents, files, and other artifacts
-related to Computer Science I (offered as CSCE 155E, CSCE 155H).
+related to Computer Science I.  This course is offered as
+CSCE 155E and CSCE 155H (honors) at the University of Nebraska-Lincoln
+and ECEN 194 at the University of Nebraska-Omaha.
 
 [![Course Introduction](https://img.youtube.com/vi/4chk0yJs0YI/0.jpg)](https://youtu.be/4chk0yJs0YI "Course Introduction")
 
@@ -50,9 +53,23 @@ is hosted on [Bitbucket](https://bitbucket.org/chrisbourke/computersciencei).
 
 ## Course Offerings
 
+### Fall 2022
+
+During the fall 2022 semester, this course will have two offerings.  
+
+#### CSCE 155E - UNL
+
+- Course Link: https://canvas.unl.edu/courses/136371
+- Lectures: To Come
+
+#### ECEN 194 - UNO
+
+- Course Link: https://canvas.unl.edu/courses/142442
+- Lectures: To Come
+
 ### Spring 2022
 
-During the Spring 2022, this course is being offered on the University of
+During the spring 2022, this course is being offered on the University of
 Nebraska--Omaha campus at the Peter Kiewit Institute as ECEN 1940
 
 - Course Link: https://canvas.unl.edu/courses/129028

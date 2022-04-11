@@ -1,9 +1,8 @@
 # Computer Science I
 
-### CSCE 155E - Syllabus - Fall 2022
- [School of Computing](https://computing.unl.edu/)  
+### ECEN 1940 - Syllabus - Fall 2022
  [College of Engineering](https://engineering.unl.edu/)  
- [University of Nebraska Lincoln](https://unl.edu/)  
+ [University of Nebraska-Omaha](https://omaha.edu/)  
 
 >
 > "If you really want to understand something, the best way is to try
@@ -37,21 +36,11 @@
 
 ## Course Info
 
-**Prerequisites**: [MATH 103](https://catalog.unl.edu/search/?P=MATH%20103)
-or equivalent.
-
 **Description**: Introduction to problem solving with computers. Topics
 include problem solving methods, software development principles,
 computer programming, and computing in society.
 
 **Credit Hours**: 3
-
-**Postrequisites**: The course after this course,
-[CSCE 156](https://catalog.unl.edu/search/?P=CSCE%20156) – Computer
-Science II requires that you receive a grade of C or better in this
-course to move on. If you are a Computer Science or Computer Engineering
-major you will need to receive a C or better in this course to continue
-in the major.
 
 For all other information, see the course website.
 
@@ -118,28 +107,18 @@ See the course website.
 
 ## University Services
 
-### Accommodations for Students with Disabilities
+### Accessibility Accommodations
 
-It is the policy of the University of Nebraska-Lincoln to provide
-flexible and individualized accommodations to students with documented
-disabilities that may affect their ability to fully participate in
-course activities or to meet course requirements. To receive
-accommodation services, students must be registered with the Services
-for Students with Disabilities (SSD) office, 232 Canfield
-Administration, 472-3787 voice or TTY.
+It is my goal that this class be an accessible and welcoming experience for
+all students. Reasonable accommodations are provided for students who are
+registered with Accessibility Services Center (ASC) and make their requests
+sufficiently in advance. For more information, contact ASC (Location: 104
+H&K, Phone: 402.554.2872, Email: unoaccessibility@unomaha.edu)
 
-### Counseling and Psychological Services
+Accessibility Services Center:
 
-UNL offers a variety of options to students to aid them in dealing with
-stress and adversity. [Counseling and Psychological Services](https://caps.unl.edu/)
-(CAPS) is a multidisciplinary team of psychologists and counselors that works
-collaboratively with Nebraska students to help them explore their
-feelings and thoughts and learn helpful ways to improve their mental,
-psychological and emotional well-being when issues arise. CAPS can be
-reached by calling 402-472-7450. Big Red Resilience & Well-Being
-provides fun events, innovative education, and dynamic services to help
-students understand emotions, manage stress, build strength, connect
-with others, develop grit and navigate transitions.
+https://www.unomaha.edu/student-life/accessibility/faculty-and-staff.php)
+
 
 ## Grading
 
@@ -158,7 +137,6 @@ point distributions.
 |  Midterm            |       1|           75|    100|
 |  Final              |       1|           75|    150|
 |  Total              |        |             |  1,250|
-
 
 ### Starter Points
 
@@ -235,6 +213,7 @@ pair up and collaborate with (**at most**) one other student.
 If you choose to pair up with another student, you must form
 a pair using canvas (People -> Hack Pairs).
 
+
 ### Attendance
 
 To ensure participation your attendance **and** engagement in your
@@ -264,18 +243,6 @@ that you earn at least 75% of the remaining points for each module
 the points for the module, you will get a zero for the attendance portion
 of the module.
 
-***Online Section***
-
-Online courses have a lot less structure and more flexibility than an
-in-person course.  However, this requires a lot more self-discipline
-and responsibility in order to succeed academically.  If you have chosen
-to enroll in the online section, you will need to demonstrate that
-responsibility in how you approach the material for this course.  
-
-The key difference is that since in-person attendance is not required,
-attendance points (150 total) will not be assessed and your final grade
-will be out of 1,100 points instead.
-
 ### Project
 
 There is an end-of-semester programming project due on the Friday of
@@ -291,16 +258,6 @@ consist of live coding exercises for which you will need your own
 machine as you will be coding and submitting programs online for
 grading. More details will be announced closer to the exam dates.
 No collaboration is allowed on exams.
-
-### 15th Week Policy Notification
-
-A per UNL's 15th Week Policy (also known as "dead week") available here:
-
-<https://registrar.unl.edu/academic-standards/policies/fifteenth-week-policy/>
-
-we are required to serve written notice that the final assignment as
-well as the final lab, hack, and assignment will be due during the 15th
-week.
 
 ### Scale
 
@@ -345,7 +302,7 @@ Exceptions may be made in certain circumstances such as health or
 emergency, but you must make every effort to get prior permission.
 Documentation may also be required.
 
-Homework assignments have a strict due date/time as defined by the CSE
+Assignments have a strict due date/time as defined by the CSE
 server's system clock. All program files must be handed in using CSE's
 webhandin as specified in individual assignment handouts. Programs that
 are even a few seconds past the due date/time will be considered late
@@ -359,6 +316,7 @@ that a disproportionate amount of time would be spent evaluating your
 assignment. For this reason, we will not grade any assignment that does
 not compile and run through the webgrader.
 
+
 ## Academic Integrity
 
 All homework assignments, programs, and exams must represent your own
@@ -371,7 +329,7 @@ to read, understand, and follow this policy. Violations will be dealt
 with on a case by case basis and may result in a failing assignment or a
 failing grade for the course itself. The most recent version of the
 Academic Integrity Policy can be found at
-<http://cse.unl.edu/academic-integrity>
+<https://computing.unl.edu/academic-integrity-policy>
 
 ## Communication & Getting Help
 
@@ -391,23 +349,7 @@ In addition, there are two anonymous suggestion boxes that you may use
 to voice your concerns about any problems in the course if you do not
 wish to be identified. My personal box is available on the course
 webpage. The department also maintains an anonymous suggestion box
-available at <https://cse.unl.edu/contact-form>.
-
-### Learning Assistant Program (LAP)
-
-This course is supported by the CSE Learning Assistant Program (LAP).  
-The mission of the LAP is to improve student comprehension and
-retention in computing fields by focusing on the learner's experience.
-This course will be supplemented by Learning Assistants (LAs) and Course
-Leaders (CLs) to help improve your learning. LAs and CLs are other
-undergraduate students who have taken the same or similar courses
-and have been trained to help you succeed in this course. Your LAs
-and CLs will hold regular office hours, help with grading, and assist
-you with labs/assignments.
-
-I strongly encourage you to utilize the LAs and CLs when you are
-completing coursework. More information can be found in the Learning
-Assistant Program Module on Canvas.
+available at <https://computing.unl.edu/anonymous-department-feedback-form>.
 
 ### Getting Help
 
@@ -442,14 +384,10 @@ the material and getting help in this course:
     read other student's posts and questions and feel free to answer
     yourself!
 
--   Office Hours & Student Resource Center: the instructor and teaching
+-   Office Hours: the instructor and teaching
     assistants hold regular office hours throughout the week as posted
     on the course website. Attend office hours if you have questions or
-    want to review material. The Student Resource Center (SRC,
-    <http://cse.unl.edu/src>) Monday through Friday. Even if your TAs
-    are not scheduled during that time, there are plenty of other TAs
-    and students present that may be able to help. And, you may be able
-    to help others!
+    want to review material.
 
 -   Don't procrastinate. The biggest reason students fail this course is
     because they do not give themselves enough opportunities to learn
