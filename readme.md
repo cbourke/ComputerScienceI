@@ -60,12 +60,12 @@ During the fall 2022 semester, this course will have two offerings.
 #### CSCE 155E - UNL
 
 - Course Link: https://canvas.unl.edu/courses/136371
-- Lectures: To Come
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZV60X2be15-7bH0NCaOBmv9
 
 #### ECEN 194 - UNO
 
 - Course Link: https://canvas.unl.edu/courses/142442
-- Lectures: To Come
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZU15esDhdC28vEsGpW_pJWE
 
 ### Spring 2022
 
