@@ -73,6 +73,107 @@
 * Analysis: omitted (beyond the scope of this course)
 * End result: quick sort makes about $n\log{n}$ comparisons
 
+## Searching & Sorting in Practice
+
+* In general, you do not need or want to write your own searching/sorting algorithms
+* Lots of copy-pasta for different types
+* Lots of testing
+* Lots of debugging, etc.
+* Don't roll your own!
+* `qsort` and other built-in algorithms know how to sort, they just don't know how to *order*
+* The sorting algorithm doesn't know what type of elements it is sorting and therefore does not necessarily know how to *order*
+* `qsort` needs to be told how to order those *things*
+* A comparator function solves this problem
+* A comparator function takes two generic *things* $a, b$ and returns an integer:
+  * *Something* negative if $a$ comes before $b$
+  * ZERO if $a$ "equals" $b$
+  * *Something* positive if $a$ comes after $b$ ($b$ comes before $a$)
+
+### Function Pointers in C
+
+* How do we "pass" a function to another function?
+* Doing so is referred to as a "callback" function: it allows the function that you give it to to "call it back"
+* GUI = Graphical User Interface
+* `qsort` also needs a callback function: a function that allows it to *order* things, $a, b$
+* How do we do this?
+* Consider: what is stored in memory?
+  * Data
+  * Files
+  * Programs
+  * Functions
+* As a result, it makes sense to refer to the memory location of where a function is stored
+* Demonstration of syntax
+
+
+### Sorting in C
+
+#### Comparator
+
+* A *comparator* function is a function with the following signature
+
+`int cmp(const void *a, const void *b)`
+
+* It returns an integer with the following contract:
+  * it returns *something* negative if a < b
+  * it returns zero if a is equal to b
+  * it returns *something* positive if a > b (b < a)
+* `const`: the comparator will not (and cannot) make changes to the two input values
+* Both are `void *` variables: a generic void pointer (it can point to any type of anything)
+* If the function has *any other signature* it is NOT a comparator
+* A comparator follows the same basic pattern:
+  1. It typecasts the two values `a, b` into the *expected* types
+  2. It makes a comparison between the state of the two variables, returning an integer value depending on the ordering
+* Demonstration
+  * Avoid the difference trick: it doesn't work on `double` values and it risks overflow/underflow with integers
+  * Avoid all "tricks"
+
+#### `qsort`
+
+* C provides a standard "quick sort" implementation
+
+```c
+void qsort(void *base,
+           size_t nel,
+           size_t size,
+           int (*compar)(const void *, const void *));
+```
+
+* `base` - the array of stuff
+  * Generic: `void *`
+  * It does *NOT* have the `const` keyword
+* `nel` - number of elements (the size of the array)
+* `size` - the number of bytes each element takes: use the `sizeof()` macro!
+* `compar` - a function pointer to the comparator you want to use
+
+### Searching in C
+
+#### Linear Search
+
+* THe `search.h` library has `lfind` and `lsearch` functions
+
+```c
+void *lfind(const void *key,
+            const void *base,
+            size_t *nmemb,
+            size_t size,
+            int(*compar)(const void *, const void *));
+```
+
+#### Binary Search
+
+* The standard library has a binary search implementation:
+
+```c
+void *bsearch(const void *key,
+              const void *base,
+              size_t nmemb,
+              size_t size,
+              int (*compar)(const void *, const void *));
+```                    
+
+
+
+
 ```text
 
 
