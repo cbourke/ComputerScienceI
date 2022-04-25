@@ -213,11 +213,11 @@ For those in the online section or those attending remotely, you may
 work alone or we may partner you with someone in a zoom breakout room.
 
 Each lab is assessed based on completion. In general you will need to
-submit code and an electronic writeup of your worksheet (plain text or
-markdown is preferred) through webhandin which can also be verified
-using the webgrader. You will have until midnight on the day of the lab
-(Tuesdays) to submit your solutions. Points will be awarded based on the
-results of the webgrader.
+submit code and (possibly) an electronic writeup of your worksheet
+through an online grading system.  You will
+have until midnight on the day of the lab (Tuesdays) to submit your
+solutions. Points will be awarded based on the results of the online
+grader.
 
 ### Hacks
 
@@ -345,19 +345,19 @@ Exceptions may be made in certain circumstances such as health or
 emergency, but you must make every effort to get prior permission.
 Documentation may also be required.
 
-Homework assignments have a strict due date/time as defined by the CSE
-server's system clock. All program files must be handed in using CSE's
-webhandin as specified in individual assignment handouts. Programs that
+Assignments have a strict due date/time as defined in canvas and the
+online handin system. All program files must be handed in as
+specified in individual assignment instructions. Programs that
 are even a few seconds past the due date/time will be considered late
 and you will be locked out of handing anything in after that time.
 
 ### Webgrader Policy
 
 Failure to adhere to the requirements of an assignment in such a manner
-that makes it impossible to grade your program via the webgrader means
-that a disproportionate amount of time would be spent evaluating your
-assignment. For this reason, we will not grade any assignment that does
-not compile and run through the webgrader.
+that makes it impossible to grade your program means that a
+disproportionate amount of time would be spent evaluating your
+assignment. For this reason, we will not grade any assignment
+that does not compile and run through the online grading system.
 
 ## Academic Integrity
 
