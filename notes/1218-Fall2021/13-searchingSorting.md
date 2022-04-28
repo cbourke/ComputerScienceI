@@ -180,7 +180,6 @@ int main(int argc, char **argv) {
 
 * A *comparator function* has the following signature:
 
-
 `int cmp(const void *a, const void *b)`
 
 * It returns an integer with the following contract:

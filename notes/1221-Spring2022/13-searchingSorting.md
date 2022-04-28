@@ -171,6 +171,129 @@ void *bsearch(const void *key,
               int (*compar)(const void *, const void *));
 ```                    
 
+### Demo Code
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <search.h>
+
+#include "utils.h"
+
+int NUM_COMPS = 0;
+
+void selectionSort(int *arr, int n) {
+
+  for(int i=0; i<n-1; i++) {
+    //find the smallest element among
+    // arr[i] thru arr[n-1]
+    int minIndex = i;
+    for(int j=i+1; j<n; j++) {
+      NUM_COMPS++;
+      if(arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    //swap arr[i], arr[minIndex]
+    int temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp;
+  }
+
+}
+
+int binarySearch(const int *arr, int n, int key) {
+
+  //TODO: error handling...
+
+  int leftIndex = 0;
+  int rightIndex = n-1;
+  while(leftIndex <= rightIndex) {
+    int middleIndex = (rightIndex + leftIndex) / 2;
+    NUM_COMPS++;
+    if(arr[middleIndex] == key) {
+      return middleIndex;
+    } else if(key < arr[middleIndex]) {
+      //search the left half...
+      rightIndex = middleIndex - 1;
+    } else if(arr[middleIndex] < key) {//TODO: remove this unnecessary demo code
+      //search the right half...
+      leftIndex = middleIndex + 1;
+    }
+  }
+  return -1;
+
+}
+
+/**
+ * Searches the given array for the key element, returning
+ * the index of the first value it finds that matches the
+ * key element.
+ *
+ * If no such element has been found, returns -1 or any other
+ * error condition.
+ */
+int indexOf(const int *arr, int n, int key) {
+
+  if(arr == NULL || n < 0) {
+    return -1;
+  }
+
+  for(int i=0; i<n; i++) {
+    NUM_COMPS++;
+    if(arr[i] == key) {
+      return i;
+    }
+  }
+  return -1;
+
+}
+
+int main(int argc, char **argv) {
+
+  srandom(time(NULL));
+
+  int n = 9;
+  //int *arr = generateRandomArray(n);
+
+  int arr[] = {42, 4, 9, 4, 102, 34, 12, 2, 0};
+  //int arr[] = {0, 2, 4, 4, 9, 12, 34, 42, 102};
+  //int key = 10001;
+
+  qsort(arr, n, sizeof(int), cmpIntDesc);
+
+  //selectionSort(arr, n);
+  for(int i=0; i<n; i++) {
+    printf("%d, ", arr[i]);
+  }
+  printf("\n");
+
+  //use lfind to find, 42...
+  int key = 42;
+  int *result = bsearch(&key, arr, n, sizeof(int), cmpIntDesc);
+  printf("Found %d value at memory address %p\n", key, result);
+
+  // int index = binarySearch(arr, n, key);
+  // printf("%d found at index %d\n", key, index);
+  //printf("Number of comparisons: %d\n", NUM_COMPS);
+
+}
+```
+
+## Sorting and Searching Structures
+
+* Demonstration
+
+## Dead Week
+
+* Fill out your course evaluations!
+
+* Dead Week:
+  * M: Review, Run?
+  * W: Review
+  * F: Help Session
 
 
 
