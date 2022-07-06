@@ -176,7 +176,7 @@ you should be able to exhibit.
 
 ## Schedule
 
-See the course website.
+See the course website (canvas).
 
 ## University Services
 
@@ -210,13 +210,14 @@ semester project and two exams with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |      5|
-|  Labs               |      13|           15|    195|
-|  Hacks              |      28|           25|    700|
-|  Projects           |       2|           75|    150|
+|  Starter Points     |        |             |     20|
+|  Labs               |      12|           15|    180|
+|  Hacks              |      26|           25|    650|
+|  Attendance         |      13|           10|    130|
+|  Exams              |       2|           50|    100|
 |  Midterm            |       1|          100|    100|
 |  Final              |       1|          150|    150|
-|  Total              |        |             |  1,300|
+|  Total              |        |             |  1,525|
 
 
 ### Starter Points
@@ -268,17 +269,40 @@ Further details are provided in the handouts, but you are highly
 encouraged to collaborate with any individual and to receive as much
 help as you desire on the exercises.
 
-### Project
+### Attendance
 
-There is an end-of-semester programming project due on the Friday of
-"dead week." This project must be completed individually by each student
-and no collaboration is allowed. You may consult with each other at a
-*high level* but may not share or view other student code.
+To ensure participation your attendance **and** engagement in your
+weekly lab/hack sessions will be graded.  Each session will be worth 10
+points.  To earn the full 10 points you must:
+
+  * Attend **both** the lab and hack session for the entire time.  Do
+    not be more than 5 minutes late.
+  * Put forth a full effort.  You must work on the lab/hack for that
+    week or for other material in the course; you may not work on
+    other material or remain idle.
+  * You may only leave the lab/hack session early if you have already
+    completed both the lab and hack for that module.
+
+**Alternative**
+
+It is understandable that you may not be able to attend every lab/hack
+session or that your background or approach to this material means you
+don't need the structured environment that the lab/hack session provides.
+As an alternative, *if you can prove yourself capable* of completing
+labs and hacks on your own you may choose not to attend the lab/hack session.
+
+If you attend as outlined above, you get the full 10 points.  If you
+choose not to attend, you may still earn the 10 points ***provided***
+that you earn at least 75% of the remaining points for each module
+(Reading/Lab/Hack).  If you do not attend and you earn less than 75% of
+the points for the module, you will get a zero for the attendance portion
+of the module.
 
 ### Exams
 
-There will be one midterm exam and a comprehensive final exam. These
-will be open-book, open-note, *required computer* exams. The exams
+There will be two regular exams, one midterm exam, and a comprehensive
+final exam. These will be open-book, open-note, *required computer* exams.
+The exams
 consist of live coding exercises for which you will need your own
 machine as you will be coding and submitting programs online for
 grading. More details will be announced closer to the exam dates.
@@ -291,7 +315,7 @@ A per UNL's 15th Week Policy (also known as "dead week") available here:
 <https://registrar.unl.edu/academic-standards/policies/fifteenth-week-policy/>
 
 we are required to serve written notice that the final assignment as
-well as the final lab, hack, and assignment will be due during the 15th
+well as the final lab, hack, and assignment may be due during the 15th
 week.
 
 ### Scale
@@ -363,7 +387,7 @@ to read, understand, and follow this policy. Violations will be dealt
 with on a case by case basis and may result in a failing assignment or a
 failing grade for the course itself. The most recent version of the
 Academic Integrity Policy can be found at
-<http://cse.unl.edu/academic-integrity>
+<https://computing.unl.edu/academic-integrity-policy>
 
 ## Communication & Getting Help
 
@@ -383,7 +407,7 @@ In addition, there are two anonymous suggestion boxes that you may use
 to voice your concerns about any problems in the course if you do not
 wish to be identified. My personal box is available on the course
 webpage. The department also maintains an anonymous suggestion box
-available at <https://cse.unl.edu/contact-form>.
+available at <https://computing.unl.edu/anonymous-department-feedback-form>.
 
 ### Learning Assistant Program (LAP)
 
@@ -438,7 +462,8 @@ the material and getting help in this course:
     assistants hold regular office hours throughout the week as posted
     on the course website. Attend office hours if you have questions or
     want to review material. The Student Resource Center (SRC,
-    <http://cse.unl.edu/src>) Monday through Friday. Even if your TAs
+    <https://computing.unl.edu/current-undergraduate#SRC>)
+    Monday through Friday. Even if your TAs
     are not scheduled during that time, there are plenty of other TAs
     and students present that may be able to help. And, you may be able
     to help others!

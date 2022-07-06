@@ -114,7 +114,7 @@ you should be able to exhibit.
 
 ## Schedule
 
-See the course website.
+See the course website (canvas).
 
 ## University Services
 
@@ -149,15 +149,15 @@ point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     10|
+|  Starter Points     |        |             |     20|
 |  Readings (zyBooks) |      13|           15|    195|
-|  Labs               |      13|           15|    195|
-|  Hacks              |      14|           25|    350|
-|  Attendace          |      15|           10|    150|
-|  Project            |       1|           75|    100|
-|  Midterm            |       1|           75|    100|
-|  Final              |       1|           75|    150|
-|  Total              |        |             |  1,250|
+|  Labs               |      12|           15|    180|
+|  Hacks              |      13|           25|    325|
+|  Attendace          |      13|           10|    130|
+|  Exams              |       2|           50|    100|
+|  Midterm            |       1|          100|    100|
+|  Final              |       1|          150|    150|
+|  Total              |        |             |  1,200|
 
 
 ### Starter Points
@@ -273,21 +273,13 @@ to enroll in the online section, you will need to demonstrate that
 responsibility in how you approach the material for this course.  
 
 The key difference is that since in-person attendance is not required,
-attendance points (150 total) will not be assessed and your final grade
-will be out of 1,100 points instead.
-
-### Project
-
-There is an end-of-semester programming project due on the Friday of
-"dead week." This project must be completed individually by each student
-and no collaboration is allowed. You may consult with each other at a
-*high level* but may not share or view other student code.
+attendance points will not be assessed.
 
 ### Exams
 
-There will be one midterm exam and a comprehensive final exam. These
-will be open-book, open-note, *required computer* exams. The exams
-consist of live coding exercises for which you will need your own
+There will be two regular exams, one midterm exam, and a comprehensive
+final exam. These will be open-book, open-note, *required computer* exams.
+The exams consist of live coding exercises for which you will need your own
 machine as you will be coding and submitting programs online for
 grading. More details will be announced closer to the exam dates.
 No collaboration is allowed on exams.
@@ -306,7 +298,7 @@ week.
 
 Final letter grades will be awarded based on the following standard
 scale. This scale may be adjusted upwards if the instructor deems it
-necessary based on the final grades only. No scale will be made for
+necessary based on the final grades only. No scale may be made for
 individual assignments or exams.
 
 | Letter Grade | Percent |
@@ -371,7 +363,7 @@ to read, understand, and follow this policy. Violations will be dealt
 with on a case by case basis and may result in a failing assignment or a
 failing grade for the course itself. The most recent version of the
 Academic Integrity Policy can be found at
-<http://cse.unl.edu/academic-integrity>
+<https://computing.unl.edu/academic-integrity-policy>
 
 ## Communication & Getting Help
 
@@ -391,7 +383,7 @@ In addition, there are two anonymous suggestion boxes that you may use
 to voice your concerns about any problems in the course if you do not
 wish to be identified. My personal box is available on the course
 webpage. The department also maintains an anonymous suggestion box
-available at <https://cse.unl.edu/contact-form>.
+available at <https://computing.unl.edu/anonymous-department-feedback-form>.
 
 ### Learning Assistant Program (LAP)
 
@@ -446,7 +438,8 @@ the material and getting help in this course:
     assistants hold regular office hours throughout the week as posted
     on the course website. Attend office hours if you have questions or
     want to review material. The Student Resource Center (SRC,
-    <http://cse.unl.edu/src>) Monday through Friday. Even if your TAs
+    <https://computing.unl.edu/current-undergraduate#SRC>)
+    Monday through Friday. Even if your TAs
     are not scheduled during that time, there are plenty of other TAs
     and students present that may be able to help. And, you may be able
     to help others!

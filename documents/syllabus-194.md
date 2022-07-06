@@ -128,15 +128,15 @@ point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     10|
+|  Starter Points     |        |             |     20|
 |  Readings (zyBooks) |      13|           15|    195|
-|  Labs               |      13|           15|    195|
-|  Hacks              |      14|           25|    350|
-|  Attendace          |      15|           10|    150|
-|  Project            |       1|           75|    100|
-|  Midterm            |       1|           75|    100|
-|  Final              |       1|           75|    150|
-|  Total              |        |             |  1,250|
+|  Labs               |      12|           15|    180|
+|  Hacks              |      13|           25|    325|
+|  Attendace          |      13|           10|    130|
+|  Exams              |       2|           50|    100|
+|  Midterm            |       1|          100|    100|
+|  Final              |       1|          150|    150|
+|  Total              |        |             |  1,200|
 
 ### Starter Points
 
@@ -252,9 +252,9 @@ and no collaboration is allowed. You may consult with each other at a
 
 ### Exams
 
-There will be one midterm exam and a comprehensive final exam. These
-will be open-book, open-note, *required computer* exams. The exams
-consist of live coding exercises for which you will need your own
+There will be two regular exams, one midterm exam, and a comprehensive
+final exam. These will be open-book, open-note, *required computer* exams.
+The exams consist of live coding exercises for which you will need your own
 machine as you will be coding and submitting programs online for
 grading. More details will be announced closer to the exam dates.
 No collaboration is allowed on exams.
