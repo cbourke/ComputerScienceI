@@ -129,12 +129,6 @@ include:
 -  Each weekly hack has both a C and Java version.  You are ***required***
    to submit both of them for credit.
 
--  In addition, though you have a scheduled lab section each week,
-   there is no additional *scheduled* hack session.
-
--  The semester project has both a C and Java version.  You are ***required***
-   to submit both of them for credit.
-
 -  Exams will have a mixture of C and Java exercises.  
 
 ## Skills Objectives
@@ -210,14 +204,13 @@ semester project and two exams with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     20|
+|  Starter Points     |        |             |     45|
 |  Labs               |      12|           15|    180|
-|  Hacks              |      26|           25|    650|
-|  Attendance         |      13|           10|    130|
+|  Hacks              |      25|           25|    625|
 |  Exams              |       2|           50|    100|
 |  Midterm            |       1|          100|    100|
 |  Final              |       1|          150|    150|
-|  Total              |        |             |  1,525|
+|  Total              |        |             |  1,200|
 
 
 ### Starter Points
@@ -268,35 +261,6 @@ but it is due by 23:59:59 the following Monday.
 Further details are provided in the handouts, but you are highly
 encouraged to collaborate with any individual and to receive as much
 help as you desire on the exercises.
-
-### Attendance
-
-To ensure participation your attendance **and** engagement in your
-weekly lab/hack sessions will be graded.  Each session will be worth 10
-points.  To earn the full 10 points you must:
-
-  * Attend **both** the lab and hack session for the entire time.  Do
-    not be more than 5 minutes late.
-  * Put forth a full effort.  You must work on the lab/hack for that
-    week or for other material in the course; you may not work on
-    other material or remain idle.
-  * You may only leave the lab/hack session early if you have already
-    completed both the lab and hack for that module.
-
-**Alternative**
-
-It is understandable that you may not be able to attend every lab/hack
-session or that your background or approach to this material means you
-don't need the structured environment that the lab/hack session provides.
-As an alternative, *if you can prove yourself capable* of completing
-labs and hacks on your own you may choose not to attend the lab/hack session.
-
-If you attend as outlined above, you get the full 10 points.  If you
-choose not to attend, you may still earn the 10 points ***provided***
-that you earn at least 75% of the remaining points for each module
-(Reading/Lab/Hack).  If you do not attend and you earn less than 75% of
-the points for the module, you will get a zero for the attendance portion
-of the module.
 
 ### Exams
 
