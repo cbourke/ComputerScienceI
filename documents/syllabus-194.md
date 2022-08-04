@@ -46,8 +46,8 @@ For all other information, see the course website.
 
 ## Course Delivery
 
-This course has both an in-person section as well as an online section
-but is delivered in a **hyrid** mode.  This means that:
+This is an in-person course, but is delivered in a **hyrid** mode.  
+This means that:
 
 - All lectures are livestreamed via YouTube and recordings are available
 immediately after. A live Q&A through Piazza is available during lecture
@@ -123,8 +123,8 @@ https://www.unomaha.edu/student-life/accessibility/faculty-and-staff.php)
 ## Grading
 
 Assessment (grading) will be based on weekly readings, labs, "hacks",
-attendance as well as a semester project and two exams with the following
-point distributions.
+attendance as well as two exams, a midterm, and a comprehensive
+final with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
@@ -191,7 +191,7 @@ For those in the online section or those attending remotely, you may
 work alone or we may partner you with someone in a zoom breakout room.
 
 Each lab is assessed based on completion. In general you will need to
-submit code and an electronic writeup of your worksheet (plain text or
+submit code and (possibly) an electronic writeup of your worksheet (plain text or
 markdown is preferred) through webhandin which can also be verified
 using the webgrader. You will have until midnight on the day of the lab
 (Tuesdays) to submit your solutions. Points will be awarded based on the
@@ -242,13 +242,6 @@ that you earn at least 75% of the remaining points for each module
 (Reading/Lab/Hack).  If you do not attend and you earn less than 75% of
 the points for the module, you will get a zero for the attendance portion
 of the module.
-
-### Project
-
-There is an end-of-semester programming project due on the Friday of
-"dead week." This project must be completed individually by each student
-and no collaboration is allowed. You may consult with each other at a
-*high level* but may not share or view other student code.
 
 ### Exams
 
@@ -392,8 +385,8 @@ the material and getting help in this course:
 -   Don't procrastinate. The biggest reason students fail this course is
     because they do not give themselves enough opportunities to learn
     the material. Don't wait to the last minute to start your
-    assignments. Many people wait to the last minute and flood the TAs
-    and SRC, making it difficult to get help as the due date approaches.
+    assignments. Many people wait to the last minute and flood the TAs,
+    making it difficult to get help as the due date approaches.
     Don't underestimate how much time your assignment(s) will take and
     don't wait to the week before hand to get started. Ideally, you
     should be working on the problems as we are covering them.

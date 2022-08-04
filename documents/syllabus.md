@@ -144,8 +144,8 @@ with others, develop grit and navigate transitions.
 ## Grading
 
 Assessment (grading) will be based on weekly readings, labs, "hacks",
-attendance as well as a semester project and two exams with the following
-point distributions.
+attendance as well as two exams, a midterm, and a comprehensive
+final with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|

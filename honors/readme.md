@@ -87,6 +87,6 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ## License
 
-All material in this repository as well as the linked labs and videos is
+All material in this repository as well as the linked labs and videos are
 released under a Creative Commons Attribution-ShareAlike 4.0 International
 license.
