@@ -1,37 +1,74 @@
+# Frequently Asked Questions
+**[School of Computing](https://computing.unl.edu/)**  
+**[College of Engineering](https://engineering.unl.edu/)**  
+**[University of Nebraska-Lincoln](https://unl.edu)**  
+**[University of Nebraska-Omaha](https://http://unomaha.edu/)**  
 
-
-
+This is a collection of *frequently asked questions* (FAQ) for
+Computer Science I offered through the School of Computing and
+the College of Engineering at the University of Nebraska--Lincoln
+and Omaha.
 
 # Account Management
 
-Where do I go for help with my...
+## Where do I go for help with my [blank] account?
 
-* My.UNL
-* Canvas Account (UNL's Learning Managment System)
+* Canvas Account (UNL's Learning Management System)
   * See https://engineering.unl.edu/downloads/covid-19/UNL-Canvas.pdf
+* CSE Account (handin, webgrader):
+  * https://cse.unl.edu/account
+* Codepost: https://help.codepost.io/en/
 
-* CSE Account (handin, webgrader) https://cse.unl.edu/account
-* zyBooks support@zybooks.com  
-* Codepost https://help.codepost.io/en/
+# zyBooks
 
-## zyBooks
+zyBooks is an online, interactive textbook used for this course.
 
-zyBooks is an online, interactive textbook used for this course.  To get
-access, you should:
+## How do I get access?
+
+To get access, you should:
 
 1. Visit your campus book store:
  * UNL: https://www.bkstr.com/Nebraska-lincolnstore/home
- * UNO: https://www.unobookstore.com/
-and purchase an access code.  
+ * UNO: (see below)
 2. Do ***NOT*** go directly to the zyBooks website.  Instead,
 ***be sure to go through Canvas***.  Click on **Assignments** and
 select the relevant **Module Reading**
 
-Completing the readings through canvas will
-automatically update your grade.  You do not need to complete a reading
-all in one shot.  Your progress is saved and you can come back to a
-reading as many times as you wish.  You just need to be sure to complete
-the reading by the due date.  
+## I'm at UNO, how do I get zyBooks?
+
+For those taking the UNO offering of this course, zyBooks should be included
+through UNO's First Day Access Program which allows you to access the materials
+directly through Canvas on the first day of class.  ***You do not need to purchase
+any materials prior to starting class.***  The cost of the electronic textbook
+will be billed to your student account approximately 3 weeks after the start
+of classes. You will have the option to opt out of the First Day Access
+Program and purchase the electronic text elsewhere, but doing so will likely
+result in a greater cost.
+
+The link below has term specific opt out dates listed, these will also be
+listed in their email
+https://www.unobookstore.com/first_day_access_faq.asp
+
+You should receive an email through your UNO account with a code you
+can use to get access.  To use the code, click on any reading assignment
+in Canvas and when prompted, enter your code.
+
+## How long do readings take?
+
+You can expect each weekly reading to take an *average* of 1 hour.  Early
+readings are a bit longer (90 minutes) to get you up-to-speed with the
+material while later readings are shorter (30 minutes); keep in mind this
+is an *average* and your experience may vary.  Though the lengths vary,
+each reading is worth the same number of points.
+
+## I got a zero, what do I do?
+
+Completing the readings through canvas will automatically update your grade.  
+You do not need to complete a reading all in one sitting.  Your progress is
+saved and you can come back to a reading as many times as you wish.  You
+just need to be sure to complete the reading by the due date.  
+
+## Where do I get more info about zyBooks?
 
 For more information involving zyBooks:
 
