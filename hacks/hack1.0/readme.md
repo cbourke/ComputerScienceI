@@ -1,4 +1,4 @@
-# Hack 1.0
+# Hack 1.0 - Getting Started
 **[School of Computing](https://computing.unl.edu/)**  
 **[College of Engineering](https://engineering.unl.edu/)**  
 **[University of Nebraska-Lincoln](https://unl.edu)**  
@@ -30,14 +30,13 @@ If you choose to form a Hack Pair, you *must*:
 You are graded based on style, documentation, design and correctness.
 For detail, see the general course rubric.
 
-  --------------- -------------
-  Category        Point Value
-  Style           2
-  Documentation   2
-  Design          5
-  Correctness     16
-  **Total**       **25**
-  --------------- -------------
+| Category      | Points |
+|---------------|--------|
+| Style         | 2      |
+| Documentation | 2      |
+| Design        | 5      |
+| Correctness   | 16     |
+| Total         | 25     |
 
 For correctness:
 
@@ -143,16 +142,16 @@ will print your name.
         before you run the initialization, make sure you are in
         `/workspaces/CS1/hacks/hello`
 
+    ![image](./images/cl-pwd.png)
+
     In the console, change directories to this newly created
     `hello` directory and execute the following command:
 
     `git init`
 
-    It will look something like the following.
+    It might look something like the following.
 
-    ::: center
     ![image](./images/cl-gitinit.png)
-    :::
 
 3.  This creates a repository in your IDE, but it does *not*
     create a repository on GitHub. We need to do this separately. Go to
@@ -160,16 +159,12 @@ will print your name.
     replaced with your GitHub login) and in the upper right, select
     `New repository`.
 
-    ::: center
     ![image](./images/cl-githubNewRepo.png)
-    :::
 
 4.  Name your repo `hello` and *make sure it is public* (this is
     the default).
 
-    ::: center
     ![image](./images/cl-githubNewRepoName.png)
-    :::
 
 5.  Go back to your IDE
 
@@ -193,9 +188,7 @@ will print your name.
     This commits your changes to the *local* repository (the repository
     on the IDE). It should look something like the following.
 
-    ::: center
     ![image](./images/cl-gitcommit.png)
-    :::
 
 ## Pushing Changes
 
@@ -232,21 +225,26 @@ to your *remote* GitHub repository (stored on GitHub's servers).
 
     `git push -u origin main`
 
-10. Your repository should now be on GitHub. Point your web browser to
+    It should look something like the following
+
+   ![image](./images/cl-gitpush.png)
+
+5. Your repository should now be on GitHub. Point your web browser to
     <https://github.com/LOGIN/hello> where `LOGIN` is replaced
     with your GitHub user name. You can browse your repository, view its
     history, etc.
 
 NOTE: If you mistyped something above, you can fix it as follows.
 
-    -   You can use `git remote -v` to list the remote URL,
-        verify that it is wrong
+  -   You can use `git remote -v` to list the remote URL
+      and verify that it is wrong
 
-    -   Fix it by running
+  -   Fix it by running
 
         `git remote set-url origin https://LOGIN:TOKEN@github.com/LOGIN/hello.git`
 
         with the correct values for `LOGIN` and `TOKEN`
+
 
 ## Git Ignore
 
@@ -278,9 +276,7 @@ ignore.
 
     It should look something like the following.
 
-    ::: center
     ![image](./images/cl-gitignore.png)
-    :::
 
 There are many standard `.gitignore` files for various types of
 projects that you may find useful: <https://github.com/github/gitignore>
@@ -309,9 +305,7 @@ them to GitHub.
     (not yet added to the index to be committed). It should look
     something like the following.
 
-    ::: center
     ![image](./images/cl-gitstatus.png)
-    :::
 
     Note that the `a.out` file is not listed (git is ignoring it
     as we directed it to!).
@@ -324,9 +318,7 @@ them to GitHub.
     It should look something like the following. Deletions (or edits)
     are displayed in red and additions in green.
 
-    ::: center
     ![image](./images/cl-gitdiff.png)
-    :::
 
 4.  We can now commit and push our changes in the same way as our
     initial commit. Execute the following series of commands.
@@ -397,16 +389,12 @@ steps should be done on *their* computer.
     can click on the `hello.c` and if you both did everything
     correctly, you'll see multiple commits by multiple people:
 
-    ::: center
     ![image](./images/completedRepo02.png)
-    :::
 
     If you click on `History` you can see the changes for each
     commit:
 
-    ::: center
     ![image](./images/completedRepo03.png)
-    :::
 
 Now, go back to *your* IDE. Remember, your partner's changes were
 *pushed* to your *remote* repository hosted on GitHub. If you look at
