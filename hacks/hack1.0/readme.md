@@ -15,7 +15,7 @@ other students or groups. You may not share code directly.
 
 If you choose to form a Hack Pair, you *must*:
 
-1.  Both join a hack pair on Canvas (go to People then Hack Pairs)
+1.  Both join a hack pair on Canvas (go to People then Groups)
 
 2.  You must both work on the hack equally; it must be an equal effort
     by both partners. Do not undermine your partner's learning
