@@ -374,11 +374,22 @@ it will print your name.
   \item Now we can push your commit(s) to the remote repository
   with the following command:
   
-  \mintinline{text}{git push -u origin master}
+  \mintinline{text}{git push -u origin main}
   
   It will likely prompt you for your GitHub username and password.
 
-  \textbf{Update}: as of August 2021, GitHub has changed its security
+  \textbf{Updates}: 
+  
+  Note that GitHub changed the default branch name to \mintinline{text}{main}
+  in late 2020.  Prior to that, the default was \mintinline{text}{master}.  
+  The name is arbitrary, but you \emph{may} see instructions using 
+  \mintinline{text}{master} instead, but by default you should use 
+  \mintinline{text}{main} with GitHub.  If you use another git service, 
+  the default may still be \mintinline{text}{master} and of course you can
+  change the default branch name, but that would require extra steps
+  that we won't cover here.
+  
+  As of August 2021, GitHub has changed its security
   requirements.  Instead of providing a password, it now requires you
   to generate a personal access token.  Instructions for how to do this
   are available here.  Be sure to follow these instructions carefully,
@@ -434,7 +445,7 @@ that git will ignore.
   \begin{minted}{text}
   git add .gitignore
   git commit -m 'added gitignore file'
-  git push -u origin master
+  git push -u origin main
   \end{minted}
   
   It should look something like the following.
@@ -500,7 +511,7 @@ to GitHub.
   \begin{minted}{text}
   git add hello.c
   git commit -m 'added my major to the output'
-  git push -u origin master  
+  git push -u origin main  
   \end{minted}
 
 \end{enumerate}
