@@ -357,7 +357,10 @@ push/pull requests.
 2.  In the left menu, click `Manage access`
 
 3.  Click `Invite a collaborator` and type in your partner's
-    GitHub user name and click `Add`
+    GitHub user name and click `Add`.  Your partner will need
+    to accept the invite (they can wait for an email notification
+    or they can go to your repo's GitHub page and see the invite
+    notice).
 
 ## What your collaborator needs to do
 
@@ -372,20 +375,30 @@ steps should be done on *their* computer.
 3.  Your partner should execute the following command inside of the new
     directory:
 
-    `git clone https://github.com/LOGIN/hello`
+    `git clone https://github.com/YOURLOGIN/hello`
 
-    Where again `LOGIN` is replaced with your GitHub login. This
+    Where again `YOURLOGIN` is replaced with your GitHub login. This
     clones the *remote* repository and now you have a *local* version of
     it!
 
 4.  Your partner should add 2 lines of code to print their name and
     their major.
 
-5.  Your partner should follow the same procedure to commit and push
+5.  Your partner will need to set the remote repository with their token.
+    Run the following command:
+
+    `git remote set-url origin https://PARTNERLOGIN:PARTNERTOKEN@github.com/YOURLOGIN/hello.git`
+
+    Where `PARTNERLOGIN` and `PARTNERTOKEN` are your partner's GitHub
+    login and Personal Access Token and `YOURLOGIN` is your login.  Observe
+    what this is doing: your partner is using their credentials (login and
+    token) to access *your* repository.
+
+6.  Your partner should follow the same procedure to commit and push
     their changes to *your remote* repository using the same procedure
     as they did with theirs.
 
-6.  Verify their changes by refreshing your repository on GitHub. You
+7.  Verify their changes by refreshing your repository on GitHub. You
     can click on the `hello.c` and if you both did everything
     correctly, you'll see multiple commits by multiple people:
 
