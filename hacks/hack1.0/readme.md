@@ -227,7 +227,7 @@ to your *remote* GitHub repository (stored on GitHub's servers).
 
     It should look something like the following
 
-   ![image](./images/cl-gitpush.png)
+    ![image](./images/cl-gitpush.png)
 
 5. Your repository should now be on GitHub. Point your web browser to
     <https://github.com/LOGIN/hello> where `LOGIN` is replaced
