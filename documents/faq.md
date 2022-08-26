@@ -17,7 +17,6 @@ and Omaha.
   * See https://engineering.unl.edu/downloads/covid-19/UNL-Canvas.pdf
 * CSE Account (handin, webgrader):
   * https://cse.unl.edu/account
-* Codepost: https://help.codepost.io/en/
 
 # zyBooks
 
@@ -79,3 +78,23 @@ For more information involving zyBooks:
 If you accessed zyBooks directly through the website and not through
 canvas, you may need to *merge* the multiple accounts you created.
 To do so see https://zybooks.zendesk.com/hc/en-us/articles/360007536553-I-already-paid-so-why-am-I-being-asked-to-subscribe-again-
+
+# Codepost
+
+## What is codepost?
+
+It is a website that we push your code to in order to grade it.  Correctnesss
+is still graded using the webgrader, but Learning Assistants and graders will
+embed feedback and detail any point deductions line-by-line in your code.
+You can access codepost at https://codepost.io
+
+## How do I get access?
+
+Your instructor will send you an invite email.  Be sure to check your spam
+folder and respond ASAP; the links expire after a few days.
+
+## I didn't get the invite or it expired, what do I do?
+
+Try going to https://codepost.io/forgot-password and resetting your password
+(even if you never initially set one).  Be sure to use your huskers email
+or whatever primary email is associated with your canvas profile.
