@@ -100,7 +100,7 @@ functions with the given prototypes and specified functionality.
     *frame*.
 
     Implement a function to compute the dilated time given the normal
-    time $t$ (units may vary) and the *percentage* ($\frac{v}{c}$)
+    time $t$ (units may vary) and the *percentage* ($v/c$)
     of the speed of light.
 
     ``` c
