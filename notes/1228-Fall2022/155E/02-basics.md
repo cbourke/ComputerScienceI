@@ -85,11 +85,180 @@ to kilometers...
 ### Operators
 
 * Algebraic Operators:
-    * Addition: `+`
-    * Subtraction: `-`
-    * Multiplication: `*`
-    * Division: `/`
-    * $\times$, $\div$
+  * Addition: `+`
+  * Subtraction: `-`
+  * Multiplication: `*`
+  * Division: `/`
+* Assignment Operator
+  * It is a single equals sign: `=`
+  * It is *NOT* the algebraic left hand side is equal to the right hand side
+  * It takes the value, expression or other variable from the *right hand side* and places it into the variable on the *left hand side*
+* PEMDAS = Parentheses, Exponents, Multiplication, Division, Addition, Subtraction
+  * `a + b * c` is not the same thing as `(a + b) * c`
+
+#### Truncation
+
+* WHen you divide an integer by an integer, the result is always an integer
+* The fractional part (floating point part) is truncated: it is cut off and thrown away
+* To avoid this, you can use *type casting*:
+
+```c
+a = 10;
+b = 20;
+r =  a / (double) b;
+printf("r = %f\n", r);
+```
+
+#### Integer Division
+
+* You can use the integer division operator: `%`
+  * Ex: `10 % 3` the result is 1 (remainder!)
+  * `10 % 2` results in 0
+  * `11 % 2` results in 1
+  * `11 % 3` results in 2
+  * `11 % 11` results in 0
+  * `20 % 11` results in 9
+
+#### More math stuff
+
+* The math library `math.h` has several constants:
+ `M_PI`, `M_E`
+* `sin(), cos(), tan(), sqrt(), pow()`
+* `log()` (natural, base-$e$ log), `exp()`
+* Remember that you may need to compile with the `-lm` flag at the end in order to *link* in the *math* library
+* What else is there?
+* RTM = Read The Manual!
+
+#### Formatting Output
+
+* Recall that you can use `printf` to print to the standard output
+* Placeholders: `%d, %f, %c`
+* Modifiers: you can specify the *precision* (number of significant figures) to print
+* By default: for `double` values, 6 digits of precision are printed
+* You can modify it to specify the number of digits to print: `%.20f`
+* You can modify to print a *minimum* number of columns: `%10.2f`
+
+```c
+
+    double pi = 3.14159;
+    printf("pi = %f\n", pi);
+    printf("pi = %.10f\n", pi);
+    printf("pi = %.15f\n", pi);
+    printf("pi = %.20f\n", pi);
+    printf("pi = %.3f\n", pi);
+    printf("pi = %f\n", pi);
+
+    double balance = 123.545;
+    double newBalance = round(balance * 100.0) / 100.0;
+    printf("balance = $%.2f\n", balance);
+    printf("newBalance = $%.2f\n", newBalance);
+
+    double anotherBalance = 1793432.12;
+    printf("$%.2f\n", balance);
+    printf("$%.2f\n", anotherBalance);
+    printf("\n\n\n");
+    printf("$%10.2f\n", balance);
+    printf("$%10.2f\n", anotherBalance);
+```
+
+```c
+
+    int a = 10, b = 20, c = 0;
+
+    printf("a, b, c = %d, %d, %d\n", a, b, c);
+
+    //reset a value:
+    c = 30;
+    a = c;
+    c = 42;
+
+    printf("a, b, c = %d, %d, %d\n", a, b, c);
+
+    double r = (-b + sqrt(b*b - 4*a*c))  / (2 * a);
+
+    printf("r = %f\n", r);
+
+    a = 10;
+    b = 0;
+
+    //division by zero is illegal/undefined
+    // c = a / b;
+
+    // printf("c = %d\n", c);
+
+    a = 10;
+    b = 20;
+    r =  a / (double) b;
+    printf("r = %f\n", r);
+
+```
+
+## Non-interactive Input
+
+* Some programs expect a human user:
+* Using `scanf` we *prompted* the user for input
+* Most programs are not "interactive"
+* Programs can be written to take input *non-interactively* through the use of Command Line Arguments (CLAs)
+* CLAs are provided to a program when you invoke that program from the command line: `./a.out a b c 10 20 30`
+  * The example above has 7 command line arguments
+  * The number of command line arguments are available in `argc` (argument count)
+  * The first argument is always the executable file name: `argv[0]`
+  * `argv[1]` is the first user provided argument
+  * `argv[2]` is the second *user* provided argument
+  * all arguments are strings
+  * If you need to convert from a string (alphanumeric) to an integer or double you need to use a function
+  * `atoi`: converts to an integer
+  * `atof`: converts to a float (`double`)
+
+## Exercise
+
+Write a program to compute the roots of
+a quadratic polynomial:
+  $$ax^2 + bx + c = 0$$
+
+```c
+/**
+ * Chris Bourke
+ * 2022/08/31
+ *
+ * This program reads in three coefficients to a quadratic polynomial
+ * and outputs the roots of it
+ *
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    double a, b, c;
+
+    if(argc != 4) {
+        printf("ERROR: you must provide 3 numbers...\n");
+        exit(1);
+    }
+
+    // printf("Please enter a: ");
+    // scanf("%lf", &a);
+
+    // printf("Please enter b: ");
+    // scanf("%lf", &b);
+
+    // printf("Please enter c: ");
+    // scanf("%lf", &c);
+
+    a = atof(argv[1]);
+    b = atof(argv[2]);
+    c = atof(argv[3]);
+
+    double root1 = (-b + sqrt( b*b - 4*a*c)) / (2*a);
+    double root2 = (-b - sqrt( b*b - 4*a*c)) / (2*a);
+
+    printf("the roots of %fx^2 + %fx + %f are %f and %f \n", a, b, c, root1, root2);
+
+    return 0;
+}
+```
 
 ```text
 

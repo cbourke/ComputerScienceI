@@ -214,7 +214,6 @@ double balance = 42.509;
 
 # Non-interactive Input
 
-
 * Interactive input (using `scanf`) makes the program pause and wait for the user to enter in their input
 * Most programs especially command line programs are *not* interactive
 * From the command line, you can provide input *non-interactively* by using *command line arguments*

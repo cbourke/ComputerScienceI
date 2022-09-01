@@ -73,7 +73,7 @@ Write a program to convert kilograms to lbs
   * generally you should use the `lowerCamelCasing` convention
   * You cannot use whitespace in variable names
   * You can use digits `0-9` but shouldn't and cannot *begin* a variable name with a digit
-  * YOu can use underscores if you like, but shouldn't
+  * You can use underscores if you like, but shouldn't
   * If a single word, use all lower case
   * If multiple words: first one is all lower case and the first letter of each subsequent word is capitalized
   * For `#define` macros or constants use `UPPER_UNDERSCORE_CASING`

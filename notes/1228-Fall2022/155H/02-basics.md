@@ -73,6 +73,142 @@ An overview of basics of C and Java including variables, input and output.
 * Variables *must* be *declared* before they can be used
 * Variables *must* be *in scope* to be visible.  "scope" is the section of code in which a variable exists (before and after it is not visible)
 
+### Java Items
+
+* Java organizes code/classes in *packages*
+* It is a tree-organized structure (hierarchy): packages and subpackages
+* Each is separated by a period and each corresponds to actual directories (folders) on the file system
+* This allows you to organize your code into different directories
+* All source files *must* have the same file root name as the class name:
+`MilesToKilometers` *must* be in a source file named `MilesToKilometers.java` (which compiles to a class file named `MilesToKilometers.class`)
+* To bring in external classes you use the `import` keyword and specify the package and class name to bring in
+* Example: `import java.lang.Math` (but this is unnecessary)
+* `double x = Math.sqrt(2.0);` (dot operator)
+* The main entry point in Java is the `main` method (any class can have a `main` method and therefore any class can be runnable)
+* Comments are exactly the same
+* Variables are extremely similar
+
+## Operators
+
+* The *assignment* operator is the single equals sign: `=`
+
+```c
+int x;
+
+//what value is stored in x?
+//C: undefined
+//Java: undefined, but you are prevented from using it!
+
+//set the value to 10...
+x = 15;
+//reset its value:
+x = 20;
+
+//gotcha:
+int y = 30;
+x = y;
+y = 40;
+//x now has value 30, y has value 40
+
+//you can declare and set multiple variables at the same time
+int a = 10, b = 20, c = 30;
+
+double r = (b*b - sqrt(4*a*c)) / (2*a)
+
+```
+
+* Code follows PEMDAS rules
+* Arithmetic operators: `+, -, *, /`
+* `a + b * c` is not the same as `(a + b) * c`
+* Integer division: `%`: it provides the *remainder* after dividing by an intger
+  * `10 % 3` results in a remainder of 1
+  * `11 % 3` results in 2
+  * `11 % 2` results in 1
+  * `10 % 2` results in 0
+
+### Gotcha: mixing types
+
+* Dividing two integers results in an integer: resulting in *truncation*: the floating point (fractional) part is cut off and thrown away
+* To solve this, you can use *type casting*: treat at least one of the variables as a `(double)` for the purposes of evaluating the expression
+
+```c
+int x = 10;
+int y = 20;
+double z = x / (double) y;
+printf("%f\n", z);
+```
+
+### Variable naming
+
+* Both languages have identifier naming *rules*: may consist of letters (upper/lower case), numbers, underscores, etc.  But may NOT begin with a number
+* In general: you should use clear and consistent naming conventions and names that are *descriptive*
+* Good convention: `lowerCamelCasing`: ex: `numberOfStudents`
+* Bad variable names: `myVariable`, `someVariable`, `myVariable002`
+* It depends: `a, b, c, x, y`
+* You should generally avoid abbreviations, acyronyms, etc. unless it is *absolutely clear*
+* Avoid pluralizations unless it is modeling a collection (array) of things
+
+## Basic I/O
+
+* Both languages support standard input and output:
+  * Standard input = keyboard
+  * Standard output = terminal
+* Input in C: `scanf` is used for input
+* In Java you use a `Scanner` to read the standard input `System.in`
+* In both languages you can use `printf`-style printing/formatting
+* Details:
+  * Placeholders: `%d, %f, %c` for `int, double, char` respectively
+  * YOu can add *modifiers*: you can specify a certain number of decimal places of accuracy
+  * `%20.10f` : print a minimum of 20 columns with 10 decimals of precision
+
+```java
+double pi = 3.14159;
+System.out.printf("%.3f\n", pi);
+System.out.printf("%.10f\n", pi);
+double balance = 123.545;
+double y = Math.round(balance * 100) / 100;
+double percent = 0.035;
+System.out.printf("%f %%\n", percent * 100);
+System.out.printf("$%.2f\n", y);
+```
+
+# Non-interactive Input
+
+* Interactive input (using `scanf`) makes the program pause and wait for the user to enter in their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments*
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * This example has *4* command line arguments
+  * The first one is always the executable file name, `./a.out`
+* Inside of your program, yoou have access to these *arguments* using `main`'s `argc` and `argv`
+  * `argc` is the *count* of the number of arguments provided
+  * `argv` is the "vector" or simply just a list or array of arguments
+  * `argv[0]` is the first argument which is *always* the executable file name
+  * `argv[1]` is the first user-provided argument
+  * `argv[2]` is the second
+  * `argv[3]` is the third
+  * etc.
+* CLAs are all *strings* not numbers
+* To convert arguments into numbers, you can use:
+  * `atoi()` converts the argument into an integer
+  * `atof()` converts the argument into a `double`
+
+```c
+//convert the first user argument to an integer:
+int x = atoi(argv[1]);
+//convert hte second user argument to a double:
+double y = atof(argv[2]);
+
+```
+
+### Java
+
+* In Java, the arguments are provided in the array `args`
+* There is no `argc` instead use `args.length`
+* The first argument is the actual first user argument, not the class name!
+* To convert use:
+  * `Double.parseDouble(...)`
+  * `Integer.parseInt(...)`
 
 ```text
 
