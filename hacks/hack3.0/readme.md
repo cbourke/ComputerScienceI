@@ -1,4 +1,4 @@
-# Hack 2.0 - Basics
+# Hack 3.0 - Conditionals
 **[School of Computing](https://computing.unl.edu/)**  
 **[College of Engineering](https://engineering.unl.edu/)**  
 **[University of Nebraska-Lincoln](https://unl.edu)**  
@@ -47,44 +47,47 @@ For correctness:
 
 # Problem Statement
 
-Consider two locations, an origin and a destination, on the globe
-identified by their latitude and longitude. The distance between these
-two locations can be computed using the Spherical Law of Cosines. In
-particular, the distance $d$ is
+A cell phone broadband provider offers monthly data plans to its
+customers. Each data plan is for 30 days and each plan gives customers a
+certain number of Gigabytes (GB) which must be used each month or they
+are lost (no "rollover"). The provider wants to help customers
+understand if they are using their monthly data too quickly or if they
+can afford to use more.
 
-$$d = \arccos{(\sin(\varphi_1) \sin(\varphi_2) + \cos(\varphi_1) \cos(\varphi_2) \cos(\Delta) )} \cdot R$$
+In this exercise, you will write an application for the company to help
+customers track their mobile data usage. Write a program that reads the
+following pieces of data as *command line arguments*.
 
-where
+-   Number of GB in the plan per 30 day period
 
--   $\varphi_1$ is the latitude of location $A$, $\varphi_2$ is the
-    latitude of location $B$
+-   The current day in the 30 day period (in the range 1, first day, 30
+    for the last day)
 
--   $\Delta$ is the difference between location $B$'s longitude and
-    location $A$'s longitude
+-   The total number of GB used so far
 
--   $R$ is the (average) radius of the earth, 6,371 kilometers
+The program should then compute whether the customer is over, under, or
+right on the *average daily usage* of their plan. It should also inform
+them of how many GB are left and how many, on average, they can use per
+day for the rest of the 30 day period. Of course, if they've run out of
+data, it should inform them of that too.
 
-Write a program that *interactively prompts* the user to enter the latitude and
-longitude of two locations and then computes the distance between them
-using the above formula. Note that latitude inputs will be in degrees
-and in the range $[-90, 90]$ and longitude will be in degrees in the
-range $[-180, 180]$. Negative values correspond to the western and
-southern hemispheres.
-
-Note that the formula above assumes that latitude and longitude are
-measured in radians $r$, $-\pi \leq r \leq \pi$. You can convert from
-degrees $deg$ to radians $r$ using the formula
-$$r = \frac{deg}{180} \cdot \pi$$
-
-Your output should look something like the following.
+For example, if the user enters $15, 10, 13$ for each piece of data
+respectively, your program should print out something similar to the
+following.
 
 ``` text
-Location Distance
-========================
-Origin:      (41.948300, -87.655600)
-Destination: (40.820600, -96.705600)
-Air distance is 764.990931 kms
+10 days used, 20 days remaining
+Average daily use: 1.3 GB/day
+
+You are EXCEEDING your average daily use (0.50 GB/day).
+Continuing this high usage, you'll exceed your data plan by
+24 GB.
+
+To stay below your data plan, use no more than 0.1 GB/day.
 ```
+
+If the user is under their average daily use, a different message should
+be presented.
 
 # Instructions
 
@@ -93,18 +96,5 @@ Air distance is 764.990931 kms
     are known to be correct using means other than your program
     (a calculator, online tool, etc.).
 
--   Name your program `airDistance.c`, and turn it in via
-    webhandin, making sure that it runs and executes correctly in the grader.
-
--   Remember to RTM (Read The Manual) on the math library to see which
-    function(s) you may find useful and how to use them.
-
--   Depending on your compiler/system configuration you *may* need to
-    use the `-lm` flag to link in the math library when
-    compiling. For example:
-
-    `gcc airDistance.c -lm `
-
-    or in some other systems:
-
-    `gcc -lm airDistance.c`
+-   Name your program `dataPlan.c`, and turn it in via webhandin.
+    Make sure that it runs and executes correctly in the grader.
