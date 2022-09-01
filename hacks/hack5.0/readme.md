@@ -100,7 +100,7 @@ functions with the given prototypes and specified functionality.
     *frame*.
 
     Implement a function to compute the dilated time given the normal
-    time $t$ (units may vary) and the *percentage* (i.e. $\frac{v}{c}$)
+    time $t$ (units may vary) and the *percentage* ($\frac{v}{c}$)
     of the speed of light.
 
     ``` c
@@ -121,4 +121,4 @@ functions with the given prototypes and specified functionality.
     `main` function.
 
 -   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader. 
+    and executes correctly in the grader.

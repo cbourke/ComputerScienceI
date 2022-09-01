@@ -64,9 +64,10 @@ functions to convert between these models.
 
 1.  Write a function to convert from an RGB color model to CMYK. To
     convert to CMYK, you first need to scale each integer value to the
-    range $[0, 1]$ by simply computing
+    range $[0, 1]$ by computing
     $$r' = \frac{r}{255}, \quad g' = \frac{g}{255}, \quad b' = \frac{b}{255}$$
     and then using the following formulas:
+
     $$\begin{aligned}
     k & = 1-\max\{r', g', b'\} \\
     c & = \frac{(1-r'-k)}{(1-k)} \\
