@@ -100,8 +100,9 @@ functions with the given prototypes and specified functionality.
     *frame*.
 
     Implement a function to compute the dilated time given the normal
-    time $t$ (units may vary) and the *percentage* ($v/c$)
-    of the speed of light.
+    time $t$ (units may vary) and the *percentage* of the speed of light:
+
+    $$\frac{v}{c}$$
 
     ``` c
     double lorentzTimeDilation(double t, double percentC);
