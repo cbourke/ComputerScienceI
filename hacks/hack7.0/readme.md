@@ -1,4 +1,4 @@
-# Hack 6.0 - Functions, Error Handling & Unit Testing
+# Hack 7.0 - Arrays
 **[School of Computing](https://computing.unl.edu/)**  
 **[College of Engineering](https://engineering.unl.edu/)**  
 **[University of Nebraska-Lincoln](https://unl.edu)**  
@@ -180,7 +180,7 @@ the resulting image should look like.  The original image is:
     functions that may help you.
 
 -   Turn in the following files to the webhandin, making sure that it
-    runs and executes correctly in the grader. 
+    runs and executes correctly in the grader.
 
     -   `array_utils.h`
 
