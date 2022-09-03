@@ -1,4 +1,4 @@
-# Hack 1.0 - Getting Started
+# Hack 1.0 - Getting Started With Git
 **[School of Computing](https://computing.unl.edu/)**  
 **[College of Engineering](https://engineering.unl.edu/)**  
 **[University of Nebraska-Lincoln](https://unl.edu)**  
@@ -433,8 +433,8 @@ academic integrity policy.
 ## Finishing Up
 
 1.  Put the URL for *your* GitHub repository into a plain text file
-    named `readme.md`. Turn this file in using webhandin.  If you teamed
-    up with a partner, be sure *both* your GitHub URLs are in the
+    named `readme.md`. Turn this file in using webhandin.  If you paired
+    up with a partner (in Canvas), be sure *both* your GitHub URLs are in the
     `readme.md` file.  The contents of your file should look
     *something* like this:
 
@@ -446,16 +446,6 @@ academic integrity policy.
     display the contents of your file.
 
 3.  **Be sure your repo is public**
-
-# Additional Instructions
-
--   You are encouraged to collaborate with any number of students
-    before, during, and after your scheduled hack session.
-
--   Each student is responsible for *their* repository, so if/when you
-    team up with a partner, you'll need to go through this Hack
-    twice: once as the primary repository owner and once as a
-    collaborator.
 
 # Additional Resources
 
