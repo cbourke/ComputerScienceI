@@ -1,12 +1,16 @@
+---
+date:  
+subtitle: |
+  Computer Science I -- Java\
+  Data Processing Part I\
+  Department of Computer Science & Engineering\
+  University of Nebraska--Lincoln
+title: Hack 14.0
+---
 
-# Hack 14.0
-**Computer Science I**
-> Department of Computer Science & Engineering  
-> University of Nebraska–Lincoln  
-> Java Version
 ------------------------------------------------------------------------
 
-## Problem Statement
+# Problem Statement {#problem-statement .unnumbered}
 
 Data processing is fundamental to Computer Science and many other
 disciplines. In this hack you will start a mini-project in which you
@@ -14,8 +18,7 @@ will process a large amount of transaction data from a financial
 institution. The data represents transactions that transfer funds from
 or to an account.[^1]
 
-The Data {#the-data .unnumbered}
---------
+## The Data {#the-data .unnumbered}
 
 Transaction data is represented as a flat file in CSV format. The first
 line indicates how many records are contained in the file. Each
@@ -25,7 +28,9 @@ the following pieces of data:
 -   A universally unique identifier (UUID), an alphanumeric designation
     that uniquely identifies the transaction
 
--   The type of transaction, which may be one of the following: , , , ,
+-   The type of transaction, which may be one of the following:
+    `PAYMENT`{.text}, `TRANSFER`{.text}, `WITHDRAWAL`{.text},
+    `DEBIT`{.text}, `DEPOSIT`{.text}
 
 -   The amount of the transaction
 
@@ -38,9 +43,11 @@ the following pieces of data:
 -   The transfer account number or merchant designation identifying
     where the funds are sent
 
-A small example is provided in Figure \[figure:dataFile\].
+A small example is provided in Figure
+[\[figure:dataFile\]](#figure:dataFile){reference-type="ref"
+reference="figure:dataFile"}.
 
-``` {.text fontsize="\scriptsize"}
+``` {.text fontsize="\\scriptsize"}
 10
 BC377639-37CC-4824-81AF-60177418B46D,PAYMENT,14535.18,C1906093041,83310.00,68774.82,M95867054
 A35686EA-BFE7-455E-A027-54D73968E6D3,PAYMENT,11367.98,C371579810,77199.32,65831.34,M1932650331
@@ -54,28 +61,31 @@ B7ECC2F3-E455-4EF8-B4DF-55150A9F3B1F,PAYMENT,7676.11,C2018933315,542758.39,53508
 76947698-1302-47D9-9CAF-66F21A2A6A52,PAYMENT,3240.99,C208944046,4778.00,1537.01,M962275185
 ```
 
-Modeling & Loading the Data {#modeling-loading-the-data .unnumbered}
----------------------------
+## Modeling & Loading the Data {#modeling-loading-the-data .unnumbered}
 
-To start, you’ll need to write a C program that reads and processes a
-data file containing financial transactions in the format described
-above. You should design and implement a good model for this data as
-you’ll use this code as the basis for producing several reports.
+To start, you'll need to write a Java class that models a transaction.
+Then you'll need to write methods that read and process a data file
+containing financial transactions in the format described above. You
+should design and implement a good model for this data as you'll use
+this code as the basis for producing several reports.
 
 In addition, you should design at least 1 non-trivial test input file
-that has at least 2 examples of each type of transaction. You should
-name your file and hand it in.
+that has at least 2 examples of each type of transaction. Name your file
+`transactions.csv`{.text} and hand it in.
 
-Reporting the Data {#reporting-the-data .unnumbered}
-------------------
+## Reporting the Data {#reporting-the-data .unnumbered}
 
-To ensure that your data parsing works, you’ll need to produce a report
+To ensure that your data parsing works, you'll need to produce a report
 that, for each type of transaction, produces a total number of
 transactions as well as a total of all amounts of those transactions.
-For example, the input in Figure \[figure:dataFile\] should produce a
-report that may look like the output in Figure \[figure:simpleReport\].
+For example, the input in Figure
+[\[figure:dataFile\]](#figure:dataFile){reference-type="ref"
+reference="figure:dataFile"} should produce a report that may look like
+the output in Figure
+[\[figure:simpleReport\]](#figure:simpleReport){reference-type="ref"
+reference="figure:simpleReport"}.
 
-``` {.text}
+``` text
 =======================================
 Totals Report
 =======================================
@@ -93,21 +103,22 @@ Total              10  $      457240.87
 Your program should take the name of the input file as a command line
 argument and output the report to the standard output.
 
-Instructions {#instructions .unnumbered}
-============
+# Instructions {#instructions .unnumbered}
 
--   Place all of your function definitions in a source file named and
-    hand it in with your header file, . Your main function should be
-    placed in a file named . This function will produce the report
-    above.
+-   Define your class in a source file named `Transaction.java`{.text}
+    and all your parsing, processing and reporting methods (as well as a
+    runnable `main`{.java} method that reads the input file name to
+    process) in a source file named `TransactionUtils.java`{.text}.
+    Include sufficient documentation.
 
--   Turn in your test case file, to the webhandin as well.
+-   Turn in your test case file, `transactions.csv`{.text} to the
+    webhandin as well.
 
 -   You are encouraged to collaborate with any number of students
     before, during, and after your scheduled hack session.
 
 -   Include the name(s) of everyone who worked together on this activity
-    in your source file’s header.
+    in your source file's header.
 
 -   Turn in all of your files via webhandin, making sure that it runs
     and executes correctly in the webgrader. Each individual student
