@@ -1,27 +1,62 @@
----
-date:  
-subtitle: |
-  Computer Science I -- Java\
-  Searching & Sorting\
-  Department of Computer Science & Engineering\
-  University of Nebraska--Lincoln
-title: Hack 13.0
----
+# Hack 13.0 - Searching & Sorting
+## Java Edition
+**[School of Computing](https://computing.unl.edu/)**  
+**[College of Engineering](https://engineering.unl.edu/)**  
+**[University of Nebraska-Lincoln](https://unl.edu)**  
+**[University of Nebraska-Omaha](https://http://unomaha.edu/)**  
 
-------------------------------------------------------------------------
+# Introduction
 
-# Problem Statement {#problem-statement .unnumbered}
+Hack session activities are small weekly programming assignments
+intended to get you started on full programming assignments. You may
+complete the hack on your own, but you are *highly encouraged* to work
+with another student and form a hack pair. Groups larger than 2 are not
+allowed. However, you may discuss the problems *at a high level* with
+other students or groups. You may not share code directly outside your
+pair.
 
-You will use the implementation of your `Airport`{.java} class from a
+If you choose to form a Hack Pair, you *must*:
+
+1.  Both join a hack pair on Canvas (go to People then Groups)
+
+2.  You must both work on the hack equally; it must be an equal effort
+    by both partners. Do not undermine your partner's learning
+    opportunity and do not undermine your own by allowing one parter to
+    do all the work.
+
+3.  Both of you should hand in a copy of your code, but we'll grade the
+    code under the individual whose last name comes first alphabetically.
+
+## Rubric
+
+You are graded based on style, documentation, design and correctness.
+For detail, see the general course rubric.
+
+| Category      | Points |
+|---------------|--------|
+| Style         | 2      |
+| Documentation | 2      |
+| Design        | 5      |
+| Correctness   | 16     |
+| Total         | 25     |
+
+For correctness:
+ - Your program(s) *must* compile and run on the grader
+ - 4 points for student tester; they need 5 airports
+ - 12 for official test suite
+
+# Problem Statement
+
+You will use the implementation of your `Airport` class from a
 previous hack to develop several reports that will require you to sort
 and search (a subset of) the International Civil Aviation Organization
 database for particular airports.
 
-We have provided a source file, `AirportUtils.java`{.text} with several
+We have provided a source file, `AirportUtils.java` with several
 comparators and methods you need to implement. Details are provided in
 the documentation.
 
-The `generateReports()`{.java} takes a list of `Airport`{.java}s and
+The `generateReports()` takes a list of `Airport`s and
 should produce the following reports which should all be output to the
 standard output.
 
@@ -36,44 +71,34 @@ standard output.
     96.7581W.
 
 -   Search for and print out the airport that is the geographic
-    west-east median[^1] of the given airports with respect to
-    longitude.
+    west-east median of the given airports with respect to
+    longitude.  With 0-indexed arrays, the median is the element at index
+    `n/2` when sorted. This relies on truncation to give the middle
+    index of odd-sized arrays and prefers the "right" element for
+    even-sized arrays.
 
 -   Search for an airport located in the city New York (city would be
-    `New York`{.text} and the country would be `US`{.text}) and print it
+    `New York` and the country would be `US`) and print it
     out if it exists. If no such airport exists, print out an
     appropriate message.
 
--   Search for an airport whose type is `large_airport`{.text} and print
+-   Search for an airport whose type is `large_airport` and print
     it out if it exists. If no such airport exists, print out an
     appropriate message.
 
-# Instructions {#instructions .unnumbered}
+# Instructions
 
--   Hand in both your `Airport.java`{.text} and
-    `AirportUtils.java`{.text} source files. You may add any utility
+-   Hand in both your `Airport.java` and
+    `AirportUtils.java` source files. You may add any utility
     methods you wish but you must *not* change any of the signatures of
     the required methods.
 
--   In addition, you must create a `main`{.java} method in your
-    `AirportUtils.java`{.text} class that tests your reports with at
+-   In addition, you must create a `main` method in your
+    `AirportUtils.java` class that tests your reports with at
     least least 5 airports.
-
--   You are encouraged to collaborate any number of students before,
-    during, and after your scheduled hack session.
 
 -   You may (in fact are encouraged) to define any additional "helper"
     methods that may help you.
 
--   Include the name(s) of everyone who worked together on this activity
-    in your source file's header.
-
 -   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the webgrader. Each individual student
-    will need to hand in their own copy and will receive their own
-    individual grade.
-
-[^1]: With 0-indexed lists, the median is usually the element at index
-    `n/2`{.c} when sorted. This relies on truncation to give the middle
-    index of odd-sized lists and prefers the "right" element for
-    even-sized lists.
+    and executes correctly in the grader.

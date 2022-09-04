@@ -1,16 +1,55 @@
----
-date:  
-subtitle: |
-  Computer Science I -- Java\
-  Encapsulation\
-  Department of Computer Science & Engineering\
-  University of Nebraska--Lincoln
-title: Hack 11.0
----
+# Hack 11.0 - Encapsulation
+## Java Edition
+**[School of Computing](https://computing.unl.edu/)**  
+**[College of Engineering](https://engineering.unl.edu/)**  
+**[University of Nebraska-Lincoln](https://unl.edu)**  
+**[University of Nebraska-Omaha](https://http://unomaha.edu/)**  
 
-------------------------------------------------------------------------
+# Introduction
 
-# Problem Statement {#problem-statement .unnumbered}
+Hack session activities are small weekly programming assignments
+intended to get you started on full programming assignments. You may
+complete the hack on your own, but you are *highly encouraged* to work
+with another student and form a hack pair. Groups larger than 2 are not
+allowed. However, you may discuss the problems *at a high level* with
+other students or groups. You may not share code directly outside your
+pair.
+
+If you choose to form a Hack Pair, you *must*:
+
+1.  Both join a hack pair on Canvas (go to People then Groups)
+
+2.  You must both work on the hack equally; it must be an equal effort
+    by both partners. Do not undermine your partner's learning
+    opportunity and do not undermine your own by allowing one parter to
+    do all the work.
+
+3.  Both of you should hand in a copy of your code, but we'll grade the
+    code under the individual whose last name comes first alphabetically.
+
+## Rubric
+
+You are graded based on style, documentation, design and correctness.
+For detail, see the general course rubric.
+
+| Category      | Points |
+|---------------|--------|
+| Style         | 2      |
+| Documentation | 2      |
+| Design        | 5      |
+| Correctness   | 16     |
+| Total         | 25     |
+
+For correctness:
+ - Your program(s) *must* compile and run on the grader
+ - 5 points for student tester (it is OK to test a function
+   transitively; i.e. if `createAirport` uses `initAirport`
+   then you only need to test `createAirport`)
+ - 5 points for the "visual" inspection test
+ - 3 points for the 100 test cases for `getAirDistance`
+ - 3 points for the 100 test cases `getEstimatedTravel` time
+
+# Problem Statement
 
 There are thousands of commercial, military, and local airports in the
 US and around the world. The International Civil Aviation Organization
@@ -35,7 +74,7 @@ airport:
 
 Design a Java class to encapsulate these attributes to model an airport
 record from the ICAO database. Also design several methods to support
-your class including a constructor, getters, a `toString()`{.java}
+your class including a constructor, getters, a `toString()`
 method, etc. You will also implement several utility methods that use
 your class to compute the air distance(s) between airport locations
 using their latitude and longitude. Recall that the air distance $d$
@@ -59,25 +98,17 @@ $-\pi \leq r \leq \pi$. To convert from degrees $d$
 $$r = \frac{d}{180} \pi$$
 
 More details have been provided in a starter file,
-`Airport.java`{.text}. You will need to design your class and implement
+`Airport.java`. You will need to design your class and implement
 all of the specified methods.
 
-# Instructions {#instructions .unnumbered}
+# Instructions
 
 -   In addition, you must create a main test driver program that
     demonstrates at least 3 cases per non-trivial function. Name this
-    file `AirportTester.java`{.text} and hand it in.
-
--   You are encouraged to collaborate any number of students before,
-    during, and after your scheduled hack session.
+    file `AirportTester.java` and hand it in.
 
 -   You may (in fact are encouraged) to define any additional "helper"
     methods that may help you.
 
--   Include the name(s) of everyone who worked together on this activity
-    in your source file's header.
-
 -   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the webgrader. Each individual student
-    will need to hand in their own copy and will receive their own
-    individual grade.
+    and executes correctly in the grader.
