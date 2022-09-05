@@ -98,3 +98,35 @@ folder and respond ASAP; the links expire after a few days.
 Try going to https://codepost.io/forgot-password and resetting your password
 (even if you never initially set one).  Be sure to use your huskers email
 or whatever primary email is associated with your canvas profile.
+
+# Grading
+
+## How and when are readings graded?
+
+See the section on zyBooks.  Readings are automatically graded and your
+grade in Canvas is automatically updated as you work through the reading.
+After the due date, you still have access to the reading and can complete
+any section that is not yet completed, but the grade will no longer update
+or sync to Canvas.
+
+## How and when are labs graded?
+
+Labs are due at midnight on Tuesdays.  We try to get them graded as soon
+as possible on Wednesdays.  When we are done, grades (with any comments)
+are posted to Canvas and a brief retrospective is posted to Piazza.
+
+## How and when are hacks graded?
+
+Hacks are due (generally) Mondays at midnight. Learning Assistants have
+48 business hours to grade them and then Course Leaders take another 48
+hours to check the grading process to ensure consistency.  Grades are
+released in Canvas with comments posted to codepost (generally) on Friday
+afternoons.  A retrospective is then posted to Piazza.
+
+## How and when is attendance graded?
+
+Learning Assistants take attendance in lab/hack.  Attendance scores in
+Canvas are updated at the end of the week.  If you did not attend lab
+and/or hack you may see a 0 or other grade.  This grade may be updated
+when the rest of the module points have been graded as per the attendance
+policy in the syllabus.
