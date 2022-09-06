@@ -271,6 +271,101 @@ int main(int argc, char **argv) {
   * It is true if *both* are true
   * It is only false when *both* are false
 
+### Comparison with Characters
+
+* You cannot use `==` with strings, but you *can* with single characters
+* Why?  Because they are all numbers in the ASCII text table
+
+```c
+char input = 'Y';
+
+if(input == 'Y' || input == 'y') {
+  printf("You answered yes\n");
+} else {
+  printf("you answered something else\n");
+}
+```
+
+## Short Circuiting
+
+* Consider the following logical statement: `a && b`
+  * If `a` is false, does it matter what `b` is?
+  * In vast majority of programming languages, `b` is not examined or evaluated
+  * It is "short circuited"
+  * No longer the case that it is necessary for efficiency but programmers have come to *expect* this behavior
+* Consider the following: `a || b`
+  * If `a` is true, does it matter what `b` is?
+  * likewise, `b` is not examined or evaluated, it is short circuited
+
+```c
+if(a != NULL && a > 10) {
+  //...
+}
+```
+
+## Linters
+
+* Code may be *syntactically* correct (it will compile) but may still contain bugs or errors
+* Lint are pieces of code that may be okay or they may look "suspicious" and may lead to errors
+* Linters are *static analysis* tools that can detect *potential* errors in your code before you compile it
+* gcc can be used as a linter using the `-Wall` flag (Warnings, report ALL of them )
+* Its best practice to always compile with this flag, *take care of all your compiler warnings!*
+
+# Exercise
+
+* Write a program to describe the effects of an electric shock (on males, DC current) based on the milliampere (mA) current (Charles Dalziel):
+
+* 0 - 1 no effect
+* 1 - 5.2 mA slight sensation
+* 5.2 - 62 Pain, voluntary muscle control
+* 62 - 76 Pain, loss of control
+* 76 - 90 Severe pain
+* 90 - 500 Heart fibrillation
+
+```c
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+int main(int argc, char **argv) {
+
+    double milliamps;
+    printf("Please enter the mA:\n");
+    int numTokens = scanf("%lf", &milliamps);
+
+    //TODO: maybe replace this with a loop that *re*prompts them for valid input...
+    if(numTokens != 1) {
+        printf("ERROR: please try again\n");
+        exit(1);
+    }
+
+    milliamps = fabs(milliamps);
+
+    printf("%f mA is... ", milliamps);
+
+    if( milliamps < 1 ) {
+        printf("No Effect\n");
+    } else if( milliamps < 5.2 ) {
+        printf("Slight Sensation\n");
+    } else if( milliamps < 62 ) {
+        printf("Pain, voluntary muscle control\n");
+    } else if( milliamps < 76 ) {
+        printf("Pain, loss of control\n");
+    } else if( milliamps < 90 ) {
+        printf("Severe Pain\n");
+    } else if( milliamps < 500 ) {
+        printf("Heart fibrillation\n");
+    } else {
+        printf("something bad happened...\n");
+    }
+
+
+    return 0;
+}
+```
+
 
 ```text
 
