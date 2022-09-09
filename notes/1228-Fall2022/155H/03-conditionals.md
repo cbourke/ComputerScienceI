@@ -199,8 +199,8 @@ if(a == 10); {
 
 * Consider: `a || b`
   * If `a` is true, does it matter what hte value of b is?
-  * No: the entire exprssion evaluates to true and so `b` is unevaluated
-  
+  * No: the entire expression evaluates to true and so `b` is unevaluated
+
 
 ```text
 
