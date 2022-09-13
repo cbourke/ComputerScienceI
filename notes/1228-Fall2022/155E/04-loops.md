@@ -190,7 +190,89 @@ while (days > 365)
 1. Write a solution to FizzBuzz
 2. Write a program to compute a sum of the (partial) harmonic series:
   $$\sum_{i=1}^{n} \frac{1}{i} = \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \cdots + \frac{1}{n}$$
+3. Compute a loan amortization table using a monthly payment formula:
+    $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
+  where
+   * rate is the rate per period (ex: .05/12 for monthly payments)
+   * $n$ is the number of periods (months) in the loan
+   * Ex: A $10,000 5 year loan at 5% interest (60 payments):
+   $$\frac{\frac{.05}{12} \times 10,000}{1-(1+\frac{.05}{12})^{-60}} = 188.71$$
 
+  ```text
+   Month Balance Interest New Balance
+       1   $10000.00   $   41.67   $  147.04  $ 9852.96
+       2   $ 9852.96   $   41.05   $  147.66  $ 9705.30
+       3   $ 9705.30   $   40.44   $  148.27  $ 9557.03
+       4   $ 9557.03   $   39.82   $  148.89  $ 9408.14
+       5   $ 9408.14   $   39.20   $  149.51  $ 9258.63
+       6   $ 9258.63   $   38.58   $  150.13  $ 9108.50
+       ...
+  ```
+
+```c
+/**
+ * Chris Bourke
+ * 2022/09/12
+ *
+ * This program produces a loan amortization table given the inputs:
+ *
+ * - principle (the amount of the original loan)
+ * - the *annual* rate
+ * - number of years
+ *
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    //read in inputs non-interactively from the command line (CLAs = Command Line Arguments)
+    //1. read in inputs
+    if(argc != 4) {
+      printf("ERROR: provide the principle, annual rate, number of years please\n");
+      exit(1);
+    }
+    double principle = atof(argv[1]);
+    double rate = atof(argv[2]);
+    int years = atoi(argv[3]);
+    int months = years * 12;
+    double currentBalance = principle;
+
+    //TODO: basic data validation
+
+    //2. compute the monthly payment
+    double monthlyPayment = (rate/12 * principle) / (1 - pow( (1+rate/12), -months));
+    //round monthlyPayment to the nearest cent:
+    //188.7122 -> 18871.22 -> 18871 -> 188.71
+    monthlyPayment = round(monthlyPayment * 100) / 100;
+
+    printf("Monthly Payment: $%.2f\n", monthlyPayment);
+
+    //2.5 print the table header
+    printf("Month    Balance     Interest     Principle Payment     New Balance\n");
+
+    //3. print the table...
+    // for each month:
+    //    1. Compute the month's interest: rate / 12 * current balance
+    //    2. compute the month's principle payment: monthyPayment - month's interest
+    //    3. compute the new balance for next month: new balance = old balance - principle payment
+    //    NOTE TO SELF: think about rounding to the nearest cent in each step
+    for(int month=1; month<months; month++) {
+      double monthsInterest = rate / 12 * currentBalance;
+      monthsInterest = round(monthsInterest * 100) / 100;
+      double principlePayment = monthlyPayment - monthsInterest;
+      double newBalance = currentBalance - principlePayment;
+      printf("%d $%.2f $%.2f $%.2f $%.2f \n", month, currentBalance, monthsInterest, principlePayment, newBalance);
+      //set yourself up for the next iteration:
+      // current balance should become the new balance...
+      currentBalance = newBalance;
+    }
+    //TODO: handle the last month separately...
+
+    return 0;
+}
+```
 
 ```text
 

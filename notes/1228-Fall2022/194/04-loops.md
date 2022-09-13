@@ -155,9 +155,7 @@ while(i < 10)
 1. Write a solution to FizzBuzz
 2. Write a program to compute a sum of the (partial) harmonic series:
   $$\sum_{i=1}^{n} \frac{1}{i}$$
-3. Write a program to compute the arthmetic-geometric mean of two numbers
-   See https://en.wikipedia.org/wiki/Arithmetic%E2%80%93geometric_mean
-4. Compute a loan amortization table using a monthly payment formula:
+3. Compute a loan amortization table using a monthly payment formula:
   $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
 where
  * rate is the rate per period (.05/12 for monthly payments)
@@ -173,6 +171,7 @@ where
      4   $ 9557.03   $   39.82   $  148.89  $ 9408.14
      5   $ 9408.14   $   39.20   $  149.51  $ 9258.63
      6   $ 9258.63   $   38.58   $  150.13  $ 9108.50
+     ...
 ```
 
 
