@@ -130,3 +130,19 @@ Canvas are updated at the end of the week.  If you did not attend lab
 and/or hack you may see a 0 or other grade.  This grade may be updated
 when the rest of the module points have been graded as per the attendance
 policy in the syllabus.
+
+# CS 50 IDE
+
+This course uses the CS50 IDE (a codespaces instance provided and supported
+by Harvard's CS50 program).  
+
+## I'm getting a Bad Gateway message
+
+* Try accessing your IDE through this link: http://github.com/codespaces
+
+## I'm having a different problem
+
+You can:
+
+* Emailing their system administration support at sysadmins@cs50.harvard.edu
+* Try asking your question on the CS50 discord: https://discord.gg/cs50
