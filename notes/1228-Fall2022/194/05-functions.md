@@ -45,6 +45,35 @@ Introduction to functions in C
   * You should *always* provide doc-style comments as documentation for every function
 * After you have defined a prototype, you need to provide a *definition*: what the function actually does (what code is executed with the function is called)
 
+* Observation:
+  * C does not support "function overloading": no two functions may have the same name
+  * This is why the math library has `abs, fabs, labs, llabs`, etc.
+  * Consequently: you need to be very careful about the naming of your functions
+  * Example: suppose you wanted to use two libraries, $A, B$, suppose both had named a function `init()`
+  * Creating functions with "common" names *pollutes the namespace*: once you have a function `init()`, no other library or you may redefine the function `init()`
+  * It is common for libraries to prepend their functions with a unique name: `gtk_init()`
+
+## Create a Library: Modular Organization
+
+* Collect common functionality (functions, variables, etc.) into a "module": a collection that is distinct and separate from other collections
+* Simple organization
+* How:
+  * Prototypes and their documentation are separated into a *header* file with an extension of `.h`
+  * Definitions are placed into a *source file* usually with the same name but an extension of `.c`
+  * You should use the `#include "financial.h"` syntax to "include" a header file anywhere you intend to use the function declared in that file: note the diffrence, double quotes, not lange/rangle
+  * To compile:
+    1. To compile without linking, you use the `-c` flag;
+    `gcc -c financial.c`
+    2. This produces an object file, `financial.o` (machine language language file, binary)
+    3. To compile all together: use
+    `gcc loan.c financial.o -lm`
+* If you want to, you can explore full *build systems*: `make`
+
+## Misc
+
+* A function that doesn't return anything is a `void` function: its return type is `void` and its return statement is `return;`
+* You can have functions that do not take any input: `void printMenu()`
+
 ```text
 
 
