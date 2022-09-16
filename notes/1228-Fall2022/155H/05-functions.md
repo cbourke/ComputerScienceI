@@ -66,7 +66,27 @@
 
 ## Modularity
 
+### In Java
+
+* Similar methods are collected into classes
+* Classes are organized/collected into packages
+* Packages provide a hierarchical directory structure that allows you to origanize your code
+
 ### In C
+
+* In general, similar functions are separated into different *modules*
+* We organize user-code into separate files:
+  * Prototypes + documentation go into *header files* with a `.h` extension
+  * Place the definitions/implemenations into *source* files with a `.c` extension and the same base file name
+  * We use `#include "myMath.h"` in any file that we want to bring the prototypes into
+  * To compile the module: `gcc -c myMath.c` which produces an object file: `myMath.o`
+  * To compile the program and link into our library you use:
+
+  `gcc demo.c myMath.o -lm`
+
+### How do functions actually work?
+
+* Programs have a *program stack* (or *call stack*)
 
 
 ```text

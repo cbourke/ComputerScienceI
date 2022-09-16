@@ -48,6 +48,31 @@ Introduction to functions in C
   * IDE Tip: you can hold down command (mac) or control (windows) and click on a function to jump to its code
   * Any variables declared inside a function only exist *in that function*: they are *local* to that function and are not available outside of it (they die at the end of the function)
 
+## Modularity
+
+* Not all function should be in the same source file: bad organization
+* Instead they are separated into different files:
+  * The prototype + documentation goes into a *header* file with a `.h` extension
+  * The definition/implementation goes into a *source* file with a `.c` extension with the same base name
+* Demonstration:
+  * Included the header file using `#include "finance.h"` anywhere we  needed to (loan.c and finance.c files)
+  * We included other headers as needed (math.h)
+  * Compiled the "finance" library using the `-c` flag:
+  `gcc -c finance.c` which produce an object file containing the actual machine code of our library
+  * Compiled everything together using:
+  `gcc loan.c finance.o -lm`
+* Pitfalls
+  * YOU NEVER NEVER NEVER include a source file: `#include "finance.c"` only include header file
+* Advanced solution: if you have many source files and a more complex program, it can get very inconvenient to have to recompile *every single time*
+* Most languages have some sort of "build system": a second system that:
+  * Manages dependencies
+  * Track changes so that only changed files get recompiled
+  * Provides multiple ways of compiling for different systems, etc.
+* For C: the `make` utility or the modern `cmake` utilty are standard (read more about it on your own)
+
+### How Do Functions Work?
+
+* Programs have a *program stack*: its a LIFO = Last In First Out data structure
 
 ```text
 
