@@ -144,7 +144,17 @@ by Harvard's CS50 program).
 
 You can:
 
-* Check to see if CS50 is experiencing system-wide issues which are reported at https://cs50.statuspage.io/ 
+* Check to see if CS50 is experiencing system-wide issues which are reported at https://cs50.statuspage.io/
 * Try going to https://code.cs50.io/restart to restart your codespaces instance
 * Emailing their system administration support at sysadmins@cs50.harvard.edu
 * Try asking your question on the CS50 discord: https://discord.gg/cs50
+
+## Alternatives
+
+If you are still having problems with the IDE or would like to consider backups/alternatives:
+
+* You can download the docker instance and work offline (see https://cs50.readthedocs.io/code/ and then https://cs50.readthedocs.io/code/#using-vs-code-locally )
+
+* You can install VS Code on your own computer: https://code.visualstudio.com/download
+
+* You can watch video [Video 1.3](https://www.youtube.com/watch?v=6UaJ2zFs7VQ&list=PL4IH6CVPpTZVkiEnCEOdGbYsFEdtKc5Bx&index=3) and get setup with a VPN, local editor (atom.io) and use the CSE server for compiling and running your programs.
