@@ -144,6 +144,7 @@ by Harvard's CS50 program).
 
 You can:
 
+* Check to see if CS50 is experiencing system-wide issues which are reported at https://cs50.statuspage.io/ 
 * Try going to https://code.cs50.io/restart to restart your codespaces instance
 * Emailing their system administration support at sysadmins@cs50.harvard.edu
 * Try asking your question on the CS50 discord: https://discord.gg/cs50
