@@ -144,5 +144,6 @@ by Harvard's CS50 program).
 
 You can:
 
+* Try going to https://code.cs50.io/restart to restart your codespaces instance
 * Emailing their system administration support at sysadmins@cs50.harvard.edu
 * Try asking your question on the CS50 discord: https://discord.gg/cs50
