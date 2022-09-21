@@ -87,6 +87,42 @@
 ### How do functions actually work?
 
 * Programs have a *program stack* (or *call stack*)
+* IN a stack you can add something to the "top" (pushing) or remove something from the "top" (popping), but not inbetween; you only interact with a stack at the "top"
+* Everytime a function is called, a new *stack frame* is created and placed on top of the "call stack"
+  * All local variables inside a function as well as parameter variables exist only in their *stack frame*
+  * When a function is done executing and control is returned back to the *calling function*, it is a simple matter of popping off the stack frame
+  * All variables in the stack frame are "destroyed"
+  * Consequence: you cannot make changes to variables in the calling function because variables are *passed by value*
+  * Copies of the values of the variables are given to the function!
+
+## Unit Testing
+
+* A *unit* is a piece of code (usually a function) that can be tested
+* A unit is an indivisible piece of code that is treated as a "black box": you want to test things in isolation
+* A unit test is an input-output pair that is known to be correct
+* We unit test by feeding the input into our unit (function) and comparing the result to the *known correct* output: actual vs the expected
+  * If they match: PASSES!
+  * If they do not match: FAILS!
+* Grouping multiple unit tests into one collection gives you a *test suite*
+* If a future bug is reported: you have a new test case!
+* A future change or fix that breaks other unit tests is known as a *regression*
+* tests should be repeatable
+* The more tests you have the higher certainty you have that your code is correct
+* No amount of tests will ever give you a 100% *proof* that your code is correct
+* The more test cases you have the better *code coverage* you have
+  * You want to test corner cases
+  * Edge cases, extremal cases
+  * Randomized Test (chaos testing) or "fuzzing"
+* Problems:
+  * Lack of code coverage
+  * A *false positive* is when a test case is wrong but the code is correct
+  * A *false negative* is when there is a bug in your program, but your tests do not indicate it
+* TDD = Test Driven Development
+  * You write tests before you even write the code
+* Demo:
+  * *informal* unit testing in C
+  * *formal* unit testing in Java
+
 
 
 ```text
