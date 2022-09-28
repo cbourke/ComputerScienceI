@@ -134,11 +134,24 @@ policy in the syllabus.
 # CS 50 IDE
 
 This course uses the CS50 IDE (a codespaces instance provided and supported
-by Harvard's CS50 program).  
+by Harvard's CS50 program).  If you encounter problems, the easy things to
+try first are:
+
+* Rebooting
+* Doing a hard refresh of your browser
+* Logging out/in or using a different browser (temporarily) or using
+  privacy mode to ensure a fresh login
 
 ## I'm getting a Bad Gateway message
 
 * Try accessing your IDE through this link: http://github.com/codespaces
+
+##  My workspace is in recovery mode. What should I do?
+In the terminal, type
+
+`touch /workspaces/$RepositoryName/.devcontainer.json`
+
+This will trigger a container rebuild and usually that will fix the issue.
 
 ## I'm having a different problem
 
@@ -149,12 +162,21 @@ You can:
 * Emailing their system administration support at sysadmins@cs50.harvard.edu
 * Try asking your question on the CS50 discord: https://discord.gg/cs50
 
+## Nothing Seems to Work
+
+You can try creating a new Codespace at: https://code.cs50.io/settings
+Your files *should* still be synced to your GitHub repository, but if not,
+hopefully you backed them up.
+
 ## Alternatives
 
 If you are still having problems with the IDE or would like to consider backups/alternatives:
 
-* You can download the docker instance and work offline (see https://cs50.readthedocs.io/code/ and then https://cs50.readthedocs.io/code/#using-vs-code-locally )
+* You can download the docker instance and work offline (see https://cs50.readthedocs.io/code/
+  and then https://cs50.readthedocs.io/code/#using-vs-code-locally )
 
 * You can install VS Code on your own computer: https://code.visualstudio.com/download
 
-* You can watch video [Video 1.3](https://www.youtube.com/watch?v=6UaJ2zFs7VQ&list=PL4IH6CVPpTZVkiEnCEOdGbYsFEdtKc5Bx&index=3) and get setup with a VPN, local editor (atom.io) and use the CSE server for compiling and running your programs.
+* You can watch video [Video 1.3](https://www.youtube.com/watch?v=6UaJ2zFs7VQ&list=PL4IH6CVPpTZVkiEnCEOdGbYsFEdtKc5Bx&index=3)
+  and get setup with a VPN, local editor (atom.io) and use the CSE server for
+  compiling and running your programs.
