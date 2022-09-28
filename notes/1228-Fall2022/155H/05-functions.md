@@ -123,6 +123,102 @@
   * *informal* unit testing in C
   * *formal* unit testing in Java
 
+## C: Pointers
+
+* Recall that our `swap()` function failed due to *how functions work* (demo)
+
+```c
+
+void swap(int a, int b) {
+  printf("a, b = %d, %d\n", a, b);
+  int temp = a;
+  a = b;
+  b = temp;
+  printf("a, b = %d, %d\n", a, b);
+}
+
+int main(int argc, char **argv) {
+
+  int a = 10;
+  int b = 20;
+
+  printf("a, b = %d, %d\n", a, b);
+  swap(a, b);
+  printf("a, b = %d, %d\n", a, b);
+
+  return 0;
+}
+```
+
+* Every piece of data in a computer is stored in memory
+* Memory consists of an address (location) and its contents (the actual data stored)
+* In C you can refer to an address using a *pointer* or a "reference variable"
+* A pointer stores a memory location: an address rather than a value
+* To create a pointer, use the `*` syntax
+
+```c
+
+  int x = 42;
+  //creating an uninitialized pointer has undefined behavior:
+  //  it can point to a memory location that doesn't belong to your program
+  //  it can point to a memory location that doesn't exist, etc.
+  int *ptrToX;
+  //you can point a pointer to the NULL address:
+  ptrToX = NULL;
+
+  //you can test for nullity:
+  if(ptrToX == NULL) {
+    printf("invalid pointer\n");
+  }
+
+  //make the pointer point to the variable x:
+  ptrToX = &x;
+  // the ampersand gets the memory address of a regular variable
+
+```
+
+## Pitfalls
+
+* Uninitialized pointers have undefined behavior: using invalid pointers can result in *segmentation faults*
+* You should always make a pointer point to a valid memory location that *belongs to your program*
+
+```c
+int x = 42;
+int *ptrToX;
+ptrToX = x;
+
+printf("x = %d\n", x);
+printf("ptrToX = %p\n", ptrToX);
+//you can get and manipulate the contents of what a poitner points to
+// using the dereference operator: *
+printf("the contents of memory location %p are %d\n", ptrToX, *ptrToX);
+
+```
+
+* Observe that you can convert a pointer back into a regular old variable (in order to assign a value or access its value) using the *dereferencing operator*: `*`
+* Remember:
+  * A regular variable can be changed to a pointer/reference using the `&`
+  * A pointer variable can be changed to a regular old variable using the `*`
+* So what: it allows you to pass variables *by reference* to a function; that function can then manipulate the original variables
+
+* Another pitfall: make sure your pointer points to the correct type of variable
+* An `int *` pointer can point to a memory location that stores an integer, but it *should not* point to any other type (`double, char`, etc.)
+* A `double *` pointer can point to a memory location that contains a `double` but should not point to any other type
+
+## Java
+
+* Java has no pointers, you generally do NOT manipulate memory contents directly in Java
+* BUT: by default all primitive types are passed by value
+* IE: you *cannot* write a `swap()` method that works in Java!
+* Also: all object types `String, Integer, Double` *ARE* passed by reference!
+* You still cannot swap them!  Why?  Because *most* built-in types are *immutable*!
+
+## Using Pointers: Passing By Reference
+
+* Remember: `scanf()`
+* With pass by reference you can "return" multiple values
+* Even if you only have one result, it still is *might* be a good idea to use pass-by-reference...
+* Freeing up the return value means that you can do proper *error handling* in C
 
 
 ```text

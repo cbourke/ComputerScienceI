@@ -1,10 +1,4 @@
 
-## 4 - 6PM: Schorr Center
-
-* Meet with dozens of employers, casually
-* Pizza
-
-
 # CSCE 155E - Computer Science I
 ## Functions
 ### Fall 2022
@@ -116,6 +110,114 @@ Introduction to functions in C
   * *informal* unit testing in C
   * Later (Lab 6, Hack 6): you will use a more formal unit testing framework : cmocka
 
+## C: Pointers
+
+* Recall that our `swap()` function failed due to *how functions work* (demo)
+
+```c
+
+void swap(int a, int b) {
+  printf("a, b = %d, %d\n", a, b);
+  int temp = a;
+  a = b;
+  b = temp;
+  printf("a, b = %d, %d\n", a, b);
+}
+
+int main(int argc, char **argv) {
+
+  int a = 10;
+  int b = 20;
+
+  printf("a, b = %d, %d\n", a, b);
+  swap(a, b);
+  printf("a, b = %d, %d\n", a, b);
+
+  return 0;
+}
+```
+
+* The values of the variables `a, b` are passed to the function: *copies* of the variable values are passed, not the variables themselves
+* Inside the function: the swap only applies to the *copies* not the originals
+* This is known as "passing by value": values of the variables are copied onto the call stack and passed to the function
+* Changes to the copies have no effect on the original variables in `main()`!
+* BUT: I *REALLY* want to swap variables
+
+### Pointers
+
+* Everything (in particular data) in a computer is stored in memory
+* Memory has two parts: an address and contents
+* Regular old variables correspond to the contents
+* Pointer variables can hold an *address* or memory location or "reference"
+
+* OBserve:
+  * You can take a regular old variable and gets its memory address (pointer) using the referencing operator: `&`
+  * You can take a pointer variable and change it to a regular variable using the dereferencing operator `*`
+
+```c
+
+  //you can create regular old variables:
+  int a = 42;
+  double pi = 3.1415;
+
+  //create a pointer variable that can point to an integer:
+  // pointerToA is a pointer to an integer, NOT an integer itself
+  int *pointerToA;
+  //by default, there is no value associated with uninitialilzed variables
+  //you can make a pointer point to "nothing"
+  pointerToA = NULL;
+
+  if(pointerToA == NULL) {
+    printf("ERROR: cannot access taht memory\n");
+  }
+
+  //we want to make pointerToA actually point to the variable a:
+  //ampersand in front of a regular old variable gets the *memory address* of that
+  // variable!
+  pointerToA = &a;
+
+
+  printf("a is regular old variable, it holds the value %d\n", a);
+  printf("pointerToA is a pointer and has the value... %p\n", pointerToA);
+  printf("the memory location %p holds the value %d...\n", pointerToA, a);
+
+  //once you have a pointer to a memory location you can manipulate
+  // the contents of memory through the pointer
+  //you can take a pointer variable and turn it into a regular old variable
+  // *temporarily* so you can set or modify its contents (or access them):
+  // to dereference: use the star operator
+  *pointerToA = 10;
+```
+
+* Observations:
+  * Using pointers allows us to *pass by reference* to functions
+  * Instead of copies of values, we can pass in memory locations/addresses and a function can manipulated the original variables
+  * Now our `swap()` function works!
+  * Remember: `scanf()` required that you use the ampersand to pass in a variable: why?
+  * Passing by reference means that you can give a function a "bucket" in which to put a result (like `scanf`) rather than a copy of a value that is not useful
+
+## Pitfalls
+
+* You should always initialize a pointer (to `NULL` if nothing else)
+* otherwise, uninitialized pointers may point to anything!
+* You do not assign a literal value to a pointer: `int *ptr = 101;` this makes it point to memory location 101 which likely does not belong to you, resulting in a seg fault
+* Integer pointers should point to integers, `double` pointers should point to `double`s or you get weird undefined behavior
+
+### Summary of Pointers
+
+  * A pointer is a memory address or a *reference* to a memory address
+  * A pointer variable can be declared using the star operator: `int *ptrToA`
+  * It is best to initialize pointers or at least make them point to `NULL`
+  * To make a pointer variable into a regular old variable use the `*` (*DE* reference it)
+  * To make a regular variable into a pointer (memory address) use the `&` (*REF*erence it)
+  * Don't make pointers point to things they shouldn't point to
+
+## Using Pointers: Passing By Reference
+
+* `scanf()`: you use the ampersand, `&` to pass a variable by reference so that the function can manipulate it
+* With pass by reference you can "return" multiple values
+* Even if you only have one result, it still is *might* be a good idea to use pass-by-reference...
+* Freeing up the return value means that you can do proper *error handling* in C
 
 
 ```text

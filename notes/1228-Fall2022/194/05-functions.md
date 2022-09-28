@@ -74,6 +74,144 @@ Introduction to functions in C
 * A function that doesn't return anything is a `void` function: its return type is `void` and its return statement is `return;`
 * You can have functions that do not take any input: `void printMenu()`
 
+# Pointers
+
+* Recall that our `swap()` function failed due to *how functions work* (demo)
+
+```c
+void swap(int a, int b) {
+  printf("a, b = %d, %d\n", a, b);
+  int temp = a;
+  a = b;
+  b = temp;
+  printf("a, b = %d, %d\n", a, b);
+}
+
+int main(int argc, char **argv) {
+
+  int a = 10;
+  int b = 20;
+
+  printf("a, b = %d, %d\n", a, b);
+  swap(a, b);
+  printf("a, b = %d, %d\n", a, b);
+
+  return 0;
+}
+```
+
+* WHen parameters are passed to a function, *copies* of the variable's values are passed dto the function, NOT the actual variables
+* Any change to the copies is not seen or reflected in the calling function
+* This is called *pass by value*: copies of the variable values are passed to the function
+* I *really* want to solve this problem
+
+## Pointers
+
+* Everything (in particular data) in a computer is stored in memory
+* Memory has two parts: and address and contents
+* REgular old variables refer to the *contents* `double pi = 3.14;` will set the contents in *some* memory address
+* Pointer variables can hold an *address* or a memory location or a "reference"
+
+```c
+
+    //these are regular old variable declarations
+    int x = 42;
+    double pi = 3.1415;
+
+    //create pointer variables that can "point" to our other variables:
+    int *ptrToX;
+    double *ptrToPi;
+
+    //at this point what do these pointers "point" to?
+    //you can make a pointer point to somthing by using the assignment operator:
+    ptrToX = NULL;
+
+    //you can check for NULL using:
+    if(ptrToX == NULL) {
+        printf("Error: invalid memory!\n");
+    }
+
+    //now lets make it point to something *valid*:
+    // the ampersand in front of a variable gives you the variable's memory addres
+    ptrToX = &x;
+
+    //you need to make sure that you use the right kind of pointers:
+    // a pointer to an integer should point to an integer
+    // a pointer to a double should only point to a double...
+    ptrToX = &pi;
+
+    //demo:
+    // print the memory location of ptrToX and its contents...
+    printf("ptrToX points to memory location %p and its contents are... %d\n", ptrToX, *ptrToX);
+
+    //to get the value stored in the contents of a memory location
+    // using its pointer, you use the dereferencing operator: *
+    // ex: change the value of x using its pointer:
+    ptrToX = &x;
+    // dereferencing operator temporarily makes the pointer in to a
+    // regular old variable so you can assign or access its value
+    *ptrToX = 101;
+```
+
+* Observe:
+  * You can take a regular old variable and gets its memory address (pointer) using the referencing operator: `&`
+  * You can take a pointer variable and change it to a regular variable using the dereferencing operator `*`
+
+## Pitfalls
+
+* You should always initialize a pointer (to `NULL` if nothing else)
+* Otherwise uninitialized pointers can point to anything!
+* You do not assign literal values to a pointer: `int *ptr = 101;`
+this makes it point to memory location 101 which likely does not belong to you, resulting in a seg fault
+* Make pointers point to the correct type: `double *` to `double` values and `int *` to `int` values
+
+### Summary of Pointers
+
+  * A pointer is a memory address or a *reference* to a memory address
+  * A pointer variable can be declared using the star operator: `int *ptrToA`
+  * It is best to initialize pointers or at least make them point to `NULL`
+  * To make a pointer variable into a regular old variable use the `*` (*DE* reference it)
+  * To make a regular variable into a pointer (memory address) use the `&` (*REF*erence it)
+  * Don't make pointers point to things they shouldn't point to
+
+## Passing By Reference
+
+* YOu can define functions that take pointer variables instead of regular old variables
+* WHen you pass a variable to a funcition using a pointer, it is called *pass by reference*
+* One use case: `scanf()`
+* Another use case: you can now "return" multiple values!
+
+
+```c
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+
+void computeCircleStats(double radius, double *area, double *circumference) {
+
+    *area = M_PI * radius * radius;
+    *circumference = radius * 2 * M_PI;
+
+    return;
+}
+
+int main(int argc, char **argv) {
+
+    //goal: compute the circumference AND area of a circle given its radius
+    double radius = 12.0;
+
+    double area;
+    double circumference;
+
+    computeCircleStats(radius, &area, &circumference);
+    printf("the area and circumference of a circle of radius %f are %f and %f\n", radius, area, circumference);
+
+    return 0;
+}
+```
+
 ```text
 
 

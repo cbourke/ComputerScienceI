@@ -1,36 +1,21 @@
 
+## Unit Testing
 
-
-
-## Shallow Versus Deep Copies
-
-* When references are copied, they are only *shallow* copies: changes to an array through one reference are "seen" by the second reference
-* Alternatively: if you want a totally distinct copy, you want a *deep copy*: you want two completely different arrays stored in two completely different memory addresses.
-* Use deep copies when you *don't* want changes to the original (or you want to retain the original data)
-
-nt n = 5;
-int *a = (int *) malloc(sizeof(int) * n);
-for(int i=0; i<n; i++) {
-  a[i] = (i+1) * 10;
-}
-
-int *b = a;
-a[0] = 42;
-
-
-
-
-
-
-
-  int n = 3;
-  int m = 4;
-  int **table = (int **) malloc(sizeof(int *) * n);
-  for(int i=0; i<n; i++) {
-    table[i] = (int *) malloc(sizeof(int) * m);
-    for(int j=0; j<m; j++) {
-      table[i][j] = (i+j+1) * 10;
-    }
-  }
-
-  free(table)
+  * A *unit* is a piece of code (usually a function) that can be tested
+  * A unit test is an input-output pair that is known to be correct
+  * We unit test by feeding the input into our unit (function) and comparing the result to the *known correct* output
+  * If they match, that unit test passes
+  * If they do not match, that unit test fails
+  * a collection of unit tests is known as a *test suite*
+  * IF a future bug is reported, then you have a new unit test to debug and test with!
+  * A future change or fix that breaks other unit tests is known as a *regression*
+  * The more tests you have the higher certainty you have that your code is correct
+  * NO amount of tests will ever guarantee that your code is 100% correct!
+  * Make sure that you have good "code coverage":
+    * You want to test corner cases
+    * Edge cases, extreme cases, etc.
+    * Randomized tests
+  * A *false positive* is when a test case is wrong but the code is correct
+  * A *false negative* there is a bug but your tests do not indicate it: most likely because you didn't write your test case correctly
+    * You come up with the expected input/output BEFORE you code
+    * TDD = Test Driven Development
