@@ -84,9 +84,88 @@ typedef enum {
   ...
 
 } Month;
+```
 
+# Pitfalls
+
+* Internally, an enumeration is just syntactic sugar
+* enumeration types are still just regular old integers in C
+* C will assign values to your enumeration starting at 0 (by default)
+* You can, but shouldn't treat enumerations as integers
+
+```c
+//normal usage:
+DayOfWeek today = FRIDAY;
+DayOfWeek tomorrow = SATURDAY;
+
+if(today == SATURDAY) {
+  printf("Game time\n");
+}
+
+//you can do the following:
+tomorrow = today + 1;
+//but probably shouldn't:
+tomorrow = today + 2;
+
+//better, but still not great:
+DayOfWeek foo = (today + 2) % 7;
+
+
+//really don't do the following:
+DayOfWeek bar = TUESDAY + THURSDAY;
 
 ```
+
+## System-level error handling in C
+
+* The POSIX standard actually defines 3 error codes:
+  * `EDOM` - indicates an error in the *domain* (input) to a function: example: `sqrt(-1)`
+  * `ERANGE` - indicates an error in the *range* (output) of a function: example `log(0)`
+  * `EILSEQ` - Illegal Byte Sequence
+  * All of these are defined in, `errno.h` (error number)
+  * In the event of an error, a global variable `errno` is set to one of these error codes
+
+## Tool Demo: valgrind
+
+* recall that the `-Wall` flag can be used as a *linter*
+* A linter is a *static analysis* tool: it looks at and analyzes your code *before* it gets compiled
+* You can also use *dynamic analysis* tools: analyze your program as it is running
+* Ex: `valgrind`
+* Usage: be sure to compile with the `-g` flag to preserve line numbers and variables, etc.
+* Run: `valgrind ./a.out`
+* Which produces a report telling you what line(s) it failed on
+* No tool replaces proper testing/unit testing
+
+## Misc
+
+Hack 5:
+  * Use Lab 5.0 as a reference/model for your own testing!
+  * For floating point numbers: *build in a tolerance*
+
+```c
+int a = 10, b = 20;
+//perfectly fine:
+if(a == b) {
+  //do something
+}
+
+double x = 1.0 / 3.0;
+double y = 1.0;
+if(x * 3.0 == y) {
+  //is this likely to be true?
+  //no, that's not how floating point numbers work
+}
+
+//instead:
+//if the absolute value of the difference of x and y is
+// small, then its close enough
+if( fabs(x - y) < 0.0000001) {
+  printf("close enough\n");
+}
+```
+
+Midterm Course Evaluations:
+  * Open Monday
 
 ```text
 
