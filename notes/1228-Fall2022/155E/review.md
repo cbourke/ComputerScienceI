@@ -22,6 +22,9 @@
   * Error handling is the ***FIRST*** thing you do
   * When error handling, `NULL` pointer checks are the first you do
   * Otherwise: Bret Hart will come and knock you upside the head
+  * You do *not*:
+    * Print anything
+    * Exit the program
 * Tip:
   * Only set pointer values once at the end of the function; use temporarily variables
   * This reduces the number of potential failure points
