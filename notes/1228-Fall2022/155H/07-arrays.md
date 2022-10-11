@@ -206,6 +206,115 @@ for (int i = 0; i < n; i++) {
 		}
 ```
 
+## Bookkeeping
+
+* C has *manual memory management*: it falls to ***you*** the programmer to:
+  * keep track of the size of an array you create
+  * If you want to pass an array to a function, you need to tell the function how big the array is!
+  * THere is NO WAY in C to determine (reliably) how big an array is just given the array
+  * Ensure that no illegal/undefined access occurs
+  * You need to make sure you "clean up" the memory when you are done with it: you need to give it back to the operating system
+  * To "give it back" you use the `free(arr);` function
+  * Once freed, that memory no longer belongs to you; attempts to access it are *undefined* behavior
+  * Attempts to free memory that doesn't belong to you are undefined behavior
+  * Failure to clean up memory properly leads to *memory leaks*
+  * In C you need to be good stewards of resources
+
+* Java:
+  * No memory management; it is all taken care of by the Java Virtual Machine's Garbage Collector
+  * Once an array or object is no longer in scope (no piece of code still has a reference to it), it is eligible for garbage collection
+  * At certain increments, the JVM will reclaim memory automatically
+  * You *mostly* don't need to worry about this!
+  * No bookkeeping: you can use `arr.length` or `list.size()` to determine how big an array or collection is
+
+## Multidimensional Arrays
+
+* Both languages support multidimensional arrays
+* 1-D Arrays: regular old arrays
+* 2-D arrays: rows/columns; *tables*, *matrices*
+* 3+ dimensions: rethink what you are doing
+
+### Java
+```java
+
+		//create a 2-d array of integers that has dimensions
+		//   5 x 10
+		int table[][] = new int[5][10];
+
+		//you can specify an entry using two indices:
+		table[0][0] = 42; //set the upper left value to 42
+		table[4][9] = 101; //set the lower right value to 101
+		//row major form: the row is the first index, column the second
+		for(int i=0; i<table.length; i++) {  //for each row
+			System.out.printf("[ ");
+			for(int j=0; j<table[i].length; j++) {  //for each column
+				System.out.printf("%4d ", table[i][j]);
+			}
+			System.out.printf(" ] \n");
+		}
+
+```
+
+### C
+
+```c
+
+		//create a 2-d array of integers that has dimensions
+		//   5 x 10
+    int numRows    = 5;
+    int numColumns = 10;
+
+    int **table = (int **) malloc( numRows * sizeof(int *) );
+    for(int i=0; i<numRows; i++) {
+      //allocate the i-th row:
+      table[i] = (int *) malloc( numColumns * sizeof(int) );
+    }
+
+		//you can specify an entry using two indices:
+		table[0][0] = 42; //set the upper left value to 42
+		table[4][9] = 101; //set the lower right value to 101
+		//row major form: the row is the first index, column the second
+
+    //careful: though it may look like they are all zeros, there is no
+    //defined default value for array or table entries
+		for(int i=0; i<numRows; i++) {  //for each row
+			printf("[ ");
+			for(int j=0; j<numColumns; j++) {  //for each column
+				printf("%4d ", table[i][j]);
+			}
+			printf(" ] \n");
+		}
+    for(int i=0; i<numRows; i++) {
+      //free the i-th row:
+      free(table[i]);
+    }
+    free(table);
+```
+
+## Arrays & Functions
+
+### C
+
+* When you pass an array to a function, you need to pass its *pointer*: `int *arr`
+* When you do this, you need to *also* pass in the size of the array (basic bookkeeping)
+* You can use the `const` keyword to prevent a function from making changes to your array
+
+```c
+int sum(const int *arr, int n) {
+
+  int total = 0;
+  for(int i=0; i<n; i++) {
+    total += arr[i];
+    //arr[i] = -1;
+  }
+  return total;
+
+}
+```
+
+* You can also design functions to *return* an array
+* When error handling with arrays, and you are returning a pointer, the only pointer you can return in the event of an error is `NULL`
+
 ```text
 
 

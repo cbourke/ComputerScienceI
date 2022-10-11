@@ -88,9 +88,204 @@ for(int i=0; i<1000; i++) {
     }
 ```
 
-* More Pitfalls:
+## More Pitfalls:
   * Careful: once you have freed memory, *you cannot access it*; attempt to do so will result in... a segmentation fault: the memory no longer belongs to you
   * Careful: only free something once!  If you free it a second time (without reallocating it), it is a "double free" error: a segmentation fault
+
+## Memory Management
+
+* Once you allocate a chunk of dynamic memory, you can use it however long you want in your program
+* Once you are done with it you should clean it up
+* You can *free* up memory (give it back to the heap or to the OS) using the `free()` function
+* You simply pass in the pointer to the dynamically allocated memory
+* Don't Dos:
+  * Don't "double" free an array (you cannot free something twice)
+  * Don't free your stack
+  * Don't free `NULL` or invalid variables
+  * Don't try to use an array after it has been free'd
+* Always remember to free your memory when you are done with it
+* Failure to do so will lead to "memory leaks"
+
+## Arrays & Functions
+
+* You can pass arrays to a function and have that function process the data
+* You can return arrays from functions
+* All of this is done through pointers: pass-by-reference
+* Also, when you pass an array to a function, you need to tell it how big it is!
+* The `const` keyword can be placed in front of an array parameter to make the promise that no changes will be made to the contents of the array
+* You cannot return static arrays from a function!  They are destroyed when the stack frame is popped off the top!
+* ALWAYS ALWAYS ALWAYS use the `-Wall` flag
+
+### Who "owns" memory?
+
+* Which function or piece of code is responsible for cleaning up memory (freeing it)?
+* In general: what ever piece of code "owns" the memory is responsible for cleaning it up
+* Example: If a  function only allocates temporary that it does not return, *the function* is responsible
+* Example: if the function *returns* the memory, it is *transferring* ownership to the calling function
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+
+/**
+ * Sums the given array of integers (of size n) and returns
+ * the total.
+ */
+int sum(const int *arr, int n) {
+
+    if(arr == NULL || n < 0) {
+        return 0;
+    }
+
+    int total = 0;
+    for(int i=0; i<n; i++) {
+        total += arr[i];
+        //arr[i] = 0;
+    }
+    return total;
+
+}
+
+void printArray(const int *arr, int n) {
+
+    if(arr == NULL || n < 0) {
+        printf("(null)\n");
+        return;
+    }
+
+    for(int i=0; i<n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+/**
+ * Creates an array of the given size (n) and fills it
+ * with ones.  Returns NULL for invalid inputs.
+ */
+int *getOnesArray(int n) {
+
+    if(n <= 0) {
+        return NULL;
+    }
+
+    int *result = (int *) malloc( n * sizeof(int) );
+
+    for(int i=0; i<n; i++) {
+        result[i] = 1;
+    }
+    //wrong: you cannot return it... free(result);
+    return result;
+}
+
+/**
+ * This function takes an array of integers (of size n) and
+ * creates and returns a new array containing only the even
+ * values from the original array.
+ *
+ * Ex:         [5, 6, 8, 9, 2, 3, 4, 1, 0]
+ * Will return [6, 8, 2, 4, 0]
+ */
+int *getEvens(const int *arr, int n, int *sizeOfResult) {
+
+    //TODO: error handling
+
+    //1. count how many even values there are in arr...
+    int numEvens = 0;
+    for(int i=0; i<n; i++) {
+        if(arr[i] % 2 == 0) {
+            numEvens++;
+        }
+    }
+    *sizeOfResult = numEvens;
+
+    //2. initialize the result array...
+    int *result = (int *) malloc( numEvens * sizeof(int) );
+
+    //3. iterate over the array arr and if the i-th element is
+    //   even, add it to the result array
+    int j = 0;
+    for(int i=0; i<n; i++) {
+        if(arr[i] % 2 == 0) {
+            //even, add it to the result array:
+            result[j] = arr[i];
+            j++;
+        }
+    }
+    //NOPE free(result);
+    return result;
+
+}
+
+int main(int argc, char **argv) {
+
+    int n = 8;
+    int primes[] = {2, 3, 5, 7, 11, 13, 17, 19};
+
+    printArray(primes, n);
+    int total = sum(primes, n);
+    printf("sum of first 8 primes is %d\n", total);
+    printArray(primes, n);
+    int m = 10;
+    int *ones = getOnesArray(m);
+    printArray(ones, m);
+    free(ones);
+
+    int sizeOfFoo = 9;
+    int foo[] = {5, 6, 8, 9, 2, 3, 4, 1, 0};
+    int sizeOfEvens;
+    int *evens = getEvens(foo, sizeOfFoo, &sizeOfEvens);
+    printArray(evens, sizeOfEvens);
+    free(evens);
+
+
+    return 0;
+}
+```
+
+## Multidimensional Arrays
+
+* Regular arrays are 1-D arrays (one dimensional)
+* 2-D arrays have rows and columns: matrices, tables
+* 3-D arrays: rows, columns, aisles, 4-D, etc.: rethink what you're doing
+* A regular array is a pointer: `int *`
+* A 2-D array is an array of pointers to pointers: `int **`
+* You have an array of pointers, each of which points to a "row" of elements/values/integers
+
+```c
+
+    //create a 2-D table that is 3 rows, 5 columns
+    int numRows = 3;
+    int numCols = 5;
+
+    //create an array of pointers:
+    int **table = (int **) malloc( numRows * sizeof(int*) );
+    for(int i=0; i<numRows; i++) {
+        //set up the i-th row of numCols size:
+        table[i] = (int *) malloc( numCols * sizeof(int) );
+    }
+    //set the top left element to 42:
+    table[0][0] = 42;
+    //set the bottom right element to 101
+    table[2][4] = 101;
+
+    for(int i=0; i<numRows; i++) {  //for each row...
+        for(int j=0; j<numCols; j++) {  //for each column...
+            printf("%4d ", table[i][j]);
+        }
+        printf("\n");
+    }
+
+    for(int i=0; i<numRows; i++) {  //for each row...
+        //free the row
+        free(table[i]);
+    }
+    free(table);
+```
+
+
 
 ```text
 

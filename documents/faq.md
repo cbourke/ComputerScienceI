@@ -173,7 +173,10 @@ hopefully you backed them up.
 If you are still having problems with the IDE or would like to consider backups/alternatives:
 
 * You can download the docker instance and work offline (see https://cs50.readthedocs.io/code/
-  and then https://cs50.readthedocs.io/code/#using-vs-code-locally )
+  and then https://cs50.readthedocs.io/code/#using-vs-code-locally ); the CS50
+  folks have posted videos:
+  * Windows: https://www.youtube.com/watch?v=9yzQCgIdL-Y
+  * Mac: https://www.youtube.com/watch?v=TZ6c7y8N64k
 
 * You can install VS Code on your own computer: https://code.visualstudio.com/download
 

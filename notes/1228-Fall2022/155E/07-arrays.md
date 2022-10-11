@@ -55,7 +55,7 @@ for(int i=0; i<5; i++) {
 
 ### How do we do this?
 
-* To alloate memory you use the ***m***emory ***alloc***ation function: `malloc`
+* To alloate memory you use the ***m***emory ***alloc*** ation function: `malloc`
 * It has the following signature:
 `void * malloc(size_t size)`
   * `size_t` can be treated as an integer
@@ -71,6 +71,83 @@ for(int i=0; i<5; i++) {
     * `double *` is pointer that points to a memory location that holds a `double`
     * `void *` is a pointer that can point to *anything*: it is pointing to a raw memory location that can hold anything, `int, double`, etc.
     * To deal with this, we typically typecast the returned point to the type of variable we want to store
+
+### More Details
+
+* If `malloc` fails for any reason it returns `NULL`
+* After allocation you can treat it like a regular old array, using 0-indexing
+* Attempts to access memory outside that array are *undefined behavior*
+  * IT could be a seg fault
+  * It may do nothing
+  * It may simply corrupt your own memory
+* You still need to keep track of the size of an array; in general there is no way to determine the size of an array: certain *never* for a dynamic array
+* Anytime you need to pass an array to a function (more later) you will also need to pass the size of the array
+* Other functions:
+  * `calloc`
+  * `realloc`
+  * RTM
+
+## Memory Management
+
+* Once you allocate a chunk of dynamic memory, you can use it however you like and how ever long you like
+* BUT: once you are done with it, you need to clean it up
+* YOu *free* the memory up by giving it back using the `free()` function: `free(arr)`
+* Other don'ts:
+  * Don't "double" free memory
+  * Don't free invalid or `NULL` pointers
+  * Don't try to access an array after it has been freed
+  * DOn't free your own stack space
+* Always remember to free your memory when you are done with it
+* Failure to do so will lead to "memory leaks"
+
+## Multidimensional Arrays
+
+* Regular old arrays are 1-D arrays
+* 2-D arrays: rows/columns: table, spreadsheet, matrix
+* 3-D arrays, 4D, 5D: rethink what you are doing
+* In C, a 1-D array uses a pointer: `int *`
+* A 2-D array uses a pointer to a pointer: `int`
+* Visualization
+
+```c
+
+    int numRows = 5;
+    int numCols = 10;
+
+    int **table = (int **) malloc( numRows * sizeof(int*) );
+    for(int i=0; i<numRows; i++) {
+        //set up each row which should have numCols columns...
+        table[i] = (int *) malloc( numCols * sizeof(int) );
+        for(int j=0; j<numCols; j++) {
+            table[i][j] = 0;
+        }
+    }
+    table[0][0] = 42;
+    table[numRows-1][numCols-1] = 101;
+
+    for(int i=0; i<numRows; i++) { //for each row...
+        printf("[");
+        for(int j=0; j<numCols; j++) {
+            printf("%3d ", table[i][j]);
+        }
+        printf(" ]\n");
+    }
+
+    //first, delete each row:
+    for(int i=0; i<numRows; i++) {
+        free(table[i]);
+    }
+    free(table);
+```
+
+## Arrays and Functions
+
+* You can pass an array to a function and have it process data stored in the array
+* You can also design functions to *return* an array
+* Observations:
+  * If you pass an array to a function you are passing a pointer (because arrays are pointers; they point to the first element in the array)
+  * You also need to tell the function how big the array is
+  * You can use the `const` keyword to make the array read-only: the function will not be able to make changes to the array
 
 
 ```text
