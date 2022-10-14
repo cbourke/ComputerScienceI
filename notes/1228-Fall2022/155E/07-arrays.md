@@ -149,6 +149,54 @@ for(int i=0; i<5; i++) {
   * You also need to tell the function how big the array is
   * You can use the `const` keyword to make the array read-only: the function will not be able to make changes to the array
 
+### Who owns memory
+
+* If a function creates *temporary* memory that it uses to process data, then it is responsible for cleaning it up (Freeing)
+* If a function returns a chunk of memory, it is transferring ownership to the calling function; that function is then responsible for it
+* Generally: if you have memory that is owned by `main()` you can kinda sorta get away without cleaning it up
+
+### How array memory works
+
+* Why do we use 0-indexing?
+* Arrays area actually memory addresses
+* Indices are actually memory *offsets* from the beginning of the array
+* Suppose we have an integer array `arr`
+  * The first element at `arr[0]` is actual 0 bytes away from the memory address `arr`
+  * The second element at `arr[1]` is 4 bytes away from the memory address `arr`
+  * `arr[2]` is 8 bytes away from `arr`
+
+### Shallow vs Deep copies
+
+* Example: shallow copy demo
+* A shallow copy is when you have more than one reference to the *same* thing (array)
+* Changes to the array are reflected in *both* references!
+* In contrast: a *deep copy* would mean a completely different copy of the array; so that changes to one do not affect the other
+
+```c
+int main() {
+
+  int n = 5;
+  int *arr = (int *) malloc( n * sizeof(int) );
+  for(int i=0; i<n; i++) {
+    arr[i] = i * 10;
+  }
+
+  //shallow:
+  //int *brr = arr;
+
+  //deep:
+  int *brr = (int *) malloc( n * sizeof(int) );
+  for(int i=0; i<n; i++) {
+    brr[i] = arr[i];
+  }
+
+
+  brr[0] = 42;
+  printf("arr[0] = %d\n", arr[0]);
+
+  return 0;
+}
+```
 
 ```text
 

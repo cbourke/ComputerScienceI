@@ -315,6 +315,77 @@ int sum(const int *arr, int n) {
 * You can also design functions to *return* an array
 * When error handling with arrays, and you are returning a pointer, the only pointer you can return in the event of an error is `NULL`
 
+## Misc
+
+### Who owns memory
+
+* If a function creates *temporary* memory that it uses to process data, it *owns* it; it is responsible for cleaning it up
+* If a function returns a chunk of memory, it is transferring ownership to the calling function; that function is then responsible for it
+* Generally: if you have memory that is owned by `main()` you can kinda sorta get away without cleaning it up
+
+### How array memory works
+
+* Why do we use 0-indexing in arrays?
+* Arrays are actually memory addresses
+* Indices are actually memory *offsets* from the beginning of the array
+* THe array variable name is a memory address that starts at the beginning of the array
+* The next element is a certain number of bytes "over"
+* Ex:
+  * Say we have an integer array named `arr`
+  * The first element `arr[0]` is at memory location `arr`
+  * The second element `arr[1]` is at memory location `arr + 4` (4 bytes over for an integer)
+  * `arr[2]` is at memory location `arr + 8`
+
+### Shallow vs Deep copies
+
+* Example: a shallow copy
+* A shallow copy is when you have more than one reference to the *same* thing (array)
+* Changes to the array are reflected in *both* references!
+* A *deep copy* is a completely separate copy of an array
+* YOu can easily write a deepcopy function for common arrays
+* If you don't want to write your own, you can use `memcpy`
+
+```java
+
+		List<Integer> numbers = new ArrayList<>();
+		numbers.add(10);
+		numbers.add(20);
+		numbers.add(30);
+		numbers.add(40);
+		numbers.add(50);
+
+
+		//Shallow copy:
+		List<Integer> foo = numbers;
+
+		System.out.println(numbers);
+		System.out.println(foo);
+		foo.add(60);
+		System.out.println(numbers);
+		System.out.println(foo);
+
+		//Deep copy:
+		foo = new ArrayList<>();
+		for(Integer x : numbers) {
+			foo.add(x);
+		}
+		System.out.println("=============");
+		System.out.println(numbers);
+		System.out.println(foo);
+		foo.add(70);
+		System.out.println(numbers);
+		System.out.println(foo);
+
+		//deep copy via a copy constructor:
+		List<Integer> bar = new ArrayList<>(numbers);
+		System.out.println(bar);
+
+		//deep copies of arrays:
+		int primes[] = {2, 3, 5, 7, 11, 13, 17, 19};
+		int deepCopyOfPrimes[] = Arrays.copyOf(primes, primes.length + 2);
+		System.out.println(Arrays.toString(deepCopyOfPrimes));
+```
+
 ```text
 
 
