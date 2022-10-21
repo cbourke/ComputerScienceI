@@ -12,7 +12,7 @@
     * You can have one central copy and use it on multiple machines
     * Cloud-based backup
     * Convenience
-    * Don't transfer via dropbox/google doc/one drive etc.  You are engineers not secretaries
+    * Don't transfer via dropbox/google doc/one drive etc.  You are engineers not office drones!
 * Build Systems
   * make, cmake
   * Dependency managers of external libraries

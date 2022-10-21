@@ -1,17 +1,7 @@
 
-# ECEN 194 - Computer Science I
+# CSCE 155E - Computer Science I
 ## Debugging & Tooling
 ### Fall 2022
-
-## Midterm
-
-* Wed: Reading, Hack due
-* Thursday, October 20th: 12:01AM - 11:59PM
-* 100 points but not twice as long
-* More recent material, but comprehensive
-* NO collaboration
-* Lecture: do your midterm or watch for a review
-* Hack: still held (GDB debugging hack)
 
 ## Tooling
 
@@ -21,7 +11,8 @@
     * You can have one central copy and use it on multiple machines
     * Cloud-based backup
     * Convenience
-    * Don't transfer via dropbox/google doc/one drive etc.  You are engineers not office drones!
+    * Don't transfer via dropbox/google doc/one drive etc.  You are self-respecting
+      engineers not office drones!
 * Build Systems
   * make, cmake
   * Dependency managers of external libraries
@@ -61,26 +52,29 @@
 * Usage:
   * Compile with the `-g` flag!
   * To run GDB use: `gdb a.out`
-  * To run your program: `run`
-  * YOu can set command line arguments using `set args 5 10 20`
-  * You can view your code using `layout src`
-  * Sometimes the display screws up; you can fix it by typing `refresh`
-  * You can set a break point:
-    * `break 12` (for line 12)
-    * `break main` (for a function)
-    * `break file.c:26` (if you have multiple files)
-    * You can remove a breakpoint using `clear`:
-    * Ex: `clear 12`, `clear main`
-  * You can print the value of variables: `print variableName`
-  * You can print an entire array of values using `*arr@8`
-  (dereference and provide a size)
-  * quit: `quit`
-  * Pause a running program (infinite loop): `control-C`
-  * Watch a variable for changes: `watch variableName`
-  * Continue to the next break point without pausing: `continue`
-  * Go to the next line: `next` or `n` for short
-  * You can *step* INTO a function using `step` instead of `next`
-  * You can set a conditional breakpoint: `break 10 if x == 21` (break at line 10 if x == 21)
+  * Within GDB:
+    * To run your program: `run`
+    * YOu can set command line arguments using `set args 5 10 20`
+    * You can view your code using `layout src`
+    * Sometimes the display screws up; you can fix it by typing `refresh`
+    * You can set a break point:
+      * `break 12` (for line 12)
+      * `break main` (for a function)
+      * `break file.c:26` (if you have multiple files)
+      * You can remove a breakpoint using `clear`:
+      * Ex: `clear 12`, `clear main`
+    * You can print the value of variables: `print variableName` or expressions: `print n * x`
+    * You can print an entire array of values using `*arr@8`
+    (dereference and provide a size); or individual values: `print a[3]`
+    * quit: `quit`
+    * Pause a running program (infinite loop): `control-C`
+    * Watch a variable for changes: `watch variableName`
+    * Continue to the next break point without pausing: `continue`
+    * Go to the next line: `next` or `n` for short
+    * You can *step* INTO a function using `step` instead of `next`
+    * You can set a conditional breakpoint: `break 10 if x == 21` (break at line 10 if x == 21)
+
+
 
 ```text
 
