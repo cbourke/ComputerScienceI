@@ -88,6 +88,137 @@ for(int i=0; i<100; i++) {
 }
 ```
 
+## String Length
+
+* You use the `strlen()`: it returns the number of characters in the string *not* including the null-terminating character
+* You can write a deep string copy function:
+
+```c
+
+char *deepStringCopy(const char *s) {
+    char *copy = (char *) malloc( ( strlen(s) + 1 )  * sizeof(char) );
+    strcpy(copy, s);
+    return copy;
+}
+```
+
+### Other Convenience Functions
+
+* The `ctype.h` library has many functions that operate on single characters
+  * `isalnum(c)` returns true if `c` is an alpha-numeric character: `0-9, a-z, A-Z`
+  * `ispunct(c)` returns true if `c` is a punctuation character
+  * `isspace(char c)` - returns true for all whitespace characters, `\t, \n, ` (space character)
+  * `isupper(c), islower(c)` true or false if `c` is an upper case letter or lower case letter
+  * `toupper(c), tolower(c)` return the upper/lower case version of `c`, returns `c` itself if it is not a letter
+  * `isdigit(c)` true for 0-9
+  * Exercise: write a function to convert a string to all uppper case characters
+
+```c
+
+/**
+ *  "Computer!" => "COMPUTER!"
+ */
+void toUpperCaseString(char *s) {
+
+  int n = strlen(s);
+  for(int i=0; i<n; i++) {
+    s[i] = toupper(s[i]);
+  }
+  return;
+}
+
+char *getUpperCaseCopy(const char *s) {
+    char *copy = deepStringCopy(s);
+    toUpperCaseString(copy);
+    return copy;
+}
+```
+
+## String Comparisons
+
+* You will often need to compare the contents of one string to another...
+* Can you use the `==` operator?
+
+```c
+
+    char a[] = "!pple";
+    char b[] = "apple";
+
+    //== compares memory address, NOT the contents of the string
+    if(a == b) {
+        printf("%s is equal to %s\n", a, b);
+    } else {
+        printf("%s is NOT equal to %s\n", a, b);
+    }
+
+    //strcmp compares two strings in lexicographic order (ASCII table)
+    int result = strcmp(a, b);
+    if(result < 0) {
+        //a < b
+        printf("%s comes before %s\n", a, b);
+    } else if(result == 0) {
+        printf("%s is equal to %s\n", a, b);
+    } else if(result > 0) {
+        printf("%s comes after %s\n", a, b);
+    }
+
+    //If you want to compare based on case-insensitive comparisons...
+    result = strcasecmp(a, b);
+    if(result < 0) {
+        //a < b
+        printf("%s comes before %s (ignoring case) \n", a, b);
+    } else if(result == 0) {
+        printf("%s is equal to %s (ignoring case) \n", a, b);
+    } else if(result > 0) {
+        printf("%s comes after %s (ignoring case) \n", a, b);
+    }
+
+    //You can also do comparisons with a byte limited version:
+    // strncmp: you provide a third argument, the number of characters to compare
+    char c[] = "apple pie";
+    char d[] = "apple";
+    result = strncmp(c, d, 6);
+    if(result < 0) {
+        //a < b
+        printf("%s comes before %s (limited to 5 characters) \n", c, d);
+    } else if(result == 0) {
+        printf("%s is equal to %s (limited to 5 characters) \n", c, d);
+    } else if(result > 0) {
+        printf("%s comes after %s (limited to 5 characters) \n", c, d);
+    }
+```
+
+* String comparison function `strcmp, strncmp, strcasecmp, strncasecmp` all follow a *comparator* pattern
+* A comparator pattern is a general, abstract comparison: it is a function that takes two arguments, $a, b$
+* It returns an integer:
+  * *something* negative if $a < b$
+  * zero if they are equal (conceptually), $a = b$
+  * *something* positive if $a > b$ (equivalently, $b < a$)
+
+## Byte Limited Versions
+
+* Both `strcpy` and `strcat` have byte limited versions: `strncpy, strncat` that take a third argument: $n$, the maximum number of characters to copy or concatenate
+* Same rules apply: source/destination are valid and the destination is big enough to hold both
+* New rule: if the null-terminator character is seen by either function in the first $n$ characters, it is automatically copied for you
+* If NOT: it becomes YOUR responsibility!
+
+```c
+
+    char fullName[100] = "Christopher Michael Bourke";
+    char firstName[50];
+    char foo[] = "Hello World";
+
+    strncpy(firstName, fullName, 5);
+    firstName[5] = '\0';
+    printf("firstName = %s\n", firstName);
+
+    strncat(firstName, foo, 5);
+    firstName[10] = '\0';
+    printf("firstName = %s\n", firstName);
+```
+
+* Challenge for Wednesday: get a substring of a string (part of a string starting in the middle)
+
 ```c
 
 

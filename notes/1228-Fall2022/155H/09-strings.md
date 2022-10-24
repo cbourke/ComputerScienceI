@@ -91,11 +91,192 @@ char name[100] = "chris";
 * IF either function sees the null terminating character within the first `n` bytes, it will be copied over and it will end its copying (it only copies "at most" $n$ bytes, it stops either at $n$ bytes or the null terminating character!)
 * Otherwise, the null terminating character becomes *your* responsibility
 * It can be used to create *substrings*!
+* You can manipulate strings to get a substring that starts anywhere in the string!
+
+```c
+char fullName[] = "Christopher Michael Bourke";
+char middle[100];
+
+//want to copy "Michael" into middle
+strncpy(middle, &fullName[12], 7);
+middle[7] = '\0';
 
 
+printf("name = %s\n", fullName);
+printf("name = %s\n", middle);
+```
 
+## Other useful things
+
+* The `string.h` library has several dozen other functions: RTM
+* The `ctype.h` library has a lot of useful functions for individual characters:
+  * `isspace(c)` is true if `c` is a space character (` , \n, \t`, etc.)
+  * `isupper(c)` or `islower(c)`
+  * Convert: `toupper(c)` `tolower(c)`
+  * etc. RTM!
+
+## Strings in Java
+
+* Strings in Java are "built-in": you have a class `String`
+* You also have a "string library" (a collection of methods that can manipulate strings)
+* Java strings are *NOT* null terminated: don't use the null terminator in Java!
+
+```java
+String name = "chris";
+
+
+name = "Chris";
+System.out.println(name.length());
+System.out.println(name);
+String foo = name.toUpperCase();
+System.out.println(name);
+System.out.println(foo);
+
+//concatenation:
+String lastName = "Bourke";
+String formattedName = lastName + ", " + name;
+System.out.println(formattedName);
+```
+
+* In Java, strings are *immutable*: once created, you cannot change them, you can only create news trings
+* You *can* use the assignment operator to make a `String` reference refer to a new string
+* You can also use the `+` operator to automatically concatenate strings
+* The `.length()` method gives you the length of a string
+* You can iterate over each character in a string.
+
+```java
+for(int i=0; i<formattedName.length(); i++) {
+  char c = formattedName.charAt(i);
+  System.out.println(c);
+}
+```
+
+### Mutable Strings in Java: `StringBuilder`
+
+* A `StringBuilder` is a mutable (changeable) version of a string: you change its contents
+
+```java
+StringBuilder sb = new StringBuilder();
+sb.append("chris");
+System.out.println(sb);
+sb.append(" ");
+sb.append("Bourke");
+System.out.println(sb);
+sb.replace(0, 1, "C");
+System.out.println(sb);
+
+sb.replace(5, 5, "topher");
+System.out.println(sb);
+
+String name = sb.toString();
+System.out.println(name);
+```
+
+## String Comparisons
+
+### C
+
+* In C you cannot use the `==` operator: it compares memory addresses, not contents
+* You need to use `strcmp, strcasecmp, strncmp` to compare contents.
+
+* It is a "comparator" pattern: it returns
+  * *Something* negative if $a < b$
+  * zero if $a = b$ (conceptually)
+  * *Something* positive if $a > b$ (or $b < a$)
+
+```c
+
+  char fruit01[] = "apple";
+  char fruit02[] = "apples";
+
+  //using == will not compare the *contents* of a string!
+  // it compares memory addresses!
+  if(fruit01 == fruit02) {
+    printf("%s and %s are the same!\n", fruit01, fruit02);
+  } else {
+    printf("%s and %s are different!\n", fruit01, fruit02);
+  }
+
+  //compares lexicographically using the ASCII table values!
+  int result = strcmp(fruit01, fruit02);
+  if(result < 0) {
+    printf("%s comes before %s\n", fruit01, fruit02);
+  } else if(result == 0) {
+    printf("%s is equal to %s\n", fruit01, fruit02);
+  } else if(result > 0) {
+    printf("%s comes after %s\n", fruit01, fruit02);
+  }
+
+  //if you want to compare without regard for upper/lower case:
+  result = strcasecmp(fruit01, fruit02);
+  if(result < 0) {
+    printf("%s comes before %s\n", fruit01, fruit02);
+  } else if(result == 0) {
+    printf("%s is equal to %s\n", fruit01, fruit02);
+  } else if(result > 0) {
+    printf("%s comes after %s\n", fruit01, fruit02);
+  }
+
+  //if you want to compare only a certain number of characters:
+  result = strncmp(fruit01, fruit02, 5);
+  if(result < 0) {
+    printf("%s comes before %s\n", fruit01, fruit02);
+  } else if(result == 0) {
+    printf("%s is equal to %s\n", fruit01, fruit02);
+  } else if(result > 0) {
+    printf("%s comes after %s\n", fruit01, fruit02);
+  }
+```
+
+### Java
+
+* same exact concept, except you use the `compareTo` and `compareToIgnoreCase` methods:
+
+```java
+
+		String fruitA = new String("Banana");
+		String fruitB = new String("apple");
+
+		if(fruitA == fruitB) {
+			System.out.println("equal!");
+		} else {
+			System.out.println("Not equal!");
+		}
+
+		int result = fruitA.compareTo(fruitB);
+		if(result < 0) {
+			System.out.printf("%s comes before %s\n", fruitA, fruitB);
+		} else if(result == 0) {
+			System.out.printf("%s equals %s\n", fruitA, fruitB);			
+		} else if(result > 0) {
+			System.out.printf("%s comes after %s\n", fruitA, fruitB);			
+		}
+
+		result = fruitA.compareToIgnoreCase(fruitB);
+		if(result < 0) {
+			System.out.printf("%s comes before %s\n", fruitA, fruitB);
+		} else if(result == 0) {
+			System.out.printf("%s equals %s\n", fruitA, fruitB);			
+		} else if(result > 0) {
+			System.out.printf("%s comes after %s\n", fruitA, fruitB);			
+		}
+```
+
+```java
+
+		//substings in Java
+		String fullName = "Christopher Michael Bourke";
+		String firstNameShort = fullName.substring(0, 5);
+		System.out.println(firstNameShort);
+		String middle = fullName.substring(12, 19);
+		System.out.println(middle);
+		String foo = fullName.substring(12);
+		System.out.println(foo);
+```
 
 ```text
+
+
 
 
 
