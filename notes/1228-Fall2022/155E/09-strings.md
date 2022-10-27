@@ -217,14 +217,145 @@ char *getUpperCaseCopy(const char *s) {
     printf("firstName = %s\n", firstName);
 ```
 
-* Challenge for Wednesday: get a substring of a string (part of a string starting in the middle)
+* Challenge for Wednesday: get a substring of a string ()
 
 ```c
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdbool.h>
+
+
+
+char *deepStringCopy(const char *s) {
+    char *copy = (char *) malloc( ( strlen(s) + 1 )  * sizeof(char) );
+    strcpy(copy, s);
+    return copy;
+}
+
+/**
+ * This function takes a string s and a character c and counts up the
+ * number of instances of the character c in s
+ *
+ */
+int countChar(const char *s, char c) {
+
+  if(s == NULL) {
+    return 0;
+  }
+
+  int count = 0;
+  for(int i=0; i<strlen(s); i++) {
+    if(s[i] == c) {
+        count++;
+    }
+  }
+  return count;
+
+}
+
+
+
+/**
+ * This function takes a string s and modifies it by removing all
+ * whitespace characters
+*/
+int removeAllWhitespace(char *s) {
+
+  //MAYBE: count up the number of whitespace characters
+  //go through the characters (again) and if it is a non-whitespace character, copy it over to a
+  // temporary work string
+  //need some temporary space to work in:
+  int n = strlen(s);
+  char *temp = (char *) malloc( sizeof(char) * (n + 1) );
+  //go through the characters...
+  int j=0;
+  for(int i=0; i<n; i++) {
+    //if it is a whitespace character, ignore it.
+    //else copy it from s to temp...
+    if(!isspace(s[i])) {
+        temp[j] = s[i];
+        j++;
+    }
+  }
+  temp[j] = '\0';
+
+  //copy the temp string back into the original...
+  strcpy(s, temp);
+  free(temp);
+
+  return 0;
+
+}
+
+/**
+ * This function takes a string s and returns a new string (copy of it)
+ * with all the whitespace characters removed
+ */
+char *removeAllWhitespaceCopy(const char *s) {
+
+    //TODO: error check; return NULL
+    char *copy = deepStringCopy(s);
+    removeAllWhitespace(copy);
+    return copy;
+
+}
+
+/**
+ * This function takes a string s and two indices: start and end
+ * and creates and returns a new string which is a substring of s
+ * containing characters from [start, end]
+ */
+char *substring(const char *s, int start, int end) {
+
+  if(s == NULL || start < 0 || end > strlen(s)-1 || start > end ) {
+    return NULL;
+  }
+
+  int n = end-start+1;
+  char *result = (char *) malloc( sizeof(char) * (n+1) );
+  strncpy(result, &s[start], n);
+  result[n] = '\0';
+
+  return result;
+}
+
+int main(int argc, char **argv) {
+
+    char school[100] = "\nUniv  er\tsity of Nebraska L\tinc    \t\t\toln";
+    int n = strlen(school);
+    printf("n = %d\n", n);
+
+    //school is a char * (a pointer, a string)
+    //school[15] is a char
+    // but I want a char * to copy
+    // char -> char *
+
+    char *state = substring(school, 0, strlen(school)-1);
+
+    // strncpy(state, &school[14], 8);
+    // state[8] = '\0';
+    printf("state = |%s|\n", state);
+
+    free(state);
+
+    int count = countChar(school, ' ');
+    printf("count = %d\n", count);
+
+    char *copy = removeAllWhitespaceCopy(school);
+    printf("copy = |%s|\n", copy);
+    free(copy);
+
+    removeAllWhitespace(school);
+    printf("school = |%s|\n", school);
 
 
 
 
-
+    return 0;
+}
 
 ```

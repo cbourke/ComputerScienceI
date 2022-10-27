@@ -274,6 +274,42 @@ System.out.println(name);
 		System.out.println(foo);
 ```
 
+## String Processing
+
+### Formatting
+
+* In C you can use `printf` to format the output to the "standard output"
+* YOU can can also use `sprintf` to "print" to a string
+
+```c
+int a = 42;
+double b = 3.14;
+char name[] = "School of Computing";
+char formatted[100];
+
+sprintf(formatted, "a = %d, b = %10.1f, name = %s\n", a, b, name);
+
+printf("formatted = %s\n", formatted);
+```
+
+* In Java  you use `String.format` instead:
+
+```java
+
+		  int a = 42;
+		  double b = 3.14;
+		  String name = "School of Computing";
+
+		  String formatted = String.format("a = %d, b = %10.1f, name = %s\n", a, b, name);
+
+		  System.out.printf("formatted = %s\n", formatted);
+```
+
+### Exercises
+
+* C: complex
+* Java: easy (you may want to look up a regular expression)
+
 ```text
 
 
