@@ -310,6 +310,57 @@ printf("formatted = %s\n", formatted);
 * C: complex
 * Java: easy (you may want to look up a regular expression)
 
+## Tokenizing Data
+
+* CSV = Comma Separated Value data
+
+```text
+first,last,nuid,city,state,office
+Chris,Bourke,35140602,Omaha,NE,103 Schorr
+Margaret,Hamilton,1234 A Street,Lincoln,NE,105 Schorr
+Joe,Smith,5678,Atlanta,GA,120 Foo
+
+```
+
+* Demo
+
+```c
+
+  //CSV data = Comma Separated Value data
+  // each piece of data is a *token* and you can seperate them
+  // by *tokenizing* them
+  char csvData[] = "Chris,Bourke,35140602,Omaha,NE,105 Schorr";
+  //strk tok can be used to tokenize a string:
+  //  The first time you call the function, you provide the:
+  //    string to tokenize
+  //    the delimiter
+  //  It returns a pointer to the next token...
+  char *token = strtok(csvData, ",");
+  //on each subsequent call after the first, you do not pass the
+  // string, instead pass NULL:
+  //when there are no more tokens, it returns... NULL
+  while(token != NULL) {
+    printf("token = %s\n", token);
+    token = strtok(NULL, ",");
+  }
+```
+
+* Java:
+
+```java
+String foo = "Chris,Bourke,35140602,Omaha,NE,105 Schorr";
+String tokens[] = foo.split(",");
+
+for(String token : tokens) {
+  if(!token.isBlank()) {
+    System.out.printf("token = |%s|\n", token);
+  }
+}
+```
+
+
+
+
 ```text
 
 

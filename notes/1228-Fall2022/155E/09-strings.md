@@ -359,3 +359,56 @@ int main(int argc, char **argv) {
 }
 
 ```
+
+## Data Processing: String Tokenization
+
+* Formatting: Comma Separated Values = CSV
+
+```text
+first,last,nuid,city,state,office
+Chris,Bourke,35140602,Omaha,NE,103 Schorr
+Margaret,Hamilton,1234,Lincoln,NE,105 Schorr
+Joe,Smith,5678,Atlanta,GA,120 Foo
+
+```
+
+* Each item is a *token*
+* Each line is a record
+* Splitting up the tokens on each line is called "tokenization"
+
+```c
+
+  char data[] = "Margaret,Hamilton,1234,Lincoln,NE,105 Schorr,USA";
+
+  // The first time you call strtok: you pass
+  //   1. The string you want to tokenize
+  //   2. The delimiter you want to split it along (ex: ,) *as a string*
+  //   3. It returns a pointer to the first token
+  char *token = strtok(data, ",");
+  //  4. every call after the first: you don't pass in the string
+  ///    instead: pass in NULL to *continue* tokenizing the same string
+  //     Otherwise: if you pass in a string, it start over
+  while(token != NULL) {
+    printf("token = %s\n", token);
+    token = strtok(NULL, ",");
+  }
+
+  printf("my data is now: |%s|\n", data);
+
+```
+
+* You can tokenize a string based on any *delimiter* using `strtok`
+  * `char * strtok(char *str, const char *delim)`
+  * You provide with two arguments: the string you want to tokenize and the delimiter you want to tokenize on
+  * The first call you provide the string, each subsequent call you provide `NULL` so that it continues to work on the same string
+  * The return value can be used to determine if you are at the end of the string: when you are at the end it returns `NULL`
+```text
+
+
+
+
+
+
+
+
+```

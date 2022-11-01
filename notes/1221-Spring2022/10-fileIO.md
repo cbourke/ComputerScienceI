@@ -8,7 +8,7 @@
 * Files are also directories, programs are files, buffers, sockets
 * Files may be read (input), or written (output)
 * Files may be binary (pure data) or plaintext files (ASCII)
-* Even plaintext files may be *stuctured* and not intended for human consumption: CSV, XML, JSON, etc. Base-64 encoding:
+* Even plaintext files may be *structured* and not intended for human consumption: CSV, XML, JSON, etc. Base-64 encoding:
 * EDI = Electronic Data Interchange
 * Basic steps to working with files:
  1. Open the file
