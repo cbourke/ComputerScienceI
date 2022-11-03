@@ -165,7 +165,8 @@ You can:
 
 ## Nothing Seems to Work
 
-You can try creating a new Codespace at: https://code.cs50.io/settings
+1. Try clearing your browser cache/cookies; instructions for most major browsers: https://its.uiowa.edu/support/article/719
+2.  You can try creating a new Codespace at: https://code.cs50.io/settings
 Your files *should* still be synced to your GitHub repository, but if not,
 hopefully you backed them up.
 
