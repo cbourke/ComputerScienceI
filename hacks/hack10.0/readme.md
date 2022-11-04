@@ -73,16 +73,16 @@ DNA is a molecule that encodes genetic information. A DNA sequence is a
 string of nucleotides represented as letters A, T, C, and G
 (representing the nucleobases adenine, thymine, cytosine, and guanine
 respectively). Protein sequencing in an organism consists of a two step
-process. First the DNA is translated into RNA by replacing each thymine
-nucleotide with uracil (U). Then, the RNA sequence is translated into a
+process. First the DNA is translated into RNA by replacing each thymine (`T`)
+nucleotide with uracil (`U`). Then, the RNA sequence is translated into a
 protein (a sequence of amino acids) according to the following rules.
 
-The RNA sequence is processed 3 bases at a time called a *codon*. Each
-codon is translated into a single amino acid according to known encoding
-rules. There are 20 such amino acids, each represented by a single
-letter in $$(A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y)$$ Because there
-are $4^3 = 64$ possible codons but only 20 amino acids, some codons
-translate to the same amino acid.
+The RNA sequence is processed 3 bases at a time called a *codon* or
+*trigram*. Each codon is translated into a single amino acid according
+to known encoding rules. There are 20 such amino acids, each represented
+by a single letter in $$(A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y)$$.
+Because there are $4^3 = 64$ possible codons but only 20 amino acids,
+some codons translate to the same amino acid.
 
 The rules for translating trigrams are complex, but we've simplified the
 process by providing a utility function, `rnaToProtein` which takes
@@ -90,15 +90,15 @@ an RNA codon (as a string) and returns its protein (as a single
 `char`). If you provide it an invalid sequence, it will return
 `\0` the null character.
 
-In addition, the trigrams UAA, UAG, and UGA are special markers that
+In addition, the trigrams `UAA`, `UAG`, and `UGA` are special markers that
 indicate a (premature) end to the protein sequencing (there may be
 additional nucleotides left in the RNA sequence, but they are ignored
 and the translation ends). The function we've provided will return a
 lower-case `x` character for any of these three trigrams.
 
-As an example, suppose we start with the DNA sequence $AAATTCCGCGTACCC$;
-it would be encoded into RNA as $AAAUUCCGCGUACCC$; and into an amino
-acid sequence $KFRVP$.
+As an example, suppose we start with the DNA sequence `AAATTCCGCGTACCC`;
+it would be encoded into RNA as `AAAUUCCGCGUACCC`; and into an amino
+acid sequence `KFRVP`.
 
 You will write a program that takes two command line arguments. The
 first is an input file containing a DNA sequence and the second is the
@@ -129,6 +129,9 @@ Place all your code in a file named `proteinTranslator.c`.
     the provided files since you won't be able to hand them in (the
     grading script provides them for you).
 
+-   We've provided a couple of sample DNA input files and the resulting
+    protein sequences in the `examples` directory.
+
 -   **Hint**: Code reuse is a Very Good Thing. Your protein program can
     use your file utility functions, but also: feel free to include any
     additional functions you may have written before in the
@@ -140,5 +143,3 @@ Place all your code in a file named `proteinTranslator.c`.
 
 -   Turn in all of your files via webhandin, making sure that it runs
     and executes correctly in the grader.
-
-    
