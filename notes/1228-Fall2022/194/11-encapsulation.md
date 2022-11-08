@@ -50,13 +50,14 @@ typedef struct {
 ```
 
 Observations:
-* YOu use the keywords `typedef struct` and within curly brackets provide a "list" of the structure's *member variables*
+* You use the keywords `typedef struct` and within curly brackets provide a "list" of the structure's *member variables*
 * Each one is ended with a semicolon: `;`
 * The name of the structure is provided at the end with a semicolon
 * The name should follow an `UpperCamelCasing` convention
 * Member variables should use a `lowerCamelCasing` convention
 * When a structure contains another structure, it is known as *composition*
 * When you declare an "instance" of your structure, you can access its member variable variables using the "dot" operator: `.`
+* When you have a *pointer* to a structure, you can/should use the array operator: `->`
 
 ## Constructors or "Factory" functions
 
