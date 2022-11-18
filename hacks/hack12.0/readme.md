@@ -45,7 +45,7 @@ For correctness:
 
 # Problem Statement
 
-A binomial coefficient, "$n$ choose $k$" is a number that corresponds to
+A binomial coefficient, " $n$ choose $k$ " is a number that corresponds to
 the number of ways to *choose* $k$ items from a set of $n$ distinct
 items. You may be familiar with some the notations, $C(n,k)$ or $C_n^k$
 or ${}_{n}C_k$, but most commonly this is written as ${n \choose k}$
@@ -61,7 +61,12 @@ $${4 \choose 2} = \frac{4!}{(4-2)!2!} = 6$$
 
 ways of doing this. The six ways are:
 
-$$\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{c, d\}$$
+$$\{a, b\}$$
+$$\{a, c\}$$
+$$\{a, d\}$$
+$$\{b, c\}$$
+$$\{b, d\}$$
+$$\{c, d\}$$
 
 There are a lot of other interpretations and applications for binomial
 coefficients, but this hack will focus on computing their value using a
