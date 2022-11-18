@@ -61,12 +61,7 @@ $${4 \choose 2} = \frac{4!}{(4-2)!2!} = 6$$
 
 ways of doing this. The six ways are:
 
-$$\{a, b\}$$
-$$\{a, c\}$$
-$$\{a, d\}$$
-$$\{b, c\}$$
-$$\{b, d\}$$
-$$\{c, d\}$$
+{a, b}, {a, c}, {a, d}, {b, c}, {b, d}, {c, d}
 
 There are a lot of other interpretations and applications for binomial
 coefficients, but this hack will focus on computing their value using a
