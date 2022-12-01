@@ -51,5 +51,6 @@ figures/_minted*
 .DS_Store
 
 #
+.vscode/
 notes/dev/
 development
