@@ -44,7 +44,7 @@
 * In the worst case, linear search makes $n$ comparisons on an array of $n$ elements
 * In the average case, linear search makes $\frac{n}{2}$ comparisons
 * Perspective:
-  * For an array of $n = 10^{12}$ (1 trillion) elements, it makes about 1 trillion comparsions in the worst case, 500 billion in the average case
+  * For an array of $n = 10^{12}$ (1 trillion) elements, it makes about 1 trillion comparisons in the worst case, 500 billion in the average case
   * Consider the *growth rate* of the number of comparisons vs the size of the array
   * For linear search, either average or worst, doubling the input size doubles the time it takes to execute; increasing an order of magnitude: $n \rightarrow 10n$, requires ten times as much time to execute, etc.
 
