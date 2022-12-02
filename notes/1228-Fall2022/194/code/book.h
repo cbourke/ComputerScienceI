@@ -83,3 +83,14 @@ Book * getAllBooksByAuthor(const Book *books, int numBooks, Author author, int *
  * are equal based on whether or not the first name and the last name are the same
  */
 int cmpAuthor(const Author *a, const Author *b);
+
+/**
+ * A comparator for books that orders them in desc with respect to the rating...
+ */
+int cmpBooksByRatingDesc(const void *a, const void *b);
+
+/**
+ * A comparator for books that orders them in ascending order with
+ * respect to the author's last name/first name
+ */
+int cmpBooksByAuthor(const void *a, const void *b);

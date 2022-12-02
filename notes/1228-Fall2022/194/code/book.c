@@ -165,3 +165,32 @@ int cmpAuthor(const Author *a, const Author *b) {
 
   return result;
 }
+
+int cmpBooksByRatingDesc(const void *a, const void *b) {
+
+  const Book *x = (const Book *) a;
+  const Book *y = (const Book *) b;
+
+  if( x->rating < y->rating) {
+    return 1;
+  } else if( x->rating > y->rating) {
+    return -1;
+  } else {
+    return 0;
+  }
+
+}
+
+int cmpBooksByAuthor(const void *a, const void *b) {
+
+  const Book *x = (const Book *) a;
+  const Book *y = (const Book *) b;
+
+  int result = strcmp(x->author.lastName, y->author.lastName);
+  if(result == 0) {
+    //break ties by looking at the first name:
+    result = strcmp(x->author.firstName, y->author.firstName);
+  }
+  return result;
+
+}

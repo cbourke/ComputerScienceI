@@ -70,8 +70,92 @@
   * `i`-th iteration: examine elements `arr[i]` thru `arr[n-1]` swap it with `arr[i]`
   * Stop when `i = n-2`
 
+### Quick Sort
+
+  * It is quick!
+  * Idea: choose a pivot element (say the first element)
+  * Partition around that element
+  * Divide and conquer algorithm: you partition around the pivot and recursively sort each sub array on each side until you reach an subarray of size of size 1 (or 0), stop
+  * Analysis: omitted (beyond the scope of this course)
+  * End result: quick sort makes about $n\log{n}$ comparisons
+
+## Searching & Sorting in Practice
+
+* In general, you do not need or want to write your own searching/sorting algorithms
+  * Lots of copy-pasta for different types
+  * Lots of testing
+  * Lots of debugging, etc.
+  * Don't roll your own!
+* `qsort` and other built-in algorithms know how to sort, they just don't know how to *order*
+* The sorting algorithm doesn't know what type of elements it is sorting and therefore does not necessarily know how to *order*
+* `qsort` needs to be told how to order those *things*
+* A comparator function solves this problem
+* A comparator function takes two generic *things* $a, b$ and returns an integer:
+  * *Something* negative if $a$ comes before $b$
+  * ZERO if $a$ "equals" $b$
+  * *Something* positive if $a$ comes after $b$ ($b$ comes before $a$)
+
+### Comparator Functions
+
+* A *comparator* function is a function with the following signature
+
+`int cmp(const void *a, const void *b)`
+
+* It returns an integer with the following contract:
+  * it returns *something* negative if a < b
+  * it returns zero if a is equal to b
+  * it returns *something* positive if a > b (b < a)
+* `const`: the comparator will not (and cannot) make changes to the two input values
+* Both are `void *` variables: a generic void pointer (it can point to any type of anything)
+* If the function has *any other signature* it is NOT a comparator
+* A comparator follows the same basic pattern:
+  1. It typecasts the two values `a, b` into the *expected* types
+  2. It makes a comparison between the state of the two variables, returning an integer value depending on the ordering
+
+### `qsort`
+
+* C provides a standard "quick sort" implementation
+
+```c
+void qsort(void *base,
+           size_t nel,
+           size_t size,
+           int (*compar)(const void *, const void *));
+```
+
+* It does not return anything, it is only rearranging the array you give it
+* `base`: the array you want sorted
+* `nel`: the number of elements in the array
+* `size`: the number of bytes each element in the array takes: use `sizeof()` to determine how many bytes each takes!
+* `compar`: the comparator function that you want to use to order elements; generally: you just need to give the function's name
+
+#### Binary Searching in C
+
+* The standard library has a binary search implementation:
+
+```c
+void *bsearch(const void *key,
+              const void *base,
+              size_t nmemb,
+              size_t size,
+              int (*compar)(const void *, const void *));
+```         
+
+* Returns a pointer to **AN** element that matches the key
+* Returns `NULL` if no such element           
+* The first argument is a pointer to a key that you are searching for
+* There is a `const` keyword in front of the array
+* Otherwise it is exactly the same as `qsort`
+
+
+
 
 ```text
+
+
+
+
+
 
 
 

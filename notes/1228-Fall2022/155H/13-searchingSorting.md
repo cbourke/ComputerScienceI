@@ -128,6 +128,11 @@ void *bsearch(const void *key,
 * `bsearch` does not make changes to the array (it is `const`)
 * The first argument is a key that you are searching for
 
+## Java
+
+* 
+
+
 ```text
 
 
