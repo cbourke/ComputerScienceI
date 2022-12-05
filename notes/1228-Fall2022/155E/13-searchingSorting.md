@@ -125,6 +125,23 @@ void *bsearch(const void *key,
 * `bsearch` makes no changes to the array (thus the `const` keyword)
 * The first argument is a "dummy key" that you are searching for
 
+## Misc Issues
+
+* Total Orders:
+  * Sometimes you want to write comparators for only one or a subset of member variables/data
+  * Other times you want a *total order*: there is NO possibility of a tie
+  * To do so, you need to establish a universally unique identifier: ISBNs, EIDR, SSN ("natural" keys)
+  * Sometimes there is no natural key: alternatives generate *surrogate* keys
+  * Databases will typically handle "key management" for you
+  * Otherwise: UUIDs are really nice
+* Artificial vs Natural Sorting
+  * YOu use some human-oriented criteria to sort
+  * That means you cannot rely on built-in function or operators such as `strcmp` or `<`, `>`, etc.
+  * Solution: create an enumerated type or some data structure to define the ordering; then you can use `<, >, ==`, etc.
+* A sorting algorithm is *stable* if the original ordering of otherwise equal elements is preserved in the final sort
+  * $2_a, 1, 2_b, 4$
+  * Both $1, 2_a, 2_b, 4$ and $1, 2_b, 2_a, 4$ are sorted
+  * But the first is *stable* the second is *unstable*
 
 
 
