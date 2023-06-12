@@ -1,6 +1,6 @@
 # Computer Science I
 
-### CSCE 155E - Syllabus - Fall 2022
+### CSCE 155E - Syllabus - Fall 2023
  [School of Computing](https://computing.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
@@ -55,6 +55,11 @@ in the major.
 
 For all other information, see the course website.
 
+## University Policies, Resources & Services
+
+Students are responsible for knowing the university policies and
+be aware of resources found on this page: https://go.unl.edu/coursepolicies
+
 ## Course Delivery
 
 This course has both an in-person section as well as an online section
@@ -70,7 +75,7 @@ Assistants available both in-person and online via zoom.
 ### Continuation of Instruction
 
 If in-person classes are canceled by the University during a lecture
-day, lecture will still be livestreamed.  If in-person classes are canceled
+day, lecture may still be livestreamed.  If in-person classes are canceled
 by the University during a lab/hack day, in-person attendance will not be
 required, help will be made available via zoom and you will still be
 expected to complete the work remotely.
@@ -116,35 +121,10 @@ you should be able to exhibit.
 
 See the course website (canvas).
 
-## University Services
-
-### Accommodations for Students with Disabilities
-
-It is the policy of the University of Nebraska-Lincoln to provide
-flexible and individualized accommodations to students with documented
-disabilities that may affect their ability to fully participate in
-course activities or to meet course requirements. To receive
-accommodation services, students must be registered with the Services
-for Students with Disabilities (SSD) office, 232 Canfield
-Administration, 472-3787 voice or TTY.
-
-### Counseling and Psychological Services
-
-UNL offers a variety of options to students to aid them in dealing with
-stress and adversity. [Counseling and Psychological Services](https://caps.unl.edu/)
-(CAPS) is a multidisciplinary team of psychologists and counselors that works
-collaboratively with Nebraska students to help them explore their
-feelings and thoughts and learn helpful ways to improve their mental,
-psychological and emotional well-being when issues arise. CAPS can be
-reached by calling 402-472-7450. Big Red Resilience & Well-Being
-provides fun events, innovative education, and dynamic services to help
-students understand emotions, manage stress, build strength, connect
-with others, develop grit and navigate transitions.
-
 ## Grading
 
 Assessment (grading) will be based on weekly readings, labs, "hacks",
-attendance as well as two exams, a midterm, and a comprehensive
+attendance as well as two exams and a comprehensive
 final with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
@@ -154,10 +134,9 @@ final with the following point distributions.
 |  Labs               |      12|           15|    180|
 |  Hacks              |      13|           25|    325|
 |  Attendace          |      13|           10|    130|
-|  Exams              |       2|           50|    100|
-|  Midterm            |       1|          100|    100|
+|  Exams              |       2|           75|    150|
 |  Final              |       1|          150|    150|
-|  Total              |        |             |  1,200|
+|  Total              |        |             |  1,100|
 
 
 ### Starter Points
@@ -277,7 +256,7 @@ attendance points will not be assessed.
 
 ### Exams
 
-There will be two regular exams, one midterm exam, and a comprehensive
+There will be several exams as well as a comprehensive
 final exam. These will be open-book, open-note, *required computer* exams.
 The exams consist of live coding exercises for which you will need your own
 machine as you will be coding and submitting programs online for
