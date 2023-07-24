@@ -60,24 +60,12 @@ For all other information, see the course website.
 Students are responsible for knowing the university policies and
 be aware of resources found on this page: https://go.unl.edu/coursepolicies
 
-## Course Delivery
-
-This course has both an in-person section as well as an online section
-but is delivered in a **hyrid** mode.  This means that:
-
-- All lectures are livestreamed via YouTube and recordings are available
-immediately after. A live Q&A through Piazza is available during lecture
-as well.
-
-- All lab and hack sessions as well as office hours will have Learning
-Assistants available both in-person and online via zoom.
-
 ### Continuation of Instruction
 
 If in-person classes are canceled by the University during a lecture
 day, lecture may still be livestreamed.  If in-person classes are canceled
 by the University during a lab/hack day, in-person attendance will not be
-required, help will be made available via zoom and you will still be
+required, help *may* be made available via zoom and you will still be
 expected to complete the work remotely.
 
 ## Skills Objectives
@@ -123,20 +111,21 @@ See the course website (canvas).
 
 ## Grading
 
-Assessment (grading) will be based on weekly readings, labs, "hacks",
-attendance as well as two exams and a comprehensive
-final with the following point distributions.
+Assessment (grading) will be based on weekly readings, labs,
+"hacks", attendance as well as exams and a comprehensive final
+with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
 |  Starter Points     |        |             |     20|
+|  PDC Module/Surveys |        |             |     50|
 |  Readings (zyBooks) |      13|           15|    195|
 |  Labs               |      12|           15|    180|
 |  Hacks              |      13|           25|    325|
 |  Attendace          |      13|           10|    130|
 |  Exams              |       2|           75|    150|
 |  Final              |       1|          150|    150|
-|  Total              |        |             |  1,100|
+|  Total              |        |             |  1,200|
 
 
 ### Starter Points
@@ -144,8 +133,25 @@ final with the following point distributions.
 It is important to start out positively. Put yourself in the mindset
 that you *will* succeed in this course and commit yourself to putting in
 a full effort in every aspect of it. To get you started, we're giving
-you **free starter points**. You have a perfect score in this course already!
-Keep it up!
+you **free starter points**. You have a perfect score in this course
+already!  Keep it up!
+
+### PDC Modules/Surveys
+
+This course is experimenting with introducing **Parallel and Distributed
+Computing** (PDC) concepts early in the computing curriculum.  These
+topics are usually covered in depth in advanced elective courses.
+However, we have developed a series of "codeless" modules that do not
+require any coding knowledge and cover PDC concepts in an accessible
+manner.  
+
+As part of this experiment, you will complete a pre-module survey which
+will be graded based on completion (25 points).  You will then go
+through 3 modules on PDC which includes running and observing some
+simulations, visualizations, etc.  You may complete these modules
+at your own pace.  Once completed, you will then take a post-module
+survey (25 points) again graded based on completion only.  Full
+details and due dates are posted in canvas.  
 
 ### Readings
 
@@ -242,17 +248,6 @@ that you earn at least 75% of the remaining points for each module
 (Reading/Lab/Hack).  If you do not attend and you earn less than 75% of
 the points for the module, you will get a zero for the attendance portion
 of the module.
-
-***Online Section***
-
-Online courses have a lot less structure and more flexibility than an
-in-person course.  However, this requires a lot more self-discipline
-and responsibility in order to succeed academically.  If you have chosen
-to enroll in the online section, you will need to demonstrate that
-responsibility in how you approach the material for this course.  
-
-The key difference is that since in-person attendance is not required,
-attendance points will not be assessed.
 
 ### Exams
 

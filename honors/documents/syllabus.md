@@ -78,24 +78,17 @@ in the major.
 
 For all other information, see the course website.
 
-## Course Delivery
+## University Policies, Resources & Services
 
-This course has both an in-person section as well as an online section
-but is delivered in a **hyrid** mode.  This means that:
-
-- All lectures are livestreamed via YouTube and recordings are available
-immediately after. A live Q&A through Piazza is available during lecture
-as well.
-
-- All lab and hack sessions as well as office hours will have Learning
-Assistants available both in-person and online via zoom.
+Students are responsible for knowing the university policies and
+be aware of resources found on this page: https://go.unl.edu/coursepolicies
 
 ### Continuation of Instruction
 
 If in-person classes are canceled by the University during a lecture
 day, lecture will still be livestreamed.  If in-person classes are canceled
 by the University during a lab/hack day, in-person attendance will not be
-required, help will be made available via zoom and you will still be
+required, help *may* be made available via zoom and you will still be
 expected to complete the work remotely.
 
 ### Honors Section
@@ -172,43 +165,19 @@ you should be able to exhibit.
 
 See the course website (canvas).
 
-## University Services
-
-### Accommodations for Students with Disabilities
-
-It is the policy of the University of Nebraska-Lincoln to provide
-flexible and individualized accommodations to students with documented
-disabilities that may affect their ability to fully participate in
-course activities or to meet course requirements. To receive
-accommodation services, students must be registered with the Services
-for Students with Disabilities (SSD) office, 232 Canfield
-Administration, 472-3787 voice or TTY.
-
-### Counseling and Psychological Services
-
-UNL offers a variety of options to students to aid them in dealing with
-stress and adversity. [Counseling and Psychological Services](https://caps.unl.edu/)
-(CAPS) is a multidisciplinary team of psychologists and counselors that works
-collaboratively with Nebraska students to help them explore their
-feelings and thoughts and learn helpful ways to improve their mental,
-psychological and emotional well-being when issues arise. CAPS can be
-reached by calling 402-472-7450. Big Red Resilience & Well-Being
-provides fun events, innovative education, and dynamic services to help
-students understand emotions, manage stress, build strength, connect
-with others, develop grit and navigate transitions.
-
 ## Grading
 
-Assessment (grading) will be based on labs, "hacks", a
-semester project and two exams with the following point distributions.
+Assessment (grading) will be based on weekly readings, labs,
+"hacks", attendance as well as exams and a comprehensive final
+with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
 |  Starter Points     |        |             |     45|
+|  PDC Module/Surveys |        |             |     50|
 |  Labs               |      12|           15|    180|
 |  Hacks              |      25|           25|    625|
-|  Exams              |       2|           50|    100|
-|  Midterm            |       1|          100|    100|
+|  Exams              |       2|           75|    150|
 |  Final              |       1|          150|    150|
 |  Total              |        |             |  1,200|
 
@@ -218,8 +187,25 @@ semester project and two exams with the following point distributions.
 It is important to start out positively. Put yourself in the mindset
 that you *will* succeed in this course and commit yourself to putting in
 a full effort in every aspect of it. To get you started, we're giving
-you **free starter points**. You have a perfect score in this course already!
-Keep it up!
+you **free starter points**. You have a perfect score in this course
+already!  Keep it up!
+
+### PDC Modules/Surveys
+
+This course is experimenting with introducing **Parallel and Distributed
+Computing** (PDC) concepts early in the computing curriculum.  These
+topics are usually covered in depth in advanced elective courses.
+However, we have developed a series of "codeless" modules that do not
+require any coding knowledge and cover PDC concepts in an accessible
+manner.  
+
+As part of this experiment, you will complete a pre-module survey which
+will be graded based on completion (25 points).  You will then go
+through 3 modules on PDC which includes running and observing some
+simulations, visualizations, etc.  You may complete these modules
+at your own pace.  Once completed, you will then take a post-module
+survey (25 points) again graded based on completion only.  Full
+details and due dates are posted in canvas.  
 
 ### Labs
 
@@ -262,12 +248,16 @@ Further details are provided in the handouts, but you are highly
 encouraged to collaborate with any individual and to receive as much
 help as you desire on the exercises.
 
+You may complete hacks on your own, but you are encouraged to
+pair up and collaborate with (**at most**) one other student.
+If you choose to pair up with another student, you must form
+a pair using canvas (People -> Hack Pairs).
+
 ### Exams
 
-There will be two regular exams, one midterm exam, and a comprehensive
+There will be several exams as well as a comprehensive
 final exam. These will be open-book, open-note, *required computer* exams.
-The exams
-consist of live coding exercises for which you will need your own
+The exams consist of live coding exercises for which you will need your own
 machine as you will be coding and submitting programs online for
 grading. More details will be announced closer to the exam dates.
 No collaboration is allowed on exams.
