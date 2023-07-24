@@ -344,6 +344,36 @@ failing grade for the course itself. The most recent version of the
 Academic Integrity Policy can be found at
 <https://computing.unl.edu/academic-integrity-policy>
 
+### Artificial Intelligence Tool Usage
+
+Various Artificial Intelligence (AI) applications have been developed
+in recent years (technically called Large Language Models) that can
+generate code based on user interactions.  The use of these
+tools (including but not limited to ChatGPT, GitHub's co-pilot, etc.)
+in *any* capacity for this course is ***strictly prohibited*** and any such
+use will be considered a violation of academic integrity.  Violations
+may include zeros on assignments or failure of the course.
+
+These tools have legitimate uses, but not for students in this course.
+You are here to learn the basics of problem solving, programming and
+computing.  These tools simply give you answers without you having to
+think, learn or understand the solution(s) that they give you.  Often
+these tools will give you answers that violate academic integrity even
+if you do not explicitly ask them to do so.  It would *clearly* be
+a violation of academic integrity if you asked another *human* to write
+a program for you and they did so.  Asking an AI to do so is no different.
+You will not build muscle by having someone else lift weights for you.
+You will not learn anything by having someone else, human or AI, do the
+learning for you.  
+
+That said, these tools *can* provide a meaningful learning experience if
+they are properly filtered.  For that reason, we have enabled (and paid
+for) access to a *version* of ChatGPT that you *are allowed* to use.
+This version has been designed to *not* provide substantial code or
+*too much* help that would violate academic integrity.  The application
+is called CodeHelp and is available at <https://codehelp.app/>.  Your
+instructor will provide a (free) sign up link.
+
 ## Communication & Getting Help
 
 The primary means of communication for this course is Piazza, an online
