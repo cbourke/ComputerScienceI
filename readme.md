@@ -60,6 +60,8 @@ is hosted on [Bitbucket](https://bitbucket.org/chrisbourke/computersciencei).
 - Course Link: https://canvas.unl.edu/courses/158087
 - Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZWyn1wbP4n-8sjDaYJ_fIay
 
+<details>
+<summary>Archived Offerings</summary>
 ### Fall 2022
 
 During the fall 2022 semester, this course will have two offerings.  
@@ -102,6 +104,7 @@ Nebraska--Omaha campus at the Peter Kiewit Institute as ECEN 1940
 - Course Link: https://canvas.unl.edu/courses/44933
 - Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZVol2cCryFg8TeIxuUqKEGP
 
+</details>
 
 ## License
 
