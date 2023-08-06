@@ -95,7 +95,7 @@ Air distance is 764.990931 kms
     (a calculator, online tool, etc.).
 
 -   Place your code in a `main()` method in a source file named
-    `AirDistance.java` in the package `unl.cse` and turn it in via
+    `AirDistance.java` in the package `unl.soc` and turn it in via
     webhandin. Make sure that it runs and executes correctly in the grader.
 
 -   Remember to RTM (Read The Manual) on Java's `Math`
