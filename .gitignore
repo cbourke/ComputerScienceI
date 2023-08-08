@@ -12,7 +12,7 @@ __pycache__/
 *.pkl
 # local dev files
 scripts/codepost/dev/**
-scripts/python/dev.py
+scripts/codepost/dev.py
 scripts/handin/
 
 # latex temporary files
