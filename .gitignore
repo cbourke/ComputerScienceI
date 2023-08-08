@@ -54,3 +54,4 @@ figures/_minted*
 .vscode/
 notes/dev/
 development
+codepost/dev
