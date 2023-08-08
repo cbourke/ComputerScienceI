@@ -87,7 +87,25 @@ To stay below your data plan, use no more than 0.1 GB/day.
 ```
 
 If the user is under their average daily use, a different message should
-be presented.
+be presented:
+
+```text
+1 days used, 29 days remaining
+Average daily use: 0.000000 GB/day
+
+You are at or below your average daily use (33.33 GB/day).
+You can use up to 34.48 GB/day and stay below your data plan limit
+```
+
+A user may have also exceeded their usage:
+
+```text
+15 days used, 15 days remaining
+Average daily use: 8.67 GB/day
+
+You have already met your limit for this month.  Looks like you're getting some overage charges...
+```
+
 
 # Instructions
 
