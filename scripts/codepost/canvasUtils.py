@@ -166,11 +166,10 @@ def getRoster():
   Retrieves the complete roster of the course from Canvas
   including all students, instructors, TAs, etc.
 
-  TODO: reconsider using https://canvas.unl.edu/api/v1/courses/{course_id}/enrollments
-
-  which has a role field to determine what they are; this would not
-  relieve us of the need to keep track of NUIDs in config.py as we
-  would still need to determine who is a grader and who is not
+  We use `courses/{config.canvasCourseId}/users` instead
+  of `/courses/{course_id}/enrollments` (which has a role
+  field) since we still need to specify graders/non-graders
+  among instructors/TAs/etc. manually in `config.py`
 
   Returns a mapping of {NUID => Person objects}
   """
