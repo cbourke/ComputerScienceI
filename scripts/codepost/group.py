@@ -27,11 +27,8 @@ class Group:
         s = ""
         if len(self.members) > 1:
           s = "  %-20s (%s) \n"%(self.canvasGroupName,self.canvasGroupId)
-          for member in self.members:
-            s += "%s\n"%(self.formatMember(member,"    "))
-        else:
-          for member in self.members:
-            s += "%s\n"%(self.formatMember(member,"  "))
+        for member in self.members:
+            s += f"    {member}"
         return s
 
     def __eq__(self,other):
@@ -39,11 +36,6 @@ class Group:
 
     def __lt__(self,other):
         return (self.members[0].name < other.members[0].name)
-
-    def formatMember(self, member, padding=""):
-        n = 40 - len(padding)
-        format = "%s%-"+str(n)+"s (%s) %s"
-        return format%(padding,member.name,member.nuid,member.canvasEmail)
 
     def addMembers(self, members):
         self.members = sorted(members, key=attrgetter('name'))
