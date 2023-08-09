@@ -7,20 +7,20 @@ import codepost
 from course import course
 from config import config
 
-codepost.configure_api_key(config.codePostApiKey)
+codepost.configure_api_key(config.codepost_api_key)
 
-codePostCourse = codepost.course.retrieve(id=config.codePostCourseId)
+codepost_course = codepost.course.retrieve(id=config.codepost_course_id)
 
 print("Codepost.io Course: ")
-print("Id     = " + str(codePostCourse.id))
-print("Name   = " + codePostCourse.name)
-print("Period = " + codePostCourse.period)
+print("Id     = " + str(codepost_course.id))
+print("Name   = " + codepost_course.name)
+print("Period = " + codepost_course.period)
 
-print("Assignments (" + str(len(codePostCourse.assignments)) + "): ")
-for a in codePostCourse.assignments:
+print("Assignments (" + str(len(codepost_course.assignments)) + "): ")
+for a in codepost_course.assignments:
   print("%-20s (id=%d)"%(a.name,a.id))
 
-roster = codepost.roster.retrieve(id=config.codePostCourseId)
+roster = codepost.roster.retrieve(id=config.codepost_course_id)
 graders = list()
 students = list()
 
