@@ -1,117 +1,101 @@
 """
-This script interfaces with canvas and codepost.io to assign
-graders to student submissions for a particular assignment.
+This script interfaces with canvas and codepost.io to
+  1. Consolidate assignment pairs based on pairings in canvas
+     -to reduce grading burden and improve consistency
+     -we use canvas pairs instead of codepost "partners" as
+      codepost's mechanism is clunky (must be done on
+      every assignment via sending a URL/hash to partner).
+      Codepost also only allows groups of arbitrary size;
+      canvas can be limited to groups of 2 (and they can
+      join/leave at will)
+  2. Assign graders in codepost to the individuals/pairs
+     for grading
+     -It randomizes grading assignments (evenly distributing
+      them among graders) and outputs an assignment report to
+      the standard output and produces a CSV file (for QC)
 
-TODO: this needs to be updated to
- -pull groupings from canvas
- -update assignment submissions in codepost; preferring
-  the first group member's submission.
- -assign graders randomly based on graders.
-
-Usage: python3 codepostAssignGraders.py codepost_assignment_id
-
-where
-  - cse_handin_assignment_name is the "name" of the handin assignment
-    (corresponds to the handin directory created)
-  - codepost_assignment_id is the codepost assignment (database) ID.
-    You can retrieve this by first running codepostListCourseInfo.py
-
-In detail:
-
- 1. It loads the current roster from Canvas (and separates
-    instructors/graders/students using the config.py params)
- 2. It attempts to map NUIDs to CSE logins to grab submissions
-    (failures will be excluded or "orphaned")
- 3. It randomizes grading assignments (evenly distributing
-    them among graders) and outputs an assignment report to
-    the standard output
- 4. It scans the handin directory for files whose extensions
-    match those in the config.py file and pushes them to
-    codepost.io associated them with the assigned grader.
-
-This script assumes that the course and assignments have
-already been setup and that no files have been submitted
-to codepost already.  Preexisting submissions will result
-in a fatal error (so it is best to do this cleanly and/or
-wipe the assignment on codepost.io and restart)
+TODO: nearly complete; needs troubleshooting and decision on secondary submissions
 """
 import argparse
+import codepost
+import sys
+import pprint
+from config import config
+from course import course
+from codepostUtils import get_assignment_id
 
 parser = argparse.ArgumentParser()
-parser.add_argument("cseHandinAssignmentNumber", help=
-  """The CSE Handin Assignment number which is also the
-  name of the directory in which files are stored.
-  Example: A1 would be expected to be in ~/handin/A1)
-  """
-  )
-parser.add_argument("codepostAssignmentId", help=
-  """The codepost.io assignment ID number (a run of
-  codepostListCourseInfo.py or codepostValidateCourse.py
-  may be necessary to find this)
-  """, type=int)
-parser.add_argument("--push", action='store_true', help=
-  """Push the assignment source files to codepost.io. The
-  default is to not push files so a test run of assignments
-  can be made.
+parser.add_argument("--commit", action='store_true', help=
+  """Commit the pair consolidation and grader assignments
+  to codepost. By default, no action is taken, only a report
+  is made.
+  """)
+parser.add_argument("codepost_assignment_name", help=
+  """The codepost.io assignment name (the ID is retrieved
+  using this name)
   """)
 args = parser.parse_args()
 
-cseHandinAssignmentNumber = args.cseHandinAssignmentNumber
-codepostAssignmentId = args.codepostAssignmentId
-pushToCodePost = args.push
+codepost_assignment_name = args.codepost_assignment_name
+codepost_assignment_id = get_assignment_id(codepost_assignment_name)
+commit_to_codepost = args.commit
 
-import sys
-import os
-import codepost
-from config import config
-from course import course
-from fileUtils import getFiles
-
-assignmentDir = config.handinDirectory + cseHandinAssignmentNumber + "/"
-if not os.path.exists(assignmentDir):
-    print("assignment directory: " + assignmentDir + " does not seem to exist")
-    print("perhaps you need more practice operating your computer machine")
+if codepost_assignment_id is None:
+    print(f"Codepost assignment for '{codepost_assignment_name}' not found", file=sys.stderr)
     exit(1)
 
+def consolidateAndAssign(gradingAssignment):
+    """
+    Consolidates partners/pairs in codepost based on the
+    `grading_group_name` in Canvas (see `config.py`)
+    """
+    # get all submissions for an assignment directly
+    print(f"Consolidating pairs and assigning graders...")
+    assignment_submissions = codepost.assignment.list_submissions(id=codepost_assignment_id)
+    print(f"    {len(assignment_submissions)} submissions...")
+    for grader,groups in gradingAssignment.items():
+        for group in groups:
+            # get submission associated with first member:
+            submission = next( (s for s in assignment_submissions if group.members[0].canvasEmail in s.students), None)
+            graderEmail = grader.canvasEmail
+            print(f"Processing group:")
+            print(f"{group}")
+            if submission is None:
+                print(f"    No submission!")
+            else:
+                print(f"    Assigning {graderEmail} to group {group.canvasGroupName}...")
+                if len(group) > 1:
+                    print(f"    Consolidating {group.members[1].canvasEmail} to {group.members[0].canvasEmail}...")
+                if commit_to_codepost:
+                    codepost.submission.update(id=submission.id, grader=graderEmail)
+                    if len(group) > 1:
+                        #TODO: if both have submitted, the second's primary submission
+                        #      is switched over but it breaks the admin/grader UI and (at least)
+                        #      prevents finalization; we need to delete it to be safe but this
+                        #      has HUGE consequences for those who can't follow instructions
+                        # delete_submission_id= get second partern's submission id
+                        # codepost.submission.delete(id=delete_submission_id)
 
-codepost.configure_api_key(config.codePostApiKey)
+                        studentGroup = [group.members[0].canvasEmail, group.members[1].canvasEmail]
+                        codepost.submission.update(id=submission.id, students=studentGroup)
 
+print(f"Processing codepost assignment '{codepost_assignment_name}' (id={codepost_assignment_id})...")
+if not commit_to_codepost:
+    print(f"    Coward Mode...");
+
+# Formulate a grading assignment, load from canvas/groups
 gradingAssignment = course.getGradingAssignment()
 s = course.assignmentToString(gradingAssignment)
 print(s)
 
+# dump to CSV for
 csv = course.assignmentToCSV(gradingAssignment)
-f = open(cseHandinAssignmentNumber+".csv", "w")
+csvFile = f"./{codepost_assignment_name.replace(' ', '_')}_{codepost_assignment_id}.csv"
+f = open(csvFile, "w")
 f.write(csv)
 f.close()
 
-def pushAssignments(gradingAssignment):
-  for grader,groups in gradingAssignment.items():
-    for g in groups:
-      s = g.members[0]
-      path = assignmentDir+s.cseLogin+"/"
-      print("Pushing files in " + path + "...")
-      try:
-        files = getFiles(path)
-      except:
-        e = sys.exc_info()[0]
-        print("Error: %s" % e )
-        files = {}
-      if files:
-        submission = codepost.submission.create(
-          assignment=codepostAssignmentId,
-          students=[m.canvasEmail for m in g.members],
-          grader=grader.canvasEmail)
-        for (fullPath,name,ext),contents in files.items():
-          print("pushing " + name)
-          codepost.file.create(
-            name=name,
-            code=contents,
-            extension=ext,
-            submission=submission.id
-          )
+consolidateAndAssign(gradingAssignment)
 
-if pushToCodePost:
-  pushAssignments(gradingAssignment)
-else:
-  print("Cowardly refusing to push source files to codepost.io; rerun with --push if you wanna.")
+if not commit_to_codepost:
+    print("Cowardly refusing to commit any changes to codepost.io; rerun with --commit when you are braver.")

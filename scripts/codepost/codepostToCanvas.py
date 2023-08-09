@@ -11,9 +11,8 @@ report of potential actions will be produced).  If
 grades need to be changed after this run, it should be
 done manually.
 
-TODO: complete, but needs troubleshooting
+TODO: this script is complete, but needs troubleshooting
 
-Usage: python3 codepostToCanvas.py codepost_assignment_id canvas_assignment_id
 """
 from config import config
 from course import course
@@ -86,7 +85,6 @@ for submission in assignment_submissions:
 for nuid,p in course.students.items():
     codepost_grade = None if p.canvasEmail not in codepost_grades else codepost_grades[p.canvasEmail]
     canvas_grade = getGrade(canvas_assignment_id, p.canvasId)
-    #print(f"{str(p):<50}: {codepost_grade} => TODO")
     print(f"{p}:")
     print(f"    codepost: {codepost_grade}")
     print(f"    canvas:   {canvas_grade}")
