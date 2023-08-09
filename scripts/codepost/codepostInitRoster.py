@@ -2,7 +2,7 @@ import codepost
 from config import config
 from course import course
 
-codepost.configure_api_key(config.codePostApiKey)
+codepost.configure_api_key(config.codepost_api_key)
 
 def updateRoster():
     """
@@ -36,7 +36,7 @@ def updateRoster():
             print("WARNING, student %s has no email"%student)
 
     codepost.roster.update(
-      id=config.codePostCourseId,
+      id=config.codepost_course_id,
       students=studentEmails,
       graders=graderEmails,
       superGraders=graderEmails,
