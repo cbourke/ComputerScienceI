@@ -9,18 +9,7 @@ rest of the module.
 This script interfaces with UNL' Canvas instance to update the attendance
 points according to this policy.
 
-TODO:
- -troubleshoot with actual course
- -Reorganize assignments into modules:
-  Module x.0
-   Reading
-   Lab
-   Hack
-   Hack Attendance
-   Lab Attendance
- NOTE: Gradebook view: OK; you can add "Filter" by assignment group
- -Assign attendance only to in-person
- -QUESTION: what happens via API when they are in the online section?
+TODO: troubleshoot with actual course
 
  NOTE: only run this for modules with all 5 items since 55 points are hard-coded
 """

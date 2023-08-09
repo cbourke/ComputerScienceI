@@ -27,7 +27,7 @@ from urllib.parse import urlencode
 canvasHost = "canvas.unl.edu"
 canvasBaseApiPath = "/api/v1"
 defaultParams = {
-  "access_token": config.canvasApiKey,
+  "access_token": config.canvas_api_key,
   "per_page": 100
 }
 
@@ -116,7 +116,7 @@ def getGroupCategoryId(groupSetName):
   group such as "Assignment Pairs".  If no match is found,
   None is returned.
   """
-  path = f"/courses/{config.canvasCourseId}/group_categories"
+  path = f"/courses/{config.canvas_course_id}/group_categories"
   resultData = get_canvas_data(path)
   for category in resultData:
     if category['name'] == groupSetName:
@@ -150,7 +150,7 @@ def getGroupTuples(groupSetName=None):
   groupCategoryId = None
   if groupSetName is not None:
     groupCategoryId = getGroupCategoryId(groupSetName)
-  path = f"/courses/{config.canvasCourseId}/groups"
+  path = f"/courses/{config.canvas_course_id}/groups"
   resultData = get_canvas_data(path)
   result = []
   for group in resultData:
@@ -166,7 +166,7 @@ def getRoster():
   Retrieves the complete roster of the course from Canvas
   including all students, instructors, TAs, etc.
 
-  We use `courses/{config.canvasCourseId}/users` instead
+  We use `courses/{config.canvas_course_id}/users` instead
   of `/courses/{course_id}/enrollments` (which has a role
   field) since we still need to specify graders/non-graders
   among instructors/TAs/etc. manually in `config.py`
@@ -174,7 +174,7 @@ def getRoster():
   Returns a mapping of {NUID => Person objects}
   """
   roster = {}
-  path = f"courses/{config.canvasCourseId}/users"
+  path = f"courses/{config.canvas_course_id}/users"
   users = get_canvas_data(path)
 
   for user in users:
@@ -210,8 +210,8 @@ def getGroups(roster):
   associated with its group.
   """
   groups = []
-  if config.gradingGroupName is not None:
-    groupData = getGroupTuples(config.gradingGroupName)
+  if config.grading_group_name is not None:
+    groupData = getGroupTuples(config.grading_group_name)
     for gd in groupData:
       #(groupId,"groupName",[membersCanvasIds])
       g = Group(gd[0],gd[1])
@@ -245,7 +245,7 @@ def getSections():
   teachers, TAs, etc. but will have a `role` field to determine what
   it is.
   """
-  path = f"/courses/{config.canvasCourseId}/sections"
+  path = f"/courses/{config.canvas_course_id}/sections"
   resultData = get_canvas_data(path)
   return resultData
 
@@ -255,7 +255,7 @@ def getGrade(assignmentId, userId):
   for the given assignment and user.  If no grade has been assigned,
   the result will be None.
   """
-  path = f"/courses/{config.canvasCourseId}/assignments/{assignmentId}/submissions/{userId}"
+  path = f"/courses/{config.canvas_course_id}/assignments/{assignmentId}/submissions/{userId}"
   resultData = get_canvas_data(path)
   if 'score' in resultData:
       return resultData['score']
@@ -265,18 +265,24 @@ def getGrade(assignmentId, userId):
 
 def setGrade(assignmentId, userId, score = None, comment = None):
    """
-   Sets/updates the grade in the canvas gradebook for the given assignment
-   (`assignmentId`) for the given user (`userId`).  If the score/commenet are
-   `None`, they are not updated.  If the comment is specified, canvas *adds*
-   the comment and does not modify or delete old ones.
+   Sets/updates the grade in the canvas gradebook for the given
+   assignment (`assignmentId`) for the given user (`userId`).
+   If the comment is specified, canvas *adds* the comment and
+   does not modify or delete any old one(s).  If the
+   score/comment are `None`, they are ignored which allows you
+   to change the score with no comment, add a comment without
+   changing the score, or doing both.  If both are `None` this
+   function does nothing.
    """
-   url = f"https://canvas.unl.edu/api/v1/courses/{config.canvasCourseId}/assignments/{assignmentId}/submissions/{userId}"
+   if score is None and comment is None:
+       return
+   url = f"https://canvas.unl.edu/api/v1/courses/{config.canvas_course_id}/assignments/{assignmentId}/submissions/{userId}"
 
    data = {}
    if score is not None:
-       data['comment'] = { "text_comment": comment }
-   if comment:
        data['submission'] = { "posted_grade": score }
+   if comment is not None:
+       data['comment'] = { "text_comment": comment }
    response = requests.put(url, params=defaultParams, json=data)
    return
 
@@ -298,7 +304,7 @@ def getAssignmentGroups():
      {id -> name}
 
    """
-   path = f"/courses/{config.canvasCourseId}/assignment_groups"
+   path = f"/courses/{config.canvas_course_id}/assignment_groups"
    data = get_canvas_data(path)
    aGroups = {}
    for r in data:
@@ -312,7 +318,7 @@ def getAssignmentsInGroup(groupId):
    from canvas.  Returns a list of assignments.
 
    """
-   path = f"/courses/{config.canvasCourseId}/assignment_groups/{groupId}/assignments"
+   path = f"/courses/{config.canvas_course_id}/assignment_groups/{groupId}/assignments"
    resultData = get_canvas_data(path)
    assignments = []
    for r in resultData:
@@ -329,7 +335,7 @@ def getAssignments(name = ''):
 
    Always returns a list regardless of the number of matched assignments.
    """
-   path = f"/courses/{config.canvasCourseId}/assignments"
+   path = f"/courses/{config.canvas_course_id}/assignments"
    params = {
      'search_term': name
    }

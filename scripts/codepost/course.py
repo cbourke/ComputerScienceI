@@ -160,8 +160,8 @@ class Course:
                 r += "%s,%s,%s,%s,%s,%s,%s\n"%(grader.nuid,graderLast,graderFirst,g.members[0].nuid,studentLast,studentFirst,g.members[0].canvasEmail)
         return r
 
-course = Course(instructorNuids=config.instructorNuids,
-           graderNuids=config.graderNuids)
+course = Course(instructorNuids=config.instructor_nuids,
+           graderNuids=config.grader_nuids)
 """
 The course object for this module initialized with with
 the course data defined in config.py
