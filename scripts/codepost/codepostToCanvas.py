@@ -44,14 +44,14 @@ codepost.configure_api_key(config.codepost_api_key)
 assignment_name = args.assignment_name
 codepost_assignment_id = get_assignment_id(assignment_name)
 if codepost_assignment_id is None:
-    eprint("Codepost assignment for '{assignment_name}' not found")
+    print(f"Codepost assignment for '{assignment_name}' not found", file=sys.stderr)
     exit(1)
 canvas_assignments = getAssignments(name=assignment_name)
 if not canvas_assignments:
-    eprint("Canvas assignment for '{assignment_name}' not found")
+    print(f"Canvas assignment for '{assignment_name}' not found", file=sys.stderr)
     exit(1)
 elif len(canvas_assignments) > 1:
-    eprint("Multiple Canvas assignments for '{assignment_name}' found!")
+    print(f"Multiple Canvas assignments for '{assignment_name}' found!", file=sys.stderr)
     exit(1)
 canvas_assignment = canvas_assignments[0]
 canvas_assignment_id = canvas_assignment.id
