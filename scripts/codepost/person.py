@@ -12,7 +12,8 @@ class Person:
     Separate name elements (first, last) may not be available in
     Canvas and instead only a 'display' name may be available due
     to students being able to set a 'preferred name' in the
-    registration system.
+    registration system.  Generally this should be sufficient
+    for lexicographic ordering.
     """
 
     nuid = None

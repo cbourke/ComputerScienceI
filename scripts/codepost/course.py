@@ -140,7 +140,7 @@ class Course:
           n = len(groups)
           r += "%s (%d assigned)\n"%(grader.name,n)
           for g in groups:
-            r += str(g)
+            r += str(g) + "\n"
         return r
 
     def assignmentToCSV(self,assignment):
