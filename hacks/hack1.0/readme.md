@@ -22,8 +22,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Turn in only one copy of the code under the individual whose last
-    name comes first (with respect to Canvas).
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -433,13 +433,20 @@ academic integrity policy.
 ## Finishing Up
 
 1.  Put the URL for *your* GitHub repository into a plain text file
-    named `readme.md`. Turn this file in using webhandin.  If you paired
+    named `readme.md`. Turn this file in using the handin.  If you paired
     up with a partner (in Canvas), be sure *both* your GitHub URLs are in the
     `readme.md` file.  The contents of your file should look
     *something* like this:
 
     ``` text
        https://github.com/cbourke/hello
+    ```
+
+    or
+
+    ``` text
+       https://github.com/cbourke/hello
+       https://github.com/mypartner/hello
     ```
 
 2.  Verify what you handed in by running the webgrader which will

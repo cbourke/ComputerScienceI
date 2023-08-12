@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -41,8 +41,8 @@ For detail, see the general course rubric.
 
 For correctness:
  - Your program(s) *must* compile and run on the grader
- - 9 points for student test cases (1 each for writing *and* passing)
- - 7 points for the official test suite, proportionally
+ - 9 points for student test cases
+ - 7 points for the official test suite
 
 # Problem Statement
 
@@ -120,6 +120,3 @@ functions with the given prototypes and specified functionality.
     functions. You should *not* prompt for input or use command line
     arguments. Your test cases should be hardcoded in your test driver's
     `main` function.
-
--   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader.
