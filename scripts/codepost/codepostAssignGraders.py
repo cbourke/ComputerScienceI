@@ -14,7 +14,7 @@ This script interfaces with canvas and codepost.io to
       them among graders) and outputs an assignment report to
       the standard output and produces a CSV file (for QC)
 
-TODO: nearly complete; needs troubleshooting and decision on secondary submissions
+TODO: needs troubleshooting
 """
 import argparse
 import codepost
@@ -48,6 +48,14 @@ def consolidateAndAssign(gradingAssignment):
     """
     Consolidates partners/pairs in codepost based on the
     `grading_group_name` in Canvas (see `config.py`)
+
+    In codepost, a student can only be associated with *one*
+    submission.  We cannot consolidate if both have submitted, so:
+      - if neither have submitted, it is ignored
+      - if one or the other (xor) but not both have submitted, we
+        consolidate to the one submission
+      - if both have submitted, we prefer the first and delete the
+        second
     """
     # get all submissions for an assignment directly
     print(f"Consolidating pairs and assigning graders...")
@@ -56,28 +64,34 @@ def consolidateAndAssign(gradingAssignment):
     for grader,groups in gradingAssignment.items():
         for group in groups:
             # get submission associated with first member:
-            submission = next( (s for s in assignment_submissions if group.members[0].canvasEmail in s.students), None)
+            submissionA = next( (s for s in assignment_submissions if group.members[0].canvasEmail in s.students), None)
+            submissionB = next( (s for s in assignment_submissions if group.members[1].canvasEmail in s.students), None)
             graderEmail = grader.canvasEmail
             print(f"Processing group:")
             print(f"{group}")
-            if submission is None:
-                print(f"    No submission!")
+            submission = None
+            deleteSubmission = None
+            if submissionA is None and submissionB is None:
+                print(f"    No submission (neither)!")
+            elif submissionA is None or submissionB is None:
+                #only 1 submission; use it, no need to delete
+                submission = submissionA if submissionA is not None else submissionB
             else:
+                #two submissions; we prefer A over B and delete B
+                submission = submissionA
+                deleteSubmission = submissionB
+            if submission is not None:
+                codepostStudentGroup = [group.members[0].canvasEmail]
                 print(f"    Assigning {graderEmail} to group {group.canvasGroupName}...")
                 if len(group) > 1:
                     print(f"    Consolidating {group.members[1].canvasEmail} to {group.members[0].canvasEmail}...")
+                    codepostStudentGroup.append(group.members[1].canvasEmail)
+                    if deleteSubmission is not None:
+                        print(f"    Deleting submission {deleteSubmission.id} by {deleteSubmission.students}, yeehaw...")
                 if commit_to_codepost:
-                    codepost.submission.update(id=submission.id, grader=graderEmail)
-                    if len(group) > 1:
-                        #TODO: if both have submitted, the second's primary submission
-                        #      is switched over but it breaks the admin/grader UI and (at least)
-                        #      prevents finalization; we need to delete it to be safe but this
-                        #      has HUGE consequences for those who can't follow instructions
-                        # delete_submission_id= get second partern's submission id
-                        # codepost.submission.delete(id=delete_submission_id)
-
-                        studentGroup = [group.members[0].canvasEmail, group.members[1].canvasEmail]
-                        codepost.submission.update(id=submission.id, students=studentGroup)
+                    if deleteSubmission is not None:
+                        codepost.submission.delete(id=deleteSubmission.id)
+                    codepost.submission.update(id=submission.id, grader=graderEmail, students=studentGroup)
 
 print(f"Processing codepost assignment '{codepost_assignment_name}' (id={codepost_assignment_id})...")
 if not commit_to_codepost:
