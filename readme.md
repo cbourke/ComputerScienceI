@@ -13,18 +13,18 @@ and ECEN 194 at the University of Nebraska-Omaha.
 
 ## Videos
 
-We have produced over 60 lecture and tutorial videos that should
-be viewed prior to lecture and which are available in the following
+We have over 60 lecture and tutorial videos that can/should be
+viewed prior to lecture and which are available in the following
 playlist:
 
 https://www.youtube.com/playlist?list=PL4IH6CVPpTZVkiEnCEOdGbYsFEdtKc5Bx
 
 Lectures are broadcast live on my YouTube streaming channel:
 
-https://www.youtube.com/c/ChrisBourkeUNL/live
+https://www.youtube.com/@ChrisBourkeUNL/live
 
 The videos are available immediately following on my YouTube channel,
-https://www.youtube.com/c/ChrisBourkeUNL/ and included in the (current)
+https://www.youtube.com/@ChrisBourkeUNL/ and included in the (current)
 playlist below.
 
 ## Textbook
