@@ -449,10 +449,7 @@ academic integrity policy.
        https://github.com/mypartner/hello
     ```
 
-2.  Verify what you handed in by running the webgrader which will
-    display the contents of your file.
-
-3.  **Be sure your repo is public**
+2.  **Be sure your repo is public**
 
 # Additional Resources
 

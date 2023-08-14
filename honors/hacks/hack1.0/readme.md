@@ -330,7 +330,7 @@ this:
 ## Finishing Up
 
 1.  Put the URL for *your* GitHub repository into a plain text file
-    named `readme.md`. Turn this file in using webhandin.  If you paired
+    named `readme.md`. Turn this file in using the handin.  If you paired
     up with a partner (in Canvas), be sure *both* your GitHub URLs are in the
     `readme.md` file.  The contents of your file should look
     *something* like this:
@@ -339,10 +339,14 @@ this:
        https://github.com/cbourke/hello
     ```
 
-2.  Verify what you handed in by running the webgrader which will
-    display the contents of your file.
+    or
 
-3.  **Be sure your repo is public**
+    ``` text
+       https://github.com/cbourke/hello
+       https://github.com/mypartner/hello
+    ```
+
+2.  **Be sure your repo is public**
 
 # Additional Resources
 
