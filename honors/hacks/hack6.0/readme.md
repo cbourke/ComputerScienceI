@@ -68,12 +68,10 @@ $[0, 1]$. Write functions to convert between these models.
     $$r' = \frac{r}{255}, \quad g' = \frac{g}{255}, \quad b' = \frac{b}{255}$$
     and then using the following formulas:
 
-    $$\begin{aligned}
-    k & = 1-\max\{r', g', b'\} \\
-    c & = \frac{(1-r'-k)}{(1-k)} \\
-    m & = \frac{(1-g'-k)}{(1-k)} \\
-    y & = \frac{(1-b'-k)}{(1-k)} \\
-    \end{aligned}$$
+    $$k = 1-\max\{r', g', b'\}$$
+    $$c = \frac{(1-r'-k)}{(1-k)}$$
+    $$m = \frac{(1-g'-k)}{(1-k)}$$
+    $$y = \frac{(1-b'-k)}{(1-k)}$$
 
     Your method should have the following signature:
 
@@ -86,11 +84,9 @@ $[0, 1]$. Write functions to convert between these models.
 2.  Write a function to convert from CMYK to RGB using the following
     formulas.
 
-    $$\begin{aligned}
-    r & = 255 \cdot (1 - c) \cdot (1-k) \\
-    g & = 255 \cdot (1 - m) \cdot (1-k) \\
-    b & = 255 \cdot (1 - y) \cdot (1-k) \\
-    \end{aligned}$$
+    $$r = 255 \cdot (1 - c) \cdot (1-k)$$
+    $$g = 255 \cdot (1 - m) \cdot (1-k)$$
+    $$b = 255 \cdot (1 - y) \cdot (1-k)$$
 
     Results should be rounded. Your method should have the following signature:
 
