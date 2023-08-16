@@ -24,8 +24,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -42,8 +42,8 @@ For detail, see the general course rubric.
 
 For correctness:
  - Your program(s) *must* compile and run on the grader
- - 6 points for the junit tests: you must pass all and there should be
-   at least 23 total; junit must be used, no custom testing
+ - 6 points for the JUnit tests: you must pass all and there should be
+   at least 23 total; JUnit must be used, no custom testing
    - 2 points for our tests
    - 4 points for their tests (-4 if they didn't include any originals)
  - 2 points each for Beta-1 and Beta-2
@@ -101,7 +101,7 @@ See the `main` method of each class for examples on how to create
 and use *instances* of each class.
 
 Place both methods in a source file named `ColorUtils.java` in
-the package `unl.cse`. For both methods, identify any and all
+the package `unl.soc`. For both methods, identify any and all
 error conditions and throw an `IllegalArgumentException` with an
 appropriate error message.
 
@@ -114,7 +114,7 @@ appropriate error message.
     uses JUnit (<https://junit.org/junit5/>), a unit testing framework
     for Java. We have already written several test cases for you. Using
     these examples, implement your test cases using JUnit for your two
-    functions. You should add at least 3 test methods.
+    functions. You are required to add at least 3 test methods.
 
     The starter file should be sufficient to demonstrate how to use
     JUnit, but the full documentation can be found here:

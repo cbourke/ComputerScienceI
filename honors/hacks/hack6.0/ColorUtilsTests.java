@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.RepeatedTest;
@@ -29,9 +29,9 @@ public class ColorUtilsTests {
 	 * {@link ColorUtils#rgbToCMYK(RGB)} methods by randomly generating an RGB
 	 * value, converting it to CMYK and then back again to ensure that it is (close
 	 * to) the original value.
-	 * 
+	 *
 	 * A tolerance of 1 is applied to account for rounding discrepancies.
-	 * 
+	 *
 	 */
 	@RepeatedTest(100)
 	public void cyclicTest() {
@@ -39,13 +39,13 @@ public class ColorUtilsTests {
 		CMYK cmyk = ColorUtils.rgbToCMYK(originalRgb);
 		RGB computedRgb = ColorUtils.cmykToRGB(cmyk);
 
-		assertTrue(originalRgb.getRed() == computedRgb.getRed() || 
+		assertTrue(originalRgb.getRed() == computedRgb.getRed() ||
 				   originalRgb.getRed() == computedRgb.getRed() - 1,
 				   "Red value is not as expected.");
-		assertTrue(originalRgb.getGreen() == computedRgb.getGreen() || 
+		assertTrue(originalRgb.getGreen() == computedRgb.getGreen() ||
 				   originalRgb.getGreen() == computedRgb.getGreen() - 1,
 				   "Green value is not as expected.");
-		assertTrue(originalRgb.getBlue() == computedRgb.getBlue() || 
+		assertTrue(originalRgb.getBlue() == computedRgb.getBlue() ||
 				   originalRgb.getBlue() == computedRgb.getBlue() - 1,
 				   "Blue value is not as expected.");
 
@@ -55,7 +55,7 @@ public class ColorUtilsTests {
 	 * Tests that both {@link ColorUtils#cmykToRGB(CMYK)} and
 	 * {@link ColorUtils#rgbToCMYK(RGB)} properly throw an {@link IllegalArgumentException}
 	 * if given a <code>null</code> input.
-	 * 
+	 *
 	 */
 	@Test
 	public void nullTests() {
@@ -66,13 +66,13 @@ public class ColorUtilsTests {
 			ColorUtils.cmykToRGB(null);
 		});
 	}
-	
+
 	/**
 	 * Tests that both {@link ColorUtils#cmykToRGB(CMYK)} and
 	 * {@link ColorUtils#rgbToCMYK(RGB)} properly throw an {@link IllegalArgumentException}
 	 * if given <code>RGB</code>/<code>CMYK</code> instances with
 	 * values outside the defined range of [0, 255] and [0, 1] respectively.
-	 * 
+	 *
 	 */
 	@Test
 	public void boundsTests() {
@@ -94,11 +94,11 @@ public class ColorUtilsTests {
 		assertThrows(IllegalArgumentException.class, () -> {
 			ColorUtils.rgbToCMYK(new RGB(127, 127, 256));
 		});
-		
+
 		assertThrows(IllegalArgumentException.class, () -> {
 			ColorUtils.cmykToRGB(new CMYK(-1, .5, .5, .5));
 		});
-		
+
 		assertThrows(IllegalArgumentException.class, () -> {
 			ColorUtils.cmykToRGB(new CMYK(.5, -1, .5, .5));
 		});
@@ -110,11 +110,11 @@ public class ColorUtilsTests {
 		assertThrows(IllegalArgumentException.class, () -> {
 			ColorUtils.cmykToRGB(new CMYK(.5, .5, .5, -1));
 		});
-		
+
 		assertThrows(IllegalArgumentException.class, () -> {
 			ColorUtils.cmykToRGB(new CMYK(2, .5, .5, .5));
 		});
-		
+
 		assertThrows(IllegalArgumentException.class, () -> {
 			ColorUtils.cmykToRGB(new CMYK(.5, 2, .5, .5));
 		});
@@ -127,7 +127,7 @@ public class ColorUtilsTests {
 			ColorUtils.cmykToRGB(new CMYK(.5, .5, .5, 2));
 		});
 	}
-	
+
 	/**
 	 * Tests both {@link ColorUtils#cmykToRGB(CMYK)} and
 	 * {@link ColorUtils#rgbToCMYK(RGB)} methods using the color, "aquamarine" with

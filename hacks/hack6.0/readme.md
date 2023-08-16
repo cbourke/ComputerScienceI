@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -41,12 +41,10 @@ For detail, see the general course rubric.
 
 For correctness:
  - Your program(s) *must* compile and run on the grader
- - 6 points for the cmocka tests: you must pass all and there should be
-   at least 23 total; cmocka must be used, no custom testing
-   - 2 points for our tests
-   - 4 points for their tests (-4 if they didn't include any originals)
- - 2 points each for Beta-1 and Beta-2
- - 6 points for the big randomized test cases below that
+ - 16 points for the cmocka tests: you must pass all and there should be
+   at least 27 total; cmocka must be used, no custom testing
+   - 12 points for our tests
+   - 4 points for your tests (-4 if no original)
 
 # Problem Statement
 
@@ -109,10 +107,9 @@ functions to convert between these models.
 
 -   A testing file, `utilsTester.c` has been provided that uses
     cmocka (<https://cmocka.org/>), a unit testing framework for C. We
-    have already written several (17) test cases for you. Using these
-    examples, implement your test cases using cmocka for your two
-    functions. You should have at least 3 test cases for each function
-    for a total of 23 test cases.
+    have already written several (24) test cases for you. Using these
+    examples, implement your *at least 3 more* test cases using cmocka
+    for your two functions for a total of *at least* 27.
 
     The starter file should be sufficient to demonstrate how to use
     cmocka, but the full documentation can be found here:
@@ -120,6 +117,3 @@ functions to convert between these models.
     provided to help you easily compile your files. Note that cmocka is
     already installed on the CSE server. If you compile on your own
     machine, you will have to install and troubleshoot cmocka yourself.
-
--   Turn in all of your files via webhandin.  Make sure that it runs
-    and executes correctly in the grader.

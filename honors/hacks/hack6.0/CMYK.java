@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 /**
  * A CMYK (Cyan-Magenta-Yellow-Black) color object.
@@ -17,23 +17,23 @@ public class CMYK {
 		this.yellow = yellow;
 		this.k = k;
 	}
-	
+
 	public double getCyan() {
 		return cyan;
 	}
-	
+
 	public double getMagenta() {
 		return magenta;
 	}
-	
+
 	public double getYellow() {
 		return yellow;
 	}
-	
+
 	public double getK() {
 		return k;
 	}
-	
+
 	public String toString() {
 		return "(" + this.cyan + ", " + this.magenta + ", " + this.yellow + ", " + k + ")";
 	}
@@ -53,7 +53,7 @@ public class CMYK {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,18 +76,17 @@ public class CMYK {
 			return false;
 		return true;
 	}
-	
+
 	public static void main(String args[]) {
 		//create a new color object:
 		CMYK myColor = new CMYK(.25, .75, .50, 0.0);
 		CMYK red = new CMYK(0.0, .99, 1.0, 0.0);
-		
+
 		// you can get the red, green and blue values:
 		System.out.println("cyan    = " + myColor.getCyan());
 		System.out.println("magenta = " + myColor.getMagenta());
 		System.out.println("yellow  = " + myColor.getYellow());
 		System.out.println("k       = " + myColor.getK());
 	}
-	
-}
 
+}
