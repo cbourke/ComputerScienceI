@@ -42,12 +42,10 @@ For detail, see the general course rubric.
 
 For correctness:
  - Your program(s) *must* compile and run on the grader
- - 6 points for the JUnit tests: you must pass all and there should be
-   at least 23 total; JUnit must be used, no custom testing
-   - 2 points for our tests
-   - 4 points for their tests (-4 if they didn't include any originals)
- - 2 points each for Beta-1 and Beta-2
- - 6 points for the big randomized test cases below that
+ - 16 points for the JUnit tests: you must pass all and there should be
+   at least 115+3 = 118 total; JUnit must be used, no custom testing
+   - 4 points for writing 3 of your own test methods (you must use JUnit)
+   - 12 points for our tests (115 total)
 
 # Problem Statement
 
@@ -117,8 +115,7 @@ appropriate error message.
     <https://junit.org/junit5/docs/current/api/>.  Instructions
     on how to add JUnit to your Eclipse project can be found below.
 
--   Turn in all of your files via webhandin.  Make sure that it runs
-    and executes correctly in the grader.
+-   Turn in both `ColorUtils.java` and `ColorUtilsTests.java` source files.
 
 # Installing and Using JUnit 5 in Eclipse
 
