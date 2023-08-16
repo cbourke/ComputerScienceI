@@ -12,7 +12,8 @@ result=$(gcc -w $source 2>&1)
 
 #if result is not empty
 if ! [[ -z "$result" ]]; then
-  message="Your code does not appear to compile: \n $result"
+  message="Your code does not appear to compile:
+$result"
   #echo "$message"
   TestOutput "Build Tests" "Compiler Output" false "$message"
 else

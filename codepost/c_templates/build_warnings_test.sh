@@ -12,7 +12,8 @@ result=$(gcc -Wall -Wextra $source 2>&1)
 
 #if result is not empty
 if ! [[ -z "$result" ]]; then
-  message="Your code does not appear to compile or compiles with warnings: \n $result"
+  message="Your code does not appear to compile or compiles with warnings:
+$result"
   #echo "$message"
   TestOutput "Build Tests" "Compiler Warnings" false "$message"
 else
