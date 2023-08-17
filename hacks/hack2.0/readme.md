@@ -93,8 +93,8 @@ Air distance is 764.990931 kms
     are known to be correct using means other than your program
     (a calculator, online tool, etc.).
 
--   Name your program `airDistance.c`, and turn it in via
-    webhandin, making sure that it runs and executes correctly in the grader.
+-   Name your program `airDistance.c`, and turn it in; make sure
+    that it runs and executes correctly in the grader.
 
 -   Remember to RTM (Read The Manual) on the math library to see which
     function(s) you may find useful and how to use them.

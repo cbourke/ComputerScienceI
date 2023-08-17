@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -155,13 +155,15 @@ the resulting image should look like.  The original image is:
 
 -   For the warm-up, place all your function prototypes into a file
     named `array_utils.h` and and their definitions in a file
-    named `array_utils.c`. You will need to turn these in via
-    webhandin.
+    named `array_utils.c`.
 
 -   You'll want to rigorously test your functions to verify they are
     correct. We've provided a starter test file,
     `arrayUtilsTester.c` that you can use. You do not need to
     hand in this file.
+
+-   Complete the code in for the image manipulation functions in the
+    `image_utils.c` and `image_utils.h` files.
 
 -   All functions should perform reasonable error checks and handling
     even though they are not returning error codes. Ex: an invalid or
@@ -179,13 +181,12 @@ the resulting image should look like.  The original image is:
 -   You may (in fact are encouraged) to define any additional "helper"
     functions that may help you.
 
--   Turn in the following files to the webhandin, making sure that it
-    runs and executes correctly in the grader.
+-   Turn in the following files and make sure all tests pass:
 
     -   `array_utils.h`
 
     -   `array_utils.c`
 
-    -   `imageUtils.h`
+    -   `image_utils.h`
 
-    -   `imageUtils.c`
+    -   `image_utils.c`
