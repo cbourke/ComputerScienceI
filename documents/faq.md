@@ -10,14 +10,12 @@ Computer Science I offered through the School of Computing and
 the College of Engineering at the University of Nebraska--Lincoln
 and Omaha.
 
-# Account Management
+# Canvas Support Management
 
-## Where do I go for help with my [blank] account?
+## Where do I go for help with Canvas?
 
-* Canvas Account (UNL's Learning Management System)
-  * See https://engineering.unl.edu/downloads/covid-19/UNL-Canvas.pdf
-* CSE Account (handin, webgrader):
-  * https://cse.unl.edu/account
+Canvas is UNL's Learning Management System (LMS).  For more information
+see <https://services.unl.edu/service/learning-management-system-lms-canvas-unl>
 
 # zyBooks
 
@@ -80,25 +78,28 @@ If you accessed zyBooks directly through the website and not through
 canvas, you may need to *merge* the multiple accounts you created.
 To do so see https://zybooks.zendesk.com/hc/en-us/articles/360007536553-I-already-paid-so-why-am-I-being-asked-to-subscribe-again-
 
-# Codepost
+# codePost.io
 
-## What is codepost?
+## What is codePost?
 
-It is a website that we push your code to in order to grade it.  Correctnesss
-is still graded using the webgrader, but Learning Assistants and graders will
-embed feedback and detail any point deductions line-by-line in your code.
-You can access codepost at https://codepost.io
+codePost is a website that you submit your code through for us to grade it.  Much
+of the grading is automated.  When you submit your code several tests are
+run and you are presented with the results.  Later, graders will take a look
+at your code and grade aspects that are not automated.  Graders will also
+provide additional detailed line-by-line feedback.  
 
 ## How do I get access?
 
-Your instructor will send you an invite email.  Be sure to check your spam
+You can access codePost at <https://codepost.io>.  Your instructor
+will send you an invite email.  Be sure to check your spam
 folder and respond ASAP; the links expire after a few days.
 
 ## I didn't get the invite or it expired, what do I do?
 
 Try going to https://codepost.io/forgot-password and resetting your password
-(even if you never initially set one).  Be sure to use your huskers email
-or whatever primary email is associated with your canvas profile.
+(even if you never initially set one).  Be sure to use your **huskers email**
+(example: `jstudent42@huskers.unl.edu`) or whatever primary email is
+associated with your canvas profile.
 
 # Grading
 
@@ -112,8 +113,8 @@ or sync to Canvas.
 
 ## How and when are labs graded?
 
-Labs are due at midnight on Tuesdays.  We try to get them graded as soon
-as possible on Wednesdays.  When we are done, grades (with any comments)
+Labs are due at midnight on Tuesdays.  We run batch scripts to grade them
+as soon as possible on Wednesdays.  When we are done, grades
 are posted to Canvas and a brief retrospective is posted to Piazza.
 
 ## How and when are hacks graded?
@@ -121,7 +122,7 @@ are posted to Canvas and a brief retrospective is posted to Piazza.
 Hacks are due (generally) Mondays at midnight. Learning Assistants have
 48 business hours to grade them and then Course Leaders take another 48
 hours to check the grading process to ensure consistency.  Grades are
-released in Canvas with comments posted to codepost (generally) on Friday
+released in Canvas with comments posted to codePost (generally) on Friday
 afternoons.  A retrospective is then posted to Piazza.
 
 ## How and when is attendance graded?
@@ -134,8 +135,9 @@ policy in the syllabus.
 
 # CS 50 IDE
 
-This course uses the CS50 IDE (a codespaces instance provided and supported
-by Harvard's CS50 program).  If you encounter problems, the easy things to
+This course uses the CS50 IDE available at <https://cs50.dev/>.  This is
+a [codespaces](https://github.com/features/codespaces) instance provided and supported
+by Harvard's CS50 program.  If you encounter problems, the easy things to
 try first are:
 
 * Rebooting
@@ -181,7 +183,3 @@ If you are still having problems with the IDE or would like to consider backups/
   * Mac: https://www.youtube.com/watch?v=TZ6c7y8N64k
 
 * You can install VS Code on your own computer: https://code.visualstudio.com/download
-
-* You can watch video [Video 1.3](https://www.youtube.com/watch?v=6UaJ2zFs7VQ&list=PL4IH6CVPpTZVkiEnCEOdGbYsFEdtKc5Bx&index=3)
-  and get setup with a VPN, local editor (atom.io) and use the CSE server for
-  compiling and running your programs.
