@@ -52,7 +52,7 @@ you to the basic usage of GDB, GNU's Debugger tool.
 
 Starter code for this hack can be found in the following repository:
 
-[Debugging Hack](https://github.com/cbourke/CSCE155-Hack9.0)
+<https://github.com/cbourke/CSCE155-Hack9.0>
 
 # Basic Walkthrough
 
@@ -269,8 +269,3 @@ Some tips/hints:
     trace using
 
     `backtrace full`
-
-# Instructions
-
--   Handin all the (corrected) files to webhandin and use the grader
-    to verify that all bugs have been fixed.
