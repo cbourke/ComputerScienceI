@@ -1,7 +1,7 @@
-package unl.cse;
+package unl.soc;
 
 /**
- * An RGB (Red-Green-Blue) color object.  
+ * An RGB (Red-Green-Blue) color object.
  *
  */
 public class RGB {
@@ -9,7 +9,7 @@ public class RGB {
 	private int red;
 	private int green;
 	private int blue;
-	
+
 	public RGB(int red, int green, int blue) {
 		this.red = red;
 		this.green = green;
@@ -27,7 +27,7 @@ public class RGB {
 	public int getBlue() {
 		return blue;
 	}
-	
+
 	public String toString() {
 		return "(" + this.red + ", " + this.green + ", " + this.blue + ")";
 	}
@@ -59,17 +59,17 @@ public class RGB {
 			return false;
 		return true;
 	}
-	
+
 	public static void main(String args[]) {
 		//create a new color object:
 		RGB myColor = new RGB(100, 125, 25);
 		RGB red = new RGB(255, 0, 0);
-		
+
 		// you can get the individual red, green and blue values
 		// using the .get methods:
 		System.out.println("red   = " + myColor.getRed());
 		System.out.println("green = " + myColor.getGreen());
 		System.out.println("blue  = " + myColor.getBlue());
 	}
-	
+
 }

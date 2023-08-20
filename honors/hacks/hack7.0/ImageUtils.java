@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,10 +9,10 @@ import javax.imageio.ImageIO;
 /**
  * This is a collection of utility methods for manipulating images in a variety
  * of formats (jpg, bmp, gif, png, etc.).
- * 
+ *
  * For the purposes of these utilities, images are represented by a
  * 2-dimensional array of {@link RGB} elements (pixels).
- * 
+ *
  * The dimensions are assumed to be height x width (h x w). The first dimension
  * is considered to be the height (number of rows of pixels) and the second is
  * considered to be the width (number of columns of pixels). It is assumed that
@@ -23,7 +23,7 @@ public class ImageUtils {
 
 	/**
 	 * Loads an image from the file specified by the given <code>filePath</code>.
-	 * 
+	 *
 	 * @param filePath
 	 * @return
 	 */
@@ -51,7 +51,7 @@ public class ImageUtils {
 	/**
 	 * Saves the given image to the file specified by the given
 	 * <code>filePath</code>
-	 * 
+	 *
 	 * @param filePath
 	 * @param image
 	 */
