@@ -79,13 +79,13 @@ following.
 
 ``` text
 10 days used, 20 days remaining
-Average daily use: 1.3 GB/day
+Average daily use: 1.300 GB/day
 
-You are EXCEEDING your average daily use (0.50 GB/day).
+You are EXCEEDING your average daily use (0.500 GB/day).
 Continuing this high usage, you'll exceed your data plan by
 24 GB.
 
-To stay below your data plan, use no more than 0.1 GB/day.
+To stay below your data plan, use no more than 0.100 GB/day.
 ```
 
 If the user is under their average daily use, a different message should
@@ -93,17 +93,17 @@ be presented:
 
 ```text
 1 days used, 29 days remaining
-Average daily use: 0.000000 GB/day
+Average daily use: 0.000 GB/day
 
-You are at or below your average daily use (33.33 GB/day).
-You can use up to 34.48 GB/day and stay below your data plan limit
+You are at or below your average daily use (33.333 GB/day).
+You can use up to 34.482 GB/day and stay below your data plan limit
 ```
 
 A user may have also exceeded their usage:
 
 ```text
 15 days used, 15 days remaining
-Average daily use: 8.67 GB/day
+Average daily use: 8.667 GB/day
 
 You have already met your limit for this month.  Looks like you're getting some overage charges...
 ```
@@ -115,6 +115,11 @@ You have already met your limit for this month.  Looks like you're getting some 
     are known to be correct using means other than your program
     (a calculator, online tool, etc.).
 
+-   Identify any error conditions (invalid number of CLAs or invalid
+    values) and output an appropriate error message to the user.  Be
+    sure to include the term `ERROR` in your message.  For example:
+    `ERROR: invalid number of days`.
+
 -   Place your code in a `main()` method in a source file named
-    `DataPlan.java` in the package `unl.soc` and turn it in via
-    webhandin. Make sure that it runs and executes correctly in the grader.
+    `DataPlan.java` in the package `unl.soc` and turn it in.
+    Make sure that it runs and executes correctly in the grader.

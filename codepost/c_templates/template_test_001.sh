@@ -3,7 +3,7 @@
 # TestOutput <categoryName [string]> <testName [string]> <result[boolean]> <log[string]>
 ######################################################################################
 
-# The default output messages on CodePost are terrible, they expose
+# The default output messages on codePost expose
 # regex patterns to students who will be confused and befuddled by
 # this magic.  Intead, we define:
 #  Expected output (to compare their output for visual inspection)

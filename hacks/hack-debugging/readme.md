@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -39,8 +39,8 @@ For detail, see the general course rubric.
 | Correctness   | 16     |
 | Total         | 25     |
 
-Correctness: 3 points for each major error (1 additional minor error = 1
-pt)
+Correctness: based on the number of test cases passing and fixing all
+bugs.
 
 # Problem Statement
 
@@ -236,12 +236,12 @@ you'll need to work on CSE or have GDB installed on your own computer.
 
 Now that you have some familiarity with GDB, you'll use your new
 debugging skills to debug a full program. We have provided source files
-and a makefile that builds a tic-tac-toe game project. The game allows a
+and a `makefile` that builds a tic-tac-toe game project. The game allows a
 player to select several different modes including a 2-player game, a
 1-player versus the computer (which makes random moves) and a 1-player
-versus a "smart" computer.
+versus a "smart-ish" computer (it can still be beaten).
 
-Similar to the previous part, we have introduced several bugs (6 to be
+Similar to the previous part, we have introduced several bugs (5 to be
 exact). Run the program and use GDB to walk through section(s) of the
 code you believe to contain bugs and fix them all until the program runs
 without any problems.
@@ -269,3 +269,7 @@ Some tips/hints:
     trace using
 
     `backtrace full`
+
+Only hand in the 3 source files that were debugged
+(`game_utils.c`, `player_utils.c`, `ticTacToe.c`); header files, the
+`makefile` and other source files will be provided by the grader.
