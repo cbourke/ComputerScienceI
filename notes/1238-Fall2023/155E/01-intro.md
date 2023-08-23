@@ -5,3 +5,12 @@
 - Course Overview
 - Syllabus
 - Getting Started
+
+## Hello World
+
+```c
+
+int i = 10;
+printf("Hello WOrld");
+
+```

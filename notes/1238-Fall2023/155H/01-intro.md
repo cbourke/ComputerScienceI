@@ -5,3 +5,11 @@
 - Course Overview
 - Syllabus
 - Getting Started
+
+```c
+
+int main() {
+  printf("Hello WOrld!");
+}
+
+```
