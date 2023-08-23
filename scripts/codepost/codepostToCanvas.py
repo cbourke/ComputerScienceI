@@ -75,6 +75,8 @@ for submission in assignment_submissions:
     the_submission = codepost.submission.retrieve(id=submission_id)
     #grade is only defined if it is finalized, otherwise it is None
     #despite the API docs, it is a float!!
+    if not the_submission.isFinalized:
+        print(f"WARNING Submission {students} not finalized!")
     grade = the_submission.grade
     for student in students:
         codepost_grades[student] = grade
