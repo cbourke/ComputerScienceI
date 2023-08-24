@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -124,5 +124,5 @@ $64.229249$ dollars and when rounded gives us the $64.23 in the table.
     are known to be correct using means other than your program
     (a calculator, online tool, etc.).
 
--   Name your program `retire.c`, and turn it in via webhandin.
+-   Name your program `retire.c`, and turn it in.
     Make sure that it runs and executes correctly in the grader.

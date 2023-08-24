@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -41,15 +41,8 @@ For detail, see the general course rubric.
 
 Correctness:
 
--   4 for student tester; it needs $3 \times 5 = 15$ test cases
-
--   3 total for replaceChar/replaceCharCopy tests
-
--   3 total for removeChar/removeCharCopy tests
-
--   4 total for lengthSplit
-
--   2 for error checking suite
+-   16 points distributed among all the functions, and your test suite as
+    indicated on the grader.
 
 # Exercises
 
@@ -117,5 +110,5 @@ given signatures.
 -   You may (in fact are encouraged) to define any additional "helper"
     functions that may help you.
 
--   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader. 
+-   Hand in all 3 files and make sure that it runs and executes
+    correctly in the grader.
