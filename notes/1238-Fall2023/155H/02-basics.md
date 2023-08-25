@@ -59,6 +59,55 @@ Observations:
       * Example: blocks of code should all be indented at the same level
       * Reserved words: `int`, `double`, `return`
 
+## Variables
+
+* Both C and Java are *statically typed* langauges
+  * Before you can use any variable you need to *declare it*
+  * You need to define its name (identifier) and its *type*: `int, double, char`
+  * Where ever you declare a variable, is its *scope*: the area of the code that the variable can be "seen" and is therefore valid
+* Basic Types:
+  * `int` is a 32-bit 2-s complement integer
+  * you can represent 0, negative and positive numbers in the range: -2,147,483,648 to 2,147,483,647
+  $$-2^{31} \ldots 2^{31}-1$$
+  * `double` is a 64-bit IEEE 754 floating point number
+  * Limitation: you can represent any number, very large magnitude, but with only 16-17 digits of accuracy
+  * `char`: is a single character; in C: it is an ASCII text value, in Java: it is a full Unicode value
+
+## Input/Output (I/O)
+
+### C
+
+* Output in C is done with `printf` (f = formatted)
+* You can provide any "formatted" string and it will print to the standard output
+* Input in C is done with `scanf` using the *standard input* (your keyboard)
+* For both language: you can use *placeholders*: they indicate the type of variable to be formatted
+  * `%d` is for integers (`int`)
+  * `%f` is for floating point numbers (`double`)
+  * `%c` is for `char`
+* For `scanf` in C, you need to use `%lf` instead of `%f`!!!
+* For now: remember that `scanf` needs an ampersand `&` in front of the variable you want to read the value into
+* By default: all `double`s are printed out to 6 decimals of accuracy
+* You can specify *modifiers* to placeholders to change their default formatting
+  * Format: `%X.Yf` where X and Y are numbers
+  * `X`: minimum number of "columns" to print
+  * `Y`: exact number of decimal places to print
+
+```c
+    //pi is defined in math.h: M_PI
+    printf("pi is %f\n", M_PI);  //printf rounds BUT ONLY FOR PRINTING
+    printf("pi is %.10f\n", M_PI);
+    printf("pi is %.20f\n", M_PI); //you only have 17 digits of accuracy
+    printf("pi is %.100f\n", M_PI);
+
+    printf("pi is %20.10f\n", M_PI);
+    printf("pi is %-20.10f yay!\n", M_PI);
+
+    int nuid = 123456;
+    printf("my nuid is %d\n", nuid);
+    printf("my nuid is %8d\n", nuid);
+    printf("my nuid is %08d\n", nuid);
+```
+
 ```text
 
 

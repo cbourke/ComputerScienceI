@@ -24,6 +24,36 @@ to kilometers...
   * Convert the values (math)
   * Output the results
 
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2023/08/23
+ *
+ * This program converts miles to kilometers
+ */
+#include <stdlib.h>
+#include <stdio.h>
+
+#define KMS_PER_MILE 1.60934
+
+int main(int argc, char **argv) {
+
+  double miles, kms;
+
+  //prompt the user for the input
+  printf("Please enter miles: ");
+
+  //read in the input
+  scanf("%lf", &miles);
+
+  kms = KMS_PER_MILE * miles;
+
+  printf("%f miles is equal to %f kilometers\n", miles, kms);
+
+  return 0;
+}
+```
+
 ## Basics
 
 ### Comments
@@ -67,7 +97,7 @@ to kilometers...
   * `%f` is for floating point numbers, fractional numbers, 3.14159, 10.0, 2.5
   * `%c` is for **single** characters
 * `scanf` is used for input
-  * FOr now: all the placeholders are the same, *except*...
+  * For now: all the placeholders are the same, *except*...
   * For floats (fractional numbers), you use `%lf`
   * For now: the `&` is just "magic"
 
@@ -77,8 +107,78 @@ to kilometers...
   * `int` is an integer
   * `double` is a floating point number (fractional value)
   * `char` is a **single** character!
-  * Statically typed means that before you can use any variable you **MUST** delcare it: you provide the *type* and a legal name
+  * Statically typed means that before you can use any variable you **MUST** declare it: you provide the *type* and a legal name
+* Limitations
+  * `int` - an integer (32 bit signed 2s complement integer)
+  it can represent whole values (integers) in the range:
 
+  $$-2147483648 \leq x \leq 2147483647$$
+
+  $$-2^{31} \leq x \leq 2^{31}-1$$
+
+  * Exceeding the max/min values leads to *overflow/underflow*
+  * `double` - a floating point number (IEEE 754 floating point number): it is a decimal number that has about 16-17 *digits* of accuracy
+  * `char` - a single ASCII text character value
+
+* Best practices for variable naming
+  * Generally I recommend you follow a `lowerCamelCasing` convention for variables
+  * Alternative: `lower_underscore_casing`
+  * Constants: `UPPER_UNDERSCORE_CASING`
+  * Examples of variables: `numberOfStudents, miles, kilometers`, etc.
+  * Examples of constants (from `math.h` library): `M_PI, M_E`
+  * variable names should be *descriptive*
+  * variable names should be *nouns*
+  * avoid "placeholder" names such as `foo, bar, baz`, or `x, y`
+  * avoid abbreviations unless they are absolutely understood: `ssn`, `nuid`
+
+## More Printing: Formatting
+
+* Recall that you can format output using `printf` and placeholders
+* You can change the default formatting using *modifiers*
+* By default, `%f` prints out 6 decimals of accuracy
+* You can control this using `%X.Yf` where `X` is going to be the minimum number of columns to be printed and `Y` is the number of decimal places to output
+
+```c
+
+    printf("pi = %f\n", M_PI);  //ends up rounding but ONLY for printing!!!
+    printf("pi = %.7f\n", M_PI);
+    printf("pi = %.20f\n", M_PI);
+    printf("pi = %.100f\n", M_PI);
+
+    //both placeholders:
+    printf("pi = %12.7f\n", M_PI);
+    printf("pi = %-12.7f foo!\n", M_PI);
+
+    double bankBalance = 123.45;
+    printf("I have $%.2f\n", bankBalance);
+```
+
+### Assignment Operator
+
+* variables hold values, you need a way to get values into those variables
+  * To do this, you use the assignment operator: `=`
+  * It is not an "equals" as in algebra
+  * Instead it means: take the value of the thing on the left hand side (LHS) and place it into the variable on the right hand side (RHS)
+  * The LHS can ONLY EVER be a single variable in C
+* Gotchas:
+  * in C an *uninitialized variable has no default value*: it could be anything!
+  * *likely* it will be zero
+  * but it could be a trash value (random value)
+  * it could be a value that was left over in memory
+  * it could be `0xDEADBEEF`: an old placeholder value to indicate uninitialized memory
+
+### Other operators
+
+* Algebraic operators: `+` (addition), `-` (subtraction), `*` (multiplication, not $\times$, not $\cdot$), `/` (division, not $\div$ nor $\frac{a}{b}$)
+
+#### Truncation
+
+* When you add, subtract or multiply two integers the result is *always* an integer
+* When you divide two integers, the result is STILL an integer!!!
+  * Ex: `20 / 30`: SHOULD be 0.666666
+  * C will take the "factional" part and throw it away
+  * You end up with just zero
+  * This is called truncation!
 
 ```text
 
