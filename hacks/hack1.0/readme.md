@@ -123,10 +123,12 @@ To focus on the git process, you will create and work with a simple
 "Hello World"-style program but instead of printing "Hello World", it
 will print your name.
 
-1.  Create a new folder (call it `hello`) in your `/hacks/` directory
-    and create a `hello.c` source file with code in it that prints your name.
+1.  Create a new folder (call it `hello`) in your `/hacks/` directory.
 
-2.  Make this folder (and all of its contents) into a git repository by
+2.  Create a `hello.c` source file in your new folder with code that
+    prints your name.  Make sure it compiles and runs.
+
+3.  Make this folder (and all of its contents) into a git repository by
     *initializing* it. Before you do, make sure your terminal is in the
     correct directory (the `hello` directory you just created). Recall the
     following commands from the previous lab:
@@ -153,7 +155,7 @@ will print your name.
 
     ![image](./images/cl-gitinit.png)
 
-3.  This creates a repository in your IDE, but it does *not*
+4.  This creates a repository in your IDE, but it does *not*
     create a repository on GitHub. We need to do this separately. Go to
     your GitHub page (<https://github.com/login> where `login` is
     replaced with your GitHub login) and in the upper right, select
@@ -161,14 +163,14 @@ will print your name.
 
     ![image](./images/cl-githubNewRepo.png)
 
-4.  Name your repo `hello` and *make sure it is public* (this is
+5.  Name your repo `hello` and *make sure it is public* (this is
     the default).
 
     ![image](./images/cl-githubNewRepoName.png)
 
-5.  Go back to your IDE
+6.  Go back to your IDE
 
-6.  We now need to make our first *commit* which will commit our
+7.  We now need to make our first *commit* which will commit our
     code/changes to the repository. You can make as many edits as you
     want to your source code files and save them, but you only "save"
     them to your git repo when you *commit* these changes. Enter the
@@ -181,7 +183,7 @@ will print your name.
     "staged" for the next commit. Don't worry about the jargon for now,
     essentially this just tells git to add files for its consideration.
 
-7.  Enter the following command.
+8.  Enter the following command.
 
     `git commit -m 'initial commit'`
 
@@ -203,13 +205,14 @@ to your *remote* GitHub repository (stored on GitHub's servers).
 
 2. Next, you need to generate a *Personal Access Token*.  GitHub
    doesn't allow you to simply enter your password, they require
-   you to generate a cryptographic token and use that.  A
+   you to generate a cryptographic token and use that instead.  A
    step-by-step process can be found here:
 
    <https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token>
 
    ***Be sure to follow these instructions carefully***: you need to
-   click "repo" (Full control of private repositories).
+   click "repo" (Full control of private repositories).  Also be sure
+   to use a *classic token* and **not** a "fine grained" token.
 
 3. Now we need to "connect" your *local* repository to the *remote*
    repository so that git knows where to push changes.  To do so,
@@ -433,7 +436,7 @@ academic integrity policy.
 ## Finishing Up
 
 1.  Put the URL for *your* GitHub repository into a plain text file
-    named `readme.md`. Turn this file in using the handin.  If you paired
+    named `readme.md` and turn in this file.  If you paired
     up with a partner (in Canvas), be sure *both* your GitHub URLs are in the
     `readme.md` file.  The contents of your file should look
     *something* like this:
@@ -442,7 +445,7 @@ academic integrity policy.
        https://github.com/cbourke/hello
     ```
 
-    or
+    or, if you worked in a pair:
 
     ``` text
        https://github.com/cbourke/hello

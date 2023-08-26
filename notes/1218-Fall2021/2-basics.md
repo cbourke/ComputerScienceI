@@ -93,6 +93,7 @@ int main(int argc, char **argv) {
 
   $$-2147483648 \leq x \leq 2147483647$$
 
+
   * `double` - a floating point number (IEEE 754 floating point number): it is a decimal number that has about 16-17 *digits* of accuracy
 
   * `char` - a single ASCII text character value
