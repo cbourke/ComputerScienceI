@@ -108,6 +108,134 @@ Observations:
     printf("my nuid is %08d\n", nuid);
 ```
 
+```java
+System.out.println("Hello World!");
+int x = 42;
+double y = 10.125;
+System.out.println("Hello WOrld x is " + x + " and y is " + y);
+int nuid = 123456;
+
+System.out.print(x + "\n");
+
+  //pi is defined in math.h: Math.PI
+  System.out.printf("pi is %f\n", Math.PI);  //printf rounds BUT ONLY FOR PRINTING
+  System.out.printf("pi is %.10f\n", Math.PI);
+  System.out.printf("pi is %.20f\n", Math.PI); //you only have 17 digits of accuracy
+  System.out.printf("pi is %.100f\n", Math.PI);
+  System.out.printf("pi is %20.10f\n", Math.PI);
+  System.out.printf("pi is %-20.10f yay!\n", Math.PI);
+  System.out.printf("my nuid is %d\n", nuid);
+  System.out.printf("my nuid is %8d\n", nuid);
+  System.out.printf("my nuid is %08d\n", nuid);
+```
+
+## Best Practices
+
+* Follow a consistent naming convention
+* Suggestion: `lowerCamelCasing` for all variables (in Java: standard, C: more modern)
+* Alternative: `UpperCamelCasing` (usually for class names in Java)
+* Alternative: `lower_underscore_casing`
+* Constants: usually `UPPER_UNDERSCORE_CASING`
+* Use descriptive variable names: `numberOfStudents, miles, kilometers`
+* Avoid: abbreviations `kms`, `ssn`, `nuid`
+* definitely do not use `var1, variable2, var3`, `x, y, z, a, b, c`, `foo, bar, baz`
+
+## Operators
+
+* The assignment operator or the single equals sign assigns values to variables
+* Arithmetic operators: `+, -, *, /` (addition, subtraction, multiplication, division)
+* Follows the PEMDAS rules: left to right
+  * `a * b + c` is not the same as `a * (b + c)`
+* Example:
+  $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$
+* Invalid opeartions: $\sqrt{-1} = i$ but in code, it is Not a Number, nan
+* Invalid: `1 / 0` (`inf`, `-inf`)
+* Remainder: you can get the remainder after integer division using `%` (read it as: mod or modulo)
+  * `10 % 3` results in 1 (remainder)
+  * `10 % 2` results in 0
+  * `10 % 4` results in 2
+* Trick: how can you tell if a number is even or odd?  Take the mod-2: `a % 2`
+
+### Default Values
+
+* In Java, if you do not assign a value then the variable cannot be used (compiler error)
+* In C, there is no default value for uninitialized variables, thus it *could* have garbage values: `0xDEADBEEF`
+
+### Pitfall: Truncation
+
+* an integer and a floating number are not the same thing
+* When you operate on two integers, the result *must* be an integer: addition, subtraction, multiplication: no problem
+* Division presents a problem: the result must be an integer
+* When two integers are divided, the fractional part (floating point part) is cut off and thrown away
+* This is *NOT* rounding or flooring
+* Solution: use temporary *type casting*: you temporarily treat at least one of the operands as a `double` variable
+
+```c
+int a = 10;
+int b = 20;
+double c = (double) a / b;
+
+printf("%f\n", c);
+
+```
+
+# Non-interactive Input
+
+* Interactive input (using `scanf`) makes the program pause and wait for the user to enter in their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments*
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * `argc` is the *count* (number of arguments)
+  * `argv` is a "vector" (an array) of arguments
+  *  `argv[0]` is always the executable file name (`a.out`)
+  * `argv[1]` is the "first" user supplied argument
+  * `argv[2]`, `argv[3]`, etc.
+  * These are all *STRINGS*
+* Conversion functions:
+  * To convert from a string to an integer: `atoi()`
+  * To convert from a string to a double: `atof()`
+
+```c
+//C version:
+
+    double a, b, c;
+
+    a = atof(argv[1]);
+    b = atof(argv[2]);
+    c = atof(argv[3]);
+
+    // printf("Please enter a: ");
+    // scanf("%lf", &a);
+
+    // printf("Please enter b: ");
+    // scanf("%lf", &b);
+
+    // printf("Please enter c: ");
+    // scanf("%lf", &c);
+
+    double root1 = ( -b + sqrt(b*b - 4*a*c) ) / (2*a);
+    double root2 = ( -b - sqrt(b*b - 4*a*c) ) / (2*a);
+
+    printf("roots are %f and %f\n", root1, root2);
+```
+
+Java:
+
+```java
+
+	    double a, b, c;
+
+	    a = Double.parseDouble(args[0]);
+	    b = Double.parseDouble(args[1]);
+	    c = Double.parseDouble(args[2]);
+	    //or : Integer.parseInt()
+
+	    double root1 = ( -b + Math.sqrt(b*b - 4*a*c) ) / (2*a);
+	    double root2 = ( -b - Math.sqrt(b*b - 4*a*c) ) / (2*a);
+
+	    System.out.printf("roots are %f and %f\n", root1, root2);
+```
+
 ```text
 
 

@@ -179,6 +179,87 @@ int main(int argc, char **argv) {
   * C will take the "factional" part and throw it away
   * You end up with just zero
   * This is called truncation!
+  * You can solve this problem using a casting operation
+
+  ```c
+  int a = 10;
+  int b = 20;
+  double c = a / (double) b; //c is now 0.5
+  ```
+
+#### PEMDAS
+
+* Operators follow a PEMDAS (Parentheses Exponents, Multiplication, Division, Addition, Subtraction) in a *left-to-right* order
+  * The following are not equivalent: `a * b + c`
+  * is not the same as `a * (b + c)`
+* Example:
+  $$x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
+
+##### More Math
+
+* Sometimes you may need to compile with the `-lm` flag to Link in the Math library
+* Some math expressions are invalid: $\sqrt{-1}$ is *not a number* or `nan`
+* `10 / 0` could be `inf` or it could cause a program crash
+* Other math functions: `sqrt()`, `pow()` (power), `sin()`, `cos()`, `tan()`, etc.
+* RTM = Read the Manual = modern translation: use google
+
+### Non-interactive Input
+
+* Interactive input (using `scanf`) makes the program pause and wait for a *human* user to enter their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments* (CLAs)
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * This example has *4* command line arguments
+  * The first argument is *always* the exeuctable file name: `./a.out`
+  * Inside your program, you have access to all of the arguments through the `argc` and `argv` "arguments"
+  * `argc` is a **c**ount of the number of arguments
+  * `argv` is an "array" of the arguments (v is for vector)
+  * `argv[0]` is the executable file name
+  * `argv[1]` is the first user-provided argument
+  * `argv[2]` is the second user-provided argument
+* All arguments are *strings*; you *may* need to convert them to numbers:
+  * `atoi()` converts an argument to an integer
+  * `atof()` converts an argument to a float (`double`)
+
+```c
+/**
+ * Demo Code
+ *
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    double a, b, c;
+
+    if(argc != 4) {
+        printf("ERROR: you must provide 3 numbers\n");
+        exit(1);
+    }
+
+    a = atof(argv[1]);
+    b = atof(argv[2]);
+    c = atof(argv[3]);
+
+    // printf("Please enter a (a number): ");
+    // scanf("%lf", &a);
+
+    // printf("Please enter b: ");
+    // scanf("%lf", &b);
+
+    // printf("Please enter c: ");
+    // scanf("%lf", &c);
+
+    double root1 = ( -b + sqrt( pow(b, 2) - 4 * a * c) ) / ( 2 * a );
+    double root2 = ( -b - sqrt( pow(b, 2) - 4 * a * c) ) / ( 2 * a );
+
+    printf("the roots of %fx^2 + %fx + %f are %f and %f\n", a, b, c, root1, root2);
+
+    return 0;
+}
+```
 
 ```text
 
