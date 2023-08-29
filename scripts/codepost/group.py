@@ -27,8 +27,10 @@ class Group:
         s = ""
         if len(self.members) > 1:
           s = "  %-20s (%s) \n"%(self.canvasGroupName,self.canvasGroupId)
-        for member in self.members:
-            s += f"    {member}"
+          for member in self.members:
+            s += f"    {member}\n"
+        else:
+          s += f"  {self.members[0]}\n"
         return s
 
     def __eq__(self,other):

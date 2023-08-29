@@ -32,7 +32,7 @@ parser.add_argument("--commit", action='store_true', help=
   """)
 parser.add_argument("codepost_assignment_name", help=
   """The codepost.io assignment name (the ID is retrieved
-  using this name)
+  using this name; example: "Hack 1.0")
   """)
 args = parser.parse_args()
 
@@ -65,7 +65,9 @@ def consolidateAndAssign(gradingAssignment):
         for group in groups:
             # get submission associated with first member:
             submissionA = next( (s for s in assignment_submissions if group.members[0].canvasEmail in s.students), None)
-            submissionB = next( (s for s in assignment_submissions if group.members[1].canvasEmail in s.students), None)
+            submissionB = None
+            if len(group.members) > 1:
+                submissionB = next( (s for s in assignment_submissions if group.members[1].canvasEmail in s.students), None)
             graderEmail = grader.canvasEmail
             print(f"Processing group:")
             print(f"{group}")
@@ -83,15 +85,15 @@ def consolidateAndAssign(gradingAssignment):
             if submission is not None:
                 codepostStudentGroup = [group.members[0].canvasEmail]
                 print(f"    Assigning {graderEmail} to group {group.canvasGroupName}...")
-                if len(group) > 1:
+                if len(group.members) > 1:
                     print(f"    Consolidating {group.members[1].canvasEmail} to {group.members[0].canvasEmail}...")
                     codepostStudentGroup.append(group.members[1].canvasEmail)
-                    if deleteSubmission is not None:
+                    if deleteSubmission is not None and deleteSubmission.id != submission.id:
                         print(f"    Deleting submission {deleteSubmission.id} by {deleteSubmission.students}, yeehaw...")
                 if commit_to_codepost:
                     if deleteSubmission is not None:
                         codepost.submission.delete(id=deleteSubmission.id)
-                    codepost.submission.update(id=submission.id, grader=graderEmail, students=studentGroup)
+                    codepost.submission.update(id=submission.id, grader=graderEmail, students=codepostStudentGroup)
 
 print(f"Processing codepost assignment '{codepost_assignment_name}' (id={codepost_assignment_id})...")
 if not commit_to_codepost:
