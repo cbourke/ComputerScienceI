@@ -14,7 +14,6 @@ This script interfaces with canvas and codepost.io to
       them among graders) and outputs an assignment report to
       the standard output and produces a CSV file (for QC)
 
-TODO: needs troubleshooting
 """
 import argparse
 import codepost
