@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,13 +80,13 @@ public class ProteinTranslator {
 		proteinMap.put("UUG", 'L');
 		proteinMap.put("UUU", 'F');
 	}
-	
+
 	public static void main(String args[]) {
 		//an example of how to use the map:
 		String codon = "GGU";
 		String protein = proteinMap.get(codon);
 		System.out.println(codon + " translates to " + protein);
-		
+
 	}
 
 }

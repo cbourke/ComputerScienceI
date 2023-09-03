@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -124,10 +124,9 @@ Place all your code in a file named `proteinTranslator.c`.
 
 -   Code for the `rnaToProtein` function as well as a demonstration
     on how to use it has been provided in this repo/directory.
-    However, you only need to handin `proteinTranslator.c` (and
-    anything else that you may find helpful). Do *not* make changes to
-    the provided files since you won't be able to hand them in (the
-    grading script provides them for you).
+    However, you will only hand in `proteinTranslator.c`.  Do *not*
+    make changes to the provided files since you won't be able
+    to hand them in (the grading script provides them for you).
 
 -   We've provided a couple of sample DNA input files and the resulting
     protein sequences in the `examples` directory.
@@ -140,6 +139,3 @@ Place all your code in a file named `proteinTranslator.c`.
 
 -   You may (in fact are encouraged) to define any additional "helper"
     functions that may help you.
-
--   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader.

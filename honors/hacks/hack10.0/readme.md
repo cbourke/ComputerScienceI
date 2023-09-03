@@ -24,8 +24,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -119,7 +119,8 @@ when you process the data.
 -   Code for the RNA-to-protein `Map` as well as a demonstration
     on how to use it has been provided in the
     `ProteinTranslator.java` source file. You should add your
-    translation code using this class.
+    translation code using this class.  All classes should be in the
+    `unl.soc` package.
 
 -   **Hint**: Code reuse is a Very Good Thing. Your protein program can
     use your file utility methods, but also: feel free to include any
@@ -129,6 +130,3 @@ when you process the data.
 
 -   You may (in fact are encouraged) to define any additional "helper"
     methods that may help you.
-
--   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader.
