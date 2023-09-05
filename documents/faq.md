@@ -161,16 +161,15 @@ This will trigger a container rebuild and usually that will fix the issue.
 You can:
 
 * Check to see if CS50 is experiencing system-wide issues which are reported at https://cs50.statuspage.io/
-* Try going to https://code.cs50.io/restart to restart your codespaces instance
+* Try going to <https://cs50.dev/restart> to restart your codespaces instance
 * Emailing their system administration support at sysadmins@cs50.harvard.edu
 * Try asking your question on the CS50 discord: https://discord.gg/cs50
 
 ## Nothing Seems to Work
 
 1. Try clearing your browser cache/cookies; instructions for most major browsers: https://its.uiowa.edu/support/article/719
-2.  You can try creating a new Codespace at: https://code.cs50.io/settings
-Your files *should* still be synced to your GitHub repository, but if not,
-hopefully you backed them up.
+2. Try a different browser entirely.
+3. Try the alternatives below.
 
 ## Alternatives
 
