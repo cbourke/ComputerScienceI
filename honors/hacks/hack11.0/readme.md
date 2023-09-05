@@ -24,8 +24,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -45,9 +45,8 @@ For correctness:
  - 5 points for student tester (it is OK to test a function
    transitively; i.e. if `createAirport` uses `initAirport`
    then you only need to test `createAirport`)
- - 5 points for the "visual" inspection test
- - 3 points for the 100 test cases for `getAirDistance`
- - 3 points for the 100 test cases `getEstimatedTravel` time
+ - Remaining points distributed among several of our own test suites.
+
 
 # Problem Statement
 
@@ -109,6 +108,3 @@ all of the specified methods.
 
 -   You may (in fact are encouraged) to define any additional "helper"
     methods that may help you.
-
--   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader.
