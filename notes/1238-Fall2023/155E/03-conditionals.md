@@ -205,7 +205,112 @@ and gives the user a description of the sound level.
   }
 ```
 
+## Pitfalls
+
+* Consider the following code:
+
+```c
+if(0 <= a <= 10) {
+  ...
+}
+```
+
+* THe above code will compile, it will run but it will not be correct
+* The correct way would be:
+
+```c
+if(0 <= a && a <= 10) {
+  ...
+}
+```
+## Pitfall 2
+* Consider the following code:
+
+```c
+//C:
+int a = 5;
+
+if(a = 10) { ... }
+```
+
+* the mistake is using a single equals sign (assignment operator) instead of the `==` equality operator
+
+### Pitfall 3
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+
+```
+
+## Linters
+
+* Code may be syntactically correct (it will compile) but still may have errors
+* Lint are piece of code that may look suspicious and may lead to errors but are not syntax errors.  
+* Linters are *static analysis* tools that look for such *potential* errors in your code and report them (usually as warnings)
+* Static analysis: a program that analyzes the *source code* of another program pre-compilation
+* `gcc` can be used as a rudimentary linter using the flag `-Wall`
+
+## Short Circuiting
+
+* Consider the following expression: `a && b`
+  * Suppose `a` evaluates to false, does it matter what the value of `b` is?
+  * Consequently, the program will ignore `b` and "short circuit" its evaluation
+* Consider the following: `a || b`
+  * Suppose `a` evaluates to true, does it matter what `b` is?
+  * No: the entire expression is automatically true and `b` is ignored
+* This is a common programming *idiom*
+
+```c
+int *a = NULL;
+if(a != NULL && dangerousOperationHERE) {
+
+}
+```
+
+## Misc
+
+* You *can* use numeric comparison operators for individual `char` variables
+
+```c
+    printf("You are about to delete the entire hard drive, are you sure (Y/N):");
+    char answer;
+    scanf("%c", &answer);
+    if(answer == 'Y' || answer == 'y') {
+      printf("rm -Rf /");
+    } else {
+      printf("safe!");
+    }
+
+
+```
+
+* Recall that you cannot use numerical comparisons with full *strings*: `"Chris"`
+
+```c
+
+	char name[] = "Chris";
+
+	if(name == "Chris") {
+		printf("hello, professor!\n");
+	}
+
+	if( strcmp(name, "Chris") == 0) {
+		printf("hello, professor!\n");
+	}
+```
+
+
+
 ```text
+
+
+
+
+
+
 
 
 
