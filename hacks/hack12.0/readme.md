@@ -23,8 +23,8 @@ If you choose to form a Hack Pair, you *must*:
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+3.  You may both turn in a copy, but only one will be graded (generally
+    the one whose last name comes first alphabetically).
 
 ## Rubric
 
@@ -160,6 +160,3 @@ to avoid unnecessary repeated recursive calls.
     `binomial.c` and hand it in with your header file,
     `binomial.h`. Place your `main` function in a file named
     `binomialDemo.c`
-
--   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader.
