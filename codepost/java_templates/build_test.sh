@@ -14,7 +14,7 @@ result=$(javac -nowarn -cp . -d . $baseClass.java 2>&1)
 
 #if result is not empty
 if [[ ! -z "$result" ]]; then
-  message="Your code does not appear to compile or compiles with warnings:
+  message="Your code does not appear to compile:
 $result"
   #echo "$message"
   TestOutput "Build Tests" "Compiler Output" false "$message"
@@ -23,7 +23,7 @@ elif [[ ! -f "$classPath" ]]; then
   #echo "$message"
   TestOutput "Build Tests" "Compiler Output" false "$message"
 else
-  message="Your code compiles with no errors or warnings."
+  message="Your code compiles with no errors."
   #echo "$message"
   TestOutput "Build Tests" "Compiler Output" true "$message"
 fi
