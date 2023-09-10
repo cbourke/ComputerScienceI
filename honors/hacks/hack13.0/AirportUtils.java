@@ -1,4 +1,4 @@
-package unl.cse;
+package unl.soc;
 
 import java.util.Comparator;
 import java.util.List;
@@ -75,7 +75,54 @@ public class AirportUtils {
 	 * Airports.
 	 */
 	public static void generateReports(List<Airport> airports) {
-		//TODO: implement
+
+		  //TODO: implement
+
+		  System.out.printf("Airports (original): \n");
+		  System.out.printf("==============================\n");
+			//TODO: print the airports
+
+		  System.out.printf("\nAirports By GPS ID: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nAirports By Type: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nAirports By Name: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nAirports By Name - Reversed: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nAirports By Country/City: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nAirports By Latitude: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nAirports By Longitude: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nAirports By Distance from Lincoln: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nClosest Aiport to Lincoln: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nFurthest Aiport from Lincoln: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nEast-West Geograpic Center: \n");
+		  System.out.printf("==============================\n");
+
+		  System.out.printf("\nNew York, NY airport: \n");
+		  System.out.printf("==============================\n");
+		  //if none found, print: "No New York airport found!\n"
+
+		  System.out.printf("\nLarge airport: \n");
+		  System.out.printf("==============================\n");
+		  //if none found, print: "No large airport found!\n"
+
 	}
 
 }
