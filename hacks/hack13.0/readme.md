@@ -73,7 +73,7 @@ following reports which should all be output to the standard output.
 
 -   Search for and print out the airport in the array that is closest
     (via air distance) to Lincoln. Lincoln is located at 40.8507N,
-    96.7581W.
+    96.7581W (-96.7581).
 
 -   Search for and print out the airport that is the geographic
     west-east median of the given airports with respect to
@@ -106,5 +106,16 @@ following reports which should all be output to the standard output.
 -   You may (in fact are encouraged) to define any additional "helper"
     functions that may help you.
 
--   Turn in all of your files via webhandin, making sure that it runs
-    and executes correctly in the grader.
+-   To facilitate grading, formatting your output will have to be done
+    in a very specific way.  First, we've provided an outline of the
+    `generateReports()` function that you should follow (see `airport.c`).
+    Second, when you format and/or print out a single airport it should
+    be on *one line* and you should print out each piece of data in order.
+    Some examples:
+
+    ```text
+    OMA   normal          Eppley Airfield      41.30 -95.89 150 Omaha      US
+    ORD   huge            O'Hare               41.97 -87.91 125 Chicago    US
+    YYZ   large           Pearson              43.60 -79.60  25 Toronto    CN
+    LGA   international   LaGuardia            40.78 -73.87  50 New York   US
+    ```
