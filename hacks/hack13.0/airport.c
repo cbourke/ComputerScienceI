@@ -33,13 +33,13 @@ void generateReports(Airport *airports, int n) {
   printf("\nAirports By Distance from Lincoln: \n");
   printf("==============================\n");
 
-  printf("\nClosest Aiport to Lincoln: \n");
+  printf("\nClosest Airport to Lincoln: \n");
   printf("==============================\n");
 
-  printf("\nFurthest Aiport from Lincoln: \n");
+  printf("\nFurthest Airport from Lincoln: \n");
   printf("==============================\n");
 
-  printf("\nEast-West Geograpic Center: \n");
+  printf("\nEast-West Geographic Center: \n");
   printf("==============================\n");
 
   printf("\nNew York, NY airport: \n");

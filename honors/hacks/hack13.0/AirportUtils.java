@@ -106,13 +106,13 @@ public class AirportUtils {
 		  System.out.printf("\nAirports By Distance from Lincoln: \n");
 		  System.out.printf("==============================\n");
 
-		  System.out.printf("\nClosest Aiport to Lincoln: \n");
+		  System.out.printf("\nClosest Airport to Lincoln: \n");
 		  System.out.printf("==============================\n");
 
-		  System.out.printf("\nFurthest Aiport from Lincoln: \n");
+		  System.out.printf("\nFurthest Airport from Lincoln: \n");
 		  System.out.printf("==============================\n");
 
-		  System.out.printf("\nEast-West Geograpic Center: \n");
+		  System.out.printf("\nEast-West Geographic Center: \n");
 		  System.out.printf("==============================\n");
 
 		  System.out.printf("\nNew York, NY airport: \n");
