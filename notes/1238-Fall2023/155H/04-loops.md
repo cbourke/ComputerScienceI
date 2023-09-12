@@ -136,6 +136,82 @@ while (days > 365)
 }
 ```
 
+## Misc
+
+### "Enhanced" For Loops (Java)
+
+* a "for each" loop that allows you to iterate automatically over a collection (array, list, etc.)
+
+```java
+int primes[] = {2, 3, 5, 7, 11, 13, 17};
+for(int x : primes) {
+  System.out.println(x);
+}
+```
+
+### Nested Loops
+
+* You can "nest" a loop within another loop
+* Inner loop and outer loop
+
+```java
+		int n = 1000;
+		BigInteger counter = BigInteger.ZERO;
+		for(int i=0; i<n; i++) {
+			for(int j=0; j<n; j++) {
+				//System.out.printf("%d, %d\n", i, j);
+				counter = counter.add(BigInteger.ONE);
+			}			
+		}
+		System.out.println("counter = " + counter);
+```
+
+* Be careful: generally nested loops are *inefficient*
+* Sometimes they are necessary, but 3 or certainly more loops: *rehthink* what you are doing
+
+## Exercises
+
+1. Write a program to compute the arthmetic-geometric mean of two numbers
+
+```c
+
+    double x = 432.0;
+    double y = 3892.0;
+
+    double aCurrent, gCurrent, aPrevious, gPrevious;
+    aCurrent = x;
+    gCurrent = y;
+    double epsilon = 0.0000000001;
+
+    while( fabs(aCurrent - gCurrent) >= epsilon ) {
+        aPrevious = aCurrent;
+        gPrevious = gCurrent;
+        aCurrent = .5 * (aPrevious + gPrevious);
+        gCurrent = sqrt(aPrevious * gPrevious);
+    }
+
+    printf("agm(%f,%f) = %f\n", x, y, aCurrent);
+```
+
+2. Compute a loan amortization table using a monthly payment formula:
+  $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
+where
+ * rate is the rate per period (.05/12 for monthly payments)
+ * $n$ is the number of periods (months) in the loan
+ * Ex: A $10,000 5 year loan at 5% interest (60 payments):
+ $$\frac{\frac{.05}{12} \times 10,000}{1-(1+\frac{.05}{12})^{-60}} = 188.71$$
+
+ ```text
+ Month Balance Interest New Balance
+     1   $10000.00   $   41.67   $  147.04  $ 9852.96
+     2   $ 9852.96   $   41.05   $  147.66  $ 9705.30
+     3   $ 9705.30   $   40.44   $  148.27  $ 9557.03
+     4   $ 9557.03   $   39.82   $  148.89  $ 9408.14
+     5   $ 9408.14   $   39.20   $  149.51  $ 9258.63
+     6   $ 9258.63   $   38.58   $  150.13  $ 9108.50
+     ...
+ ```
+
 ```text
 
 

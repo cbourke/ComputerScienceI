@@ -114,6 +114,92 @@ Differences:
 
 ## Common Pitfalls
 
+* Consider the following:
+
+```c
+int i = 1;
+while(i <= 10); {
+  printf("%d\n", i);
+	i++;
+}
+```
+
+* The semicolon is misplaced; it makes the loop body empty and we get caught in an infinite loop
+* Control-C kills the current running program
+* Using proper `-Wall` linter flags may catch these things!
+
+* Consider the following code:
+
+```c
+int i = 0;
+while(i < 10) {
+  printf("%d\n", i);
+}
+```
+
+* This leads to an infinite loop, so be careful
+* You are not making progress toward your termination condition
+
+
+* Consider the following code:
+
+```c
+int i = 0;
+while(i < 10)
+  printf("%d\n", i);
+  i++;
+```
+
+* Bad style: forgot the curly brackets
+* This means the loop is only bound to the next executable statement, the increment never happens
+* Infinite loop
+* Best practice/style: ALWAYS write your curly brackets
+
+## Zune
+
+* On December 31st, 2008 every zune froze for 24 hours
+
+```c
+//zune bug
+while (days > 365)
+{
+  if (IsLeapYear(year))
+	{
+		if (days > 366)
+		{
+			days -= 366;
+			year += 1;
+	  }
+  }
+  else
+  {
+    days -= 365;
+    year += 1;
+  }
+}
+```
+
+## Exercises
+
+Compute a loan amortization table using a monthly payment formula:
+  $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
+where
+ * rate is the rate per period (.05/12 for monthly payments)
+ * $n$ is the number of periods (months) in the loan
+ * Ex: A $10,000 5 year loan at 5% interest (60 payments):
+ $$\frac{\frac{.05}{12} \times 10,000}{1-(1+\frac{.05}{12})^{-60}} = 188.71$$
+
+ ```text
+ Month Balance Interest New Balance
+     1   $10000.00   $   41.67   $  147.04  $ 9852.96
+     2   $ 9852.96   $   41.05   $  147.66  $ 9705.30
+     3   $ 9705.30   $   40.44   $  148.27  $ 9557.03
+     4   $ 9557.03   $   39.82   $  148.89  $ 9408.14
+     5   $ 9408.14   $   39.20   $  149.51  $ 9258.63
+     6   $ 9258.63   $   38.58   $  150.13  $ 9108.50
+     ...
+ ```
+
 ```text
 
 
