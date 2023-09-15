@@ -45,6 +45,18 @@ An introduction to functions in C.
   * Observation: any variable declared inside of a function has a *local scope*: it only exists inside that function, not outside nor in other functions
   * Not only does our function provide new functionality, it illustrates code reuse itself: a function can call a function (`roundToCents` calls `round`)
 
+## Creating a Library: Modularity
+
+* Demonstration: let's separate our "financial" related functions into a separate "finance" library of "utilities"
+* You separate code out into multiple files to avoid one "god" file with thousands or millions of LoC = Lines of Code
+* It allows you to *organize* code: finance stuff goes in the finance library, custom math stuff goes in a custom math library, etc.
+  * Prototypes and documentation goes into a *header* file with a `.h` extension
+  * Definitions go into a *source* file with the same *base name* but with a `.c` extension
+  * You then use `#include "my_library.h"` wherever you want to use the functions in that library
+  * To compile: you compile in phases
+    * To compile the library: use `-c` flag; `gcc -c finance_utils.c` (which produces an *object* file `finance_utils.o`)
+    * To compile everything together you include the object file:
+    `gcc finance_utils.o loan.c -lm`
 
 ```text
 

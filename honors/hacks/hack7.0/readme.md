@@ -42,11 +42,7 @@ For detail, see the general course rubric.
 
 Correctness:
 
--   8 points on the array part, 2 for the first test suite, 6 for the
-    second
-
--   8 points for the image part, 2 points for each test suite all
-    proportional
+-   10 points for the list utilities, 6 for the image utilities
 
 # Exercises
 
