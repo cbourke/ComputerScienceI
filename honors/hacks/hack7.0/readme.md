@@ -141,7 +141,7 @@ implement.  The original image is:
 # Instructions
 
 -   For the warm-up, place all your methods with documentation in a java
-    source file named `ListUtils.java`
+    source file named `ListUtils.java` and place it in the `unl.soc` package.
 
 -   In addition, you'll want to create a main test driver program that
     demonstrates at least 3 cases per function to verify their output.
