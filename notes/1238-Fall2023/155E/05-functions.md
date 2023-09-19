@@ -58,7 +58,60 @@ An introduction to functions in C.
     * To compile everything together you include the object file:
     `gcc finance_utils.o loan.c -lm`
 
+## Unit Testing
+
+* A *unit* is a piece of code (usually a function) that can be tested
+* A unit is an indivisible piece of code that is treated as a "black box": you want to test things in isolation
+* A unit test is an input-output pair that is known to be correct
+* We unit test by feeding the input into our unit (function) and comparing the result to the *known correct* output: actual vs the expected
+  * If they match: PASSES!
+  * If they do not match: FAILS!
+* Grouping multiple unit tests into one collection gives you a *test suite*
+* If a future bug is reported: you have a new test case!
+* Tests should be repeatable
+* A future change or fix that breaks other unit tests is known as a *regression*
+* The more tests you have the higher certainty you have that your code is correct
+* No amount of unit testing will give you a 100% guarantee that your code is correct!
+* One Goal: provide 100% "code coverage"
+  * Example: tax program (lab 3)
+  * YOu want *at least* one test case for each possible "computational path"
+  * You also want to test: corner cases, edge cases, error cases, etc.
+  * Fuzzing: generate random values in an attempt to break your code
+* Problems:
+  * Lack of code coverage
+  * A *false positive* is when a test case is wrong but the code is correct
+  * A *false negative* is when there is a bug in your program but your test case(s) do not catch it: they both agree but they are both *wrong*
+  * TDD? = Test Driven Development
+* Ad-hoc testing: testing as we went using manual input/output
+* Informal unit testing: writing your own tests and boilerplate reporting code
+* Formal unit testing: you bring in a library to do all of the boilerplate stuff for you
+
+## Misc
+
+* Another advanced topic: `makefile`s
+  * For larger projects, building all the code can get *very* complicated
+  * You may have dozens of rules and *dependencies* (one file depends on another, that depends on another, etc.)
+  * Another language, a *build* system is necessary
+  * Build Engineers or "DevOps" (Development Operations)
+  * Related: CI = Continuous Integration
+* THe `void` keyword
+  * You can write functions that take no input
+  * You can write functions that give no output: `void`
+  * Ex: `void printMenu();`
+* Function overloading
+  * When you write a function and give it a name, `foo()`
+  * That is the ONLY function that can ever have that name!
+  * Writing functions *pollutes* the namespace: once you write a function with a given name, you will *conflict* with ANY library you want to use that also defines a fucntion with that name!
+  * A lot of libraries will name their functions with a prefix: `gtk_` + function name; ex: `gtk_create_menu()`
+  * SOME languages *do* allow you to define multiple functions with the same name (but possibly different parameters/inputs): this is known as "function overloading"
+  * C does NOT support function overloading: `abs(), fabs(), labs(), llabs(), fabsf()`
+* How do functions actually work?
+
 ```text
+
+
+
+
 
 
 
