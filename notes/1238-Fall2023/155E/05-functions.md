@@ -105,7 +105,127 @@ An introduction to functions in C.
   * A lot of libraries will name their functions with a prefix: `gtk_` + function name; ex: `gtk_create_menu()`
   * SOME languages *do* allow you to define multiple functions with the same name (but possibly different parameters/inputs): this is known as "function overloading"
   * C does NOT support function overloading: `abs(), fabs(), labs(), llabs(), fabsf()`
-* How do functions actually work?
+
+
+## How Functions Work
+
+* Programs have a *program stack*: it is a LIFO= Last-In First-Out data structure
+* Operations:
+  * Pop from the top of the stack (you remove the top-most element)
+  * Push an element to the top of the stack
+* Everytime a function is called a new *stack frame* is created and placed on the top of the "call stack" or "program stack"
+  * All local variables and parameters in a function are stored in that function's stack frame
+  * Each function can only "see" its own stack frame
+  * This is how scoping actually works: you can have multiple variables of the same name but they exist in different stack frames
+  * Once a function is done executing, its stack frame is popped off the top and control is returned to the calling function
+* Can a function "swap" to values?
+  * Not if you "pass by value"
+  * When a function is called, *copies* of the values of any parameter/argument/input variables are passed to the function, NOT the actual variables
+  * BUT: can we pass actual variables in order to have a *true*, working "swap" function?  Yes
+
+## Pointers
+
+* Memory in a computer has both an *address* and *contents*
+* An address is a numerical designation of where data is stored
+* The *contents* are the actual data
+* Pointers in C allow you to actually access and manipulate the contents of memory through the memory address
+
+```
+
+    int a = 42;
+
+    printf("the contents stored in variable a are %d\n", a);
+    printf("the variable a is stored at memory locatoin %p\n", &a);
+
+    //declare a pointer variable that can point to a:
+    int *ptrToA;
+    //what does ptrToA current point to?  Who knows
+    //It COULD point to:
+    //  - a memory location that doesn't exist
+    //  - a memory location that exists but does not belong to you
+    //  - a memory location that belongs to your program but that you should still not mess with
+
+    // it is best practice to initialize a pointer to NULL:
+    ptrToA = NULL;
+    //you can check for NULL;
+    if(ptrToA == NULL) {
+        printf("ERROR: you cannot access this memory!\n");
+    }
+
+    // how do we actually make the pointer "point" to the variable a?
+    // the ampersand in front of a regular old variable gives you the
+    // memory address of that variable
+    // It is the "referencing operator"
+    ptrToA = &a;
+
+    //careful: do not make a pointer point to an invalid memory address
+
+    //this makes the pointer point to memory address 42
+    ptrToA = a;
+
+    //this would make the pointer point to memory address 101:
+    ptrToA = 101;
+
+    printf("the contents stored in variable a are %d\n", a);
+    printf("the variable a is stored at memory location %p\n", ptrToA);
+
+    // ampersand is the *referencing operator*:
+    //  regular old variable -> memory address
+    // the opposite operation is the *dereferencing operator*:
+    //  memory address -> regular old variable
+    // Syntax: use a *
+    ptrToA = &a;
+    printf("the contents at memory location %p are %d\n", ptrToA, *ptrToA);
+    *ptrToA = 23;
+    printf("the contents at memory location %p are %d\n", ptrToA, *ptrToA);
+
+```
+
+* Using pointers as function parameters allows us to *pass by reference*
+  * Memory addresses of variables are passed to the function
+  * Since the function has the memory addresses it can "jump" to those locations and directly manipulate the contents of that memory
+  * This enables us to write a proper functioning "swap" function
+
+* Observations:
+  * When we used `scanf("%d", &x)` we used the ampersand to pass in `x` by reference: so that scanf could read the input and place the value into the original variable `x`
+  * Passing by reference is essentially passing a shared "bucket": you give the function a bucket to fill with a value
+  * Manipulating uninitialized variables or even `NULL` or invalid pointers will lead to a segmentation fault
+  * ALways remember what Bret Hart said...
+
+### Summary of Pointers
+
+* A pointer is a memory address or *reference* to a memory address
+* A pointer variable can be declared using the star symbol: `int *ptrToA`
+* It is best practice to initialize a pointer directly to what you want it to point to or, if you *don't* know, then make it point to `NULL`
+* To convert a regular old variable into a memory address/pointer/reference using the *referencing operator*: `&`
+* To convert a pointer into a regular old variable (in order to access or change the value stored at its location) use the *DEreferencing operator*: `*`
+* Don't make pointers point to things they shouldn't point to
+* You can create any type of pointer: `int *` (integers), `double *` (doubles), `char *` for characters
+
+```c
+void swap(int *a, int *b) {
+
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+
+}
+
+int main() {
+
+  int a = 10;
+  int b = 20;
+  printf("In main(): a, b = %d, %d\n", a, b);
+
+  swap(&a, &b);
+
+  printf("In main(): a, b = %d, %d\n", a, b);
+
+
+
+  return 0;
+}
+```
 
 ```text
 

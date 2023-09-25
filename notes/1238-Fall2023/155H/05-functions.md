@@ -115,6 +115,101 @@ Observations:
   * *formal* unit testing in Java: JUnit (version 5)
 
 
+### Function Overloading
+
+* In C, to compute the absolute value you can use `abs(), fabs(), labs(), llabs(),` etc.
+* Those function each take a different type and return a different type
+* In C you can only have one function with one particular name
+* In *some* language (Java) you can have multiple functions with the same name but with different parameter types
+* Example: in Java, the `Math` library contains 4 *different* `abs()` methods all with the same name
+* Java allows/supports *method overloading*: the ability to have multiple functions with the same name
+* At compile time, the Java compiler is able to deduce *which* function you intended to call based on what you pass it (this mechanism is called *static dispatch* )
+* C does not support function overloading, thus it needs different names for each function: you cannot have two functions with the same name
+* In C You end up either *polluting the namespace* or appending a common "tag"
+
+## How Functions Actually Work
+
+* Programs have a *program stack* (or *call stack*)
+* Stack: LIFO data structure
+  * LIFO = Last In First out
+  * Push: you add something to the "top" of the stack
+  * Pop: you remove the top most thing
+* Each time a function is called, a new *stack frame* is created/pushed on top of the call stack
+* Each stack frame keeps track of local variables and parameters
+* Each time you return from a function, the stack frame is popped off the top
+* Consequence: each stack frame's variables are separate (this gives us *scoping*) and cannot be accessed by other stack frames
+* Every function gets its own scope and own variables
+* In most programming languages (C, Java), variables are *passed by *value*
+  * When a function is called, *copies* of the values of the variables at that point in the program are passed to the function
+  * The actual variables are NOT passed!
+  * no changes can be made from one stack frame to another!
+* However, in C we *do* have a bit more control: we can pass by *reference* instead
+
+## C: Pointers
+
+* Every piece of data in a computer is stored in memory
+* Memory consists of an address (location) and its contents (the actual data stored in memory)
+* In C you can access memory directly using *pointers*: a variable type that "points" to a *memory address* instead of the contents of memory
+* To create a pointer variable you use the `*`
+
+```c
+
+    //a regular old variable declaration:
+    int x = 42;
+
+    printf("x holds the value %d\n", x);
+    printf("x is stored at memory address %p\n", &x);
+
+    //create a *pointer* variable:
+    int *ptrToX;
+    //at this point in the program, what does ptrToX point to?
+    // who knows: it coudl point to anything, including:
+    //  memory that doesn't exist
+    //  memory that exists but does not belong to your program
+    //  memory that belongs to your program but you shouldn't be messing with it
+    // It is best to initialize pointers to NULL:
+    ptrToX = NULL;
+
+    //you can test for NULL:
+    if(ptrToX == NULL) {
+        printf("ERROR: Do not try to access this  memory!\n");
+    }
+
+    // now let's make ptrToX actually point to the variable x:
+    // the ampersand gives you the memory address of a regular old variable
+    ptrToX = &x;
+
+    printf("x holds the value %d\n", x);
+    printf("x is stored at memory address %p\n", &x);
+    printf("ptrToX has the value %p\n", ptrToX);
+
+    ptrToX = x;
+
+    printf("x holds the value %d\n", x);
+    printf("x is stored at memory address %p\n", &x);
+    printf("ptrToX has the value %p\n", ptrToX);
+
+    //let's get the *contents* pointed to by ptrToX:
+    printf("ptrToX is poitning to memory location %p which holds the value %d\n", ptrToX, *ptrToX);
+
+    //you cannot point to arbitrary memory locations:
+    ptrToX = -101;
+```
+
+* You can create a pointer variable by using the `*`
+* When you create a pointer variable, the pointer *type* must match what you want it to point to:
+
+```c
+int a = 42;
+double *p = &a;
+
+
+```
+
+
+* Putting an ampersand in front of a regular old variable, gives you the memory address of that variable
+* Further: you can now manipulate the contents of a variable through its pointer
+
 
 ```text
 
