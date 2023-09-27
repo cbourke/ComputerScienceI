@@ -227,6 +227,16 @@ int main() {
 }
 ```
 
+## Pass By Reference
+
+* Normally, passing variables by value means you cannot change the values in the *original* variables
+* Passing variables by *reference* using pointers, you *can* change the values in the original variables
+  * Ex: `swap()`
+* You can now use pass-by-reference variables to "return" multiple values
+  * Ex: computing multiple values such as red-green-blue
+  * Demo: let's compute the tax, tip, and total for a diner bill
+* Another useful thing: not returning a value from a function frees up the return value to be used for other purposes...
+
 ```text
 
 

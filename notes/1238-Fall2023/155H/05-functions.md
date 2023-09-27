@@ -206,9 +206,24 @@ double *p = &a;
 
 ```
 
-
 * Putting an ampersand in front of a regular old variable, gives you the memory address of that variable
 * Further: you can now manipulate the contents of a variable through its pointer
+
+### Summary of Pointers
+
+* A pointer is a *memory address* or "reference"
+* A pointer can be declared using the star syntax: `int *p;`
+* It is best practice to initialize them to `NULL`
+* To make a pointer variable into a regular old variable: use the *dereference* operator: `*p`
+* To make a regular variable into a pointer variable: `&a`, the *referencing* operator
+* DOn't make pointers point to things they shouldn't point to
+* Java: doesn't have pointers!
+
+## Passing By Reference
+
+* Now you can "return" multiple values from a function: specifying more than one pass-by-reference variable
+* Simply "returning" a value by using a pass-by-reference variable means you don't have to explicitly return a value, this frees up the return type/variable
+* With that return variable, we can now do *error handling*
 
 
 ```text
