@@ -3,7 +3,6 @@
 ## Arrays & Collections
 ### Fall 2021
 
-
 * It is rare to only deal with 1 number of 1 character, or 1 piece of data
 * Collections of data are used to store multiple instances of those things
 * In C and Java, we use *arrays* to store collections of *similar* things (things of the same type)

@@ -105,10 +105,156 @@ printf("first and last: %d, %d\n", arr[0], arr[n-1]);
 	    arr[n-1] = 101;
 
 	    System.out.printf("first and last: %d, %d\n", arr[0], arr[n-1]);
+```
+
+## Java: Arrays Suck
+
+* Once created, they cannot change: they don't grow or shrink
+* Instead in Java it is preferred to use *dynamic collections*: lists, sets, maps
+* A `List` is an ordered collection of things (first, second, etc.)
+  * Uses 0-indexing just like arrays
+  * You can add things, remove things, etc. and it grows or shrinks to accommodate them
+
+```java
+
+		List<Integer> myList = new ArrayList<>();
+		System.out.println(myList);
+		//add adds to the end of the list:
+		myList.add(10);		
+		System.out.println(myList);
+		myList.add(20);
+		myList.add(5);
+		myList.add(30);
+		System.out.println(myList);
+
+		//duplicates are possible/allowed!
+		myList.add(10);
+		System.out.println(myList);
+
+		myList.add(0, 42);
+		System.out.println(myList);
+
+		if(myList.contains(3)) {
+			System.out.println("3 is in there!");
+		} else {
+			System.out.println("3 is NOT in there!");
+
+		}
+
+		//you cannot add non-integer types after the parameterization:
+		//myList.add(3.14);
+		//myList.add("Hello");
+		List<String> names = new ArrayList<>();
+		names.add("Chris");
+		names.add("Matt");
+		names.add("Witty");
+		System.out.println(names);
+
+		//you can use 0-based indexing to retrieve elements:
+		int x = myList.get(2);
+		System.out.println("x = " + x);
+		for(int i=0; i<myList.size(); i++) {
+			System.out.printf("myList[%d] = %d\n", i, myList.get(i));
+		}
+
+		//"for each" loop: Java's term: "enhanced for loop"
+		for(Integer y : myList) {
+			System.out.println("y = " + y);
+		}
+
+		System.out.println(myList);
+		myList.remove(2);
+		System.out.println(myList);
+
+		System.out.println(myList);
+		for(int i=0; i<myList.size(); i++) {
+			myList.remove(0);		
+		}
+
+		//careful: this is a "ConcurrentModificationExcpetion"
+//		for(Integer y : myList) {
+//			myList.remove(0);
+//		}
+
+		myList.clear();
+		System.out.println(myList);
 
 
 ```
 
+* Sets are like lists but they hold things in an *unordered manner* and do not allow duplicates
+
+```java
+
+		Set<Integer> mySet = new HashSet<>();
+		System.out.println(mySet);
+		mySet.add(10);
+		mySet.add(20);
+		mySet.add(30);
+		System.out.println(mySet);
+
+		mySet.add(10);
+		System.out.println(mySet);
+
+		//add something to the "beginning" or to an index:
+		//no indexing at all!  mySet.add(2, 42);
+
+		for(Integer x : mySet) {
+			System.out.println(x);
+		}
+
+		//you can but probably have a better solution:
+		Set<List<Integer>> foo;
+
+		//you can make a list into a set and a set into a list:
+		List<Integer> mySetButOrdered = new ArrayList<>(mySet);
+		System.out.println(mySetButOrdered);
+		Collections.sort(mySetButOrdered);
+		System.out.println(mySetButOrdered);
+
+		List<String> names = new ArrayList<>();
+		names.add("Chris");
+		names.add("Matt");
+		names.add("Chris");
+		names.add("Witty");
+		System.out.println(names);
+
+		Set<String> uniqueNames = new HashSet<>(names);
+		System.out.println(uniqueNames);
+```
+
+```java
+
+		Random r = new Random();
+		List<Integer> zipCodes = new ArrayList<>();
+		for(int i=0; i<1000; i++) {
+			zipCodes.add(r.nextInt(1000));
+		}
+		System.out.println(zipCodes);
+
+		Set<Integer> uniqueZipCodes = new HashSet<>(zipCodes);
+		System.out.println("Number of codes: " + uniqueZipCodes.size() );
+
+		//goal: create a list of unique codes and the number of times they appear
+		//first attempt:
+		for(int i=0; i<1000; i++) {
+			System.out.printf("zipcode %3d: ", i);
+			//how many times does the zipcode i appear in zipCodes:
+			int counter = 0;
+			for(Integer x : zipCodes) {
+				if(x == i) {
+					counter++;
+				}
+			}
+			System.out.printf("%d\n", counter);
+		}
+
+		//think of the data this way:
+		// zipcode => number of times it appears
+		// 849 => 2
+		Map<Integer, Integer> counts;
+
+```
 
 ```text
 
