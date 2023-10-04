@@ -105,7 +105,72 @@
 * Once you have successfully allocated memory, you can use it like any other array using square brackets and indices
 * Same problems exist if you try to access memory outside the bounds of you array: undefined behavior, seg faults, etc.
 
+## Memory Management
+
+* Once you allocate a chunk of dynamic memory, you can use it for however long you want
+* Once you are done with it, you need to clean up after yourself
+* You *should* give it back, *deallocate* the memory once you are done using it so that other processes (or your own program) can use the memory
+* If you fail to do so you may have a "memory leak"
+* eventually you will either run out of memory or the system becomes slow and non-responsive
+* To *de*allocate memory you use the `free()` function to free the memory up (give it back to the OS)
+* Example:
+
+```c
+int n = 1000;
+double *arr = (double *) malloc( sizeof(double) * n );
+
+//TODO: do something with arr
+
+//NOw we are done with it, so free it:
+free(arr);
+
+```
+
+## Pitfalls:
+* Once you have free'd the memory, you **cannot** still use it!
+  * It may have been given away already!
+  * Attempts to access free'd memory will result in *undefined behavior*
+  * May result in seg faults
+* You should not attempt to free memory more than once!
+  * May result in seg faults
+* YOu should not free up memory that is not dynamically allocated
+  * Example: do *NOT* attempt to free a static array
+* You can make no assumption about what is stored in an uninitialized array, it could be zeros, it could be garbage, etc.
+* Not freeing memory leads to memory leaks
+
+## Arrays and Functions
+
+* YOU can pass arrays to functions just as you would any other pointer variable
+* HOWEVER: you need to do your own "bookkeeping"
+  * Any time you pass an array to a function, you need to tell the function how big the array is!
+  * There is NO, ABSOLUTELY NO, way to tell how big a dynamically allocated array is in C!
+* Careful: because arrays are passed by reference, the functions *can make changes to them!*
+  * You can prevent this by making the array *read only*
+  * To do this you can use the `const` keyword
+* You can also write functions that *return* new arrays
+   * They MUST be dynamically allocated arrays
+   * Be careful: who "owns" memory?
+* If a function returns memory, it does NOT own it
+* If a function receives memory, it DOES own it and is responsible for it!
+* Generally: ALWAYS free up memory when you are done with it
+  * However, it is sometimes acceptable to ignore cleanup in the `main()` function at the end
+* If a function creates memory *temporarily* and does not return it, that function is responsible for cleaning it up!
+* Who is responsible for managing memory? You are!
+
+## Exercise
+
+* Write a function that takes an integer array and returns a *new* array but only containing the positive values in the array
+* Write a function that creates a *copy* of a given array
+  * "Shallow" copy: a reference copy
+  * "Deep" copy: a completely different and unique copy
+
+
 ```text
+
+
+
+
+
 
 
 
