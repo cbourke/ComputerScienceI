@@ -157,13 +157,168 @@ free(arr);
 * If a function creates memory *temporarily* and does not return it, that function is responsible for cleaning it up!
 * Who is responsible for managing memory? You are!
 
-## Exercise
+## Exercises
 
-* Write a function that takes an integer array and returns a *new* array but only containing the positive values in the array
 * Write a function that creates a *copy* of a given array
   * "Shallow" copy: a reference copy
   * "Deep" copy: a completely different and unique copy
+* Write a function that takes an integer array and returns a *new* array but only containing the positive values in the array
 
+## Shallow vs Deep Copies
+
+* A shallow copy is when two references point to the same memory address or element
+* Changes to one affect the other
+* Generally when we mean "copy" we mean a *deep* copy: two completely separate arrays or element that contain the same *values*
+* For deep copies, changes to one do *not* affect the other
+
+```c
+/**
+ * Demo Code
+ *
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+#include <string.h>
+
+/**
+ * returns a new array of the given size filled with
+ * 1s
+ */
+int * getOnesArray(int n) {
+
+    int *arr = (int *) malloc( n * sizeof(int) );
+    for(int i=0; i<n; i++) {
+      arr[i] = 1;
+    }
+    return arr;
+}
+
+/**
+ * sums up the valuess in the given array...
+ */
+int sum(const int *arr, int n) {
+
+    int total = 0;
+    for(int i=0; i<n; i++) {
+      total += arr[i];
+      //arr[i] = 42;
+    }
+    return total;
+}
+
+/**
+ * Creates a deep copy of the given integer array (of size n)
+ * and returns a new array containing its elements...
+ */
+int *deepCopyArray(const int *arr, int n) {
+
+  int *copy = (int *) malloc(sizeof(int) * n);
+  for(int i=0; i<n; i++) {
+    copy[i] = arr[i];
+  }
+  return copy;
+
+}
+
+
+/**
+ * Creates and returns a new array of the given array of integers
+ * (of size n) with only the positive values included in the resulting
+ * array.  For example, if you called this function on
+ *
+ * {5, -1, 3, 0, 6, -7, 10, -1};
+ *
+ * Then it would return {5, 3, 6, 10}
+ */
+int * getPositives(const int *arr, int n, int *sizeOfResult) {
+
+  //count up the number of positives:
+  int counter = 0;
+  for(int i=0; i<n; i++) {
+    if(arr[i] > 0) {
+      counter++;
+    }
+  }
+
+  int *result = (int *) malloc( sizeof(int) * counter );
+  *sizeOfResult = counter;
+
+  //now iterate through the original array and copy over values
+  int j = 0;
+  for(int i=0; i<n; i++) {
+    if(arr[i] > 0) {
+      //copy it over...
+      //  BUT only if they are positive...
+      result[j] = arr[i];
+      j++;
+    }
+  }
+
+  return result;
+}
+
+int main() {
+
+  int n = 17;
+  int arr[] = {5, -1, 0, 3, 6, 9, 42, -7, 10, -1, 43, 2, 34, 3, 23, 4, 43};
+
+  //want positives: {5, 3, 6, 10}
+  int m;
+  int *pos = getPositives(arr, n, &m);
+  for(int i=0; i<m; i++) {
+    printf("pos[%d] = %d\n", i, pos[i]);
+  }
+
+}
+
+
+```
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array (one dimensional)
+* You can have 2-D arrays with *rows* and *columns*
+  * Tables
+  * Matrices
+* 3D, 4D, etc. but don't
+* In C a regular old array of integers is `int *arr`
+* A 2D array is TWO pointers: `int **table`
+* Once you ahve a 2-D array, you specify the row and the column index: `table[0][0]` is the `0`-row (first row), `0`-column (first column)
+* If there are `n` rows and `m` columns the very last element (last row, last column) is at `table[n-1][m-1]`
+* The first index is the row, the second is the column (row-major form)
+* How do we allocate memory for a 2-D array?
+* You do it in phases
+
+```c
+
+
+  int n = 3; //rows
+  int m = 5; //columns
+  int **table = NULL;
+  table = (int **) malloc( n * sizeof(int *)  );
+  //initilize each row
+  for(int i=0; i<n; i++) {
+    //create the i-th row which should have m integers...
+    //row = regular old integer array = int *
+    table[i] = (int *) malloc( m * sizeof(int) );
+  }
+
+  //initialize each value to some other value...
+  for(int i=0; i<n; i++) {
+    for(int j=0; j<m; j++) {
+      table[i][j] = (i + j + 3);
+    }
+  }
+
+  //cleanup:
+  //clean up each row first:
+  for(int i=0; i<n; i++) {
+    free(table[i]);
+  }
+  free(table);
+```
 
 ```text
 

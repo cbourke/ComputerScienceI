@@ -254,7 +254,77 @@ printf("first and last: %d, %d\n", arr[0], arr[n-1]);
 		// 849 => 2
 		Map<Integer, Integer> counts;
 
+    m.put("Chris", 27);
+    		m.put("Jackie", 42);
+    		//reassign values:
+    		m.put("Chris", 24);
+
+    		//retrieve values using the key:
+    		int x = m.get("Chris");
+    		System.out.println(x);
+
+    		if(m.containsKey("Chris")) {
+    			System.out.println("contains it!");
+    		} else {
+    			System.out.println("nope!");
+    		}
+
+    		Integer y = m.get("Pete");
+    		System.out.println(y);
+
 ```
+
+```java
+
+		List<String> zipCodes = getData(); //.subList(0, 100);
+		//maps are key => value data structures
+		Map<String, Integer> m = new HashMap<>();
+		//for each element in zipCodes...
+		for(String zipCode : zipCodes) {
+			//   get the value from the map m
+			Integer count = m.get(zipCode);
+			//   IF this is the first time, initialize it to 0
+			if(count == null) {
+				count = 0;
+			}
+			//   increment the counter and put it back in the map
+			count++;
+			m.put(zipCode, count);			
+		}
+
+		//for each key...
+		List<String> orderedZipCodes = new ArrayList<>(m.keySet());
+		Collections.sort(orderedZipCodes);
+		for(String zipCode : orderedZipCodes) {
+			int count = m.get(zipCode);
+			System.out.printf("%s => %d\n", zipCode, count);
+		}
+
+		//what is the most common and least common zip code (counts) in our data set?
+		List<Integer> counts = new ArrayList<>(m.values());
+		Collections.sort(counts);
+		int minCount = counts.get(0);
+		int maxCount = counts.get(counts.size()-1);
+		System.out.printf("min/max = %d, %d\n", minCount, maxCount);
+
+		//print all the "minimum count" zip codes:
+		for(String zipCode : m.keySet()) {
+			int count = m.get(zipCode);
+			if(count == minCount) {
+				System.out.println("min zip Code: " + zipCode);
+			}
+			if(count == maxCount) {
+				System.out.println("max zip code: " + zipCode);
+			}
+		}
+```
+
+## Pitfalls with Arrays in C
+
+* In C **you** are responsible for *memory management*
+* You have to keep track of the size of arrays that you create
+* You have to clean up after yourself when you no longer need the memory
+* You have to be responsible with the memory
 
 ```text
 
