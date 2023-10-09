@@ -326,7 +326,148 @@ printf("first and last: %d, %d\n", arr[0], arr[n-1]);
 * You have to clean up after yourself when you no longer need the memory
 * You have to be responsible with the memory
 
+### Arrays & Functions
+
+* When you pass an array to a function, *you also need to pass the size of the array*
+* There is ZERO, ABSOLUTELY ZERO way to tell the size of a dynamic array in C!
+* Using `sizeof` in any form is *wrong*
+
+* Passing an array as a *return* value *from* a function?
+* If so, it *MUST* be a dynamically allocated array (using `malloc()`)
+
+* In both instances: you should protect your data!
+* You can make an array `const` to prevent a function from making changes to it!  In general this should *always* be done unless you have a Very Good Reason to change the data
+
+### Cleaning Up
+
+* Once you are done with a chunk of memory you should give it back!
+* Failure to give it back can lead to a *memory leak*: you constantly take memory and never give back, eventually...
+* To give memory back that you no longer need, you use the `free()` function and simply pass in the pointer
+* After free'd memory cannot be accessed (or *should not be*)
+* you cannot (should not) free memory twice
+* Who owns memory?
+  * When a function returns memory, it does *NOT* own it, the calling function owns it and is responsible for it
+  * When a function receives memory it *DOES* own it and is responsible for it
+  * In general, ALL memory should be cleaned up; exception: it is sort-of, kind-of okayish to not free up memory in the `main()`
+
+### Shallow vs Deep Copies
+
+* A *shallow* copy is when two references (pointers) point to the same chunk of memory
+* Changes to one affect the other!
+* YOu should generally prefer *deep copies*: different and distinct memory locations but the same *content*
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array (one dimensional)
+* You can have 2-D arrays with *rows* and *columns*
+  * matrices
+  * table
+* YOU *can* have 3D, 4D, etc. arrays, but likely there is a better solution
+* In C you specify *two* indices: `table[i][j]` (row `i` and column `j`)
+* To setup memory for a 2-D array you need:
+  * An array of pointers
+  * Each pointer will point to a row
+
+```c
+/**
+ * Demo Code
+ *
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+#include <string.h>
+
+int sum(const int *arr, int n) {
+  int total = 0;
+  for(int i=0; i<n; i++) {
+    total += arr[i];
+    //arr[i] = 42;
+  }
+  return total;
+}
+
+int * getOnesArray(int n) {
+
+  int *result = (int *) malloc( n * sizeof(int) );
+  for(int i=0; i<n; i++) {
+    result[i] = 1;
+  }
+  //bad: free(result);
+  return result;
+
+}
+
+//look up memcpy
+int * deepCopyInt(const int *arr, int n) {
+  int *deepCopy = (int *) malloc( n * sizeof(int) );
+  for(int i=0; i<n; i++) {
+    deepCopy[i] = arr[i];
+  }
+  return deepCopy;
+}
+
+int main(int argc, char **argv) {
+
+  int n = 9;
+  int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23};
+  int total = sum(primes, n);
+  for(int i=0; i<n; i++) {
+    printf("primes[%d] = %d\n", i, primes[i]);
+  }
+  printf("total = %d\n", total);
+
+  int *ones = getOnesArray(n);
+  for(int i=0; i<n; i++) {
+    printf("ones[%d] = %d\n", i, ones[i]);
+  }
+
+  int *arr = (int *) malloc( 100000 * sizeof(int) );
+  arr[0] = 42;
+  arr[999] = 101;
+  //....
+
+  free(arr);
+
+  //bad: printf("arr[0] = %d\n", arr[0]);
+
+  //free(arr);
+
+  //shallow copy:
+  int *b = ones;
+  b[0] = 42;
+  for(int i=0; i<n; i++) {
+    printf("ones[%d] = %d\n", i, ones[i]);
+  }
+  for(int i=0; i<n; i++) {
+    printf("b[%d] = %d\n", i, b[i]);
+  }
+
+  //deep copy of the primes array...
+  int *deepCopy = (int *) malloc( n * sizeof(int) );
+  for(int i=0; i<n; i++) {
+    deepCopy[i] = primes[i];
+  }
+  for(int i=0; i<n; i++) {
+    printf("deepCopy[%d] = %d\n", i, deepCopy[i]);
+  }
+  deepCopy[0] = 101;
+  for(int i=0; i<n; i++) {
+    printf("primes[%d] = %d\n", i, primes[i]);
+  }
+
+
+}
+
+
+```
+
 ```text
+
+
+
+
 
 
 
