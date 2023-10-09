@@ -190,11 +190,11 @@ you'll need to work on CSE or have GDB installed on your own computer.
 
     or at a particular line within that function, example:
 
-    `break 54`
+    `break 57`
 
 3.  Set another break point at the end of the function:
 
-    `break 58`
+    `break 62`
 
     Note that you can set a breakpoint at a particular line in any file
     using the syntax:
