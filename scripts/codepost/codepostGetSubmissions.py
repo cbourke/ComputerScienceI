@@ -5,7 +5,6 @@ stores the files in a directory (assignment name)/subdirectory
 (student name(s)) structure.
 
 
-TODO: push to repo
 """
 import argparse
 import codepost
@@ -14,6 +13,7 @@ import os
 import pprint
 from config import config
 from codepostUtils import get_assignment_id
+from codepostUtils import save_file
 
 parser = argparse.ArgumentParser()
 
@@ -52,7 +52,4 @@ for submission in submissions:
     for file in submission.files:
         file_name = file.name
         file_contents = file.code.encode('utf-8').decode('ascii','ignore')
-        file_path = dir_name + "/" + file_name
-        f = open(file_path, "w")
-        f.write(file_contents)
-        f.close()
+        save_file(dir_name, file_name, file_contents)
