@@ -114,4 +114,4 @@ functions to convert between these models.
     The starter file should be sufficient to demonstrate how to use
     cmocka, but the full documentation can be found here:
     <https://api.cmocka.org/>. A `makefile` has also been
-    provided to help you easily compile your files. 
+    provided to help you easily compile your files.
