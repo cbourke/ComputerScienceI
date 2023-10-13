@@ -159,3 +159,16 @@ implement.  The original image is:
 
 -   You may (in fact are encouraged) to define any additional "helper"
     methods that may help you.
+
+# Eclipse Instructions
+
+-   The `ImageDriver` program code demonstrates loading and saving images
+    in the `images` folder.  To make an `images` folder in your Eclipse
+    project:  
+
+    1.  Right click your project and select `new > folder`
+    2.  Name your folder `images`
+    3.  Drag/drop any images you want to work with in this new folder.  
+
+    File paths in an Eclipse project are relative to the root of the project,
+    not the package directory/folder structure.
