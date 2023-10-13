@@ -58,7 +58,33 @@
 * Usage:
   * Compile with the `-g` flag!
   * To run GDB use: `gdb a.out`
-
+  * Display the source as you go along: `display src`
+  * Sometimes it gets messed up, so `refresh`
+  * to start the program: `run`
+* Breakpoints:
+  * Set it by line: `break 14` (set a breakpoint at line 14)
+  * Remove a breakpoint using `clear 14`
+  * You can set a breakpoint at a function: `break sum`
+  * When working with multiple files: `break file.c:14`
+* You can go through a program:
+  * Line by line: `next` or `n`
+  * You can *step* **into** a function using `step`
+  * Resume execution: `continue`
+* YOu can print stuff:
+  * Print a variable value: `print n`
+  * You can print an entire array `print *primes@7` or `print *primes@n`
+  * You can print expressions: `print 10 * primes[0] - n`
+* You can watch variables for changes
+  * `watch n` (it will print changes to the variable `n`)
+* You can use your debugger to find where stuff goes wrong...
+  * `backtrace full` gives a full stacktrace report
+  * IFninite loops: control-C
+  * Conditional breakpoints: `break 14 if i == 42`, `break 14 if i == 42 && j < 0`
+* MIsc:
+  * You can set command line arguments in GDB using `set args 10 20 30`
+  * Manually set variable values: `set var n = 8`
+  * call functions: `print atoi(argv[1])` or `print sum({1, 2, 3}, 3)`
+  * You *must* recompile if changes are made; gdb does support some "hotfixes" but there is little reason to use them
 
 ```text
 
