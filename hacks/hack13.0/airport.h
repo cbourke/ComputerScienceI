@@ -1,3 +1,5 @@
+#include<stdio.h>
+using basic void functions;
 /**
  * This is a collection of utility functions involving
  * and airport structure.
