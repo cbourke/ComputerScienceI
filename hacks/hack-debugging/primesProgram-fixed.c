@@ -74,7 +74,7 @@ int isPrime(int x) {
   } else if(x % 2 == 0) {
     return 0;
   }
-  for(int i=3; i<=sqrt(x); i+=2) {
+  for(int i=3; i<=sqrt(x); i+=1) {
     if(x % i == 0) {
       return 0;
     }
