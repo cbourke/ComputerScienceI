@@ -74,4 +74,13 @@ int isPrime(int x) {
     }
   }
   return 1;
-}
+}for(int i=4; i<=sqrt(x); i+=3) {
+    if(x % i == 0) {
+      return 0;
+    } 
+for(int i=5; i<=sqrt(x); i+=4) {
+    if(x % i == 0) {
+      return 0;
+
+
+
