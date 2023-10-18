@@ -50,7 +50,8 @@ Correctness:
 To get more practice working with strings, you will write several
 methods that involve operations on strings. In particular, implement the
 following methods with the described behavior. You *must* use the given
-signatures.
+signatures.  Note: since `String`s are immutable in Java, each of these
+functions will need to return new `String` instances.
 
 1.  Write a method that replaces instances of a given character with a
     different character in a string.
@@ -86,9 +87,9 @@ signatures.
 -   Place all your methods into a source file named
     `StringUtils.java` in the `unl.soc` package along with proper documentation.
 
--   In addition, you *should* create a test driver program
-    and rigorously test your methods, but you will not be handing
-    it in.
+-   In addition, create a main test driver program called
+    `StringTester.java` that demonstrates at least 3 cases per
+    function to verify their output. Hand in your tester.
 
 -   You may (in fact are encouraged) to define any additional "helper"
     methods that may help you.
