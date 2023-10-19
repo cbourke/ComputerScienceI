@@ -1,8 +1,8 @@
-#
+#include<stdio.h>
 # makefile for color utilities C library
 # assumes cmocka (a unit testing framework) is installed on your
 # system 
-#
+
 
 CC = gcc
 FLAGS = -Wall -std=gnu99
