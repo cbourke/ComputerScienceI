@@ -1,7 +1,7 @@
-#######################################################################################
+
 # This file will be run from main.sh. Create test results by calling the following function:
 # TestOutput <categoryName [string]> <testName [string]> <result[boolean]> <log[string]>
-######################################################################################
+
 
 # this could be done in a loop if multiple source files are present
 # however, a single test should be created for each part to communicate
