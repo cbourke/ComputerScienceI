@@ -14,3 +14,64 @@
   1. Open the file
   2. Process the file
   3. Close the file
+
+## File I/O in C
+
+* In C files are represented with a pointer: `FILE *`
+* To open a file you use `fopen()`
+  * First parameter: a string representing hte *path* and name of the file
+  * Second: mode you want to open it for: `"r"` (read, input), `"w"` (write, output)
+  * It returns (if successful) a pointer to the file starting at the first byte/character
+  * As you read the file, the pointer is automatically advanced to the next character/line/etc.
+* To close a file: `fclose()`
+  * ONce closed, that's it, the file is saved, you are done with it
+
+```c
+
+  //open a file in the same directory:
+  FILE *f = fopen("books.csv", "r");
+
+  //open a file in a *relative* path
+  FILE *f2 = fopen("../review/review.c", "r");
+
+  //open a file in an absolute path:
+  FILE *f3 = fopen("/etc/blasdjkflaksjd", "r");
+
+  if(f3 == NULL) {
+    printf("could not open file!\n");
+    exit(1);
+  }
+
+  //TODO: process the file here
+
+  fclose(f);
+```
+
+* To do file output, just use `fprintf`
+
+```c
+
+  //open a file in the same directory:
+  FILE *f = fopen("output.txt", "w");
+
+  int a = 10;
+  double b = 3.4;
+  fprintf(f, "Hello How are you?\n");
+  fprintf(f, "a = %d, b = %f\n", a, b);
+
+  fclose(f);
+```
+
+```text
+
+
+
+
+
+
+
+
+
+
+
+```
