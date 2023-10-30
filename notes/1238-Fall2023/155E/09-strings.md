@@ -196,6 +196,121 @@ int main(int argc, char **argv) {
 
 ```
 
+### Other Convenience Functions
+
+* The `ctype.h` library provides many other useful functions for single characters:
+  * `isalpha(char c)` - true if `c` is an alpha-numeric character
+  * `isspace(char c)` - true if `c` is a space character (` , \t, \n, \r`)
+  * `isupper(c), islower(c)` - true if `c` is an uppercase or lowercase character
+  * `toupper(c), tolower(c)` - convert to the lower/upper equivalent
+  * `isdigit(c)` - true for 0 - 9
+
+### String Formatting
+
+* `printf` will format a result to the standard output
+* `sprintf` will format a string and "print" it to another string
+
+```c
+
+  int a = 10;
+  double b = 20.5;
+  char *name = "Chris";
+
+  char result[100];
+
+  sprintf(result, "a = %d, %10.2f, hello %s", a, b, name);
+
+  printf("result = %s\n", result);
+
+```
+
+## Tokenization
+
+* Data is fundamental to CS
+* Often data is given in textual manner: not  necessary for humans, but in a readable format
+* CSV = Comma Separated Values
+* TSV = Tab Separated Values
+* These are "flat file" representations
+* Basic tokenization: split up a string of data into separate *tokens* so we can process each
+* C provides a function, `strtok`
+* `char *strtok(char *str, const char *delim);`
+  * First argument: the string you want to *tokenize*
+  * Be careful: `strtok` *changes* your data string!
+  * The second argument: a string of any delimiter(s) that you want to use!
+  * Returns a pointer to the next token (ie you need to call this function several times to get each of the tokens)
+  * Returns `NULL` when there are no more tokens!
+
+```c
+
+  char data[] = "Colour of Magic,Terry,Pratchett,1983,3.98";
+
+  char *token;
+
+  int count = 0;
+  token = strtok(data, ",");
+  while( token != NULL ) {
+    count++;
+    printf("token = %s\n", token);
+    token = strtok(NULL, ",");
+  }
+
+```
+
+### String Comparisons
+
+* In C, you *cannot* use the `==` operator nor `!=` operator to test for string equality
+* To properly compare strings use a *comparator* function: `strcmp`
+  * It takes 2 strings as input: `a, b`
+  * If the contents of `a` "come before" `b` then it returns ***something*** negative ($a < b$)
+  * If the contents of `b` come before `a` then it returns ***something*** positive ($a > b$)
+  * If the contents are the same, then it returns 0
+
+```c
+
+  char a[] = "9";
+  char b[] = "123";
+  /*
+  Observations:
+    * shorter strings come before longer strings (with the same beginning):
+    apple < apples
+    * Upper case letters come before ANY lower case:
+    Banana < apple
+    * numbers come before all letters:
+    123 < apple
+    * numbers follow the ascii table, not the values:
+    123 < 9
+    * These are all *lexicographic* orderings
+
+  */
+
+  // == and != compare *memory locations*!!!
+  // printf("memory locations: %p and %p\n", a, b);
+  //
+  // if(a == b) {
+  //   printf("a (%s) and b (%s) are equal!\n", a, b);
+  // } else {
+  //   printf("a (%s) and b (%s) are NOT equal!\n", a, b);
+  // }
+
+  if( strcmp(a, b) < 0 ) {
+    printf("a (%s) < b (%s)\n", a, b);
+  } else if( strcmp(a, b) > 0 ) {
+    printf("a (%s) > b (%s)\n", a, b);
+  } else {
+    printf("a (%s) = b (%s)\n", a, b);
+  }
+
+  //case insensitive:
+  // if( strcasecmp(a, b) < 0 ) {
+  //   printf("a (%s) < b (%s)\n", a, b);
+  // } else if( strcasecmp(a, b) > 0 ) {
+  //   printf("a (%s) > b (%s)\n", a, b);
+  // } else {
+  //   printf("a (%s) = b (%s)\n", a, b);
+  // }
+
+```
+
 ```text
 
 

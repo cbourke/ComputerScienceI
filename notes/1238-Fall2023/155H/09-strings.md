@@ -240,6 +240,71 @@ int main(int argc, char **argv) {
 
 ```
 
+## Tokenization
+
+* Often, data is formatted: CSV, TSV (flat file formats)
+* Example: `"Chris,Bourke,35140602,Omaha,NE,105 Schorr"`
+* You want to "tokenize" a string and "split" it up into its individual tokens so you can process the data
+* To do this, you do it along some "delimiter"; CSV = Comma, TSV = Tab
+* In C you can use a function called `strtok` that "splits" a string into its separate tokens
+* `char *strtok(char *str, const char *delim);`
+  * `str` is the string you want to tokenize (split up)
+  * `delim` is a (collection) of delimiters you want to use; `","`
+  * It returns a pointer to the next available token
+  * You'll continue to call this function to get the next token, next token, etc..
+  * You know its done when it returns `NULL`
+  * Careful: the first argument is NOT `const`: it *WILL* change your string!
+  * After the first time you call it, you pass `NULL` as the first argument in order for it to *continue* tokenizing the same string
+
+
+## Strings in Java
+
+* Strings in Java are "built-in": you have a class `String`
+* You also have a "string library" (a collection of methods that can manipluate strings)
+* Java strings are *NOT* null-terminated; do not try to muck with the null terminator in Java
+* In Java, strings are *immutable*: once created, their contents *cannot be changed*
+* Instead, all of the methods return *new strings*
+* You can determine the length of a string `.length()`
+* YOu have concatenation with the operator: `+`
+
+### Mutable Strings in Java: `StringBuilder`
+
+* String builders *can* be changed: they are mutable
+
+```java
+
+		String s = "Nebraska Cornhusker";
+
+		String state = s.substring(0, 8);
+		System.out.println(state);
+		String team = s.substring(9);
+		System.out.println(team);
+
+		String data = "Colour of Mag   ic,Terry,Pr\n\n\natch\tett,1983,3.98";
+
+		String tokens[] = data.split(",");
+		for (String token : tokens) {
+			System.out.println(token);
+		}
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("hello");
+		sb.append(" ");
+		sb.append("World!");
+		System.out.println(sb);
+
+		sb.setCharAt(0, 'H');
+		System.out.println(sb);
+
+		String finalString = sb.toString();
+		System.out.println(finalString);
+
+		// secret:
+		String a = "Hello" + "World" + "!";
+		// java changes this to:
+		String b = new StringBuilder().append("Hello").append("World").append("!").toString();
+```
+
 ```text
 
 
