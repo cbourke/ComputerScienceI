@@ -62,6 +62,46 @@
   fclose(f);
 ```
 
+## Java File I/O
+
+* Java defines a class called `File`
+
+```java
+File f = new File("file.txt");
+File f = new File("/absolute/path/to/file.txt");
+File f = new File("../../archive/file.txt");
+```
+
+## File Input
+
+* Lots of ways but the easiest: `Scanner`
+
+```java
+
+		File f = new File("data/input.txt");
+		try(Scanner s = new Scanner(f)) {
+			while(s.hasNextLine()) {
+				String line = s.nextLine();
+				System.out.println(line);
+			}
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+
+		File outFile = new File("data/output.txt");
+		try {
+			PrintWriter pw = new PrintWriter(outFile);
+			pw.print("Hello");
+			pw.println(" World");
+			pw.printf("%d, %.3f\n", 123, 3.5);
+			pw.close();
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+```
+
+
+
 ```text
 
 
