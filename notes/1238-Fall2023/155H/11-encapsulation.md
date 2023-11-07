@@ -17,3 +17,14 @@
 * C: weak encapsulation, it only supports #1
 
 ## Java
+
+* Java is an OOP language that uses classes for encapsulation
+  * Class names are `UpperCamelCased`
+  * *Member variables* are `lowerCamelCased`
+* Java supports "strong encapsulation": you can "protect" your variables from the outside world
+    * `public` - ANY code can see and change your variables!
+    * The lack of a keyword makes a variable "package protected"
+    * `protected` - the class and any subclass can see your variables (involves inheritance)
+    * `private` - only your class can "see" the variables, in general make all of your variables `private` unless there is Very Good Reason to do so
+* Java allows you to define *nontrivial* methods; ex: `getAge()`
+  * It would be *bad design* to locate this functionality *outside* the class
