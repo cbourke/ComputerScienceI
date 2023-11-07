@@ -116,6 +116,10 @@ Place all your code in a file named `proteinTranslator.c`.
 
 # Instructions
 
+-   For all exercises you may assume that no file has any lines longer
+    than 2000 characters.  You may not make any assumptions about the
+    content of the file(s) or the number of lines in a file.
+    
 -   For the exercises, place all your function prototypes into a file
     named `file_utils.h` and and their definitions in a file
     named `file_utils.c`. In addition, you'll want to create a
