@@ -156,6 +156,15 @@ In the terminal, type
 
 This will trigger a container rebuild and usually that will fix the issue.
 
+If the issue persists, you can try the following (see full details
+[here](https://github.com/orgs/community/discussions/45718)):
+
+  1. Press Cmd + Shift + P (Mac) or Ctrl + Shift + P (Windows) to open
+     the Command Palette.  You can also find this in the Settings menu
+     (click on the Settings icon in the lower left of your window).
+  2. Type "rebuild" in the search bar.
+  3. Click on "Codespaces: Rebuild Container"
+
 ## I'm having a different problem
 
 You can:
