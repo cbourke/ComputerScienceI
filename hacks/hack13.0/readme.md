@@ -72,8 +72,8 @@ following reports which should all be output to the standard output.
     reports total).
 
 -   Search for and print out the airport in the array that is closest
-    (via air distance) to Lincoln. Lincoln is located at 40.8507N,
-    96.7581W (-96.7581).
+    (via air distance) to Lincoln. Lincoln is located at 40.846176N,
+    96.75471W (-96.75471).
 
 -   Search for and print out the airport that is the geographic
     west-east median of the given airports with respect to
@@ -102,9 +102,6 @@ following reports which should all be output to the standard output.
 -   In addition, you must create a main test driver program that
     demonstrates your reports with an array that contains at least 5
     airports. Name this file `airportReport.c` and hand it in.
-
--   You may (in fact are encouraged) to define any additional "helper"
-    functions that may help you.
 
 -   To facilitate grading, formatting your output will have to be done
     in a very specific way.  First, we've provided an outline of the

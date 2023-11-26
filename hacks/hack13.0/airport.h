@@ -43,6 +43,12 @@ void initAirport(Airport* airport,
 char* airportToString(const Airport* a);
 
 /**
+ * Prints all the airports in the given array of n
+ * Airports.
+ */
+printAirports(Airport *airports, int n);
+
+/**
  * cmputes the air distance, in kilometers, between
  * the two Airports using their latitude/longitude
  */
