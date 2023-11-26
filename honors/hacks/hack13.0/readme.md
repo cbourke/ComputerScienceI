@@ -67,8 +67,8 @@ standard output.
     reports total).
 
 -   Search for and print out the airport in the array that is closest
-    (via air distance) to Lincoln. Lincoln is located at 40.8507N,
-    96.7581W.
+    (via air distance) to Lincoln. Lincoln is located at 40.846176N,
+    96.75471W (-96.75471).
 
 -   Search for and print out the airport that is the geographic
     west-east median of the given airports with respect to
@@ -97,9 +97,6 @@ standard output.
     `AirportUtils.java` class that tests your reports with at
     least least 5 airports.
 
--   You may (in fact are encouraged) to define any additional "helper"
-    methods that may help you.
-
 -   To facilitate grading, formatting your output must be done
     in a very specific way.  First, we've provided an outline of the
     `generateReports()` method that you should follow.
@@ -112,4 +109,15 @@ standard output.
     ORD   huge            O'Hare               41.97 -87.91 125 Chicago    US
     YYZ   large           Pearson              43.60 -79.60  25 Toronto    CN
     LGA   international   LaGuardia            40.78 -73.87  50 New York   US
+    ```
+
+    Here is a sample of formatting code to help; you'll need to adapt
+    it to your definition of the class:
+
+    ```java
+    public String toString() {
+      return String.format("%-10s %-14s %-40s %7.2f %7.2f %d %s %s",
+        this.gpsId, this.type, this.name, this.latitude, this.longitude,
+        this.elevationFeet, this.city, this.country);
+    }
     ```
