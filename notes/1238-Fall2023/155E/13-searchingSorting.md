@@ -84,6 +84,16 @@ void * lfind(const void *key,
 
 ## Binary Search
 
+* Basic idea: assume an *array* is sorted
+* To search for a key $k$: check the middle element $a_m$
+  * If $a_m = k$: done found it
+  * If $k < a_m$: search the left half
+  * If $k > a_m$: search the right half
+* In either case: you've cut the array in half
+* Repeat until found or until the "section" is empty
+
+### Analysis
+
 * Binary Search only requires $\log_2{(n)}$ comparisons for an array of $n$ elements
   * To search an array of 1 billion elements requires only $\log_2{(10^{12})} = 40$
   * To go from an array of size $n$ to an array of size $2n$ only requires 1 more comparison
