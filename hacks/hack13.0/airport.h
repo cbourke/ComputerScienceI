@@ -119,3 +119,8 @@ int cmpByLincolnDistance(const void* a, const void* b);
  * given array of Airport structures.
  */
 void generateReports(Airport *airports, int n);
+
+/**
+ * Prints an entire array of airports
+ */
+void printAirports(Airport *airports, int n);

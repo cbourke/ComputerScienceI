@@ -66,11 +66,11 @@ char* airportToString(const Airport* a) {
   return result;
 }
 
-printAirports(Airport *airports, int n) {
+void printAirports(Airport *airports, int n) {
 
   for(int i=0; i<n; i++) {
     char *s = airportToString(&airports[i]);
-    printf("%s\n");
+    printf("%s\n", s);
     free(s);
   }
 
