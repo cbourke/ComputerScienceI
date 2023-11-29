@@ -99,6 +99,50 @@ void * lfind(const void *key,
   * To go from an array of size $n$ to an array of size $2n$ only requires 1 more comparison
   * This is *exponentially* faster than linear search
 
+## Sorting
+
+* Selection Sort:
+  * Iteratively find the $i$-th smallest element, place at position $i$
+  * Performance: requires about $\approx n^2$ operations
+* Quick Sort:
+  * Partition elements around a pivot element
+  * Divide & Conquer
+  * Performance: requires about $\approx n\log{(n)}$ operations
+
+### Practice
+
+* avoid the "difference" trick: it is susceptible to overflow and truncation
+* always write explicit if-else conditions or use other functions
+
+### Other Issues
+
+* You generally want *stable* sorting algorithms/implementations:
+  * If you sort $2_a, 4, 2_b, 1$ the result should be $1, 2_a, 2_b, 4$ but with the original 2 values in their original relative order
+  * If the algorithm *can* end up with $1, 2_b, 2_a, 4$ then it is *unstable*
+* YOu can avoid sorting instability by defining a *total order*: no matter what, you have an ultimate tie breaker!
+  * Books: ISBN
+  * Media: EIDR
+  * People: SSN, NUID, etc.
+  * UUID = Universally Unique Identifier
+* Artificial orderings:
+  * Ex: sort students by year in school
+  * Freshman, Sophomore, Juniors, Seniors
+  * As strings: `"Freshman" < "Sophomore"`
+  * `"Sophomore" > "Senior"`
+* "1 = Freshman, 2 = Sophomores"
+* use an enumeration:
+
+```c
+typedef enum {
+  FRESHMAN,
+  SOPHOMORE,
+  JUNIOR,
+  SENIOR,
+}
+
+```
+
+
 
 ```text
 

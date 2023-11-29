@@ -127,9 +127,41 @@ public class Author implements Comparable<Author> {
 * In either case: you've cut the array in half
 * Repeat until found or until the "section" is empty
 
+# Sorting
 
+* Selection sort:
+  * Choose the minimum element, place it at the front
+  * Choose the next minimum element, place it second...
+  * `arr[0] .. arr[i-1]` is sorted, choose minimum among `arr[i]..arr[n-1]`
+    place it at `arr[i]`
+  * `arr[0] .. arr[n-2]` is sorted; do we need to worry about `arr[n-1]`?
+* Good?
+
+#### `qsort`
+
+* C provides a standard "quick sort" implementation
+
+```c
+void qsort(void *base,
+           size_t nel,
+           size_t size,
+           int (*compar)(const void *, const void *));
+```
+
+* `base` - the array you want sorted
+  * Generic array of things/stuff
+  * It does *not* have the `const` keyword: it will change hte array you give it!
+* `nel` - number of elements (the size of the array)
+* `size` - the number of bytes each element takes (use `sizeof()`!)
+* `compar` is a function pointer that points to a comparator
+
+## 
 
 ```text
+
+
+
+
 
 
 
