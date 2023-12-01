@@ -93,8 +93,8 @@ following reports which should all be output to the standard output.
 
 # Instructions
 
--   Place all of your function definitions in a source file named
-    `airport.c` and hand it in with your header file,
+-   Place all of your function definitions in the `airport.c` source
+    file and hand it in with your header file,
     `airport.h`. You may add any utility functions you wish but
     you must *not* change any of the signatures of the required
     functions.
