@@ -46,7 +46,7 @@ char* airportToString(const Airport* a);
  * Prints all the airports in the given array of n
  * Airports.
  */
-printAirports(Airport *airports, int n);
+void printAirports(Airport *airports, int n);
 
 /**
  * cmputes the air distance, in kilometers, between
@@ -119,8 +119,3 @@ int cmpByLincolnDistance(const void* a, const void* b);
  * given array of Airport structures.
  */
 void generateReports(Airport *airports, int n);
-
-/**
- * Prints an entire array of airports
- */
-void printAirports(Airport *airports, int n);
