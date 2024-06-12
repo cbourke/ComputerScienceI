@@ -4,13 +4,10 @@
  * library.
  */
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdarg.h>
 #include <stddef.h>
 #include <setjmp.h>
 #include <math.h>
-#include <cmocka.h>
-#include <time.h>
 
 #include "colorUtils.h"
 
