@@ -111,15 +111,16 @@ Course Leaders will have the following general responsibilities
 
 # Communication
 
--   Piazza is our primary means of communication; use it and encourage
-    students to use it.
+-   We will use an online message board for our primary means of
+    communication; use it and encourage students to use it.
 
 -   If you receive email from students, answer it, but redirect them in
-    the future to Piazza. If the question/answer would be of benefit to
-    the class as a whole, post the question/answer to Piazza and inform
+    the future to the online message board. If the question/answer would be of benefit to
+    the class as a whole, post the question/answer to online message board and inform
     the student they can find the answer there.
 
--   For communications among instructor(s), CLs and LAs, use Piazza but
+-   For communications among instructor(s), CLs and LAs, use the
+    online message board but
     make it a private message, viewable only to TAs/instructors.
 
 -   If a question has been asked/answered before, link to the original
@@ -157,7 +158,7 @@ discuss the following:
 ### Timeline {#timeline .unnumbered}
 
 -   Hacks are generally due on Monday evenings at midnight. Randomized
-    grading assignments are to be posted to Piazza prior to the due
+    grading assignments are to be posted to the online message board prior to the due
     date/time by the instructor.
 
 -   Learning Assistants are required to have completed their assigned

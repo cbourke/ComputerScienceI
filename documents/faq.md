@@ -115,7 +115,8 @@ or sync to Canvas.
 
 Labs are due at midnight on Tuesdays.  We run batch scripts to grade them
 as soon as possible on Wednesdays.  When we are done, grades
-are posted to Canvas and a brief retrospective is posted to Piazza.
+are posted to Canvas and a brief retrospective is posted to the course
+message board.
 
 ## How and when are hacks graded?
 
@@ -123,7 +124,7 @@ Hacks are due (generally) Mondays at midnight. Learning Assistants have
 48 business hours to grade them and then Course Leaders take another 48
 hours to check the grading process to ensure consistency.  Grades are
 released in Canvas with comments posted to codePost (generally) on Friday
-afternoons.  A retrospective is then posted to Piazza.
+afternoons.  A retrospective is then posted to the course message board.
 
 ## How and when is attendance graded?
 
@@ -150,6 +151,7 @@ try first are:
 * Try accessing your IDE through this link: http://github.com/codespaces
 
 ##  My workspace is in recovery mode. What should I do?
+
 In the terminal, type
 
 `touch /workspaces/$RepositoryName/.devcontainer.json`

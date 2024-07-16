@@ -1,6 +1,6 @@
 # Computer Science I
 
-### CSCE 155E - Syllabus - Fall 2023
+### CSCE 155E - Syllabus - Fall 2024
  [School of Computing](https://computing.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
@@ -371,17 +371,16 @@ instructor will provide a (free) sign up link.
 
 ## Communication & Getting Help
 
-The primary means of communication for this course is Piazza, an online
-forum system designed for college courses. We have established a Piazza
-group for this course and you should have received an invitation to
-join. If you have not, contact the instructor immediately. With Piazza
-you can ask questions anonymously, remain anonymous to your classmates,
+The primary means of communication for this course is an online message
+forum system designed for college courses. You should have received an
+invitation to join. If you have not, contact the instructor immediately.
+On this forum, you can ask questions anonymously, remain anonymous to your classmates,
 or choose to be identified. Using this open forum system the entire
 class benefits from the instructor and TA responses. In addition, you
 and other students can also answer each other's questions (again you may
 choose to remain anonymous or identify yourself to the instructors or
 everyone). You may still email the instructor or TAs, but more than
-likely you will be redirected to Piazza for help.
+likely you will be redirected to this message board for help.
 
 In addition, there are two anonymous suggestion boxes that you may use
 to voice your concerns about any problems in the course if you do not
@@ -433,7 +432,8 @@ the material and getting help in this course:
     labs by reading the handouts before coming to lab. Get started and
     don't get distracted.
 
--   Piazza: if you have questions ask them on Piazza. It is the best and
+-   Online message board: if you have questions post to our online
+    message board. It is the best and
     likely fastest way to get help with your questions. Also, be sure to
     read other student's posts and questions and feel free to answer
     yourself!
