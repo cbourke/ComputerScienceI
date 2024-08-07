@@ -117,15 +117,15 @@ with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     20|
-|  PDC Module/Surveys |        |             |     50|
+|  Starter Points     |        |             |     30|
+|  PDC Module/Surveys |        |             |     70|
 |  Readings (zyBooks) |      13|           15|    195|
 |  Labs               |      12|           15|    180|
 |  Hacks              |      13|           25|    325|
 |  Attendace          |      13|           10|    130|
 |  Exams              |       2|           75|    150|
 |  Final              |       1|          150|    150|
-|  Total              |        |             |  1,200|
+|  Total              |        |             |  1,230|
 
 
 ### Starter Points
@@ -145,12 +145,12 @@ However, we have developed a series of "codeless" modules that do not
 require any coding knowledge and cover PDC concepts in an accessible
 manner.  
 
-As part of this experiment, you will complete a pre-module survey which
-will be graded based on completion (25 points).  You will then go
-through 3 modules on PDC which includes running and observing some
+As part of this study, you will complete pre-module survey(s) which
+will be graded based on completion.  You will then go
+through several modules on PDC which includes running and observing some
 simulations, visualizations, etc.  You may complete these modules
-at your own pace.  Once completed, you will then take a post-module
-survey (25 points) again graded based on completion only.  Full
+at your own pace.  Once completed, you will then take post-module
+survey(s) again graded based on completion only.  Full
 details and due dates are posted in canvas.  
 
 ### Readings
@@ -193,9 +193,6 @@ responsible for developing and working through solutions together.
 Neither the navigator nor the driver is "in charge," it is an equal
 partnership. Beyond your immediate pairing, you are encouraged to help
 and interact and with other pairs in the lab.
-
-For those in the online section or those attending remotely, you may
-work alone or we may partner you with someone in a zoom breakout room.
 
 Each lab is assessed based on completion. In general you will need to
 submit code and (possibly) an electronic writeup of your worksheet
@@ -317,7 +314,7 @@ specified in individual assignment instructions. Programs that
 are even a few seconds past the due date/time will be considered late
 and you will be locked out of handing anything in after that time.
 
-### Webgrader Policy
+### Grader Policy
 
 Failure to adhere to the requirements of an assignment in such a manner
 that makes it impossible to grade your program means that a

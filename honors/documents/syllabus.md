@@ -1,6 +1,6 @@
 # Computer Science I - Honors
 
-### CSCE 155H - Syllabus - Fall 2023
+### CSCE 155H - Syllabus - Fall 2024
  [School of Computing](https://computing.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
@@ -86,7 +86,7 @@ be aware of resources found on this page: https://go.unl.edu/coursepolicies
 ### Continuation of Instruction
 
 If in-person classes are canceled by the University during a lecture
-day, lecture will still be livestreamed.  If in-person classes are canceled
+day, lecture may still be livestreamed.  If in-person classes are canceled
 by the University during a lab/hack day, in-person attendance will not be
 required, help *may* be made available via zoom and you will still be
 expected to complete the work remotely.
@@ -173,8 +173,8 @@ with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     45|
-|  PDC Module/Surveys |        |             |     50|
+|  Starter Points     |        |             |     25|
+|  PDC Module/Surveys |        |             |     70|
 |  Labs               |      12|           15|    180|
 |  Hacks              |      25|           25|    625|
 |  Exams              |       2|           75|    150|
@@ -199,13 +199,13 @@ However, we have developed a series of "codeless" modules that do not
 require any coding knowledge and cover PDC concepts in an accessible
 manner.  
 
-As part of this experiment, you will complete a pre-module survey which
-will be graded based on completion (25 points).  You will then go
-through 3 modules on PDC which includes running and observing some
+As part of this study, you will complete pre-module survey(s) which
+will be graded based on completion.  You will then go
+through several modules on PDC which includes running and observing some
 simulations, visualizations, etc.  You may complete these modules
-at your own pace.  Once completed, you will then take a post-module
-survey (25 points) again graded based on completion only.  Full
-details and due dates are posted in canvas.  
+at your own pace.  Once completed, you will then take post-module
+survey(s) again graded based on completion only.  Full
+details and due dates are posted in canvas.   
 
 ### Labs
 
@@ -226,15 +226,12 @@ Neither the navigator nor the driver is "in charge," it is an equal
 partnership. Beyond your immediate pairing, you are encouraged to help
 and interact and with other pairs in the lab.
 
-For those in the online section or those attending remotely, you may
-work alone or we may partner you with someone in a zoom breakout room.
-
 Each lab is assessed based on completion. In general you will need to
-submit code and an electronic writeup of your worksheet (plain text or
-markdown is preferred) through webhandin which can also be verified
-using the webgrader. You will have until midnight on the day of the lab
-(Tuesdays) to submit your solutions. Points will be awarded based on the
-results of the webgrader.
+submit code and (possibly) an electronic writeup of your worksheet
+through an online grading system.  You will
+have until midnight on the day of the lab (Tuesdays) to submit your
+solutions. Points will be awarded based on the results of the online
+grader.
 
 ### Hacks
 
@@ -321,13 +318,13 @@ webhandin as specified in individual assignment handouts. Programs that
 are even a few seconds past the due date/time will be considered late
 and you will be locked out of handing anything in after that time.
 
-### Webgrader Policy
+### Grader Policy
 
 Failure to adhere to the requirements of an assignment in such a manner
-that makes it impossible to grade your program via the webgrader means
-that a disproportionate amount of time would be spent evaluating your
-assignment. For this reason, we will not grade any assignment that does
-not compile and run through the webgrader.
+that makes it impossible to grade your program means that a
+disproportionate amount of time would be spent evaluating your
+assignment. For this reason, we will not grade any assignment
+that does not compile and run through the online grading system.
 
 ## Academic Integrity
 
