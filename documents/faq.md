@@ -101,6 +101,23 @@ Try going to https://codepost.io/forgot-password and resetting your password
 (example: `jstudent42@huskers.unl.edu`) or whatever primary email is
 associated with your canvas profile.
 
+# Campuswire
+
+## What is Campuswire?
+
+Campuswire (https://campuswire.com) is our online forum where you can get help.
+You should have received an invite from your instructor, typically to your
+`@huskers.unl.edu` email.  All communication including regular announcements
+will be posted through this online forum.  Using campuswire you can ask questions
+that all students will see or you can post anonymously or privately.  You can
+even help your fellow students by answering questions!
+
+## I logged in but I can't get into the class, it is asking for a "class code"
+
+Likely you signed up with the wrong email.  You should have been sent an invite
+email, typically through your `@huskers.unl.edu` email address.  Be sure to
+use whatever email your invite was sent to.
+
 # Grading
 
 ## How and when are readings graded?
