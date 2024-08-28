@@ -8,8 +8,9 @@
 
 ```c
 
-int main() {
-  printf("Hello WOrld!");
+int main(int argc, char **argv) {
+  printf("Hello oOrld!");
+  printf("My name is Chris\n");
 }
 
 ```

@@ -43,7 +43,7 @@ is hosted on [Bitbucket](https://bitbucket.org/chrisbourke/computersciencei).
 - Lab 6.0 - Functions II https://github.com/cbourke/CSCE155-C-Lab06
 - Lab 7.0 - Arrays https://github.com/cbourke/CSCE155-C-Lab07
 - Lab 8.0 - Strings https://github.com/cbourke/CS1-C-Strings
-- (there is no lab 9.0 as this is typically midterm week)
+- (there is no lab 9.0 due to typical fall scheduling)
 - Lab 10.0 - File I/O https://github.com/cbourke/CSCE155-C-Lab10
 - Lab 11.0 - Structures https://github.com/cbourke/CSCE155-C-Lab11
 - Lab 12.0 - Recursion https://github.com/cbourke/CSCE155-C-Lab12

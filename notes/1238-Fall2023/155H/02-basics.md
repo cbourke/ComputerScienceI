@@ -236,6 +236,42 @@ Java:
 	    System.out.printf("roots are %f and %f\n", root1, root2);
 ```
 
+
+# Programs
+
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2023/08/23
+ *
+ * This program converts miles to kilometers
+ */
+#include <stdlib.h>
+#include <stdio.h>
+
+#define KMS_PER_MILE 1.60934
+
+int main(int argc, char **argv) {
+
+    double miles, kms;
+
+    //prompt the user for the input
+    printf("Please enter miles: ");
+
+    //read in the input
+    scanf("%lf", &miles);
+
+    kms = KMS_PER_MILE * miles;
+
+    printf("%f miles is equal to %f kilometers\n", miles, kms);
+
+    return 0;
+}
+```
+
+```java
+```
+
 ```text
 
 
