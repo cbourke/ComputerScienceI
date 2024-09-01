@@ -61,6 +61,118 @@ An overview of basics of C and Java including variables, input and output.
       * Unless you have a Very Good Reason (VGR)
   * Reserved words: `int, double, char`
 
+## Variables
+
+* Both C and Java are *statically typed* langauges
+  * Before you can use any variable you need to *declare it*
+  * You need to define its name (identifier) and its *type*: `int, double, char`
+  * Where ever you declare a variable, is its *scope*: the area of the code that the variable can be "seen" and is therefore valid
+* Basic Types:
+  * `int` is a 32-bit 2-s complement integer
+  * you can represent 0, negative and positive numbers in the range: -2,147,483,648 to 2,147,483,647
+  $$-2^{31} \ldots 2^{31}-1$$
+  * `double` is a 64-bit IEEE 754 floating point number
+  * You can represent decimal numbers with about 17 digits of accuracy
+  * `char`: is a single character; in C: it is an ASCII text value, in Java: it is a full Unicode value
+
+### Best Practices
+
+* Follow a consistent naming convention
+* Recommendation: `lowerCamelCasing` for all variables (both languages)
+* Others:
+  * `lower_underscore_casing` (old-school C)
+  * `UPPER_UNDERSCORE_CASING` (constants)
+  * `UpperCamelCasing` (Java class names)
+* Be *descriptive*:
+  * Bad variable names: `foo, bar, baz, a, b, c, x, y, variable1, variable2, var1, etc`
+  * Good variable names: `numberOfStudents, miles, kilometers`
+  * Generally avoid abbreviations unless the context means that the variable name is well-understood
+
+## Operators
+
+* Assignment operator: you can assign a value or value of an *expression* to a variable
+  * Syntax: `=` (single equals sign)
+  * Examples
+
+```c
+int a = 10;
+a = 20;
+
+double y = a * b + c;
+double z = a + b * c;
+double t = (a + b) * c;
+
+```
+
+* Arithmetic operators: `+, -, *, /` (addition, subtraction, multiplication, division)
+* PEMDAS = Parentheses, Exponent, Multiplication Division, Addition Subtraction
+* Example:
+  $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$
+
+```c
+double x1 = (-b + sqrt( pow(b, 2) - 4*a*c ) ) / (2*a);
+double x2 = (-b - sqrt( pow(b, 2) - 4*a*c ) ) / (2*a);
+```
+* Invalid opeartions: $\sqrt{-1} = i$ but in code... it is "not a number" or `NaN`
+* `1 / 0` infinity or negative infinity
+* Remainder you can get the remainder after integer division using `%` (read it as: mod or modulo)
+  * `10 % 3` results in 1
+  * `10 % 2` results in 0
+  * `10 % 4` results in 2
+* Trick: how can you tell if a number is even?  `a % 2` would be zero (odd would be one)
+
+### Default Values
+
+```c
+int a;
+```
+
+* C has NO DEFAULT VALUES!  It could be anything!
+* It is best practice to *initialize* your variables
+
+```c
+int a = 0;
+```
+
+* In C, there is no default value for uninitialized variables, thus it *could* have garbage values: `0xDEADBEEF`
+* In Java: uninitialized values are *not allowed*
+* In Java: class values may have a `null` default value in the context of a class (but NOT local variables)
+
+### Pitfall: Truncation
+
+```c
+int x = 10;
+int y = 20;
+double z = x / y;
+```
+
+* The result of integer `* + - /` must be an integer, so the fractional part is chopped off and thrown away
+* Sometimes you DO want to preserve the fractional part
+* Solution: typcast!
+
+```c
+int x = 10;
+int y = 20;
+double z = x / (double) y;
+```
+
+## Input/Output (I/O)
+
+### C
+
+* Output in C is done with `printf` (f = formatted)
+* You can provide a "formatted" string and it will print to the standard output
+* For both language: you can use *placeholders*: they indicate the type of variable to be formatted
+  * `%f` is for floating point numbers (`double`)
+  * `%d` is for integers (`int`)
+  * `%c` for `char` values
+* THe default for floating point numbers is to print 6 decimals of accuracy
+* Alternatively: you can use *modifiers* to print more/less
+  * Format: `%X.Yf` where
+  * `X` is the minimum number of columns (including the decimal)
+  * `Y` is the number of digits of accuracy
+  * Both are optional
+
 
 
 ```text
