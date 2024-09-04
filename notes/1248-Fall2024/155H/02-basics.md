@@ -173,7 +173,175 @@ double z = x / (double) y;
   * `Y` is the number of digits of accuracy
   * Both are optional
 
+### Java
 
+* Supports `System.out.print` (no endline), `System.out.println` (adds an endline), `System.out.printf`
+
+```java
+System.out.printf("pi = %f\n", Math.PI);
+System.out.printf("pi = %.2f\n", Math.PI);
+System.out.printf("pi = %.4f\n", Math.PI);
+System.out.printf("pi = %.10f\n", Math.PI);
+System.out.printf("pi = %.100f\n", Math.PI);
+System.out.printf("pi = %10.2f\n", Math.PI);
+System.out.printf("pi = %10.4f\n", Math.PI);
+System.out.printf("pi = %10.10f\n", Math.PI);
+
+int x = 1234;
+System.out.printf("%8d\n", x);
+System.out.printf("%08d\n", x);
+
+int a = 10;
+int b = 20;
+System.out.println("a is " + a + " and b is " + b);
+```
+
+```c
+
+    printf("pi = %f\n", M_PI);
+    printf("pi = %.2f\n", M_PI);
+    printf("pi = %.4f\n", M_PI);
+    printf("pi = %.10f\n", M_PI);
+    printf("pi = %.100f\n", M_PI);
+
+    printf("pi = %10.2f\n", M_PI);
+    printf("pi = %10.4f\n", M_PI);
+    printf("pi = %10.10f\n", M_PI);
+
+    int x = 1234;
+    printf("%8d\n", x);
+    printf("%08d\n", x);
+
+```
+
+## Standard Input
+
+* The standard input is your keyboard: interactive input
+
+### C
+
+* You can use `scanf` to scan the standard input
+* For `scanf`, you need to use the placeholder `%lf` for `double` values
+* You need to put an ampersand `&` in front of the variable using scanf
+
+```c
+int x;
+printf("Please enter an integer: ");
+scanf("%d", &x);
+printf("I read %d\n", x);
+
+double y;
+printf("Please enter a number: ");
+scanf("%lf", &y);
+printf("I read %f\n", y);
+```
+
+### Java
+
+* In Java you can create a `Scanner` to scan the standard input
+
+```java
+Scanner s = new Scanner(System.in);
+System.out.print("Please enter an integer:");
+int x = s.nextInt();
+
+System.out.print("Please enter a number:");
+double y = s.nextDouble();
+
+System.out.printf("x is %d and y is %f\n", x, y);
+```
+
+## Non-interactive input
+
+* Interactive input (using `scanf`) makes the program pause and wait for the user to enter in their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments*
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * Each is separated by spaces
+  * IN C: the first argument is always the executable file name, but in Java: the first argument is the first *user* provided argument
+  * You can access them:
+    * THe first: `argv[0]`
+    * Second: `argv[1]`
+    * Third: `argv[2]`
+    * `argc` standard for argument **c**ount
+  * THe inputs are all strings, so you need to convert them if they are numbers:
+    * `atoi` (for `int`s)
+    * `atof` (for `double`s)
+
+```c
+int x;
+double y;
+
+x = atoi(argv[1]);
+y = atof(argv[2]);
+
+
+printf("I read %d\n", x);
+printf("I read %f\n", y);
+
+```
+
+```java
+
+int x;
+double y;
+
+x = Integer.parseInt(args[0]);
+y = Double.parseDouble(args[1]);
+
+
+System.out.printf("I read %d\n", x);
+System.out.printf("I read %f\n", y);
+```
+
+* Bad input in Java results in an exception (error)
+
+
+## Exercise
+
+```c
+/**
+ * Author
+ * Date
+ *
+ * This program reads in 3 coefficients of a quadratic polynomial:
+ *
+ * ax^2 + bx + c
+ *
+ * and computes and outputs its two roots.
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    double a, b, c;
+
+    if(argc != 4) {
+        printf("ERROR: you did not provide the correct number of command line arguments\n");
+        exit(1);
+    }
+
+    a = atof(argv[1]);
+    b = atof(argv[2]);
+    c = atof(argv[3]);
+
+    if(a == 0) {
+        printf("ERROR: a cannot be zero, you have a linear equation, just solve it!\n");
+        exit(2);
+    }
+
+    double x1 = (-b + sqrt( pow(b, 2) - 4*a*c ) ) / (2*a);
+    double x2 = (-b - sqrt( pow(b, 2) - 4*a*c ) ) / (2*a);
+
+    printf("%fx^2 + %fx + %f has roots %f and %f\n", a, b, c, x1, x2);
+
+    return 0;
+}
+
+
+```
 
 ```text
 

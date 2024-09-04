@@ -169,7 +169,7 @@ int main(int argc, char **argv) {
 
 ### Other operators
 
-* Algebraic operators: `+` (addition), `-` (subtraction), `*` (multiplication, not $\times$, not $\cdot$), `/` (division, not $\div$ nor $\frac{a}{b}$)
+* Arithmetic operators: `+` (addition), `-` (subtraction), `*` (multiplication, not $\times$, not $\cdot$), `/` (division, not $\div$ nor $\frac{a}{b}$)
 
 #### Truncation
 
