@@ -150,13 +150,85 @@ printf("c = %f\n", c);
   * `%f` formats a `double`: defaults to 6 decimals of accuracy
   * `%d` (d for digit) prints an `int`
   * `%c` formats a `char` variable
-* YOu can provide as many placeholders in a string as you want but the *order matters*
-* YOu can change the default formatting using *modifiers*
+* You can provide as many placeholders in a string as you want but the *order matters*
+* You can change the default formatting using *modifiers*
 * General form: `%X.Yf`
+  * `X` - minimum number of columns to print
+  * `Y` - number of decimals of accuracy
 * Examples:
 
+```c
 
+    printf("pi = %f\n", M_PI);
+    printf("pi = %.2f\n", M_PI);
+    printf("pi = %.4f\n", M_PI);
+    printf("pi = %.10f\n", M_PI);
 
+    printf("pi = %10.2f\n", M_PI);
+    printf("pi = %10.4f\n", M_PI);
+    printf("pi = %10.10f\n", M_PI);
+
+    int x = 1234;
+    printf("%8d\n", x)
+    printf("%08d\n", x);
+
+```
+
+## Standard Input
+
+* Standard input is used with *interactive* programs
+* YOu use `scanf` to scan the standard input (keyboard) for user-provided input
+* Very limited, very brittle
+* WIth `scanf` you use the same placeholders except for `double` values: you use `%lf`instead of `%f`
+* WHen using `scanf` always remember the ampersand `&` in front of the variable
+
+```c
+
+    int x;
+    printf("please enter an integer:");
+    scanf("%d", &x);
+    printf("x = %d\n", x);
+
+    double y;
+    printf("please enter a number:");
+    scanf("%lf", &y);
+    printf("y = %f\n", y);
+```
+
+### Non-interactive Input
+
+* Interactive input (using `scanf`) makes the program pause ("block") and wait for a *human* user to enter their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments* (CLAs)
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * THere are actually 4 arguments: the first argument is always the executable file name `./a.out`
+  * `argc` is the number (**c**ount of) **arg**uments
+  * `argv` is (an array) of the arguments (v = vector)
+  * The first argument (executable file name) is always `argv[0]`
+  * The second argument (first proivded by the user) is `argv[1]`
+  * `argv[2], argv[3]`, etc.
+* Processing CLAs
+  * CLAs themselves are *strings* (more on that later), things like `"Hello"`
+  * To convert an argument to an integer: `atoi`
+  * To convert an argument to a `double`: `atof`
+* Example:
+
+```c
+int x;
+double y;
+
+x = atoi(argv[1]);
+y = atof(argv[2]);
+
+printf("x = %d\n", x);
+printf("y = %f\n", y);
+```
+
+# Exercise
+
+* Write a complete program from scratch to compute the roots of a quadratic polynomial
+
+$$ax^2 + bx + c$$
 
 ```text
 
