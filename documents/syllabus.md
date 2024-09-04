@@ -359,12 +359,10 @@ You will not learn anything by having someone else, human or AI, do the
 learning for you.  
 
 That said, these tools *can* provide a meaningful learning experience if
-they are properly filtered.  For that reason, we have enabled (and paid
-for) access to a *version* of ChatGPT that you *are allowed* to use.
-This version has been designed to *not* provide substantial code or
-*too much* help that would violate academic integrity.  The application
-is called CodeHelp and is available at <https://codehelp.app/>.  Your
-instructor will provide a (free) sign up link.
+they are properly filtered.  For that reason, we will be allowing the use
+of the built-in "Rubber Duck" debugger chat bot in the CS50 IDE.  It has
+been configured so that it won't provide code directly but you can ask it
+questions to understand your code and/or resolve problems.
 
 ## Communication & Getting Help
 
