@@ -6,26 +6,14 @@ gradebook).  However, high-performing students that do not attend can still
 earn the points provided they meet a certain threshold of points for the
 rest of the module.
 
-This script interfaces with UNL' Canvas instance to update the attendance
+This script interfaces with the UNL Canvas instance to update the attendance
 points according to this policy.
 
-TODO: troubleshoot with actual course
-
- NOTE: only run this for modules with all 5 items since 55 points are hard-coded
+NOTE: only run this for modules with all 5 items since 55 points is hard-coded
 """
 
 from config import config
-from course import course
-from assignment import Assignment
-from canvasUtils import getAssignments
-from canvasUtils import getGrade
-from canvasUtils import setGrade
-
 import argparse
-import requests
-from types import SimpleNamespace
-
-import pprint
 
 parser = argparse.ArgumentParser()
 parser.add_argument("moduleName", help=
@@ -39,6 +27,15 @@ parser.add_argument("--commit", action='store_true', help=
   """)
 args = parser.parse_args()
 
+from course import course
+from assignment import Assignment
+from canvasUtils import getAssignments
+from canvasUtils import getGrade
+from canvasUtils import setGrade
+import requests
+import pprint
+from types import SimpleNamespace
+
 moduleName = args.moduleName
 commitToCanvas = args.commit
 
@@ -49,7 +46,6 @@ def getModule(moduleName):
   """
 
   assignments = getAssignments(moduleName)
-  pprint.pprint(assignments)
 
   result = SimpleNamespace()
   result.reading = next(filter(lambda x: 'Reading' in x.name, assignments), None)
