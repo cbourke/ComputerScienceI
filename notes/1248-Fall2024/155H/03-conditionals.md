@@ -129,6 +129,161 @@ if(isStudent) {
   * Ex: `!(a && b)` can be rewritten as `(!a || !b)`
   * `!(isStudent && isFreshman)` or: `(!isStudent || !isFreshman)`
 
+### Order of Precedence
+
+* Generally the operators are evaluated left-to-right
+* Order: `!, &&, ||`
+* So you may need to add parentheses for correct logic
+
+```java
+boolean a = true;
+boolean b = false;
+boolean c = false;
+
+if(a || b && c) {
+  System.out.println("True");
+} else {
+  System.out.println("False");
+}
+
+if( (a || b) && c) {
+  System.out.println("True");
+} else {
+  System.out.println("False");
+}
+```
+
+### Short Circuiting
+
+* Consider the logical and: `a && b`
+  * If `a` is false, does it matter what `b` is?
+  * Consequently: `b` does not get evaluated
+  * Efficiency: you know the entire thing is false and so you skip some operations to save time!
+* Common idiom is used in many applications:
+
+```java
+Integer x = null;
+if(x != null && x == 20) {
+  int y = x + 10;
+}
+
+```
+
+* Consider the logical or: `a || b`
+  * If `a` is true, does it matter what `b` is?
+  * Consequently: `b` does not get evaluated
+
+## Pitfalls
+
+* Consider the following C code:
+
+```c
+int a = 5;
+if(0 <= a <= 10) {
+  printf("foo\n");
+}
+```
+
+* The above code (in C) compiles and runs but does not give you the *intended* results
+* In Java: does not compile!
+* Solution:
+
+```c
+
+//you should not in general:
+if(10 == a) { ... }
+//instead prefer variables on the LHS:
+if(a == 10) { ... }
+
+//but this is probably okay:
+if(0 <= a && a <= 10) {
+  printf("foo\n");
+}
+
+```
+
+* Consider the following code:
+
+```c
+//C:
+int a = 5;
+
+if(a = 10) { ... }
+```
+
+* Don't confuse the assignment operator `=` with the equality operator: `==`
+* In Java: compiler error!
+
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+```
+
+* The above will compile and run in *both* langauges! but not give correct results
+* THe semicolon means that the if-statement *binds* to an empty executable statement
+
+## Very Nice Tool: linter
+
+* You can avoid many programming errors by using `gcc` as a "linter"
+* Linter: a static analysis tool (static means that it checks code before it compiles)
+  * It can detect many code errors that can/should be addressed
+  * To do this you can use the `-Wall` flag (**W**arnings: **all** of them)
+## Exercise:
+
+Write a program that reads a decibel level from the user
+and gives the user a description of the sound level.
+
+* 0 - 60 Quiet
+* 61 - 70 Conversational
+* 71 - 110 Loud
+* 111 - 194 Dangerous
+* < 0 or 195+
+
+```c
+/**
+ * Chris Bourke
+ * 2024-09-09
+ *
+ * This program reads in a decibel level and outputs an
+ * English characterization of it.
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv) {
+
+    printf("Please enter a decibel level:");
+    int decibel;
+    int matches = scanf("%d", &decibel);
+    if(matches == 0) {
+        printf("decibel = %d\n", decibel);
+        printf("ERROR, you should enter an integer\n");
+        exit(1);
+    }
+
+    printf("Decibel level of %d is ", decibel);
+
+    if(decibel < 0) {
+        printf("ERROR: cannot be negative!\n");
+    } else if(decibel <= 60) {
+        printf("quiet\n");
+    } else if(decibel <= 70) {
+        printf("conversational\n");
+    } else if(decibel <= 110) {
+        printf("loud\n");
+    } else if(decibel <= 194) {
+        printf("dangerous\n");
+    } else {
+        printf("UNDEFINED\n");
+    }
+
+    return 0;
+}
+```
+
 ```text
 
 

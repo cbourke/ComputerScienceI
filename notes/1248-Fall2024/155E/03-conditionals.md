@@ -204,6 +204,160 @@ if(<conditionA>) {
   * Example: `(isStudent || isFreshman)` is true if `isStudent` is true or if `isFreshman` is true or if BOTH are true
   * It is only false when *both* of the operands is false
 
+### Precedence Rules
+
+* Similar to PEMDAS, logical operators have an *order of precedence*
+* IN general the order is: `!, &&, ||`
+* You can always change this by adding parentheses
+
+```c
+
+    bool a = true;
+    bool b = false;
+    bool c = false;
+
+    if(a || b && c) {
+        printf("True\n"); //this one
+    } else {
+        printf("False\n");
+    }
+
+    if( (a || b) && c) {
+        printf("True\n");
+    } else {
+        printf("False\n"); //thisone
+    }
+```
+
+### Short-Ciruiting
+
+* Consider the following expression: `a && b`
+  * Suppose that `a` is false, does it matter what `b` is?
+  * Regardless of the value of `b`, the expression will be false
+  * Consequently a computer will completely ignore `b` (it won't be executed or evaluated at all)
+* Consider the following: `a || b`
+  * Suppose that `a` is true: does it matter what `b` is?
+  * No, because the expression will be true regardless of the value of `b`
+* It was/is more efficient o skip operations if they are not necessary
+* This has become a programming *idiom*: this is an expected behavior/pattern to any programming language
+
+## Pitfalls
+
+* Consdier the folling:
+
+```c
+int a = 15;
+if(0 <= a <= 10) {
+    printf("Hello!\n");
+}
+```
+
+* It evaluates left-to-right: `0 <= a` evaluates to true which is `1` and so `1 <= 10` evaluates to true giving incorrect/unintended answers
+* Solution: break it up into two conditions and combine them with a logical and: `&&`
+
+```c
+if(0 <= a && a <= 10) {
+    printf("Hello!\n");
+}
+```
+
+## Pitfall 2
+* Consider the following code:
+
+```c
+//C:
+int a = 5;
+
+if(a = 10) { ... }
+```
+
+* This is (incorrectly) using the assignment operator `=` and not the equality operator: `==`
+* `a` is reassigned a value that is also used as the true value (10 = true)
+* Corrected:
+
+```c
+if(a == 10) {
+    printf("Hello!\n");
+}
+```
+
+### Pitfall 3
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+
+```
+
+* You have an extra semicolon that should not be there
+* The `if` statement ends up *binding* to an empty executable statement and nothing happens; then the actual intended code block is executed regardless of `a`
+
+## Linter
+
+* Code may be syntactically correct (it will compile) but still may have errors
+* Lint are piece of code that may look suspicious and may lead to errors but are not syntax errors.  
+* Linters are *static analysis* tools that look for such *potential* errors in your code and report them (usually as warnings)
+* Static analysis: a program that analyzes the *source code* of another program pre-compilation
+* When you run `gcc` always use the `-Wall` flag (**W**arnings **all** of them)
+
+## Exercise:
+
+Write a program that reads a decibel level from the user
+and gives the user a description of the sound level.
+
+* 0 - 60 Quiet
+* 61 - 70 Conversational
+* 71 - 110 Loud
+* 111 - 194 Dangerous
+* < 0 or 195+
+
+```c
+/**
+ * Chris Bourke
+ * 2024-09-09
+ *
+ * Reads in a decibel level from the user and gives an English
+ * characterization of it.
+ *
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    if(argc != 2) {
+      printf("ERROR: enter decibels please\n");
+      exit(1);
+    }
+
+    int decibels = atoi(argv[1]);
+
+    // printf("Please enter a decibel level: ");
+    // scanf("%d", &decibels);
+
+    printf("%d decibels is ", decibels);
+
+    if(decibels < 0) {
+      printf("ERROR: cannot have negative values!\n");
+    } else if(decibels <= 60) {
+      printf("quiet\n");
+    } else if(decibels <= 70) {
+      printf("conversational\n");
+    } else if(decibels <= 110) {
+      printf("loud\n");
+    } else if(decibels <= 194) {
+      printf("dangerous\n");
+    } else {
+      printf("UNDEFINED\n");
+    }
+
+    return 0;
+}
+```
 
 ```text
 
