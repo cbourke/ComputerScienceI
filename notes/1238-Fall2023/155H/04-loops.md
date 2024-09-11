@@ -13,7 +13,7 @@
 ## `for` Loops
 
 * It uses the keyword `for`
-* All three of the main elements are on the same line: intitialization, continuation, increment
+* All three of the main elements are on the same line: initialization, continuation, increment
 
 ```c
 for(int i=1; i<=10; i++) {
