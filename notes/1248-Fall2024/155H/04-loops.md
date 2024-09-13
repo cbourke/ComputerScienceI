@@ -28,14 +28,14 @@ for(int i=0; i<10; i++) {
   * Loop body is indented
   * Spacing: no space between `for` and `(`
 * Syntax:
-  * both the initializatoin and continuation are ended with semicolons!
+  * both the initialization and continuation are ended with semicolons!
   * The increment statement does not have a semicolon
 * Other items:
   * `i++` is the increment operator, it *adds* one to the variable `i`
-  * `i, j, k` are typically used as incremenet variables (short, `i`ndex, `i`ncremenet)
+  * `i, j, k` are typically used as increment variables (short, `i`ndex, `i`ncremenet)
 * Behavior:
   * The initialization is only executed once *before* the loop
-  * THe update (increment) happens at the *end* of the loop
+  * The update (increment) happens at the *end* of the loop
   * The continuation check is evaluated at the *start* of each loop
     * If it is true, the loop executes at least one more time
     * If it is false, then the loop terminates and normal linear control flow continues
@@ -134,7 +134,44 @@ while(i < 10)
   i++;
 ```
 
+* THere are missing brackets so the `while` statement only binds to the `printf` statement: infinite loop
+* Solution: always (even if you don't need to) use brackets!
 
+## Misc
+
+### "Enhanced" For Loops (Java)
+
+* Or "foreach" loop
+* It is used to iterate over collections of data (arrays, lists, etc.)
+
+```java
+int primes[] = {2, 3, 5, 7, 11, 13, 17};
+//"foreach" integer x in the collection primes...
+for(int x : primes) {
+  System.out.println(x);
+}
+```
+
+### Nested Loops
+
+```java
+int n = 10;
+int count = 1;
+for(int i=0; i<n; i++) {
+  for(int j=0; j<n; j++) {
+    //System.out.printf("%3d (%d, %d)\n", count, i, j);
+    count++;
+  }
+}
+System.out.println("Done");
+```
+
+* Be careful: generally nested loops are *inefficient*
+* Sometimes they are necessary, but 3 or certainly more loops: *rehthink* what you are doing
+
+## Exercises
+
+1. Write a program to compute the arithmetic-geometric mean of two numbers
 
 ```text
 
