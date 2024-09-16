@@ -1,0 +1,104 @@
+ [
+  {
+    "name": "Style",
+    "pointLimit": 2,
+    "rubricComments": [
+      {
+        "text": "Significant improper or inconsistent use of whitespace",
+        "pointDelta": 1,
+        "sortKey": 0,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Significant improper identifier naming or inconsistent naming conventions",
+        "pointDelta": 1,
+        "sortKey": 1,
+        "explanation": "",
+        "instructionText": ""
+      }
+    ]
+  },
+  {
+    "name": "Documentation",
+    "pointLimit": 2,
+    "rubricComments": [
+      {
+        "text": "Missing header documentation",
+        "pointDelta": 1,
+        "sortKey": 0,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Substantial blocks (functions, complex code) are not properly documented",
+        "pointDelta": 1,
+        "sortKey": 1,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Overly verbose or useless comments",
+        "pointDelta": 1,
+        "sortKey": 2,
+        "explanation": "",
+        "instructionText": ""
+      }
+    ]
+  },
+  {
+    "name": "Design",
+    "pointLimit": 5,
+    "rubricComments": [
+      {
+        "text": "Compiler warnings have not been addressed",
+        "pointDelta": 1,
+        "sortKey": 0,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Dead or extraneous code remains",
+        "pointDelta": 1,
+        "sortKey": 1,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Insufficient error handling regardless of webgrader behavior",
+        "pointDelta": 1,
+        "sortKey": 2,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Extraneous or unnecessary output (debuggin or error statements)",
+        "pointDelta": 1,
+        "sortKey": 3,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Redundant code",
+        "pointDelta": 1,
+        "sortKey": 4,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Improper or incorrect patterns, variable types, etc.",
+        "pointDelta": 1,
+        "sortKey": 5,
+        "explanation": "",
+        "instructionText": ""
+      },
+      {
+        "text": "Contains obvious memory leaks or misuse of data types",
+        "pointDelta": 1,
+        "sortKey": 6,
+        "explanation": "",
+        "instructionText": ""
+      }
+    ]
+  }
+]
