@@ -84,6 +84,32 @@ An introduction to functions in C.
 * If a future bug is reported: you have a new test case!
 * Tests should be repeatable Ie *automated*, not manually checked/tested
 * You need to *write* code to run your test cases!
+* The more tests you have the higher certainty you have that your code is correct
+* No amount of unit testing will give you a 100% guarantee that your code is correct!
+* One Goal: provide 100% "code coverage"
+  * You want *at least* one test case for each possible "computational path"
+  * You want to test *edge* cases or "corner" cases
+  * Fuzzing: generate random values in an attempt to break your code
+* Problems:
+  * Lack of code coverage
+  * A *false positive* is when a test case is wrong but the code is correct
+  * A *false negative* is when there is a bug in your program but your test case(s) do not catch it: they both agree but they are both *wrong*
+  * TDD = Test Driven Development
+* Ad-hoc testing: testing as we went using manual input/output
+* Informal unit testing: writing your own tests and boilerplate reporting code
+* Formal unit testing: you bring in a library to do all of the boilerplate stuff for you
+
+## Misc
+
+* Another advanced topic: `makefile`s
+  * for larger projects building code can get very complicated
+  * You may have dozens of rules and *dependencies* (one file depends on another, that depends on another, etc.)
+  * Another language, a *build* system is necessary
+  * Build Engineers or "DevOps" (Development Operations)
+  * Related: CI = Continuous Integration
+
+## How Functions Work
+
 
 ```text
 

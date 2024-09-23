@@ -78,6 +78,41 @@
   * separate definitions into source files: `.c`
   * Compile them together: `gcc -c library.c`
 
+### Java
+
+* Collections of methods are separated into "utility" classes
+* Classes are organized into packages; ex: `unl.soc` which are simply directories (`unl`) and subdirectories (`soc`)
+
+## Unit Testing
+
+* A *unit* is a piece of code (usually a function) that can be tested
+* A unit is an indivisible piece of code that is treated as a "black box": you want to test things in isolation
+* A unit test is an input-output pair that is known to be correct
+* We unit test by feeding the input into our unit (function) and comparing the result to the *known correct* output: actual vs the expected
+  * If they match (or are close): it "passes"
+  * If they do no match: they "fail"
+* Grouping multiple unit tests into one collection gives you a *test suite*
+* If a future bug is reported: you have a new test case!
+* And so we can integerate it into our test suite and start *debugging*
+* Having automated test suites allows us to fix the code and test for *regressions*
+* Tests should be repeatable
+* The more tests you have the higher certainty you have that your code is correct
+* No amount of tests will ever give you a 100% *proof* that your code is correct
+* The more test cases you have the better *code coverage* you have
+  * You want to test corner cases
+  * Edge cases, extremal cases
+  * Randomized Test (chaos testing) or "fuzzing"
+* Problems:
+  * Lack of code coverage
+  * A *false positive* is when a test case is wrong but the code is correct
+  * A *false negative* is when there is a bug in your program, but your tests do not indicate it
+* TDD = Test Driven Development
+  * You write tests before you even write the code
+* Demo:
+  * *informal* unit testing in C
+  * *formal* unit testing in Java: JUnit (version 5)
+
+
 ```text
 
 
