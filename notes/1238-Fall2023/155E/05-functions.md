@@ -70,6 +70,7 @@ An introduction to functions in C.
 * If a future bug is reported: you have a new test case!
 * Tests should be repeatable
 * A future change or fix that breaks other unit tests is known as a *regression*
+
 * The more tests you have the higher certainty you have that your code is correct
 * No amount of unit testing will give you a 100% guarantee that your code is correct!
 * One Goal: provide 100% "code coverage"
