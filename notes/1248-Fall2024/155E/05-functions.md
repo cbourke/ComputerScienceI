@@ -110,6 +110,85 @@ An introduction to functions in C.
 
 ## How Functions Work
 
+* Programs have a *program stack*: it is a LIFO= Last-In First-Out data structure
+  * Pop from the top of the stack (you remove the top-most element)
+  * Push an element to the top of the stack
+* Everytime a function is called a new *stack frame* is created and placed on the top of the "call stack" or "program stack"
+  * All local variables and parameters in a function are stored in that function's stack frame
+  * Each function can only "see" its own stack frame
+  * This is how scoping actually works: you can have multiple variables of the same name but they exist in different stack frames
+  * Once a function is done executing, its stack frame is popped off the top and control is returned to the calling function
+* Can a function "swap" to values?
+  * Not if you "pass by value"
+  * When a function is called, parameter variables' *values* are copied onto the new stack frame
+  * The original variables are **not** available to the function!
+  * Swapping inside the function has no effect on the original variables!
+  * BUT: can we modify our program so that *can* successfully swap?  Yes, but...
+
+## Pointers
+
+* Memory in a computer has both an *address* and *contents*
+* An address is a numerical designation of where data is stored
+* The contents are the actual data being stored
+* Pointers in C allow you to access and manipulate memory locations and contents
+* POinter variables: `int *p;`, `double *x`
+* Referencing operator: regular old variable and change into a pointer: `&a`
+* Dereferencing operator: changes a pointer into a regular old variable: `*p`
+
+
+```c
+
+  //regular old variable:
+  int a = 42;  //42 is the *contents* of some memory location corresponding to a
+
+  //a pointer variable that can point to an integer:
+  int *p;
+  //p does not hold contents (integer value), instead it holds a *memory address*
+
+  //at this point in the program: what does p point to?
+  // whatever! it could point to:
+  //  an invalid (nonexistant) memory location
+  //  a valid memory location that does not belong to your program
+  //  a valid memory location that does belong to your program: you'd end up screwing up your own memory!
+
+  //it is best practice to initialize your pointers:
+  p = NULL;
+
+  //later on you can check for *null pointers*:
+  if(p == NULL) {
+    //don't do that dangerous thing with p...
+    //dereferencin a null pointer results in a
+    // SEGMENTATION FAULT
+    //*p = 43;
+  }
+
+  //you can access a variable's memory location using
+  //the *referencing operator*: &
+
+  //make p point to a:
+  p = &a;
+
+  printf("a is stored at memory location %p and holds the value %d\n", p, a);
+
+  //you can access a pointer's value by using the *dereferencing operator*
+  *p = 101;
+
+  printf("a is stored at memory location %p and holds the value %d\n", p, a);
+
+  //WRONG: why: because it points to memory location 101
+  // 101 may not exist
+  // 101 may not belong to me, etc.
+  p = 101;
+  printf("a is stored at memory location %p and holds the value %d\n", p, a);
+
+  //seg fault because we try to *change* what is stored in
+  //memory location 101:
+  //*p = 103;
+  //printf("a is stored at memory location %p and holds the value %d\n", p, a);
+
+
+```
+
 
 ```text
 
