@@ -33,10 +33,11 @@ parser.add_argument("--nogroups", "--nopairs", action='store_false', help=
  pairing.  Useful for exams.
  """)
 # Cannot be done at this level; grouping is in canvasUtils.py;
-# Hackish solution: override/reset the config.py file
+# and the grouping is fixed when the course is loaded
 parser.add_argument("codepost_assignment_name", help=
   """The codepost.io assignment name (the ID is retrieved
-  using this name; example: "Hack 1.0")
+  using this name; example: "Hack 1.0").  WARNING: this option
+  is not currently implemented.
   """)
 args = parser.parse_args()
 
