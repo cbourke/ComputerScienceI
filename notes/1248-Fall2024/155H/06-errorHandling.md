@@ -78,6 +78,59 @@ today += 1;
 * Java also has enumerated types
   * Key difference: they are *NOT* integers
 
+## Error Handling in Java: `Exception`s
+
+* Java uses exceptions instead of defensive programming
+* An *exception* is an interruption of the normal linear flow of control
+* Philosophy: go ahead and leap before you look: `try` a potentially dangerous operation, we'll `catch` you if you fall and then you can handle the error
+* Advantages:
+  * With error codes, there is no *semantic* meaning to the code, it is just a number; even if you don't use magic numbers, they are all still just integers
+  * But with exceptions, you *do* have semantic meaning: a `NullPointerException` is not the same thing as a `ArithmeticException` which is not the same thing as `InputMismatchException`
+  * Often defensive programming leads to large, nested and separate error handling code and "GOTO FAIL" style errors
+
+  * In Java all exceptions are a "subclass" of `Throwable` objects
+    * `Error`: mainly used by the JVM and is always fatal
+    * `Exception`: this is what you *do* use in your code; there are two types of exceptions:
+      * `RuntimeException`: an "unchecked" exception: you may surround it with a `try-catch` if you choose, or not (in which case its fatal)  
+      * Other exceptions are "checked" exceptions: you are *forced* to surround them with a try-catch block
+      * Uusal way of handling them: catch and release
+
+```java
+
+		Integer x = null;
+		int z;
+
+		try {
+			//z = x + 10;
+			String s = "Hello world";
+			int a = Integer.parseInt(s);
+			x = 0;
+			int y = 1 / x;
+			System.out.println("Line 23");
+		} catch (ArithmeticException ae) {
+			System.err.println("You tried to divide by zero, x was zero..");
+		} catch (NullPointerException npe) {
+			x = 0;
+			z = x + 10;
+		} catch (NumberFormatException nfe) {
+			//TODO: do something else
+		} catch (Exception e) {
+//			System.err.println("Exception occurred");
+//			e.printStackTrace();
+//			System.exit(1);
+			throw new RuntimeException(e);
+		}
+
+		File f = new File("/data/foo.txt");
+		try {
+			Scanner s = new Scanner(f);
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+
+		System.out.println("the rest of the program");
+
+  ```
 
 ```text
 
