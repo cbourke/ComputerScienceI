@@ -76,7 +76,119 @@
   * The returned memory can be used for whatever type you want, this means only one function is necessary
   * When you get the pointer back, you *cast* it to the proper type
 
+### Memory Management
 
+* In C you have to keep track of a lot of things
+* If you want to keep track of the *size* of an array, you need to put that into a variable, `n`
+* There is NO way for you to determine the size of a *dynamic* array after it has been created
+* ONce you are done using memory, you should clean it up
+* You can "free" the memory back to the operating system using the function `free`
+* Failure to free memory may lead to a memory leak: more and more memory is being taken by the program until it slows everything down and/or crashes
+* In C you have to be good stewards of your resources
+
+#### Pitfalls
+
+* If `malloc` cannot allocate enough memory it returns: `NULL`
+* If you attempt to access `free`'d memory it is *undeefined* behavior
+* YOu cannot/should not "double" free memory: don't free it twice
+
+## Java
+
+* Java has arrays
+* In Java: no memory management (no `malloc`, no `free`); instead you use the keyword `new`
+* You don't need to keep track of the size of an array; `arr.length`
+* Most of the syntax is the same
+* There are default values: zeros
+* Java has neat "enhanced for loops"...
+
+```java
+
+		int arr[] = new int[10];
+		arr[0] = 42;
+		arr[9] = 101;
+//		arr[-1] = 123;
+//		arr[10] = 123;
+
+		for(int i=0; i<arr.length; i++) {
+			System.out.println(arr[i]);
+		}
+
+		//for each integer x in the collection arr...
+		for(int x : arr) {
+			System.out.println(x);
+		}
+```
+
+* Java has arrays.  They Suck.  Do not use them...
+* Once created, they cannot change: they don't grow or shrink
+* Instead in Java it is preferred to use *dynamic collections*: lists, sets, maps
+* A `List` is an ordered collection of things (first, second, etc.)
+  * Uses 0-indexing just like arrays
+  * You can add things, remove things, it grows/shrinks automatically!
+
+```java
+
+		List<Integer> numbers = new ArrayList<>();
+		//adds or "appends" t the end of the list...
+		numbers.add(10);
+		numbers.add(20);
+		numbers.add(30);
+		System.out.println(numbers);
+
+		//adds at a particular index:
+		numbers.add(1, 42);
+		System.out.println(numbers);
+
+		//remove
+		numbers.remove(2);
+		System.out.println(numbers);
+
+		//get the element at index 2:
+		int x = numbers.get(2);
+		System.out.println(x);
+		System.out.println(numbers);
+
+		for(int i=0; i<numbers.size(); i++) {
+			System.out.println(numbers.get(i));
+		}
+
+		for(Integer num : numbers) {
+			System.out.println(num);
+		}
+```
+
+* Sets are like lists but they hold things in an *unordered manner* and do not allow duplicates
+
+
+```java
+
+		Set<Integer> numbers = new HashSet<>();
+		numbers.add(10);
+		numbers.add(20);
+		numbers.add(30);
+		System.out.println(numbers);
+
+		boolean result = numbers.add(10);
+		System.out.println(result);
+		System.out.println(numbers);
+
+		numbers.add(42);
+		System.out.println(numbers);
+
+		numbers.remove(42);
+		System.out.println(numbers);
+
+		numbers.remove(42);
+		System.out.println(numbers);
+
+		if(numbers.contains(10)) {
+			System.out.println("it contains 10");
+		}
+
+		for(Integer x : numbers) {
+			System.out.println(x);
+		}
+```
 
 ```text
 

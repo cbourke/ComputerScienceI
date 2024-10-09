@@ -125,13 +125,45 @@ free(arr);
 
 ## Pitfalls:
 
-* ONce you have free'd memory it is NOT yours, you should *not* attempt to use it...
+* Once you have free'd memory it is NOT yours, you should *not* attempt to use it...
   * It may have been given away already!
   * Attempts to access free'd memory will result in *undefined behavior*
   * May result in seg faults
 * You can only free memory once...
   * "Double Free" may cause a segfault...
+* There is ***NO*** way to determine the size of an array
+  *  You need do your own bookkeeping
+  * Ignore stackoverflow misinformation
+
+## Arrays and Functions
+
+* YOU can pass arrays to functions just as you would any other pointer variable
+* When you pass an "array" to a function, you are passing a pointer to that array
+* HOWEVER: you need to do your own "bookkeeping"
+  * Any time you pass an array (pointer) to a function you need to tell the function how big it is (usually with an integer variable `n`)
+  * There is NO, ABSOLUTELY NO, way to tell how big a dynamically allocated array is in C!
+* Careful: because arrays are passed by reference, the functions *can make changes to
+  * You can prevent this by making the array "read-only" using the `const` keyword
+* You can also write functions that *return* new arrays
+  * `malloc` does this
+  * We can do it too, however they ***must*** be dynamic arrays
+  * Be careful: who "owns" memory?  It depends
+  * If you are done using the memory *inside* the function, the function is responsible for `free`ing it
+  * If you are returning the memory (via a pointer) to the calling function, then the calling function is responsible for `free`ing it
+* Generally: ALWAYS free up memory when you are done with it
+  * However, it is sometimes acceptable to ignore cleanup in the `main()` function at the end
+
+## Exercises
+
+* Write a function that creates a *copy* of a given array
+  * "Shallow" copy: a reference copy
+  * "Deep" copy: a completely different and unique copy
+
 ```text
+
+
+
+
 
 
 
