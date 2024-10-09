@@ -67,8 +67,11 @@ functions to convert between these models.
     and then using the following formulas:
 
     $$k = 1-\max\{r', g', b'\}$$
+    
     $$c = \frac{(1-r'-k)}{(1-k)}$$
+
     $$m = \frac{(1-g'-k)}{(1-k)}$$
+
     $$y = \frac{(1-b'-k)}{(1-k)}$$
 
     Your function should have the following signature:
@@ -81,11 +84,13 @@ functions to convert between these models.
     $(r,g,b) = (0,0,0)$ which would lead to a division by zero in the
     formulas. The equivalent CMYK values are $(0,0,0,1)$.
 
-2.  Write a function to convert from CMYK to RGB using the following
+3.  Write a function to convert from CMYK to RGB using the following
     formulas.
 
     $$r = 255 \cdot (1 - c) \cdot (1-k)$$
+    
     $$g = 255 \cdot (1 - m) \cdot (1-k)$$
+
     $$b = 255 \cdot (1 - y) \cdot (1-k)$$
 
     Results should be rounded. Your function should have the following signature:
