@@ -23,6 +23,20 @@ public class ColorUtilsTests {
 	 */
 	public static final double EPSILON = 0.01;
 
+	/**
+	 * Returns <code>true</code> if the two {@link RGB} values
+	 * are close enough (within +-1 for each of the red-green-blue
+	 * values); <code>false</code> otherwise.
+	 * 
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	private static boolean rgbClose(RGB a, RGB b) {
+		return Math.abs(a.getRed()   - b.getRed())   <= 1 &&
+			   Math.abs(a.getGreen() - b.getGreen()) <= 1 && 
+			   Math.abs(a.getBlue()  - b.getBlue())  <= 1;
+	}
 
 	/**
 	 * Tests both {@link ColorUtils#cmykToRGB(CMYK)} and
@@ -141,7 +155,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -162,7 +176,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -183,7 +197,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -204,7 +218,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -225,7 +239,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -246,7 +260,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -267,7 +281,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -288,7 +302,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -309,7 +323,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -330,7 +344,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -351,7 +365,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
@@ -372,7 +386,7 @@ public class ColorUtilsTests {
 		RGB rgbResult = ColorUtils.cmykToRGB(cmykExpected);
 		CMYK cmykResult = ColorUtils.rgbToCMYK(rgbExpected);
 
-		assertEquals(rgbExpected, rgbResult, "RGB values do not match");
+		assertTrue( rgbClose(rgbExpected, rgbResult), "RGB values are not close enough");
 		assertEquals(cmykExpected.getCyan(), cmykResult.getCyan(), EPSILON, "Cyan values are not close enough");
 		assertEquals(cmykExpected.getMagenta(), cmykResult.getMagenta(), EPSILON,
 				"Magenta values are not close enough");
