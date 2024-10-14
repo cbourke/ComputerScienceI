@@ -157,6 +157,8 @@
 		}
 ```
 
+#### Sets
+
 * Sets are like lists but they hold things in an *unordered manner* and do not allow duplicates
 
 
@@ -188,6 +190,242 @@
 		for(Integer x : numbers) {
 			System.out.println(x);
 		}
+```
+
+#### Maps
+
+```java
+
+		//maps store things in a key-value pairing
+		Map<String, Integer> m = new HashMap<>();
+		m.put("Twenty", 20);
+		m.put("Thirty", 30);
+		m.put("Chris", 35140602);
+		m.put("John", 35140602);
+
+		System.out.println(m);
+
+		//reassign key-value pairs:
+		m.put("Twenty", 21);
+		System.out.println(m);
+
+		m.remove("Twenty");
+		System.out.println(m);
+
+		int myNUID = m.get("Chris");
+		System.out.println(myNUID);
+
+		for(String key : m.keySet()) {
+			int value = m.get(key);
+			System.out.println(key + " maps to " + value);
+		}
+
+		Map<Integer, String> reverse = new HashMap<>();
+		for(String key : m.keySet()) {
+			int value = m.get(key);
+			reverse.put(value, key);
+		}
+		System.out.println(reverse);
+
+		Map<Integer, Set<String>> nuidToPeople = new HashMap<>();
+		for(String key : m.keySet()) {
+			int value = m.get(key);
+			Set<String> people = nuidToPeople.get(value);
+			if(people == null) {
+				//first time we've seen the value...
+				people = new HashSet<>();
+			}
+			people.add(key);
+			nuidToPeople.put(value, people);
+		}
+		System.out.println(nuidToPeople);
+
+```
+
+```java
+//suppose you had a list of zip codes, some repeats
+		// you want to determine how many times a zip code appears
+		// 68508 => 20
+		Random r = new Random();
+		List<Integer> zipCodes = new ArrayList<>();
+		for(int i=0; i<100000; i++) {
+			zipCodes.add(r.nextInt(1000));
+		}
+		System.out.println(zipCodes);
+
+		//  zipCode -> count of the zipCode
+		Map<Integer, Integer> zipsToCounts = new HashMap<>();
+		for(Integer zipCode : zipCodes) {
+			//have we seen this zipCode yet?
+			Integer x = zipsToCounts.get(zipCode);
+			if(x == null) {
+				zipsToCounts.put(zipCode, 1);
+			} else {
+				zipsToCounts.put(zipCode, x+1);
+			}
+		}
+		for(Integer zipCode : zipsToCounts.keySet()) {
+			System.out.printf("%5d -> %d\n", zipCode, zipsToCounts.get(zipCode));
+		}
+```
+
+## Pitfalls with Arrays in C
+
+* In C **you** are responsible for *memory management*
+* You have to keep track of how big arrays are when you create them
+* You have to clean up after yourself (`free`) and don't double-`free` or attempt to used `free`d memory, etc.
+* **You** are responsible for memory management
+
+### Arrays & Functions
+
+* When you pass an array to a function, *you also need to pass the size of the array*
+* There is ZERO, ABSOLUTELY ZERO way to tell the size of a dynamic array in C!
+* Using `sizeof` in any form is *wrong*
+
+```c
+/**
+ * Demonstration code template.
+ *
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
+/**
+ * Prints the given integer array (of a given size n)
+ */
+void printArray(const int *arr, int n);
+
+/**
+ * Computes the sum of the elements in the given integer array (of size n)
+ */
+int sum(const int *arr, int n);
+
+/**
+ * Returns a new array of the given size (n) filled with ones
+ */
+int *onesArray(int n);
+
+
+int main(int argc, char **argv) {
+
+    int n = 10;
+
+    int *arr = (int *) malloc(n * sizeof(int));
+
+    for(int i=0; i<n; i++) {
+        arr[i] = 10 * (i+1);
+    }
+    printArray(arr, n);
+
+    int total = sum(arr, n);
+    printf("total = %d\n", total);
+    printArray(arr, n);
+
+    return 0;
+}
+
+void printArray(const int *arr, int n) {
+
+    if(arr == NULL) {
+        printf("null\n");
+        return;
+    } else if(n < 0) {
+        printf("[]\n");
+        return;
+    }
+
+    printf("[");
+    for(int i=0; i<n-1; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("%d]\n", arr[n-1]);
+}
+
+int sum(const int *arr, int n) {
+
+    int total = 0;
+    for(int i=0; i<n; i++) {
+        total += arr[i];
+    }
+    return total;
+}
+
+int *onesArray(int n) {
+
+    int *result = (int *) malloc( n * sizeof(int) );
+    //int result[n];
+    for(int i=0; i<n; i++){
+        result[i] = 1;
+    }
+    return result;
+}
+```
+
+* Use the `const` keyword to make an array read-only
+* You pass an array to a function as a pointer!
+* Be sure to also pass its size!
+
+### Cleaning Up
+
+* Once you are done with a chunk of memory you should give it back!
+* Failure to give it back can lead to a *memory leak*: you constantly take memory and never give back, eventually...
+* To give memory back that you no longer need, you use the `free()` function and simply pass in the pointer
+* After free'd memory cannot be accessed (or *should not be*)
+* you cannot (should not) free memory twice
+* Who owns memory?
+  * When a function returns memory, it does *NOT* own it, the calling function owns it and is responsible for it
+  * When a function receives memory it *DOES* own it and is responsible for it
+  * In general, ALL memory should be cleaned up; exception: it is sort-of, kind-of okayish to not free up memory in the `main()`
+
+### Shallow vs Deep Copies
+
+* A *shallow* copy is when two references (pointers) point to the same chunk of memory
+  * Changes to one affect the other!
+  * There is only ONE thing in memory
+* You can have a *deep* copy of an array
+  * Changes to one do not affect the other
+  * There are two distinct things in memory
+
+* Exercise: implement a function that "filters" an array and returns a new array containing only positive values
+  * Ex: `{5, 3, -1, 0, 4, -5}`
+  * Output: `{5, 3, 4}`
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array (one dimensional)
+* You can have 2-D arrays with *rows* and *columns*
+  * Table (spreadsheet)
+  * Matrix
+* YOU *can* have 3D, 4D, etc. arrays, but likely there is a better solution
+* In C you specify *two* indices: `table[i][j]` (row `i` and column `j`)
+* To setup memory for a 2-D array you need:
+  * An array of pointers
+  * Each pointer will point to a row
+
+```c
+int n = 3;
+int m = 5;
+
+//initialize an array of integer pointers...
+// initialize n pointers, one to each row...
+int **table = (int **) malloc( sizeof(int *) * n );
+//for each row i, initialize the array for that row...
+for(int i=0; i<n; i++) {
+  table[i] = (int *) malloc( sizeof(int) * m );
+}
+
+for(int i=0; i<n; i++) {
+  for(int j=0; j<m; j++) {
+    table[i][j] = i * j;
+  }
+}
+
+for(int i=0; i<n; i++) {
+  free(table[i]);
+}
+free(table);
 ```
 
 ```text

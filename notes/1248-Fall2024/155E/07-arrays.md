@@ -153,11 +153,97 @@ free(arr);
 * Generally: ALWAYS free up memory when you are done with it
   * However, it is sometimes acceptable to ignore cleanup in the `main()` function at the end
 
+## Pointers & Indices
+
+* How do arrays actually work...
+* Arrays (names of arrays) are actually pointers that points to the *beginning* of a memory location that holds a bunch of elements in a continguous fashion
+* Arrays are nothing more than the memory address of the first element in the array
+* This is why indexing starts at 0: zero bytes offset from the first element
+* This is also why we have to do our own bookkeeping
+
+## Shallow vs Deep Copies
+
+* A shallow copy is when two arrays share the same memory address
+  * There is only ONE actual array in memory
+  * Changes to one affect the other
+* A deep copy is when you copy an array to another array so that they are *completely different arrays*
+  * Changes to one do not affect the other
+  * There are TWO actual arrays in TWO different memory locations
+
+```c
+
+  int n = 5;
+  int *arr = (int *) malloc( sizeof(int) * n );
+  for(int i=0; i<n; i++) {
+      arr[i] = 10 * (i+1);
+  }
+
+  //shallow copy of a:
+  int *b = arr;
+
+  //b[0] = 42;
+
+  for(int i=0; i<n; i++) {
+    printf("arr[%d] = %d\n", i, arr[i]);
+  }
+
+  b = (int *) malloc( sizeof(int) * n );
+
+  for(int i=0; i<n; i++) {
+    //copy over elements...
+    b[i] = arr[i];
+  }
+
+  b[0] = 42;
+```
+
 ## Exercises
 
-* Write a function that creates a *copy* of a given array
-  * "Shallow" copy: a reference copy
-  * "Deep" copy: a completely different and unique copy
+* Write a function that takes an array of integers and returns a new array containing only the positive values from the original array
+  * Input: `{5, -1, 0, 3, 6, 9, 42, -7, 10, -1, 43, 2, 34, 3, 23, 4, 43}`
+  * Output `{5, 3, 6, 9, 42, 10, 43, 2, 34, 3, 23, 4, 43}`
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array (one dimensional)
+* You can also have multidimensional arrays: 2D arrays, 3D arrays, 4D arrays, etc.
+* Our focus: 2-D arrays
+  * Rows and columns
+  * There are *tables*
+  * Spreadsheets (kinda)
+  * Matrices
+* In C a regular old array of integers is `int *arr`
+* A 2-D array is `int **mat`
+* Once you ahve a 2-D array, you specify the row and the column index: `table[0][0]` is the `0`-row (first row), `0`-column (first column)
+* Suppose that there are `n` rows and `m` columns
+  * THe bottom right most value is at `table[n-1][m-1]`
+* The first index is the row, the second is the column (row-major form)
+* How do we allocate memory for a 2-D array?
+
+
+```c
+int n = 3, m = 5;
+//setup a row of n *pointers*
+int **table = (int **) malloc( sizeof(int*) * n );
+//setup each row:
+for(int i=0; i<n; i++) {
+  //setup the i-th row:
+  table[i] = (int *) malloc( sizeof(int) * m);
+}
+
+for(int i=0; i<n; i++) {
+  for(int j=0; j<m; j++) {
+    table[i][j] = i * j;
+  }
+}
+
+//memory leak: TODO fix
+
+    for(int i=0; i<n; i++) {
+        free(table[i]);
+    }
+    free(table);
+```
 
 ```text
 
