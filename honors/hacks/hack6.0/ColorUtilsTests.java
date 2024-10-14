@@ -27,15 +27,15 @@ public class ColorUtilsTests {
 	 * Returns <code>true</code> if the two {@link RGB} values
 	 * are close enough (within +-1 for each of the red-green-blue
 	 * values); <code>false</code> otherwise.
-	 * 
+	 *
 	 * @param a
 	 * @param b
 	 * @return
 	 */
 	private static boolean rgbClose(RGB a, RGB b) {
 		return Math.abs(a.getRed()   - b.getRed())   <= 1 &&
-			   Math.abs(a.getGreen() - b.getGreen()) <= 1 && 
-			   Math.abs(a.getBlue()  - b.getBlue())  <= 1;
+			     Math.abs(a.getGreen() - b.getGreen()) <= 1 &&
+			     Math.abs(a.getBlue()  - b.getBlue())  <= 1;
 	}
 
 	/**
