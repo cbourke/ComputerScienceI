@@ -54,6 +54,52 @@
 
 ## Tooling
 
+* Styling
+  * You should write well-formatted code to start with
+  * To fix bad formatting: `astyle` (command line)
+  * Online beautifiers: ex: https://formatter.org/cpp-formatter
+  * Well-formatted code is readable code
+* Source Control Software & Versioning:
+  * git = distributed VCS = Version Control System
+  * Each copy has an entire *history* of the project
+  * honorable mention: mercurial
+  * git = github
+  * https://git.unl.edu (git lab instance)
+  * storing code, artifacts and the history of those artifacts
+* Build Systems
+  * `make` (or `cmake`)
+  * Dependency management tools: `apt`, `brew`, windows (?)
+  * Package management
+  * DevOps (Development Operations)
+  * CI = Continuous Integration
+* Unit Testing
+  * ad-hoc testing (not repeatable, labor intensive)
+  * informal (we wrote the boilerplate stuff)
+  * formal unit testing: `cmocka`
+* Static Analysis Tools
+  * You've seen already: `-Wall` with gcc (turns on all warnings)
+  * Also: `-Wextra` (extra warnings)
+  * We have used the *compiler* has a static analysis tool to detect *lint*
+  * Static analyzer: analysis done on the code *prior* to compilation to detect *potential* issues/errors
+  * Code Smells: things that smell kinda funky and should be addressed but are not necessarily bugs
+* Other tools
+  * Alternative compiler: `clang`
+  * Static analysis: `clang --analyze foo.c`
+* Dynamic Analysis Tools
+  * Valgrind: can report problems such as seg fault's line numbers, memory leaks, bad array reads/writes, etc.
+  * Remember: compile with the `-g` flag!
+  * In contrast, *dynamic* analysis tools analyze your program *after* it has been compiled while it is *running*
+  * Debugger: `gdb`
+* Perf testing
+    * Performance Testing
+    * Profiler
+    * `gprof` (later)
+    * Allows you to find "hot spots" in your code, investigate efficiency issues
+* LOTS of others
+
+
+Good luck on the exam, have a great break!
+
 ```text
 
 
