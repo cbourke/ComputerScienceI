@@ -101,6 +101,13 @@ Try going to https://codepost.io/forgot-password and resetting your password
 (example: `jstudent42@huskers.unl.edu`) or whatever primary email is
 associated with your canvas profile.
 
+## I'm getting a "submission is currently being reviewed" error
+
+Do a [hard refresh](https://www.howtogeek.com/672607/how-to-hard-refresh-your-web-browser-to-bypass-your-cache/)
+of your browser.  If that doesn't work, logout and log back in.  If it persists,
+contact your instructor (this may happen if someone accidentally started grading
+your submission before the due date, but this is extremely rare).
+
 # Campuswire
 
 ## What is Campuswire?
