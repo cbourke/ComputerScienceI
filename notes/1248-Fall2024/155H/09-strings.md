@@ -142,6 +142,150 @@ printf("Hello, %s\n", name);
 		System.out.println(bzz);
 ```
 
+## String Processing - C
+
+* You can treat  strings as a regular array and manipulate the contents
+* Example: write a function to convert to uppercase
+* You can use the `ctype.h` library to compute values on individual `char` values
+  * `toupper, tolower`, `isupper, islower`
+  * `isspace` is true if it is a space character: ` , \n, \t`, etc.
+
+### Byte Limited Versions  
+
+* THere are also `strncpy` and `strncat` that take a third argument: `n` and only copy over or concatenate over **at most** `n` bytes
+  * It will copy `n` bytes unless it sees the `\0` first, at which point it stops
+  * If it *doesnt'* see the null terminator, *it will not copy it*!
+* `sprintf` is a printf-like function that "prints" to a string
+  * `s` refers to string: it prints not to the standard output, but to a string: the usual assumptions must hold  
+
+
+```c
+/**
+ * Demonstration code template.
+ *
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+//TODO: documentation
+char *deepCopyStr(const char *str);
+
+/**
+ * Converts the given string so that all characters are uppercase
+ */
+void toUpperCase(char *str);
+
+/**
+ * Returns a new string that is the given string so that all characters are uppercase
+ */
+char * toUpperCaseCopy(const char *str);
+
+/**
+ * returns a new (sub)string of the given string s starting at
+ * the given start index and of length at most <code>length</code>
+ */
+char * substring(const char *s, int start, int length);
+
+int main(int argc, char **argv) {
+
+    char str[] = "Go Husker Football!!";
+    char *strCaps = toUpperCaseCopy(str);
+    printf("s = %s\n", str);
+    printf("s = %s\n", strCaps);
+
+    char foo[100];
+    strncpy(foo, str, 9);
+    //null terminator was not copied!
+    foo[9] = '\0';
+    printf("foo = %s\n", foo);
+
+    //we want "Husker" instead: this a *substring*
+    strncpy(foo, &str[3], 6);
+    foo[6] = '\0';
+    printf("foo = %s\n", foo);
+
+    char *bar = substring(str, 6, 5);
+    printf("bar = %s\n", bar);
+
+    char buffer[1000];
+    int x = 42;
+    double y = 3.14159;
+    char c = 'C';
+    sprintf(buffer, "x = %d, y = %f, c = %c\n", x, y, c);
+    printf("buffer = %s", buffer);
+    char * finalStr = deepCopyStr(buffer);
+    printf("finalStr = %s", finalStr);
+}
+
+void toUpperCase(char *str) {
+    for(int i=0; i<strlen(str); i++) {
+        str[i] = toupper(str[i]);
+    }
+    return;
+}
+
+char * toUpperCaseCopy(const char *str) {
+    //TODO: error handling
+    char *newStr = deepCopyStr(str);
+    toUpperCase(newStr);
+    return newStr;
+
+}
+
+char *deepCopyStr(const char *str) {
+
+    char *newStr = (char *) malloc( sizeof(char) * (strlen(str) + 1) );
+    strcpy(newStr, str);
+    return newStr;
+}
+
+char * substring(const char *s, int start, int length) {
+
+    //TODO: think of some more, what happens when length is to big?
+    if(s == NULL || start < 0 || start > strlen(s) - 1 || length < 0) {
+        return NULL;
+    }
+
+    char *subStr = (char *) malloc( sizeof(char) * (length + 1) );
+    strncpy(subStr, &s[start], length);
+    subStr[length] = '\0';
+    return subStr;
+
+}
+```
+
+```java
+
+
+		String s = "Go Husker Football!!";
+		String t = s.toUpperCase();
+		//Deep, but useless copy:
+		String x = new String(s);
+		//mutable version:
+		StringBuilder sb = new StringBuilder(s);
+		//now you can manipulate it...
+		sb.append("!!!!");
+
+
+		int beginIndex = 3;
+		int length = 6;
+		String foo = s.substring(beginIndex, beginIndex + length);
+		System.out.println(foo + ".");
+		String bar = s.substring(beginIndex);
+		System.out.println(bar);
+
+		//sprintf-like behavior
+	    int xx = 42;
+	    double y = 3.14159;
+	    char c = 'C';
+	    String formatted = String.format("xx = %d, y = %f, c = %c\n", xx, y, c);
+		System.out.println(formatted);
+
+		
+
+```
 
 ```text
 
