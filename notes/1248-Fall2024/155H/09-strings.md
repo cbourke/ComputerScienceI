@@ -283,8 +283,63 @@ char * substring(const char *s, int start, int length) {
 	    String formatted = String.format("xx = %d, y = %f, c = %c\n", xx, y, c);
 		System.out.println(formatted);
 
-		
+```
 
+## Data Processing
+
+* Strings are important because they are often used to hold *data*
+* That data needs to be processed
+* Data formats: XML, JSON, TSV (tab-separated data), CSV = Comma Separated Values
+* CSV: Each piece of data (token) is separated by a *delimiter* (comma)
+* we need a way to separate each token and process each one separately
+* We use "tokenization" to "split" the data up into each individual token
+* In C: `strtok`
+  * `char *strtok(char *str, const char *delim);`
+  * `str` is the string you want to tokenize
+  * **observe**: it lacks the `const` keyword! `strtok` will *change* your data!
+  * `delim` is the delimiter: it can be any number of individual characters: you can "split" on commas, `","` or tabs `"\t"` or *muliple* delimiters: `":,"`
+  * It returns a pointer to the next available token
+  * You basically call this function multiple times until the last token is given...
+  * It returns `NULL` when no more tokens are available
+  * The first time you call it on a string: you pass in `str` the string you want to tokenize, each subsequent call: pass in `NULL` for `str` to *continue* processing the same string
+
+```c
+
+    char csvData[] = "Colour of Magic,Terry,Pratchett,1983,3.98";
+    char *token = strtok(csvData, ",");
+    while(token != NULL) {
+      printf("token = %s\n", token);
+      token = strtok(NULL, ",");
+    }
+```
+
+* Careful: do not do anything directly with the tokens
+  * If you need to process it as a number: use `atoi`, `atof`
+  * If you need to leave a string: **make a deep copy**!!!
+
+```c
+
+    char csvData[] = "Colour of Magic,Terry,Pratchett,1983,3.98";
+    int count = 0;
+    for(int i=0; i<strlen(csvData); i++) {
+      if(csvData[i] == ',') {
+        count++;
+      }
+    }
+    count++;
+
+    char **tokenData = (char **) malloc( sizeof(char *) * count );
+    char *tempToken = strtok(csvData, ",");
+    for(int i=0; i<count; i++) {
+      //copy the current token into tokenData[i[]]
+      tokenData[i] = (char *) malloc( sizeof(char) * (strlen(tempToken) + 1) );
+      strcpy(tokenData[i], tempToken);
+      tempToken = strtok(NULL, ",");
+    }
+    for(int i=0; i<count; i++) {
+      printf("tokenData[%d] = %s\n", i, tokenData[i]);
+    }
+    strcpy(csvData, "Hello WOrld!\n");
 ```
 
 ```text

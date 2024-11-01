@@ -291,7 +291,89 @@ char *removeWhitespace(const char *s) {
 
 ```
 
+## Data Processing
+
+* Data is fundamental to CS
+* Strings are important because they are used to store data
+* Often data is given in textual manner: not  necessary for humans, but in a readable format
+* MOre often data is stored in a *structured format*
+  * XML = eXtensible Markup Language
+  * JSON = JavaScript Object Notation
+  * TSV, CSV = Tab Separated Values, Comma Separated Value
+  * These are "flat file" representations
+* Basic *tokenization*: split up a string of data into separate *tokens* so we can process each
+* C provides a function, `strtok`
+* `char *strtok(char *str, const char *delim);`
+  * First argument: the string you want to *tokenize*
+  * Careful: what is absent from the first argument? `const`: `strtok` is **going to change your data**; solution: process a deep copy instead
+  * The second argument: a string of any delimiter(s) that you want to use!
+  * For us: `","`; it is also possible to use multiple: `",;: "` (we'll ignore this feature)
+  * Returns a pointer to the next token (ie you need to call this function several times to get each of the tokens)
+  * WHen no more tokens are available, it returns `NULL`
+  * Careful: The first time you call `strtok`, you pass in the string you want to tokenize, however, EVERY **subsequent** call, you pass in `NULL` to *continue* processing the same string
+* Observations:
+  * Delimiters are changed to null-terminators by `strtok`, be carefu
+  * Solution: create a deep copy if you don't want your data messed with
+  * Tokens are not "permanent": if you need to, you can copy them over into a *different string* (deep copy)
+
+
+```c
+char csvData[] = "Colour of Magic,Terry,Pratchett,1983,3.98";
+char *token = strtok(csvData, ",");
+while(token != NULL) {
+    printf("token = %s\n", token);
+    token = strtok(NULL, ",");
+}
+```
+
+```c
+
+    char csvData[] = "Colour of Magic,Terry,Pratchett,1983,3.98";
+
+    //copy each token over into an array of strings
+    int n = 5;
+    char **tokens = (char **) malloc( sizeof(char *) * n );
+    char *token = strtok(csvData, ",");
+    int i=0;
+    while(token != NULL) {
+        //copy into tokens[i] token
+        //tokens[i] points to... what?
+        tokens[i] = (char *) malloc( sizeof(char) * (strlen(token) + 1) );
+        strcpy(tokens[i], token);
+        token = strtok(NULL, ",");
+        i++;
+    }
+    for(int i=0; i<n; i++) {
+        printf("tokens[%d] = %s\n", i, tokens[i]);
+    }
+```
+
+### String Comparisons
+
+* In C, you *cannot* use the `==` operator nor `!=` operator to test for string equality
+* To properly compare strings use a *comparator* function: `strcmp`
+  * It takes 2 strings as input: `a, b`
+  * If the contents of `a` "come before" `b` then it returns ***something*** negative ($a < b$)
+  * If the contents are the same, then it returns 0
+  * If the contents of `b` come before `a` then it returns ***something*** positive ($a > b$)
+* Uses lexicographic order: according to the ascii table! NOT alphabetic order!
+* Observations:
+    * shorter strings come before longer strings (with the same beginning):
+    apple < apples
+    * Upper case letters come before ANY lower case:
+    Banana < apple
+    * numbers come before all letters:
+    123 < apple
+    * numbers follow the ascii table, not the values:
+    123 < 9
+    * These are all *lexicographic* orderings
+* Alternative: `strcasecmp` which ignores casing (`A` and `a` are the same)
+
+
 ```text
+
+
+
 
 
 
