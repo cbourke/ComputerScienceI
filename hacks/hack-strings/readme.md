@@ -112,3 +112,42 @@ given signatures.
 
 -   Hand in all 3 files and make sure that it runs and executes
     correctly in the grader.
+
+-   You may use the following code snippets to help with testing.
+
+    - Recall that you can use `strcmp()` to compare if two strings
+      are equal (returns `0`) or not (returns a non-zero value).
+
+    - You can create an array of (pointers to) strings using the
+      following syntax:
+
+      ```c
+      int numberOfStrings = 4;
+      char *expected[numberOfStrings] = {
+          "I li",
+          "ke t",
+          "urtl",
+          "es"
+      };
+      ```
+
+    - You can create an array of (pointers to) strings using the
+      following syntax:
+
+      ```c
+      int stringArraysEqual(char **a, char **b, int n) {
+
+          if(a == NULL && b == NULL) {
+              return 1;
+          } else if(a == NULL && b != NULL || a != NULL && b == NULL) {
+              return 0;
+          }
+
+          for(int i=0; i<n; i++) {
+              if( strcmp(a[i], b[i]) != 0 ) {
+                  return 0;
+              }
+          }
+          return 1;
+      }      
+      ```
