@@ -113,6 +113,89 @@
     fclose(in);
 ```
 
+## File I/O in Java
+
+* Java defines a class called `File`
+
+```java
+File f = new File("file.txt");
+File f = new File("/absolute/path/to/file.txt");
+File f = new File("../../archive/file.txt");
+```
+
+* In Eclilpse: everything is relative to the project folder!
+* Typically you create a `data` directory in the project and work from it
+
+### File Input
+
+* Lots of ways; easiest: `Scanner`
+
+```java
+File f = new File("data/myData.txt");
+Scanner s;
+try {
+  s = new Scanner(f);
+} catch (FileNotFoundException e) {
+  throw new RuntimeException(e);
+}
+//read line by line:
+String line;
+while(s.hasNextLine()) {
+  line = s.nextLine();
+  System.out.println(line);
+}
+
+//should always close:
+s.close();
+```
+
+## File Output
+
+* Simplest way: `PrintWriter`
+* It allows you to use `print, println, printf` methods
+
+```java
+
+		File f = new File("data/output.txt");
+		try {
+			PrintWriter pw = new PrintWriter(f);
+			pw.print("This is a line without an endline");
+			pw.println("... so I will use println instead");
+			int x = 42;
+			double y = 3.5;
+			pw.printf("x = %d, y = %f\n", x, y);
+			pw.close();
+
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+```
+
+### Even Easier: Java NIO library
+
+* NIO = Non-blocking Input/Output
+
+* Input line-by-line or the entire contents at once
+
+```java
+		Path path = Paths.get("data/myData.txt");
+		try {
+			List<String> contents = Files.readAllLines(path);
+			for(String line : contents) {
+				System.out.println(line);
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+		try {
+			String text = new String(Files.readAllBytes(Paths.get("data/myData.txt")), StandardCharsets.UTF_8);
+			System.out.println(text);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+```
+
 ```text
 
 
