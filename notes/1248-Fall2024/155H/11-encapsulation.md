@@ -1,6 +1,6 @@
 
 # CSCE 155H - Computer Science I
-## Encapsulation - Structures
+## Encapsulation - Structures/Classes
 ### Fall 2024
 
 * Built-in primitive types `int, double, char` are very limiting: not everything is a number or character
@@ -19,6 +19,8 @@
 ## C
 
 * C only supports *weak* encapsulation: #1 the grouping of data through *structures*
+* Defining a structure:
+  * Define using `typedef struct`
 
 
 ```text
