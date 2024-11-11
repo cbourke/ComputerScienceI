@@ -26,3 +26,12 @@ Hack 5:
 - build in a tolerance!
 
 Course Midterm Evaluation
+
+```java
+public double getAge() {
+  Period p = Period.between(this.publishDate, LocalDate.now());
+  double y = p.getYears();
+  y += p.getDays() / 365.0;
+  return y;
+}
+```
