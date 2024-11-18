@@ -72,6 +72,56 @@ Number of calls:
   * IF not computed: use recursion to compute and then *store* it back into the table
   * Look it up: if computed already, the value will be used: pay for the recursion when we have to, but we don't pay when we don't have to
 
+
+```c
+/**
+ * Demonstration code.
+ *
+ */
+#include <stdio.h>
+#include <stdlib.h>
+
+long fibonacci(int n, long *values) {
+
+    if(n < 0) {
+        return -1;
+    } else if(n == 1 || n == 2) {
+        return 1;
+    } else {
+        //1.check to see if the value has already been computed
+        if(values[n] != -1) {
+            return values[n];
+        } else {
+            // if no: then
+            //.   a. compute it
+            long x = fibonacci(n-1, values) + fibonacci(n-2, values);
+            //.   b. store it, then return it
+            values[n] = x;
+            return x;
+        }
+    }
+}
+
+int main(int argc, char **argv) {
+
+    int n = atoi(argv[1]);
+    //table of values:
+    long *values = (long *) malloc( sizeof(long) * (n+1) );
+    //initialize my table:
+    for(int i=0; i<n+1; i++) {
+        values[i] = -1;
+    }
+    //base cases:
+    values[1] = 1;
+    values[2] = 1;
+
+    long result = fibonacci(n, values);
+    printf("fib(%d) = %ld\n", n, result);
+
+    return 0;
+}
+
+```
 ```text
 
 
