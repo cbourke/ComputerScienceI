@@ -14,9 +14,18 @@
 
 * Demo: write a function to search a collection for a particular element
 
+## Efficiency so far
 
+* "Work" = comparisons
+* linear search: $\approx n$
+* binary search: $\approx \log{n}$
+* selection sort: $n^2$
+* quick sort: $n\log{n}$ (quasilinear, on average and in the best case)
 
 ```text
+
+
+
 
 
 

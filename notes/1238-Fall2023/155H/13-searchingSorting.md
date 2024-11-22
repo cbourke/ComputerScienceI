@@ -155,7 +155,7 @@ void qsort(void *base,
 * `size` - the number of bytes each element takes (use `sizeof()`!)
 * `compar` is a function pointer that points to a comparator
 
-## 
+##
 
 ```text
 

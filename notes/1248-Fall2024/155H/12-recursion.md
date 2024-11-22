@@ -64,6 +64,64 @@ $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, \ldots$$
   * We pay for the recursion and compute the value, but then
   * *store* the value for future use
 
+```c
+/**
+ * Demonstration code template.
+ *
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+#include <stdbool.h>
+#include <string.h>
+
+long fibonacci(int n, long *values) {
+    if(n < 1) {
+        return -1;
+    } else if(n == 1 || n == 2) {
+        return 1;
+    } else {
+        if(values[n] != -1) {
+            //already computed, just use it:
+            return values[n];
+        } else {
+            //not yet computed, pay for it...
+            long x = fibonacci(n-1, values) + fibonacci(n-2, values);
+            //cache it:
+            values[n] = x;
+            //return it:
+            return x;
+        }
+    }
+}
+
+
+int main(int argc, char **argv) {
+
+    int n = atoi(argv[1]);
+
+    long *values = (long *) malloc( sizeof(long) * (n + 1) );
+    //initialize all the values with a flag value to indicate "not computed"
+    for(int i=0; i<n+1; i++) {
+        values[i] = -1;
+    }
+    //initialize the base cases:
+    values[1] = 1;
+    values[2] = 1;
+
+    long result = fibonacci(n, values);
+    printf("fib(%d) = %ld\n", n, result);
+
+    char foo[10];
+    int x = snprintf(foo, 10, "Hello World how are you?");
+    printf("%d\n", x);
+
+    return 0;
+}
+
+```
+
 ```text
 
 
