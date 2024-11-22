@@ -29,7 +29,7 @@ playlist below.
 
 ## Textbook
 
-We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/44fb9b39be3221dc02c1b5d0712f9b9f03260e46/ComputerScienceOne.pdf)
+We use my free and open source textbook, [Computer Science I](https://bitbucket.org/chrisbourke/computersciencei/raw/5a04789d5f54b9f8df9f27e7087e4b33b237275f/ComputerScienceOne.pdf)
 which covers C, Java, and even [PHP](http://phpsadness.com/); complete source
 is hosted on [Bitbucket](https://bitbucket.org/chrisbourke/computersciencei).
 
