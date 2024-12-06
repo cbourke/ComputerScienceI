@@ -1,0 +1,136 @@
+Airports (original):
+==============================
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+
+Airports By GPS ID:
+==============================
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+
+Airports By Type:
+==============================
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+
+Airports By Name:
+==============================
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+
+Airports By Name - Reversed:
+==============================
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+
+Airports By Country/City:
+==============================
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+
+Airports By Latitude:
+==============================
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+
+Airports By Longitude:
+==============================
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+
+Airports By Distance from Lincoln:
+==============================
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+03LA     heliport        Damien Heliport         30.20   -91.13   25 Carville        US
+UT29     small_airport   Jack's Airport          41.73  -112.19 4440 Tremonton       US
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+SK-452   smaller         El Milagro Airport       3.85   -76.34 3082 Buga            CO
+EC-0019  smallest        Santa Rosa              -2.21   -77.57    0 None            EC
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US
+ULKK     medium_airport  Kotlas Airport          61.24    46.70  184 Kotlas          RU
+LDSM     seaplane_base   Lumbarda Seaplane       42.92    17.17    1 Lumbarda        HR
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+
+Closest Airport to Lincoln:
+==============================
+80IS     very small      Martin Airport          39.42   -90.59  425 Hillview        US
+
+Furthest Airport from Lincoln:
+==============================
+SDPM     helipad         Palcio                 -23.60   -46.71 2600 So Paulo        BR
+
+East-West Geographic Center:
+==============================
+3NY0     smallish        The Ranch Airport       42.83   -74.40 1110 Charleston      US
+
+New York, NY airport:
+==============================
+No New York airport found!
+
+Large airport:
+==============================
+VLAP     large_airport   Large Marge Airport     53.63     9.99   53 Chicago         US

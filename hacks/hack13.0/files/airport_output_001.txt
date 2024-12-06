@@ -1,0 +1,136 @@
+Airports (original):
+==============================
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+
+Airports By GPS ID:
+==============================
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+
+Airports By Type:
+==============================
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+
+Airports By Name:
+==============================
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+
+Airports By Name - Reversed:
+==============================
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+
+Airports By Country/City:
+==============================
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+
+Airports By Latitude:
+==============================
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+
+Airports By Longitude:
+==============================
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+
+Airports By Distance from Lincoln:
+==============================
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+99KS     tiny            Elm Creek               37.41   -98.65 1600 Medicine Lodge  US
+CHI0     huge            O'Hare                  41.97   -87.91  125 Chicago         US
+9TX0     heliport        Houston Police          29.66   -95.32   40 Houston         US
+YYZA     medium          Pearson                 43.60   -79.60   25 Toronto         CN
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+26MA     tiny_airport    Pepperell Airport       42.70   -71.55  176 Pepperell       US
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+
+Closest Airport to Lincoln:
+==============================
+OMA1     normal          Eppley Airfield         41.30   -95.89  150 Omaha           US
+
+Furthest Airport from Lincoln:
+==============================
+YACS     small_airport   Acacia Downs           -31.42   141.90    0 None            AU
+
+East-West Geographic Center:
+==============================
+KIXA     one_strip       Halifax-Northampton     36.33   -77.64  145 Roanoke Rapids  US
+
+New York, NY airport:
+==============================
+NYNY     intl            LaGuardia               40.78   -73.87   50 New York        US
+
+Large airport:
+==============================
+EDDH     large_airport   Hamburg Airport         53.63     9.99   53 Hamburg         DE

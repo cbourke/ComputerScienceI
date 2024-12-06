@@ -1,0 +1,136 @@
+Airports (original):
+==============================
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+
+Airports By GPS ID:
+==============================
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+
+Airports By Type:
+==============================
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+
+Airports By Name:
+==============================
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+
+Airports By Name - Reversed:
+==============================
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+
+Airports By Country/City:
+==============================
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+
+Airports By Latitude:
+==============================
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+
+Airports By Longitude:
+==============================
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+
+Airports By Distance from Lincoln:
+==============================
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+CYOH     medium          Oxford House Airport    54.93   -95.28  663 Oxford House    CA
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+SLIY     small_airport   Intiraymi Airport      -17.81   -67.44 1246 La Joya         BO
+FR-0045  helipad         Le Port Heliport        47.98     3.39  254 Joigny          FR
+UHK1     smallest        Blagodatnoye Base       48.41   135.41    0 Blagodatnoye    RU
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+NGAB     tiny            Abaiang Airport          1.80   173.04    0 Abaiang         KI
+KR-0515  heli            Cheonmi-ri South        38.25   127.87    0 Cheonmi-ri      KR
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+
+Closest Airport to Lincoln:
+==============================
+KGGW     mediumish       Wokal Field             48.21  -106.61 2296 Glasgow         US
+
+Furthest Airport from Lincoln:
+==============================
+RK6M     heliport        H 173 Heliport          37.91   126.88 1552 Camp Ethan      KR
+
+East-West Geographic Center:
+==============================
+LGSR     smaller         Santorini Airport       36.40    25.48  127 Santorini       GR
+
+New York, NY airport:
+==============================
+NYNY     intl            JFK                     40.78   -73.87   50 New York        US
+
+Large airport:
+==============================
+No large airport found!
