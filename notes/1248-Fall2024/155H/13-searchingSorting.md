@@ -47,8 +47,25 @@
 * Problem: it doesn't know what those "things" are or *how* to compare them
 * To compare, you provide the search/sort function with a *comparator*
 
-### C
+## Misc
 
+### Sorting Stability
+
+* A sorting algorithm is *stable* if it never transposes/swaps otherwise equal elements from their original ordering
+* Ex:
+  $$10, 3_a, 4, 3_b$$
+* A stable sorting algorithm would result in:
+  $$3_a, 3_b, 4, 10$$
+* An *unstable* sorting algorithm may result in :
+  $$3_b, 3_a, 4, 10$$
+* Generally any unstable algorithm can be made stable (with additional work) or some algorithms are just natrually stable
+
+## Artificial Ordering
+
+* Often you don't want the "natural ordering"
+* Ex: strings may not be in the actual order that you want (Freshman, Junior, Senior, Sophomore)
+* Instead: you want an *artificial* ordering
+* Solution: use built-in enumerated types (naturally ordered) both languages!
 
 ### Demo Code
 

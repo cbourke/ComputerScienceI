@@ -88,6 +88,38 @@ void qsort(void *base,
 
 * Let's write more comparators for our Book demonstration
 
+### Misc
+
+#### Stability
+
+* A sorting algorithm is *stable* if it never transposes (swaps) two elements that are equal from teh original ordering
+* Ex:
+  $$10, 3_a, 4, 3_b$$
+* A stable sorting algorithm would result in:
+  $$3_a, 3_b, 4, 10$$
+* An unstable sorting algorithm may produce:
+  $$3_b, 3_a, 4, 10$$
+* Generally any unstable sorting algorithm can be made stable: by doing more work
+* Alternatively: you always use some *universally unique* tie breaker
+* Quick Sort: unstable
+* Selection: unstable
+
+#### Natural vs Artificial orderings
+
+* Consider sorting students by "year": `"Freshman", "Sophomore", "Junior", "Senior"` (artificial ordering)
+* But if you sorted them as strings: `"Freshman", "Junior", "Senior", "Sophomore"` ("natural" ordering due to lexicographic ordering)
+* Solution: surrogate key:
+
+```c
+typedef enum {
+  FRESHMAN,
+  SOPHOMORE,
+  JUNIOR,
+  SENIOR
+} Year;
+
+```
+
 ### Demo Code
 
 ```c
