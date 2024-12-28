@@ -103,12 +103,19 @@ following reports which should all be output to the standard output.
     demonstrates your reports with an array that contains at least 5
     airports. Name this file `airportReport.c` and hand it in.
 
+-   We have provided 3 additional test cases (as CSV and `.c` files) used
+    by the grader along with expected output.  The expectation is that
+    your own testing should be substantial and rigorous enough that it
+    passes all tests, but these have been provided as additional examples.
+    You can use an online diff tool (ex: https://www.diffchecker.com/) to
+    highlight differences in your output and the expected output.
+
 -   To facilitate grading, formatting your output will have to be done
     in a very specific way.  First, we've provided an outline of the
     `generateReports()` function that you should follow (see `airport.c`).
     Second, when you format and/or print out a single airport it should
     be on *one line* and you should print out each piece of data in order.
-    Some examples:
+    Code has been provided for this formatting.
 
     ```text
     OMA   normal          Eppley Airfield      41.30 -95.89 150 Omaha      US
