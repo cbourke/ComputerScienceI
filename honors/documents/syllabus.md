@@ -1,6 +1,6 @@
 # Computer Science I - Honors
 
-### CSCE 155H - Syllabus - Fall 2024
+### CSCE 155H - Syllabus - Fall 2025
  [School of Computing](https://computing.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
@@ -175,11 +175,11 @@ with the following point distributions.
 |  -------------------|--------|-------------|-------|
 |  Starter Points     |        |             |     25|
 |  PDC Module/Surveys |        |             |     70|
-|  Labs               |      12|           15|    180|
-|  Hacks              |      25|           25|    625|
+|  Labs               |      13|           15|    195|
+|  Hacks              |      26|           25|    650|
 |  Exams              |       2|           75|    150|
 |  Final              |       1|          150|    150|
-|  Total              |        |             |  1,200|
+|  Total              |        |             |  1,240|
 
 
 ### Starter Points

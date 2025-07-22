@@ -1,6 +1,6 @@
 # Computer Science I
 
-### CSCE 155E - Syllabus - Fall 2024
+### CSCE 155E - Syllabus - Fall 2025
  [School of Computing](https://computing.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
@@ -120,12 +120,12 @@ with the following point distributions.
 |  Starter Points     |        |             |     30|
 |  PDC Module/Surveys |        |             |     70|
 |  Readings (zyBooks) |      13|           15|    195|
-|  Labs               |      12|           15|    180|
-|  Hacks              |      13|           25|    325|
-|  Attendace          |      13|           10|    130|
+|  Labs               |      13|           15|    195|
+|  Hacks              |      14|           25|    350|
+|  Attendace          |      14|           10|    140|
 |  Exams              |       2|           75|    150|
 |  Final              |       1|          150|    150|
-|  Total              |        |             |  1,230|
+|  Total              |        |             |  1,280|
 
 
 ### Starter Points
@@ -376,12 +376,6 @@ and other students can also answer each other's questions (again you may
 choose to remain anonymous or identify yourself to the instructors or
 everyone). You may still email the instructor or TAs, but more than
 likely you will be redirected to this message board for help.
-
-In addition, there are two anonymous suggestion boxes that you may use
-to voice your concerns about any problems in the course if you do not
-wish to be identified. My personal box is available on the course
-webpage. The department also maintains an anonymous suggestion box
-available at <https://computing.unl.edu/anonymous-department-feedback-form>.
 
 ### Learning Assistant Program (LAP)
 
