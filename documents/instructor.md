@@ -29,18 +29,18 @@
 
 * Codepost Setup
   * Copy, update course, set time zone
-  * Copy Assignments
-    * Clone
-    * Update due date/time
-    * Update/fix file name requirements
-    * Initialize container/tests
   * Setup scripts (keys, NUIDs)
   * Import roster
   * Send notification
+  * Copy Assignments
+  * Assignment Copy Checklist:
+    1. Copy from previous semester
+    2. Edit: name, required files, due dates
+    3. Update tests/build VM
 
 * Forum Setup (campuswire)
   * Create course
-  * Setup categories
+  * Setup categories (General, Logistics, Lab, Hack, Retrospective)
   * Import LAs
   * TA welcome message
   * Import students
