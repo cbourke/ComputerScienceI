@@ -48,8 +48,16 @@ is hosted on [Bitbucket](https://bitbucket.org/chrisbourke/computersciencei).
 - Lab 11.0 - Structures https://github.com/cbourke/CSCE155-C-Lab11
 - Lab 12.0 - Recursion https://github.com/cbourke/CSCE155-C-Lab12
 - Lab 13.0 - Searching & Sorting https://github.com/cbourke/CSCE155-C-Lab13
+- AI Lab - https://github.com/cbourke/CSCE155-C-Lab-AI
+
+<details>
+
+<summary>Archived Labs</summary>
+
 - Lab 14.0 - Graphical User Interfaces https://github.com/cbourke/CSCE155-C-Lab14
 - Lab 15.0 - Databases https://github.com/cbourke/CSCE155-C-Lab15
+
+</details>
 
 ## Course Offerings
 
