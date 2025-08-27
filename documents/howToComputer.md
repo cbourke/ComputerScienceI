@@ -19,9 +19,18 @@ Instead, take a screenshot of your computer.
 
 # Files & Folders
 
-# File Extensions
+## File Extensions
 
 * [How to make Windows show file extensions](https://www.howtogeek.com/205086/beginner-how-to-make-windows-show-file-extensions/)
+
+## Showing "Hidden" Files
+
+Sometimes files are "hidden" from users assuming that the user would do more
+damage than good if they saw them.  However, Computer Scientists are not average
+users and sometimes *need* to see hidden files.  To make it so you can see them:
+
+* Windows: See <https://www.howtogeek.com/446/show-hidden-files-and-folders-in-windows/>
+* Mac: in any finder use `shift + command + .`
 
 # Quick Keys
 
