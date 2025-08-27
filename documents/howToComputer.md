@@ -31,6 +31,7 @@ users and sometimes *need* to see hidden files.  To make it so you can see them:
 
 * Windows: See <https://www.howtogeek.com/446/show-hidden-files-and-folders-in-windows/>
 * Mac: in any finder use `shift + command + .`
+* Eclipse IDE: `Package Explorer -> View Menu -> Filters -> uncheck .* resources`
 
 # Quick Keys
 
