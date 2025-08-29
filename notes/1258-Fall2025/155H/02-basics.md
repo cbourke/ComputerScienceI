@@ -75,10 +75,127 @@ An overview of basics of C and Java including variables, input and output.
   $$-2^{31} \ldots 2^{31}-1$$
   * `double` is a 64-bit IEEE 754 floating point number
   * You can represent decimal numbers with about 17 digits of accuracy
+  * `char` is a single character; in C: it is an ASCII text value, in Java: it is a full Unicode value
 
+### Best Practices
+
+* Follow a consistent naming convention
+* Recommendation: `lowerCamelCasing` for all variables (both languages)
+* Others:
+  * `lower_underscore_casing` (old-school C)
+  * `UPPER_UNDERSCORE_CASING` (constants)
+  * `UpperCamelCasing` (Java class names)
+* Be *descriptive*:
+  * Bad variable names: `foo`, `bar`, `baz`, `a, b, c`, `variable1, variable02`, etc.
+  * Good Variable names: `numberOfStudents, miles, kilometers`
+  * Generally avoid abbreviations unless the context means that the variable name is well-understood
+* Whitespace: use consistent whitespacing
+  * Use `astyle` for C to fix stuff
+  * Use `shift + command + f` (mac) for Eclipse
+  * Windows: `shift + alt + f`
+
+## Operators
+
+* Arithmetic operators: `+, -, *, /` (addition, subtraction, multiplication, division)
+* PEMDAS = Parentheses, Exponent, Multiplication Division, Addition Subtraction
+* Example:
+  $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$
+
+```c
+double root1 = (-b + sqrt( b * b - 4 * a * c)) / (2 * a)
+double root2 = (-b - sqrt( b * b - 4 * a * c)) / (2 * a)
+```
+
+* Invalid opeartions: $\sqrt{-1} = i$ but in code... it is "not a number" or `NaN`
+* `1 / 0` infinity `inf`, `-inf`
+* Remainder you can get the remainder after integer division using `%` (read it as: mod or modulo)
+  * `10 % 3` results in 1
+  * `10 % 2` results in 0
+  * `10 % 4` results in 2
+* Trick: how can you tell if a number is even? `a % 2` would either be zero (even), or one (odd)
+
+### Default Values
+
+```c
+int a;
+```
+
+* C standard: there are NO default values, it could be anything; likely zero, a random number, `0xDEADBEEF`
+* It is best practice to *initialize* your variables
+
+```c
+int a = 0;
+```
+
+* In Java: uninitialized values are *not allowed*
+* In Java: class values may have a `null` default value in the context of a class (but NOT local variables)
+
+### Pitfall: Truncation
+
+```c
+int x = 10;
+int y = 20;
+double z = x / y;
+```
+
+* The result of integer `* + - /` must be an integer, so the fractional part is chopped off and thrown away
+* Sometimes you DO want to preserve the fractional part
+* Solution: typecast!
+
+```c
+int x = 10;
+int y = 20;
+double z = x / (double) y;
+```
+
+## Input/Output (I/O)
+
+### C
+
+* Output in C is done with `printf` (f = formatted)
+* You can provide a "formatted" string and it will print to the standard output
+* For both language: you can use *placeholders*: they indicate the type of variable to be formatted
+  * `%f` is for floating point numbers (`double`)
+  * `%d` is for integers (`int`)
+  * `%c` for `char` values
+* THe default for floating point numbers is to print 6 decimals of accuracy
+* Alternatively: you can use *modifiers* to print more/less
+  * Format: `%X.Yf` where
+  * `X` is the minimum number of columns (including the decimal)
+  * `Y` is the number of digits of accuracy
+  * Both are optional
+
+```c
+printf("pi = %f\n", M_PI);
+printf("pi = %.2f\n", M_PI);
+printf("pi = %.7f\n", M_PI);
+printf("pi = %.16f\n", M_PI);
+printf("pi = %.100f\n", M_PI);
+printf("pi = %10.2f\n", M_PI);
+printf("pi = %20.5f\n", M_PI);
+printf("pi = %-20.5fok\n", M_PI);
+```
+
+### Java
+
+* Supports `System.out.print` (no endline), `System.out.println` (adds an endline), `System.out.printf`
+
+## Standard Input
+
+* The standard input is your keyboard: interactive input
+
+### C
+
+* You can use `scanf` to scan the standard input
 
 
 ```text
+
+
+
+
+
+
 
 
 
