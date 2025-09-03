@@ -189,9 +189,61 @@ printf("Hello \t a = %d, b = %f, my initial is %c\n", a, b, initial);
 * Standard input is used with *interactive* programs
 * You use `scanf` to scan the standard input (keyboard) for user-provided input
 * Very limited, very brittle
-* WIth `scanf` you use the same placeholders except for `double` values: you use `%lf`instead of `%f`
-* WHen using `scanf` always remember the ampersand `&` in front of the variable (magic for now)
+* With `scanf` you use the same placeholders except for `double` values: you use `%lf`instead of `%f`
+* When using `scanf` always remember the ampersand `&` in front of the variable (magic for now)
 
+### Non-interactive Input
+
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments* (CLAs)
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * THere are actually 4 arguments: the first argument is always the executable file name `./a.out`
+  * Remember in the `main`: `argc`, `argv`
+  * `argc` is the number (**c**ount of) **arg**uments
+  * `argv` is (an array) of the arguments (v = vector)
+  * The first argument (executable file name) is always `argv[0]`
+  * The second argument (first provided by the user) is `argv[1]`
+  * `argv[2], argv[3]`, etc.
+* Processing CLAs
+  * CLAs themselves are *strings* (more on that later)
+  * For now, we'll want to convert them to `int` and `double`s
+  * You can convert an argument to an integer: `atoi`
+  * To convert an argument to a `double`: `atof`
+
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2025/08/27
+ *
+ * This program converts miles to kilometers
+ */
+#include <stdlib.h>
+#include <stdio.h>
+
+#define KMS_PER_MILE 1.60934
+
+int main(int argc, char **argv) {
+
+    double miles, kms;
+
+    if(argc != 2) {
+        printf("Please include a number next time.\n");
+        exit(1);
+    }
+
+    // printf("Please enter miles: ");
+    // scanf("%lf", &miles);
+
+    miles = atof(argv[1]);
+
+    kms = KMS_PER_MILE * miles;
+
+    printf("%f miles is equal to %f kilometers\n", miles, kms);
+
+
+    return 0;
+}
+```
 
 ```text
 

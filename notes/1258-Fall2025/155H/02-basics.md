@@ -187,7 +187,92 @@ printf("pi = %-20.5fok\n", M_PI);
 ### C
 
 * You can use `scanf` to scan the standard input
+* Mostly the same placeholders:
+  * `int`: `%d`
+  * `char`: `%c`
+  * Exception: `double`: `%lf`
+* Generally only read one value at a time
+* For now: remember the ampersand: `&` must be included (magic for now)
 
+### Java
+
+* You have a `Scanner` class
+* You can direct it to read from the standard input: `System.in`
+
+```java
+Scanner s = new Scanner(System.in);
+int a;
+
+System.out.println("Enter a value: ");
+a = s.nextInt();
+
+System.out.println("You entered: " + a);
+
+System.out.println("Enter another value: ");
+double b = s.nextDouble();
+System.out.println("You entered: " + b);
+```
+
+## Non-interactive input
+
+* Interactive input (using `scanf`) makes the program pause and wait for the user to enter in their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments* (CLAs)
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * Each is separated by spaces
+  * IN C: the first argument is always the executable file name, but in Java: the first argument is the first *user* provided argument
+  * You can access them:
+    * THe first: `argv[0]`
+    * Second: `argv[1]`
+    * Third: `argv[2]`
+    * `argc` standard for argument **c**ount
+  * THe inputs are all strings, so you need to convert them if they are numbers:
+    * `atoi` (for `int`s)
+    * `atof` (for `double`s)
+* Java:
+  * Again, the first argument is NOT the executable file because that's the class name!
+  * To access values: `args[0], args[1], args[2]`
+  * To convert: `Integer.parseInt()`, `Double.parseDouble()`
+  * To define CLAs, go to the play button drop down and then to the "arguments" tab to set them (in Eclipse)
+
+```java
+package unl.soc;
+
+import java.util.Scanner;
+
+/**
+ * Chris Bourke
+ * 2025-08-25
+ *
+ * Prints out hello world to the standard output.
+ */
+public class HelloWorld {
+
+	public static void main(String[] args) {
+
+		final double KMS_PER_MILE = 1.60934;
+
+	    double miles, kms;
+
+	    if(args.length != 1) {
+	        //bad input!
+	    	System.out.printf("Include miles in your arguments!\n");
+	    	System.exit(1);
+	    }
+
+	    miles = Double.parseDouble(args[0]);
+
+	    kms = KMS_PER_MILE * miles;
+
+	    System.out.printf("%f miles is equal to %f kilometers\n", miles, kms);
+
+
+
+
+	}
+
+}
+```
 
 ```text
 
