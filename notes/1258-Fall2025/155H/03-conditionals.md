@@ -76,6 +76,151 @@ printf("Done\n");
   * Instead: you use an `int` as a placeholder
   * A value of `0` is "false"
   * A value OTHER than `0` is "true": `1, 1.5, -10, 20`
+  * KISS: use the `stdbool.h` library
+
+```c
+int isFreshman = true;
+
+if(isFreshman) {
+    printf("You get free tickets!\n");
+} else {
+    printf("pay full price\n");
+}
+```
+
+* In Java you have a true `boolean` variable that can only every be `true` or `false`
+
+```java
+boolean isFreshman = true;
+
+if(isFreshman) {
+  System.out.printf("You get free tickets!\n");
+} else {
+  System.out.printf("pay full price\n");
+}
+```
+
+## Logical Operators
+
+* You can combine multiple statements to form more complex statements using "and" and "or"
+* You can use the logical "and" operator:
+  * `&&`
+  * Ex: `a && b` where a, b are boolean statements
+  * It evaluates to true if and only if *both* a and b are both true
+  * It evaluates to false if `a` is false, or if `b` is false or if they are *both* false
+* You can use the logical *or* operator which is true if at least ONE of its operands is true
+  * `||`
+  * Ex: `a || b` is true if `a` is true or if `b` is true or if *both* are true!
+* Careful: again, you can use negation operator on any expression or variable
+  * Ex: `!(a && b)` can be rewritten as `(!a || !b)`
+  * `!(isStudent && isFreshman)` or: `(!isStudent || !isFreshman)`
+
+### Order of Precedence
+
+* Generally the operators are evaluated left-to-right
+* Order: `!, &&, ||`
+
+```java
+boolean a = true;
+boolean b = false;
+boolean c = false;
+
+if(a || b && c) {
+  System.out.println("True");
+} else {
+  System.out.println("False");
+}
+
+if( (a || b) && c) {
+  System.out.println("True");
+} else {
+  System.out.println("False");
+}
+```
+
+### Short Circuiting
+
+* Consider the logical and: `a && b`
+  * If `a` is false, does it matter what `b` is?
+  * No, the expression is always going to be false
+  * Consequently, `b` is not evaluated or looked at
+  * Efficiency: you know the entire thing is false and so you skip some operations to save time!
+* Common idiom is used in "every" programming language
+
+```java
+Integer x = null;
+if(x != null && x == 20) {
+  int y = x + 10;
+}
+
+```
+
+* Consider the logical or: `a || b`
+  * If `a` is true, does it matter what `b` is?
+  * Consequently: `b` does not get evaluated
+
+## Pitfalls or Common Mistakes
+
+* Consider the following C code:
+
+```c
+int a = 5;
+if(0 <= a <= 10) {
+  printf("foo\n");
+}
+```
+
+* The above code (in C) compiles and runs but does not give you the *intended* results
+* In Java: does not compile!
+* Solution:
+
+```c
+if(0 <= a && a <= 10) {
+    printf("bar\n");
+}
+```
+
+* Consider the following code:
+
+```c
+//C:
+int a = 5;
+
+if(a = 10) { ... }
+```
+
+* Don't confuse the assignment operator `=` with the equality operator: `==`
+* In Java: compiler error!
+
+* Consider the following code:
+
+```c
+if(a == 10); {
+  printf("a is 10!\n");
+}
+```
+
+* The above will compile and run in *both* langauges! but not give correct results
+* THe semicolon means that the if-statement *binds* to an empty executable statement
+
+## Very Nice Tool: linter
+
+* You can avoid many programming errors by using `gcc` as a "linter"
+* Linter: a static analysis tool (static means that it checks code before it compiles)
+  * It can detect many code errors that can/should be addressed
+  * To do this you can use the `-Wall` flag (**W**arnings: **all** of them)
+
+## Exercise:
+
+Write a program that reads a decibel level from the user
+and gives the user a description of the sound level.
+
+* 0 - 60 Quiet
+* 61 - 70 Conversational
+* 71 - 110 Loud
+* 111 - 194 Dangerous
+* < 0 or 195+
+
 
 
 ```text
