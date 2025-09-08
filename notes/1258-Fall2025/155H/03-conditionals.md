@@ -221,6 +221,99 @@ and gives the user a description of the sound level.
 * 111 - 194 Dangerous
 * < 0 or 195+
 
+```c
+#include <stdlib.h>
+#include <stdio.h>
+
+#include <stdbool.h>
+
+#include <math.h>
+
+
+/**
+ * Chris Bourke
+ * 2025-09-25
+ *
+ * Prints out hello world to the standard output.
+ */
+int main(int argc, char **argv) {
+
+    double decibel;
+
+    if(argc != 2) {
+        printf("ERROR: provide a decibel level\n");
+        exit(1);
+    }
+
+    // printf("Enter a decibel level:\n");
+    // scanf("%lf", &decibel);
+
+    decibel = atof(argv[1]);
+
+    decibel = round(decibel);
+
+    printf("A decibel level of %.2f is... ", decibel);
+
+    if(decibel < 0) {
+        printf("ERROR, decibels cannot be negative\n");
+    } else if(decibel <= 60) {
+        printf("Quiet\n");
+    } else if(decibel <= 70) {
+        printf("Conversational\n");
+    } else if(decibel <= 110) {
+        printf("Loud\n");
+    } else if(decibel <= 194){
+        printf("Dangerous\n");
+    } else {
+        printf("not defined\n");
+    }
+}
+```
+
+```java
+package unl.soc;
+
+/**
+ * Chris Bourke
+ * 2025-09-25
+ *
+ * Prints out hello world to the standard output.
+ */
+public class Decibel {
+
+	public static void main(String args[]) {
+
+	    double decibel;
+
+	    if(args.length != 1) {
+	    	System.out.printf("ERROR: provide a decibel level\n");
+	        System.exit(1);
+	    }
+
+
+	    decibel = Double.parseDouble(args[0]);
+
+	    decibel = Math.round(decibel);
+
+	    System.out.printf("A decibel level of %.2f is... ", decibel);
+
+	    if(decibel < 0) {
+	        System.out.printf("ERROR, decibels cannot be negative\n");
+	    } else if(decibel <= 60) {
+	        System.out.printf("Quiet\n");
+	    } else if(decibel <= 70) {
+	        System.out.printf("Conversational\n");
+	    } else if(decibel <= 110) {
+	        System.out.printf("Loud\n");
+	    } else if(decibel <= 194){
+	        System.out.printf("Dangerous\n");
+	    } else {
+	        System.out.printf("not defined\n");
+	    }
+	}
+
+}
+```
 
 
 ```text
