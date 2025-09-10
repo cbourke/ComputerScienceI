@@ -86,7 +86,7 @@ while(i <= 10); {
 
 * The semicolon is misplaced; it makes the loop body empty and we get caught in an infinite loop
 * Control-C kills it
-* Use the proper `-Wall` flag everytime and it will catch this kind of stuff
+* Use the proper `-Wall` flag every time and it will catch this kind of stuff
 
 * Consider the following code:
 
