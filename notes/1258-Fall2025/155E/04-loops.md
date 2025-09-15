@@ -227,6 +227,135 @@ where
      ...
 ```
 
+```c
+/**
+ * Chris Bourke
+ * 2025-08-25
+ *
+ * Prints "Hello World" to the standard output
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    if(argc != 4) {
+        printf("ERROR: enter principle annualrate and number of years\n");
+        exit(1);
+    }
+
+    double principle = atof(argv[1]);
+    double balance = principle;
+    double annualRate = atof(argv[2]);
+    int years = atoi(argv[3]);
+    int months = years * 12;
+
+    double monthlyRate = annualRate / 12;
+    double monthlyPayment = (monthlyRate * principle) / (1 - pow( (1 + monthlyRate), -months));
+    double totalInterest = 0;
+
+    monthlyPayment = round(monthlyPayment * 100) / 100;
+    printf("Monthly Payment: $%.2f\n", monthlyPayment);
+
+    printf("Month Balance Interest Principle New Balance\n");
+    for(int i=1; i<=months; i++) {
+
+        double interest = round(balance * monthlyRate * 100) / 100;
+        totalInterest += interest;
+        double monthlyPrinciple = monthlyPayment - interest;
+        double newBalance = balance - monthlyPrinciple;
+        printf("%d   $%.2f  $%.2f  $%.2f   $%.2f\n", i, balance, interest, monthlyPrinciple, newBalance);
+        balance = newBalance;
+    }
+    printf("Total interest paid: $%.2f\n", totalInterest);
+
+    return 0;
+}
+
+```
+
+```c
+/**
+ * Chris Bourke
+ * 2025-09-12
+ *
+ * Solves the classic rainfall problem,
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    double dailyRainfall = 0;
+    double totalRainfall = 0;
+    int numberOfDays = 0;
+
+    while(dailyRainfall != 99999) {
+        printf("Enter the daily rainfall: \n");
+        scanf("%lf", &dailyRainfall);
+
+        if(dailyRainfall >= 0) {
+            totalRainfall += dailyRainfall;
+            numberOfDays++;
+        }
+    }
+    totalRainfall -= 99999;
+    numberOfDays--;
+
+    if(numberOfDays == 0) {
+        printf("Average rainfall: zero (you gotta have something, man)\n");
+    } else {
+        printf("Average rainfall: %f\n", totalRainfall / numberOfDays);
+    }
+
+    return 0;
+}
+
+
+```
+
+```c
+/**
+ * Chris Bourke
+ * 2025-09-12
+ *
+ * Solves the classic rainfall problem,
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    int n = 33035917;
+    bool isPrime = true;
+
+    //for each integer d 2 up to sqrt(n):
+    for(int d=2; d<=sqrt(n); d++) {
+        if( n % d == 0 ) {
+            printf("not prime (composite) divisible by %d\n", d);
+            isPrime = false;
+            break; //break out of the for loop
+        }
+    }
+    if(isPrime) {
+        printf("is prime!\n");
+    }
+
+
+    return 0;
+}
+
+```
+
 ```text
 
 
