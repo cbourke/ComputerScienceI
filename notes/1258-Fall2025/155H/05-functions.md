@@ -60,6 +60,43 @@
 
 ## Other Issues/Items
 
+* A method or function that doesn't return anything is a `void` function
+  * YOu still *should* have a `return` statement, but you don't return anything: `return;`
+  * You can also use the return type `void` to indicate that a function doesn't return anything
+  * You can create functions with no input: you just don't use the `void` keyword, you use empty parentheses:
+    * `int foo(void)` instead prefer
+    * `int foo()`
+* Recall: that functions can only ever return ONE thing (otherwise they are not functions)
+
+## Modularity
+
+### In C
+
+* In general, similar functions are organized into *modules* or "libraries"
+* Why?  Organization, you only need to bring in particular libraries when you need them
+* Libraries or "headers" (in C) should be *small*
+* Code reuse: you can publish your library code so that other people, programs, etc. can use them!
+* Demonstration:
+  * Separate protoypes into header files: `.h` (files)
+  * separate definitions into source files: `.c`
+  * Compile them together: `gcc -c library.c`
+  * You can include them in a source file using `#include "library.h"`
+  * Compile all togheter to create an executable file: `gcc library.o main.c -lm -Wall`
+
+### Java
+
+* Collections of methods are separated into "utility" classes
+* Classes are organized into packages: `unl.soc`
+
+## Unit Testing
+
+* A *unit* is a piece of code (usually a function) that can be tested
+* A unit is an indivisible piece of code that is treated as a "black box": you want to test things in isolation
+* A unit test is an input-output pair that is known to be correct
+* We unit test by feeding the input into our unit (function) and comparing the result to the *known correct* output: actual vs the expected
+  * If they "match" then it "passes"
+  * If they do not match then it "fails"
+
 
 ```text
 
