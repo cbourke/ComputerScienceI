@@ -96,7 +96,62 @@
 * We unit test by feeding the input into our unit (function) and comparing the result to the *known correct* output: actual vs the expected
   * If they "match" then it "passes"
   * If they do not match then it "fails"
+* Grouping multiple unit tests into one collection gives you a *test suite*
+* If a future bug is reported: you have a new test case!
+* And so we can integrate it into our test suite and start *debugging*
+* Having automated test suites allows us to fix the code and test for *regressions*
+* Tests should be repeatable
+* The more tests you have the higher *certainty* you have that your code is correct
+* No amount of tests will ever give you a 100% *proof* that your code is correct
+* The more test cases you have the better *code coverage* you have
+  * Good code coverage should be a goal (100%)
+  * You want to test corner cases
+  * Edge cases, extremal cases
+  * Randomized Test (chaos testing) or "fuzzing"
+* Problems:
+  * Lack of code coverage
+  * A *false positive*: when the test case is wrong but hte code is correct
+  * A *false negative* is when there is a bug in your program, but your tests do not indicate it
+* TDD = Test Driven Development
+  * You write all tests before you write any code
+* Testing and design, and writing code are all part of a process (cyclical)
 
+### Function Overloading
+
+* In C, to compute the absolute value you can use: `abs(), fabs(), labs(), llabs()`, etc.
+* Those function each take a different type and return a different type
+* IN C you can only have one function with one particular name
+* Names of functions in C are *unique*
+* In some langauges (Java) you can have multiple functions/methods with the same name that take different types: `Math.abs()` (3 versions all with the same name: `abs`)
+* A language that allows this allows "function overloading"
+* Java allows/supports *method overloading*: the ability to have multiple functions with the same name
+* How this works (Java):
+  * At compile time the compiler detects what type of parameter you are passing
+  * Then it uses *static dispatch* to invoke the correct function/method
+  * "static" in this context refers to *compile time*
+* C does not support function overloading, thus it needs different names for each function: you cannot have two functions with the same name
+* In C You end up either *polluting the namespace* or appending a common "tag"
+  * Once you create an `init()` function, no other function can be call that
+  * If you have multiple libraries that all define `init()` it is *very* difficult to resolve them
+  * Convention: library name + function name; ex: `gmp_init()`, `gtk_init()`
+
+## How Functions Actually Work
+
+* Programs have a *program stack* (or *call stack*)
+* Stack:  LIFO data structure
+  * LIFO: Last In First Out
+  * Push: you add something to the "top" of the stack
+  * Pop: you remove the top most thing from the stack
+* Each time a function is called, a new *stack frame* is created/pushed on top of the call stack
+  * Each stack frame keeps track of local variables and parameters
+  * Each time you return from a function, the stack frame is popped off the top
+  * Consequence: each stack frame's variables are separate (this gives us *scoping*) and cannot be accessed by other stack frames
+* In most programming languages (C, Java), variables are *passed by *value*
+  * When a function is called, *copies* of the values of the variables at the point that the function is called are passed to the function, NOT the original variables themselves
+  * Changes to the original variables are NOT effected in the calling function (original function)
+* C however, has *pass by reference* (after the exam)
+
+## C: Pointers
 
 ```text
 

@@ -83,6 +83,47 @@ An introduction to functions in C.
   * If they "match" the unit test *passes*
   * If they do not match then the unit test *fails*
 * Grouping multiple unit tests into one collection gives you a *test suite*
+* Matching criteria:
+  * For integers, an *exact* match is needed (`==`)
+  * For `double`s: it may be okay to be "close enough": within `0.00001`
+* If a future bug is reported: you have a new test case!
+* Tests should be repeatable Ie *automated*, not manually checked/tested
+* You need to *write* code to run your test cases!
+* The more test cases you have the more certainty or *assurance* you ahve that your code is correct, however...
+* No matter HOW MANY test cases you have, you will never have a *proof* that your code is correct
+* One Goal: provide 100% "code coverage"
+  * Code coverage: how much of your code is tested by your *test suite*
+  * The code that a unit test or test case tests is its *coverage*
+  * You generally want to test *edge* or *corner* or *extremal* cases
+  * Fuzzing: generate random values in an attempt to break your code
+* Problems:
+  * Lack of code coverage
+  * A *false positive* is when a test case is wrong but the code is correct
+  * A *false negative* is when there is a bug in your program but your test case(s) do not catch it: they both agree but they are both *wrong*
+* TDD = Test Driven Development
+  * Design approach: all tests are written before any code is written
+  * No testing: also bad!
+* ad-hoc testing: testing manually as we go, manually entering input/output recompile, fix, etc.
+* Informal Unit Testing: writing your own tests and boilerplate code to execute the tests and produce a summary
+
+## How Functions Work
+
+* Programs have a *program stack* or *call stack*
+* Stack: LIFO Data Structure
+  * LIFO = Last In First Out
+  * Pop: you remove the element from the "top" of the stack
+  * Push: you add an element to the top of the stack
+* Everytime a function is called a new *stack frame* is created and placed on the top of the "call stack" or "program stack"
+  * All local variables and parameters in a function are stored in that function's stack frame
+  * Each function can only "see" its own stack frame (*scoping*)
+  * This is how scoping actually works: you can have multiple variables of the same name but they exist in different stack frames
+  * Once the function is done executing and returns, its stack frame is "popped" off the top and destroyed (any variables that were inside it are GONE)
+* DEMO: Can a function "swap" to values?
+  * Normally in C, variables are *passed by value*
+  * That means: copies of the values are passed to the function NOT the variables themselves!
+  * When we swap, we are only swapping the *copies* NOT the originals
+  * Swapping inside the function has no effect on the original variables!
+  * BUT: can we modify our program so that *can* successfully swap?  Yes, but... we need pointers first
 
 ```text
 
