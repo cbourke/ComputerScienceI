@@ -151,7 +151,117 @@
   * Changes to the original variables are NOT effected in the calling function (original function)
 * C however, has *pass by reference* (after the exam)
 
-## C: Pointers
+## Review
+
+* Functions are reusable units of code
+* THey have a *signature*: the return type, name, parameters (inputs)
+* Java: for now, all methods will be `public static`
+* In C: you organize functions into *modules*
+  * Prototypes + documentation go in header files `.h`
+  * Definitions go in source files `.c`
+  * Compile the library using `-c` flag: `gcc -c utils.c` (produces `utils.o`)
+* In Java you can further organize code into packages
+
+### Formal Unit Testing
+
+* You use a library to do most of the boilerplate code for you
+* In C: many libraries, but we'll use **cmocka**
+* In Java: JUnit (5.0)
+
+## Pointers
+
+* Memory in a computer has both an *address* and *contents*
+* An address is a numerical designation of where the data is stored
+* The contents are the actual data being stored
+* Pointers in C allow you to access and manipulate memory locations and contents
+
+### Demo
+```c
+
+    //regular old variable:
+    int x = 42;
+
+    //create a *pointer variable*
+    int *p;
+    //what is p pointing to?  Could be ANYTHING
+    // - a valid memory location that doesn't belong to you
+    // - an invalid memory location
+    // - a valid memory location that *does* belong to you but you'd end up screwing up your own program
+
+    //lets make it point to a "valid" memory location:
+    // its a placeholder for an uninitialized pointer
+    p = NULL;
+
+    //null pointer checks:
+    if(p == NULL) {
+        printf("cannot access the memory location for p\n");
+    }
+
+    //lets make it point to an *acutal* memory location
+    p = &x;
+    // & in front of a regular old variable gives you the memory address of that variable
+    //LHS: a pointer = a reference = memory location = memory address
+    //RSH: & makes it into a reference
+
+    //manipulate the contents through the pointer:
+    x = 43;
+    //* in front of a pointer variable *dereferences* it and makes it into a
+    // regular old variable so you can assign it a value
+    *p = 44;
+
+    printf("x is a regular old variable with value %d\n", x);
+    printf("p is a pointer variable at memory location %p with value %d\n", p, *p);
+    printf("x is a regular old variable still, that is stored at memory location %p\n", &x);
+
+    //gotchas
+    //make it point to "memory address 42"
+    p = 42;
+    //segmentation fault:
+    //printf("p is a pointer variable at memory location %p with value %d\n", p, *p);
+
+    //very weird: make the pointer point to the memory location that stores teh main function
+    p = main;
+    printf("p is a pointer variable at memory location %p with value %d\n", p, *p);
+
+    p = 123;
+    printf("p is a pointer variable at memory location %p with value %d\n", p, *p);
+
+
+```
+
+### Review of Pointers
+
+* A pointer is a *memory address* or "reference"
+* A pointer can be declared using the star syntax: `int *p;`
+* It is best practice to initialize them to `NULL`
+* To make a pointer variable into a regular old variable: use the *dereference* operator: `*p`
+* To make a regular variable into a pointer variable: `&a`, the *referencing* operator
+* Don't make pointers point to things they shouldn't point to
+
+#### Remember
+
+* Regular old variable $\rightarrow$ pointer: `&`
+* Pointer variable $\rightarrow$ Regular old variable: `*`
+
+## Passing By Reference
+
+* Recall that passing by value means that *copies* of the variables are passed to the function.
+* Pass by reference means that *memory addresses* (ie pointers) of variables are passed to the function instead of copies
+* You can now "return" multiple values from a function
+* Simply "returning" a value by using a pass-by-reference variable means you don't have to explicitly return a value, this frees up the return type/variable
+* With that return variable, we can now do *error handling*
+
+### Java
+
+* In Java, objects `Integer, Double, String`, etc. are *technically* references
+* However, in Java, all of these types are *immutable*
+
+```java
+//in memory, two integers are created
+// the reference a is being changed
+Integer a = 10;
+a = 20;
+```
 
 ```text
 

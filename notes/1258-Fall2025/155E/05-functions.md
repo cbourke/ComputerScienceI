@@ -125,6 +125,121 @@ An introduction to functions in C.
   * Swapping inside the function has no effect on the original variables!
   * BUT: can we modify our program so that *can* successfully swap?  Yes, but... we need pointers first
 
+## Review
+
+* Functions are reusable units of code
+* They have a *signature*: the return type, name, parameters (inputs)
+* In C: you organize functions into *modules*/libraries
+  * Prototypes + documentation go in header files `.h`
+  * Definitions go in source files `.c`
+  * Compile the library using `-c` flag: `gcc -c utils.c` (produces `utils.o`)
+* Functions are perfect "units" for *unit testing*
+  * Formal unit testing (module 6): **cmocka**
+  * Build systems/DevOps: makefiles
+* Functions are *pass by value*
+  * *copies* of the parameter variable values are passed to the function
+  * Changes to the copies have no effect on the original variables
+
+## Pointers
+
+* Memory in a computer has both and *address* and *contents*
+* An address is a numerical designation of where data is stored
+* Address is also called a *reference* or *memory locations*
+* The contents are the actual data that is being stored
+
+### Demo
+
+```c
+
+    // int a = 10;
+    // int b = 20;
+
+    // printf("BEFORE: a = %d, b = %d\n", a, b);
+    // swap(a, b);
+    // printf("AFTER:  a = %d, b = %d\n", a, b);
+
+    //a is a regular old variable
+    int a = 10;
+
+    //create a *pointer* variable
+    // pointer variable is a variable represents a *memory address*
+    int *ptrA;
+
+    //at this point, however, what is ptrA pointing to!?!?!
+    // Who knows?
+    // -it could point to a valid memory location that doesn't belong to our program
+    // -it could point to a valid memory location that *does* belong to our program
+    // -it could point to an invalid memory location
+    //it is best practice to initialize memory
+
+    ptrA = NULL;
+
+    //you can do null pointer checks:
+    if(ptrA == NULL) {
+        printf("the memory is not initialized!\n");
+    }
+
+    //let's make it point to a *valid* memory location
+    // make the RHS into a pointer
+    ptrA = &a;
+
+    printf("a is regular old variable and it is stored in memory location %p and has the value %d\n", &a, a);
+    printf("ptrA is a pointer variable and points to location %p\n", ptrA);
+
+    //let's manipulate the contents of memory through a pointer
+    //A * in front of a pointer variable makes it into a regular old variable so you
+    // can set its value. * in this case is a *dereferencing* operator
+    *ptrA = 20;
+    printf("a is regular old variable and it is stored in memory location %p and has the value %d\n", &a, a);
+    printf("ptrA is a pointer variable and points to location %p\n", ptrA);
+
+    //bad things can and will happen...
+    //ex1: set a pointer value to an arbitrary location
+    //ptrA now points to: memory location 42
+    ptrA = 42;
+    //printf("ptrA is a pointer variable and now points to %p which store values %d\n", ptrA, *ptrA);
+
+    //make ptrA point to a location that *you* own but it will cause problems
+    ptrA = &a-10;
+    //change the value of whatever is stored there to 42:
+    *ptrA = 42;
+    //no seg fault, but we likely screwed up our own memory
+
+    ptrA = main;
+    //*ptrA = 1234;
+    printf("main is located at memory address %p\n", ptrA);
+
+    //other bad things: dereferencing invalid pointers
+    // results in a seg fault
+    ptrA = NULL;
+    *ptrA = 42;
+```
+
+### Review of Pointers
+
+* A pointer is a *memory address* or "reference"
+* A pointer can be declared using the star syntax: `int *p`
+* It is best practice to initialize them to `NULL`
+* To make a pointer variable into a regular old variable: use the *dereference* operator: `*p`
+* To make a regular variable into a pointer variable: `&a`, the *referencing* operator
+* Don't make pointers point to things they shouldn't point to
+
+
+#### Remember
+
+* Regular old variable $\rightarrow$ pointer: `&`
+* Pointer variable $\rightarrow$ Regular old variable: `*`
+
+## Passing By Reference
+
+* Recall that passing by value means that *copies* of the variables are passed to the function.
+* Pass by reference means that *memory addresses* (ie pointers) of variables are passed to the function instead of copies
+* Now you can manipulate the *original* values because you have access to their memory locations
+* You can now "return" multiple values from a function
+
+
+
+
 ```text
 
 
