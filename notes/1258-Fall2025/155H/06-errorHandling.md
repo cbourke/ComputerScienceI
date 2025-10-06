@@ -1,7 +1,7 @@
 
 # CSCE 155H - Computer Science I - Honors
 ## Error Handling
-### Fall 2024
+### Fall 2025
 
 * Errors can either be completely unexpected or anticipated but not normal
 * Some errors, are, by nature *fatal*; the program, in general, *should* die in some cases
@@ -29,7 +29,17 @@
 
 ### Solution to Magic Numbers: Enumerated Types
 
-* Many pieces of data have small or limited number of possible values
+* One option to avoid magic numbers: use `#define` macros
+
+```c
+#define NO_ERROR 0
+#define COMPLEX_ROOT_ERROR 1
+#define DIVIDE_BY_ZERO_ERROR 2
+#define NULL_POINTER_ERROR 3
+```
+
+* An alternate, "better" solution: use enumerated types
+* An enumeration is a list
 * Example: days of the week, months, error codes
 * In C you can use an *enumerated type* and give a predefined list of valid, human-readable values to them
 
@@ -44,28 +54,28 @@ typedef enum {
   SATURDAY,
 } DayOfWeek;
 
-...
+//later in the program...
 
-DayOfWeek today = WEDNESDAY;
+DayOfWeek today = FRIDAY;
 if(today == FRIDAY) {
   printf("get ready for the weekend!\n");
 }
 ```
 
-* Careful: the way C does this is by associating the values with integer types (starting at zero)
-* `SUNDAY = 0`, `MONDAY = 1`, ... `SATURDAY = 6`
+* Careful: this is NOT a true type in C
+* Instead: C assigns an `int` value to each (starting at zero)
+* `SUNDAY = 0`, `MONDAY = 1`, etc., `SATURDAY = 6`
 * Consequences:
 
 ```c
-DayOfWeek today = WEDNESDAY;
-today += 1; //okay, now it is Thursday
-today = SATURDAY;
-today += 1;
-
+DayOfWeek today = Friday;
+today += 1; //SATURDAY!
+today += 1; //7, an invalid value
+today = (today + 5) % 7;
 ```
 
 * Style:
-  * `CAPITAL_UNDERSCORE_CASING` for elements
+  * `UPPER_UNDERSCORE_CASING` for elements
   * `UpperCamelCasing` for the name
   * Generally whitespace doesn't matter, but it is good to put one to a line
 * Syntax:
@@ -87,7 +97,6 @@ today += 1;
   * With error codes, there is no *semantic* meaning to the code, it is just a number; even if you don't use magic numbers, they are all still just integers
   * But with exceptions, you *do* have semantic meaning: a `NullPointerException` is not the same thing as a `ArithmeticException` which is not the same thing as `InputMismatchException`
   * Often defensive programming leads to large, nested and separate error handling code and "GOTO FAIL" style errors
-
   * In Java all exceptions are a "subclass" of `Throwable` objects
     * `Error`: mainly used by the JVM and is always fatal
     * `Exception`: this is what you *do* use in your code; there are two types of exceptions:
@@ -97,40 +106,39 @@ today += 1;
 
 ```java
 
-		Integer x = null;
-		int z;
+		String input = "1234";
+		int n = 0;
+		Integer m = 10;
+
 
 		try {
-			//z = x + 10;
-			String s = "Hello world";
-			int a = Integer.parseInt(s);
-			x = 0;
-			int y = 1 / x;
-			System.out.println("Line 23");
-		} catch (ArithmeticException ae) {
-			System.err.println("You tried to divide by zero, x was zero..");
-		} catch (NullPointerException npe) {
-			x = 0;
-			z = x + 10;
-		} catch (NumberFormatException nfe) {
-			//TODO: do something else
-		} catch (Exception e) {
-//			System.err.println("Exception occurred");
-//			e.printStackTrace();
-//			System.exit(1);
+			n = Integer.parseInt(input);
+			n = n + m;
+			System.out.println("Hello");
+			Scanner s = new Scanner(new File("Nonexistantfile.txt"));
+		} catch(NumberFormatException nfe) {
+			System.err.println("error occurred! (number format bad)");
+		} catch(NullPointerException npe) {
+			//System.err.println("error occurred! (null pointer)");
+			n = n + 1;
+		} catch(Exception e) {
 			throw new RuntimeException(e);
+		} finally {
+			//anything that should happen regardless of an exception or not
+			// this block gets executed in either case
+			System.out.println("foo!");
 		}
 
-		File f = new File("/data/foo.txt");
+
+		System.out.println("okay");
+		System.out.println(n);
+
 		try {
-			Scanner s = new Scanner(f);
+			Scanner s2 = new Scanner(new File("Nonexistantfile.txt"));
 		} catch (FileNotFoundException e) {
 			throw new RuntimeException(e);
 		}
-
-		System.out.println("the rest of the program");
-
-  ```
+```
 
 ```text
 
