@@ -120,7 +120,145 @@
 * Once you are done with it, you need to clean up after yourself
 * You *should* give it back to the operating system so it can reuse it
 * To give it back to the OS: you use `free()`
-* Failure to free unused memory may result in a *memory leak*: more and more memory is allocated and never free'd until resources become scarce or not availalbe; slowing down the system.
+* Failure to free unused memory may result in a *memory leak*: more and more memory is allocated and never free'd until resources become scarce or not available; slowing down the system.
+
+* Example:
+
+```c
+int n = 1000;
+double *arr = (double *) malloc( sizeof(double) * n );
+
+//TODO: do something with arr
+
+//NOw we are done with it, so free it:
+free(arr);
+```
+
+## Pitfalls:
+
+* Once you have free'd memory it is NOT yours, you should *not* attempt to use it...
+  * It may have been given away already!
+  * Attempts to access free'd memory will result in *undefined behavior*
+  * It *MAY* result in a seg fault
+* You can only free memory once
+  * "Double Free" may cause a segfault...
+* There is **absolutely NO way** to determine the size of an array in C!!!
+  * You need to do your own "bookkeeping"
+  * Ignore stackoverflow misinformation
+
+## Arrays and Functions
+
+* You can pass arrays to functions just as you would any other pointer variable
+* When you pass an "array" to a function, you are actually passing a *pointer*
+* A pointer up to now has only ever pointed to ONE thing, now that pointer will point to an array = multiple things
+* HOWEVER: you need to do your own "bookkeeping"
+  * Any time you pass an array (pointer) to a function, you need to tell the function how *big* the array is (usually done with an integer `n`)
+  * There is NO, ABSOLUTELY NO, way to tell how big a dynamically allocated array is in C!
+* Careful: because arrays are passed by reference, the functions *can* make changes to them
+  * You can prevent this by using the `const` keyword:
+  `const int *arr`
+  * If made `const` the compiler will detect attempts to change the array and not compile
+* You can also write functions that *return* new arrays
+  * `malloc` does this
+  * Be careful: who "owns" memory?  It depends
+  * If you are done using the memory *inside* the function, the function is responsible for `free`ing it
+  * If you are *returning* the memory via a pointer to the calling function, then the calling function is responsible for `free`ing it
+* Generally: ALWAYS free up memory when you are done with it
+  * However, it is *sometimes* acceptable to ignore cleanup in the `main()` function at the end
+
+```c
+/**
+ * Chris Bourke
+ * 2025-09-12
+ *
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+
+/**
+ * Fills the given array of integers (of size n) with zeros.
+ */
+void zeroOut(int *arr, int n);
+
+/**
+ * Creates an integer array of size n and sets each value to 1.
+ */
+int * createOnesArray(int n);
+
+/**
+ * Prints the given array of n integers to the standard output
+ * in a nicely formatted manner.
+ */
+void printArray(const int *arr, int n);
+
+int main(int argc, char **argv) {
+
+    int n = 10;
+    int *arr = (int *) malloc( sizeof(int) * n );
+
+    zeroOut(arr, n);
+
+    printArray(arr, n);
+    arr[0] = 123;
+    printArray(arr, n);
+    free(arr);
+
+    int *brr = createOnesArray(n);
+    printArray(brr, n);
+    free(brr);
+
+    return 0;
+}
+
+void zeroOut(int *arr, int n) {
+
+    if(arr == NULL || n < 0) {
+        return;
+    }
+
+    for(int i=0; i<n; i++) {
+        arr[i] = 0;
+    }
+    return;
+}
+
+void printArray(const int *arr, int n){
+
+    if(arr == NULL || n < 0) {
+        return;
+    }
+
+    if(n < 1) {//not an error, but an exception *corner case*
+        printf("[]\n");
+        return;
+    }
+    printf("[");
+    for(int i=0; i<n-1; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("%d", arr[n-1]);
+    printf("]\n");
+    return;
+}
+
+int * createOnesArray(int n){
+    if(n < 0) {
+        return NULL;
+    }
+
+    int *arr = (int *) malloc( sizeof(int) * n );
+    for(int i=0; i<n; i++) {
+        arr[i] = 1;
+    }
+
+    return arr;
+}
+
+```
+
+
 
 
 ```text

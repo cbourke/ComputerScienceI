@@ -243,7 +243,7 @@
 ```
 
 ```java
-//suppose you had a list of zip codes, some repeats
+    //suppose you had a list of zip codes, some repeats
 		// you want to determine how many times a zip code appears
 		// 68508 => 20
 		Random r = new Random();

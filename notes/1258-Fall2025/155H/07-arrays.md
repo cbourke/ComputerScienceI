@@ -106,6 +106,153 @@
 
 * In Java, we're immediately going to abandon arrays
 
+## Java
+
+* Java has arrays
+* In Java: no memory management (no `malloc`, no `free`); instead you use the keyword `new`
+* You don't need to keep track of the size of an array; `arr.length`
+* Most of the syntax is the same
+* There are default values: zeros
+* Java has neat "enhanced for loops"
+
+### Better Java
+
+* Java has arrays.  They Suck.  Do not use them...
+* Once created, they cannot change: they don't grow or shrink
+* Instead in Java it is preferred to use *dynamic collections*: lists, sets, maps
+* Lists use 0-indexing
+* You can do basic CRUD = Create Retrieve Update Destroy
+* Demo
+```java
+
+		//collections are what you want in Java
+		List<Integer> numbers = new ArrayList<>();
+		//add adds the element to the *end* of the list
+		numbers.add(10);
+		numbers.add(20);
+		numbers.add(30);
+		System.out.println(numbers);
+		//add 42 at index 0:
+		numbers.add(0, 42);
+		System.out.println(numbers);
+		numbers.add(2, 123);
+		System.out.println(numbers);
+
+		//remove stuff:
+		numbers.remove(1);
+		System.out.println(numbers);
+
+		//retrieve:
+		//get the first element:
+		int first = numbers.get(0);
+		System.out.println(first);
+
+		numbers.set(1, 321);
+		System.out.println(numbers);
+
+		numbers.clear();
+		System.out.println(numbers);
+
+		//size of the list:
+		int n = numbers.size();
+
+		numbers.add(10);
+		numbers.add(20);
+		numbers.add(30);
+		numbers.add(10);
+		System.out.println(numbers);
+
+		for(int i=0; i<numbers.size(); i++) {
+			System.out.println(numbers.get(i));
+		}
+
+		for(int x : numbers) {
+			System.out.println(x);
+		}
+```
+
+* Sets: **unordered** collections of **unique** elements
+
+```java
+
+		Set<String> names = new HashSet<>();
+		names.add("Chris");
+		names.add("Craig");
+		names.add("Nico");
+
+		System.out.println(names);
+
+		//no ordering means no indices
+		//String name = names.get(0);
+		//1. convert the set to a list:
+		List<String> namesOrdered = new ArrayList<>(names);
+		String name = namesOrdered.get(0);
+
+		//2. better:
+		for(String n : names) {
+			System.out.println(n);
+		}
+
+		names.remove("Craig");
+		System.out.println(names);
+		names.add("Craig");
+		System.out.println(names);
+		names.add("Craig");
+		System.out.println(names);
+
+```
+
+#### Maps
+
+* Maps are a key-value pair mapping
+* Keys map to values
+
+```java
+
+		Map<String, Integer> nameToNuid = new HashMap<>();
+		nameToNuid.put("Chris", 35140602);
+		nameToNuid.put("Nico", 12345678);
+		nameToNuid.put("Craig", 87654321);
+		nameToNuid.put("Michael", 87654321);
+		System.out.println(nameToNuid);
+
+		Integer myNuid = nameToNuid.get("Chris");
+		System.out.println(myNuid);
+
+		Integer aNuid = nameToNuid.get("Kyle");
+		System.out.println(aNuid);
+		//better:
+		if(nameToNuid.containsKey("Kyle")) {
+			System.out.println("It does");
+		} else {
+			System.out.println("It don't");
+		}
+
+		//iteration:
+		for(String name : nameToNuid.keySet()) {
+			Integer nuid = nameToNuid.get(name);
+			System.out.println(name + " maps to " + nuid);
+		}
+		System.out.println(nameToNuid.values());
+
+		//replace via a key:
+		nameToNuid.put("Michael", 11111111);
+		nameToNuid.remove("Chris");
+		System.out.println(nameToNuid);
+
+```
+
+## Pitfalls with Arrays in C
+
+* In C **you** are responsible for managing memory and indices
+* What happens when you try to access an invalid index?
+  * Could be: stack smashing event (you are screwing up your own memory in a non-recoverable way)
+  * Could be: "undefined behavior"
+  * Could be: segmentation fault
+  * Java: `IndexOutOfBoundsException` is thrown
+* What happens when you don't clean up after yourself?
+  * You borrow memory using `malloc()` from the operating system
+  * What happens when you don't give it back?
 
 ```text
 
