@@ -253,8 +253,300 @@
 * What happens when you don't clean up after yourself?
   * You borrow memory using `malloc()` from the operating system
   * What happens when you don't give it back?
+  * This is known as a *memory leak*
+  * To prevent it, use `free()`
+  * However, use it correctly
+  * Only free once you are done using
+* **You** are responsible for memory management
+
+### Arrays & Functions
+
+* When you pass an array to a function, *you also need to pass the size of the array*
+* There is ZERO, ABSOLUTELY ZERO way to tell the size of a dynamic array
+* You can pass an array to a function
+  * You can use `const` to make it so the function cannot make changes
+* You can return an array from a function
+  * `malloc()` does it, so can we!
+
+### Shallow vs Deep Copies
+
+* A *shallow* copy is when two references (pointers) point to the same chunk of memory
+  * Changes to one affect the other
+  * There is only *one* thing in memory
+* A *deep* copy is when there are two separate arrays that have the same contents
+  * There are two distinct things in memory
+  * Changes to one do not affect the other
+* Demo: write a function to do this!
+
+
+```java
+
+	    int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23};
+	    int copy[] = Arrays.copyOf(primes, primes.length);
+	    primes[0] = 42;
+	    System.out.println(Arrays.toString(primes));
+	    System.out.println(Arrays.toString(copy));
+
+	    copy = Arrays.copyOf(primes, 5);
+	    System.out.println(Arrays.toString(copy));
+
+	    List<Integer> evens = new ArrayList<>();
+		evens.add(2);
+		evens.add(4);
+		evens.add(6);
+		evens.add(8);
+		List<Integer> evensCopy = new ArrayList<>(evens);
+		evensCopy.add(5);
+		System.out.println(evens);
+		System.out.println(evensCopy);
+```
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array (one dimensional)
+* You can have 2-D arrays with *rows* and *columns*
+  * Tables
+  * Spreadsheet
+  * Matrices
+* Yes, you can have 3D, 4D, etc. arrays, but likely there is a better solution
+* In C and Java you specify *two* indices: `table[i][j]` (row `i` and column `j`)
+* To setup memory for a 2-D array you need:
+  * An array of pointers!
+  * Each pointer will point to a row (1-D) array of integers
+
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include <math.h>
+#include <errno.h>
+
+/**
+ * Sums the given elements in the integer array (of size n).
+ */
+int sum(const int *arr, int n);
+
+/**
+ * Sums the given elements in the integer array (of size n).
+ * Returns a non-zero error code for any error.
+ */
+int sumByRef(const int *arr, int n, int *total);
+
+/**
+ * Creates an array of the given size and fills it with 1s,
+ * returns the resulting array.
+ */
+int *onesArray(int n);
+
+/**
+ * Prints the given array of n integers to the standard output.
+ */
+void printArray(int *arr, int n);
+
+/**
+ * Returns a new copy of the given array of size n with its elements
+ * reversed.
+ */
+int *reverseCopy(const int *arr, int n);
+
+/**
+ * Creates a new copy of the given array but only with even values
+ * stored in it.
+ *
+ * Ex: input: [2, 6, 3, 7, 5, 4, 6, 9] => [2, 6, 4, 6]
+ */
+int *filterOutOdds(const int *arr, int n, int *newSize);
+
+/**
+ * Creates and returns a new, deep copy of the given array of
+ * n integers
+ */
+int *deepCopy(const int *arr, int n);
+
+int main(int argc, char **argv) {
+
+    // int n = 9;
+    // int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23};
+
+    // int *b = deepCopy(primes, n);
+
+    // primes[0] = 42;
+
+    // printArray(primes, n);
+    // printArray(b, n);
+
+    // int s = sum(primes, n);
+    // printf("sum of primes is %d\n", s);
+
+    // int *ones = onesArray(n);
+    // printArray(ones, n);
+
+    // free(ones);
+
+    // int sizeOfFiltered;
+    // int *filteredPrimes = filterOutOdds(primes, n, &sizeOfFiltered);
+    // printArray(filteredPrimes, sizeOfFiltered);
+
+    int n = 3;
+    int m = 5;
+    int **table;
+    table = (int **) malloc( sizeof(int *) * n );
+    for(int i=0; i<n; i++) {
+        table[i] = (int *) malloc( sizeof(int) * m );
+    }
+    table[0][0] = 42;
+    table[n-1][m-1] = 123;
+
+    for(int i=0; i<n; i++) {
+        free(table[i]);
+    }
+    free(table);
+
+    return 0;
+
+
+}
+
+int sum(const int *arr, int n) {
+
+    if(arr == NULL || n < 0) {
+        return 0;
+    }
+
+    int total = 0;
+    for(int i=0; i<n; i++) {
+        total += arr[i];
+    }
+    return total;
+
+}
+
+int sumByRef(const int *arr, int n, int *total) {
+
+    if(arr == NULL || n < 0) {
+        return 1;
+    } else if(total == NULL) {
+        return 2;
+    }
+
+    *total = 0;
+    for(int i=0; i<n; i++) {
+        *total += arr[i];
+    }
+
+    return 0;
+
+}
+
+int *onesArray(int n) {
+
+    if(n < 0) {
+        return NULL;
+    }
+
+    int *result = (int *) malloc( sizeof(int) * n );
+    for(int i=0; i<n; i++) {
+        result[i] = 1;
+    }
+
+    return result;
+}
+
+void printArray(int *arr, int n) {
+
+
+    if(arr == NULL || n < 0) {
+        printf("null\n");
+        return;
+    }
+
+    printf("[");
+    for(int i=0; i<n-1; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("%d]\n", arr[n-1]);
+    return;
+}
+
+int *reverseCopy(const int *arr, int n) {
+
+    if(arr == NULL || n < 0) {
+        return NULL;
+    }
+
+    int *reversed = (int *) malloc( sizeof(int) * n );
+    for(int i=0; i<n; i++) {
+        reversed[i] = arr[n-i-1];
+    }
+
+    return reversed;
+}
+
+int *filterOutOdds(const int *arr, int n, int *newSize) {
+    //TODO: error handling
+
+    //create a temporary space to hold all of the number
+    //. BUT only copy over the evens
+    int j = 0;
+    int *temp = (int *) malloc( sizeof(int) * n );
+    for(int i=0; i<n; i++) {
+        if(arr[i] % 2 == 0) {
+            temp[j] = arr[i];
+            j++;
+        }
+    }
+    //now you know how big the result should be: newSize
+    *newSize = j;
+    int *result = (int *) malloc( sizeof(int) * j );
+    for(int i=0; i<j; i++) {
+        result[i] = temp[i];
+    }
+    free(temp);
+
+    return result;
+
+
+}
+
+int *deepCopy(const int *arr, int n) {
+
+    if(arr == NULL || n < 0) {
+        return NULL;
+    }
+    int *copy = (int *) malloc( sizeof(int) * n );
+    memcpy(copy, arr, sizeof(int) * n );
+    // for(int i=0; i<n; i++) {
+    //     copy[i] = arr[i];
+    // }
+
+    return copy;
+}
+```
+
+## Java multidimensional arrays
+
+* Demo:
+
+```java
+int table[][] = new int[3][5];
+for(int i=0; i<table.length; i++) {
+  for(int j=0; j<table[i].length; j++) {
+    table[i][j] = i * 10 + j;
+  }
+}
+
+for(int i=0; i<table.length; i++) {
+  System.out.println(Arrays.toString(table[i]));
+}
+```
 
 ```text
+
+
+
+
+
 
 
 

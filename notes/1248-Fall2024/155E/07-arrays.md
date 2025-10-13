@@ -156,7 +156,7 @@ free(arr);
 ## Pointers & Indices
 
 * How do arrays actually work...
-* Arrays (names of arrays) are actually pointers that points to the *beginning* of a memory location that holds a bunch of elements in a continguous fashion
+* Arrays (names of arrays) are actually pointers that points to the *beginning* of a memory location that holds a bunch of elements in a contiguous manner
 * Arrays are nothing more than the memory address of the first element in the array
 * This is why indexing starts at 0: zero bytes offset from the first element
 * This is also why we have to do our own bookkeeping
