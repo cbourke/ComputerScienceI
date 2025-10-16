@@ -43,7 +43,7 @@ For detail, see the general course rubric.
 For correctness:
  - Your program(s) *must* compile and run on the grader
  - 16 points for the JUnit tests: you must pass all and there should be
-   at least 115+3 = 118 total; JUnit must be used, no custom testing
+   at least 114+3 = 117 total; JUnit must be used, no custom testing
    - 4 points for writing 3 of your own test methods (you must use JUnit)
    - 12 points for our tests (115 total)
 
