@@ -48,7 +48,7 @@
 
 ```
 
-## String assignments
+## String Assignments
 
 * after the initial declaration, you can manipulate individual characters in a string, BUT
 * You cannot reassign the entire contents of a string using the usual assignment operator: `=`
