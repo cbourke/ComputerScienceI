@@ -271,5 +271,5 @@ Some tips/hints:
     `backtrace full`
 
 Only hand in the 3 source files that were debugged
-(`player_utils.h`, `player_utils.c`, `ticTacToe.c`); header files, the
+(`game_utils.c`, `player_utils.c`, `ticTacToe.c`); header files, the
 `makefile` and other source files will be provided by the grader.
