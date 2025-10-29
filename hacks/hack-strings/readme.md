@@ -131,8 +131,8 @@ given signatures.
       };
       ```
 
-    - You can create an array of (pointers to) strings using the
-      following syntax:
+    - You can compare two arrays of strings you can use the following
+      function:
 
       ```c
       int stringArraysEqual(char **a, char **b, int n) {

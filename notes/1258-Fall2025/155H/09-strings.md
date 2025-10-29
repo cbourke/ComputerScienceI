@@ -142,6 +142,59 @@
 
 ## String Processing - C
 
+* Strings are important because they are often used to hold *data*
+* That data needs to be processed
+* Data formats: XML, JSON, TSV (tab-separated data), CSV = Comma Separated Values
+* CSV: Each piece of data (token) is separated by a *delimiter* (comma)
+* we need a way to separate each token and process each one separately
+* We use "tokenization" to "split" the data up into each individual token
+* In C: `strtok`
+  * `char *strtok(char *str, const char *delim);`
+  * `str` is the string you want to tokenize
+  * **observe**: it lacks the `const` keyword! `strtok` will *change* your data!
+  * `delim` is the delimiter: it can be any number of individual characters: you can "split" on commas, `","` or tabs `"\t"` or *muliple* delimiters: `":,"`
+  * It returns a pointer to the next available token
+  * It returns `NULL` when no more tokens are available
+  * You have to be careful how you call it:
+    * The first time you call it you pass in the `str` you want to tokenize
+    * Each subsequent call you pass in `NULL` as the first argument to *continue* tokenizing the same string
+
+```c
+
+    char data[] = "Chris,Bourke,School of Computing,2-5008,Schorr 105";
+    char *token = strtok(data, ",");
+
+    while(token != NULL) {
+        printf("token = %s\n", token);
+        token = strtok(NULL, ",");
+    }
+
+```
+
+* Careful: do not do anything directly with the tokens
+  * If you need to process it as a number: use `atoi`, `atof`
+  * If you need to leave a string: **make a deep copy**!!!
+
+```java
+String data = "Chris,Bourke,School of Computing,2-5008,Schorr 105";
+
+String tokens[] = data.split(",");
+System.out.println(Arrays.toString(tokens));
+```
+
+## More String Processing - C
+
+* You can treat  strings as a regular array and manipulate the contents
+* Example: write a function to convert to uppercase
+* You can use the `ctype.h` library to compute values on individual `char` values
+  * `toupper, tolower`, `isupper, islower`
+  * `isspace` is true if it is a space character: ` , \n, \t`, etc.
+
+### Byte Limited Versions  
+
+* THere are also `strncpy` and `strncat` that take a third argument: `n` and only copy over or concatenate over **at most** `n` bytes
+  * It will copy `n` bytes unless it sees the `\0` first, at which point it stops
+  * If it *doesnt'* see the null terminator, *it will **not** copy it*!
 
 ```text
 

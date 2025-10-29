@@ -1,4 +1,4 @@
-# Hack 14.0 - Distributed Computing & Generative AI
+# Hack 14.0 - Distributed Computing & Vibe Coding
 **[School of Computing](https://computing.unl.edu/)**  
 **[College of Engineering](https://engineering.unl.edu/)**  
 **[University of Nebraska-Lincoln](https://unl.edu)**  
@@ -29,7 +29,7 @@ If you choose to form a Hack Pair, you *must*:
 ## Rubric
 
 This assignment will be graded slightly differently than previous hacks.
-First, you must submit all of the items below (see `Submission`) or no credit.
+First, you must submit all of the items below (see [Submission](#submission)) or no credit.
 If you won a game you will get 25/25.  If you were not able to win a game
 but it is clear from your submission material that you put forth a full
 effort you will get 20/25.  
@@ -160,6 +160,7 @@ You goal is to write code to win a game.  This could be:
 You can use the LLM/AI in any manner that you choose, but recall our best
 practices.  
 
+<a id="submission"></a>
 ## Submission
 
 * Submit all the code that the LLM generated and/or that you wrote.
