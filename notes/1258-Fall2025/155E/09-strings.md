@@ -176,6 +176,122 @@ char *copyStr(const char *s) {
   * `toupper(c), tolower(c)` - convert to the lower/upper equivalent
   * `isdigit(c)` - true for 0 - 9
 
+### Formatting
+
+* `printf` will format a result to the standard output
+* `sprintf` will format a result to a *string*
+
+### Byte Limited Versions
+
+* `strcpy` and `strcat` both copy/concatenate the entire string (beginning to end)
+* `strncpy` and `strncat` are *byte-limited* versions of copy/concatenate
+  * Each takes a third argument: `n` and copies/concats *at most* `n` characters/bytes
+  * If it sees the null-terminating character before `n` bytes, it stops and copies `\0` for you!
+  * However, if it does *not* see the null-terminator in the first `n` bytes, it **does not insert it for you!**
+
+```c
+
+    char name[] = "Christopher Michael Bourke";
+    char firstName[6];
+
+    strncpy(firstName, name, 5);
+    firstName[5] = '\0';
+
+    printf("hello %s\n", firstName);
+```
+
+### Substrings
+
+* A substring of a string is a part of it (may begin inside the string)
+* For example: `"Husker"` is a substring of `"Go Husker Football!!"`
+* Goal: write a function that returns a substring of a given string
+
+```c
+
+// TODO: implement these
+// char *substring(const char *str, int beginIndex);  //goes all the way to the end
+
+/**
+ * TODO: write documentation
+ */
+char *substringLength(const char *str, int beginIndex, int lengthOfSubstring);
+
+/**
+ * Returns a new substring of the given string from the beginIndex (inclusive)
+ * to the endIndex - 1 (exclusive)
+ */
+char *substring(const char *str, int beginIndex, int endIndex);
+
+int main(int argc, char **argv) {
+
+    char message[] = "Go Husker Football!!";
+    // //goal: is to isolate "Husker" as a substring
+    // char result[7];
+    // //start at index 3...8
+
+    // //message:     char *
+    // //message[3]:  char
+    // //&message[3]: char *
+    // strncpy(result, &message[3], 6);
+    // result[6] = '\0';
+
+    char *result = substring(message, 3, 9);
+
+    printf("result = %s\n", result);
+
+    char *sport = substringLength(message, 10, 8);
+    printf("sport = %s\n", sport);
+
+
+    return 0;
+}
+
+char *substring(const char *str, int beginIndex, int endIndex) {
+
+    //TODO: error handling: LOTS OF CASES!
+
+    char *result = (char *) malloc( sizeof(char) *  (endIndex - beginIndex + 1) );
+
+    strncpy(result, &str[beginIndex], (endIndex - beginIndex));
+    result[(endIndex - beginIndex)] = '\0';
+
+    return result;
+
+
+}
+
+char *substringLength(const char *str, int beginIndex, int lengthOfSubstring) {
+
+    return substring(str, beginIndex, beginIndex + lengthOfSubstring);
+
+}
+
+```
+
+## Data Processing
+
+* Data is fundamental to CS
+* Strings are important because they are used to store data
+* Often data is given in textual manner: not  necessary for humans, but in a readable format
+* MOre often data is stored in a *structured format*
+  * XML = eXtensible Markup Language
+  * JSON = JavaScript Object Notation
+  * TSV, CSV = Tab Separated Values, Comma Separated Value
+  * These are "flat file" representations
+* Basic *tokenization*: split up a string of data into separate *tokens* so we can process each
+  * Each piece of data is a token
+  * Each is separated by a *delimiter* (comma)
+* C provides a function, `strtok`
+* `char *strtok(char *str, const char *delim);`
+  * First argument: the string you want to *tokenize*
+  * Observe: `str` is *NOT* `const`!  `strtok` *will make changes* to your string!
+  * The second argument: a string of any delimiter(s) that you want to use!
+  * For us: `","`; it is also possible to use multiple: `",;: "` (we'll ignore this feature)
+  * Returns a pointer to the next token (ie you need to call this function several times to get each of the tokens)
+  * When no more tokens are available, it returns `NULL`
+  * Careful: The first time you call `strtok`, you pass in the string you want to tokenize, however, EVERY **subsequent** call, you pass in `NULL` to *continue* processing the same string
+
+
 ```text
 
 

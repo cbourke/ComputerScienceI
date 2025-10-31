@@ -196,6 +196,109 @@ System.out.println(Arrays.toString(tokens));
   * It will copy `n` bytes unless it sees the `\0` first, at which point it stops
   * If it *doesnt'* see the null terminator, *it will **not** copy it*!
 
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include <math.h>
+#include <errno.h>
+#include <ctype.h>
+
+char *deepStrCopy(const char *s);
+
+/**
+ * Returns a copy of the given string converted to all uppercase
+ */
+char *toUpperCaseCopy(const char *s);
+
+/**
+ * Returns a new string that is the *substring* of the given string
+ * from the beginIndex (inclusive) to the endIndex (exclusive)
+ *
+ * Example: ("Hello World", 6, 11) => "World"
+ *
+ */
+char * substring(const char *s, int beginIndex, int endIndex);
+
+/**
+ * TODO: documentation
+ */
+char * substringToEnd(const char *s, int beginIndex);
+
+char * substringLength(const char *s, int beginIndex, int length);
+
+int main(int argc, char **argv) {
+
+    char data[] = "Chris,Bourke,School of Computing,2-5008,Schorr 105";
+
+    char *upperCopy = toUpperCaseCopy(data);
+
+    printf("upperCopy = %s\n", upperCopy);
+
+    char name[1000];
+    strncpy(name, data, 5);
+    name[5] = '\0';
+
+    printf("Hello, %s\n", name);
+
+    //char * -> indexing -> char -> char *?
+    strncat(name, &data[6], 6);
+    name[11] = '\0';
+
+    printf("Hello, %s\n", name);
+
+    char *lastName = substring(data, 6, 12);
+    printf("lastName = \"%s\"\n", lastName);
+
+    char *lastAndRest = substringToEnd(data, 6);
+    printf("lastAndRest = \"%s\"\n", lastAndRest);
+
+    return 0;
+
+}
+
+char *deepStrCopy(const char *s) {
+   //TODO: error checking
+
+   char *copy = (char *) malloc(sizeof(char) * (strlen(s) + 1) );
+   strcpy(copy, s);
+
+   return copy;
+}
+
+
+char *toUpperCaseCopy(const char *s) {
+
+    char *result = deepStrCopy(s);
+    int i = 0;
+    while( result[i] != '\0' ) {
+        result[i] = toupper(result[i]);
+        i++;
+    }
+    return result;
+
+}
+
+char * substring(const char *s, int beginIndex, int endIndex) {
+
+    //TODO: do error handling, more than usual
+
+    char *result = (char *) malloc( sizeof(char) * (endIndex - beginIndex + 1) );
+    strncpy(result, &s[beginIndex], (endIndex - beginIndex));
+    result[(endIndex - beginIndex)] = '\0';
+
+    return result;
+
+}
+
+char * substringToEnd(const char *s, int beginIndex) {
+
+    return substring(s, beginIndex, strlen(s));
+}
+
+```
+
 ```text
 
 
