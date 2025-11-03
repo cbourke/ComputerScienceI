@@ -66,6 +66,141 @@
 * It automatically advances the pointer to the next character
 * Once it reaches the end of a file, it returns a special `EOF` character value
 
+```c
+
+    FILE *in = fopen("./file.txt", "r");
+
+    int count = 0;
+    char c = fgetc(in);
+    while(c != EOF) {
+        printf("c = %c\n", c);
+        count++;
+        c = fgetc(in);
+    }
+
+    fclose(in);
+
+    printf("read %d characters\n", count);
+```
+
+### Reading Line By Line using `fgets()`
+
+* `fgets()` gets *upto* an entire line in the file, but limits the number of characters it reads to a certain amount to avoid *buffer overflows*
+  * `char *fgets(char *s, int size, FILE *stream);`
+  * `s` is the buffer (string) that the data will be read *into*
+  * `size` is the limit: maximum number of bytes, MINUS ONE that will be read from the file: it automatically places the null-terminator `\0` in the buffer for you!
+  * `stream` is the file you are reading *from*
+  * It returns a pointer to a string: if it read a line successfully, it returns a pointer to the buffer; if it encountered an error or the *end of the file*: it returns `NULL`
+  * Note: the endline characater `\n` is read into the buffer (if it exists)!
+  * If you don't want this, you can "chomp" it out: remove trailing whitespace
+
+```c
+
+    FILE *in = fopen("./file.txt", "r");
+
+    int lineCount = 0;
+    char buffer[100];
+    char *line = fgets(buffer, 100, in);
+    buffer[strlen(buffer)-1] = '\0';
+
+    while(line != NULL) {
+        printf("line = %s\n", line);
+        lineCount++;
+        line = fgets(buffer, 100, in);
+        buffer[strlen(buffer)-1] = '\0';
+    }
+
+    fclose(in);
+
+    printf("read %d lines\n", lineCount);
+```
+
+* Honorable mentions:
+  * `rewind()`
+  * `fseek()`
+
+## File I/O in Java
+
+* Java defines a class called `File`
+
+```java
+File f = new File("file.txt");
+File f = new File("/absolute/path/to/file.txt");
+File f = new File("../../archive/file.txt");
+```
+
+* In Eclipse: everything is relative to the project folder!
+
+### File Input
+
+* Lots of ways; easiest: `Scanner`
+* The `Scanner` will remove the endline characters for you
+
+```java
+File f = new File("data/file.txt");
+Scanner s = null;
+try {
+  s = new Scanner(f);
+  int lineCount = 0;
+  while(s.hasNextLine()) {
+    String line = s.nextLine();
+    System.out.println(line);
+    lineCount++;
+  }
+  System.out.printf("Read %d lines\n", lineCount);
+} catch (FileNotFoundException e) {
+  throw new RuntimeException(e);
+} finally {
+  s.close();
+}
+```
+
+## File Output
+
+* Simplest way: `PrintWriter`
+* It allows you to use `print, println, printf` methods
+
+```java
+File f = new File("data/output.txt");
+try {
+  PrintWriter pw = new PrintWriter(f);
+  pw.print("This is a single line... ");
+  pw.println(" now this is the end.");
+  int x = 42;
+  double y = 3.5;
+  pw.printf("x = %d, y = %f\n", x, y);
+  pw.close();
+} catch (FileNotFoundException e) {
+  throw new RuntimeException(e);
+}
+```
+
+### Even Easier: Java NIO library
+
+* NIO = Non-blocking Input/Output
+* Input line-by-line or the entire contents at once
+
+```java
+Path path = Paths.get("data/file.txt");
+try {
+  //line by line:
+  List<String> contents = Files.readAllLines(path);
+  for(String line: contents) {
+    System.out.println(line);
+  }
+
+} catch (IOException e) {
+  throw new RuntimeException(e);
+}
+
+try {
+  String text = new String(Files.readAllBytes(path));
+  System.out.print(text);
+} catch (IOException e) {
+  throw new RuntimeException(e);
+}
+```
+
 
 ```text
 
