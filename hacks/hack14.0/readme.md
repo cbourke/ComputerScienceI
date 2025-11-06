@@ -95,8 +95,9 @@ to make moves.
 ### Making a Move
 
 A move will need to be communicated to the server in a similar manner.  
-You will `GET` or `POST` a request describing a move
-(as a parameter named `move`) to the following URL:
+You will `GET` or `POST` a request describing a move which will
+be passed as a parameter named `move` (make sure you direct the
+AI to do this specifically) to the following URL:
 
 <http://csce.unl.edu:8080/Battleship/Move>
 
@@ -158,21 +159,28 @@ You goal is to write code to win a game.  This could be:
 * A graphical program that allows you to click grid squares to play the game
 
 You can use the LLM/AI in any manner that you choose, but recall our best
-practices.  
+practices.  You may also need to ask the AI how install any libraries and
+how to compile if it uses them.
 
 <a id="submission"></a>
 ## Submission
 
 * Submit all the code that the LLM generated and/or that you wrote.
 * Submit a `readme.md` file that contains:
-  * The ID of your winning game and your winning score, OR
-  * If you were not able to win a game, provide an explanation of why;
+  * A writeup addressing the following (Do *NOT* use ChatGPT to
+    write this for you; we want your honest personal experience):  
+    1. What was your general experience using the LLM?  Was it fun? Was
+       it frustrating?  
+    2. What did you notice or realize when using the LLM?
+       What do you think of the power of the LLM?  What did you think
+       of its limitations?
+    3. What did you learn or conclude from using the LLM?
+    4. Going forward, how will you use LLMs (if allowed) in future
+       assignments?  In your personal projects?  In your future job?
+  * The ID of your winning game and your winning score, OR if you were
+    not able to win a game, provide an explanation of why;
     how long did you spend on this?  Where did you get stuck?  What
     did you try to get unstuck?  
-  * A a few paragraphs of your experience: was it fun?  Was it frustrating?
-    What do you think of the power of the LLM/AI?  What do you think of the
-    quality of code it produced? (Do *NOT* use ChatGPT to write this for
-    you; we want your honest personal experience).
-  * A complete sequence of the prompts you used to get a working solution.
+  * Copy/paste a complete sequence of the prompts you used to get a working solution.
     You can get ChatGPT to give this to you using the prompt
     `Give me the sequence of prompts I've given you since the start`
