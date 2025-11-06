@@ -139,7 +139,7 @@ given signatures.
 
           if(a == NULL && b == NULL) {
               return 1;
-          } else if(a == NULL && b != NULL || a != NULL && b == NULL) {
+          } else if( (a == NULL && b != NULL) || (a != NULL && b == NULL) ) {
               return 0;
           }
 
