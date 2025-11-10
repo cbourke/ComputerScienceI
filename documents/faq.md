@@ -217,3 +217,4 @@ If you are still having problems with the IDE or would like to consider backups/
   * Mac: https://www.youtube.com/watch?v=TZ6c7y8N64k
 
 * You can install VS Code on your own computer: https://code.visualstudio.com/download
+  * Windows users will require MinGW, here's a full tutorial: https://code.visualstudio.com/docs/cpp/config-mingw
