@@ -33,6 +33,18 @@
 ## Java
 
 * Java is an OOP language that uses classes for encapsulation
+  * Class names are `UpperCamelCased`
+  * *Member variables* are `lowerCamelCased`
+* Recall that Java offers **strong** encapsulation
+* Java supports "strong encapsulation": you can "protect" your variables from the outside world
+  * `public` allows *any* piece of code to change or view your variables!  Chaos!
+  * `protected` (inheritance: next semester)
+  * `private`: only the class and instances of the class can see the variable
+  * Best practice: make everything `private` unless you have a Very Good Reason
+* YOu can control access through getters/setters (but generally you prefer *immutable objects*)
+* Java allows you to define *nontrivial* methods; ex: `getAge()`
+
+
 
 
 ```text

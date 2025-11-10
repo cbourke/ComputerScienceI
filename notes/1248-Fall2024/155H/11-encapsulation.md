@@ -43,7 +43,6 @@
 * YOu can control access through getters/setters (but generally you prefer *immutable objects*)
 * Java allows you to define *nontrivial* methods; ex: `getAge()`
 
-
 ```text
 
 

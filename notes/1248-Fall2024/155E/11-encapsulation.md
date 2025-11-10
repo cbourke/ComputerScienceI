@@ -25,7 +25,7 @@
   * Generally you should document them
   * Order matters: if you use *composition* (one structure is composed of other structures) then you need to declare the used structures first
 * Usage:
-  * Once defined you can declare them: `Book b1;` or a pointer: `Book *b2;`
+  * Once defined you can declare them: `Book b1;` or a pointer: `Book *book;`
   * To access member variables of a regular-old-struture: dot operator: `b1.isbn`
   * to access member variables of a pointer-to-structure: arrow operator: `b2->isbn`
 * You can define factory functions to create new instances of your structure, returning a pointer to a *dynamically allocated* instance of the structure
