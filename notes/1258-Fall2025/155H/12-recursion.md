@@ -48,6 +48,77 @@ $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \ldots$$
 
 ## Eliminating Recursion
 
+* You can *always* use a regular old loop and data structures to "simulate" recursion
+* Another technique: tail recursion (eliminates multiple stack frames): the compiler can optimize your recursive code away and use only one stack frame
+* You can use *memoization*
+  * Go ahead and use recursion, but...
+  * You *don't* recompute previously computed values
+  * You *cache* (store) results so you can reuse them
+  * Maintain a *table* or *cache* of results (*tableau*)
+  * Initially: it will hold dummy values indicating "not yet computed"
+  * IF not computed: use recursion to compute and then *store* it back into the table
+  * Look it up: if computed already, the value will be used: pay for the recursion when we have to, but we don't pay when we don't have to
+
+```java
+package unl.soc;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Set;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+
+public class Demo {
+
+	public static Map<Integer, BigInteger> fibMap = new HashMap<>();
+
+	static {
+		fibMap.put(1, BigInteger.ONE);
+		fibMap.put(2, BigInteger.ONE);
+	}
+
+	public static BigInteger fibonacci(int n) {
+		if(n < 1) {
+			throw new RuntimeException("Fibonacci is not defined for n < 1");
+		} else if(n == 1 || n == 2) {
+			return BigInteger.ONE;			
+		} else {
+			if(fibMap.containsKey(n)) {
+				return fibMap.get(n);
+			} else {
+				BigInteger a = fibonacci(n-1);
+				BigInteger b = fibonacci(n-2);
+				BigInteger result = a.add(b);
+				fibMap.put(n, result);
+				return result;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+
+		int n = 1000;
+		BigInteger fib = fibonacci(n);
+		System.out.printf("fib(%d) = %s\n", n, fib);
+
+	}
+
+}
+```
 
 ```text
 
