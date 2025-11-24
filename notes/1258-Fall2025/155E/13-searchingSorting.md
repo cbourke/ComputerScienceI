@@ -68,6 +68,56 @@ int sorted[]   = {1, 2, 3, 4, 4, 5, 5, 8, 8};
   * Swap $i$ and the minimum element
   * Stop when $0, \ldots, n-2$ are sorted, the last element $n-1$ is automatically where it needs to be
 
+### Quick Sort
+
+* It is quick!
+* Idea: choose a pivot element (say the first element)
+* Divide and conquer algorithm: you partition around the pivot and recursively sort each sub array on each side until you reach an subarray of size of size 1 (or 0), stop
+* Partition around that element: lesser elements to the left, greater to the right
+* Analysis: omitted (beyond the scope of this course)
+* End result: quick sort makes about $n\log{n}$ comparisons
+
+## Sorting in Practice
+
+* In general, you do not need or want to write your own searching/sorting algorithms!
+  * Lots of copy-pasta for different types
+  * Lots of testing
+  * Lots of debugging, etc.
+  * Don't roll your own!
+* You use one built-in generic sorting/searching algorithm/function/method
+* However, the built-in functionality is *generic* so it doesn't know what the elements are or how to compare them.
+* You also need to define a *comparator function*
+
+### In C: Comparator Functions
+
+* A comparator function is a function that compares two ***things***, $a, b$ and returns:
+  * it returns *something* negative if a < b
+  * it returns zero if a is equal to b
+  * it returns *something* positive if a > b (b < a)
+* In C, the signature of a comparator *MUST* be:  
+  `int cmp(const void *a, const void *b)`
+* It returns an integer (following the pattern above)
+* It takes two arguments: generic void pointers
+* The `const` keyword ensures that no changes are made by the comparator function
+* Inside the function, you follow a general pattern:
+  * You cast the generic void pointers as the actual types that you are comparing
+  * You setup a if-else statement to return something negative, zero, or something positive depending on the relative ordering of your arguments
+
+### Sorting with `qsort`
+
+* Once you have a comparator function, you can use it in a call to the standard library's `qsort` function
+```c
+void qsort(void *base,
+           size_t nel,
+           size_t size,
+           int (*compar)(const void *, const void *));
+```
+
+* `base` is the array of elements you are sorting
+* `nel` number of elements: size of the array
+* `size` is the number of bytes that *each* element in the array takes; ie: `sizeof()`
+* `compar` is a function pointer to your comparator (more later); for now just know that you use the function's name
+
 ```text
 
 

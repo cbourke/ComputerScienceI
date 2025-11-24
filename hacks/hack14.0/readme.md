@@ -170,13 +170,15 @@ how to compile if it uses them.
   * A writeup addressing the following (Do *NOT* use ChatGPT to
     write this for you; we want your honest personal experience):  
     1. What was your general experience using the LLM?  Was it fun? Was
-       it frustrating?  
-    2. What did you notice or realize when using the LLM?
+       it frustrating?  What words would you use to characterize your experience?
+    2. What did you notice or realize when using the LLM?  
        What do you think of the power of the LLM?  What did you think
-       of its limitations?
-    3. What did you learn or conclude from using the LLM?
+       of its limitations?  
+    3. What did you learn or conclude from using the LLM?  
     4. Going forward, how will you use LLMs (if allowed) in future
-       assignments?  In your personal projects?  In your future job?
+       assignments?  In your personal projects?  In your future job?  
+    5. Do you feel that the code that was generated was "*your code*"?  Why
+       or why not?  
   * The ID of your winning game and your winning score, OR if you were
     not able to win a game, provide an explanation of why;
     how long did you spend on this?  Where did you get stuck?  What

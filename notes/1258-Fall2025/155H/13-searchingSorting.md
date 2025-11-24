@@ -73,9 +73,50 @@
   * Choose a "pivot" element
   * Place elements LESS than the pivot to the left, greater to the right
   * "Recurse" on the left/right "partition"
-  * until the size os $\leq 1$
+  * until the size is $\leq 1$
 * Quick sort makes (on average) $n\log{n}$ comparisons!
 
+## Sorting in Practice
+
+* In general you do NOT need to write your own searching/sorting algorithms/functions
+  * Lots of copy-pasta for different types
+  * Lots of testing
+  * Lots of debugging
+  * Don't roll your own!
+* You use one built-in generic sorting/searching algorithm/function/method
+  * C: `qsort`
+  * Java: `Collections.sort`
+* However, the built-in functionality is *generic* so it doesn't know what the elements are or how to compare them.
+* You also need to define a *comparator function*
+
+### In C: Comparator Functions
+
+* A comparator function is a function that compares two ***things***, $a, b$ and returns:
+  * it returns *something* negative if a < b
+  * it returns zero if a is equal to b
+  * it returns *something* positive if a > b (b < a)
+* In C, the signature of a comparator *MUST* be:  
+  `int cmp(const void *a, const void *b)`
+* It returns an integer (following the pattern above)
+* It takes two arguments: generic void pointers
+* The `const` keyword ensures that no changes are made by the comparator function
+* Inside the function, you follow a general pattern:
+  * You cast the generic void pointers as the actual types that you are comparing
+  * You setup a if-else statement to return something negative, zero, or something positive depending on the relative ordering of your arguments
+
+### Sorting with `qsort`
+```c
+void qsort(void *base,
+           size_t nel,
+           size_t size,
+           int (*compar)(const void *, const void *));
+```
+
+* `base` is the array of elements you are sorting
+* `nel` is the size of the array (number of elements)
+* `size` is the number of bytes each element takes: hint always use `sizeof()`
+* `compar` is a function pointer to your comparator (more later); for now just know that you use the function's name
+* Example...
 
 ```text
 
