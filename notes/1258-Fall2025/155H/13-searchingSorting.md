@@ -118,6 +118,24 @@ void qsort(void *base,
 * `compar` is a function pointer to your comparator (more later); for now just know that you use the function's name
 * Example...
 
+### Searching with `bsearch`
+
+* Its a binary search implementation
+* Signature:
+```c
+void* bsearch(const void *key,
+              const void *base,
+              size_t nel,
+              size_t size,
+              int (*comp)(const void*, const void*) );
+```
+
+* The array is now `const`: it only searches, it does not change it
+* It also takes a new first argument: `key`
+  * Generic void pointer, BUT it needs to match the type of your array (it must be the same type as the things you are searching)
+* For a successful search: it returns a pointer to *an* element that matches the key
+* For an unsuccessful search: it returns `NULL`
+
 ```text
 
 

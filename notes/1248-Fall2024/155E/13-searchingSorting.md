@@ -102,7 +102,7 @@ void qsort(void *base,
 * Generally any unstable sorting algorithm can be made stable: by doing more work
 * Alternatively: you always use some *universally unique* tie breaker
 * Quick Sort: unstable
-* Selection: unstable
+* Selection: stable: because we used `<` instead of `<=` to find the minimum
 
 #### Natural vs Artificial orderings
 
