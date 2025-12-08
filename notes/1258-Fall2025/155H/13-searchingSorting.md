@@ -136,6 +136,36 @@ void* bsearch(const void *key,
 * For a successful search: it returns a pointer to *an* element that matches the key
 * For an unsuccessful search: it returns `NULL`
 
+### Misc
+
+#### Stability
+
+* A sorting algorithm is *stable* if it never transposes (swaps) two elements that are equal from the original ordering
+* Ex:
+  $$10, 3_a, 4, 3_b$$
+* A stable sorting algorithm would result in:
+  $$3_a, 3_b, 4, 10$$
+* An unstable sorting algorithm may produce:
+  $$3_b, 3_a, 4, 10$$
+* Generally any unstable sorting algorithm can be made stable: by doing more work
+* Quick Sort: unstable
+* Selection: stable: because we used `<` instead of `<=` to find the minimum
+
+#### Natural vs Artificial orderings
+
+* Consider sorting students by "year": `"Freshman", "Sophomore", "Junior", "Senior"` (artificial ordering)
+* But if you sorted them as strings: `"Freshman", "Junior", "Senior", "Sophomore"` ("natural" ordering due to lexicographic ordering)
+```c
+typedef enum {
+  FRESHMAN,
+  SOPHOMORE,
+  JUNIOR,
+  SENIOR
+} Year;
+
+```
+
+
 ```text
 
 

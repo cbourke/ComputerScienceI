@@ -92,7 +92,7 @@ void qsort(void *base,
 
 #### Stability
 
-* A sorting algorithm is *stable* if it never transposes (swaps) two elements that are equal from teh original ordering
+* A sorting algorithm is *stable* if it never transposes (swaps) two elements that are equal from the original ordering
 * Ex:
   $$10, 3_a, 4, 3_b$$
 * A stable sorting algorithm would result in:
