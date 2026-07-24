@@ -77,13 +77,13 @@ following.
 
 ``` text
 10 days used, 20 days remaining
-Average daily use: 1.300 GB/day
+Average daily use: 1.30 GB/day
 
-You are EXCEEDING your average daily use (0.500 GB/day).
+You are EXCEEDING your average daily use (0.50 GB/day).
 Continuing this high usage, you'll exceed your data plan by
-24 GB.
+24.00 GB.
 
-To stay below your data plan, use no more than 0.100 GB/day.
+To stay below your data plan, use no more than 0.10 GB/day.
 ```
 
 If the user is under their average daily use, a different message should
@@ -91,23 +91,25 @@ be presented:
 
 ```text
 1 days used, 29 days remaining
-Average daily use: 0.000 GB/day
+Average daily use: 0.00 GB/day
 
-You are at or below your average daily use (33.333 GB/day).
-You can use up to 34.482 GB/day and stay below your data plan limit
+You are at or below your average daily use (33.33 GB/day).
+You can use up to 34.48 GB/day and stay below your data plan limit
 ```
 
 A user may have also exceeded their usage:
 
 ```text
 15 days used, 15 days remaining
-Average daily use: 8.667 GB/day
+Average daily use: 8.67 GB/day
 
 You have already met your limit for this month.  Looks like you're getting some overage charges...
 ```
 
 
 # Instructions
+
+-   All fractional values should be output to 2 decimals of accuracy.
 
 -   Design at least 3 test cases *before* you begin designing or
     implementing your program. Test cases are input-output pairs that
