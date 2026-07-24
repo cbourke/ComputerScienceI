@@ -54,7 +54,10 @@
 
 ## Resources
 
-* zyBooks linking instructions: https://zybooks.zendesk.com/hc/en-us/articles/4402955317531-How-to-link-a-zyBook-assignment-section-TOC-to-an-LMS-#h_01F9ERPSS67RTTNJ7CZWHK34QW
+* zyBooks
+  * As of fall 2026, UNL Canvas supports LTI 1.3
+  * Deep Linking instructions: https://support.zybooks.com/hc/en-us/articles/43086668413339-How-to-Link-Assignments-Using-Deep-Linking
+  * Syncing of due dates is not possible, due dates must be set in both zybooks.com and in canvas
 
 ### UNO Resources
 
