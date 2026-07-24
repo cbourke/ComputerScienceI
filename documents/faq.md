@@ -23,33 +23,10 @@ zyBooks is an online, interactive textbook used for this course.
 
 ## How do I get access?
 
-To get access, you should:
-
-1. Visit your campus book store:
- * UNL: https://www.bkstr.com/Nebraska-lincolnstore/home
- * UNO: (see below)
-2. Do ***NOT*** go directly to the zyBooks website.  Instead,
+Do ***NOT*** go directly to the zyBooks website.  Instead,
 ***be sure to go through Canvas***.  Click on **Assignments** and
-select the relevant **Module Reading**
-
-## I'm at UNO, how do I get zyBooks?
-
-For those taking the UNO offering of this course, zyBooks should be included
-through UNO's First Day Access Program which allows you to access the materials
-directly through Canvas on the first day of class.  ***You do not need to purchase
-any materials prior to starting class.***  The cost of the electronic textbook
-will be billed to your student account approximately 3 weeks after the start
-of classes. You will have the option to opt out of the First Day Access
-Program and purchase the electronic text elsewhere, but doing so will likely
-result in a greater cost.
-
-The link below has term specific opt out dates listed, these will also be
-listed in their email
-https://www.unobookstore.com/first_day_access_faq.asp
-
-You should receive an email through your UNO account with a code you
-can use to get access.  To use the code, click on any reading assignment
-in Canvas and when prompted, enter your code.
+select the relevant **Module Reading** (or click directly on the assignment
+from the main page).  
 
 ## How long do readings take?
 
