@@ -55,36 +55,6 @@ If you accessed zyBooks directly through the website and not through
 canvas, you may need to *merge* the multiple accounts you created.
 To do so see https://zybooks.zendesk.com/hc/en-us/articles/360007536553-I-already-paid-so-why-am-I-being-asked-to-subscribe-again-
 
-# codePost.io
-
-## What is codePost?
-
-codePost is a website that you submit your code through for us to grade it.  Much
-of the grading is automated.  When you submit your code several tests are
-run and you are presented with the results.  Later, graders will take a look
-at your code and grade aspects that are not automated.  Graders will also
-provide additional detailed line-by-line feedback.  
-
-## How do I get access?
-
-You can access codePost at <https://codepost.io>.  Your instructor
-will send you an invite email.  Be sure to check your spam
-folder and respond ASAP; the links expire after a few days.
-
-## I didn't get the invite or it expired, what do I do?
-
-Try going to https://codepost.io/forgot-password and resetting your password
-(even if you never initially set one).  Be sure to use your **huskers email**
-(example: `jstudent42@huskers.unl.edu`) or whatever primary email is
-associated with your canvas profile.
-
-## I'm getting a "submission is currently being reviewed" error
-
-Do a [hard refresh](https://www.howtogeek.com/672607/how-to-hard-refresh-your-web-browser-to-bypass-your-cache/)
-of your browser.  If that doesn't work, logout and log back in.  If it persists,
-contact your instructor (this may happen if someone accidentally started grading
-your submission before the due date, but this is extremely rare).
-
 # Campuswire
 
 ## What is Campuswire?
@@ -124,7 +94,7 @@ message board.
 Hacks are due (generally) Mondays at midnight. Learning Assistants have
 48 business hours to grade them and then Course Leaders take another 48
 hours to check the grading process to ensure consistency.  Grades are
-released in Canvas with comments posted to codePost (generally) on Friday
+released in Canvas with our feedback (generally) on Friday
 afternoons.  A retrospective is then posted to the course message board.
 
 ## How and when is attendance graded?
