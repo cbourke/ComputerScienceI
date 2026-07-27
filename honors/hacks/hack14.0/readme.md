@@ -15,17 +15,15 @@ allowed. However, you may discuss the problems *at a high level* with
 other students or groups. You may not share code directly outside your
 pair.
 
-If you choose to form a Hack Pair, you *must*:
+If you choose to form a Hack Pair:
 
-1.  Both join a hack pair on Canvas (go to People then Groups)
-
-2.  You must both work on the hack equally; it must be an equal effort
+1.  You *must* both work on the hack equally; it must be an equal effort
     by both partners. Do not undermine your partner's learning
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  Both of you should hand in a copy of your code, but we'll grade the
-    code under the individual whose last name comes first alphabetically.
+2.  Follow the instructions provided at the start of the course, or see
+    the instructions in the course [FAQ](https://github.com/cbourke/ComputerScienceI/blob/master/documents/faq.md#partner-policy).
 
 ## Rubric
 

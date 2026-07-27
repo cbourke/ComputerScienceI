@@ -14,17 +14,15 @@ allowed. However, you may discuss the problems *at a high level* with
 other students or groups. You may not share code directly outside your
 pair.
 
-If you choose to form a Hack Pair, you *must*:
+If you choose to form a Hack Pair:
 
-1.  Both join a hack pair on Canvas (go to People then Groups)
-
-2.  You must both work on the hack equally; it must be an equal effort
+1.  You *must* both work on the hack equally; it must be an equal effort
     by both partners. Do not undermine your partner's learning
     opportunity and do not undermine your own by allowing one parter to
     do all the work.
 
-3.  You may both turn in a copy, but only one will be graded (generally
-    the one whose last name comes first alphabetically).
+2.  Follow the instructions provided at the start of the course, or see
+    the instructions in the course [FAQ](https://github.com/cbourke/ComputerScienceI/blob/master/documents/faq.md#partner-policy).
 
 ## Rubric
 
@@ -119,7 +117,7 @@ Place all your code in a file named `proteinTranslator.c`.
 -   For all exercises you may assume that no file has any lines longer
     than 2000 characters.  You may not make any assumptions about the
     content of the file(s) or the number of lines in a file.
-    
+
 -   For the exercises, place all your function prototypes into a file
     named `file_utils.h` and and their definitions in a file
     named `file_utils.c`. In addition, you'll want to create a

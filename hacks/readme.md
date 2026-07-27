@@ -17,4 +17,4 @@ using the C programming language.
 * Hack 11.0 - Encapsulation
 * Hack 12.0 - Recursion
 * Hack 13.0 - Searching & Sorting
-* Hack 14.0 - Final Project (design)
+* Hack 14.0 - Introduction to Vibe Coding
