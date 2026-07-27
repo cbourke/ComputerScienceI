@@ -27,16 +27,9 @@
   * Hook in zybook readings
   * Publish
 
-* Codepost Setup
-  * Copy, update course, set time zone
-  * Setup scripts (keys, NUIDs)
-  * Import roster
-  * Send notification
-  * Copy Assignments
-  * Assignment Copy Checklist:
-    1. Copy from previous semester
-    2. Edit: name, required files, due dates
-    3. Update tests/build VM
+* Gradescope
+  * TODO
+  * Update administrative scripts
 
 * Forum Setup (campuswire)
   * Create course

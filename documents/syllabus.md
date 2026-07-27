@@ -1,6 +1,6 @@
 # Computer Science I
 
-### CSCE 155E - Syllabus - Fall 2025
+### CSCE 155E - Syllabus - Fall 2026
  [School of Computing](https://computing.unl.edu/)  
  [College of Engineering](https://engineering.unl.edu/)  
  [University of Nebraska Lincoln](https://unl.edu/)  
@@ -117,15 +117,15 @@ with the following point distributions.
 
 |  Category           | Number | Points Each | Total |
 |  -------------------|--------|-------------|-------|
-|  Starter Points     |        |             |     30|
-|  PDC Module/Surveys |        |             |     70|
-|  Readings (zyBooks) |      13|           15|    195|
+|  Starter Points     |        |             |     55|
+|  PDC Module/Surveys |        |             |     50|
+|  Readings (zyBooks) |      14|           15|    210|
 |  Labs               |      13|           15|    195|
 |  Hacks              |      14|           25|    350|
 |  Attendace          |      14|           10|    140|
-|  Exams              |       2|           75|    150|
-|  Final              |       1|          150|    150|
-|  Total              |        |             |  1,280|
+|  Exams              |       4|          100|    400|
+|  Final              |       1|          200|    200|
+|  Total              |        |             |  1,600|
 
 
 ### Starter Points
@@ -145,7 +145,7 @@ However, we have developed a series of "codeless" modules that do not
 require any coding knowledge and cover PDC concepts in an accessible
 manner.  
 
-As part of this study, you will complete pre-module survey(s) which
+As part of this study, you will complete pre-module "exam" which
 will be graded based on completion.  You will then go
 through several modules on PDC which includes running and observing some
 simulations, visualizations, etc.  You may complete these modules
@@ -214,8 +214,6 @@ help as you desire on the exercises.
 
 You may complete hacks on your own, but you are encouraged to
 pair up and collaborate with (**at most**) one other student.
-If you choose to pair up with another student, you must form
-a pair using canvas (People -> Hack Pairs).
 
 ### Attendance
 
@@ -248,12 +246,17 @@ of the module.
 
 ### Exams
 
-There will be several exams as well as a comprehensive
-final exam. These will be open-book, open-note, *required computer* exams.
-The exams consist of live coding exercises for which you will need your own
-machine as you will be coding and submitting programs online for
-grading. More details will be announced closer to the exam dates.
-No collaboration is allowed on exams.
+There will be several exams as well as a comprehensive final exam. Exams
+are delivered electronically through Canvas and administered in the
+[Digital Learning Commons Testing Center](https://dlc-reserve.unl.edu/).
+You will need to schedule a time slot in advance through their website.  
+The DLC has very flexible hours and you will be able to schedule your
+time over a 3 day window.  It is your responsibility to ensure that
+you schedule a time and show up during that time.
+
+You are allowed any calculator and one page of hand-written or printed
+notes.  The browser that you use will be locked down to ensure no other
+resources are used.
 
 ### 15th Week Policy Notification
 
