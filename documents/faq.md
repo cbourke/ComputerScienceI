@@ -10,6 +10,24 @@ Computer Science I offered through the School of Computing and
 the College of Engineering at the University of Nebraska--Lincoln
 and Omaha.
 
+# Partner Policy
+
+## What is the partner policy?
+
+For all labs and hacks you may work with one other person as a pair.
+No larger groups are allowed because it dilutes the learning experience
+too much.  However, having another person to provide new and different
+perspectives and to bounce ideas off of is an invaluable learning
+experience.
+
+You do have the option of working alone or changing partners throughout
+the semester.  No partners are allowed for exams.
+
+## How do I submit with a partner?
+
+In Gradescope, when you submit an assignment there is a **Group Members*
+button at the bottom of the page.  Click it and add your partner.
+
 # Canvas Support Management
 
 ## Where do I go for help with Canvas?
