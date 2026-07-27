@@ -258,6 +258,41 @@ You are allowed any calculator and one page of hand-written or printed
 notes.  The browser that you use will be locked down to ensure no other
 resources are used.
 
+#### Digital Learning Center Exam Commons
+
+Exams for this course will be taken under electronic supervision at
+Digital Learning Center, which has locations in the Adele Coryell Hall
+Learning Commons and Dinsdale Family Learning Commons.  All testing times
+are pre-scheduled, and exams will be completed on a computer.  Before you
+begin an exam, you must place your personal items in your pre-assigned
+locker and check-in with Digital Learning Center staff at the front desk.  
+When you have completed your exam, you must check-out at the front desk.
+
+Guidelines:
+
+* All testing times are pre-scheduled by students.  All students are
+  responsible for self sign-up and early sign-up is recommended as time
+  slots fill up quickly.  Students can start signing up for test times
+  up to two weeks before the first day of a scheduled exam.
+* All students are required to have their current N-Card to test.  Other
+  forms of ID will not be accepted as a substitute for N-Cards.  DLC staff
+  reserve the right to ask for a second ID if needed for identity verification.
+* All students can receive barcoded scratch paper for their exams. This paper
+  will be scanned into the student’s profile upon check-in and scanned out
+  upon check-out.
+* Only approved items are allowed at your computer station during testing,
+  including your N-Card, DLC provided barcoded scratch paper, and writing
+  utensils. Nothing else is allowed at your computer station unless your
+  instructor has made prior arrangements with the DLC.
+* All exams must be submitted for grading at the posted closing time.  
+  Students will not be given additional time to finish their exams past
+  the posted closing time.
+
+To schedule your exam, please visit <https://dlc-reserve.unl.edu/>. For more
+information about the Exam Commons location, operating hours, and student
+guidelines, please visit <https://its.unl.edu/dlc/>.
+
+
 ### 15th Week Policy Notification
 
 A per UNL's 15th Week Policy (also known as "dead week") available here:
