@@ -15,7 +15,7 @@ and Omaha.
 ## Where do I go for help with Canvas?
 
 Canvas is UNL's Learning Management System (LMS).  For more information
-see <https://services.unl.edu/service/learning-management-system-lms-canvas-unl>
+see <https://nebraska.edu/services/canvas/student-resources/>
 
 # zyBooks
 
@@ -53,7 +53,7 @@ For more information involving zyBooks:
 
 If you accessed zyBooks directly through the website and not through
 canvas, you may need to *merge* the multiple accounts you created.
-To do so see https://zybooks.zendesk.com/hc/en-us/articles/360007536553-I-already-paid-so-why-am-I-being-asked-to-subscribe-again-
+To do so see this [help page](https://zybooks.zendesk.com/hc/en-us/articles/360007536553-I-already-paid-so-why-am-I-being-asked-to-subscribe-again)
 
 # Campuswire
 
