@@ -1,4 +1,3 @@
-
 # Frequently Asked Questions
 **[School of Computing](https://computing.unl.edu/)**  
 **[College of Engineering](https://engineering.unl.edu/)**  
