@@ -169,6 +169,19 @@ static void testCmykToRgb001(void **state) {
 }
 
 /**
+ * This function tests cmykToRGB passing a single, hard-coded
+ * cmyk-value and uses `fail_msg` instead of assert.
+ */
+static void testCmykToRgb002(void **state) {
+    int r, g, b;
+
+    cmykToRGB(.32, .67, 0.05, .18, &r, &g, &b);
+    if( !(r == 142 && g == 69 && b == 199) ) {
+      fail_msg("cmykToRGB(%.2f, %.2f, %.2f, %.2f): expected rgb=(%d, %d, %d) but got rgb=(%d, %d, %d)\n", .32, .67, 0.05, .18, 142, 69, 199, r, g, b);
+    }
+}
+
+/**
  * This function is a generic testing function for rgbToCMYK
  * in which the passed state is expected to have 7 double values
  * corresponding to 3 RGB input values and 4 CMYK output values
@@ -253,6 +266,7 @@ int main(int argc, char **argv) {
             cmocka_unit_test(testCmykToRgbNull),
             cmocka_unit_test(testCmykToRgbOutOfBounds),
             cmocka_unit_test(testCmykToRgb001),
+            cmocka_unit_test(testCmykToRgb002),
 
             cmocka_unit_test_prestate(testBidirectionalValues, &aquamarine),
             cmocka_unit_test_prestate(testBidirectionalValues, &black),
