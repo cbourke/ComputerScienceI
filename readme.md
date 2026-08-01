@@ -61,16 +61,23 @@ is hosted on [Bitbucket](https://bitbucket.org/chrisbourke/computersciencei).
 
 ## Course Offerings
 
+### Fall 2026
+
+#### CSCE 155E - UNL
+
+- Course Link: https://mynu.instructure.com/courses/13367
+- Lectures: https://www.youtube.com/playlist?list=PLU4vXSHFWmlk
+
+<details>
+
+<summary>Archived Offerings</summary>
+
 ### Fall 2025
 
 #### CSCE 155E - UNL
 
 - Course Link: https://canvas.unl.edu/courses/200820
 - Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZXcpmqUWLnohWlwt2j6Z2jG
-
-<details>
-
-<summary>Archived Offerings</summary>
 
 ### Fall 2024
 

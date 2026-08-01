@@ -69,14 +69,19 @@ We use my free and open source textbook, [Computer Science I](https://bitbucket.
 
 ## Course Offerings
 
-### Fall 2025
+### Fall 2026
 
-- Course Link: https://canvas.unl.edu/courses/200853
-- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZWPnbvwMZkz6Sffn98R8NT0
+- Course Link: https://mynu.instructure.com/courses/13415
+- Lectures: https://www.youtube.com/playlist?list=PLYhpnGIGneHE
 
 <details>
 
 <summary>Archived Offerings</summary>
+
+### Fall 2025
+
+- Course Link: https://canvas.unl.edu/courses/200853
+- Lectures: https://www.youtube.com/playlist?list=PL4IH6CVPpTZWPnbvwMZkz6Sffn98R8NT0
 
 ### Fall 2024
 
