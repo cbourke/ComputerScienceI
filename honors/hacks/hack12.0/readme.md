@@ -40,11 +40,11 @@ For detail, see the general course rubric.
 
 For correctness:
  - Your program(s) *must* compile and run on the grader
- - Points are awarded proportionally for each test case.
+ - Points are awarded based on if all test cases pass
 
 # Problem Statement
 
-A binomial coefficient, "$n$ choose $k$" is a number that corresponds to
+A binomial coefficient, $n$ choose $k$ is a number that corresponds to
 the number of ways to *choose* $k$ items from a set of $n$ distinct
 items. You may be familiar with some the notations, $C(n,k)$ or $C_n^k$
 or ${}_{n}C_k$, but most commonly this is written as ${n \choose k}$
@@ -78,7 +78,7 @@ there is only one way of doing that.
 
 Implement and test the following function *using a recursive* solution:
 
-`long choose(int n, int k);`
+`public static long choose(int n, int k)`
 
 which takes $n$ and $k$ and computes ${n\choose k}$ using Pascal's Rule.
 Note that the return type is a `long` which is a 64-bit integer
@@ -144,18 +144,30 @@ to avoid unnecessary repeated recursive calls.
     This map will be used to map a pair of input values, $(n,k)$ to the
     value of the binomial ${n \choose k}$. The problem is that we want
     to use the combination of two values as a single key. To do so,
-    we've provided a `Pair` class that allows you to pair two
-    objects together to use as a key.
+    you can use a Java `record`:
 
-    Create and instantiate a static map of the following type:
+    ```java
+    public class Binomial {
 
-    `Map<Pair<Integer, Integer>, BigInteger>`
+        //creates a Pair that binds two objects together
+        public record Pair<A, B>(A n, B k) {}
 
-3.  Modify your `binomial` method to use this map to store and
+        public static void main(String args[]) {
+
+            //create a pair of integers:
+            Pair<Integer, Integer> p = new Pair<>(10, 5);
+        }
+    }
+    ```
+
+    Hint: you can create a map that maps a `Pair` of integers to
+    a `BigInteger`.
+
+3.  Modify your `choose` method to use this map to store and
     use values to avoid unnecessary repeated recursive calls. Your
     method should have the following signature:
 
-    `public static BigInteger binomial(int n, int k)`
+    `public static BigInteger choose(int n, int k)`
 
     When the method needs to compute ${n \choose k}$ it checks the map
     first: if the value has already been computed (is not `null`)
