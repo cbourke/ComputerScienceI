@@ -72,6 +72,21 @@ If you accessed zyBooks directly through the website and not through
 canvas, you may need to *merge* the multiple accounts you created.
 To do so see this [help page](https://zybooks.zendesk.com/hc/en-us/articles/360007536553-I-already-paid-so-why-am-I-being-asked-to-subscribe-again)
 
+# Gradescope
+
+## What is Gradescope
+
+Gradescope is the autograding system we use for this course.  It is fully
+integrated with Canvas.  You submit your source files and automated tests
+will run to determine if your code is correct or not.  You can submit and
+resubmit as many times as you need up until the due date.
+
+## I'm having trouble
+
+* Mac/Safari, you may need to disable the option to
+prevent cross-site tracking: Settings > Uncheck the "Prevent cross-site tracking"
+box.
+
 # Campuswire
 
 ## What is Campuswire?
