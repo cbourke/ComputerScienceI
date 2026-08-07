@@ -12,7 +12,8 @@ intended to get you started on full programming assignments. You may
 complete the hack on your own, but you are *highly encouraged* to work
 with another student and form a hack pair. Groups larger than 2 are not
 allowed. However, you may discuss the problems *at a high level* with
-other students or groups. You may not share code directly.
+other students or groups. You may not share code directly outside your
+pair.
 
 If you choose to form a Hack Pair:
 
