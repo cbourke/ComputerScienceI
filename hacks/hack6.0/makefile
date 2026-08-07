@@ -1,18 +1,22 @@
 #
 # makefile for color utilities C library
 # assumes cmocka (a unit testing framework) is installed on your
-# system 
+# system
 #
 
 CC = gcc
-FLAGS = -Wall -std=gnu99
-INCLUDES = -l cmocka -lm
+CFLAGS = -Wall -Wextra -std=gnu99
+LDLIBS = -lcmocka -lm
 
-utilsTester: colorUtils.o utilsTester.c
-	$(CC) $(FLAGS) colorUtils.o utilsTester.c -o utilsTester $(INCLUDES)
+.PHONY: clean all
+
+all: utilsTester
+
+utilsTester: colorUtils.o utilsTester.c colorUtils.h
+	$(CC) $(CFLAGS) colorUtils.o utilsTester.c -o utilsTester $(LDLIBS)
 
 colorUtils.o: colorUtils.c colorUtils.h
-	$(CC) $(FLAGS) -c colorUtils.c -o colorUtils.o $(INCLUDES)
+	$(CC) $(CFLAGS) -c colorUtils.c -o colorUtils.o
 
 clean:
 	rm -f *~ *.o

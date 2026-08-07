@@ -62,11 +62,14 @@ static void testRandomCyclicalEquality(void **state) {
         cmykToRGB(c, m, y, k, &r, &g, &b);
 
         // have to subtract 1 to allow for minor rounding differences
-        assert_true(
+        if (!(
                 (r == origR || r == origR - 1) &&
                 (g == origG || g == origG - 1) &&
                 (b == origB || b == origB - 1)
-        );
+        )) {
+          fail_msg("RGB->CMYK->RGB cycle for (%d, %d, %d) expected result close to (%d, %d, %d) but got (%d, %d, %d)",
+                   origR, origG, origB, origR, origG, origB, r, g, b);
+        }
     }
 }
 
@@ -80,10 +83,18 @@ static void testRandomCyclicalEquality(void **state) {
  */
 static void testRgbToCmykNull(void **state) {
   double c, m, y, k;
-  assert_int_not_equal(rgbToCMYK(0,0,0,NULL,&m,&y,&k), 0);
-  assert_int_not_equal(rgbToCMYK(0,0,0,&c,NULL,&y,&k), 0);
-  assert_int_not_equal(rgbToCMYK(0,0,0,&c,&m,NULL,&k), 0);
-  assert_int_not_equal(rgbToCMYK(0,0,0,&c,&m,&y,NULL), 0);
+  if (rgbToCMYK(0,0,0,NULL,&m,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when c pointer is NULL, but returned 0");
+  }
+  if (rgbToCMYK(0,0,0,&c,NULL,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when m pointer is NULL, but returned 0");
+  }
+  if (rgbToCMYK(0,0,0,&c,&m,NULL,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when y pointer is NULL, but returned 0");
+  }
+  if (rgbToCMYK(0,0,0,&c,&m,&y,NULL) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when k pointer is NULL, but returned 0");
+  }
 
 }
 
@@ -95,12 +106,24 @@ static void testRgbToCmykNull(void **state) {
  */
 static void testRgbToCmykOutOfBounds(void **state) {
   double c, m, y, k;
-  assert_int_not_equal(rgbToCMYK(-1,127,127,&c,&m,&y,&k), 0);
-  assert_int_not_equal(rgbToCMYK(256,127,127,&c,&m,&y,&k), 0);
-  assert_int_not_equal(rgbToCMYK(127,-1,127,&c,&m,&y,&k), 0);
-  assert_int_not_equal(rgbToCMYK(127,256,127,&c,&m,&y,&k), 0);
-  assert_int_not_equal(rgbToCMYK(127,127,-1,&c,&m,&y,&k), 0);
-  assert_int_not_equal(rgbToCMYK(127,127,256,&c,&m,&y,&k), 0);
+  if (rgbToCMYK(-1,127,127,&c,&m,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when r is negative (-1), but returned 0");
+  }
+  if (rgbToCMYK(256,127,127,&c,&m,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when r is out of bounds (256), but returned 0");
+  }
+  if (rgbToCMYK(127,-1,127,&c,&m,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when g is negative (-1), but returned 0");
+  }
+  if (rgbToCMYK(127,256,127,&c,&m,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when g is out of bounds (256), but returned 0");
+  }
+  if (rgbToCMYK(127,127,-1,&c,&m,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when b is negative (-1), but returned 0");
+  }
+  if (rgbToCMYK(127,127,256,&c,&m,&y,&k) == 0) {
+    fail_msg("rgbToCMYK should return non-zero when b is out of bounds (256), but returned 0");
+  }
 }
 
 /**
@@ -111,12 +134,15 @@ static void testRgbToCmyk001(void **state) {
   double c, m, y, k;
   //steel blue:
   rgbToCMYK(71,130,181,&c,&m,&y,&k);
-  assert_true(
+  if (!(
     isClose(c, .61) &&
     isClose(m, .28) &&
     isClose(y, 0.0) &&
     isClose(k, .29)
-  );
+  )) {
+    fail_msg("rgbToCMYK(71, 130, 181) expected cmyk close to (0.61, 0.28, 0.00, 0.29) but got (%.2f, %.2f, %.2f, %.2f)",
+             c, m, y, k);
+  }
 }
 
 /**
@@ -129,9 +155,15 @@ static void testRgbToCmyk001(void **state) {
  */
 static void testCmykToRgbNull(void **state) {
     int r, g, b;
-    assert_int_not_equal(cmykToRGB(0,0,0,0,NULL,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB(0,0,0,0,&r,NULL,&b), 0);
-    assert_int_not_equal(cmykToRGB(0,0,0,0,&r,&g,NULL), 0);
+    if (cmykToRGB(0,0,0,0,NULL,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when r pointer is NULL, but returned 0");
+    }
+    if (cmykToRGB(0,0,0,0,&r,NULL,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when g pointer is NULL, but returned 0");
+    }
+    if (cmykToRGB(0,0,0,0,&r,&g,NULL) == 0) {
+      fail_msg("cmykToRGB should return non-zero when b pointer is NULL, but returned 0");
+    }
 
 }
 
@@ -143,14 +175,30 @@ static void testCmykToRgbNull(void **state) {
  */
 static void testCmykToRgbOutOfBounds(void **state) {
     int r, g, b;
-    assert_int_not_equal(cmykToRGB(-1, .5, .5, .5, &r,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB( 2, .5, .5, .5, &r,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB(.5, -1, .5, .5, &r,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB(.5,  2, .5, .5, &r,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB(.5, .5, -1, .5, &r,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB(.5, .5,  2, .5, &r,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB(.5, .5, .5, -1, &r,&g,&b), 0);
-    assert_int_not_equal(cmykToRGB(.5, .5, .5,  2, &r,&g,&b), 0);
+    if (cmykToRGB(-1, .5, .5, .5, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when c is negative (-1), but returned 0");
+    }
+    if (cmykToRGB( 2, .5, .5, .5, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when c is out of bounds (2), but returned 0");
+    }
+    if (cmykToRGB(.5, -1, .5, .5, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when m is negative (-1), but returned 0");
+    }
+    if (cmykToRGB(.5,  2, .5, .5, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when m is out of bounds (2), but returned 0");
+    }
+    if (cmykToRGB(.5, .5, -1, .5, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when y is negative (-1), but returned 0");
+    }
+    if (cmykToRGB(.5, .5,  2, .5, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when y is out of bounds (2), but returned 0");
+    }
+    if (cmykToRGB(.5, .5, .5, -1, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when k is negative (-1), but returned 0");
+    }
+    if (cmykToRGB(.5, .5, .5,  2, &r,&g,&b) == 0) {
+      fail_msg("cmykToRGB should return non-zero when k is out of bounds (2), but returned 0");
+    }
 }
 
 /**
@@ -161,11 +209,13 @@ static void testCmykToRgb001(void **state) {
     int r, g, b;
     //steel blue:
     cmykToRGB(.61, .28, 0, .29, &r, &g, &b);
-    assert_true(
+    if (!(
             r == 71 &&
             g == 130 &&
             b == 181
-    );
+    )) {
+      fail_msg("cmykToRGB(0.61, 0.28, 0, 0.29) expected rgb=(71, 130, 181) but got rgb=(%d, %d, %d)", r, g, b);
+    }
 }
 
 /**
@@ -193,12 +243,17 @@ static void testRgbToCmykValues(void **state) {
   double *values = *((double **)state);
   double c, m, y, k;
   rgbToCMYK( (int) values[0], (int) values[1], (int) values[2], &c, &m, &y, &k);
-  assert_true(
+  if (!(
     isClose(c, values[3]) &&
     isClose(m, values[4]) &&
     isClose(y, values[5]) &&
     isClose(k, values[6])
-  );
+  )) {
+    fail_msg("rgbToCMYK(%d, %d, %d) expected cmyk close to (%.2f, %.2f, %.2f, %.2f) but got (%.2f, %.2f, %.2f, %.2f)",
+             (int) values[0], (int) values[1], (int) values[2],
+             values[3], values[4], values[5], values[6],
+             c, m, y, k);
+  }
 }
 
 /**
@@ -214,11 +269,16 @@ static void testCmykToRgbValues(void **state) {
     double *values = *((double **)state);
     int r, g, b;
     cmykToRGB(values[3], values[4], values[5], values[6], &r, &g, &b);
-    assert_true(
+    if (!(
             isCloseInt(r, values[0]) &&
             isCloseInt(g, values[1]) &&
             isCloseInt(b, values[2])
-    );
+    )) {
+      fail_msg("cmykToRGB(%.2f, %.2f, %.2f, %.2f) expected rgb close to (%d, %d, %d) but got (%d, %d, %d)",
+               values[3], values[4], values[5], values[6],
+               (int) values[0], (int) values[1], (int) values[2],
+               r, g, b);
+    }
 }
 
 /**
