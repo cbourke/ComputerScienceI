@@ -149,6 +149,11 @@ try first are:
 * Logging out/in or using a different browser (temporarily) or using
   privacy mode to ensure a fresh login
 
+## The Rubber Duck Debugger is not working
+
+If the integrated Rubber Duck Debugger is not working, you can access it directly
+at <https://cs50.ai>
+
 ## I'm getting a Bad Gateway message
 
 * Try accessing your IDE through this link: http://github.com/codespaces

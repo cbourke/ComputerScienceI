@@ -398,7 +398,8 @@ learning for you.
 
 That said, these tools *can* provide a meaningful learning experience if
 they are properly filtered.  For that reason, we will be allowing the use
-of the built-in "Rubber Duck" debugger chat bot in the CS50 IDE.  It has
+of the built-in "Rubber Duck" debugger chat bot in the CS50 IDE (or
+you can access it at https://cs50.ai/).  It has
 been configured so that it won't provide code directly but you can ask it
 questions to understand your code and/or resolve problems.
 
