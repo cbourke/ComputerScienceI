@@ -2,7 +2,7 @@
 ## CSCE 155E Fall 2025
 ### C Basics
 
-An overview of basics of C and Java including variables, input and output.
+An overview of basics of C including variables, input and output.
 
 ## Program, Compile, Run a Program
 
