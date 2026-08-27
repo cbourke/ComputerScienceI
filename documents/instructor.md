@@ -51,6 +51,8 @@
   * As of fall 2026, UNL Canvas supports LTI 1.3
   * Deep Linking instructions: https://support.zybooks.com/hc/en-us/articles/43086668413339-How-to-Link-Assignments-Using-Deep-Linking
   * Syncing of due dates is not possible, due dates must be set in both zybooks.com and in canvas
+* SSD
+  * Time Extension in Canvas: https://ssd.unl.edu/resources-faculty/extending-time-online-exams/
 
 ### UNO Resources
 
