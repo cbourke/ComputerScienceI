@@ -78,8 +78,92 @@ An overview of basics of C and Java including variables, input and output.
     $$-2^{31} \cdots 2^{31}-1$$
   * `double` is a 64-bit IEEE 754 floating point number
     * You can represent decimal numbers with about 17 digits of accuracy
+  * `char` is a single character; in C: it is an ASCII text value, in Java: it is a full Unicode value
 
+### Best Practices
 
+* Follow a consistent naming convention
+* Recommendation: `lowerCamelCasing` for all variables (both langauges)
+* Others:
+  * `lower_underscore_casing` (old school C, python)
+  * `UPPER_UNDERSCORE_CASING` (generally for constants)
+  * `UpperCamelCasing` (Java class names, C structures)
+* Be *descriptive*:
+  * Bad variable names: `foo`, `bar`, `baz`, `a, b, c, x, y, z` (UNLESS they represent math stuff), `variable1, variable2`
+  * Good variable: `numberOfStudents`, `miles`, `kilometers`
+  * Generally avoid abbreviations unless the context means that the variable name is well-understood
+* Whitespace: use consistent whitespacing
+  * use `astyle` to fix C programs
+  * Eclipse: `shift + command + f` (mac)
+  * Windows: `shift + alt + f`
+
+## Operators
+
+* Arithmetic operators: `+, -, *, /` (addition, subtraction, multiplication, division)
+* PEMDAS = Parentheses, Exponent, Multiplication Division, Addition Subtraction
+* Example:
+  $$x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$$
+* Math preview: `pow(x, y)`: $x^y$, Java: `Math.pow(x,y)`
+* Translation:
+
+```c
+root1 = (-b + sqrt(b * b - 4 * a * c)) / (2 * a);
+root2 = (-b - sqrt(b * b - 4 * a * c)) / (2 * a);
+```
+
+* INvalid operation: $\sqrt{-1} = i$, $\frac{a}{0}$
+* In C/Java: `NaN` (not a number), `inf`, `-inf`
+* Special operator: `%` (modulus)
+  * `10 % 3` results in 1
+  * `10 % 2` results in 0
+  * `9 % 2` results in 1
+
+* Division issue (both langauges)
+
+```c
+int x = 10;
+int y = 20;
+int z = x / y;
+```
+
+* When you divide an `int` by an `int`, the result *must* be an `int`
+  * The fractional part is thrown away (**truncation**)
+  * The fix: use explicit *type casting*
+
+```c
+
+int x = 10;
+int y = 20;
+double z = x / (double) y;
+```
+
+### Default Values
+
+```c
+int a;
+```
+
+* C standard: there are NO default values, it could be anything; likely zero, a random number, `0xDEADBEEF`
+* It is best practice to *initialize* your variables
+
+```c
+int a = 0;
+```
+
+* In Java: uninitialized values are *not allowed*
+* In Java: class values may have a `null` default value in the context of a class (but NOT local variables)
+
+## Input/Output (I/O)
+
+### C
+
+* Output in C is done with `printf` (f = formatted)
+* You can provide "formatting" placeholders and it will print to the *standard output*
+* For both language: you can use *placeholders*: they indicate the type of variable to be formatted
+  * `%f` is for floating point numbers (fractionals), `double`s
+  * `%d` is for `int` values
+  * `%c` is for `char` values
+* The default for floating point numbers is to print 6 decimals of accuracy
 
 ```text
 

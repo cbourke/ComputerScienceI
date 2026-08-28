@@ -73,7 +73,101 @@ $$source \rightarrow assembly \rightarrow machine\,\, code$$
     $$-2,147,483,648 \leq x \leq 2,147,483,647$$
 
     $$-2^{31} \leq x \leq 2^{31}-1$$
-    * Beware of overflow!
+    * Beware of overflow!  If numbers get too big, they wrap around to the negative side
+    * Underflow: numbers get too small and wrap around positively
+    * A `double` value is an IEEE754 64 bit formatted floating point number: limitation: you can represent at most ~17 digits of accuracy/precision: "floating" point numbers
+    * `char` is a single ASCII text character <https://www.asciitable.com/>
+
+#### Naming Variables
+
+* Names cannot have spaces, should not have other "weird" characters (no unicode, no hyphens, etc)
+* Cannot begin with a number and *should not* have any numbers
+* Terrible variable names: `x, y, a, b, variable1, variable2, foo, bar, baz`
+* Best practice: be *descriptive*
+* Examples: `numberOfStudents`, `kilometers`, `miles`
+* In general: avoid ambiguous abbreviations: `ssn`, `nuid`, `apr`
+* Is `kms` a "good" variable name?  Its probably "good enough"
+* Ex: `eidr`, `isbn`
+* Use a *consistent* naming convention!
+  * Recommendation: `lowerCamelCasing` for all variables (modern convention)
+  * Old School C (python): `lower_underscore_casing`
+  * `UpperCamelCasing` (in other languages, Java, etc.), later on: enumerations and structures
+  * `UPPER_UNDERSCORE_CASING`: `M_PI` (this is used for constants or macros)
+* BE CONSISTENT
+* Variables should *nouns* and should *generally* be singular
+
+### Operators
+
+* Arithemetic operators: `+` (addition), `-` subtraction,
+  * Multiplication: can't use $\times, \cdot, ab$; instead: `*` (asterisk)
+  * Division: can't use $\frac{a}{b}$, instead: `a / b`
+* variables hold values, you need a way to get values into those variables
+  * Syntax: To do this, you use the assignment operator: `=`
+  * A *single equals sign*! This is not algebra!
+  * Instead it means: take the value of the thing on the right hand side (RHS) and place it into the variable on the left hand side (LHS)
+  * The RHS can be a variable, a value, an expression, etc.
+* PEMDAS rules apply
+* PEMDAS = (Parentheses Exponents, Multiplication, Division, Addition, Subtraction)
+* The following are *not* equivalent: `a * b + c` is not the same as `a * (b + c)`
+* Example: `a + b * c`: `b * c` is evaluated FIRST and then `a` is added
+* Example:
+  $$x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
+
+```c
+double a = 10, b = 20, c = 4;
+
+double root1 = (-b + sqrt( b * b - 4 * a * c )) / ( 2 * a );
+double root2 = (-b - sqrt( b * b - 4 * a * c )) / ( 2 * a );
+
+printf("roots are %f, %f\n", root1, root2);
+
+```
+
+#### Pitfalls
+
+* Some math functions are invalid:
+  * `1 / 0` resutls in `-inf` or `inf`
+  * `sqrt(-1)` should be $i$, but in C it is `nan` = Not A Number
+* When you add/subtract/multiply two **integers** the result is *always* an integer
+* When two integers are divided the factional part is thrown away (*truncation*)
+* To solve this, you can use *typecasting*
+
+```c
+
+    int a = 10;
+    int b = 20;
+    double c = a / (double) b;
+
+    printf("c = %f\n", c);
+```
+
+* `double` values are impresise, use `int` for whole numbers, because they are *exact*
+* When using the math library you may need to provide `gcc` with some additional flags:
+  * `gcc foo.c -lm`
+  * `l` means link in and `m` means the math library
+
+## Input/Output
+
+* `printf` can be used to **print** in a **f**ormatted manner to the *standard output*
+* There are several *placeholders* that you can use in a format string:
+  * `%f` used for `double` values, defaults to 6 decimals of accuracy
+  * `%d` used for `int` values
+  * `%c` formats a single `char`
+* You can provide as many placeholders in a string as you want but the *order matters*
+
+```c
+
+    int a = 42;
+    double b = 3.5;
+    char initial = 'C';
+
+    printf("a = %d, b = %f, initial = %c\n", b, a, initial);
+
+    printf("a = %d\n", a);
+    printf("b = %f\n", b);
+    printf("initial = %c\n", initial);
+
+```
 
 ```text
 
