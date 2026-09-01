@@ -164,6 +164,122 @@ int a = 0;
   * `%d` is for `int` values
   * `%c` is for `char` values
 * The default for floating point numbers is to print 6 decimals of accuracy
+* Alternatively: you can use *modifiers* to print more/less
+  * Format: `%X.Yf` where
+  * `X` is the minimum number of columns (including the decimal)
+  * `Y` is the number of digits of accuracy
+  * Both are optional
+
+
+```c
+
+    double pi = 3.14159;
+
+    printf("pi = %f\n", pi);
+    printf("pi = %.2f\n", pi);
+    printf("pi = %.4f\n", pi);
+    printf("pi = %f\n", pi);
+
+    printf("pi = %10.2f\n", pi); //print a minimum of 10 columns, 2 digits of precision
+
+    int nuid = 12345;
+
+    printf("nuid = %8d\n", nuid);
+    printf("nuid = %08d\n", nuid);
+```
+
+# Java
+
+* `System.out.print` which prints the given string
+* `System.out.println` which outputs the string + endline character `\n`
+* You also have access to `System.out.printf`
+
+## Interactive Input
+
+* The standard input is your keyboard: interactive input
+
+### C
+
+* You can use `scanf` to scan the standard input
+* Mostly the same placeholders:
+  * `int`: `%d`
+  * `char`: `%c`
+  * Exception: `double`: `%lf`
+* Generally only read one value at a time
+* For now: remember that you need to use an ampersand with `scanf`: `scanf("%lf", &miles);`
+
+```c
+
+    int x;
+    double y;
+    char c;
+
+    printf("enter an integer: ");
+    scanf("%d", &x);
+
+    printf("enter a fractional value: ");
+    scanf("%lf", &y);
+
+    scanf("%c", &c);
+    printf("enter a letter: ");
+    scanf("%c", &c);
+
+    printf("I read: %d, %f, and %c\n", x, y, c);
+```
+
+### Java
+
+* You have a `Scanner` class
+* You can direct it to read in from the standard input: `System.in`
+
+```java
+
+		int x;
+		double y;
+		String name;
+
+		Scanner s = new Scanner(System.in);
+
+		System.out.println("Enter a integer:");
+		x = s.nextInt();
+
+		System.out.println("x = " + x);
+
+		System.out.println("Enter a fraction:");
+		y = s.nextDouble();
+		System.out.println("y = " + y);
+
+		System.out.println("Enter your name:");
+		name = s.next();
+		System.out.println("Hello, " + name);
+
+```
+
+## Non-interactive input
+
+* Interactive input (using `scanf`) makes the program pause and wait for the user to enter in their input
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments* (CLAs)
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * Each is separated by spaces
+  * In C: the first argument is always the executable file name, but
+  * In Java: the first argument is the *user*'s argument
+  * C: you can access them using `argv`
+    * The first one: `argv[0]`
+    * The second: `argv[1]`
+    * The third: `argv[2]`
+    * `argc` is teh number or **c**ount of the arguments
+    * You might need to convert the argument to a number:
+      * `atoi`: converts to an `int`
+      * `atof`: converts to a `double`
+* Java:
+  * Again, the first argument is NOT the executable file because that's the class name!
+  * To access values: `args[0], args[1], args[2]`
+  * To convert:
+    * `Integer.parseInt()`
+    * `Double.parseDouble()`
+  * To define CLAs, go to the play button drop down and then to the "arguments" tab to set them (in Eclipse)
+
 
 ```text
 

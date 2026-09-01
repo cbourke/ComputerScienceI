@@ -158,7 +158,7 @@ double z = x / (double) y;
   * `%f` is for floating point numbers (`double`)
   * `%d` is for integers (`int`)
   * `%c` for `char` values
-* THe default for floating point numbers is to print 6 decimals of accuracy
+* The default for floating point numbers is to print 6 decimals of accuracy
 * Alternatively: you can use *modifiers* to print more/less
   * Format: `%X.Yf` where
   * `X` is the minimum number of columns (including the decimal)

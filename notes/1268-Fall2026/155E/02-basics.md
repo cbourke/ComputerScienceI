@@ -169,6 +169,158 @@ printf("roots are %f, %f\n", root1, root2);
 
 ```
 
+### Formatting
+
+* You can use *modifiers* to specify more digits of accuracy for floating point numbers
+* General form: `%X.Yf`
+  * `X` - minimum number of columns to print
+  * `Y` - number of decimals of accuracy
+
+```c
+
+    double pi = 3.14159;
+
+    printf("%f\n", pi);
+    printf("%.10f\n", pi);
+    printf("%.2f\n", pi);
+    printf("%.4f\n", pi);
+    printf("%f\n", pi);
+
+    printf("%10.4f\n", pi); //pads to the left 4 spaces
+    printf("%-10.4f\n", pi); //justifies left
+
+    //integers too:
+    int nuid = 123456;
+    printf("%d\n", nuid);
+    printf("%8d\n", nuid);
+    printf("%08d\n", nuid);
+```
+
+## Standard Input
+
+* Standard input is used with *interactive* programs
+* You use `scanf` to scan the standard input (keyboard) for user-provided input
+* Very limited, very brittle
+* With `scanf` you use the same placeholders except for `double` values: you use `%lf`instead of `%f`
+* When using `scanf` always remember the ampersand `&` in front of the variable (magic for now)
+* ex: `scanf("%lf", &miles);`
+
+### Non-interactive Input
+
+* Most programs especially command line programs are *not* interactive
+* From the command line, you can provide input *non-interactively* by using *command line arguments* (CLAs)
+* CLAs are provided when you start the program: `./a.out hello 10 3.5`
+  * There are actually 4 arguments: the first argument is always the executable file name `./a.out`
+  * `argc`: the number or **c**ount of the arguments
+  * `argv`: is a **v**ector (array) of the acutal arguments
+    * `argv[0]` is the first argument, `./a.out`
+    * `argv[1]` is the second argument (first user provided argument)
+    * `argv[2]` is the third, etc.
+  * Processing:
+    * CLAs themselves are *strings* (sequences of `char` values)
+    * `atoi` converts the argument to an `int`
+    * `atof` converts the argument to a `double`
+
+```c
+    printf("You provided %d CLAs\n", argc);
+
+    //assume the first user provided (the second argument)
+    // argument is an integer and convert it...
+    int x = atoi(argv[1]);
+    printf("You gave me a value of %d\n", x);
+
+    //second user provided: assume it is a double
+    double y = atof(argv[2]);
+    printf("You gave me a value of %f\n", y);
+```
+
+## Exercises
+
+1. Convert the `miles_to_kms` program to non-interactive input
+
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2025/08/27
+ *
+ * This program converts miles to kilometers
+ */
+#include <stdlib.h>
+#include <stdio.h>
+
+#define KMS_PER_MILE 1.60934
+
+int main(int argc, char **argv) {
+
+    if(argc != 2) {
+        printf("ERROR:  you must provide the number of miles\n");
+        exit(1);
+    }
+
+    double miles, kms;
+
+    // printf("Please enter miles: ");
+    // scanf("%lf", &miles);
+
+    miles = atof(argv[1]);
+
+    kms = KMS_PER_MILE * miles;
+
+    printf("%f miles is equal to %f kilometers\n", miles, kms);
+
+    return 0;
+}
+```
+
+2. Write a program to compute the roots of a quadratic equation:
+  $$ax^2 + bx + c = 0$$
+  $$x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
+
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2026/08/31
+ *
+ * This program computes the roots of a quadratic equation:
+ *   ax^2 + bx + c = 0
+ *
+ * See more at https://en.wikipedia.org/wiki/Quadratic_formula
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    if(argc != 4) {
+        printf("ERROR: please provide coefficients a b c\n");
+        exit(1);
+    }
+
+    double a = atof(argv[1]);
+    double b = atof(argv[2]);
+    double c = atof(argv[3]);
+
+    if(a == 0) {
+        printf("ERROR: you have a linear equation, not a quadratic!\n");
+        exit(2);
+    } else if(b * b - 4 * a * c < 0) {
+        printf("ERROR: I cannot handle complex numbers!\n");
+        exit(3);
+    }
+
+    double root1 = (-b + sqrt( b * b - 4 * a * c )) / ( 2 * a );
+    double root2 = (-b - sqrt( b * b - 4 * a * c )) / ( 2 * a );
+
+    printf("%fx^2 + %fx + %f has roots %f and %f\n", a, b, c, root1, root2);
+
+
+    return 0;
+}
+
+
+```
+
 ```text
 
 
