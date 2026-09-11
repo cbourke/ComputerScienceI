@@ -1,7 +1,7 @@
 
 # CSCE 155H - Computer Science I
 ## Loops
-### Fall 2025
+### Fall 2026
 
 * We need a way to repeatedly execute blocks of code
 * There are four basic elements to a loop control structure:
@@ -30,74 +30,70 @@ for(int i=0; i<10; i++) {
   * both the initialization and continuation are ended with semicolons!
   * The increment statement does not have a semicolon
 * Other items:
-  * `i++` is the increment operator, it *adds* one to the variable `i`, "kinda like": `i = i + 1`
+  * `i++` is the increment operator: it *adds* one to the variable `i`, kind of like: `i = i + 1` (short hand)
+  * This is known as "syntactic sugar"
   * `i, j, k` are typically used as increment variables (short, `i`ndex, `i`ncremenet)
 * Behavior:
   * The initialization is only executed once *before* the loop
   * The continuation check is evaluated at the *start* of each loop
     * If it is true, the loop executes at least one more time
-    * If it is false, then the loop terminates and normal linear control flow continues
-  * The increment is done at the *end* of the loop
+    * If false, the loop ends and normal linear control flow continues
+    * The increment is done at the *end* of the loop
 
 ### New Syntax
 
 * `i++` adds one to the variable `i`
-* You can use `++i` but why?  (prefix version)
+* You can also use `++i` but why?
 * `i--` subtracts one from `i`
-* `i += 2` this adds 2 to `i`
-* `i -= 2` this subtracts 2 from `i`
-* `i *= 2` this multiplies by 2 (doubles the value of `i`)
-* `i /= 2` divides (truncation) by 2 (halves)
+* `i += 2` is short hand for `i = i + 2`
+* `i -= 10` subtracts two
+* `i *= 5` multiplies by two
+* `i /= 3` division, but integer!
 
 ## While Loops
 
 * A while loop uses the keyword `while`
 * Main difference: the three elements (initialization, continuation, increment) are on separate lines
+  * Beware: infinite loops
+  * Kill a program: control-C in CS50, or the stop button in Eclipse
 
 ```c
-int n = 10;
-int i = 0;
-while(i < n) {
-  printf("i = %d\n", i);
-  i++;
-}
-```
 
+    int i = 0;
+    while(i<10) {
+        printf("i = %d\n", i);
+        i++;
+    }
+
+```
 * It is a little bit more flexible: you can place the increment anywhere in the loop
-* If you don't though: infinite loop; kill it with control-C
- (or the stop button in Eclipse)
 * You cannot scope a counter/increment variable to restrict it to the while loop because it must be declared *before* the while loop
 * In general it is best practice to limit the scope of a variable *as much as possible*
 
 ## Which Loop?
 
 * Observation: any `while` loop can be rewritten as a `for` loop and vice versa
-* Why multiple loops?
 * We like flexibility in languages: we like them to be expressive, in code this is "syntactic sugar"
 
 ```c
 
-    int originalN = 12345;
-    int exepctedNumDigits = 4;
-    int n = originalN;
+    //given a number n, determine how many digits it has
+    //ex: n = 123, 3 digits
+    //ex: n = 12345678, 8 digits
+
+    int n = 1234;
+    int originalN = n;
 
     if(n == 0) {
-        printf("There is 1 digit in zero\n");
-        exit(0);
+        printf("0 has 1 digit\n");
+    } else {
+        int numberOfDigits = 0;
+        while(n != 0) {
+            n /= 10;
+            numberOfDigits++;
+        }
+        printf("%d has %d digits\n", originalN, numberOfDigits);
     }
-
-    //write code to determine how many digits are in n...
-    int count = 0;
-
-    //while n > 0...
-    //.   divide by 10
-    //.   increment the counter
-    while(n != 0) {
-        n /= 10;
-        count++;
-    }
-    printf("there are %d digits in %d\n", count, originalN);
-
 ```
 
 * While loops are generally used when you don't know how many iterations you are going to execute
@@ -127,7 +123,6 @@ while(i < 10) {
   printf("%d\n", i);
 }
 ```
-
 * No increment operation: infinite loop always prints 0
 
 * Consider the following code:
@@ -139,7 +134,7 @@ while(i < 10)
   i++;
 ```
 
-* THere are missing brackets so the `while` statement only binds to the `printf` statement: infinite loop
+* There are missing brackets so the `while` statement only binds to the `printf` statement: infinite loop
 * Solution: always (even if you don't need to) use brackets!
 
 ## Misc
@@ -150,32 +145,33 @@ while(i < 10)
 * It is used to iterate over collections of data (arrays, lists, etc.)
 
 ```java
-int primes[] = {2, 3, 5, 7, 11, 13, 17};
+int primes[] = {2, 3, 5, 7, 11, 13, 17, 19};
 
 for(int i=0; i<primes.length; i++) {
   System.out.println(primes[i]);
 }
 
-//"for each integer x in the collection primes...
+//enhanced for loop:
 for(int x : primes) {
   System.out.println(x);
 }
 ```
 
-* There is no enhanced for loop in C!
-
 ### Nested Loops
+
+* You can write a loop within a loop!
 
 ```c
 int n = 10;
-int count = 0;
+int counter = 0;
+
 for(int i=0; i<n; i++) {
     for(int j=0; j<n; j++) {
         //printf("i, j = %d, %d\n", i, j);
-        count++;
+        counter++;
     }
 }
-printf("count = %d\n", count);
+printf("counter = %d\n", counter);
 ```
 
 * Be careful: generally nested loops are *inefficient*
@@ -184,28 +180,9 @@ printf("count = %d\n", count);
 ## Exercises
 
 1. Write a program to compute the arithmetic-geometric mean of two numbers
+2. Write a program that given an integer $n$ calculates the number of
+primes $[2, n]$
 
-2. Compute a loan amortization table using a monthly payment formula:
-  $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
-where
- * rate is the rate per period (.05/12 for monthly payments)
- * $n$ is the number of periods (months) in the loan
- * Ex: A $10,000 5 year loan at 5% interest (60 payments):
- $$\frac{\frac{.05}{12} \times 10,000}{1-(1+\frac{.05}{12})^{-60}} = 188.71$$
-
- ```text
- Month Balance Interest New Balance
-     1   $10000.00   $   41.67   $  147.04  $ 9852.96
-     2   $ 9852.96   $   41.05   $  147.66  $ 9705.30
-     3   $ 9705.30   $   40.44   $  148.27  $ 9557.03
-     4   $ 9557.03   $   39.82   $  148.89  $ 9408.14
-     5   $ 9408.14   $   39.20   $  149.51  $ 9258.63
-     6   $ 9258.63   $   38.58   $  150.13  $ 9108.50
-     ...
- ```
-
- 3. Write a program that given an integer $n$ calculates the number of
- primes $[2, n]$
 
 ```text
 
