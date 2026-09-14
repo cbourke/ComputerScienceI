@@ -233,7 +233,140 @@ while (days > 365)
 ## Exercises
 
 * Implement the classic FizzBuzz Problem
+
+```c
+for(int i=1; i<=100; i++) {
+    if(i % 15 == 0) {
+        printf("FizzBuzz\n");
+    } else if(i % 3 == 0) {
+        printf("Fizz\n");
+    } else if(i % 5 == 0) {
+        printf("Buzz\n");
+    } else {
+        printf("%d\n", i);
+    }
+}
+```
+
 * YAGNI = You Ain't Gonna Need It
+
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2026-08-14
+ *
+ * Program projects the growth of a population of a city under two different models.
+ */
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+
+    if(argc != 3) {
+        printf("ERROR: provide an initial population and a number of years\n");
+        exit(1);
+    }
+
+    int initialPopulation = atoi(argv[1]);
+    int years = atoi(argv[2]);
+
+    int geometricRatePopulation = initialPopulation;
+    int linearRatePopulation = initialPopulation;
+
+    printf("    10%%  +50k\n");
+    printf("0  %d   %d\n", initialPopulation, initialPopulation);
+    for(int year=1; year<=years; year++) {
+        geometricRatePopulation *= 1.1;
+        linearRatePopulation += 50000;
+        printf("%3d  %10d   %10d\n", year, geometricRatePopulation, linearRatePopulation);
+    }
+
+    //TODO: write a while loop to figure out how many years it takes to
+    //exceed 2x the original population
+
+    return 0;
+}
+```
+
+### Car Loan Program
+
+Compute a loan amortization table using a monthly payment formula:
+  $$P = \frac{rate \times principle}{1-(1+rate)^{-n}}$$
+where
+ * rate is the rate per period (.05/12 for monthly payments)
+ * $n$ is the number of periods (months) in the loan
+ * Ex: A $10,000 5 year loan at 5% interest (60 payments):
+ $$\frac{\frac{.05}{12} \times 10,000}{1-(1+\frac{.05}{12})^{-60}} = 188.71$$
+
+ ```text
+ Month Balance Interest New Balance
+     1   $10000.00   $   41.67   $  147.04  $ 9852.96
+     2   $ 9852.96   $   41.05   $  147.66  $ 9705.30
+     3   $ 9705.30   $   40.44   $  148.27  $ 9557.03
+     4   $ 9557.03   $   39.82   $  148.89  $ 9408.14
+     5   $ 9408.14   $   39.20   $  149.51  $ 9258.63
+     6   $ 9258.63   $   38.58   $  150.13  $ 9108.50
+     ...
+```
+
+```c
+/**
+ * Author: Chris Bourke
+ *
+ * Loan amortization table program.
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    if(argc != 4) {
+        printf("ERROR: provide the following: principle years rate\n");
+        exit(1);
+    }
+
+    double principle = atof(argv[1]);
+    int years = atoi(argv[2]);
+    int months = years * 12;
+    double annualRate = atof(argv[3]);
+    double monthlyRate = annualRate / 12.0;
+
+    //basic error checking
+    if(principle <= 0) {
+        printf("ERROR: principle must be positive\n");
+        exit(2);
+    }
+    //TODO: do more and comprehensive error handling
+
+    double monthlyPayment = (monthlyRate * principle) / (1 - pow(1 + monthlyRate, -months));
+
+    monthlyPayment = round(monthlyPayment * 100.0) / 100.0;
+
+    printf("Monthly Payment: $%.2f\n", monthlyPayment);
+
+    printf("Month Balance Interest Principle New Balance\n");
+
+    double balance = principle;
+
+    for(int month=1; month<=months; month++) {
+
+        //compute the monthly interest:
+        double monthInterest = monthlyRate * balance;
+        monthInterest = round(monthInterest * 100.0) / 100.0;
+        //compute the principle payment:
+        double principlePayment = monthlyPayment - monthInterest;
+        double newBalance = balance - principlePayment;
+
+        printf("%d $%.2f $%.2f $%.2f $%.2f\n", month, balance, monthInterest, principlePayment, newBalance);
+        //update the balance to the new balance for the next iteration...
+        balance = newBalance;
+    }
+
+    return 0;
+}
+
+```
 
 ```text
 
