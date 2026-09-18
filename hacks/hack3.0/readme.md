@@ -78,8 +78,7 @@ following.
 Average daily use: 1.30 GB/day
 
 You are EXCEEDING your average daily use (0.50 GB/day).
-Continuing this high usage, you'll exceed your data plan by
-24.00 GB.
+Continuing this high usage, you'll exceed your data plan by 24.00 GB.
 
 To stay below your data plan, use no more than 0.10 GB/day.
 ```

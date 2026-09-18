@@ -321,6 +321,113 @@ int main(int argc, char **argv) {
 }
 ```
 
+# Review Exercises
+
+```c
+/**
+ * Author: Chris Bourke
+ * Date: 2026-09-16
+ *
+ * TODO: write documentation
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+int main(int argc, char **argv) {
+
+    if(argc != 3) {
+        printf("ERROR: provide x and y\n");
+        exit(1);
+    }
+
+    double x = atof(argv[1]);
+    double y = atof(argv[2]);
+
+    double manhattanDistance = fabs(x) + fabs(y);
+    double euclideanDistance = sqrt( x * x + y * y );
+
+    printf("Point: (%f, %f)\n", x, y);
+
+    if(x == 0 && y == 0) {
+        printf("Location: Origin\n");
+    } else if(y == 0) {
+        printf("Location: x-axis\n");
+    } else if(x == 0) {
+        printf("Location: y-axis\n");
+    } else if(x > 0 && y > 0) {
+        printf("Location: Quadrant I\n");
+    } else if(x < 0 && y > 0) {
+        printf("Location: Quadrant II\n");
+    } else if(x < 0 && y < 0) {
+        printf("Location: Quadrant III\n");
+    } else if(x > 0 && y < 0) {
+        printf("Location: Quadrant IV\n");
+    }
+
+
+    printf("Manhattan Distance: %f\n", manhattanDistance);
+    printf("Euclidean Distance: %f\n", euclideanDistance);
+
+    return 0;
+}
+```
+
+```java
+package unl.soc;
+
+public class Battery {
+
+	public static void main(String[] args) {
+
+		if (args.length != 2) {
+			System.err.println("Usage: hours increment");
+			System.exit(1);
+		}
+
+		double hours = Double.parseDouble(args[0]);
+		double increment = Double.parseDouble(args[1]);
+
+		double currentTime = 0.0;
+
+		System.out.println("Time           B1        B2        B3        B4");
+		System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+
+		while (currentTime <= hours) {
+
+			double linearCharge = 100 - 10 * currentTime;
+			if(linearCharge < 0) {
+				linearCharge = 0;
+			}
+			double piecewiseCharge = 0;
+			if (0 <= currentTime && currentTime < 2) {
+				piecewiseCharge = 100 - 20 * currentTime;
+			} else if (currentTime < 5) {
+				piecewiseCharge = 60 - 5 * (currentTime - 2);
+			} else if (currentTime <= 14) {
+				piecewiseCharge = 45 - 2 * (currentTime - 5);
+			} else {
+				piecewiseCharge = 0;
+			}
+			double b3 = 100 * Math.exp(-.2 * currentTime);
+			if(b3 < 0) {
+				b3 = 0;
+			}
+			double b4 = 100 / (1 + Math.exp(.8 * (currentTime - 5)));
+			if(b4 < 0) {
+				b4 = 0;
+			}
+
+			System.out.printf("%7.2f   %7.2f   %7.2f   %7.2f   %7.2f\n", currentTime, linearCharge, piecewiseCharge, b3, b4);
+
+			currentTime += increment;
+		}
+
+	}
+
+}
+```
+
 ```text
 
 
