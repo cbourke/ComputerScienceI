@@ -51,7 +51,7 @@ An introduction to functions in C.
 
 ## Creating a Library: Modularity
 
-* You wan to separate utility functions into their own files
+* You want to separate utility functions into their own files
   * Prototypes and their documentation will be placed in a *header* file: extension: `.h`
   * The definitions are placed in a source file with the same base name + `.c`
 * Demonstration:
