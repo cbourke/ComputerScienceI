@@ -105,8 +105,45 @@
   * This is a bit inflexible
 * No testing = bad coding
 * ad-hoc testing: testing manually as we go, manually entering input/output recompile, fix, etc.
-* Informal Unit Testing: writing your own tests and boilerplate code to execute the tests and produce a summary
 
+### Informal Unit Testing
+
+* Informal Unit Testing: writing your own tests and boilerplate code to execute the tests and produce a summary
+* Demonstration
+
+### Formal Unit Testing
+
+* Formal unit testing: you are using a library to do most of the boilerplate stuff for you
+* Example: `cmocka`
+  * Instructions for installation and use are provided in Lab 6/Hack 6
+  * It requires pointers and function pointers (later)
+  * Instead: you'll be using our examples and extending them
+
+## How Functions Work
+
+* Programs have a *program stack* or *call stack*
+* Stack: LIFO Data Structure
+  * LIFO = Last in First out
+  * Pop: you remove the element from the "top" of the stack
+  * Push: you add an element to the top of the stack
+* Programs also have stacks
+* Everytime a function is called a new *stack frame* is created and placed on the top of the "call stack" or "program stack"
+  * All local variables and parameters in a function are stored in that function's stack frame
+  * Each function can only "see" its own stack frame (*scoping*)
+  * This is how scoping actually works: you can have multiple variables of the same name but they exist in different stack frames
+  * Once the function is done executing and returns, its stack frame is "popped" off the top and destroyed (any variables that were inside it are GONE)
+* DEMO: Can a function "swap" to values?
+  * Normally in C, variables are *passed by value*
+  * Means: **copies** of the values are passed to the function, NOT the variables themselves
+  * When we swap, we swapped the *copies* and *not* the originals
+  * Swapping inside the function has no effect on the original variables in the calling function
+  * BUT: can we modify our program so that *can* successfully swap?  Yes, but... we need pointers first
+
+## Pointers
+
+* Memory in a computer has both and *address* and *contents*
+  * Regular old variables such as `int` refer to the *contents* of memory
+  * A *pointer* variable can be created to refer to the *address* of memory
 
 ```text
 

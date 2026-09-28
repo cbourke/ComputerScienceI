@@ -123,6 +123,42 @@
 * Testing and design, and writing code are all part of a process (cyclical)
 
 
+### Formal Unit Testing
+
+* You use a library to do most of the boilerplate code for you
+* In C: many libraries, but we'll use **cmocka**
+  * Makes use of pointers and function pointers (more later)
+  * Must be installed and must be *linked* using `-l cmocka`
+  * We provide `makefile`s to do the heavy lifting
+* Java: JUnit (6.0)
+  * It has to be installed
+  * It provides a bunch of useful functions for testing
+  * It uses *annotations*: `@Test` to indicate that a function is a unit test
+
+## How Functions Actually Work
+
+* Programs have a *program stack* (or *call stack*)
+* Stack: LIFO Data structure
+  * LIFO = Last-In First-Out
+  * Push: you add something to the "top" of the stack
+  * Pop: you remove the top most thing from the stack
+* Each time a function is called, a new *stack frame* is created/pushed on top of the call stack
+  * Each stack frame keeps track of local variables and parameters
+  * Each time you return from a function, the stack frame is popped off the top
+  * Consequence: each stack frame's variables are separate (this gives us *scoping*) and cannot be accessed by other stack frames
+* In most programming languages (C, Java), variables are    *passed by *value*
+  * When a function is called, *copies* of the values of the variables at the point that the function is called are passed to the function, NOT the original variables themselves
+  * Changes to the original variables are NOT effected in the calling function (original function)
+* C however, has *pass by reference*
+
+# Pointers
+
+* Memory in a computer has both an *address* and *contents*
+* An address is a numerical designation of where the data is stored
+* The contents are the actual data being stored
+* Pointers in C allow you to access and manipulate memory locations and contents
+
+
 ```text
 
 
