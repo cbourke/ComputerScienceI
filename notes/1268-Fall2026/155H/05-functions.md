@@ -158,8 +158,114 @@
 * The contents are the actual data being stored
 * Pointers in C allow you to access and manipulate memory locations and contents
 
+## Syntax
+
+* Regular old variable: `int a = 42;`
+* Pointer declaration: `int *p;`
+* Best practice: initialize, `int *p = NULL;`
+* Point to a variable: `p = &a;`
+
+
+```c
+
+    //regular old integer...
+    int a = 42;
+
+    //a star (or asterisk) indicates a *pointer* variable
+    //in this case p can point to a memory location that holds an int
+    // ie the start of a 4 byte memory location
+    int *p;
+
+    //what does p point to right now?
+    //it is undefined
+    // it could point to a valid memory location that belongs to us
+    // it could point to an invalid (non-existant) memory location
+    // it could point to a valid memory lcoation that does NOT belong to us
+
+    //make our pointer point to NULL
+    p = NULL;
+
+    //later on: you can check for null
+    if(p == NULL) {
+        printf("p is null, you cannot do anything with it!\n");
+    }
+
+    //make p point to a:
+    p = &a;
+
+    //you can access or change the value stored at a (pointed to by p):
+    //WRONG: it makes p point to memory location 101
+    //p = 101;
+    //CORRECT: dereferences p (makes a pointer variable into a regular old variable)
+    *p = 101;
+
+    printf("the value stored at a is %d\n", a);
+    printf("the memory address of a is %p\n", p);
+    printf("the value pointed to by p is %d\n", *p);
+
+    //WRONG:
+    //p = 101;
+    //printf("the memory address of a is %p\n", p);
+    //SEG FAULT:
+    //printf("the value pointed to by p is %d\n", *p);
+
+```
+
+### Review of Pointers
+
+* A pointer is a *memory address* or "reference"
+* Regular old variable $\rightarrow$ pointer (reference): `&a` (referencing operator)
+* Pointer variable $\rightarrow$ regular old variable: `*p` (dereferencing operator)
+
+## Functions that Pass By Reference
+
+* You can pass pointers to functions and the functions can manipulate the contents of their memory
+* This is known as "pass by reference" (versus Pass by value)
+* This enables you to "return" multiple values
+* This also frees up the return value: error handling
+* Functions can also return pointers (more on this later)
+
+## Misc
+
+* Don't mess with uninitialized pointers
+* Don't make pointers point to things they shouldn't point to
+
+```c
+int a = 42;
+double *p = &a;
+
+//or:
+double b = 42.5;
+int *ptr = &b;
+
+```
+
+### Java
+
+* In Java, there are no pointers! You are not allowed to access memory directly
+* In Java, objects `Integer, Double, String`, etc. are *technically* references
+* However, in Java, all of these types are *immutable*
+
+```java
+Integer a = 10;
+
+//later on:
+a = 42;
+
+String name = "chris";
+String original = name;
+name = "Chris";
+
+System.out.println(original); //prints "chris"
+System.out.println(name);     //prints "Chris"
+
+//TODO: demonstrate this with string methods...
+
+```
 
 ```text
+
+
 
 
 

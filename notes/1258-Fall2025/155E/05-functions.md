@@ -236,7 +236,7 @@ An introduction to functions in C.
 * Pass by reference means that *memory addresses* (ie pointers) of variables are passed to the function instead of copies
 * Now you can manipulate the *original* values because you have access to their memory locations
 * You can now "return" multiple values from a function
-
+  * It then frees up the return 
 
 
 

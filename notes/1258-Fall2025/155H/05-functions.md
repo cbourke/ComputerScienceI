@@ -197,7 +197,7 @@
         printf("cannot access the memory location for p\n");
     }
 
-    //lets make it point to an *acutal* memory location
+    //lets make it point to an *actual* memory location
     p = &x;
     // & in front of a regular old variable gives you the memory address of that variable
     //LHS: a pointer = a reference = memory location = memory address

@@ -1,5 +1,5 @@
 
-# CSCE 155E - Computer Science I Honors
+# CSCE 155E - Computer Science I
 ## Functions & Methods
 ### Fall 2026
 
@@ -144,6 +144,106 @@
 * Memory in a computer has both and *address* and *contents*
   * Regular old variables such as `int` refer to the *contents* of memory
   * A *pointer* variable can be created to refer to the *address* of memory
+
+```c
+
+
+    // int a = 10;
+    // int b = 20;
+    // printf("start of main: a = %d, b = %d\n", a, b);
+    // swap(a, b);
+    // printf("end of main: a = %d, b = %d\n", a, b);
+
+    //a regular old integer variable:
+    int a = 42;
+
+    //create a pointer variable that can point to the memory location of an int:
+    //* = star or asterisk
+    int *p;
+
+    //as of right now, what does p point to?
+    //. what does p point to?
+    //. Who knows?!? its undefined;
+    //. it could point to an invalid memory location, one that does not exist
+    //. it could point to a *valid* memory location that does not belong to your program!
+    //. it coudl point to a valid memory lcoation that does belong to us, but that we *should* screw with
+
+    //its best practice to make it point to NULL:
+    // NULL is a special memory location that will always exist and means "invalid"
+    p = NULL;
+
+    if(p == NULL) {
+        printf("ERROR: cannot access pointer p\n");
+    }
+
+    //make p point to a:
+    //& = memory access operator; it gives the memory location of a regular old variable
+    p = &a;
+    printf("a is a regular old variable that is stored at memory location %p and holds the value %d\n", &a, a);
+
+    *p = 101;
+
+    printf("a is a regular old variable that is stored at memory location %p and holds the value %d\n", &a, a);
+    printf("p is a pointer variable that points to memory location %p which holds the value %d\n", p, *p);
+
+```
+
+## Summary
+
+* A pointer is a *memory address* or "reference"
+* A pointer can be declared using the star syntax: `int *p;`
+* It is best practice to initialize them to `NULL` unless you know what you are going to point it to...
+* To make a regular variable into a pointer variable: `&a`, the *referencing* operator
+* To make a pointer variable into a regular old variable: use the *dereference* operator: `*p`
+* Don't make pointers point to things they shouldn't point to
+* Regular old variable $\rightarrow$ pointer: `&`
+* Pointer variable $\rightarrow$ Regular old variable: `*`
+
+```c
+
+    //Don’t make pointers point to things they shouldn’t point to
+    double x = 3.5;
+    //pointer variable to point to x:
+    //CORRECT:
+    double *ptrToX = &x;
+
+    //INCORRECT: this would end up losing have the data, giving garbage results
+    //int *ptrToX = &x;
+
+    int y = 42;
+    //INCORRECT: it ends up pointing to 8 bytes when there are only 4: garbage results
+    //double *ptrToY = &y;
+
+    int *p = NULL;
+    //dereferencing a null pointer: segmentation fault
+    //*p = 42;
+
+    //VALID:
+    //makes p point to y:
+    p = &y;
+    //dereference p to set y's value to 101
+    *p = 101;
+    //INVALID: sets p to point to memory location 101!
+    p = 101;
+    printf("p is now point to memory location %p\n", p);
+    //trying to access memory location 101 will lead to... Segmentation fault (core dumped)
+    *p = 4024;
+
+    //unfortunately code like this is not possible:
+    // if(p is a valid memory location that belongs to my program) {
+    //     //proceed.
+    // }
+```
+
+## Passing By Reference
+
+* Recall that passing by value means that *copies* of the variables are passed to the function.
+* Pass by reference means that *memory addresses* (ie pointers) of variables are passed to the function instead of copies
+* Now you can manipulate the *original* values because you have access to their memory locations
+* You can now "return" multiple values from a function
+  * It then frees up the return for other uses...
+  * We'll use the return value as an *error code*
+
 
 ```text
 
