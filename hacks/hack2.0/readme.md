@@ -71,8 +71,9 @@ southern hemispheres.
 
 Note that the formula above assumes that latitude and longitude are
 measured in radians $r$, $-\pi \leq r \leq \pi$. You can convert from
-degrees $deg$ to radians $r$ using the formula
-$$r = \frac{deg}{180} \cdot \pi$$
+degrees $deg$ to radians $r$ using the formula  
+
+  $$r = \frac{deg}{180} \cdot \pi$$
 
 Your output should look something like the following.
 
