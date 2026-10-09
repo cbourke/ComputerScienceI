@@ -82,6 +82,144 @@
     * Generally we will force the returned pointer to the be the appropriate type through typecasting: `(int *)` forces it to become an `int` pointer
 * Demonstration
 
+```c
+
+    int n = 1000000;
+
+    int *arr = (int *) malloc( n * sizeof(int) );
+    //the array is allocated and can be treated like a regular old array
+
+    arr[0] = 42;
+    arr[n-1] = 123;
+
+    printf("first: %d\n", arr[0]);
+    printf("last : %d\n", arr[n-1]);
+```
+
+* Similar functions: `calloc()`, `realloc()`
+* In the event of failure, `malloc` and other functions will return `NULL`
+* Once you have successfully allocated memory, you can use it like any other array using square brackets and indices
+* Same problems exist if you try to access memory that doesn't belong to you: undefined behavior, seg faults, etc.
+* What happens if you run out of memory or ask for an invalid amount of memory? It returns `NULL`
+
+## Memory Management
+
+* Once you allocate a chunk of dynamic memory, you can use it for however long you want
+* Once you are done with it, you need to clean up after yourself
+* You *should* give it back to the operating system so it can reuse it
+* To give it back to the OS: you use `free()`
+* Failure to free unused memory may result in a *memory leak*: more and more memory is allocated and never free'd until resources become scarce or not available; slowing down the system.
+
+* Example:
+
+```c
+int n = 1000;
+double *arr = (double *) malloc( sizeof(double) * n );
+
+//TODO: do something with arr
+
+//NOw we are done with it, so free it:
+free(arr);
+```
+
+## Pitfalls
+
+* Once you've free'd memory it is no longer yours, you should *not* attempt to use it
+  * It may have already been given to another process to use
+  * Attempts to access it are *undefined behavior* and
+  * May result in a segfault
+* You can only free memory once:
+  * `free`ing it twice may result in a seg fault or "double free" error
+* Keep in mind: there is NO, absolutely NO way to reliably determine the size of a dynamic in C
+  * You are resopnsible for *bookkeeping*: keeping the size of an array in a second `int` variable
+
+```c
+
+        int n = 10000000;
+        int *arr = (int *) malloc(n * sizeof(int));
+        arr[0] = 42;
+        arr[n-1] = 101;
+        free(arr);
+        //attempting to access memory after you have freed is
+        // corruption of data
+        // segmentation fault
+        //printf("first: %d last: %d\n", arr[0], arr[n-1]);
+
+        //freeing something that doesn't belong to you
+        // ie freeing it twice: segmentation fault or "double free error"
+        //free(arr);
+
+        //freeing something that does belong to us, but may
+        // corrupt our data:
+        //munmap_chunk(): invalid pointer
+        //Aborted (core dumped)
+        int x = 42;
+        int *p = &x;
+        free(p);
+```
+
+## Arrays and Functions
+
+* You can pass an array to a function just as you would any other pointer variable
+* When you do, you always have to include the *size* of the array in an `int` variable (typically `int n` or `int size` or `int numElements`): C only has manual bookkeeping
+* Careful: because arrays are passed by reference, the functions *can* make changes to them
+  * You can prevent this by using the `const` keyword:  
+   `const int *arr`
+  * If made `const` the compiler will prevent any changes
+* You can also write functions that *return* new arrays
+
+```c
+/**
+ * Author: Chris Bourke
+ *
+ * Demo Code
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <math.h>
+
+/**
+ * Prints the given array of n elements to the standard output.
+ */
+void printArr(const int *arr, int n);
+
+int main(int argc, char **argv) {
+
+    int n = 10;
+    int *arr = (int *) malloc(n * sizeof(int));
+    for(int i=0; i<n; i++) {
+        arr[i] = (i + 1) * 10;
+    }
+
+    printArr(arr, n);
+
+
+    return 0;
+}
+
+void printArr(const int *arr, int n) {
+
+    if(arr == NULL) {
+        printf("[null]\n");
+        return;
+    } else if(n <= 0) {
+        printf("[empty]\n");
+        return;
+    }
+    //you need to know how big arr is: how many elements are in it
+    printf("[");
+    for(int i=0; i<n-1; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("%d]\n", arr[n-1]);
+
+}
+
+```
+
+
 ```text
 
 

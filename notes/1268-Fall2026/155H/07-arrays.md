@@ -71,6 +71,165 @@
 * No pointers in Java, no static arrays
 * All arrays are allocated on the heap
 
+```java
+
+		//create a "dynamic" array:
+		//holds 10 integers
+		//all initialized to 0
+		int arr[] = new int[10];
+
+		//this same syntax can be used in both languages:
+		int primes[] = {2, 3, 5, 7, 11, 13, 17};
+
+		for(int i=0; i<arr.length; i++) {
+			System.out.printf("arr[%d] = %d\n", i, arr[i]);
+		}
+
+		//enhanced for loop:
+		//for each x in the collection primes
+		for(int x : primes) {
+			System.out.println(x);
+		}
+```
+
+* Arrays suck, don't use them unless you *have* to
+* Java has much better *dynamic* collections
+* Java has classes to support `List`s, `Set`s and `Map`s
+* A Java `List` is a collection of *ordered* elements that allow duplicates
+
+```java
+
+		//List is a collection of:
+		// ordered elements
+		// that allows duplicates
+		List<Integer> numbers = new ArrayList<>();
+		//add always adds the element to the end of the list
+		numbers.add(10);
+		numbers.add(20);
+		numbers.add(30);
+
+		//only integers for this list:
+		//numbers.add(10.5);
+		//numbers.add("Hello");
+		//duplicates are okay:
+		numbers.add(10);
+		System.out.println(numbers);
+
+		//you can add at an arbitrary index:
+		numbers.add(0, 42);
+		System.out.println(numbers);
+
+		numbers.add(2, 101);		
+		System.out.println(numbers);
+
+		numbers.add(0, 123);
+		System.out.println(numbers);
+
+		//you can remove stuff:
+		int removedElement = numbers.remove(0);
+		System.out.println(numbers);
+
+		//retrieval:
+		//get the first element:
+		int x = numbers.get(0);
+		System.out.println(x);
+
+		//iterate:
+		for(int i=0; i<numbers.size(); i++) {
+			int y = numbers.get(i);
+			System.out.println(y);
+		}
+
+		//enhanced for loop:
+		for(int z : numbers) {
+			System.out.println(z);
+		}
+```
+
+* A `Set` is an *unordered* collection of *unique* elements
+
+```java
+
+		Set<String> names = new HashSet<>();
+
+		names.add("Chris");
+		names.add("Seiya");
+		names.add("Jane");
+		names.add("Chris");
+
+		System.out.println(names);
+
+		//unordered: there is no first element to get...
+		//String name = names.get(0);
+
+		//enhanced for loop is your option
+		for(String name : names) {
+			System.out.println(name);
+		}
+
+//		names.remove("Jane");
+//		System.out.println(names);
+//		//remove everything:
+//		names.clear();
+//		System.out.println(names);
+//		//size of the set:
+//		int n = names.size();
+
+		//transform names to a list:
+		List<String> namesList = new ArrayList<>(names);
+		System.out.println(names);
+		System.out.println(namesList);
+		namesList.add("Chris");
+		System.out.println(namesList);
+
+		List<Integer> values = new ArrayList<>();
+		values.add(10);
+		values.add(10);
+		values.add(20);
+		values.add(30);
+
+		Set<Integer> uniqueValues = new HashSet<>(values);
+		System.out.println(uniqueValues);
+```
+
+* `Map`s are even better
+* Lists: you use 0-indexing: they are all integers and they run 0 up to n - 1
+* Sets: no indexing at all, just a "bag" of stuff
+* Maps: key-value pairing data structure
+* You can map any type to any type
+
+```java
+
+		Map<Integer, String> nuidToName = new HashMap<>();
+
+		nuidToName.put(35140602, "Bourke");
+		nuidToName.put(123, "Jones");
+		nuidToName.put(987, "Doe");
+
+		System.out.println(nuidToName);
+
+		nuidToName.put(987, "Foo");
+		System.out.println(nuidToName);
+
+		//retrieve:		
+		String me = nuidToName.get(35140602);
+		System.out.println(me);
+		String joe = nuidToName.get(456);
+		System.out.println(joe);
+
+		nuidToName.put(1111111, "Bourke");
+
+		System.out.println(nuidToName);
+
+		//iterate over a map:
+		Set<Integer> keys = nuidToName.keySet();
+		for(Integer key : keys) {
+			String value = nuidToName.get(key);
+			System.out.println(key + " maps to " + value);
+		}
+```
+
+
 ```text
 
 
