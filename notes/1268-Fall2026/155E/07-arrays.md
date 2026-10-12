@@ -167,58 +167,46 @@ free(arr);
    `const int *arr`
   * If made `const` the compiler will prevent any changes
 * You can also write functions that *return* new arrays
+  * `malloc` does this
+  * Write a function that returns a particular type of array
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array (one dimensional)
+* You can also have multidimensional arrays: 2D arrays, 3D arrays, 4D arrays, etc.
+* Our focus: 2-D arrays
+  * Rows & Columns: tables, spreadsheets
+  * Mathematics: matrices
+* IF a 1-D array is `int *`
+* A 2-d array is an `int **`
 
 ```c
-/**
- * Author: Chris Bourke
- *
- * Demo Code
- */
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <unistd.h>
-#include <math.h>
-
-/**
- * Prints the given array of n elements to the standard output.
- */
-void printArr(const int *arr, int n);
-
-int main(int argc, char **argv) {
-
-    int n = 10;
-    int *arr = (int *) malloc(n * sizeof(int));
-    for(int i=0; i<n; i++) {
-        arr[i] = (i + 1) * 10;
-    }
-
-    printArr(arr, n);
-
-
-    return 0;
+int numRows = 3;
+int numCols = 4;
+//want to create a 3 x 4 table/matrix
+int **table = (int **) malloc(numRows * sizeof(int *) );
+//now create each row...
+for(int i=0; i<numRows; i++) {
+  //create the i-th row...
+  table[i] = (int *) malloc(numCols * sizeof(int) );
 }
 
-void printArr(const int *arr, int n) {
+//use it like a 2-d array:
+table[0][0] = 42;
+table[2][3] = 101;
 
-    if(arr == NULL) {
-        printf("[null]\n");
-        return;
-    } else if(n <= 0) {
-        printf("[empty]\n");
-        return;
-    }
-    //you need to know how big arr is: how many elements are in it
-    printf("[");
-    for(int i=0; i<n-1; i++) {
-        printf("%d, ", arr[i]);
-    }
-    printf("%d]\n", arr[n-1]);
-
+for(int i=0; i<numRows; i++) {
+  for(int j=0; j<numCols; j++) {
+    table[i][j] = i * 10 + j;
+  }
 }
 
+for(int i=0; i<numRows; i++) {
+  //free the i-th row
+  free(table[i]);
+}
+free(table);
 ```
-
 
 ```text
 

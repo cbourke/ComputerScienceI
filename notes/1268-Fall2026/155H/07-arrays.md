@@ -229,6 +229,55 @@
 		}
 ```
 
+## Pitfalls with Arrays
+
+* You must make sure that you are only accessing elements within the bounds of an array
+  * C: segmentation fault, or a "stack smashing event" or just garbage results: *undefined behavior*
+  * Java: `IndexOutOfBoundsException` is thrown
+* What happens if you don't clean up after yourself?
+  * C: you request memory through: `malloc()`
+  * Once you are done with it, you should give it back
+  * To do so: use the `free()` function (pass it the pointer to the dynamically allocated array)
+  * Not freeing memory will lead to a *memory leak*
+  * Pitfalls to free:
+    * Do NOT free static memory
+    ```c
+    //don't free stack memory:
+    int primes[] = {2, 3, 5, 7, 11, 13, 17};
+    free(primes);
+    ```
+    * Do not access memory once it has been freed
+    * Do not free something twice
+    ```c
+
+    int n = 1000000;
+    int *arr = (int *) malloc( n * sizeof(int) );
+
+    arr[0] = 42;
+    arr[n-1] = 101;
+
+    free(arr);
+    //trying to access after freeing: undefined behavior -> seg fault
+    //printf("first: %d\n", arr[0]);
+
+    //double free error: you cannot free something twice
+    free(arr);
+    ```
+    * **You** are responsible for memory management
+    * Java: no memory management!
+    * JVM takes care of all memory management
+
+### Arrays & Functions
+
+#### C
+
+* When you pass an array to a function, *you also need to pass the size of the array*
+* This is called "bookkeeping"
+* There is absolutely NO WAY for you to determine the size of a dynamic array in C
+* You have to pass the size of the array to any function that you wish to process it
+* Make sure you are doing basic error handling
+* You can put a `const` in front of the the array pointer to prevent changes
+
 
 ```text
 
