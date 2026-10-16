@@ -277,7 +277,204 @@
 * You have to pass the size of the array to any function that you wish to process it
 * Make sure you are doing basic error handling
 * You can put a `const` in front of the the array pointer to prevent changes
+* You can also write functions that *return* new arrays
+  * `malloc` does this
 
+
+```c
+/**
+ * Author: Chris Bourke
+ *
+ * Demo Code
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <math.h>
+
+/**
+ * Utility function to print the given array of size n to the
+ * standard output.
+ */
+void printArr(const int *arr, int n);
+
+/**
+ * Returns the sum of all elements in the given array of size n
+ */
+int sum(const int *arr, int n);
+
+/**
+ * Sums the given values in the array of size n, places the sum
+ * into the pass-by-reference variable, returns an error code for
+ * all bad inputs.
+ */
+int summation(const int *arr, int n, int *result);
+
+/**
+ * Creates a new array of size n and returns a pointer to
+ * the new array.
+ */
+int *getOnesArray(int n);
+
+/**
+ * Creates a new array that contains only the positive
+ * values stored in arr (which is of size n).
+ *.                    i
+ * input:  [5, -2, 7, -4, 5, 7, -1, 0]
+ * output: [5, 7, 5, 7]
+ *.               j
+ */
+int *getPositives(const int *arr, int n, int *newArrSize);
+
+int main(int argc, char **argv) {
+
+
+    int n = 10;
+    int *arr = (int *) malloc( n * sizeof(int) );
+
+    for(int i=0; i<n; i++) {
+        arr[i] = (i + 1) * 10;
+    }
+
+    printArr(arr, n);
+    int total = sum(arr, n);
+    printf("Sum = %d\n", total);
+
+    int total2;
+    summation(arr, n, &total2);
+    printf("Sum = %d\n", total2);
+
+    int m = 10;
+    int *ones = getOnesArray(m);
+    printArr(ones, m);
+
+    int brr[] = {5, -2, 7, -4, 5, 7, -1, 0};
+    int newSize;
+    int *pos = getPositives(brr, 8, &newSize);
+    printArr(pos, newSize);
+
+    return 0;
+}
+
+void printArr(const int *arr, int n) {
+
+    if(n <= 0) {
+        printf("[]\n");
+        return;
+    } else if(arr == NULL) {
+        printf("(null)\n");
+        return;
+    }
+
+    printf("[");
+    for(int i=0; i<n-1; i++) {
+        printf("%d, ", arr[i]);
+    }
+    printf("%d]\n", arr[n-1]);
+}
+
+int sum(const int *arr, int n) {
+
+    int total = 0;
+    if(arr == NULL || n <= 0) {
+        return total;
+    }
+    for(int i=0; i<n; i++) {
+        total += arr[i];
+    }
+    return total;
+}
+
+int summation(const int *arr, int n, int *result) {
+
+    if(arr == NULL || n <= 0 || result == NULL) {
+        return 1;
+    }
+    int total = 0;
+    for(int i=0; i<n; i++) {
+        total += arr[i];
+    }
+    //only screw with the pointer once:
+    *result = total;
+    return 0;
+}
+
+int *getOnesArray(int n) {
+
+    if(n < 0) {
+        return NULL;
+    }
+
+    int *arr = (int *) malloc(sizeof(int) * n);
+
+    for(int i=0; i<n; i++) {
+        arr[i] = 1;
+    }
+
+    return arr;
+}
+
+int *getPositives(const int *arr, int n, int *newArrSize) {
+    //TODO: error handling
+
+    //count up the number of positives:
+    int numElements = 0;
+    for(int i=0; i<n; i++) {
+        if(arr[i] > 0) {
+            numElements++;
+        }
+    }
+
+    *newArrSize = numElements;
+
+    int *result = (int *) malloc(sizeof(int) * numElements);
+    int j = 0;
+    for(int i=0; i<n; i++) {
+        if(arr[i] > 0) {
+            result[j] = arr[i];
+            j++;
+        }
+    }
+
+    return result;
+}
+
+```
+
+### Multidimensional Arrays
+
+* A regular old array is a 1-D array (one dimensional)
+* You can also have multidimensional arrays: 2D arrays, 3D arrays, 4D arrays, etc.
+* Our focus: 2-D arrays
+  * Rows/Columns: Tables, spreadsheets
+  * Math: matrices
+* IF a 1-D array is `int *`
+* A 2-D array is represented with `int **`
+
+```c
+
+  int numRows = 3;
+  int numCols = 4;
+
+  //create a 3 x 4 table/matrix
+  int **table = (int **) malloc(sizeof(int *) * numRows);
+  //setup each row:
+  for(int i=0; i<numRows; i++) {
+    //setup row i:
+    table[i] = (int *) malloc(sizeof(int) * numCols);
+  }
+
+  table[0][0] = 42;
+  table[2][3] = 101;
+
+  //now we need to free everything...
+  //first: free each row...
+  for(int i=0; i<numRows; i++) {
+    free(table[i]);
+  }
+  free(table);
+```
 
 ```text
 

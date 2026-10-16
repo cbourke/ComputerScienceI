@@ -208,6 +208,29 @@ for(int i=0; i<numRows; i++) {
 free(table);
 ```
 
+## Misc
+
+### Shallow vs Deep Copies
+
+* A shallow copy is when two arrays share the same memory address
+  * There is only actually ONE array
+  * Changes to one will affect both of them
+* A deep copy is when you copy an array to another array so that they are *completely different arrays*
+  * Changes to one do not affect the other
+  * There are TWO actual arrays in TWO different memory locations
+
+### Pointer Arithmetic
+
+* How arrays actually work...
+* Arrays (names of arrays) are actually pointers that points to the *beginning* of a memory location that holds a bunch of elements in a contiguous manner
+* Arrays are nothing more than the memory address of the first element in the array
+* This is why indexing starts at 0: zero bytes offset from the first element
+* This is all done by C using *pointer arithmetic*
+* This is why we have to do our own bookkeeping!  
+
+
+
+
 ```text
 
 

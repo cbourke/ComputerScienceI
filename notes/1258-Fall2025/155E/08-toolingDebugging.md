@@ -74,7 +74,7 @@
   * `watch n` (it will print changes to the variable `n`)
 * You can use your debugger to find where stuff goes wrong...
   * `backtrace full` gives a full stacktrace report
-  * If you have an infinite loop: `control-C` it won't kill hte program it will *pause* it!
+  * If you have an infinite loop: `control-C` it won't kill the program it will *pause* it!
   * Conditional breakpoints: `break 14 if i == 42`, `break 14 if i == 42 && j < 0`
 * Misc:
   * You can set command line arguments in GDB using `set args 10 20 30`
