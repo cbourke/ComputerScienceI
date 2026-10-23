@@ -114,6 +114,28 @@
 
 ## String Processing
 
+* String contain data
+* Character by character
+* The `ctype.h` library provides many other useful functions for single characters:
+  * `isalpha(char c)` - true if `c` is an alpha-numeric character `A-Z, a-Z, 0-9`
+  * `isspace(char c)` - true if `c` is a space character (` , \t, \n, \r`)
+  * `isupper(c), islower(c)` - true if `c` is an uppercase or lowercase character
+  * `toupper(c), tolower(c)` - convert to the lower/upper equivalent
+  * `isdigit(c)` - true for 0 - 9
+
+### Formatting
+
+* `printf` will format a result to the standard output
+* `sprintf` will format a result to a *string*
+
+### Byte Limited Versions
+
+* `strcpy` and `strcat` both copy/concatenate the entire string (beginning to end)
+* `strncpy` and `strncat` are *byte-limited* versions of copy/concatenate
+  * Each takes a third argument: `n` and copies/concats *at most* `n` characters/bytes
+  * If it sees the null-terminating character before `n` bytes, it stops and copies `\0` for you!
+  * However, if it does *not* see the null-terminator in the first `n` bytes, it **does not insert it for you!**
+
 
 ```text
 

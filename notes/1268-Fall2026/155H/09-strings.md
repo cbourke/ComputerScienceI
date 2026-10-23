@@ -166,6 +166,14 @@
 		System.out.println(message);
 ```
 
+## String Processing - C
+
+* Strings are important because they are often used to hold *data*
+* That data needs to be processed
+* Basic processing:
+  * C: use a loop...
+
+
 ```text
 
 
