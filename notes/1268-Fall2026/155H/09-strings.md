@@ -173,6 +173,255 @@
 * Basic processing:
   * C: use a loop...
 
+### `ctype.h` library
+
+* String contain data
+* Character by character
+* The `ctype.h` library provides many other useful functions for single characters:
+  * `isalpha(char c)` - true if `c` is an alpha-numeric character `A-Z, a-Z, 0-9`
+  * `isspace(char c)` - true if `c` is a space character (` , \t, \n, \r`)
+  * `isupper(c), islower(c)` - true if `c` is an uppercase or lowercase character
+  * `toupper(c), tolower(c)` - convert to the lower/upper equivalent
+  * `isdigit(c)` - true for 0 - 9
+
+```c
+
+int toUpperCase(char *s) {
+
+    if(s == NULL) {
+        return 1;
+    }
+
+    int i = 0;
+    while(s[i] != '\0') {
+        s[i] = toupper(s[i]);
+        i++;
+    }
+    return 0;
+}
+
+char * toUpperCaseCopy(const char *s) {
+
+    //0. error checking:
+    if(s == NULL) {
+        return NULL;
+    }
+
+    //1. copy the string...
+    char *copy = (char *) malloc( sizeof(char) * (strlen(s)+1) );
+    strcpy(copy, s);
+
+    // int i = 0;
+    // while(s[i] != '\0') {
+    //     copy[i] = toupper(s[i]);
+    //     i++;
+    // }
+    // //must terminate this manually:
+    // copy[i] = '\0';
+    //instead: reuse our functionality
+    toUpperCase(copy);
+
+    return copy;
+
+}
+
+int removeWhitespace(char *s) {
+
+    if(s == NULL) {
+        return 1;
+    }
+
+    int j = 0;
+    //TODO: change this to a while loop to avoid potential multiple calls to strlen
+    for(int i=0; i<strlen(s)+1; i++) {
+        //copy only if it is NOT a whitespace character...
+        if(!isspace(s[i])) {
+            s[j] = s[i];
+            j++;
+        }
+    }
+    //s[j] = '\0';
+    return 0;
+}
+```
+
+```java
+
+		String s = "Hello World!!!";
+
+		String t = s.toUpperCase();
+
+		System.out.println(t);
+
+		//if you DO need to process a string character by character...
+		for(int i=0; i<s.length(); i++) {
+			char c = s.charAt(i);
+			System.out.println(c);
+		}
+
+		for(char c : s.toCharArray()) {
+			System.out.println(c);
+		}
+
+		String message = "Hel\tlo ho\nw ar\re youA hello U EFJDKSL:FKJDS:?";
+		t = message.replaceAll("Hello", "");		
+		System.out.println(t);
+
+		System.out.println("=========");
+		t = message.replaceAll(".*", "");		
+		System.out.println(t);
+
+```
+
+### Formatting
+
+* `printf` will format a result to the standard output
+* `sprintf` will format to a string
+
+```c
+
+    int x = 42;
+    double y = 3.5;
+    char name[] = "John";
+
+    char result[100];
+
+    sprintf(result, "x = %d, y = %f, name = %s\n", x, y, name);
+
+    printf("result is now %s\n", result);
+```
+
+### Byte Limited Versions
+
+* `strcpy` and `strcat` both copy/concatenate the entire string (beginning to end)
+* `strncpy` and `strncat` are *byte-limited* versions of copy/concatenate
+  * Each takes a third argument: `n` and copies/concats *at most* `n` characters/bytes
+  * If it sees the null-terminating character before `n` bytes, it stops and copies `\0` for you!
+  * However, if it does *not* see the null-terminator in the first `n` bytes, it **does not insert it for you!**
+
+```c
+
+    char fullName[] = "Christopher Michael Bourke";
+
+    char firstName[6];
+
+    strncpy(firstName, fullName, 5);
+    //we need to take care of the null terminator manually:
+    firstName[5] = '\0';
+
+    printf("firstName = %s\n", firstName);
+```
+
+### Substrings
+
+* A substring of a string is a part of it (may begin inside the string)
+* For example: `"Husker"` is a substring of `"Go Husker Football!!"`
+* Goal: write a function that returns a substring of a given string
+
+```c
+
+/**
+ * Returns a new substring of s starting at beginIndex
+ * all the way to the end of s
+ */
+//char *substring(const char *s, int beginIndex);
+
+/**
+ * Returns a new substring of s starting at beginIndex
+ * and ending at endIndex - 1
+ */
+char *substring(const char *s, int beginIndex, int endIndex);
+
+/**
+ * Returns a new substring of s starting at beginIndex
+ * and of the given length
+ */
+//char *substring(const char *s, int beginIndex, int length);
+
+
+int main(int argc, char **argv) {
+
+    char str[] = "Go Husker Football!!";
+
+    char *substr = substring(str, 3, 9);
+
+    printf("substr = %s\n", substr);
+
+    free(substr);
+
+    return 0;
+}
+
+char *substring(const char *s, int beginIndex, int endIndex) {
+
+    if(s == NULL || beginIndex < 0 || endIndex < beginIndex) {
+        return NULL;
+    }
+
+    //1. create memory to hold the new string...
+    int n = endIndex - beginIndex;
+    char *result = (char *) malloc( sizeof(char) * (n + 1) );
+
+    //s is char *
+    //s[i] is char
+    //char => char *
+    //&s[i]
+    //use strncpy to copy over n bytes into result...
+    strncpy(result, &s[beginIndex], n);
+    result[n] = '\0';
+
+    // //2 copy over the characters
+    // for(int i=beginIndex; i<endIndex; i++) {
+    //     result[i-beginIndex] = s[i];
+    // }
+    // //2.5 add the null terminator
+    // result[n] = '\0';
+
+
+
+    return result;
+}
+```
+
+```java
+
+		//sprintf:
+		int x = 42;
+		double y = 3.5;
+		String name = "Chris";
+		String result = String.format("x = %d, y = %f, name = %s", x, y, name);
+
+		String message = "Go Husker Football!!!";
+		String a = message.substring(3);
+		System.out.println(a);
+		String b = message.substring(3, 9);
+		System.out.println(b);
+
+```
+
+## Data Processing
+
+* Data is fundamental to CS
+* Often data is given in textual manner: not  necessary for humans, but in a readable format
+* MOre often data is stored in a *structured format*
+  * XML = eXtensible Markup Language
+  * JSON = JavaScript Object Notation
+  * TSV, CSV = Tab Separated Values, Comma Separated Value
+  * These are "flat file" representations
+  * Ex: `"Chris,Bourke,2-2400,Avery 104B,Professor of Practice"`
+* Goal: process a data string to pull out each individual piece of data called "tokens"
+* Basic *tokenization*: split up a string of data into separate *tokens* so we can process each
+  * Each piece of data is a token
+  * Each is separated by a *delimiter* (comma)
+* C provides a function, `strtok`
+* `char *strtok(char *str, const char *delim);`
+  * `str` is the string to tokenize (data string)
+  * `delim` is a (optionally a list) of delimiters to use, typically we'll use `","`
+  * `str` is not `const`: it can change and in fact it will be changed
+  * Returns a pointer to the next token (ie you need to call this function several times to get each of the tokens)
+  * On the first call you pass in the string you want to tokenize, however...
+  * on each subsequent call, you pass `NULL` to continue with the same string
+  * When there are no more tokens, it returns `NULL` to indicate that it is done processing the data
 
 ```text
 
