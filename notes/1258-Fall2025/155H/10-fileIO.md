@@ -28,7 +28,7 @@
 * Step 3: closing the file: `fclose()`
   * Once closed, that's it, the file is saved/flushed, etc. You are done with it.
 * Opening a file for reading that does not exist: error
-* OPening a file for reading that you don't have permission for: error
+* Opening a file for reading that you don't have permission for: error
 * Opening a file for writing that does not exist: it will be created for you
 * Opening a file for writing that *does* exist: it starts *overwriting* the contents!
 * for errors, `fopen()` returns `NULL`
