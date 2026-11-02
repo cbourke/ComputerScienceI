@@ -138,6 +138,32 @@
   * `fseek()` - this can fast forward or rewind the file pointer!
   * `rewind()` - this rewinds all the way back to the start of the file
 
+## Binary Files
+
+* Writing binary: `fwrite(const void* buffer, size_t size, size_t count, FILE* stream);`
+  * `buffer` - the thing (array or element) that you are writing to a file
+  * `size` is the number of bytes each element takes; use `sizeof()`
+  * `count` is the number of elements to write
+  * `stream` is the file pointer/handle that you are writing to
+```c
+
+    int n = 10;
+    int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+
+    FILE *f = fopen("./numbers.bin", "w");
+
+    fwrite(primes, sizeof(int), n, f);
+
+    fclose(f);
+
+```
+* Reading binary: `fread(void* buffer, size_t size, size_t count, FILE* stream)`
+
+## Exercise
+
+* Process a bunch of book data
+* Find the "best" book (highest rated book)
+
 ```text
 
 

@@ -157,7 +157,141 @@ try {
 }
 ```
 
-* Even easier:
+* Even easier: Java's NIO (non-blocking I/O) library:
+
+```java
+Path path = Paths.get("data/foo.txt");
+List<String> lines;
+try {
+  lines = Files.readAllLines(path);
+  System.out.println(lines);
+} catch (IOException e) {
+  throw new RuntimeException(e);
+}
+```
+
+## File Output
+
+* Simplest way: `PrintWriter`
+* It allows you to use `print, println, printf` methods
+
+```java
+
+		File f = new File("data/output.txt");
+		try {
+			PrintWriter pw = new PrintWriter(f);
+			pw.print("Hello World");
+			pw.println("Goodbye World");
+			int x = 42;
+			double y = 123.4;
+			String name = "Chris";
+			pw.printf("x = %d, y = %f, name = %s\n", x, y, name);
+			pw.close();
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+```
+
+# Book Demo
+
+```c
+
+    //what is the highest rated book?
+    //load up the data line by line: File Input
+    //.  process each token (piece of data): strtok
+    //.  find the highest rating...
+    //.  does that give us the actual book?
+
+    double highestRating = 0.0;
+    char *highestRatedTitle = NULL;
+    char *authorFirstName = NULL;
+    char *authorLastName = NULL;
+
+    //1. open the file
+    FILE *f = fopen("./books.csv", "r");
+    //1a buffer to hold each line value...
+    char buffer[1000];
+    //ignore the first line (header data)
+    char *line = fgets(buffer, 1000, f);
+    line = fgets(buffer, 1000, f);
+    while(line != NULL) {
+        if(buffer[strlen(buffer)-1] == '\n') {
+            buffer[strlen(buffer)-1] = '\0';
+        }
+        //printf("line = %s\n", line);
+        //process the line: tokenize it and find the rating
+        if(strlen(buffer) > 0) {
+           char *token;
+           token = strtok(buffer, ",");
+           int bookId = atoi(token);
+           token = strtok(NULL, ",");
+           char *title = deepStrCpy(token);
+           token = strtok(NULL, ",");
+           char *firstName = deepStrCpy(token);
+           token = strtok(NULL, ",");
+           char *lastName = deepStrCpy(token);
+           token = strtok(NULL, ",");
+           char *isbn = deepStrCpy(token);
+           token = strtok(NULL, ",");
+           double rating = atof(token);
+           //TODO: the others: Publisher,Original Publication Year,Date Read
+           //printf("rating = %f\n", rating);
+           if(rating > highestRating) {
+             highestRating = rating;
+             highestRatedTitle = title;
+           }
+        }
+        line = fgets(buffer, 1000, f);
+    }
+
+    fclose(f);
+
+    printf("Highest rating: %.2f\n", highestRating);
+    printf("Title of best book: %s\n", highestRatedTitle);
+
+```
+
+```java
+
+		double highestRating = 0.0;
+		String bookTitle = null;
+		String authorFirstName = null;
+		String authorLastName = null;
+
+		File f = new File("data/books.csv");
+		try {
+			Scanner s = new Scanner(f);
+
+			String line = s.nextLine();
+			while (s.hasNextLine()) {
+				line = s.nextLine();
+				if (!line.isEmpty()) {
+					String tokens[] = line.split(",");
+					int bookId = Integer.parseInt(tokens[0]);
+					String title = tokens[1];
+					String lastName = tokens[3];
+					String firstname = tokens[2];
+					String isbn = tokens[4];
+					double rating = Double.parseDouble(tokens[5]);
+					// TODO: handle the rest of the data..
+					if (rating > highestRating) {
+						highestRating = rating;
+						bookTitle = title;
+						authorFirstName = firstname;
+						authorLastName = lastName;
+					}
+				}
+			}
+
+			s.close();
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+
+		System.out.println("Highest rating: " + highestRating);
+		System.out.printf("%s by %s, %s\n", bookTitle, authorLastName, authorFirstName);
+
+```
 
 
 ```text
