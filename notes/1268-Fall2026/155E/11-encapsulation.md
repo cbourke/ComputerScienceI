@@ -22,10 +22,30 @@
   * You provide a name at the end + `;`
   * Generally: modern convention is to use `UpperCamelCasing`
   * Generally, structure declarations are placed into header files, often of similar name, `book.h`
-  * Generally you should document them: TODO
+  * Generally you should document them
   * Order matters: if you use *composition* (one structure is composed of other structures) then you need to declare the used structures first
 
 ## Using Structures
+
+* Once defined you can declare them:
+```c
+//regular old structure
+Book b1;
+//pointer to a structure
+Book *b2;
+```
+* To access member variables of a regular-old-struture: dot operator: `b1.isbn`
+* To access member variables of a *pointer* to a structure: use the arrow operator: `b2->isbn`
+* You can define factory functions to create new instances of your structure, returning a pointer to a *dynamically allocated* instance of the structure
+  * remember: to use `sizeof(Book)` with `malloc()`
+  * You can create "to string" function(s) to give a human-readable representation of your structure
+  * You can create "factory" functions `init` or `create` to initialize/create new instances of your structures
+  * You can create a "destructor" that frees all memory associated with your structure: `freeBook()`
+  * Other ideas: bulk functions: print all books, destroy all books, etc.
+  * Textbook: you can also have array of pointers to structures
+
+
+
 
 
 ```text

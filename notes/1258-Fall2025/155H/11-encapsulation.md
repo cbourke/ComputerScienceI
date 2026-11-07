@@ -25,7 +25,7 @@
   * Use `lowerCamelCasing` for structure variables
   * Declaration order matters!
   * If a structure is composed of other structures, those "other" structures need to be declared *first*
-* Other:
+* Using a structure:
   * IF you have a regular structure, `Book b`, then use the dot operator: `b.title`
   * If you have a pointer: `Book *b` then use the arrow operator
   `b->title`
