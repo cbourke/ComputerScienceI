@@ -48,6 +48,7 @@
   * Best practice: make everything `private` unless you have a Very Good Reason
 * You can control access through getters/setters (but generally you prefer *immutable objects*)
 * Java allows you to define *nontrivial* methods
+* Use your IDE to generate "boilerplate" code: constructors, getters, setters, `toString`
 
 ```text
 
