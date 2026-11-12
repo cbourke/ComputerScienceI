@@ -29,13 +29,8 @@ $$1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, \ldots$$
 * You make one or more recursive calls that *must* make progress toward the base conditions
 * You get the recursion started by calling the function on an *initial value*
 
-## Scratch
+## Recursion: The Good
 
-* Fib(1) = 5
-* Fib(2) = 3
-* Fib(3) = 2
-* Fib(4) = 1
-* Fib(5) = 1
 
 ```text
 
