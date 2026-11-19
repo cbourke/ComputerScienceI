@@ -60,7 +60,23 @@
 * If you go from $n$ to $10n$, there are only a few more comparisons (not 10 times slower)
 * THis is exponentially faster than linear search
 * Clearly a sorted array is better than an unsorted array
-* How do we sort? 
+* How do we sort?
+
+## Sorting
+
+* How do we sort?
+
+### Selection Sort
+
+* Idea: you search the array for the minimum element then swap it with the first
+* Repeat: this idea
+  * $i$-th iteration: find the minimum among $i, \ldots, n-1$
+  * Swap $i$ and the minimum element
+  * Stop when $0, \ldots, n-2$ are sorted, the last element $n-1$ is automatically where it needs to be
+* The number of comparisons that selection sort makes on an array of size $n$ is approximately $n^2$
+
+
+
 
 ```text
 

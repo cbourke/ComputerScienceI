@@ -55,7 +55,38 @@
 * The rate of growth is *diminishing* as $n$ grows
 * Linear search is *exponentially* slower than binary search
 
+# Sorting
 
+* Given an (ordered) collection of elements, rearrange them so that they are sorted (according to some criteria)
+* Lots of different sorting algorithms, each with different properties
+* We'll examine two of them...
+
+### Selection Sort
+
+* Each iteration you select the minimum among the remaining elements and place it where it needs to be
+* First iteration: $i = 0$
+  * Search elements $0\ldots n-1$ for the minimum, $m$
+  * Swap $a_0$ and $m$
+* Second iteration: $i = 1$
+  * Search elements $1\ldots n-1$ for the minimum, $m$
+  * Swap $a_1$ and $m$
+* Third iteration: $i = 2$
+  * Search elements $2\ldots n-1$ for the minimum $m$
+  * Swap $a_2$ and $m$
+* $i$-th iteration:
+  * Search elements $i\ldots n-1$ for the minimum $m$
+  * Swap $a_i$ and $m$
+* Repeat for $i = 0, \ldots n-2$
+
+### Quick Sort
+
+* You divide and conquer:
+  * Choose a "pivot" element
+  * Place elements LESS than the pivot to the left, greater to the right
+  * "Recurse" on the left/right "partition"
+  * until the size is $\leq 1$
+* Quick sort makes (on average) $n\log{n}$ comparisons!
+  * Quasilinear
 
 
 ```text
